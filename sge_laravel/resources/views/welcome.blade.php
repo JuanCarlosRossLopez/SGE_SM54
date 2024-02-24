@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>@yield('titulo')</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    @vite('resources/css/app.css')
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+</head>
+
+<body class="w-screen flex flex-row">
+    <div class=" bg-[#393d42] w-[16rem] h-screen flex flex-col justify-between">
+        <div>
+            <a href="/" class="text-white flex flex-row align-items-center p-3 pb-3 gap-2">
+                <span class="text-4xl font-bold">SGE</span>
+                <span class="border-l-2 pl-2">Sistema de Gestión de Estadías.</span>
+            </a>
+            <ul class="flex flex-col justify-between">
+                
+                <div>
+                    <!--Linea de separación atte: guayabo -->
+                <p class="border-top opacity-60"></p>
+                    <li>
+                        <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
+                            <i class="fa-solid fa-school"></i>
+                            Inicio
+                        </button>
+                    </li>
+                    <li>
+                        <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
+                            <i class="fa-solid fa-users-line"></i>
+                            Usuarios
+                        </button>
+                    </li>
+                    <li>
+                        <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
+                            <i class="fa-solid fa-diagram-project"></i>
+                            Gestión de proyecto
+                        </button>
+                    </li>
+                    <li>
+                        <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
+                            <i class="fa-solid fa-envelope"></i>
+                            Notificaciones
+                        </button>
+                    </li>
+                    <li>
+                        <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
+                            <i class="fa-solid fa-address-card"></i>
+                            Mi perfil
+                        </button>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div>
+                <!--Linea de separación atte: guayabo -->
+                <p class="border-top opacity-60"></p>
+
+                <button class="logout_sidebar justify-start align-items-center text-[#c8c8c8] hover:text-[#181818] flex flex-row gap-2 w-full hover:bg-[#525252]">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Cerrar sesión
+                </button>
+        </div>
+    </div>
+    <main class="w-full">@yield('contenido')</main>
+</body>
+
+<!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
+<script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
+
+</html>
