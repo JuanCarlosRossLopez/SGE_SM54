@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla_admin')
+@extends('plantillas.plantilla_maestros')
 @section('titulo')
 papu testeo
 @endsection

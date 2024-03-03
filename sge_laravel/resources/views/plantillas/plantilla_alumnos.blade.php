@@ -17,11 +17,7 @@
 
 <body class="w-screen flex flex-col">
         <!--aberracion de front pero sirve atte: jotomar -->
-        <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
-            <div class="container">
-                <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
-            </div>
-        </footer>
+       
     <div class="bg-[#2F4050] w-fit min-h-screen fixed flex items-start">
         <button class="text-gray-300 hover:text-white transition-all text-2xl w-fit" onclick="mostrarMenu()">
             <i class="fa-solid fa-bars p-2"></i>
@@ -92,9 +88,14 @@
             </div>
         </div>
     </main>
+    <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
+            <div class="container">
+                <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
+            </div>
+        </footer>
 </body>
 
-<!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
+<!--Icons - realmente estos fueron que mas me convencieron atte: Valier , estan bien att:Wilberth-->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
 
 </html>
