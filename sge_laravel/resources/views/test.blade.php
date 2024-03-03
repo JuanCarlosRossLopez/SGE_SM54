@@ -1,9 +1,11 @@
-@extends('plantillas.plantilla_maestros')
+@extends('plantillas.plantilla_admin')
 @section('titulo')
-Maestros dashboard
+papu testeo
 @endsection
 @section('contenido')
 <div class=" min-h-screen flex justify-center items-center"  >
     Contenido
 </div>
 @endsection
+
+

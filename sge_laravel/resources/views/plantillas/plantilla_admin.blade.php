@@ -17,6 +17,12 @@
 </head>
 
 <body class="w-screen flex flex-col">
+    <!--aberracion de front pero sirve atte: jotomar -->
+    <footer>
+        <div class="container absolute bottom-0 left-7">
+            <p class="font-light text-slate-800">Copyright Universidad Tecnológica de Cancún © 2024</p>
+        </div>
+    </footer>
     <div class="bg-[#393d42] w-fit min-h-screen fixed flex items-start">
         <button class="text-gray-300 text-2xl w-fit" onclick="mostrarMenu()">
             <i class="fa-solid fa-bars p-2"></i>
@@ -52,12 +58,19 @@
                             <button
                                 class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
                                 <i class="fa-solid fa-diagram-project"></i>
-                                Gestión de proyecto
+                                Gestión de proyectos
                             </button>
                         </li>
                         <li>
-                            <button
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#636363] hover:text-[#111111]">
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                <i class="fa-solid fa-file"></i> Generacion de informes </button>
+                        </li>
+                        <li>
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                <i class="fa-solid fa-book"></i>Historial de memorias
+                        </li>
+                        <li>
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-envelope"></i>
                                 Notificaciones
                             </button>
@@ -82,10 +95,10 @@
                     Cerrar sesión
                 </button>
             </div>
-            
         </div>
         <div class="w-screen min-h-screen bg-black bg-opacity-50 flex items-center pl-2">
-            <button class="text-gray-300 text-4xl" onclick="ocultarMenu()">
+            <!--lo puse negro xq se ve mejor atte: jotomar -->
+            <button class="text-black text-4xl hover:text-black hover:scale-125 transition-all" onclick="ocultarMenu()">
                 <i class="fa-solid fa-angle-left"></i>
             </button>
         </div>
