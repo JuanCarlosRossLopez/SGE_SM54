@@ -62,15 +62,15 @@
                             </button>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#636363] hover:text-[#111111] hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-file"></i> Generacion de informes </button>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#636363] hover:text-[#111111] hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-book"></i>Historial de memorias
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#636363] hover:text-[#111111] hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-envelope"></i>
                                 Notificaciones
                             </button>
