@@ -79,7 +79,7 @@
                 <!--Linea de separación atte: guayabo -->
                 <p class="border-top opacity-60"></p>
 
-                <button class="logout_sidebar justify-start align-items-center text-[#c8c8c8] hover:text-white flex flex-row gap-2 w-full hover:bg-[#4D6781]  mb-2 hover:scale-110 hover:w-[96%]">
+                <button class="logout_sidebar justify-start align-items-center text-[#c8c8c8] hover:text-white flex flex-row gap-2 w-full hover:bg-[#4D6781]  mb-2 transition-all hover:scale-110 hover:w-[96%]">
                     <i class="fa-solid fa-right-from-bracket "></i>
                     Cerrar sesión
                 </button>
