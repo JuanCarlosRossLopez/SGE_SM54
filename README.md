@@ -9,5 +9,5 @@
 
 ![image](https://github.com/JuanCarlosRossLopez/SGE_SM54/assets/133787323/b46bbbed-cbb2-41ec-a5b3-c3aae350853d)
 
-**4-.** Iniciaremos el proyecto, con dos terminales, en el primera ejecturemos php artisan serve y en la otra npm run dev al ejecutarse nos aparecera una leyenda que dice que no se encontro una llave, simplemente le damos al boton que dice "generate primary key" o por el estilo. Imediatamente o unos segundos despues se nos recargara la pagina y ya podremos trabajar con el proyecto.
+**4-.** Iniciaremos el proyecto, con dos terminales, en el primera ejecturemos php artisan serve y en la otra npm run dev al ejecutarse nos aparecera una leyenda que dice que no se encontro una llave, simplemente le damos al boton que dice "generate primary key" o por algo el estilo. Imediatamente o unos segundos despues se nos recargara la pagina y ya podremos trabajar con el proyecto.
 
