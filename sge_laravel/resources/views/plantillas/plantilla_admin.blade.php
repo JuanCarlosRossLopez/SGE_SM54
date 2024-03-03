@@ -18,9 +18,9 @@
 
 <body class="w-screen flex flex-col">
     <!--aberracion de front pero sirve atte: jotomar -->
-    <footer>
-        <div class="container absolute bottom-0 left-7">
-            <p class="font-light text-slate-800">Copyright Universidad Tecnológica de Cancún © 2024</p>
+    <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
+        <div class="container">
+            <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
         </div>
     </footer>
     <div class="bg-[#393d42] w-fit min-h-screen fixed flex items-start">
