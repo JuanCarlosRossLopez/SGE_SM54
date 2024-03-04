@@ -89,7 +89,7 @@
         </div>
         <div class="w-screen min-h-screen bg-black bg-opacity-50 flex items-center pl-2">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
-            <button class="text-black text-4xl hover:text-black hover:scale-125 transition-all" onclick="ocultarMenu()">
+            <button class="text-[#c8c8c8] text-4xl hover:text-white hover:scale-125 transition-all" onclick="ocultarMenu()">
                 <i class="fa-solid fa-angle-left"></i>
             </button>
         </div>

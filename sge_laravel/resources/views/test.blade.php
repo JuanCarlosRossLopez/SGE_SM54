@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla_maestros')
+@extends('templates.template_teacher')
 @section('titulo')
 papu testeo
 @endsection
