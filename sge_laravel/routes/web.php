@@ -18,6 +18,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+#RUTAS EQUIPO ROCHA
+
+Route::get('/iniciar_session',function(){
+    return view('login.login');
+});
+
+Route::get('/recuperar_contraseña',function(){
+    return view('login.recovery_password');
+});
+
+Route::get('/cambiar_contraseña',function(){
+    return view('login.change_password');
+});
+
+Route::get('/gestion_roles',function(){
+    return view('admin.manage_rol');
+});
+
+#RUTAS EQUIPO ROCHA
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
