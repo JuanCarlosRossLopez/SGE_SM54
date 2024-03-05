@@ -59,11 +59,12 @@
                             </button>
                         </li>
                         <li>
-                            <button
+                            <a
+                            href="{{ url('/formulario-anteproyecto') }}"
                                 class="buttons_sidebar text-start text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-note-sticky"></i>
                                 Gestion de proyecto
-                            </button>
+                            </a>
                         </li>
                         <li>
                             <button
@@ -106,6 +107,8 @@
         <div class="flex justify-left">
             <div class="w-full m-4">
                 @yield('contenido')
+
+                @yield('formulario')
             </div>
         </div>
     </main>
