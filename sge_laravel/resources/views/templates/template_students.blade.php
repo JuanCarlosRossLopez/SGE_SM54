@@ -52,7 +52,7 @@
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
                         <li>
-                            <button
+                            <button onclick="location.href='/'"
                                 class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio
