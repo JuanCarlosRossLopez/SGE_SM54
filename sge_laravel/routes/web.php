@@ -47,6 +47,9 @@ Route::get('/Perfil_Student', function () {return view('students.userStudent');}
 Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');});
 Route::get('/registro', function (){return view('registro');})->name('registro');
 
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -59,6 +62,25 @@ Route::get('/memorias', function(){
 Route::get('/historial-memorias', function(){
     return view('Memorias.historial_memoria');
 });
+Route::get('/envio_informes', function(){
+    return view('report_generation.teacher_table');
+})->name('envio');
+Route::get('/descarga_informes', function(){
+    return view('report_generation.student_download');
+});
+Route::get('/informes', function(){
+    return view('report_generation.student_generation');
+});
+Route::get('/visualizar', function(){
+    return view('report_generation.teacher_generation');
+});
+Route::get('/aprobacion_memoria', function(){
+    return view('report_generation.pdf_');
+});
+Route::get('/pdf_cedula', function(){
+    return view('report_generation.pdf_cedula');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
