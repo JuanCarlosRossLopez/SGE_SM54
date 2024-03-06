@@ -4,10 +4,10 @@
 @endsection
 @section('contenido')
     <h1 class="text-4xl font-normal uppercase mb-5">Calendario de Actividades</h1>
-    <div class="flex gap-16 justify-center">
-        <div class="border-1 border-[#18A689] w-[715px] rounded-[7px_7px_7px_7px] p-3 bg-[#F6F6F6] h-[445px] shadow">
-            <h1 class="font-semibold text-3xl text-[#18A689]">Recordatorios</h1>
-            <div class="overflow-auto h-[355px] p-2">
+    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8">
+        <div class="border-2 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[645px] h-[410px]">
+            <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Recordatorios</h1>
+            <div class="overflow-auto h-[325px] p-2">
                 <div class="flex flex-col">
                     <div
                         class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
@@ -37,26 +37,26 @@
                 </div>
             </div>
         </div>
-        <div class="border shadow bg-[#ceeae4] p-3 justify-center flex flex-col h-[445px] w-[715px] rounded-[7px_7px_7px_7px]">
+        <div class="border shadow bg-[#ceeae4] md:p-3 p-0 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[645px] rounded-[7px_7px_7px_7px]">
             <p class="text-[#18A689] font-semibold text-3xl text-left ml-9 mb-4">Febrero</p>
             <table>
                 <thead>
                     <tr>
-                        <th class="font-semibold text-center">DOM</th>
-                        <th class="font-semibold text-center">LUN</th>
-                        <th class="font-semibold text-center">MAR</th>
-                        <th class="font-semibold text-center">MIÉ</th>
-                        <th class="font-semibold text-center">JUE</th>
-                        <th class="font-semibold text-center">VIE</th>
-                        <th class="font-semibold text-center">SÁB</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">DOM</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">LUN</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">MAR</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">MIÉ</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">JUE</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">VIE</th>
+                        <th class="font-semibold text-center text-xs md:text-sm">SÁB</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center p-3">28</td>
-                        <td class="text-center p-3">29</td>
-                        <td class="text-center p-3">30</td>
-                        <td class="text-center p-3">31</td>
+                        <td class="text-center p-3 text-gray-500">28</td>
+                        <td class="text-center p-3 text-gray-500">29</td>
+                        <td class="text-center p-3 text-gray-500">30</td>
+                        <td class="text-center p-3 text-gray-500">31</td>
                         <td class="text-center p-3">1</td>
                         <td class="text-center p-3">2</td>
                         <td class="text-center p-3">3</td>
