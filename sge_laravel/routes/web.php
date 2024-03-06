@@ -25,4 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/historial-de-memorias', function () {
+    return view('memory_history.cuadro');
+});
+
 require __DIR__.'/auth.php';

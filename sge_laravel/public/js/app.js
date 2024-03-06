@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function ocultarMenu() {
     var div = document.getElementById("miDiv");
-    div.classList.add("oculto");
+    div.classList.add("hidden");
 }
 
 function mostrarMenu() {
     var div = document.getElementById("miDiv");
-    div.classList.remove("oculto");
+    div.classList.remove("hidden");
 }
