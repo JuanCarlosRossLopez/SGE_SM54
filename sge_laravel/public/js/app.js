@@ -11,3 +11,4 @@ function mostrarMenu() {
     var div = document.getElementById("miDiv");
     div.classList.remove("oculto");
 }
+
