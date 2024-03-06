@@ -75,7 +75,7 @@
         </div>
         <div class="w-screen min-h-screen bg-black bg-opacity-50 flex items-center pl-2">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
-            <button class="text-black text-4xl hover:text-black hover:scale-125 transition-all" onclick="ocultarMenu()">
+            <button class="text-white text-4xl hover:text-black hover:scale-125 transition-all" onclick="ocultarMenu()">
                 <i class="fa-solid fa-angle-left"></i>
             </button>
         </div>
@@ -97,5 +97,20 @@
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: Valier , estan bien att:Wilberth-->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+});
+
+function ocultarMenu() {
+    var div = document.getElementById("miDiv");
+    div.classList.add("hidden");
+}
+
+function mostrarMenu() {
+    var div = document.getElementById("miDiv");
+    div.classList.remove("hidden");
+}
+</script>
 
 </html>
