@@ -55,13 +55,97 @@
                         <td class="px-6 py-4 whitespace-nowrap"></td>
                         <td class="px-6 py-4 whitespace-nowrap"></td>
                         <td class="px-6 py-4 whitespace-nowrap space-x-2">
-                            <i class="bi bi-eye-fill"></i>
+                            <button class="show-modal2">
+                                <div class="comment-icon flex items-center justify-center">
+                                    <i class="bi bi-eye-fill"></i>
+                                </div>
+                            </button>
+
                             <i class="bi bi-pencil-square" style="color: blue;"></i>
-                            <i class="bi bi-trash" style="color: red;"></i>
+
+                            <button class="show-modal">
+                                <div class="comment-icon flex items-center justify-center">
+                                    <i class="bi bi-trash" style="color: red;"></i>
+                                </div>
+                            </button>
+
+
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <div class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+            <div class="bg-white w-96 p-4 rounded-lg">
+                <div class="flex flex-col justify-between items-center">
+                    <div class="flex flex-row gap-10 ">
+                        <h3 class="  font-semibold text-lg text-gray-800">Datos de usuarios</h3>
+                        <button class="close-modal text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="py-4">
+                        <h5 class="py-2">Nombre </h5>
+                        <h5 class="py-2">Apellidos </h5>
+                        <h5 class="py-2">Nombre Usuarios</h5>
+                        <h5 class="py-2">Rol de Usuario</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+            <div class="bg-white w-96 p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-lg text-gray-800">Usuario eliminado correctamente</h3>
+                    <button class="close-modal text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const modal = document.querySelector('.modal');
+
+            const showModal = document.querySelector('.show-modal');
+            const closeModal = document.querySelectorAll('.close-modal');
+
+            showModal.addEventListener('click', function() {
+                modal.classList.remove('hidden')
+            })
+
+            closeModal.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal.classList.add('hidden')
+                });
+            });
+        </script>
+        <script>
+            const modal2 = document.querySelector('.modal2');
+
+            const showModal2 = document.querySelector('.show-modal2');
+            const closeModal2 = document.querySelectorAll('.close-modal');
+
+            showModal2.addEventListener('click', function() {
+                modal2.classList.remove('hidden')
+            })
+
+            closeModal2.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal2.classList.add('hidden')
+                });
+            });
+        </script>
+
     </div>
 @endsection

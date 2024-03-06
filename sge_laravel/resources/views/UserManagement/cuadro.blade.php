@@ -56,11 +56,15 @@
                             <button>
                                 <i class="fa-solid fa-book-open fa-xl" style="color: #4d4d4d;"></i>
                             </button>
+
+
                             <button class="show-modal">
                                 <div class="comment-icon flex items-center justify-center">
                                     <i class="fa-solid fa-pen fa-sm" style="color: #ffffff;"></i>
                                 </div>
                             </button>
+
+                            
                             <button>
                                 <i class="fa-solid fa-bullhorn fa-xl" style="color: #d40000;"></i>
                             </button>
