@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla_admin')
+@extends('templates.template_admin')
 @section('titulo')
     Registro
 @endsection

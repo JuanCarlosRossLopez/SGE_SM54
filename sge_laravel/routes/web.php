@@ -47,9 +47,6 @@ Route::get('/Perfil_Student', function () {return view('students.userStudent');}
 Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');});
 Route::get('/registro', function (){return view('registro');})->name('registro');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -88,7 +85,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/gestión_anteproyecto', function () {
+Route::get('/gestion_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 

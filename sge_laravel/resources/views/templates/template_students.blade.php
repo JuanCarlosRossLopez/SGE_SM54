@@ -107,7 +107,6 @@
         <div class="flex justify-left">
             <div class="w-full m-4">
                 @yield('contenido')
-
                 @yield('formulario')
             </div>
         </div>
@@ -121,9 +120,5 @@
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: Valier , estan bien att:Wilberth-->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
-});
 
 </html>
