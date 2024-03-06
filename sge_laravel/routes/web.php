@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/iniciar_session',function(){
     return view('login.login');
 });
+Route::get('/', function () {
+    return view('students.activities_calendar');
+})->name('activities_calendar');
+
+Route::get('/anteproyecto', function () {
+    return view('students.anteproyecto');
+})->name('anteproyecto');
+
 
 Route::get('/recuperar_contraseña',function(){
     return view('login.recovery_password');
