@@ -112,5 +112,20 @@
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+    });
+    
+    function ocultarMenu() {
+        var div = document.getElementById("miDiv");
+        div.classList.add("hidden");
+    }
+    
+    function mostrarMenu() {
+        var div = document.getElementById("miDiv");
+        div.classList.remove("hidden");
+    }
+</script>
 
 </html>
