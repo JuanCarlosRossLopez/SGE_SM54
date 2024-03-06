@@ -15,8 +15,8 @@
                     <input class="bg-slate-200 pl-10 py-2 rounded-lg text-lg outline-none w-64" placeholder="Buscar...">
                     <i class="bi bi-search absolute left-3 top-1/2 transform -translate-y-1/2"></i>
                 </div>
-                <button 
-                    class="show-modal3 text-white bg-emerald-600 rounded-lg py-2 px-4 inline-block ml-4">Agregar Usuario</button>
+                <button class="show-modal3 text-white bg-emerald-600 rounded-lg py-2 px-4 inline-block ml-4">Agregar
+                    Usuario</button>
             </div>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-emerald-300">
@@ -106,10 +106,12 @@
                 </div>
             </div>
         </div>
-    
-        <div class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+
+        <div
+            class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
             <div class="container ">
-                <div class="items-center justify-center fixed inset-0 bg-gray-500 bg-opacity-50  h-screen w-screen flex px-4 md:px-8">
+                <div
+                    class="items-center justify-center fixed inset-0 bg-gray-500 bg-opacity-50  h-screen w-screen flex px-4 md:px-8">
                     <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
                         <h1 class="text-2xl font-bold mb-4 flex items-center justify-between">
                             Editar usuario
@@ -121,43 +123,38 @@
                                 </svg>
                             </button>
                         </h1>
-        
+
                         <form action="#">
                             <div class="mb-4">
                                 <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                                <input type="text" id="nombre"
-                                    class="rounded ancho input-field">
+                                <input type="text" id="nombre" class="rounded ancho input-field">
                             </div>
                             <div class="mb-4">
                                 <label for="apellidos" class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
-                                <input type="text" id="apellidos"
-                                    class="rounded input-field">
+                                <input type="text" id="apellidos" class="rounded input-field">
                             </div>
                             <div class="mb-4">
                                 <label for="nombre_usuario" class="block text-gray-700 text-sm font-bold mb-2">Nombre de
                                     usuario</label>
-                                <input type="text" id="nombre_usuario"
-                                    class="rounded input-field">
+                                <input type="text" id="nombre_usuario" class="rounded input-field">
                             </div>
                             <div class="mb-4">
                                 <label for="contrasena"
                                     class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                                <input type="password" id="contrasena"
-                                    class="rounded input-field">
+                                <input type="password" id="contrasena" class="rounded input-field">
                             </div>
-        
+
                             <div class="mb-4">
                                 <label for="rol" class="block text-gray-700 text-sm font-bold mb-2">Rol</label>
-                                <select id="rol"
-                                    class="rounded input-field">
+                                <select id="rol" class="rounded input-field">
                                     <option value="">Seleccionar un rol</option>
                                     <option value="administrador">Administrador</option>
                                     <option value="usuario">Usuario</option>
                                 </select>
-                            </div> 
+                            </div>
                             <div class="flex justify-center">
-                                
-                                <button
+
+                                <button type="submit" modal-close
                                     class="close-modal4 show-modal6 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                                     Editar usuario
                                 </button>
@@ -168,9 +165,11 @@
             </div>
         </div>
 
-        <div class="modal3 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+        <div
+            class="modal3 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
             <div class="container ">
-                <div class="items-center justify-center fixed inset-0 bg-gray-500 bg-opacity-50  h-screen w-screen flex px-4 md:px-8">
+                <div
+                    class="items-center justify-center fixed inset-0 bg-gray-500 bg-opacity-50  h-screen w-screen flex px-4 md:px-8">
                     <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
                         <h1 class="text-2xl font-bold mb-4 flex items-center justify-between">
                             Agregar usuario
@@ -182,40 +181,38 @@
                                 </svg>
                             </button>
                         </h1>
-        
+
                         <form action="#">
                             <div class="mb-4">
                                 <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                                <input type="text" id="nombre"
-                                    class="rounded ancho input-field">
+                                <input type="text" id="nombre" class="rounded ancho input-field">
                             </div>
                             <div class="mb-4">
-                                <label for="apellidos" class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
-                                <input type="text" id="apellidos"
-                                    class="rounded input-field">
+                                <label for="apellidos"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
+                                <input type="text" id="apellidos" class="rounded input-field">
                             </div>
                             <div class="mb-4">
                                 <label for="nombre_usuario" class="block text-gray-700 text-sm font-bold mb-2">Nombre de
                                     usuario</label>
-                                <input type="text" id="nombre_usuario"
-                                    class="rounded input-field">
+                                <input type="text" id="nombre_usuario" class="rounded input-field">
                             </div>
                             <div class="mb-4">
                                 <label for="rol" class="block text-gray-700 text-sm font-bold mb-2">Rol</label>
-                                <select id="rol"
-                                    class="rounded input-field">
+                                <select id="rol" class="rounded input-field">
                                     <option value="">Seleccionar un rol</option>
                                     <option value="administrador">Administrador</option>
                                     <option value="usuario">Usuario</option>
                                 </select>
-                            </div> 
+                            </div>
                             <div class="flex justify-center">
-                                <button class="close-modal3 show-modal5">
-                                    <div class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                <button class="close-modal3 show-modal5 ">
+                                    <div
+                                        class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                                         Agregar usuario
                                     </div>
                                 </button>
-                                
+
                             </div>
                         </form>
                     </div>
@@ -256,7 +253,8 @@
                     <button class="close-modal text-gray-500 hover:text-gray-700">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12">
                             </path>
                         </svg>
                     </button>
@@ -362,8 +360,5 @@
                 });
             });
         </script>
-
-        
     </div>
-
 @endsection
