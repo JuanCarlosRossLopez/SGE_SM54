@@ -22,10 +22,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/envio', function(){
+Route::get('/envio_informes', function(){
     return view('report_generation.teacher_table');
+})->name('envio');
+Route::get('/descarga_informes', function(){
+    return view('report_generation.student_download');
 });
-
+Route::get('/informes', function(){
+    return view('report_generation.student_generation');
+});
+Route::get('/visualizar', function(){
+    return view('report_generation.teacher_generation');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

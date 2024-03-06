@@ -1,28 +1,8 @@
-@extends('templates.template_students')
+@extends('templates.template_teacher')
 @section('titulo')
-    Descargas
+    Envío
 @endsection
-<style>
-    .comment-icon {
-        position: relative;
-        width: 30px;
-        height: 22px;
-        background-color: #007bff;
-        border-radius: 50%;
-    }
-    
-    .comment-icon::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        right: 4px;
-        width: 20px;
-        height: 15px;
-        border-style: solid;
-        border-width: 0 8px 8px 0;
-        border-color: transparent #007bff transparent transparent;
-    }
-    </style>
+
 @section('contenido')
     <div class="">
         <div class="items-center">
