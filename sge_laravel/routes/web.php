@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('students.activities_calendar');
 })->name('activities_calendar');
 
+Route::get('/formulario-anteproyecto', function () {
+    return view('students.anteproyecto');
+})->name('anteproyecto');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
