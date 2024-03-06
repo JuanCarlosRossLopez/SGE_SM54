@@ -65,12 +65,12 @@
                             </button>
                         </li>
                         <li>
-                            <button
+                            <a href="/gestión_anteproyecto"
                                 class="buttons_sidebar text-start text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-diagram-project"></i>
                                 Gestión de proyectos
                                 de asesorados
-                            </button>
+                            </a>
                         </li>
                         <li>
                             <button
@@ -78,9 +78,10 @@
                                 <i class="fa-solid fa-file"></i> Generacion de informes </button>
                         </li>
                         <li>
-                            <button
+                            <a href="/historial_memorias"
                                 class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-book"></i>Historial de memorias
+                            </a>
                         </li>
                         <li>
                             <button
@@ -125,6 +126,7 @@
             <div class="flex justify-left">
                 <div class="">
                     @yield('memory_table')
+                    @yield('project_teacher')
                 </div>
             </div>
         </main>
