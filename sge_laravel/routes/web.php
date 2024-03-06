@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');});
 Route::get('/Perfil_Student', function () {return view('students.userStudent');});
 Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');});
+Route::get('/registro', function (){return view('registro');})->name('registro');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
