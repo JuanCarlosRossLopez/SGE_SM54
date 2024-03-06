@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('students.activities_calendar');
 })->name('activities_calendar');
 
-Route::get('/formulario-anteproyecto', function () {
+Route::get('/anteproyecto', function () {
     return view('students.anteproyecto');
 })->name('anteproyecto');
 
