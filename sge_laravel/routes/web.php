@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/historial-de-memorias', function () {
-    return view('memory_history.cuadro');
+    return view('anteproject_cedule.table_anteprojects');
 });
 
 require __DIR__.'/auth.php';
