@@ -12,7 +12,21 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+        });
+
+        function ocultarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.add("hidden");
+        }
+
+        function mostrarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.remove("hidden");
+        }
+    </script>
 </head>
 
 <body class="w-screen flex flex-col">
@@ -105,21 +119,5 @@
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
-});
 
-function ocultarMenu() {
-    var div = document.getElementById("miDiv");
-    div.classList.add("hidden");
-}
-
-function mostrarMenu() {
-    var div = document.getElementById("miDiv");
-    div.classList.remove("hidden");
-}
-
-
-</script>
 </html>

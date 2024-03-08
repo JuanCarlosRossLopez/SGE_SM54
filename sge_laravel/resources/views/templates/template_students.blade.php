@@ -6,18 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('titulo')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @vite('resources/css/app.css')
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+        });
+
+        function ocultarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.add("hidden");
+        }
+
+        function mostrarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.remove("hidden");
+        }
+    </script>
 </head>
 
 <body class="w-screen flex flex-col">
-        <!--aberracion de front pero sirve atte: jotomar -->
-       
+    <!--aberracion de front pero sirve atte: jotomar -->
+
     <div class="bg-[#2F4050] w-fit min-h-screen fixed flex items-start">
         <button class="text-gray-300 hover:text-white transition-all text-2xl w-fit" onclick="mostrarMenu()">
             <i class="fa-solid fa-bars p-2"></i>
@@ -26,7 +41,8 @@
     <div class="w-screen flex flex-row fixed" id="miDiv">
         <div class=" bg-[#2F4050] w-[20rem] h-screen flex flex-col justify-between">
             <div>
-                <a href="/" class="text-white flex flex-row align-items-center p-3 pb-3 gap-2 hover:scale-105 transition-all">
+                <a href="/"
+                    class="text-white flex flex-row align-items-center p-3 pb-3 gap-2 hover:scale-105 transition-all">
                     <span class="text-4xl font-bold">SGE</span>
                     <span class="border-l-2 pl-2">Sistema de Gestión de Estadías.</span>
                 </a>
@@ -36,25 +52,30 @@
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button onclick="location.href='/'"
+                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio
                             </button>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-start text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <a
+                            href="{{ url('/anteproyecto') }}"
+                                class="buttons_sidebar text-start text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-note-sticky"></i>
                                 Gestion de proyecto
-                            </button>
+                            </a>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button
+                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-envelope"></i>
                                 Notificaciones
                             </button>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button
+                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </button>
@@ -66,7 +87,8 @@
                 <!--Linea de separación atte: guayabo -->
                 <p class="border-top opacity-60"></p>
 
-                <button class="logout_sidebar justify-start align-items-center text-[#c8c8c8] hover:text-white flex flex-row gap-2 w-full hover:bg-[#4D6781]  mb-2 transition-all hover:scale-110 hover:w-[96%]">
+                <button
+                    class="logout_sidebar justify-start align-items-center text-[#c8c8c8] hover:text-white flex flex-row gap-2 w-full hover:bg-[#4D6781]  mb-2 transition-all hover:scale-110 hover:w-[96%]">
                     <i class="fa-solid fa-right-from-bracket "></i>
                     Cerrar sesión
                 </button>
@@ -75,7 +97,7 @@
         </div>
         <div class="w-screen min-h-screen bg-black bg-opacity-50 flex items-center pl-2">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
-            <button class="text-black text-4xl hover:text-black hover:scale-125 transition-all" onclick="ocultarMenu()">
+            <button class="text-[#c8c8c8] text-4xl hover:text-white hover:scale-125 transition-all" onclick="ocultarMenu()">
                 <i class="fa-solid fa-angle-left"></i>
             </button>
         </div>
@@ -85,33 +107,18 @@
         <div class="flex justify-left">
             <div class="w-full m-4">
                 @yield('contenido')
+                @yield('formulario')
             </div>
         </div>
     </main>
     <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
-            <div class="container">
-                <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
-            </div>
-        </footer>
+        <div class="container">
+            <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
+        </div>
+    </footer>
 </body>
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: Valier , estan bien att:Wilberth-->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
-});
 
-function ocultarMenu() {
-    var div = document.getElementById("miDiv");
-    div.classList.add("hidden");
-}
-
-function mostrarMenu() {
-    var div = document.getElementById("miDiv");
-    div.classList.remove("hidden");
-}
-
-
-</script>
 </html>
