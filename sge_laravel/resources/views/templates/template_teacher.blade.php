@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title')</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @vite('resources/css/app.css')
@@ -124,14 +125,11 @@
     <div class="flex flex-col justify-between h-screen">
         <main class="w-screen ">
             <div class="flex justify-left">
-                <div class="">
-                    @yield('memory_table')
-                    @yield('project_teacher')
+                <div class="w-full h-full">
+                    @yield('contenido')
                 </div>
             </div>
         </main>
-
-        <!--aberracion de front pero sirve atte: jotomar -->
         <footer class="w-screen pl-12 bottom-0">
             <div>
                 <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>

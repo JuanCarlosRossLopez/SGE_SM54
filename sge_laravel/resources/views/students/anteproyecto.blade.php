@@ -11,6 +11,10 @@
         <form class="space-y-6">
             <div>
                 <label for="titulo" class="block text-sm font-medium">Título del proyecto</label>
+                <text class="text-base italic">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+                    archivos de texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
+                    texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
+                    texto.</text>
                 <div class="flex items-center">
                     <input type="text" id="titulo" name="titulo"
                         class="mt-1 outline-none focus:border-[#18A689] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
