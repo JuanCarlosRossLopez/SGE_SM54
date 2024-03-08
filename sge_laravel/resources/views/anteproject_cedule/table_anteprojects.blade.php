@@ -176,14 +176,13 @@
         </div>
 
         <script>
+            //Lo hizo roto, es un contador
             const tableBody = document.querySelector('tbody');
             const rowCount = tableBody.querySelectorAll('tr').length;
             document.getElementById('rowCount').textContent = rowCount;
-        </script>
-
-        <script>
             const modal = document.querySelector('.modal');
 
+            //Funcionamiento de modal
             const showModal = document.querySelector('.show-modal');
             const closeModal = document.querySelectorAll('.close-modal');
 
@@ -194,8 +193,8 @@
             closeModal.forEach(close => {
                 close.addEventListener('click', function() {
                     modal.classList.add('hidden')
-                });
-            });
+                })
+            })
         </script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

@@ -13,6 +13,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -123,7 +124,7 @@
     </div>
 
     <div class="flex flex-col justify-between h-screen">
-        <main class="w-screen ">
+        <main class="w-screen overflow-x-hidden mb-4">
             <div class="flex justify-left">
                 <div class="w-full h-full">
                     @yield('contenido')
