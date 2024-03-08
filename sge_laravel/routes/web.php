@@ -52,6 +52,10 @@ Route::get('/cambiar_contraseña',function(){
 Route::get('/gestion_roles',function(){
     return view('admin.manage_rol');
 });
+
+Route::get('/panel_admin',function(){
+    return view('super_admin.dashboard.dashboard');
+});
 //End equipo rocha
 
 
