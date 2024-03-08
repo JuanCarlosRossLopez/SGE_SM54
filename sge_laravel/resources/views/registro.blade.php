@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla_admin')
+@extends('templates.template_admin')
 @section('titulo')
     Registro
 @endsection
@@ -8,7 +8,7 @@
         modal
     </button>
     <div class="modal-wrapper">
-        <div class="modal  fixed top-0 left-0 w-full h-[1000px] overflow-hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="modal  fixed top-0 left-0 w-full h-[700px] overflow-hidden flex justify-center items-center bg-opacity-500">
             <div class="bg-green-500 w-[600px] rounded shadow-lg max-w-4xl ">
                 <div class="border-b px-4 py-2 flex justify-between items-center">
                     <h3 class="font-semibold text-lg justify-center items-center text-white text-center">Registrar Alumnos</h3>
@@ -19,9 +19,9 @@
                 <div class="bg-white p-2">
                     <div class="modal-body mb-0 overflow-y-auto h-[100vh]">
                         <div class="container mx-auto px-4 py-8">
-                            <h1 class="text-center font-semibold text-2xl">Agregar Alumno</h1>
+                            <h1 class="text-center font-semibold text-2xl">Agregar Alumnos</h1>
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                <div class="bg-gray-50 rounded-lg p-8 mx-auto">
+                                <div class="bg-white rounded-lg p-8 mx-auto">
                                     <form action="#funciones futura" method="POST" class="w-full">
                                         @csrf
                                         <div class="mb-4">
