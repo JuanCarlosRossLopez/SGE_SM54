@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Dashboard Asesor
+Route::get('/prueba_dashboard_teacher', function () {
+    return view('teachers.teacher_dashboard');
+});
+
 //Dashboard Alumno
 Route::get('/dashboard_alumno', function () {
     return view('students.activities_calendar');
@@ -87,6 +92,7 @@ Route::get('/gestion_anteproyecto', function () {
 Route::get('/prueba_estandares', function () {
     return view('anteproject_cedule.test_standars');
 });
+
 //End equipo valier
 
 //Equipo dano
