@@ -46,16 +46,16 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody class="justify-items-center bg-white divide-y divide-gray-200">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap"></td>
                         <td class="px-6 py-4 whitespace-nowrap"></td>
                         <td class="px-6 py-4 whitespace-nowrap"></td>
                         <td class="px-6 py-4 whitespace-nowrap"></td>
                         <td class="px-6 py-4 whitespace-nowrap"></td>
-                        <td class="px-6 py-4 whitespace-nowrap space-x-2">
+                        <td class="flex px-6 py-4 whitespace-nowrap space-x-2 items-centern justify-center">
                             <button class="show-modal2">
-                                <div class="comment-icon flex items-center justify-center">
+                                <div class="comment-icon flex items-center">
                                     <i class="bi bi-eye-fill"></i>
                                 </div>
                             </button>
@@ -221,13 +221,10 @@
         </div>
 
 
-        <div
-            class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-            <div class="bg-white w-96 p-4 rounded-lg">
-                <div class="flex flex-col justify-between items-center">
-                    <div class="flex flex-row gap-10 ">
-                        <h3 class="  font-semibold text-lg text-gray-800">Datos de usuarios</h3>
-                        <button class="close-modal2 text-gray-500 hover:text-gray-700">
+        <div class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+            <div class="bg-white w-96 p-6 rounded-lg">
+                 <div class="flex translate-x-full">
+                        <button class="close-modal2 text-black hover:text-gray-700 bg-red-600 rounded-full ">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -235,11 +232,29 @@
                             </svg>
                         </button>
                     </div>
+                <div class="flex flex-col items-center">
+                   
+                    <div class="flex items-center justify-center mb-4 bg-green-600 w-96">
+                        <h3 class="text-lg font-bold text-gray-800 ">Datos de usuario</h3>
+                        
+                    </div>
                     <div class="py-4">
-                        <h5 class="py-2">Nombre </h5>
-                        <h5 class="py-2">Apellidos </h5>
-                        <h5 class="py-2">Nombre Usuarios</h5>
-                        <h5 class="py-2">Rol de Usuario</h5>
+                        <div class="flex flex-col">
+                            <p class="text-md font-bold text-black py-1">Nombre:</p>
+                            <p class="text-base text-gray-800 py-1">John Doe</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-md font-bold text-black py-1">Apellidos</p>
+                            <p class="text-base text-gray-800 py-1">Smith</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-md font-bold text-black py-1">Nombre de Usuario</p>
+                            <p class="text-base text-gray-800 py-1">john_doe123</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-md font-bold text-black py-1">Rol de Usuario</p>
+                            <p class="text-base text-gray-800 py-1">Administrador</p>
+                        </div>
                     </div>
                 </div>
             </div>
