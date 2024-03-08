@@ -1,6 +1,6 @@
 @extends('templates.template_students')
 @section('titulo')
-    Inicio
+    Dashboard
 @endsection
 @section('contenido')
     <h1 class="text-4xl font-normal uppercase mb-5">Calendario de Actividades</h1>

@@ -5,18 +5,21 @@
 @endsection
 
 @section('contenido')
-    <h1 class=" text-4xl font-normal uppercase mb-4">Gestión de Anteproyecto</h1>
-    <form class="shadow-md w-11/12 bg-[#F6F6F6] p-3 rounded mx-auto">
+<div class="w-screen">
+    <h1 class="text-4xl font-normal uppercase mb-4 ml-12">Gestión de Anteproyecto</h1>
+    <form class="shadow-md w-11/12 bg-[#F6F6F6] p-3 rounded mx-20">
         <h1 class="text-lg text-center font-medium uppercase my-4">Datos Anteproyecto</h1>
         <div class="flex flex-col mb-3 items-center">
             <label for="titulo" class="text-lg font-medium">Título del proyecto</label>
             <p class="italic mt-2">El título debe ser claro y consciso</p>
             <input type="text" id="titulo" name="titulo"
                 class="outline-none focus:border-[#18A689] block shadow-sm w-1/2 sm:text-sm border-gray-300 rounded-md">
-            {{-- <i
-                class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
-            <i
-                class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i> --}}
+            <div>
+                <i
+                    class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
+                <i
+                    class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i>
+            </div>
         </div>
         <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
@@ -26,20 +29,24 @@
                     <p class="italic mt-2">El objetivo debe describir lo que se busca hacer con el proyecto</p>
                     <textarea type="text" id="titulo" name="titulo"
                         class="outline-none focus:border-[#18A689] block shadow-sm sm:text-sm border-gray-300 rounded-md h-28"></textarea>
-                    {{-- <i
-                        class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
-                    <i
-                        class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i> --}}
+                    <div>
+                        <i
+                            class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
+                        <i
+                            class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i>
+                    </div>
                 </div>
                 <div class="flex flex-col">
                     <label for="titulo" class="text-lg font-medium">Objetivo Específicos</label>
                     <p class="italic mt-2">Los objetivos específicos deben ser objetivos del general</p>
                     <textarea type="text" id="titulo" name="titulo"
                         class="outline-none focus:border-[#18A689] block shadow-sm sm:text-sm border-gray-300 rounded-md h-28"></textarea>
-                    {{-- <i
-                        class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
-                    <i
-                        class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i> --}}
+                    <div>
+                        <i
+                            class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
+                        <i
+                            class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i>
+                    </div>
                 </div>
             </div>
             <div class="flex flex-col w-1/2 px-2 gap-4">
@@ -48,20 +55,24 @@
                     <p class="italic mt-2">Describir el objetivo del proyecto</p>
                     <textarea type="text" id="titulo" name="titulo"
                         class="outline-none focus:border-[#18A689] block shadow-sm sm:text-sm border-gray-300 rounded-md h-28"></textarea>
-                    {{-- <i
-                        class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
-                    <i
-                        class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i> --}}
+                    <div>
+                        <i
+                            class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
+                        <i
+                            class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i>
+                    </div>
                 </div>
                 <div class="flex flex-col">
                     <label for="titulo" class="text-lg font-medium">Justificación</label>
                     <p class="italic mt-2">Describir la justificación del proyecto</p>
                     <textarea type="text" id="titulo" name="titulo"
                         class="outline-none focus:border-[#18A689] block shadow-sm sm:text-sm border-gray-300 rounded-md h-28"></textarea>
-                    {{-- <i
-                        class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
-                    <i
-                        class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i> --}}
+                    <div>
+                        <i
+                            class="fa-regular fa-comment fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal"></i>
+                        <i
+                            class="fa-regular fa-pen-to-square fa-lg ml-2 text-[#18A689] transition-transform hover:scale-110 duration-75 cursor-pointer show-modal-edit"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,7 +104,7 @@
                     </div>
 
                     <div class="flex justify-center items-center w-full border-t pt-2">
-                        <button class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white">Guardar</button>
+                        <button class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white">De Acuerdo</button>
                     </div>
                 </div>
             </div>
@@ -111,15 +122,19 @@
             </div>
             <div class="bg-white p-2">
                 <div class="modal-body mb-0 h-[23vh]">
-                    <label for="titulo" class="block text-sm font-medium">Título del proyecto</label>
-                    <input type="text" id="titulo" name="titulo"
-                        class="mt-1 outline-none focus:border-[#18A689] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    <div class="flex flex-col mb-3 items-center">
+                        <label for="titulo" class="text-lg font-medium">Título del proyecto</label>
+                        <p class="italic mt-2">El título debe ser claro y consciso</p>
+                        <input type="text" id="titulo" name="titulo"
+                            class="outline-none focus:border-[#18A689] block shadow-sm w-1/2 sm:text-sm border-gray-300 rounded-md">
+                    </div>
                     <div class="flex justify-center items-center w-full border-t pt-2">
                         <button class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white mt-3">Resolver</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script>
         function initializeModalEvents(triggerSelector, modalSelector) {
