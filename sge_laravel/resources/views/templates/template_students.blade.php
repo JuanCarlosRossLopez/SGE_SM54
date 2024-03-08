@@ -107,7 +107,6 @@
         <div class="flex justify-left">
             <div class="w-full m-4">
                 @yield('contenido')
-
                 @yield('formulario')
             </div>
         </div>
