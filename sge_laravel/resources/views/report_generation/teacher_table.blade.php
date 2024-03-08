@@ -1,5 +1,5 @@
 @extends('templates.template_teacher')
-@section('titulo')
+@section('title')
     Envío
 @endsection
 
@@ -27,7 +27,7 @@
                 </div>
                 <div class="search_button_conteiner">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button class="standar_button"><span class="inside_button">Si lo necesitas</span></button>
+                    <button class="standar_button hidden"><span class="inside_button">Si lo necesitas</span></button>
                 </div>
             </div>
 
@@ -38,7 +38,6 @@
                             <th class="theader">Matricula</th>
                             <th class="theader">Alumnos</th>
                             <th class="theader">Proyectos</th>
-                            <th class="theader">Elemento</th>
                             <th class="theader">Opciones</th>
                         </tr>
                     </thead>
@@ -47,30 +46,23 @@
                             <td class="trowc">22393169</td>
                             <td class="trowc">Marco Antonio Hau Pech</td>
                             <td class="trowc">Comercio web e-commer</td>
-                            <td class="trowc">Lorum</td>
                             <td class="trowc">
                                 <div>
-                                    
                                     <button class="show-modal standar_button my-1">
                                         Enviar
                                     </button>
-                                    
                                 </div>
-
                             </td>
                         </tr>
                         <tr class="trow">
                             <td class="trowc">22393169</td>
-                            <td class="trowc">Marco Antonio Hau Pech</td>
+                            <td class="trowc">Sánchez Martínez Daniel Jesús</td>
                             <td class="trowc">Comercio web e-commer</td>
-                            <td class="trowc">Lorum</td>
                             <td class="trowc">
                                 <div>
-                                    
-                                <button class="show-modal standar_button my-1">
+                                    <button class="show-modal standar_button my-1">
                                         Enviar
                                     </button>
-                                    
                                 </div>
                             </td>
                         </tr>
@@ -108,14 +100,38 @@
     <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
             <div class="border-b px-4 py-2 flex justify-content-end">
-                <button class="close-modal ">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full" style="color: #d50101;"></i></p>
+                <button class="close-modal">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full"
+                            style="color: #d50101;"></i></p>
                 </button>
             </div>
             <div class="bg-white p-2 rounded-b-2xl">
-                <div class="modal-body mb-0 overflow-y-auto h-44">
-                    <h4 class="text-black text-center mt-5 text-2xl font-bold">Envío Realizado!</h4>
-                    <img  src="{!! asset('img/check.png') !!}">
+                <div class="modal-body mb-0 overflow-y-auto h-[190px]">
+                    <h4 class="text-black text-center mt-3 text-2xl font-bold">Tipo de archivo</h4>
+                    <div class=" flex justify-center">
+                        <img src="{!! asset('img/icon_word.png') !!}"
+                            class="w-[50px] h-[50px] items-center mt-[20px] mr-[20px] cursor-pointer show-modal1">
+                        <img src="{!! asset('img/icon_pdf.png') !!}"
+                            class="w-[50px] h-[50px] items-center mt-[20px] ml-[20px] cursor-pointer show-modal1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal1 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
+            <div class="border-b px-4 py-2 flex justify-content-end">
+                <button class="close-modal ">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full"
+                            style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="bg-white p-2 rounded-b-2xl">
+                <div class="modal-body mb-0 overflow-y-auto h-[190px]">
+                    <h4 class="text-black text-center mt-3 text-2xl font-bold">Envío Realizado!</h4>
+                    <div class=" flex justify-center">
+                        <img src="{!! asset('img/check.png') !!}" class="w-[50px] h-[50px] items-center mt-[20px] ">
+                    </div>
                 </div>
             </div>
         </div>
@@ -129,14 +145,24 @@
 
     <script>
         const modal = document.querySelector('.modal');
+        const modal1 = document.querySelector('.modal1');
 
         const showModal = document.querySelector('.show-modal');
+        const showModal1 = document.querySelector('.show-modal1');
         const closeModal = document.querySelectorAll('.close-modal');
 
         showModal.addEventListener('click', function() {
             modal.classList.remove('hidden')
         })
+        showModal1.addEventListener('click', function() {
+            modal1.classList.remove('hidden')
+        })
 
+        closeModal.forEach(close => {
+            close.addEventListener('click', function() {
+                modal1.classList.add('hidden')
+            });
+        });
         closeModal.forEach(close => {
             close.addEventListener('click', function() {
                 modal.classList.add('hidden')
