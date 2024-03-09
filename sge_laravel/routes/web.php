@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 //Dashboard Asesor
-Route::get('/prueba_dashboard_teacher', function () {
+Route::get('/dashboard_asesor', function () {
     return view('teachers.teacher_dashboard');
 });
 
