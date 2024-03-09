@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/plantilla', function () {
+    return view('test.test_standars');
+});
+
 //Mision, vision, valores
 Route::get('/', function () { 
     return view('welcome');
+});
+
+//Dashboard Asesor
+Route::get('/dashboard_asesor', function () {
+    return view('teachers.teacher_dashboard');
 });
 
 //Dashboard Alumno
@@ -52,6 +62,10 @@ Route::get('/cambiar_contraseña',function(){
 Route::get('/gestion_roles',function(){
     return view('admin.manage_rol');
 });
+
+Route::get('/panel_admin',function(){
+    return view('super_admin.dashboard.dashboard');
+});
 //End equipo rocha
 
 
@@ -76,13 +90,12 @@ Route::get('/memorias', function(){
 Route::get('/historial-memorias', function(){
     return view('Memorias.historial_memoria');
 });
-Route::get('/gestion_anteproyecto', function () {
+Route::get('/gestion_anteproyect', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
-Route::get('/prueba_estandares', function () {
-    return view('anteproject_cedule.test_standars');
-});
+
+
 //End equipo valier
 
 //Equipo dano
