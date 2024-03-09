@@ -6,16 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /*
+    /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('interships', function (Blueprint $table) {
+        Schema::create('rols', function (Blueprint $table) {
             $table->id();
-            $table->string('type_intership');
-            $table->string('description_intership');
-            $table->timestamps();
+            $table->string('rol');
+            $table->foreignId('auth_rol_id')->constrained('rol_auths')
+                ->onUpdate('restrict')
+                ->oDelete('restrict');
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('interships');
+        Schema::dropIfExists('roles');
     }
 };
