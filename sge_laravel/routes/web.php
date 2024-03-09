@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/historial-de-memorias', function () {
+Route::get('/gestion-anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
