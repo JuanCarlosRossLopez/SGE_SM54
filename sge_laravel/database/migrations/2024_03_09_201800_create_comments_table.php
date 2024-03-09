@@ -11,12 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teaching_advices', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            //De momento aun sigo pensando como voy a trabajar el estado de los comentarios
+            $table->string('general_comment');
+            $table->string('title_comment');
+            $table->string('objective_comment');
+            $table->string('planteamiento_comment');
+            $table->string('justification_comment');
+            $table->string('activities_comment');
             $table->foreignId('teacher_id')->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('student_id')->constrained()
+            $table->foreignId('anteproject_id')->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();
@@ -28,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teaching_advices');
+        Schema::dropIfExists('comments');
     }
 };

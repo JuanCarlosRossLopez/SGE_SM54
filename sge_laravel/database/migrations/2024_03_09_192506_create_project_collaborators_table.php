@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('project_collaborators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()
+                $table->foreignId('student_id')->constrained('students')
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('project_id')->constrained()
+            $table->foreignId('anteproject_id')->constrained('anteprojects')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();

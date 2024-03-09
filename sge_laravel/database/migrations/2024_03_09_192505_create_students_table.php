@@ -14,22 +14,22 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('student_name');
-            $table->string('tuition'); //matricula
+            $table->integer('id_student'); //matricula
             $table->string('project_creator');
-            $table->string('admonition'); //amonestacion
-            $table->foreignId('user_id')->constrained()
+            $table->string('strike'); //amonestacion
+            $table->foreignId('user_id')->constrained('users')
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('division_id')->constrained()
+            $table->foreignId('division_id')->constrained('divisions') //carre
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('project_id')->constrained()
+            $table->foreignId('anteproject_id')->constrained('anteprojects') 
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('adviser_id')->constrained()
+            $table->foreignId('adviser_id')->constrained('teachers')
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('evaluation_date_id')->constrained()
+            $table->foreignId('evaluation_date_id')->constrained('activity_histories')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notification_statuses', function (Blueprint $table) {
-            $table->id_status();
+            $table->id();
             $table->string('notification_status');
             $table->timestamps();
         });

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teaching_advices', function (Blueprint $table) {
+        Schema::create('activity_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('student_id')->constrained()
+            //Aun no se cuantas citas hay por cuatri de estadias
+            $table->string('meet_one');
+            $table->string('meet_two');
+            $table->string('meet_three');
+            $table->foreignId('teacher_id')->constrained('teachers')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teaching_advices');
+        Schema::dropIfExists('activity_histories');
     }
 };

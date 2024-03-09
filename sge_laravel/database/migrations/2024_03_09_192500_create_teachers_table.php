@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->teacher_name();
-            $table->nomina();
-            $table->teacher_email();
+            $table->string('teacher_name');
+            $table->integer('id_teacher');
+            $table->string('teacher_email');
             $table->foreignId('division_id')->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');

@@ -13,15 +13,15 @@ return new class extends Migration
     {
         //Aqui chambea team guayabo
         Schema::create('companies', function (Blueprint $table) {
-            $table->id_company();
-            $table->company_name();
-            $table->addres();
-            $table->asesor_name();
-            $table->job();
-            $table->company_phone_number();
-            $table->company_email();
-            $table->work_area();
-            $table->company_description();
+            $table->id();
+            $table->string('company_name');
+            $table->string('addres');
+            $table->string('asesor_name');
+            $table->string('job');
+            $table->string('company_phone_number');
+            $table->string('company_email');
+            $table->string('work_area');
+            $table->string('company_description');
             $table->timestamps();
         });
     }
