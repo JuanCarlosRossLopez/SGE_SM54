@@ -15,21 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
-        });
-
-        function ocultarMenu() {
-            var div = document.getElementById("miDiv");
-            div.classList.add("hidden");
-        }
-
-        function mostrarMenu() {
-            var div = document.getElementById("miDiv");
-            div.classList.remove("hidden");
-        }
-    </script>
+    
 </head>
 
 <body class="w- flex flex-col overflow-x-hidden">
@@ -39,11 +25,10 @@
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    <div class="w-screen flex flex-row fixed pl-2" id="miDiv">
-        <div class=" bg-[#2F4050] w-[20rem] h-screen flex flex-col justify-between">
-            <div>
-                <a href="/"
-                    class="text-white flex flex-row align-items-center p-3 pb-3 gap-2 hover:scale-105 transition-all">
+    <div class="w-screen flex flex-row fixed" id="sidebar">
+        <div class=" sidebar_background">
+            <div >
+                <a href="/" class="logo_sidebar">
                     <span class="text-4xl font-bold">SGE</span>
                     <span class="border-l-2 pl-2">Sistema de Gestión de Estadías.</span>
                 </a>
@@ -53,22 +38,21 @@
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
                         <li>
-                            <button
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                            <button class="buttons_sidebar ">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio
                             </button>
                         </li>
                         <li>
                             <button
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                class="buttons_sidebar">
                                 <i class="fa-solid fa-users-line"></i>
                                 Asesorados
                             </button>
                         </li>
                         <li>
                             <a href="/gestión_anteproyecto"
-                                class="buttons_sidebar text-start text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                class="buttons_sidebar">
                                 <i class="fa-solid fa-diagram-project"></i>
                                 Gestión de proyectos
                                 de asesorados
@@ -76,25 +60,25 @@
                         </li>
                         <li>
                             <button
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                class="buttons_sidebar ">
                                 <i class="fa-solid fa-file"></i> Generacion de informes </button>
                         </li>
                         <li>
                             <a href="/historial_memorias"
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                class="buttons_sidebar ">
                                 <i class="fa-solid fa-book"></i>Historial de memorias
                             </a>
                         </li>
                         <li>
                             <button
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                class="buttons_sidebar">
                                 <i class="fa-solid fa-envelope"></i>
                                 Notificaciones
                             </button>
                         </li>
                         <li>
                             <button
-                                class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
+                                class="buttons_sidebar ">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </button>
@@ -105,33 +89,32 @@
             <div>
                 <!--Linea de separación atte: guayabo -->
                 <p class="border-top opacity-60"></p>
-
                 <button
-                    class="logout_sidebar justify-start align-items-center text-[#c8c8c8] hover:text-white flex flex-row gap-2 w-full hover:bg-[#4D6781]  mb-2 transition-all hover:scale-110 hover:w-[96%]">
+                    class="logout_sidebar buttons_sidebar">
                     <i class="fa-solid fa-right-from-bracket "></i>
                     Cerrar sesión
                 </button>
             </div>
 
         </div>
-        <div class="w-screen min-h-screen bg-black bg-opacity-50 flex items-center pl-2">
+        <div class="sidebar_active">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
-            <button class="text-[#c8c8c8] text-4xl hover:text-white hover:scale-125 transition-all"
+            <button class="button_hide_sidebar"
                 onclick="ocultarMenu()">
                 <i class="fa-solid fa-angle-left"></i>
             </button>
         </div>
     </div>
 
-    <div class="flex flex-col justify-between h-screen">
-        <main class="w-screen overflow-x-hidden mb-4">
+    <div class="content_main_footer">
+        <main class="main">
             <div class="flex justify-left">
                 <div class="w-screen h-full">
                     @yield('contenido')
                 </div>
             </div>
         </main>
-        <footer class="w-screen pl-12 bottom-0">
+        <footer class="footer">
             <div>
                 <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
             </div>
@@ -142,5 +125,19 @@
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ocultarMenu()
+        })
 
+        function ocultarMenu() {
+            var div = document.getElementById("sidebar")
+            div.classList.add("hidden")
+        }
+
+        function mostrarMenu() {
+            var div = document.getElementById("sidebar")
+            div.classList.remove("hidden")
+        }
+    </script>
 </html>

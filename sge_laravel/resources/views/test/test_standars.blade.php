@@ -1,13 +1,13 @@
-@extends('templates.template_teacher')
+@extends('test.test_template_teacher')
 
 @section('title')
-    Prueba Estandares
+    Plantilla base
 @endsection
 
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
-            <label>Gestión de proyectos como asesor</label>
+            <label>Aqui el titulo de tu vista, te recomiendo cambiar el icono</label>
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="content_conteiner">
-            <label class="conteiner_word_title">Tabla de proyectos asesorados</label>
+            <label class="conteiner_word_title">Tabla estandar</label>
             <div class="inside_content_conteiner">
                 <div class="search_conteiner">
                     <button class="search_button">
@@ -36,27 +36,27 @@
                 <table class="standar_table">
                     <thead class="standar_thead">
                         <tr>
-                            <th class="theader">Matricula</th>
-                            <th class="theader">Alumnos</th>
-                            <th class="theader">Proyectos</th>
-                            <th class="theader">Proyectos</th>
-                            <th class="theader">Proyectos</th>
-                            <th class="theader">Proyectos</th>
-                            <th class="theader">Opciones</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
                         <tr class="trow">
-                            <td class="trowc">22393169</td>
-                            <td class="trowc">Marco Antonio Hau Pech</td>
-                            <td class="trowc">Comercio web e-commer</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
                             <td class="trowc">Lorum</td>
                             <td class="trowc">Lorum</td>
                             <td class="trowc">Lorum</td>
                             <td class="trowc">
                                 <div>
-                                    <button> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <button class="show-modalb"> <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round"
                                                 stroke-linejoin="round"d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                                         </svg>
@@ -76,15 +76,15 @@
                             </td>
                         </tr>
                         <tr class="trow">
-                            <td class="trowc">22393169</td>
-                            <td class="trowc">Marco Antonio Hau Pech</td>
-                            <td class="trowc">Comercio web e-commer</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
                             <td class="trowc">Lorum</td>
                             <td class="trowc">Lorum</td>
                             <td class="trowc">Lorum</td>
                             <td class="trowc">
                                 <div>
-                                    <button>
+                                    <button class="show-modalb">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 24 24"stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round"
@@ -116,16 +116,20 @@
                         < </button>
                             <button
                                 class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                1 </button>
+                                1
+                            </button>
                             <button
                                 class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                2 </button>
+                                2
+                            </button>
                             <button
                                 class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                3 </button>
+                                3
+                            </button>
                             <button
                                 class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                > </button>
+                                >
+                            </button>
                 </div>
                 <div>
                     <span>Cantidad de registros :</span>
@@ -146,8 +150,8 @@
                 </button>
             </div>
             <div class="modal_conteiner">
-                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades -->
-                <div class="modal-body h-[85vh]">
+                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
+                <div class="modal-body h-fit">
                     <h1 class="titles">Titulo de Proyecto</h1>
                     <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
                         archivos de texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
@@ -157,41 +161,56 @@
                     <h1 class="subtitles">Realizar Comentario Referente al Titulo:</h1>
                     <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
 
+                    
+                    <div class="flex justify-center items-center w-full border-t pt-2">
+                        <button
+                            class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white">Realizarcomentarios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modalb -->
+    <div class="modalb h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+                <h3 class="font-semibold text-lg ml-60 text-white">Revision de Cedula AnteProyecto</h3>
+                <button class="close-modalb bg-white rounded-full h-[1rem] flex items-center">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="modal_conteiner">
+                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades -->
+                <div class="modal-body h-[fit]">
+                    <h1 class="titles">Titulo de Proyecto</h1>
+                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+                        archivos de texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
+                        texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
+                        texto.</text>
+
                     <h1 class="titles">Objetivo General</h1>
                     <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
                         archivos de
                         texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Objetivo General:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
 
                     <h1 class="titles">Objetivo Especifico</h1>
                     <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
                         archivos de
                         texto.</text>
 
-                    <h1 class="subtitles">Realizar Comentario Referente al Objectivo Especifico:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
                     <h1 class="titles">Alcance de Proyecto</h1>
                     <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
                         archivos de
                         texto.</text>
 
-                    <h1 class="subtitles">Realizar Comentario Referente al Alcance de Proyecto:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
 
                     <h1 class="titles">Justificacion</h1>
                     <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
                         archivos de
                         texto.</text>
 
-                    <h1 class="subtitles">Realizar Comentario Referente al Justificacion:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
                     <div class="flex justify-center items-center w-full border-t pt-2">
-                        <button
-                            class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white">Realizarcomentarios</button>
                     </div>
                 </div>
             </div>
@@ -204,6 +223,7 @@
         const rowCount = tableBody.querySelectorAll('tr').length;
         document.getElementById('rowCount').textContent = rowCount;
         const modal = document.querySelector('.modal');
+        const modalb = document.querySelector('.modalb');
 
         //Funcionamiento de modal
         const showModal = document.querySelector('.show-modal');
@@ -216,6 +236,20 @@
         closeModal.forEach(close => {
             close.addEventListener('click', function() {
                 modal.classList.add('hidden')
+            })
+        })
+
+        //
+        const showModalb = document.querySelector('.show-modalb');
+        const closeModalb = document.querySelectorAll('.close-modalb');
+
+        showModalb.addEventListener('click', function() {
+            modalb.classList.remove('hidden')
+        })
+
+        closeModalb.forEach(close => {
+            close.addEventListener('click', function() {
+                modalb.classList.add('hidden')
             })
         })
     </script>

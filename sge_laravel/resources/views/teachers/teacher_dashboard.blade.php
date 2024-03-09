@@ -5,9 +5,9 @@
 @endsection
 
 @section('contenido')
-    <div class="back_conteiner">
+    <div class="back_conteiner overflow-x-hidden">
         <div class="top_conteiner ">
-            <label>Bienvenido, asesora Mayra</label>
+            <label>Bienvenido(a) asesor(a) Mayra</label>
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
@@ -21,82 +21,138 @@
             <div class="bg-gray-200 -m-2 rounded-t mb-2">
                 <label class="subtitles">Resumen de avances en la corrección del anteproyecto.</label>
             </div>
-            <div class="flex flex-row gap-3">
-                <div class="bg-white w-[25rem]">
-                    <label>a</label>
-                </div>
-                <div class="bg-white w-[25rem]">
-                    <label>a</label>
-                </div>
-                <div class="bg-white w-[25rem]">
-                    <label>a</label>
-                </div>
-                <div class="bg-white w-[25rem]">
-                    <label>a</label>
-                </div>
-            </div>
+            <div class="flex flex-row gap-3 text-center titles">
+                <button class="bg-white w-[25rem] flex flex-col items-center">
+                    <a href="/gestion_anteproyecto">
+                        <label>GYM BRO</label>
+                        <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
+                    </a>
 
 
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
-            <div class="border-b px-4 py-2 flex justify-between items-center">
-                <h3 class="font-semibold text-lg ml-60 text-white">Revision de Cedula AnteProyecto</h3>
-                <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                 </button>
+                <div class="bg-white w-[25rem] flex flex-col items-center">
+                    <label>FERRECUN</label>
+                    <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
+                </div>
+                <div class="bg-white w-[25rem] flex flex-col items-center">
+                    <label>ASTROSEISA</label>
+                    <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
+                </div>
+                <div class="bg-white w-[25rem] flex flex-col items-center">
+                    <label>TASK IN</label>
+                    <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
+                </div>
             </div>
-            <div class="modal_conteiner">
-                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades -->
-                <div class="modal-body h-[85vh]">
-                    <h1 class="titles">Titulo de Proyecto</h1>
-                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                        archivos de texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                        texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                        texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Titulo:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
-                    <h1 class="titles">Objetivo General</h1>
-                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                        archivos de
-                        texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Objetivo General:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
-                    <h1 class="titles">Objetivo Especifico</h1>
-                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                        archivos de
-                        texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Objectivo Especifico:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
-                    <h1 class="titles">Alcance de Proyecto</h1>
-                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                        archivos de
-                        texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Alcance de Proyecto:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
-                    <h1 class="titles">Justificacion</h1>
-                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                        archivos de
-                        texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Justificacion:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
-
-                    <div class="flex justify-center items-center w-full border-t pt-2">
-                        <button
-                            class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white">Realizarcomentarios</button>
+        </div>
+        <div class="content_conteiner">
+            <h1 class="text-4xl font-normal uppercase mb-5">Calendario de Actividades</h1>
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8">
+                <div
+                    class="border-2 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[645px] h-[410px]">
+                    <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Recordatorios</h1>
+                    <div class="overflow-auto h-[325px] p-2">
+                        <div class="flex flex-col">
+                            <div
+                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
+                                <p>05 Febrero | 8:30 AM</p>
+                                <p>Revisión de Memoria</p>
+                            </div>
+                            <div
+                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
+                                <p>09 Febrero | 1:15 PM</p>
+                                <p>Revisión de Memoria</p>
+                            </div>
+                            <div
+                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
+                                <p>20 Febrero | 1:15 PM</p>
+                                <p>Revisión de Memoria</p>
+                            </div>
+                            <div
+                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
+                                <p>20 Febrero | 1:15 PM</p>
+                                <p>Revisión de Memoria</p>
+                            </div>
+                            <div
+                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
+                                <p>20 Febrero | 1:15 PM</p>
+                                <p>Revisión de Memoria</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div
+                    class="border shadow bg-[#ceeae4] md:p-3 p-0 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[645px] rounded-[7px_7px_7px_7px]">
+                    <p class="text-[#18A689] font-semibold text-3xl text-left ml-9 mb-4">Febrero</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="font-semibold text-center text-xs md:text-sm">DOM</th>
+                                <th class="font-semibold text-center text-xs md:text-sm">LUN</th>
+                                <th class="font-semibold text-center text-xs md:text-sm">MAR</th>
+                                <th class="font-semibold text-center text-xs md:text-sm">MIÉ</th>
+                                <th class="font-semibold text-center text-xs md:text-sm">JUE</th>
+                                <th class="font-semibold text-center text-xs md:text-sm">VIE</th>
+                                <th class="font-semibold text-center text-xs md:text-sm">SÁB</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center p-3 text-gray-500">28</td>
+                                <td class="text-center p-3 text-gray-500">29</td>
+                                <td class="text-center p-3 text-gray-500">30</td>
+                                <td class="text-center p-3 text-gray-500">31</td>
+                                <td class="text-center p-3">1</td>
+                                <td class="text-center p-3">2</td>
+                                <td class="text-center p-3">3</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center p-3">4</td>
+                                <td
+                                    class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
+                                    <span
+                                        class="border-[#2F4050] p-2 rounded-[7px_7px_7px_7px] bg-[#2F4050] text-white">5</span>
+                                </td>
+                                <td class="text-center p-3">6</td>
+                                <td class="text-center p-3">7</td>
+                                <td class="text-center p-3">8</td>
+                                <td
+                                    class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
+                                    <span
+                                        class="border-[#07D7A9] p-2 rounded-[7px_7px_7px_7px] bg-[#07D7A9] text-white">9</span>
+                                </td>
+                                <td class="text-center p-3">10</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center p-3">11</td>
+                                <td class="text-center p-3">12</td>
+                                <td class="text-center p-3">13</td>
+                                <td class="text-center p-3">14</td>
+                                <td class="text-center p-3">15</td>
+                                <td class="text-center p-3">16</td>
+                                <td class="text-center p-3">17</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center p-3">18</td>
+                                <td class="text-center p-3">19</td>
+                                <td
+                                    class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
+                                    <span
+                                        class="border-[#07D7A9] p-2 rounded-[7px_7px_7px_7px] bg-[#07D7A9] text-white">20</span>
+                                </td>
+                                <td class="text-center p-3">21</td>
+                                <td class="text-center p-3">22</td>
+                                <td class="text-center p-3">23</td>
+                                <td class="text-center p-3">24</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center p-3">25</td>
+                                <td class="text-center p-3">26</td>
+                                <td class="text-center p-3">27</td>
+                                <td class="text-center p-3">28</td>
+                                <td class="text-center p-3">29</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
