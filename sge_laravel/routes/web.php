@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/plantilla', function () {
     return view('test.test_standars');
 });
