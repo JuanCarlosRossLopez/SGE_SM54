@@ -1,4 +1,5 @@
 @extends('templates.template_teacher')
+
 @section('contenido')
 <head>
     @vite('resources/css/app.css')
@@ -50,4 +51,4 @@
     </table>
 </div>
 
-@section('contenido')
+@endsection
