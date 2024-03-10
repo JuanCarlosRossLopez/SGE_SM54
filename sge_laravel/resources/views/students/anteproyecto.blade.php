@@ -131,8 +131,7 @@
     <div class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
         <!-- Contenido de la modal omitido por brevedad -->
     </div>
-    <div class="modal-edit h-screen w-full fixed left-0 top-0 hidden
-    flex justify-center items-center bg-black bg-opacity-50 ">
+
         <!-- Contenido de la modal-edit omitido por brevedad -->
     </div>
     
