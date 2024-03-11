@@ -94,6 +94,13 @@ Route::get('/gestion_anteproyect', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
+Route::get('/datos_proyecto', function () {
+    return view('teacher_dates.information_project');
+});
+
+Route::get('/editar_cita', function () {
+    return view('teacher_dates.edit_meet_date');
+});
 
 
 //End equipo valier
