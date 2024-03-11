@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Roles\RoleController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,9 +60,7 @@ Route::get('/cambiar_contraseña',function(){
     return view('login.change_password');
 });
 
-Route::get('/gestion_roles',function(){
-    return view('admin.manage_rol');
-});
+// Route::resource('roles',RoleController::class);
 
 Route::get('/panel_admin',function(){
     return view('super_admin.dashboard.dashboard');
@@ -131,9 +131,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    // equipo rocha
+    Route::resource('roles',RoleController::class);
+    //End equipo rocha
+
 });
 
 

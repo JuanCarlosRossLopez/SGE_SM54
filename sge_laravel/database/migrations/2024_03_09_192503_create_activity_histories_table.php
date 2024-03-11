@@ -14,14 +14,18 @@ return new class extends Migration
         Schema::create('activity_histories', function (Blueprint $table) {
             $table->id();
             //Aun no se cuantas citas hay por cuatri de estadias
-            $table->string('titulo');
-            $table->string('descripcion');
-            $table->string('fecha');
-            $table->foreignId('teacher_id')->constrained('teachers')
+            $table->string('title');
+            $table->string('description');
+            $table->date('date');
+            $table->foreignId('teacher_id')
+            ->nullable()
+            ->constrained('teachers')
             ->onUpdate('restrict')
             ->onDelete('restrict');
 
-            $table->foreignId('student_id')->constrained('students')
+            $table->foreignId('anteprojects_id')
+            ->nullable()
+            ->constrained('anteprojects')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();
