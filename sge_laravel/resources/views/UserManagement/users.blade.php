@@ -143,46 +143,60 @@
                         </div>
 
                         <div class="modal-container">
+                            @if ($errors->any())
+                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
+                                    role="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>
+                                                {{ $error }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                                <form action="#" class="flex flex-col items-center">
+                                <form action="{{ route('usuarios.store') }}" method="POST"
+                                    class="flex flex-col items-center">
+                                    @csrf
                                     <div class="mb-4">
-                                        <label for="nombre"
-                                            class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                                        <input type="text" id="nombre" class="rounded ancho input-field">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+                                        <input type="text" name="name_user" value="{{ $user->name_user }}"
+                                            class="rounded ancho input-field">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="apellidos"
-                                            class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
-                                        <input type="text" id="apellidos" class="rounded input-field">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
+                                        <input type="text" name="lastname_user" value="{{ $user->lastname_user }}"
+                                            class="rounded input-field">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="nombre_usuario"
-                                            class="block text-gray-700 text-sm font-bold mb-2">Nombre
+                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                                             de
                                             usuario</label>
-                                        <input type="text" id="nombre_usuario" class="rounded input-field">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="contrasena"
-                                            class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                                        <input type="password" id="contrasena" class="rounded input-field">
+                                        <input type="text" name="username" value="{{ $user->username }}"
+                                            class="rounded input-field">
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="rol"
-                                            class="block text-gray-700 text-sm font-bold mb-2">Rol</label>
-                                        <select id="rol" class="rounded input-field">
-                                            <option value="">Seleccionar un rol</option>
-                                            <option value="administrador">Administrador</option>
-                                            <option value="usuario">Usuario</option>
-                                        </select>
+                                        <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                        <input type="email" name="email" value="{{ $user->email }}"
+                                            class="rounded input-field">
                                     </div>
+
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                                        <input type="password" name="password" value="{{ $user->password }}"
+                                            class="rounded input-field">
+                                    </div>
+
                                     <div class="flex justify-center">
-
-                                        <button type="submit" modal-close
-                                            class="close-modal4 show-modal6 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                            Editar usuario
+                                        <button type="submit">
+                                            <div
+                                                class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                                Editar usuario
+                                            </div>
                                         </button>
+
                                     </div>
                                 </form>
                             </div>
@@ -212,10 +226,11 @@
                                             </li>
                                         @endforeach
                                     </ul>
-         .store                       </div>
+                                </div>
                             @endif
                             <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                                <form action="{{ route('usuarios.store') }}" method="POST" class="flex flex-col items-center">
+                                <form action="{{ route('usuarios.store') }}" method="POST"
+                                    class="flex flex-col items-center">
                                     @csrf
                                     <div class="mb-4">
                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
@@ -263,7 +278,8 @@
                     <div class="bg-white w-96 p-4 rounded-lg">
                         <div class="flex flex-col justify-between items-center">
                             <div class="flex flex-row gap-10 ">
-                                <h3 class="  font-semibold text-lg text-gray-800">Datos de usuarios</h3>
+                                <h3 class="  font-semibold text-lg text-gray-800">Datos del usuarios:
+                                    {{ $user->name_user }}</h3>
                                 <button class="close-modal2 text-gray-500 hover:text-gray-700">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -273,10 +289,12 @@
                                 </button>
                             </div>
                             <div class="py-4">
-                                <h5 class="py-2">Nombre </h5>
-                                <h5 class="py-2">Apellidos </h5>
-                                <h5 class="py-2">Nombre Usuarios</h5>
-                                <h5 class="py-2">Rol de Usuario</h5>
+                                <h5 class="py-2">Nombre: {{ $user->name_user }} </h5>
+
+                                <h5 class="py-2">Apellidos: {{ $user->lastname_user }} </h5>
+                                <h5 class="py-2">Nombre de Usuario: {{ $user->username }} </h5>
+                                <h5 class="py-2">Email: {{ $user->email }} </h5>
+                                <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
                             </div>
                         </div>
                     </div>
