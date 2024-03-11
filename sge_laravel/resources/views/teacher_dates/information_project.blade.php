@@ -330,17 +330,17 @@
                     <h1 class="titles ">Primera Cita</h1>
                     <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
                     <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                    <button class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar Cita</button>
+                    <a href="/editar_cita" class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar Cita</a>
 
                     <h1 class="titles mt-4">Segunda Cita</h1>
                     <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
                     <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                    <button class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar Cita</button>
+                    <a href="/editar_cita" class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar Cita</a>
 
                     <h1 class="titles mt-4">Segunda Cita</h1>
                     <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
                     <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                    <button class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar Cita</button>
+                    <a href="/editar_cita" class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar Cita</a>
                     <div class="flex justify-center items-center w-full border-t pt-2">
                     </div>
                 </div>

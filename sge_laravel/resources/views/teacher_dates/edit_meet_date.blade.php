@@ -25,7 +25,7 @@
                         <div class="flex justify-center items-center w-full border-t pt-2">
                             <button class="bg-green-500 hover:bg-green-600 p-12 py-1 rounded text-white mr-10">Confirmar
                                 Cita</button>
-                            <button class="bg-red-500 hover:bg-red-600 p-12 py-1 rounded text-white ml-10">Cancelar</button>
+                            <a href="/datos_proyecto" class="bg-red-500 hover:bg-red-600 p-12 py-1 rounded text-white ml-10">Cancelar</a>
                         </div>
                 </form>
             </div>
