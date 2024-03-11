@@ -5,163 +5,108 @@ namespace App\Http\Controllers\Calendar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerCalendar extends Controller
+class CalendarController extends Controller
 {
     public function index()
     {
         $month = date("Y-m");
-        $data = $this->calendar_month($month);
+        $data = $this->calendarMonth($month);
         $mes = $data['month'];
 
-        //Aquí se obtendrá el mes en español
-        $mespanish = $this->spanish_month($mes);
-        $mes = $data['month'];
+        // Obtiene el mes en español
+        $mesSpanish = $this->spanishMonth($mes);
 
-        return view(
-            'index',
-            [
-                'data' => $data,
-                'mes' => $mes,
-                'mespanish' => $mespanish
-            ]
-        );
+        return view('index', [
+            'data' => $data,
+            'mes' => $mes,
+            'mesSpanish' => $mesSpanish,
+        ]);
     }
 
-    //Esta es para una ruta con mes
-    public function index_month($month)
+    // Ruta para un mes específico
+    public function indexMonth($month)
     {
-        $data = $this->calendar_month($month);
+        $data = $this->calendarMonth($month);
         $mes = $data['month'];
 
-        //Aquí también se obtendrá el mes con español
-        $mespanish = $this->spanish_month($mes);
-        $mes = $data['month'];
+        // Obtiene el mes en español
+        $mesSpanish = $this->spanishMonth($mes);
 
-        return view(
-            'index',
-            [
-                'data' => $data,
-                'mes' => $mes,
-                'mespanish' => $mespanish
-            ]
-        );
+        return view('index', [
+            'data' => $data,
+            'mes' => $mes,
+            'mesSpanish' => $mesSpanish,
+        ]);
     }
 
-    public static function calendar_month($month)
+    public static function calendarMonth($month)
     {
-        //Es $mes = date("Y-m")
-        $mes = $month;
+        $dayLast = date("Y-m-d", strtotime("last day of " . $month));
+        $fecha = date("Y-m-d", strtotime("first day of " . $month));
 
-        //Obtener el último día de cada mes
-        $daylast = date("Y-m-d", strtotime("last day of" . $mes));
+        $newDate = strtotime($fecha);
+        $weekDay = date("N", $newDate) % 7;
+        $newDate -= $weekDay * 86400;
+        $dateIni = date("Y-m-d", $newDate);
 
-        //Obtener el día del mesa
-        $fecha = date("Y-m-d", strtotime("first day of" . $mes));
-        $dasymonth = date("d", strtotime($fecha));
-        $monthmonth = date("m", strtotime($fecha));
-        $yearsmonth = date("Y", strtotime($fecha));
+        $week1 = date("W", strtotime($fecha));
+        $week2 = date("W", strtotime($dayLast));
 
-        //Obtener Lunes de la semana 1
-        $newDate = mktime(0,0,0,$monthmonth,$dasymonth, $yearsmonth);
-        $weekDay = date("w", $newDate);
-        $newDate = $newDate - ($weekDay*24*3600); //Se restan los segundos totales de los días transcurridos
-
-        $dateini = date("Y-m-d", $newDate);
-        //$dateini = date("Y-m-d", strtotime($dateini."+ 1 day"))
-        //Primera semana del mes
-        $semana1 = date("W",strtotime($fecha));
-        //Última semana del mes
-        $semana2 = date("W",strtotime("$daylast"));
-
-        //Para el mes de diciembre
-        if (date("m", strtotime($mes)) == 12) {
-            $semana = 5;
-        } else {
-            $semana = ($semana2-$semana1) + 1;
-        }
-        //Semana todal del mes
-        $datafecha = $dateini;
-        $calendario = array();
-        $iweek = 0;
-        while ($iweek < $semana):
-            $iweek++;
-            //echo "Semana $iweek <br>"
-            //
-            $weekdata = [];
-            for ($iday=0; $iday < 7; $iday++){
-                $datafecha = date("Y-m-d",strtotime($datafecha."+ 1 day"));
-                $datanew['mes'] = date("M", strtotime($datafecha));
-                $datanew['dia'] = date("d", strtotime($datafecha));
-                $datanew['fecha'] = $datafecha;
-
-                //PARA AGREGAR LA CONSULTA DE LOS EVENTOS
-                //++++++++++
-                array_push($weekdata,$datanew);
+        $semana = $week1 == 1 && $week2 >= 52 ? 5 : $week2 - $week1 + 1;
+        
+        $dataFecha = $dateIni;
+        $calendario = [];
+        $iWeek = 0;
+        while ($iWeek < $semana) {
+            $iWeek++;
+            $weekData = [];
+            for ($iDay = 0; $iDay < 7; $iDay++) {
+                $dataFecha = date("Y-m-d", strtotime($dataFecha . "+ 1 day"));
+                $dataNew = [
+                    'mes' => date("M", strtotime($dataFecha)),
+                    'dia' => date("d", strtotime($dataFecha)),
+                    'fecha' => $dataFecha,
+                ];
+                array_push($weekData, $dataNew);
             }
-            $dataweek['semana'] = $iweek;
-            $dataweek['datos'] = $weekdata;
-            //$datafecha['horario] = $datahorario;
-            array_push($calendario,$dataweek);
-        endwhile;
+            $dataWeek = [
+                'semana' => $iWeek,
+                'datos' => $weekData,
+            ];
+            array_push($calendario, $dataWeek);
+        }
 
-        $nextmonth = date("Y-M",strtotime($mes."+ 1 month"));
-        $lastmonth = date("Y-M",strtotime($mes."- 1 month"));
-        $month = date("M",strtotime($mes));
-        $yearsmonth = date("Y",strtotime($mes));
-        //$month = date("M",strtotime("2024-03"));
-        $data = array(
-            'next' => $nextmonth,
-            'month' => $month,
-            'year' => $yearsmonth,
-            'last' => $lastmonth,
+        $nextMonth = date("Y-m", strtotime($month . "+ 1 month"));
+        $lastMonth = date("Y-m", strtotime($month . "- 1 month"));
+        $monthStr = date("M", strtotime($month));
+        $yearMonth = date("Y", strtotime($month));
+
+        return [
+            'next' => $nextMonth,
+            'month' => $monthStr,
+            'year' => $yearMonth,
+            'last' => $lastMonth,
             'calendar' => $calendario,
-        );
-        return $data;
+        ];
     }
 
-    public static function spanish_month($month)
+    public static function spanishMonth($month)
     {
-        $mes = $month;
-        if ($month=="Jan") {
-            $mes = "Enero";
-        }
-        elseif ($month=="Feb") {
-            $mes = "Febrero";
-        }
-        elseif ($month=="Mar") {
-            $mes = "Marzo";
-        }
-        elseif ($month=="Apr") {
-            $mes = "Abril";
-        }
-        elseif ($month=="May") {
-            $mes = "Mayo";
-        }
-        elseif ($month=="Jun") {
-            $mes = "Junio";
-        }
-        elseif ($month=="Jul") {
-            $mes = "Julio";
-        }
-        elseif ($month=="Aug") {
-            $mes = "Agosto";
-        }
-        elseif ($month=="Sep") {
-            $mes = "Septiembre";
-        }
-        elseif ($month=="Oct") {
-            $mes = "Octubre";
-        }
-        elseif ($month=="Nov") {
-            $mes = "Noviembre";
-        }
-        elseif ($month=="Dec") {
-            $mes = "Diciembre";
-        }
-        else {
-            $mes = $month;
-        }
-        return $mes;
+        $meses = [
+            'Jan' => 'Enero',
+            'Feb' => 'Febrero',
+            'Mar' => 'Marzo',
+            'Apr' => 'Abril',
+            'May' => 'Mayo',
+            'Jun' => 'Junio',
+            'Jul' => 'Julio',
+            'Aug' => 'Agosto',
+            'Sep' => 'Septiembre',
+            'Oct' => 'Octubre',
+            'Nov' => 'Noviembre',
+            'Dec' => 'Diciembre',
+        ];
+
+        return $meses[$month] ?? $month;
     }
 }
-
