@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('career_name');
             $table->text('career_description');
-            $table->foreignId('division_id')->constrained('divisions')->onUpdate('restrict')
+            $table->foreignId('division_id')->nullable()->constrained('divisions')->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();
 

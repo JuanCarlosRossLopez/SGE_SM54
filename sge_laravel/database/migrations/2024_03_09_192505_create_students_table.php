@@ -14,24 +14,21 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('student_name');
-            $table->integer('id_student'); //matricula
-            $table->string('project_creator');
-            $table->string('strike'); //amonestacion
-            $table->foreignId('user_id')->constrained('users')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('division_id')->constrained('divisions') //carre
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('anteproject_id')->constrained('anteprojects') 
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('adviser_id')->constrained('teachers')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('evaluation_date_id')->constrained('activity_histories')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->integer('id_student')->unique(); // matricula
+            $table->boolean('project_creator');
+            $table->integer('strike')->default(0); // amonestacion
+            $table->foreignId('user_id')->nullable()->constrained('users')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('division_id')->nullable()->constrained('divisions')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('anteproject_id')->nullable()->constrained('anteprojects')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('adviser_id')->nullable()->constrained('teachers')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }
