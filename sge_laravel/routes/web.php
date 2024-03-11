@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Calendar\ControllerCalendar;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,7 @@ Route::get('/plantilla', function () {
 });
 
 //Mision, vision, valores
-Route::get('/', function () { 
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -29,9 +31,9 @@ Route::get('/prueba_dashboard_teacher', function () {
 });
 
 //Dashboard Alumno
-Route::get('/dashboard_alumno', function () {
-    return view('students.activities_calendar');
-})->name('activities_calendar');
+// Route::get('/dashboard_alumno', function () {
+//     return view('students.activities_calendar');
+// })->name('activities_calendar');
 
 
 //Rutas principales en dashboard alumno
@@ -46,33 +48,41 @@ Route::get('/anteproyecto', function () {
 
 
 //Equipo rocha
-Route::get('/iniciar_session',function(){
+Route::get('/iniciar_session', function () {
     return view('login.login');
 });
 
-Route::get('/recuperar_contraseña',function(){
+Route::get('/recuperar_contraseña', function () {
     return view('login.recovery_password');
 });
 
-Route::get('/cambiar_contraseña',function(){
+Route::get('/cambiar_contraseña', function () {
     return view('login.change_password');
 });
 
-Route::get('/gestion_roles',function(){
+Route::get('/gestion_roles', function () {
     return view('admin.manage_rol');
 });
 
-Route::get('/panel_admin',function(){
+Route::get('/panel_admin', function () {
     return view('super_admin.dashboard.dashboard');
 });
 //End equipo rocha
 
 
 //Ruteo jomar
-Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');});
-Route::get('/Perfil_Student', function () {return view('students.userStudent');});
-Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');});
-Route::get('/agregar', function (){return view('registro');})->name('registro');
+Route::get('/Perfil_Teacher', function () {
+    return view('teachers.userTeacher');
+});
+Route::get('/Perfil_Student', function () {
+    return view('students.userStudent');
+});
+Route::get('/Perfil_Admin', function () {
+    return view('super_admin.userAdmin');
+});
+Route::get('/agregar', function () {
+    return view('registro');
+})->name('registro');
 
 
 
@@ -83,10 +93,10 @@ Route::get('/dashboard', function () {
 
 
 //Equipo valier
-Route::get('/memorias', function(){
+Route::get('/memorias', function () {
     return view('Memorias.memorias');
 });
-Route::get('/historial-memorias', function(){
+Route::get('/historial-memorias', function () {
     return view('Memorias.historial_memoria');
 });
 Route::get('/gestion_anteproyect', function () {
@@ -98,32 +108,32 @@ Route::get('/gestion_anteproyect', function () {
 //End equipo valier
 
 //Equipo dano
-Route::get('/envio_informes', function(){
+Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');
 
-Route::get('/descarga_informes', function(){
+Route::get('/descarga_informes', function () {
     return view('report_generation.student_download');
 });
-Route::get('/informes', function(){
+Route::get('/informes', function () {
     return view('report_generation.student_generation');
 });
-Route::get('/visualizar', function(){
+Route::get('/visualizar', function () {
     return view('report_generation.teacher_generation');
 });
 
-Route::get('/pdf_muestra', function(){
+Route::get('/pdf_muestra', function () {
     return view('report_generation.pdf_cedula');
 });
 //End equipo dano
 
 #RUTAS EQUIPO YAHIR
 
-Route::get('/usuarios', function(){
+Route::get('/usuarios', function () {
     return view('UserManagement.users');
 });
 
-Route::get('/ejemplo', function(){
+Route::get('/ejemplo', function () {
     return view('UserManagement.cuadro');
 });
 
@@ -133,6 +143,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
+Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

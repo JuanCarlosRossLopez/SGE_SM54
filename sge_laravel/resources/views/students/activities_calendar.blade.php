@@ -26,7 +26,7 @@
                     <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
                         <div class="overflow-auto p-2">
                             <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Proyecto Astroseiza</h1>
-                            <div >
+                            <div>
                                 <p class="flex text-xl my-2 font-medium">Comentario referente al título</p>
                                 <p class="flex text-lg my-1 font-medium">Rafael Villegas Velasco</p>
                                 <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
@@ -83,7 +83,17 @@
                     </div>
                     <div
                         class="border shadow bg-[#ceeae4] md:p-3 p-0 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[44%] rounded-[7px_7px_7px_7px]">
-                        <p class="text-[#18A689] font-semibold text-3xl text-left ml-9 mb-4">Febrero</p>
+                        <div class="flex flex-row  items-center justify-between">
+                            <a href="{{ route('calendar.month', ['month' => $data['last']]) }}" class="m-[10px]">
+                                <i class="fas fa-chevron-circle-left" style="font-size:30px;color:white;"></i>
+                            </a>
+                            <p class="text-[#18A689] font-semibold text-3xl text-center my-5">{{ $mesSpanish }}
+                                {{ $data['year'] }}</p>
+                            <!-- Enlace al mes siguiente -->
+                            <a href="{{ route('calendar.month', ['month' => $data['next']]) }}" class="m-[10px]">
+                                <i class="fas fa-chevron-circle-right" style="font-size:30px;color:white;"></i>
+                            </a>
+                        </div>
                         <table>
                             <thead>
                                 <tr>
@@ -97,63 +107,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-center p-3 text-gray-500">28</td>
-                                    <td class="text-center p-3 text-gray-500">29</td>
-                                    <td class="text-center p-3 text-gray-500">30</td>
-                                    <td class="text-center p-3 text-gray-500">31</td>
-                                    <td class="text-center p-3">1</td>
-                                    <td class="text-center p-3">2</td>
-                                    <td class="text-center p-3">3</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center p-3">4</td>
-                                    <td
-                                        class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
-                                        <span
-                                            class="border-[#2F4050] p-2 rounded-[7px_7px_7px_7px] bg-[#2F4050] text-white">5</span>
-                                    </td>
-                                    <td class="text-center p-3">6</td>
-                                    <td class="text-center p-3">7</td>
-                                    <td class="text-center p-3">8</td>
-                                    <td
-                                        class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
-                                        <span
-                                            class="border-[#07D7A9] p-2 rounded-[7px_7px_7px_7px] bg-[#07D7A9] text-white">9</span>
-                                    </td>
-                                    <td class="text-center p-3">10</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center p-3">11</td>
-                                    <td class="text-center p-3">12</td>
-                                    <td class="text-center p-3">13</td>
-                                    <td class="text-center p-3">14</td>
-                                    <td class="text-center p-3">15</td>
-                                    <td class="text-center p-3">16</td>
-                                    <td class="text-center p-3">17</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center p-3">18</td>
-                                    <td class="text-center p-3">19</td>
-                                    <td
-                                        class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
-                                        <span
-                                            class="border-[#07D7A9] p-2 rounded-[7px_7px_7px_7px] bg-[#07D7A9] text-white">
-                                            20
-                                        </span>
-                                    </td>
-                                    <td class="text-center p-3">21</td>
-                                    <td class="text-center p-3">22</td>
-                                    <td class="text-center p-3">23</td>
-                                    <td class="text-center p-3">24</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center p-3">25</td>
-                                    <td class="text-center p-3">26</td>
-                                    <td class="text-center p-3">27</td>
-                                    <td class="text-center p-3">28</td>
-                                    <td class="text-center p-3">29</td>
-                                </tr>
+                                @foreach ($data['calendar'] as $weekData)
+                                    <tr>
+                                        @foreach ($weekData['datos'] as $dayweek)
+                                            @if ($dayweek['mes'] == $mes)
+                                                <td class="text-center p-3 text-blue-700">
+                                                    {{ $dayweek['dia'] }}</td>
+                                            @else
+                                                <td class="text-center p-2 text-gray-700"></td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
