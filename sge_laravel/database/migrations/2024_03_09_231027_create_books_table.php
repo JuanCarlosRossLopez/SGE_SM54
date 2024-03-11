@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::create('activity_histories', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
-            //Aun no se cuantas citas hay por cuatri de estadias
-            $table->string('meet_one');
-            $table->string('meet_two');
-            $table->string('meet_three');
-            $table->foreignId('teacher_id')->constrained('teachers')
+            $table->string('book_name');
+            $table->text('book_front_page'); //Portada del libro que se subirá como imagen (Eso me dijo dano)
+            $table->text('book_description');
+            $table->string('author');
+            $table->float('price');
+            $table->foreignId('students_id')->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activity_histories');
+        Schema::dropIfExists('books');
     }
 };
