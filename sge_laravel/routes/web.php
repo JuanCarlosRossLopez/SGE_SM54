@@ -111,6 +111,10 @@ Route::get('/usuarios', function(){
     return view('UserManagement.users');
 });
 
+Route::get('/dashboard-presidencial', function(){
+    return view('super_admin.dashboard_presidencia');
+});
+
 Route::get('/ejemplo', function(){
     return view('UserManagement.cuadro');
 });
