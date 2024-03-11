@@ -1,4 +1,4 @@
-@extends('templates.test_template_teacher')
+@extends('templates.template_teacher')
 
 @section('title')
     Dashboard asesores

@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 //Dashboard Asesor
-Route::get('/prueba_dashboard_teacher', function () {
+Route::get('/dashboard_asesor', function () {
     return view('teachers.teacher_dashboard');
 });
 
@@ -89,10 +89,19 @@ Route::get('/memorias', function(){
 Route::get('/historial-memorias', function(){
     return view('Memorias.historial_memoria');
 });
-Route::get('/gestion_anteproyect', function () {
+Route::get('/gestion_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
+Route::get('/datos_proyecto', function () {
+    return view('teacher_dates.information_project');
+});
+Route::get('/editar_cita', function () {
+    return view('teacher_dates.edit_meet_date');
+});
+Route::get('/alumnos_asesorados' , function () {
+    return view('strikes.advised_students');            
+});
 
 
 //End equipo valier
@@ -140,7 +149,6 @@ Route::middleware('auth')->group(function () {
     //End equipo rocha
 
 });
-
 
 
 require __DIR__.'/auth.php';
