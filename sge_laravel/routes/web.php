@@ -90,10 +90,12 @@ Route::get('/memorias', function(){
 Route::get('/historial-memorias', function(){
     return view('Memorias.historial_memoria');
 });
-Route::get('/gestion_anteproyect', function () {
+Route::get('/gestion_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
-
+Route::get('/alumnos_asesorados' , function () {
+    return view('strikes.advised_students');            
+});
 
 
 //End equipo valier
