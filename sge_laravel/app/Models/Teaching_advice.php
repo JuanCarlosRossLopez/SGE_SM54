@@ -10,3 +10,4 @@ class Teaching_advice extends Model
     use HasFactory;
     protected $fillable = ['teacher_id','student_id'];
 }
+
