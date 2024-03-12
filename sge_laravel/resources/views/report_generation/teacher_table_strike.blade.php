@@ -47,10 +47,8 @@
                             <td class="trowc">Marco Antonio Hau Pech</td>
                             <td class="trowc">Comercio web e-commer</td>
                             <td class="trowc">
-                                <div>
-                                    <button class="show-modal standar_button my-1">
-                                        Enviar
-                                    </button>
+                                <div class=" flex items-center justify-center">
+                                    <img src="{!! asset('img/icon_exclamacion.png') !!}" class="w-7 h-7 cursor-pointer my-1">
                                 </div>
                             </td>
                         </tr>
@@ -59,10 +57,8 @@
                             <td class="trowc">Sánchez Martínez Daniel Jesús</td>
                             <td class="trowc">Comercio web e-commer</td>
                             <td class="trowc">
-                                <div>
-                                    <button class="show-modal standar_button my-1">
-                                        Enviar
-                                    </button>
+                                <div class=" flex items-center justify-center">
+                                    <img src="{!! asset('img/icon_exclamacion.png') !!}" class="w-7 h-7 cursor-pointer my-1">
                                 </div>
                             </td>
                         </tr>
@@ -161,11 +157,6 @@
         const modal1 = document.querySelector('.modal1');
         const showModal1 = document.querySelector('.show-modal1');
         const closeModal1 = document.querySelectorAll('.close-modal1');
-        const showModal2 = document.querySelector('.show-modal2');
-        
-        showModal2.addEventListener('click', function(){
-            modal1.classList.remove('hidden')
-        });
         showModal1.addEventListener('click', function() {
             modal1.classList.remove('hidden')
         });
@@ -176,7 +167,10 @@
         });
     </script>
     <script>
-        
+        const showModal2 = document.querySelector('.show-modal2');
+        showModal2 = document.querySelector('click', function(){
+            modal1.addEventListener('hidden')
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
