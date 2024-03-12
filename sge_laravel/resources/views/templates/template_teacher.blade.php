@@ -80,7 +80,7 @@
                             <button
                                 class="buttons_sidebar ">
                                 <i class="fa-solid fa-address-card"></i>
-                                Mi perfil
+                                <a href="{{route('maestro')}}" > perfil </a>
                             </button>
                         </li>
                     </div>

@@ -73,6 +73,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/Dashboard_Direccion" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Dirección
+                            </a>
+                        </li>
+                        <li>
                             <a href="/dashboard-presidencial" class="buttons_sidebar ">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio Presidente

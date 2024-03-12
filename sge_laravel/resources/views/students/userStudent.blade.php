@@ -102,6 +102,8 @@
               </div>
             </form>
           </div>
+          
+          
             </form>
             <div class="mt-8">
                 <button class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline">Guardar</button>

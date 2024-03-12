@@ -19,6 +19,14 @@ use Spatie\Permission\Contracts\Role;
 |
 */
 
+
+Route::get('/Perfil_Maestro', function () {return view('teachers.userTeacher');})->name('perfil_maestro');
+Route::get('/Perfil_Estudiante', function () {return view('students.userStudent');})->name('perfil_estudiante');
+Route::get('/Perfil_Administrador', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
+Route::get('/registro', function (){return view ('registro');});
+Route::get('/Dashboard_Direccion', function (){return view ('dashDireccion');});
+
+
 Route::get('/plantilla', function () {
     return view('test.test_standars');
 });
