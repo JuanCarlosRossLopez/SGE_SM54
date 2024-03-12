@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('teacher_name');
             $table->integer('id_teacher');
             $table->string('teacher_email');
-            $table->foreignId('division_id')->constrained()
+            $table->foreignId('division_id')
+            ->nullable()
+            ->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('user_id')->constrained()
+            $table->foreignId('user_id')
+            ->nullable()
+            ->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();

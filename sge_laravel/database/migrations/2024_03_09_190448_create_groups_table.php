@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('group_name');
-            $table->foreignId('career_id')->constrained()->onUpdate('restrict')
+            $table->foreignId('career_id')->nullable()->constrained()->onUpdate('restrict')
             ->onDelete('restrict');
             $table->timestamps();
         });
