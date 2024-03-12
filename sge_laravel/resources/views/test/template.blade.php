@@ -13,7 +13,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="{{ asset('css/font.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/progress.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="w- flex flex-col overflow-x-hidden">
@@ -24,7 +27,7 @@
         </button>
     </div>
     <div class="w-screen flex flex-row fixed" id="sidebar">
-        <div class=" sidebar_background">
+        <div class="sidebar_background">
             <div>
                 <a href="/">
                     <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="">
@@ -55,9 +58,9 @@
                         </li>
 
                         <li>
-                            <a class="buttons_sidebar">
+                            <a href="/alumnos_asesorados" class="buttons_sidebar">
                                 <i class="fa-solid fa-users-line"></i>
-                                Asesorados
+                                Alumnos asesorados
                             </a>
                         </li>
                         <li>

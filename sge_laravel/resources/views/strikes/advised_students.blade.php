@@ -1,55 +1,16 @@
-@extends('templates.template_students')
+@extends('test.template')
 
 @section('titulo')
     SGE
 @endsection
 <style>
-#infoButton {
-    position: relative; /* Asegura que el contenido absoluto sea relativo a este elemento */
-}
 
-#infoButton::after {
-    font-size: 15px;
-    content: attr(data-tooltip);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding-left: 6px;
-    padding-right: 6px;
-    border-radius: 3px;
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    z-index: 1;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.1s ease;
-    visibility: hidden;
-    border: none;
-    display: inline-block;
-    white-space: nowrap;
-}
-
-#infoButton::before {
-    content: "";
-    position: absolute;
-    top: calc(100% - 9px);
-    left: 3px;
-    border-style: solid;
-    border-width: 8px;
-    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
-    visibility: hidden;
-    transition: visibility 0s, opacity 0.1s ease;
-}
-
-#infoButton:hover::after,
-#infoButton:hover::before {
-    visibility: visible;
-    opacity: 1;
-}
 
 
 </style>
 
 @section('contenido')
+
     <div class="w-screen">
         <div class="w-full pr-4 pl-12 items-center">
             <!-- Texto de bienvenida más grande -->

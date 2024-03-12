@@ -58,7 +58,7 @@
 }
 /* Titulos, subtitulos, parrafos y demas para las letras*/
 .conteiner_word_title{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-top: 0.5rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -270,4 +270,44 @@
 
 .logo_sidebar:hover {
     transform: scale(1.05); /* Escala al pasar el cursor */
+}
+
+#infoButton {
+    position: relative; /* Asegura que el contenido absoluto sea relativo a este elemento */
+}
+
+#infoButton::after {
+    font-size: 15px;
+    content: attr(data-tooltip);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 3px;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s ease;
+    visibility: hidden;
+    border: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+#infoButton::before {
+    content: "";
+    position: absolute;
+    top: calc(100% - 9px);
+    left: 3px;
+    border-style: solid;
+    border-width: 8px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.1s ease;
+}
+#infoButton:hover::after,
+#infoButton:hover::before {
+    visibility: visible;
+    opacity: 1;
 }

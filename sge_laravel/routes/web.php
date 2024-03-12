@@ -105,11 +105,12 @@ Route::get('/dashboard', function () {
 
 //Equipo valier
 Route::get('/memorias', function () {
-    return view('Memorias.memorias');
+    return view('Memories.memory');
 });
 Route::get('/historial-memorias', function () {
-    return view('Memorias.historial_memoria');
+    return view('Memories.memory_history');
 });
+
 Route::get('/gestion_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
