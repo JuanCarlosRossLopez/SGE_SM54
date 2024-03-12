@@ -127,7 +127,7 @@ Route::get('/envio_informes', function () {
 Route::get('/descarga_informes', function () {
     return view('report_generation.student_download');
 });
-Route::get('/informes', function () {
+Route::get('/informes', function(){ 
     return view('report_generation.teacher_generation');
 });
 
