@@ -16,56 +16,108 @@
         </div>
         <div class="bg-[#E9E9E9] min-h-screen rounded-xl ">
             <div class="flex flex-raw ml-[100px] py-12">
-                <div class="w-[260px] h-[250px] rounded-[20px] bg-[#F6F6F6] mt-[20px] p-[10px] mr-[20px] flex flex-col">
-                    <label>
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-10 h-10 text-[#F6F6F6] relative ml-[20px] mt-[10px]">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg> --}}
-                    </label>
-                    <h3 class="text-[#01A080] font-bold mt-[20px] text-2xl text-center">Cédula de Anteproyecto</h3>
-                    <div class="">
-                        <button type="button"
-                            class="bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] mt-[50px] border-none hover:bg-[#DFDFDF] p-[8px] ml-20">
-                            <a href="{{ route('envio') }}">Generar</a>
-                        </button>
+                <!--Separacion-->
+                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
+                    <div class="w-full flex flex-col items-center gap-4">
+                        <h3 class="text-[#01A080] font-bold text-2xl mt-4 text-center">Cédula de Anteproyecto</h3>
+                        <div class="">
+                            <button type="button"
+                                class="bg-[#01A080] items-center text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none mt-[10px] hover:bg-[#DFDFDF] p-[8px]">
+                                <a href="{{ route('envio') }}">Generar</a>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="w-[260px] h-[250px] rounded-[20px] bg-[#F6F6F6] mt-[20px] p-[10px] mr-[20px] flex flex-col">
-                    <label>
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-10 h-10 text-white sticky ml-[20px] mt-[10px]">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg> --}}
-                    </label>
-                    <h3 class="text-[#01A080] font-bold mt-[20px] text-2xl text-center">Carta de Autorización Digitalización
-                    </h3>
-                    <div class="">
-                        <button type="button"
-                            class="bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] mt-[20px] border-none hover:bg-[#DFDFDF] p-[8px] ml-20">
-                            <a href="{{ route('envio') }}">Generar</a>
-                        </button>
+                <!--Separacion-->
+                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] mx-[30px] flex flex-col">
+                    <div class="w-full flex flex-col items-center gap-4">
+                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Autorización Digitalización</h3>
+                        <div class="">
+                            <button type="button"
+                                class="bg-[#01A080] items-center text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[8px]">
+                                <a href="{{ route('envio') }}">Generar</a>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="w-[260px] h-[250px] rounded-[20px] bg-[#F6F6F6] mt-[20px] p-[10px] mr-[10px] flex flex-col">
-                    <label>
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-10 h-10 text-[#F6F6F6] relative ml-[20px] mt-[10px]">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg> --}}
-                    </label>
-                    <h3 class="text-[#01A080] font-bold mt-[20px] text-2xl text-center">Carta de Aprobación Memoria</h3>
-                    <div class="">
-                        <button type="button"
-                            class="bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] mt-[50px] border-none hover:bg-[#DFDFDF] p-[8px] ml-20">
-                            <a href="{{ route('envio') }}">Generar</a>
-                        </button>
+                <!--Separacion-->
+                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
+                    <div class="w-full flex flex-col items-center gap-4">
+                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Aprobación Memoria</h3>
+                        <div class="">
+                            <button type="button"
+                                class="bg-[#01A080] items-center text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[8px]">
+                                <a href="{{ route('envio') }}">Generar</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex flex-raw ml-[100px]">
+                <!--Separacion-->
+                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
+                    <div class="w-full flex flex-col items-center gap-4">
+                        <h3 class="  text-[#01A080] font-bold text-2xl text-center">Subir Excel</h3>
+                        <div class="">
+                            <button type="button"
+                                class=" show-modal group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
+                                Subir
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--Separacion-->
+                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] mx-[30px] flex flex-col">
+                    <div class="w-full flex flex-col items-center gap-4">
+                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta Amonestación</h3>
+                        <div class="">
+                            <button type="button"
+                                class="group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
+                                <a href="{{ route('envio') }}">Generar</a>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-[400px] rounded shadow-lg max-w-4xl">
+            <div class="border-b px-4 py-2 flex justify-content-end">
+                <button class="close-modal ">
+                    <p class="text-2xl"><i class="fa-solid bg-white rounded-full fa-circle-xmark items-end" style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="bg-white p-2">
+                <div class="modal-body mb-0 overflow-y-auto h-44">
+                    <h4 class="text-black text-center mt-5 text-2xl font-bold">Archivo descargado!</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const modal = document.querySelector('.modal');
+
+        const showModal = document.querySelector('.show-modal');
+        const closeModal = document.querySelectorAll('.close-modal');
+
+        showModal.addEventListener('click', function() {
+            modal.classList.remove('hidden')
+        })
+
+        closeModal.forEach(close => {
+            close.addEventListener('click', function() {
+                modal.classList.add('hidden')
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
 @endsection
