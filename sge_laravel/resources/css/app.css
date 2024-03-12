@@ -206,8 +206,8 @@
 /*Main*/
 .main {
     width: 100vw;
-    overflow-x: hidden;
-    margin-bottom: 1rem;
+    overflow-x: none;
+    margin-bottom: 0rem;
 }
 
 /* Footer */
@@ -222,7 +222,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: auto;
 }
 
 /*Sidebar shadow */
