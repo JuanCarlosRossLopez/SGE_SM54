@@ -1,4 +1,4 @@
-@extends('templates.template_admin')
+@extends('test.template')
 @section('titulo')
     Gestión de roles
 @endsection
