@@ -1,4 +1,4 @@
-@extends('test.test_template_teacher')
+@extends('test.template')
 
 @section('title')
     Plantilla base
@@ -226,6 +226,7 @@
         const modalb = document.querySelector('.modalb');
 
         //Funcionamiento de modal
+
         const showModal = document.querySelector('.show-modal');
         const closeModal = document.querySelectorAll('.close-modal');
 

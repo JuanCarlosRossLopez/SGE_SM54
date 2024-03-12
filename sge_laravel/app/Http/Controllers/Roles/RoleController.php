@@ -1,18 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Rols;
-
+namespace App\Http\Controllers\Roles;
+use App\Models\Students;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
-class RolControllers extends Controller
+
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        
+        $users = User::all();
+
+        return view('admin.manage_rol', compact('users'));
     }
 
     /**
@@ -20,7 +26,7 @@ class RolControllers extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +34,10 @@ class RolControllers extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = $request->input('user_id');
+        $user = User::find($userId);
+        $user->assignRole($request->role);
+        return view('admin.manage_rol');
     }
 
     /**
@@ -36,7 +45,9 @@ class RolControllers extends Controller
      */
     public function show(string $id)
     {
-        //
+        $role = Role::all();
+        return view('admin.view-modal-rol', compact('role'));
+
     }
 
     /**
@@ -44,7 +55,7 @@ class RolControllers extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**
