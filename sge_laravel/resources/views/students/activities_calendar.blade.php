@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div
-                        class="border shadow bg-[#ceeae4] md:p-3 p-0 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[44%] rounded-[7px_7px_7px_7px]">
+                        class="border shadow bg-[#ceeae4] md:p-3 p-2 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[44%] rounded-[7px_7px_7px_7px]">
                         <div class="flex flex-row  items-center justify-between">
                             <a href="{{ route('calendar.month', ['month' => $data['last']]) }}" class="m-[10px]">
                                 <i class="fas fa-chevron-circle-left" style="font-size:30px;color:white;"></i>
@@ -123,16 +123,16 @@
                                 <i class="fas fa-chevron-circle-right" style="font-size:30px;color:white;"></i>
                             </a>
                         </div>
-                        <table>
+                        <table class="mb-3">
                             <thead>
                                 <tr>
-                                    <th class="font-semibold text-center text-xs md:text-sm">DOM</th>
-                                    <th class="font-semibold text-center text-xs md:text-sm">LUN</th>
-                                    <th class="font-semibold text-center text-xs md:text-sm">MAR</th>
-                                    <th class="font-semibold text-center text-xs md:text-sm">MIÉ</th>
-                                    <th class="font-semibold text-center text-xs md:text-sm">JUE</th>
-                                    <th class="font-semibold text-center text-xs md:text-sm">VIE</th>
-                                    <th class="font-semibold text-center text-xs md:text-sm">SÁB</th>
+                                    <th class="font-bold text-center text-xs md:text-lg">LUN</th>
+                                    <th class="font-bold text-center text-xs md:text-lg">MAR</th>
+                                    <th class="font-bold text-center text-xl md:text-lg">MIÉ</th>
+                                    <th class="font-bold text-center text-xl md:text-lg">JUE</th>
+                                    <th class="font-bold text-center text-xl md:text-lg">VIE</th>
+                                    <th class="font-bold text-center text-xl md:text-lg">SÁB</th>
+                                    <th class="font-bold text-center text-xl md:text-lg">DOM</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -140,13 +140,13 @@
                                     <tr>
                                         @foreach ($weekData['datos'] as $dayweek)
                                             @if ($dayweek['mes'] == $mes)
-                                                <td class="text-center p-3 text-blue-700">
+                                                <td class="text-center p-3 mb-1 text-black">
                                                     {{ $dayweek['dia'] }}</td>
                                             @else
-                                                <td class="text-center p-2 text-gray-700"></td>
+                                                <td class="text-center p-3 text-black"></td>
                                             @endif
                                         @endforeach
-                                    </tr>
+                                    </tr>ae
                                 @endforeach
                             </tbody>
                         </table>
