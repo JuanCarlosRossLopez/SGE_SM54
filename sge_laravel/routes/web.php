@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');})->name('perfil_maestro');
+Route::get('/Perfil_Student', function () {return view('students.userStudent');})->name('perfil_estudiante');
+Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
+Route::get('/registro', function (){return view ('registro');});
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

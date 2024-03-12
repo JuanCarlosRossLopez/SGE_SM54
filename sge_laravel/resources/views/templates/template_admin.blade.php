@@ -12,7 +12,21 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+        });
+
+        function ocultarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.add("hidden");
+        }
+
+        function mostrarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.remove("hidden");
+        }
+    </script>
 </head>
 
 <body class="w-screen flex flex-col">
@@ -67,7 +81,7 @@
                             </button>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#4D6781] hover:text-white transition-all  hover:scale-110 hover:w-[96%]">
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#4D6781] hover:text-white transition-all  hover:scale-110 hover:w-[96%]" onclick="location.href='/Perfil_Admin'">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </button>
@@ -98,7 +112,7 @@
 
     <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
         <div class="container">
-            <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
+            <p class="text-gray-700"></p>
         </div>
     </footer>
 </body>

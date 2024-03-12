@@ -12,7 +12,21 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+        });
+
+        function ocultarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.add("hidden");
+        }
+
+        function mostrarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.remove("hidden");
+        }
+    </script>
 </head>
 
 <body class="w-screen flex flex-col">
@@ -70,7 +84,7 @@
                         <li>
                             <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-address-card"></i>
-                                Mi perfil
+                                <a href="{{route('maestro')}}" > perfil </a>
                             </button>
                         </li>
                     </div>
@@ -105,7 +119,7 @@
     <!--aberracion de front pero sirve atte: jotomar -->
     <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
         <div class="container">
-            <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
+            <p class="text-gray-700"></p>
         </div>
     </footer>
 </body>
