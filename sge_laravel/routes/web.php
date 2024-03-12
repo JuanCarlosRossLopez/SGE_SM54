@@ -69,6 +69,7 @@ Route::get('/panel_admin',function(){
 
 
 //Ruteo jomar
+//! NO AH CAMBIADO NADA
 Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');});
 Route::get('/Perfil_Student', function () {return view('students.userStudent');});
 Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');});
@@ -84,10 +85,10 @@ Route::get('/dashboard', function () {
 
 //Equipo valier
 Route::get('/memorias', function(){
-    return view('Memorias.memorias');
+    return view('memories.memory');
 });
 Route::get('/historial-memorias', function(){
-    return view('Memorias.historial_memoria');
+    return view('memories.memory_history');
 });
 Route::get('/gestion_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
@@ -107,6 +108,7 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
+// ? usar un modal para adjuntar el archivo y enviar el informe
 Route::get('/envio_informes', function(){
     return view('report_generation.teacher_table');
 })->name('envio');

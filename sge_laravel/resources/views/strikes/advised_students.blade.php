@@ -23,7 +23,7 @@
     opacity: 0;
     transition: visibility 0s, opacity 0.1s ease;
     visibility: hidden;
-    border: none
+    border: none;
     display: inline-block;
     white-space: nowrap;
 }
