@@ -132,6 +132,10 @@ Route::get('/pdf_muestra', function () {
 
 Route::resource('usuarios', UsersController::class);
 
+Route::get('/dashboard-presidencial', function(){
+    return view('super_admin.dashboard_presidencia');
+});
+
 Route::get('/ejemplo', function () {
     return view('UserManagement.cuadro');
 });

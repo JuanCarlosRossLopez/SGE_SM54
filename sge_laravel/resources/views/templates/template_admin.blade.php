@@ -37,7 +37,7 @@
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    <div class="w-screen flex flex-row fixed" id="miDiv">
+    <div class="w-screen flex flex-row fixed px-2" id="miDiv">
         <div class=" bg-[#2F4050] w-[20rem] h-screen flex flex-col justify-between">
             <div>
                 <a href="/" class="text-white flex flex-row align-items-center p-3 pb-3 gap-2 transition-all  hover:scale-105 ">
@@ -111,11 +111,6 @@
     <main class="w-full pl-8">@yield('contenido')</main>
     <!--aberracion de front pero sirve atte: jotomar -->
 
-    <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
-        <div class="container">
-            <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
-        </div>
-    </footer>
 </body>
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
