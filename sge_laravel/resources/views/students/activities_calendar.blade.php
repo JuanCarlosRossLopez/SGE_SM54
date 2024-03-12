@@ -146,7 +146,7 @@
                                                 <td class="text-center p-3 text-black"></td>
                                             @endif
                                         @endforeach
-                                    </tr>ae
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
