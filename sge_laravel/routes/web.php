@@ -34,7 +34,7 @@ Route::get('/plantilla', function () {
 
 //Mision, vision, valores
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.login');
 });
 
 //Dashboard Asesor
