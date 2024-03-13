@@ -1,4 +1,4 @@
-@extends('templates.template_admin')
+@extends('test.test_template')
 
 @section('titulo', 'Usuarios')
 @section('contenido')
@@ -8,7 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
-<div class="view_conteiner">
+<div class="view_conteiner w-[1090px]">
+    
 
 
             <div class="content_conteiner">
@@ -82,7 +83,7 @@
                             @foreach ($users as $user)
                                 <tr class="trow">
                                     <td class="trowc"> {{ $loop->iteration }} </td>
-                                    <td class="trowc"> {{ $user->username }} </td>
+                                    <td class="trowc"> {{ $user->name }} </td>
                                     <td class="trowc"> {{ $user->email }} </td>
                                     <td>
                 @foreach ($user->roles as $role)
@@ -92,13 +93,11 @@
                                         <button class="show-modal-view" data-target="#show{{ $user->id }}">
                                             <div class="comment-icon flex items-center justify-center">
                                                 <i class="bi bi-eye-fill"></i>
-                                                {{ $user->id }}
                                             </div>
                                         </button>
                                         <button class="show-modal4" data-target="#edit{{ $user->id }}">
                                             <div class="comment-icon flex items-center justify-center">
                                                 <i class="bi bi-pencil-square" style="color: blue;"></i>
-                                                {{ $user->id }}
                                             </div>
                                         </button>
 
@@ -159,7 +158,7 @@
                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                                             de
                                             usuario</label>
-                                        <input type="text" name="username" class="rounded input-field">
+                                        <input type="text" name="name" class="rounded input-field">
                                     </div>
 
                             <div class="mb-4">

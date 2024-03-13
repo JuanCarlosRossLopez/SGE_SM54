@@ -30,7 +30,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                             de
                             usuario</label>
-                        <input type="text" name="username" value="{{ $user->username }}" class="rounded input-field">
+                        <input type="text" name="name" value="{{ $user->name }}" class="rounded input-field">
                     </div>
 
                     <div class="mb-4">
@@ -81,7 +81,7 @@
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
                 <h3 class="font-semibold text-lg text-gray-800">Datos del usuarios:
-                    {{ $user->username }}</h3>
+                    {{ $user->name }}</h3>
                 <button class="close-modal-view text-gray-500 hover:text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@
                 </button>
             </div>
             <div class="py-4">
-                <h5 class="py-2">Nombre de Usuario: {{ $user->username }} </h5>
+                <h5 class="py-2">Nombre de Usuario: {{ $user->name }} </h5>
                 <h5 class="py-2">Email: {{ $user->email }} </h5>
                 <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
             </div>
@@ -105,7 +105,7 @@
         <form action="{{url('usuarios', $user->id)}}" method="POST">
             @csrf
             @method('DELETE')
-            <h3 class="font-semibold text-lg text-gray-800">¿Realmente desea eliminar al usuario: {{$user->username}}?</h3>
+            <h3 class="font-semibold text-lg text-gray-800">¿Realmente desea eliminar al usuario: {{$user->name}}?</h3>
         </div>
         
             <button type="submit">
