@@ -171,10 +171,24 @@ Panel de control administrador
                 </div>
             </div>
         </div>
+        <style>
 
+            
+        
+        </style>
         <div class="content_conteiner h-fit p-1 w-fit md:ml-[-2.5rem] sm:ml-0">
-            <div class="flex flex-col gap-1">
-                <label class="conteiner_word_title  h-fit flex flex-col items-center">Admin</label>
+            <style>
+                .card_more{
+                    display: flex;
+                    flex-direction: column;
+                    @media screen and (max-width: 1600px){
+
+                        flex-direction: row;
+                    }
+                }
+            </style>
+            <div class=" gap-1 card_more overflow-x-auto">
+                <label class="conteiner_word_title  h-fit flex flex-col   items-center">Admin</label>
                 <div class="bg-white p-3 rounded">
                     <div class="w-[15rem] text-center flex flex-row items-center">
                         <label class="font-semibold font-poppins text-base text-start w-full">Libros</label>
@@ -211,6 +225,7 @@ Panel de control administrador
                         <label class="font-normal font-poppins text-sm text-start w-full">Propuestas de anteproyecto</label>
                     </div>
                 </div>
+
                 <div class="bg-white p-3 rounded">
                     <div class="w-[16rem] text-center flex flex-row items-center">
                         <label class="font-semibold font-poppins text-base text-start w-full">Empresas</label>
@@ -225,6 +240,7 @@ Panel de control administrador
                         </div>
                     </div>
                     <div>
+                        
                         <label class="font-normal font-poppins text-sm text-start w-full">Informacion de empresas de
                             <br> vinculadas</label>
                     </div>
@@ -242,6 +258,7 @@ Panel de control administrador
                             </div>
                         </div>
                     </div>
+                        
                     <div>
                         <label class="font-normal font-poppins text-sm text-start w-full">Informacion de los roles de
                             <br>
