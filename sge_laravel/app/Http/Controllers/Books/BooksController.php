@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
+use App\Models\Books;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -12,7 +13,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        $libros= Books::all();
+        return view('super_admin.book', [ 'books'=> $libros]);
     }
 
     /**
