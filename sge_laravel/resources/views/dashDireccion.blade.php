@@ -70,20 +70,13 @@
                     <label class="conteiner_word_title w-full flex flex-col items-center">Graficas</label>
                     <div class="conteiner_cards w-full">
                         <!-- Panel 1 -->
-                        <div class="bg-white  rounded">
-                            <div class="line-chart-container">
+                        <div class="bg-white  rounded ">
+                            <div class="line-chart-container text-center  items-center"">
                                 <h1>AVANCE DE LOS ALUMNOS</h1>
-                                <canvas id="line-chart" width="630" height="500"></canvas> <!-- Ajusta el tamaño del lienzo aquí -->
+                                <canvas id="line-chart" width="915" height="590"></canvas> <!-- Ajusta el tamaño del lienzo aquí -->
                             </div>
                         </div>
-                        <div class="bg-white w-fit h-fit p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-sm text-start w-full">Descripciones</label>
-                            </div>
-                        </div>
+                        
                   
                     </div>
                 </div>
