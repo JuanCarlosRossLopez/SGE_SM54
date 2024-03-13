@@ -13,10 +13,22 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="{{ asset('css/font.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/progress.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ocultarMenu(); // Ocultar el menú al cargar la página por primera vez
+        });
+
+        function ocultarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.add("hidden");
+        }
+
+        function mostrarMenu() {
+            var div = document.getElementById("miDiv");
+            div.classList.remove("hidden");
+        }
+    </script>
 </head>
 
 <body class="w- flex flex-col overflow-x-hidden">
@@ -26,8 +38,8 @@
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    <div class="w-screen flex flex-row fixed" id="sidebar">
-        <div class="sidebar_background">
+    <div class="w-screen flex flex-row fixed px-2" id="miDiv">
+        <div class=" bg-[#2F4050] w-[20rem] h-screen flex flex-col justify-between">
             <div>
                 <a href="/">
                     <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="">

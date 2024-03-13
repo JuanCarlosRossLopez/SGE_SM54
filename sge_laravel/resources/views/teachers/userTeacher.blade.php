@@ -1,9 +1,8 @@
 @extends('templates.template_students')
 
 @section('titulo')
-    ADMINISTRACIÓN DE CUENTA
+ADMINISTRACION DE CUENTA
 @endsection
-
 @section('contenido')
     <h1 class="text-4xl font-bold text-center mt-16 mb-8">PERFIL DE USUARIO</h1>
     <div class="container grid grid-cols-3 gap-8 bg-[#F6F6F6] rounded-md p-4">
