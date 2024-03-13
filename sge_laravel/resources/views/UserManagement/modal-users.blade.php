@@ -75,13 +75,13 @@
 </div>
 
 <div id="show{{ $user->id }}"
-    class="modal-view h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    class="modal_u h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-white w-auto p-4 rounded-lg">
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
                 <h3 class="font-semibold text-lg text-gray-800">Datos del usuarios:
                     {{ $user->name }}</h3>
-                <button class="close-modal-view text-gray-500 hover:text-gray-700">
+                <button class="close-modal-u text-gray-500 hover:text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
@@ -115,7 +115,7 @@
             si
         </button>
         </form>
-            <button class="close-m bg-red-600 hover:bg-red-500 rounded-lg px-2 py-2">
+            <button class="close-modal bg-red-600 hover:bg-red-500 rounded-lg px-2 py-2">
                 No
             </button>
         </div>
@@ -127,7 +127,7 @@
     <div class="bg-white w-96 p-4 rounded-lg">
         <div class="flex justify-between items-center">
             <h3 class="font-semibold text-lg text-gray-800">Usuario agregado correctamente</h3>
-            <button class="close-modal text-gray-500 hover:text-gray-700">
+            <button class="close-modal5 text-gray-500 hover:text-gray-700">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
@@ -142,7 +142,7 @@
     <div class="bg-white w-96 p-4 rounded-lg">
         <div class="flex justify-between items-center">
             <h3 class="font-semibold text-lg text-gray-800">Usuario editado correctamente</h3>
-            <button class="close-modal text-gray-500 hover:text-gray-700">
+            <button class="close-modal6 text-gray-500 hover:text-gray-700">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
