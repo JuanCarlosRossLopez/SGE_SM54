@@ -20,7 +20,8 @@
 
   <div class="content_conteiner">
       <div class="flex flex-row items-center gap-2">
-          <label class="conteiner_word_title">Vista de Estudiantes Actuales</label>
+          
+          <label class="conteiner_word_title">Podras gestionar los estudiantes actuales que se encuntran registrados en el sistema SGE</label>
       </div>
       <!-- Aquí va todo lo que está en tu vista -->
   </div>
@@ -31,7 +32,7 @@
     <table class="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <button class="show-modal" >Crear Alumno</a>
         <thead>
-            <thead class="bg-gray-50">
+            <thead class="bg-gray-50  justify-center items-center object-center text-center py-20">
             <tr>
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -73,13 +74,44 @@
                     <td class="border-b">
                         <a href="{{ route('estudiantes.show' , $student->id) }}" class="text-blue-500">Ver</a>
                         <a href="{{ route('estudiantes.edit' , $student->id) }}" class="text-yellow-500">Editar</a>
-                        <form action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
+                        <form id="deleteForm{{$student->id}}" action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <div>
-                                <button type="submit" class="text-red-500">Eliminar</button>
+                                <button type="button" onclick="showConfirmationModal({{$student->id}})" class="text-red-500">Eliminar</button>
                             </div>
                         </form>
+                        
+                        <!-- Modal de confirmación -->
+                        <div id="confirmationModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-gray-500">
+                            <div class="bg-white p-4 rounded-lg shadow-lg">
+                                <p>¿Estás seguro de que deseas eliminar este estudiante?</p>
+                                <div class="flex justify-end mt-4">
+                                    <button onclick="deleteStudent()" class="bg-red-500 text-white px-4 py-2 mr-2">Eliminar</button>
+                                    <button onclick="hideConfirmationModal()" class="bg-gray-300 px-4 py-2">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            let studentIdToDelete;
+                        
+                            function showConfirmationModal(studentId) {
+                                studentIdToDelete = studentId;
+                                const modal = document.getElementById('confirmationModal');
+                                modal.classList.remove('hidden');
+                            }
+                        
+                            function hideConfirmationModal() {
+                                const modal = document.getElementById('confirmationModal');
+                                modal.classList.add('hidden');
+                            }
+                        
+                            function deleteStudent() {
+                                const form = document.getElementById('deleteForm' + studentIdToDelete);
+                                form.submit();
+                            }
+                        </script>
                     </td> 
                    </div>
                 </tr>
@@ -87,7 +119,6 @@
         </tbody>
     </table>
 </div>
-<button class="show-modal flex justify-center items-center"> Agregar </button>
 <div class="modal-wrapper">
     <div class="modal hidden fixed top-0 left-0 w-full h-[700px] overflow-hidden flex justify-center items-center bg-opacity-500">
         <div class="bg-green-500 w-[600px] rounded shadow-lg max-w-4xl ">
@@ -115,7 +146,7 @@
                                     </div>
                                     <div class="mb-4">
                                         <label for="lastname_materno" class="text-gray-700 block mb-2">Apellido Materno:</label>
-                                        <input type="text" name="lastname_materno" id="lastname_materno" class="form-control w-full border rounded-lg py-2 px-4">
+                                        <input type="text" name="lastname_materno" id="lastname_materno" class="form-control w-full
                                     </div>
                                     <div class="mb-4">
                                         <label for="id_student" class="text-gray-700 block mb-2">Matricula:</label>
@@ -154,7 +185,6 @@
 
 <script>
     const modal = document.querySelector('.modal');
-
     const showModal = document.querySelector('.show-modal');
     const closeModal = document.querySelectorAll('.close-modal');
     const addStudentBtn = document.querySelector('.add-student');
@@ -174,7 +204,6 @@
         const formData = new FormData(form);
 
         alert('Alumno Agregado correctamente');
-
         form.reset();
     });
 </script>

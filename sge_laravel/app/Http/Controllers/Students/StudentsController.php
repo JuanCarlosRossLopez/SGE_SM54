@@ -39,7 +39,7 @@ class StudentsController extends Controller
             'project_creator' => 'required|string',
             'strike' => 'required|string',
             'user_id' => 'required|exists:users,id',
-            'division_id' => 'required|exists:divisions,id',
+            ' ' => 'required|exists:divisions,id',
             'anteproject_id' => 'required|exists:anteprojects,id',
             'adviser_id' => 'required|exists:teachers,id',
             'evaluation_date_id' => 'required|exists:activity_histories,id',
@@ -116,6 +116,6 @@ class StudentsController extends Controller
         //Elimina el estudiante
         $student->delete();
         //lo manda a la vista del estudiante
-        return redirect()->route('manager_student')->with('notificacion','Estudiante eliminado correctamente');
+        return back()->with('notificacion','Estudiante eliminado correctamente');
     }
 }
