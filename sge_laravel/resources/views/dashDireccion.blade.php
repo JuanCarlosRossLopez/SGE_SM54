@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
-            <label>Dashboard administrador</label>
+            <label>Dashboard Direccion</label>
             <label>
                 <!-- Este svg es el icono -->
                 <i class="fa-solid fa-user-tie"></i>
@@ -24,7 +24,7 @@
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
+                                <label class="font-normal font-poppins text-base text-start w-full">Informacion de los asesores</label>
                             </div>
                             <div>
                             <button class="action-button">VISUALIZAR</button>
@@ -34,8 +34,7 @@
                         <!-- Panel 2 -->
                         <div class="bg-white p-3 rounded">
                             <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
-                                    Estudiantes</label>
+                                <label class="font-semibold font-poppins text-lg text-start w-full">PROYECTOS FINALIZADOS</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
@@ -48,8 +47,7 @@
                         </div>
                         <div class="bg-white p-3 rounded">
                             <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
-                                    Presidencia</label>
+                                <label class="font-semibold font-poppins text-lg text-start w-full">ANTEPROYECTOS APROBADOS</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
@@ -62,8 +60,7 @@
                         </div>
                         <div class="bg-white p-3 rounded">
                             <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
-                                    Cordinacion</label>
+                                <label class="font-semibold font-poppins text-lg text-start w-full">HISTORIAL DE MEMORIAS</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
