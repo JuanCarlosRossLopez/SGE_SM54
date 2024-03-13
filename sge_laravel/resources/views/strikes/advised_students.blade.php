@@ -1,7 +1,7 @@
-@extends('test.template')
+@extends('test.test_template')
 
-@section('titulo')
-    SGE
+@section('title')
+    Alumnos asesorados
 @endsection
 <style>
 
@@ -10,127 +10,153 @@
 </style>
 
 @section('contenido')
+    <div class="back_conteiner">
+        <div class="top_conteiner">
+            <div class="w-[70rem]">
+                <label>Mis alumnos asesorados</label>
+                <label>
+                    <!-- Este svg es el icono -->
+                    <i class="fa-solid fa-hands-holding-child"></i>
+                </label>
+            </div>
 
-    <div class="w-screen">
-        <div class="w-full pr-4 pl-12 items-center">
-            <!-- Texto de bienvenida más grande -->
-            <button id="notificationButton" class="absolute right-0 top-0 m-4 focus:outline-none">
-                <i class="fas fa-bell text-[#01A080] text-2xl"></i>
-            </button>
-            <label class="font-sans text-3xl mb-2">BIENVENIDO, ASESOR FRANKLIN</label>
+        </div>
+        <div class="content_conteiner h-fit">
+            <div class="flex flex-row items-center justify-start gap-2">
+                <label class="conteiner_word_title items-center">Tabla de estudiantes asesorados</label>
+                <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
+                    data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
+                    <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
+                </label>
+            </div>
 
-            <div class="bg-gray-100 text-3xl rounded border mt-2 p-2 flex flex-row items-center gap-2">
-                <div class="font-sans text-2xl flex flex-row justify-center items-center gap-2">
-                    <label>Alumnos asesorados</label>
-                    <label id="infoButton" class="cursor-pointer" data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
-                        <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
-                    </label>
+            <div class="inside_content_conteiner">
+                <div class="search_conteiner">
+                    <button class="search_button">
+                        <i class="fas fa-search text-gray-500"></i>
+                    </button>
+                    <input type="text" class="search_input" placeholder="Buscar..." />
+                </div>
+                <div class="search_button_conteiner">
+                    <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
+                    <button class="standar_button hidden"><span class="inside_button ">Si lo necesitas</span></button>
                 </div>
             </div>
 
-            <div class="bg-gray-100 rounded border mt-1 p-2">
-
-                <div class="w-full flex flex-row justify-between mt-2 ">
-                    <div class="flex">
-                        <button
-                            class="border border-gray-500 bg-gray-300 px-4 py-1 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                            <i class="fas fa-search text-gray-500"></i>
-                        </button>
-                        <input type="text" class="border border-gray-300 w-[30rem] px-2 py-1 rounded-r-md  "
-                            placeholder="Buscar..." />
-                    </div>
-                </div>
-
-                <table class="w-full mt-2 border">
-                    <thead class="bg-[#01A080] text-center text-white">
+            <div class="table_conteiner">
+                <table class="standar_table">
+                    <thead class="standar_thead">
                         <tr>
-                            <th class="px-4 py-2 border-b">Matricula</th>
-                            <th class="px-4 py-2 border-b">Estudiantes</th>
-                            <th class="px-4 py-2 border-b">Carrera</th>
-                            <th class="px-4 py-2 border-b">Grupo</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="py-2 border-b">Opcion</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
+                            <th class="theader">Campo</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
-                        <tr class="bg-red-white hover:bg-[#5e5f5f46]">
-                            <td class="px-4 py-2 border-b">22393169</td>
-                            <td class="px-4 border-b">Marco Antonio Hau Pech</td>
-                            <td class="px-4 border-b">Desarrollador software multiplataforma</td>
-                            <td class="px-4 border-b">SM54</td>
-                            <td class="px-4 border-b">Sistema Gestor de Estadias</td>
-                            <td class="w-full  flex flex-row items-center justify-center py-2 gap-2 border-b">
-                                <button class="show-modal bg-red-600 hover:bg-red-700 p-2 py-1 rounded text-white">
-                                    Realizar Amonestacion
-                                </button>
+                    <tbody class="tbody">
+                        <tr class="trow">
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Lorum</td>
+                            <td class="trowc">
+                                <div>
+                                    <button class="show-modal bg-[#ae0808] text-white font-semibold px-2 py-2 rounded">
+                                        Realizar amonestación
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="flex justify-end mt-2">
-                    <button @click="currentPage = currentPage > 1 ? currentPage - 1 : 1"
-                        class="border border-gray-500 bg-gray-300 px-4 py-1 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        Anterior
-                    </button>
-                    <input type="number" x-model="currentPage" class="border border-gray-300 w-20 px-2 py-1 text-center" />
-                    <button @click="currentPage = currentPage < totalPages ? currentPage + 1 : totalPages"
-                        class="border border-gray-500 bg-gray-300 px-4 py-1 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        Siguiente
-                    </button>
-                </div>
-                <div class="text-gray-700 ml-auto">Total de registros: <span id="rowCount">2</span></div>
             </div>
 
-            <!-- Modal -->
-            <div
-                class="modal h-screen/2 w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-                <div class="bg-[#01A080] w-full rounded shadow-lg max-w-md">
-                    <div class="border-b px-4 py-4 flex justify-between items-center">
-                        <h3 class="font-semibold text-lg text-white">¿Está seguro de que desea amonestar al estudiante?</h3>
-                        <button class="close-modal bg-white rounded-full">
+            <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
+            <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
+                <div>
+                    <button
+                        class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
+                        < </button>
+                            <button
+                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                1
+                            </button>
+                            <button
+                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                2
+                            </button>
+                            <button
+                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                3
+                            </button>
+                            <button
+                                class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
+                                >
+                            </button>
+                </div>
+                <div>
+                    <span>Cantidad de registros :</span>
+                    <span id="rowCount"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div
+            class="modal h-screen/2 w-full fixed flex-col left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+
+            <div class="bg-[#01A080] w-full rounded shadow-lg max-w-md">
+                <div class="border-b px-2 py-2 flex justify-between items-center">
+                    <label class="font-semibold text-lg text-white text-center">¿Está seguro de que desea amonestar al
+                        estudiante?</label>
+                    <div class="max-w-md flex flex-col items-end justify-end p-2">
+                        <button class="close-modal bg-white rounded-full ">
                             <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                         </button>
                     </div>
-                    <div class="bg-white p-2 flex flex-col items-center">
-                        <h5 class="text-black text-lg mb-2 font-bold">Marco Antonio Hau Pech</h5>
-                        <div class="modal-body mb-0 overflow-y-auto h-[auto]">
-                            <button
-                                class="bg-orange-600 hover:bg-orange-700 p-2 py-1 rounded text-white mr-2">Confirmar</button>
-                            <button
-                                class="close-modal bg-red-500 hover:bg-red-600 p-2 py-1 rounded text-white">Cancelar</button>
-                        </div>
+                </div>
+                <div class="bg-white rounded p-2 flex flex-col items-center">
+                    <h5 class="text-black text-lg mb-2 font-thin">Marco Antonio Hau Pech</h5>
+                    <div class="modal-body mb-0 overflow-y-auto h-[auto]">
+                        <button class="bg-[#0064d7] hover:bg-[#1f695a] p-2 py-1 rounded text-white mr-2">Confirmar</button>
                     </div>
                 </div>
             </div>
+        </div>
 
+    </div>
 
+    <script>
+        // Contador
+        const tableBody = document.querySelector('tbody');
+        const rowCount = tableBody.querySelectorAll('tr').length;
+        document.getElementById('rowCount').textContent = rowCount;
+        const modal = document.querySelector('.modal');
 
-            <script>
-                // Contador
-                const tableBody = document.querySelector('tbody');
-                const rowCount = tableBody.querySelectorAll('tr').length;
-                document.getElementById('rowCount').textContent = rowCount;
-                const modal = document.querySelector('.modal');
+        //Funcionamiento de modal
+        const showModal = document.querySelector('.show-modal');
+        const closeModal = document.querySelectorAll('.close-modal');
 
-                //Funcionamiento de modal
-                const showModal = document.querySelector('.show-modal');
-                const closeModal = document.querySelectorAll('.close-modal');
+        showModal.addEventListener('click', function() {
+            modal.classList.remove('hidden')
+        })
 
-                showModal.addEventListener('click', function() {
-                    modal.classList.remove('hidden')
-                })
-
-                closeModal.forEach(close => {
-                    close.addEventListener('click', function() {
-                        modal.classList.add('hidden')
-                    })
-                })
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-            </script>
-            </>
-        @endsection
+        closeModal.forEach(close => {
+            close.addEventListener('click', function() {
+                modal.classList.add('hidden')
+            })
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+@endsection

@@ -1,4 +1,4 @@
-@extends('test.template')
+@extends('test.test_template')
 
 @section('title')
     Plantilla base
@@ -6,14 +6,17 @@
 
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>Consulta individual de anteproyecto</label>
-            <i class="fa-solid fa-calendar-check"></i>
+        <div class="w-[75rem]">
+            <div class="top_conteiner">
+                <label>Consulta individual de anteproyecto</label>
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+
         </div>
 
-        <div class="flex flex-nowrap space-x-4">
-            <div class="content_conteiner">
-                <div class="conteiner flex flex-row justify-between items-center">
+        <div class=" flex flex-nowrap space-x-1 w-[75rem] mb-4">
+            <div class="content_conteiner2 w-9/12">
+                <div class=" w-full flex flex-row justify-between items-center">
                     <div>
                         <label class="conteiner_word_title">Información de anteproyecto</label>
                         <label id="infoButton" class="cursor-pointer mt-3"
@@ -27,10 +30,10 @@
                         <option>11-mayo-2024</option>
                     </select>
                 </div>
-                <div class="inside_content_conteiner">
-                    <div class="justify-between items-center">
-                        <div class="bg-white shadow-md w-18/19">
-                            <div class="overflow-y-auto h-[38rem]">
+                <div class="bg-green-300 w-full">
+                    <div class="justify-between items-center w-full">
+                        <div class="bg-white shadow-md w-full">
+                            <div class="overflow-y-auto overflow-x-hidden h-[38rem]">
                                 <div class="snap-start">
                                     <br />
                                     <br />
@@ -260,7 +263,7 @@
 
                 </div>
             </div>
-            <div class="flex flex-col items-center w-[85%] h-fit">
+            <div class="flex flex-col items-center h-fit">
                 <div class="content_conteiner ">
                     <label class="conteiner_word_title flex flex-col items-center">Control de revisiones</label>
                     <div>
@@ -320,7 +323,6 @@
                     <label>No se que más podria ir aqui</label>
                 </div>
             </div>
-
         </div>
     </div>
     </div>

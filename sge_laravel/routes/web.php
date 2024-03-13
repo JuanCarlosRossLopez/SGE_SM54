@@ -111,7 +111,7 @@ Route::get('/historial-memorias', function () {
     return view('Memories.memory_history');
 });
 
-Route::get('/gestion_anteproyecto', function () {
+Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
