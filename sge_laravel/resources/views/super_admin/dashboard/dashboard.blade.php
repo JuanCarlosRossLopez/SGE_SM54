@@ -30,8 +30,8 @@ Panel de control administrador
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +53,8 @@ Panel de control administrador
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -75,8 +75,8 @@ Panel de control administrador
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -97,8 +97,8 @@ Panel de control administrador
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -118,8 +118,8 @@ Panel de control administrador
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +138,8 @@ Panel de control administrador
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@ Panel de control administrador
                             <canvas id="line-chart"></canvas>
                         </div>
                     </div>
-                    <div class="bg-white w-28 h-auto p-3 rounded">
+                    <div class="bg-white w-[34rem] h-auto p-3 rounded">
                         <div class="">
                             <canvas id="bar-chart"></canvas>
                         </div>
@@ -183,8 +183,8 @@ Panel de control administrador
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion1</a>
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Opcion2</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                             </div>
                         </div>
                     </div>
@@ -197,7 +197,15 @@ Panel de control administrador
                 <div class="bg-white p-3 rounded">
                     <div class="w-[16rem] text-center flex flex-row items-center">
                         <label class="font-semibold font-poppins text-base text-start w-full">Anteproyectos</label>
-                        <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="relative dropdown-trigger">
+                            <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label class="font-normal font-poppins text-sm text-start w-full">Propuestas de anteproyecto</label>
@@ -206,7 +214,15 @@ Panel de control administrador
                 <div class="bg-white p-3 rounded">
                     <div class="w-[16rem] text-center flex flex-row items-center">
                         <label class="font-semibold font-poppins text-base text-start w-full">Empresas</label>
-                        <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="relative dropdown-trigger">
+                            <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label class="font-normal font-poppins text-sm text-start w-full">Informacion de empresas de
@@ -216,7 +232,15 @@ Panel de control administrador
                 <div class="bg-white p-3 rounded">
                     <div class="w-[16rem] text-center flex flex-row items-center">
                         <label class="font-semibold font-poppins text-base text-start w-full">Roles</label>
-                        <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="relative dropdown-trigger">
+                            <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label class="font-normal font-poppins text-sm text-start w-full">Informacion de los roles de
@@ -227,7 +251,15 @@ Panel de control administrador
                 <div class="bg-white p-3 rounded">
                     <div class="w-[16rem] text-center flex flex-row items-center">
                         <label class="font-semibold font-poppins text-base text-start w-full">Carreras</label>
-                        <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="relative dropdown-trigger">
+                            <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label class="font-normal font-poppins text-sm text-start w-full">Informacion acerca de las carreras de
