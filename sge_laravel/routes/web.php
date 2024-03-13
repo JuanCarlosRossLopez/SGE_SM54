@@ -48,7 +48,7 @@ Route::get('/anteproyecto', function () {
 
 
 
-//End quipo coronado
+//End equipo coronado
 
 
 //Equipo rocha
