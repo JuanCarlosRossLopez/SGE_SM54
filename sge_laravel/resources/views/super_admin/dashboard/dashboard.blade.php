@@ -187,7 +187,7 @@ Panel de control administrador
                     }
                 }
             </style>
-            <div class=" gap-1 card_more overflow-auto">
+            <div class=" gap-1 card_more ">
                 <label class="conteiner_word_title  h-fit flex flex-col   items-center">Admin</label>
                 <div class="bg-white p-3 rounded">
                     <div class="w-[15rem] text-center flex flex-row items-center">
@@ -253,7 +253,7 @@ Panel de control administrador
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="/roles" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
                                 <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                             </div>
                         </div>
