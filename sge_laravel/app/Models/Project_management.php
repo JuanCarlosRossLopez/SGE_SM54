@@ -18,9 +18,12 @@ class Project_management extends Model
         'project_advisor',
         'project_advisor_phone',
         'general_objective',
-        'specific_objectives',
-        'project_scope',
+        'problem_statement',
+        'justification',
+        'activities',
         'start_date',
         'end_date',
     ];
+
+    protected $table = 'project_management';
 }

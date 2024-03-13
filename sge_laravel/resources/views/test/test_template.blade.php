@@ -27,7 +27,7 @@
         </button>
     </div>
     
-    <div class="w-screen flex flex-row fixed" id="sidebar">
+    <div class="w-fit flex flex-row fixed" id="sidebar">
         <div class="bg-[#2F4050] fixed flex mr-auto">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
             <button class="text-gray-300 hover:text-white transition-all text-2xl" onclick="ocultarMenu()">

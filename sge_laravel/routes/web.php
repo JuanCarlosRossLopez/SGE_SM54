@@ -7,6 +7,7 @@ use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\Projects_management\Projects_managementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +49,7 @@ Route::get('/dashboard_asesor', function () {
 
 
 //Rutas principales en dashboard alumno
-Route::get('/anteproyecto', function () {
-    return view('students.anteproyecto');
-})->name('anteproyecto');
+Route::resource('/anteproyecto', Projects_managementController::class);
 
 
 
@@ -118,6 +117,8 @@ Route::get('/gestion_anteproyecto', function () {
 Route::get('/datos_proyecto', function () {
     return view('teacher_dates.information_project');
 });
+
+
 Route::get('/editar_cita', function () {
     return view('teacher_dates.edit_meet_date');
 });

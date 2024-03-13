@@ -1,4 +1,4 @@
-@extends('templates.template_teacher')
+@extends('test.test_template')
 
 @section('title')
     Plantilla base
