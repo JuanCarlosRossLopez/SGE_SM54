@@ -322,7 +322,7 @@
 }
 .conteiner_cards2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 0.7rem;
     justify-content: space-between; 
 }
