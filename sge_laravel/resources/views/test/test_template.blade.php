@@ -37,7 +37,7 @@
         <div class="sidebar_background">
             <div>
                 <a>
-                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] " onclick="location.href='/'">
+                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
                 </a>
                 <ul class="flex flex-col justify-between">
 
