@@ -112,7 +112,7 @@
     border-color: #01a080;
 }
 
-/*Buttons sidebars*/
+/* /Buttons sidebars/ */
 .buttons_sidebar {
     color: #c8c8c8;
     width: 100%;
@@ -203,7 +203,7 @@
     overflow-y: auto;
 }
 
-/*Main*/
+/* /Main/ */
 .main {
     width: 100vw;
     overflow-x: none;
@@ -217,7 +217,7 @@
     bottom: 0;
 }
 
-/*Contenedor donde esta main y footer*/
+/* /Contenedor donde esta main y footer/ */
 .content_main_footer {
     display: flex;
     flex-direction: column;
@@ -314,6 +314,19 @@
     gap: 0.7rem;
     justify-content: space-between;
 }
+.conteiner_cards1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: space-between;
+}
+.conteiner_cards2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.7rem;
+    justify-content: space-between; 
+}
+
 
 @media (max-width: 768px) {
     .conteiner_cards {

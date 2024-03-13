@@ -1,10 +1,10 @@
-@extends('test.template')
+@extends('test.test_template')
 @section('title')
     visualizar
 @endsection
 @section('contenido')
 <div class="back_conteiner">
-    <div class="top_conteiner">
+    {{-- <div class="top_conteiner">
         <label>Aqui el titulo de tu vista, te recomiendo cambiar el icono</label>
         <label>
             <!-- Este svg es el icono -->
@@ -24,10 +24,8 @@
                 <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
             </label>
         </div>
-
-        <label>De aqui en adelante puedes trabajar 🚬</label>
         <!-- Aqui va todo lo que esta en tu vista -->
-    </div>
+    </div> --}}
 </div>
 
 <!-- De aqui para abajo es tu vista -->
@@ -95,18 +93,6 @@
                             <button type="button"
                                 class="show-modal group flex flex-row items-center gap-2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
                                 Subir
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!--Separacion-->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] mx-[30px] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta Amonestación</h3>
-                        <div class="">
-                            <button type="button"
-                                class="group flex flex-row items-center gap-2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
-                                <a href="{{ route('amonestacion') }}">Generar</a>
                             </button>
                         </div>
                     </div>

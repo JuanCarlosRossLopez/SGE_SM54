@@ -1,4 +1,4 @@
-@extends('templates.template_teacher')
+@extends('test.test_template')
 @section('title')
     Envío
 @endsection
@@ -15,7 +15,7 @@
                 </svg>
             </label>
         </div>
-
+        
         <div class="content_conteiner">
             <label class="conteiner_word_title">Tabla de proyectos asesorados</label>
             <div class="inside_content_conteiner">

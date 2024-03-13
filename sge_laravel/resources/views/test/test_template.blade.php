@@ -89,10 +89,17 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/dashboard_coordinacion" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio coordinación
+                            </a>
+                        </li>
+                        <li>
                             <a href="/dashboard-presidencial" class="buttons_sidebar ">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio Presidente
                             </a>
+                        </li>
                         <li>
                             <a href="/historial-memorias" class="buttons_sidebar">
                                 <i class="fa-solid fa-landmark"></i>
