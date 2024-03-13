@@ -7,13 +7,12 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .back_conteiner {
-    width: 100%;
+    width: 100rem;
     margin-left: 3rem;
     align-items: center;
     flex-direction: column;
 }
 .top_conteiner {
-    width: auto;
     color: #3a3a3a;
     background-color: #e6e6e6;
     font-size: 1.8rem;
@@ -334,6 +333,7 @@
 .conteiner_cards2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
+    
     gap: 0.7rem;
 }
 
