@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('activity_histories', function (Blueprint $table) {
             $table->id();
             //Aun no se cuantas citas hay por cuatri de estadias
