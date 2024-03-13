@@ -20,6 +20,9 @@ use Spatie\Permission\Contracts\Role;
 */
 
 
+Route::get('/Perfil_Maestro', function () {return view('teachers.userTeacher');})->name('perfil_profesor');
+Route::get('/Perfil_Estudiante', function () {return view('students.userStudent');})->name('perfil_estudiante');
+Route::get('/Perfil_Administrador', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
 Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');})->name('perfil_maestro');
 Route::get('/Perfil_Student', function () {return view('students.userStudent');})->name('perfil_estudiante');
 Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
@@ -55,7 +58,7 @@ Route::get('/anteproyecto', function () {
 
 
 
-//End quipo coronado
+//End equipo coronado
 
 
 //Equipo rocha
