@@ -16,7 +16,7 @@
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
                 <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right z-10 bg-[#01A080] w-full">
                     
-                        <a href="" class="font-semibold  dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Iniciar sesión</a>
+                        <a href="/login" class="font-semibold  dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Iniciar sesión</a>
                 </div>
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
