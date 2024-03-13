@@ -5,7 +5,7 @@
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
-            <label>Dashboard coordinación</label>
+            <label>Dashboard Coordinación</label>
             <label>
                 <!-- Este svg es el icono -->
                 <i class="fa-solid fa-user-tie"></i>
@@ -166,7 +166,7 @@
                     </div>
                     <button type="button"
                         class="bg-[#01A080] verLibro items-center text-[#F6F6F6] cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[1px] px-[4px]"
-                        onclick="window.location.href='/dashboard_libros'">
+                        onclick="window.location.href='/libros'">
                         Ver más
                     </button>
                 </div>

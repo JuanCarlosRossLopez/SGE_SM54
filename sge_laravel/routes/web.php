@@ -139,16 +139,13 @@ Route::get('/descarga_informes', function () {
 Route::get('/informes', function(){
     return view('report_generation.teacher_generation');
 });
-// Route::get('/envio_amonestacion', function(){
-//     return view('report_generation.teacher_table_strike');
-// })->name('amonestacion');
 Route::get('/pdf_muestra', function () {
     return view('report_generation.pdf_cedula');
 });
 Route::get('/dashboard_coordinacion', function () {
     return view('coordination.dashboard_coordination');
 });
-Route::get('/dashboard_libros', function () {
+Route::get('/libros', function () {
     return view('coordination.books_table');
 });
 
