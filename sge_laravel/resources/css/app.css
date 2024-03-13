@@ -8,12 +8,12 @@
 }
 .back_conteiner {
     width: 100%;
-    padding-right: 2rem;
-    padding-left: 3rem;
+    margin-left: 3rem;
     align-items: center;
     flex-direction: column;
 }
 .top_conteiner {
+    width: auto;
     color: #3a3a3a;
     background-color: #e6e6e6;
     font-size: 1.8rem;
@@ -21,7 +21,7 @@
     border: 1px solid #d1d5db;
     margin-top: 0.5rem;
     padding: 0.5rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -222,14 +222,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: auto;
+    height: 100vh;
 }
 
 /*Sidebar shadow */
 
 .sidebar_background {
     background-color: #2f4050; /* Color de fondo */
-    width: 20rem; /* Ancho */
+    width: 16rem; /* Ancho */
     height: 100vh; /* Altura igual a la altura de la pantalla */
     display: flex; /* Hace que el contenedor sea un flexbox */
     flex-direction: column; /* Establece la dirección de los elementos como columna */
@@ -237,21 +237,19 @@
 }
 
 .sidebar_active {
-    width: 100vw; /* Ancho igual al ancho de la pantalla */
     min-height: 100vh; /* Altura mínima igual a la altura de la pantalla */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad del 50% */
     display: flex; /* Hace que el contenedor sea un flexbox */
     align-items: center; /* Alinea los elementos verticalmente */
     padding-left: 0.5rem; /* Asumiendo que 2 en Tailwind CSS significa 0.5rem */
 }
-.button_hide_sidebar {
-    color: #c8c8c8; /* Color de texto */
+.button_hide_sidebar{
+    color: black; /* Color de texto */
     font-size: 2.25rem; /* Asumiendo que 4xl en Tailwind CSS significa 2.25rem */
     transition: all 0.3s ease; /* Transición en todas las propiedades con duración de 0.3s */
 }
 
 .button_hide_sidebar:hover {
-    color: white; /* Color de texto al pasar el cursor */
     transform: scale(1.25); /* Escala al pasar el cursor */
 }
 
@@ -313,8 +311,8 @@
 .conteiner_cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.7rem;
+    justify-content: space-between;
 }
 
 @media (max-width: 768px) {
@@ -326,3 +324,13 @@
     }
 }
 
+.main_collapse {
+    transition: margin-left .5s;
+    width: calc(100% - 145px);
+    margin-left: 7.5rem;
+}
+
+.main_expand {
+    margin-left: 0rem;
+    width: screen;
+}

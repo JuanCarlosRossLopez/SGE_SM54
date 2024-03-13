@@ -1,4 +1,4 @@
-@extends('test.template')
+@extends('test.test_template')
 @section('titulo')
     Panel de control administrador
 @endsection
@@ -11,70 +11,71 @@
                 <i class="fa-solid fa-user-tie"></i>
             </label>
         </div>
-        <div class="conteiner_cards">
-            <div class="conteiner_cards flex flex-col gap-0 w-fit">
-                <div class="content_conteiner h-fit ">
+        <div class=" conteiner_cards">
+            <div class="conteiner_cards flex flex-col w-fit">
+                <div class="content_conteiner w-fit h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">Acciones varias</label>
                     <div class="conteiner_cards">
                         <!-- Panel 1 -->
                         <div class="bg-white p-3 rounded">
-                            <div class="w-[18rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-xl text-start w-full">Panel de
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
                                     asesoramiento</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <div>
-                                <label class="font-normal font-poppins text-lg text-start w-full">Asignar asesores</label>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
                             </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-sm gap-2">
+                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
                                 <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
                             </div>
                         </div>
 
                         <!-- Panel 2 -->
                         <div class="bg-white p-3 rounded">
-                            <div class="w-[18rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-xl text-start w-full">Panel de algo</label>
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
+                                    asesoramiento</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <div>
-                                <label class="font-normal font-poppins text-lg text-start w-full">Gestionar 1</label>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
                             </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-sm gap-2">
+                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
                                 <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
                             </div>
                         </div>
-
                         <!-- Panel 3 -->
                         <div class="bg-white p-3 rounded">
-                            <div class="w-[18rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-xl text-start w-full">Panel de algo 2</label>
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
+                                    asesoramiento</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <div>
-                                <label class="font-normal font-poppins text-lg text-start w-full">Gestionar 2</label>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
                             </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-sm gap-2">
+                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
                                 <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="content_conteiner gap-2 h-fit">
-                    <label class="conteiner_word_title flex flex-col items-center">Graficas</label>
-                    <div class="conteiner_cards w-full gap-2">
+                <div class="content_conteiner gap-0 w-full h-fit">
+                    <label class="conteiner_word_title w-full flex flex-col items-center">Graficas</label>
+                    <div class="conteiner_cards w-full">
                         <!-- Panel 1 -->
-                        <div class="bg-white w-1/2 p-2 rounded">
+                        <div class="bg-white w-[34rem] rounded">
                             <div class="line-chart-container">
                                 <h1>AVANCE DE LOS ALUMNOS</h1>
                                 <canvas id="line-chart"></canvas>
                             </div>
                         </div>
-                        <div class="bg-white w-1/3 p-3 rounded">
-                            <div class="w-[18rem] text-center flex flex-row items-center">
+                        <div class="bg-white w-fit h-fit p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
                                 <label class="font-semibold font-poppins text-base text-start w-full">Información relevante</label>
                                 <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
@@ -86,51 +87,11 @@
                     </div>
                 </div>
             </div>
-            <div class="content_conteiner p-1 w-fit bg-blue-900">
+            <div class="content_conteiner h-fit p-1 w-fit ml-[-2.5rem]">
                 <div class="flex flex-col gap-1">
                     <label class="conteiner_word_title  h-fit flex flex-col items-center">¿Qué más?</label>
                     <div class="bg-white p-3 rounded">
-                        <div class="w-[18rem] text-center flex flex-row items-center">
-                            <label class="font-semibold font-poppins text-base text-start w-full">Panel de algo 2</label>
-                            <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
-                                    class="fa-solid fa-ellipsis-vertical"></i></button>
-                        </div>
-                        <div>
-                            <label class="font-normal font-poppins text-sm text-start w-full">Gestionar 2</label>
-                        </div>
-                    </div>
-                    <div class="bg-white p-3 rounded">
-                        <div class="w-[18rem] text-center flex flex-row items-center">
-                            <label class="font-semibold font-poppins text-base text-start w-full">Panel de algo 2</label>
-                            <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
-                                    class="fa-solid fa-ellipsis-vertical"></i></button>
-                        </div>
-                        <div>
-                            <label class="font-normal font-poppins text-sm text-start w-full">Gestionar 2</label>
-                        </div>
-                    </div>
-                    <div class="bg-white p-3 rounded">
-                        <div class="w-[18rem] text-center flex flex-row items-center">
-                            <label class="font-semibold font-poppins text-base text-start w-full">Panel de algo 2</label>
-                            <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
-                                    class="fa-solid fa-ellipsis-vertical"></i></button>
-                        </div>
-                        <div>
-                            <label class="font-normal font-poppins text-sm text-start w-full">Gestionar 2</label>
-                        </div>
-                    </div>
-                    <div class="bg-white p-3 rounded">
-                        <div class="w-[18rem] text-center flex flex-row items-center">
-                            <label class="font-semibold font-poppins text-base text-start w-full">Panel de algo 2</label>
-                            <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
-                                    class="fa-solid fa-ellipsis-vertical"></i></button>
-                        </div>
-                        <div>
-                            <label class="font-normal font-poppins text-sm text-start w-full">Gestionar 2</label>
-                        </div>
-                    </div>
-                    <div class="bg-white p-3 rounded">
-                        <div class="w-[18rem] text-center flex flex-row items-center">
+                        <div class="w-[16rem] text-center flex flex-row items-center">
                             <label class="font-semibold font-poppins text-base text-start w-full">Panel de algo 2</label>
                             <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
                                     class="fa-solid fa-ellipsis-vertical"></i></button>
