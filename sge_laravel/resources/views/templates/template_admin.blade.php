@@ -11,6 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="{{ asset('css/font.css') }}" rel="stylesheet">
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -36,7 +37,7 @@
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    <div class="w-screen flex flex-row fixed" id="miDiv">
+    <div class="w-screen flex flex-row fixed px-2" id="miDiv">
         <div class=" bg-[#2F4050] w-[20rem] h-screen flex flex-col justify-between">
             <div>
                 <a href="/" class="text-white flex flex-row align-items-center p-3 pb-3 gap-2 transition-all  hover:scale-105 ">
