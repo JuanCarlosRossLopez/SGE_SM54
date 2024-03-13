@@ -315,6 +315,13 @@
     justify-content: space-between;
 }
 
+.conteiner_cards2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 0.7rem;
+    justify-content: space-between;
+}
+
 @media (max-width: 768px) {
     .conteiner_cards {
         align-items: center;
