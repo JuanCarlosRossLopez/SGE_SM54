@@ -29,7 +29,9 @@
                         <i class="fas fa-search text-gray-500"></i>
                     </button>
                     <input type="text" class="search_input" placeholder="Buscar..." />
-                    
+                    <a href="{{ route('estudiantes.create') }}" class="add_button">
+                        <i class="fas fa-plus text-black"></i>
+                    </a>
                 </div>
                 <div class="search_button_conteiner">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
@@ -105,7 +107,6 @@
     </div>
 </div>
 </div>
-
 
     <script>
         let studentIdToDelete;
