@@ -15,17 +15,23 @@ return new class extends Migration
             $table->id();
             $table->string('anteproject_title');
             $table->string('information');
-            $table->foreignId('company_id')->constrained('companies')
+            $table->foreignId('company_id')
+            ->nullable()
+            ->constrained('companies')
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('project_status_id')->constrained('status_projects')
+            $table->foreignId('project_status_id')
+            ->nullable()
+            ->constrained('status_projects')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->foreignId('intership_id')->constrained('interships')
+            ->nullable()
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->date('start_date');
-            $table->date('finished_date');
+            $table->date('finished_date')
+            ->nullable();
             $table->timestamps();
         });
     }

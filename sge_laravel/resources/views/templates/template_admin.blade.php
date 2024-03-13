@@ -37,7 +37,7 @@
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    <div class="w-screen flex flex-row fixed" id="miDiv">
+    <div class="w-screen flex flex-row fixed px-2" id="miDiv">
         <div class=" bg-[#2F4050] w-[20rem] h-screen flex flex-col justify-between">
             <div>
                 <a href="/" class="text-white flex flex-row align-items-center p-3 pb-3 gap-2 transition-all  hover:scale-105 ">
@@ -82,7 +82,7 @@
                             </button>
                         </li>
                         <li>
-                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#4D6781] hover:text-white transition-all  hover:scale-110 hover:w-[96%]">
+                            <button class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 hover:bg-[#4D6781] hover:text-white transition-all  hover:scale-110 hover:w-[96%]" onclick="location.href='/Perfil_Admin'">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </button>
@@ -113,7 +113,7 @@
 
     <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
         <div class="container">
-            <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
+            <p class="text-gray-700"></p>
         </div>
     </footer>
 </body>

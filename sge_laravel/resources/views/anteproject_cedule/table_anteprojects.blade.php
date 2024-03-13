@@ -1,4 +1,4 @@
-@extends('templates.template_teacher')
+@extends('test.template')
 
 @section('title')
     Historial de memorias
