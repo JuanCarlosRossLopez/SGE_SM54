@@ -1,4 +1,5 @@
-<div id="show{{$user->id}}" class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+<div id="edit{{ $user->id }}"
+    class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
         <div class="border-b px-4 py-2 flex justify-between items-center">
             <h3 class="font-semibold text-lg text-white text-center flex-grow">Editar Usuario</h3>
@@ -21,18 +22,10 @@
                 </div>
             @endif
             <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                <form action="{{ route('usuarios.store') }}" method="POST" class="flex flex-col items-center">
+                <form action="{{ url('usuarios', $user->id) }}" method="POST" class="flex flex-col items-center">
+                    @method('PUT')
                     @csrf
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                        <input type="text" name="name_user" value="{{ $user->name_user }}"
-                            class="rounded ancho input-field">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
-                        <input type="text" name="lastname_user" value="{{ $user->lastname_user }}"
-                            class="rounded input-field">
-                    </div>
+
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                             de
@@ -51,6 +44,23 @@
                             class="rounded input-field">
                     </div>
 
+
+                        <p>
+
+                        </p>
+                        <select  name="role" id="" class="rounded">
+                       
+                            <option value="{{ $role->name }}">Seleciona un rol</option>
+                            <option value="student">Alumno</option>
+                            <option value="teacher">Maestro</option>
+                            <option value="admin">Administrador</option>
+                            <option value="coordination">Coordinación</option>
+                            <option value="president">Presidencia</option>
+                            <option value="applicants">Aspirante</option>
+                        </select>
+                        <p>{{ $user->id }}</p>
+
+
                     <div class="flex justify-center">
                         <button type="submit">
                             <div
@@ -66,7 +76,8 @@
     </div>
 </div>
 
-<div id="show{{$user->id}}" class="modal-view h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div id="show{{ $user->id }}"
+    class="modal-view h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-white w-96 p-4 rounded-lg">
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
@@ -95,7 +106,7 @@
 <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-white w-96 p-4 rounded-lg">
         <div class="flex justify-between items-center">
-            <h3 class="font-semibold text-lg text-gray-800">Usuario eliminado correctamente</h3>
+            <h3 class="font-semibold text-lg text-gray-800">¿Realmente desea eliminar este usuario?</h3>
             <button class="close-modal text-gray-500 hover:text-gray-700">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -104,6 +115,16 @@
                 </svg>
             </button>
         </div>
+
+        <form >
+            <button>
+                si
+            </button>
+
+        <button>
+            No
+        </button>
+        </form>
     </div>
 
 </div>

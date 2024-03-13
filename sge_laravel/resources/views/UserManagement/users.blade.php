@@ -42,6 +42,33 @@
                                 Usuarios</span></button>
                     </div>
                 </div>
+                
+
+
+                <h1>Crear Usuarios con Rol</h1>
+    <form method="POST" action="{{route('muchos-usuarios.store')}}">
+        @csrf
+        <div>
+            <label for="number_of_users">Número de Usuarios:</label>
+            <input type="number" id="number_of_users" name="number_of_users" min="1" >
+        </div>
+        <div>
+            <label for="role_name">Nombre del Rol:</label>
+            <select name="role_name" id="role_name" class="rounded">
+                                            <option value="">Selecciona un rol</option>
+                                            <option value="student">Alumno</option>
+                                            <option value="teacher">Maestro</option>
+                                            <option value="admin">Administrador</option>
+                                            <option value="coordination">Coordinación</option>
+                                            <option value="president">Presidencia</option>
+                                            <option value="applicants">Aspirante</option>
+
+                                        </select>
+        </div>
+        <button type="submit">Crear Usuarios</button>
+    </form>
+
+
                 <div class="table_conteiner">
                     <table class="standar_table">
                         <thead class="standar_thead">
@@ -49,16 +76,13 @@
                                 <th class="theader">
                                     #</th>
                                 <th class="theader">
-                                    Nombre
-                                </th>
-                                <th class="theader">
-                                    Apellidos
-                                </th>
-                                <th class="theader">
                                     Nombre de
                                     Usuario</th>
                                 <th class="theader">
                                     Email
+                                </th>
+                                <th class="theader">
+                                    Roles
                                 </th>
                                 <th class="theader">
                                     Acciones
@@ -69,10 +93,12 @@
                             @foreach ($users as $user)
                                 <tr class="trow">
                                     <td class="trowc"> {{ $loop->iteration }} </td>
-                                    <td class="trowc"> {{ $user->name_user }} </td>
-                                    <td class="trowc"> {{ $user->lastname_user }} </td>
                                     <td class="trowc"> {{ $user->username }} </td>
                                     <td class="trowc"> {{ $user->email }} </td>
+                                    <td>
+                @foreach ($user->roles as $role)
+                    {{ $role->name }}
+            </td>
                                     <td class="trowc">
                                         <button class="show-modal-view" data-target="#show{{ $user->id }}">
                                             <div class="comment-icon flex items-center justify-center">
@@ -80,12 +106,15 @@
                                                 {{ $user->id }}
                                             </div>
                                         </button>
-                                        <button class="show-modal4" data-target="#show{{ $user->id}}">
+                                        <button class="show-modal4" data-target="#edit{{ $user->id }}">
                                             <div class="comment-icon flex items-center justify-center">
                                                 <i class="bi bi-pencil-square" style="color: blue;"></i>
+                                                {{ $user->id }}
                                             </div>
                                         </button>
+
                                         <button class="show-modal">
+
                                             <div class="comment-icon flex items-center justify-center">
                                                 <i class="bi bi-trash" style="color: red;"></i>
                                             </div>
@@ -93,6 +122,8 @@
                                     </td>
                                 </tr>
                                 @include('UserManagement.modal-users')
+                                @endforeach
+
                             @endforeach
                         </tbody>
                     </table>
@@ -134,14 +165,8 @@
                                 <form action="{{ route('usuarios.store') }}" method="POST"
                                     class="flex flex-col items-center">
                                     @csrf
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                                        <input type="text" name="name_user" class="rounded ancho input-field">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos</label>
-                                        <input type="text" name="lastname_user" class="rounded input-field">
-                                    </div>
+                                   
+                                  
                                     <div class="mb-4">
                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                                             de
@@ -158,6 +183,17 @@
                                         <label class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
                                         <input type="password" name="password" class="rounded input-field">
                                     </div>
+
+                                        <select name="role" id="" class="rounded">
+                                            <option value="">Selecciona un rol</option>
+                                            <option value="student">Alumno</option>
+                                            <option value="teacher">Maestro</option>
+                                            <option value="admin">Administrador</option>
+                                            <option value="coordination">Coordinación</option>
+                                            <option value="president">Presidencia</option>
+                                            <option value="applicants">Aspirante</option>
+
+                                        </select>
 
                                     <div class="flex justify-center">
                                         <button type="submit">
@@ -195,7 +231,7 @@
                 </script>
                 <script>
                     const modalview = document.querySelectorAll('.modal-view');
-                    const closeModal = document.querySelectorAll('.close-modal');
+                    const closeModalview = document.querySelectorAll('.close-modal');
                     const showModalview = document.querySelectorAll('.show-modal-view');
 
                     showModalview.forEach(button => {
@@ -208,15 +244,22 @@
                         })
                     })
 
-                    closeModal.forEach(closeModal => {
-                        closeModal.addEventListener('click', (e) => {
-                            e.preventDefault()
-                            const modal = closeModal.closest('.modal-insert')
-                            const modal_agregar = closeModal.closest('.modal3')
-                            modal.classList.add('hidden')
-                            modal_agregar.classList.add('hidden')
-                        })
-                    })
+                    closeModalview.forEach(close => {
+                        close.addEventListener('click', function() {
+                            modalview.classList.add('hidden')
+                        });
+                    });
+
+                    // closeModal.forEach(closeModal => {
+                    //     closeModal.addEventListener('click', (e) => {
+                    //         e.preventDefault()
+                    //         const modal = closeModal.closest('.modal-insert')
+                    //         const modal_agregar = closeModal.closest('.modal3')
+                    //         modal.classList.add('hidden')
+                    //         modal_agregar.classList.add('hidden')
+                    //     })
+                    // })
+
                 </script>
                 <script>
                     const modal3 = document.querySelector('.modal3');
@@ -227,16 +270,28 @@
                     showModal3.addEventListener('click', function() {
                         modal3.classList.remove('hidden')
                     })
+
+                    closeModal3.forEach(close => {
+                        close.addEventListener('click', function() {
+                            modal3.classList.add('hidden')
+                        });
+                    });
                 </script>
 
                 <script>
                     const modal4 = document.querySelector('.modal4');
 
-                    const showModal4 = document.querySelector('.show-modal4');
+                    const showModal4 = document.querySelectorAll('.show-modal4');
                     const closeModal4 = document.querySelectorAll('.close-modal4');
 
-                    showModal4.addEventListener('click', function() {
-                        modal4.classList.remove('hidden')
+                    showModal4.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault()
+                            const modalId = button.dataset.target
+                            const modal = document.querySelector(modalId)
+                            modal.classList.remove('hidden')
+                            console.log(modal)
+                        })
                     })
                 </script>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
+use App\Http\Controllers\Users\UsersCreateManyController;
 use Spatie\Permission\Contracts\Role;
 
 /*
@@ -148,6 +149,8 @@ Route::get('/pdf_muestra', function () {
 #RUTAS EQUIPO YAHIR
 
 Route::resource('usuarios', UsersController::class);
+Route::resource('muchos-usuarios', UsersCreateManyController::class);
+//Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
 Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
