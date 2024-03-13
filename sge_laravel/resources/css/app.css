@@ -222,7 +222,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: 10f0vh;
 }
 
 /*Sidebar shadow */
@@ -230,30 +230,20 @@
 
 .sidebar_background{
     background-color: #2F4050; /* Color de fondo */
-    width: 20rem; /* Ancho */
+    width: 17rem; /* Ancho */
     height: 100vh; /* Altura igual a la altura de la pantalla */
     display: flex; /* Hace que el contenedor sea un flexbox */
     flex-direction: column; /* Establece la dirección de los elementos como columna */
     justify-content: space-between; /* Distribuye los elementos verticalmente, dejando espacio entre ellos */
 }
 
-
-.sidebar_active {
-    width: 100vw; /* Ancho igual al ancho de la pantalla */
-    min-height: 100vh; /* Altura mínima igual a la altura de la pantalla */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad del 50% */
-    display: flex; /* Hace que el contenedor sea un flexbox */
-    align-items: center; /* Alinea los elementos verticalmente */
-    padding-left: 0.5rem; /* Asumiendo que 2 en Tailwind CSS significa 0.5rem */
-}
 .button_hide_sidebar{
-    color: #c8c8c8; /* Color de texto */
+    color: black; /* Color de texto */
     font-size: 2.25rem; /* Asumiendo que 4xl en Tailwind CSS significa 2.25rem */
     transition: all 0.3s ease; /* Transición en todas las propiedades con duración de 0.3s */
 }
 
 .button_hide_sidebar:hover {
-    color: white; /* Color de texto al pasar el cursor */
     transform: scale(1.25); /* Escala al pasar el cursor */
 }
 
@@ -310,4 +300,15 @@
 #infoButton:hover::before {
     visibility: visible;
     opacity: 1;
+}
+
+.main_collapse {
+    transition: margin-left .5s;
+    width: calc(100% - 250px);
+    margin-left: 235px;
+}
+
+.main_expand {
+    margin-left: 0;
+    width: 100%;
 }
