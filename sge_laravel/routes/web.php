@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,9 +121,7 @@ Route::get('/pdf_muestra', function(){
 
 #RUTAS EQUIPO YAHIR
 
-Route::get('/usuarios', function(){
-    return view('UserManagement.users');
-});
+Route::resource('usuarios', UsersController::class);
 
 Route::get('/ejemplo', function(){
     return view('UserManagement.cuadro');
