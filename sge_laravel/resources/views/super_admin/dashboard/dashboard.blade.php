@@ -187,7 +187,7 @@ Panel de control administrador
                     }
                 }
             </style>
-            <div class=" gap-1 card_more overflow-x-auto">
+            <div class=" gap-1 card_more overflow-auto">
                 <label class="conteiner_word_title  h-fit flex flex-col   items-center">Admin</label>
                 <div class="bg-white p-3 rounded">
                     <div class="w-[15rem] text-center flex flex-row items-center">
