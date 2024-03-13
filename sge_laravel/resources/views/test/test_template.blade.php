@@ -141,7 +141,7 @@
                 </div>
             </div>
         </main>
-        <footer class="footer">
+        <footer class="w-screen pl-12 bottom-0">
             <div>
                 <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
             </div>
