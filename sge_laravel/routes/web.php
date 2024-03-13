@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Users\UsersController;
+use App\Http\Controllers\Books\BooksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use Spatie\Permission\Contracts\Role;
@@ -78,6 +79,7 @@ Route::get('/gestion_roles', function () {
 Route::get('/panel_admin', function () {
     return view('super_admin.dashboard.dashboard');
 });
+Route::resource('/libros', BooksController::class);
 //End equipo rocha
 
 
