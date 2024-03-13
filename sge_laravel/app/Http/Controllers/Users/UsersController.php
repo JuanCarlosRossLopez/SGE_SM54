@@ -35,7 +35,7 @@ class UsersController extends Controller
         $request->validate([
             //'name_user' => 'required|max:250',
             //'lastname_user' => 'required|max:250',
-            'username' => 'required|unique:users|max:250',
+            'name' => 'required|unique:users|max:250',
             'email' => 'required|unique:users|email',
             'password' => 'required'
         ]);
@@ -43,7 +43,7 @@ class UsersController extends Controller
         $users = new User();
         // $users->name_user = $request->input('name_user');
         // $users->lastname_user = $request->input('lastname_user');
-        $users->username = $request->input('username');
+        $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
@@ -89,13 +89,13 @@ if($role) {
         $request->validate([
             //'name_user' => 'required|max:250',
             //'lastname_user' => 'required|max:250',
-            'username' => 'required|max:250|unique:users,username,' . $id,
+            'name' => 'required|max:250|unique:users,name,' . $id,
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'required'
         ]);
 
         $users = User::find($id);
-        $users->username = $request->input('username');
+        $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();

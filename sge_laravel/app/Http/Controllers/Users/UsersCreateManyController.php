@@ -47,12 +47,12 @@ class UsersCreateManyController extends Controller
         for ($i = 0; $i < $number_of_users; $i++) {
             $username = 'usuario' . ($i + 1);
     
-            while (User::where('username', $username)->exists()) {
+            while (User::where('name', $username)->exists()) {
                 $username = 'usuario' . ($i + 1) . '_' . mt_rand(100, 999);
             }
     
             $user = new User();
-            $user->username = $username;
+            $user->name = $username;
             $user->email = $username . '@utcancun.edu.mx';
             $user->password = bcrypt('SGE2024');
             $user->save();

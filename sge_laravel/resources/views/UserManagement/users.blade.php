@@ -1,4 +1,4 @@
-@extends('templates.template_admin')
+@extends('test.test_template')
 
 @section('titulo', 'Usuarios')
 @section('contenido')
@@ -90,49 +90,47 @@
         
 
 
-        <div class="table_conteiner">
-            <table class="standar_table">
-                <thead class="standar_thead">
-                    <tr>
-                        <th class="theader">
-                            #</th>
-                        <th class="theader">
-                            Nombre de
-                            Usuario</th>
-                        <th class="theader">
-                            Email
-                        </th>
-                        <th class="theader">
-                            Roles
-                        </th>
-                        <th class="theader">
-                            Acciones
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="tbody">
-                    @foreach ($users as $user)
-                    <tr class="trow">
-                        <td class="trowc"> {{ $loop->iteration }} </td>
-                        <td class="trowc"> {{ $user->username }} </td>
-                        <td class="trowc"> {{ $user->email }} </td>
-                        <td>
-                            @foreach ($user->roles as $role)
-                            {{ $role->name }}
-                        </td>
-                        <td class="trowc">
-                            <button class="show-modal-view" data-target="#show{{ $user->id }}">
-                                <div class="comment-icon flex items-center justify-center">
-                                    <i class="bi bi-eye-fill"></i>
-                                    {{ $user->id }}
-                                </div>
-                            </button>
-                            <button class="show-modal4" data-target="#edit{{ $user->id }}">
-                                <div class="comment-icon flex items-center justify-center">
-                                    <i class="bi bi-pencil-square" style="color: blue;"></i>
-                                    {{ $user->id }}
-                                </div>
-                            </button>
+                <div class="table_conteiner">
+                    <table class="standar_table">
+                        <thead class="standar_thead">
+                            <tr>
+                                <th class="theader">
+                                    #</th>
+                                <th class="theader">
+                                    Nombre de
+                                    Usuario</th>
+                                <th class="theader">
+                                    Email
+                                </th>
+                                <th class="theader">
+                                    Roles
+                                </th>
+                                <th class="theader">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            @foreach ($users as $user)
+                                <tr class="trow">
+                                    <td class="trowc"> {{ $loop->iteration }} </td>
+                                    <td class="trowc"> {{ $user->name }} </td>
+                                    <td class="trowc"> {{ $user->email }} </td>
+                                    <td>
+                @foreach ($user->roles as $role)
+                    {{ $role->name }}
+            </td>
+                                    <td class="trowc">
+                                        <button class="show-modal-view" data-target="#show{{ $user->id }}">
+                                            <div class="comment-icon flex items-center justify-center">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </div>
+                                        </button>
+                                        <button class="show-modal4" data-target="#edit{{ $user->id }}">
+                                            <div class="comment-icon flex items-center justify-center">
+                                                <i class="bi bi-pencil-square" style="color: blue;"></i>
+                                            </div>
+                                        </button>
 
                             <button class="show-modal" data-target="#delete{{$user->id}}">
                                 <div class="comment-icon flex items-center justify-center">
@@ -168,28 +166,31 @@
                 </div>
 
 
-                <div class="modal-container">
-                    @if ($errors->any())
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
-                        role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>
-                                {{ $error }}
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                        <form action="{{ route('usuarios.store') }}" method="POST" class="flex flex-col items-center">
-                            @csrf
-
-
-                            <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Nombre de usuario</label>
-                                <input type="text" name="username" class="rounded input-field">
-                            </div>
+                        <div class="modal-container">
+                            @if ($errors->any())
+                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
+                                    role="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>
+                                                {{ $error }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
+                                <form action="{{ route('usuarios.store') }}" method="POST"
+                                    class="flex flex-col items-center">
+                                    @csrf
+                                   
+                                  
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
+                                            de
+                                            usuario</label>
+                                        <input type="text" name="name" class="rounded input-field">
+                                    </div>
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
@@ -293,19 +294,19 @@
         <script>
         const modal3 = document.querySelector('.modal3');
 
-        const showModal3 = document.querySelector('.show-modal3');
-        const closeModal3 = document.querySelectorAll('.close-modal3');
+            const showModal3 = document.querySelector('.show-modal3');
+            const closeModal3 = document.querySelectorAll('.close-modal3');
 
-        showModal3.addEventListener('click', function() {
-            modal3.classList.remove('hidden')
-        })
+            showModal3.addEventListener('click', function() {
+                modal3.classList.remove('hidden')
+            })
 
-        closeModal3.forEach(close => {
-            close.addEventListener('click', function() {
-                modal3.classList.add('hidden')
+            closeModal3.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal3.classList.add('hidden')
+                });
             });
-        });
-        </script>
+            </script>
 
         <script>
         const modal4 = document.querySelector('.modal4');
@@ -322,29 +323,29 @@
             })
         })
 
-        closeModal4.forEach(close => {
-            close.addEventListener('click', function() {
-                modal4.classList.add('hidden')
+            closeModal4.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal4.classList.add('hidden')
+                });
             });
-        });
-        </script>
+            </script>
 
-        <script>
-        const modal5 = document.querySelector('.modal5');
+            <script>
+            const modal5 = document.querySelector('.modal5');
 
-        const showModal5 = document.querySelector('.show-modal5');
-        const closeModal5 = document.querySelectorAll('.close-modal5');
+            const showModal5 = document.querySelector('.show-modal5');
+            const closeModal5 = document.querySelectorAll('.close-modal5');
 
         showModal5.addEventListener('click', function() {
             modal5.classList.remove('hidden')
         })
         </script>
 
-        <script>
-        const modal6 = document.querySelector('.modal6');
+            <script>
+            const modal6 = document.querySelector('.modal6');
 
-        const showModal6 = document.querySelector('.show-modal6');
-        const closeModal6 = document.querySelectorAll('.close-modal6');
+            const showModal6 = document.querySelector('.show-modal6');
+            const closeModal6 = document.querySelectorAll('.close-modal6');
 
         showModal6.addEventListener('click', function() {
             modal6.classList.remove('hidden')

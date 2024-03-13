@@ -29,7 +29,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                             de
                             usuario</label>
-                        <input type="text" name="username" value="{{ $user->username }}" class="rounded input-field">
+                        <input type="text" name="name" value="{{ $user->name }}" class="rounded input-field">
                     </div>
 
                     <div class="mb-4">
@@ -79,8 +79,8 @@
     <div class="bg-white w-auto p-4 rounded-lg">
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
-                <h3 class="font-semibold text-lg text-gray-800">Datos del usuario:
-                    {{ $user->username }}</h3>
+                <h3 class="font-semibold text-lg text-gray-800">Datos del usuarios:
+                    {{ $user->name }}</h3>
                 <button class="close-modal-view text-gray-500 hover:text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -90,32 +90,14 @@
                 </button>
 
             </div>
-
-        </div>
-        <div class="px-4 py-4">
-            <h5 class="py-2">Nombre de Usuario: {{ $user->username }} </h5>
-            <h5 class="py-2">Email: {{ $user->email }} </h5>
-            <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
+            <div class="py-4">
+                <h5 class="py-2">Nombre de Usuario: {{ $user->name }} </h5>
+                <h5 class="py-2">Email: {{ $user->email }} </h5>
+                <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
+            </div>
         </div>
     </div>
 </div>
-<div
-            class="modal7 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
-            <div class="bg-white w-80 p-4 rounded-lg animate-customBounce">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-semibold text-lg text-gray-800">Usuario eliminado correctamente</h3>
-                </div>
-            </div>
-        </div>
-
-        <div
-            class="h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
-            <div class="bg-white w-80 p-4 rounded-lg animate-customBounce">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-semibold text-lg text-gray-800">Usuario eliminado correctamente</h3>
-                </div>
-            </div>
-        </div>
 
 <div id="delete{{$user->id}}" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-white w-86 p-4 rounded-lg animate-customBounce">
