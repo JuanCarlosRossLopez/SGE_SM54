@@ -58,7 +58,6 @@
                         <option value="president">Presidencia</option>
                         <option value="applicants">Aspirante</option>
                     </select>
-                    <p>{{ $user->id }}</p>
 
 
                     <div class="flex justify-center">
