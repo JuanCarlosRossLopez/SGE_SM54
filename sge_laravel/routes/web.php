@@ -7,6 +7,7 @@ use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use Spatie\Permission\Contracts\Role;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +101,7 @@ Route::get('/agregar', function () {
 //General
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+});
 
 
 //Equipo valier
@@ -129,6 +130,18 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
+
+
+//Prodecure de Pdfs
+
+Route::get('/test', function () {
+
+    $pdf = PDF::loadView('pdf.cartaau');
+    return $pdf->stream('cedula.pdf');
+});
+
+
+
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');
