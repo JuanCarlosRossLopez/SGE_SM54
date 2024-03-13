@@ -82,6 +82,19 @@
 }
 
 /* Boton estandar */
+.standar_button2 {
+    background-color: #1bd170;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 100%;
+    border-radius: 0.375rem;
+    color: #fff;
+    margin-left: .5rem;
+
+}
+.standar_button2:hover {
+    background-color: #128149;
+}
 .standar_button {
     background-color: #05af9b;
     padding-left: 0.5rem;

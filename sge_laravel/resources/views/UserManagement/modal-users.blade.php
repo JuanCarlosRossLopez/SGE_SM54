@@ -10,16 +10,15 @@
 
         <div class="modal-container">
             @if ($errors->any())
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
-                    role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>
-                                {{ $error }}
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
             <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
                 <form action="{{ url('usuarios', $user->id) }}" method="POST" class="flex flex-col items-center">
@@ -77,10 +76,10 @@
 
 <div id="show{{ $user->id }}"
     class="modal-view h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-    <div class="bg-white w-96 p-4 rounded-lg">
+    <div class="bg-white w-auto p-4 rounded-lg">
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
-                <h3 class="font-semibold text-lg text-gray-800">Datos del usuarios:
+                <h3 class="font-semibold text-lg text-gray-800">Datos del usuario:
                     {{ $user->username }}</h3>
                 <button class="close-modal-view text-gray-500 hover:text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -89,33 +88,55 @@
                         </path>
                     </svg>
                 </button>
+
             </div>
-            <div class="py-4">
-                <h5 class="py-2">Nombre de Usuario: {{ $user->username }} </h5>
-                <h5 class="py-2">Email: {{ $user->email }} </h5>
-                <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
-            </div>
+
+        </div>
+        <div class="px-4 py-4">
+            <h5 class="py-2">Nombre de Usuario: {{ $user->username }} </h5>
+            <h5 class="py-2">Email: {{ $user->email }} </h5>
+            <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
         </div>
     </div>
 </div>
+<div
+            class="modal7 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+            <div class="bg-white w-80 p-4 rounded-lg animate-customBounce">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-lg text-gray-800">Usuario eliminado correctamente</h3>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+            <div class="bg-white w-80 p-4 rounded-lg animate-customBounce">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-semibold text-lg text-gray-800">Usuario eliminado correctamente</h3>
+                </div>
+            </div>
+        </div>
 
 <div id="delete{{$user->id}}" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-    <div class="bg-white w-96 p-4 rounded-lg">
+    <div class="bg-white w-86 p-4 rounded-lg animate-customBounce">
         <div class="flex justify-between items-center">
+
+            <h3 class="font-semibold text-center text-lg text-gray-800">¿Realmente desea eliminar al usuario:
+                {{$user->username}}?</h3>
+        </div>
+        <div class="flex justify-center items-center">
         <form action="{{url('usuarios', $user->id)}}" method="POST">
             @csrf
             @method('DELETE')
-            <h3 class="font-semibold text-lg text-gray-800">¿Realmente desea eliminar al usuario: {{$user->username}}?</h3>
-        </div>
-        
-            <button type="submit">
-                si
-            </button>
-
-            <a href="" type="button" class="close-modal">
-                No
-            </a>
+        <button
+            class="close-modal bg-emerald-600 hover:bg-emerald-500 rounded-lg px-2 py-2 m-2 transition delay-150 duration-300 ease-in-out">
+            si
+        </button>
         </form>
+            <button class="close-m bg-red-600 hover:bg-red-500 rounded-lg px-2 py-2">
+                No
+            </button>
+        </div>
     </div>
 
 </div>
