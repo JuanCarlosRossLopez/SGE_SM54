@@ -30,14 +30,14 @@
     <div class="w-fit flex flex-row fixed" id="sidebar">
         <div class="bg-[#2F4050] fixed flex mr-auto">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
-            <button class="text-gray-300 hover:text-white transition-all text-2xl" onclick="ocultarMenu()">
+            <button class="text-gray-300 w-full hover:text-white transition-all text-2xl" onclick="ocultarMenu()">
                 <i class="fa-solid fa-bars p-2"></i>
             </button>
         </div>
         <div class="sidebar_background">
             <div>
                 <a>
-                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] " onclick="location.href='/'">
+                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
                 </a>
                 <ul class="flex flex-col justify-between">
 
@@ -134,9 +134,9 @@
     </div>
 
     <div class="content_main_footer" id="content_main_expand">
-        <main class="main">
+        <main class="main_collapse">
             <div class="flex justify-left">
-                <div class="w-screen h-full">
+                <div class="">
                     @yield('contenido')
                 </div>
             </div>

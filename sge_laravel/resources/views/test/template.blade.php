@@ -7,7 +7,8 @@
 
     <title>@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @vite('resources/css/app.css')
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,8 +16,8 @@
     <link href="{{ asset('css/font.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/progress.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="w- flex flex-col overflow-x-hidden">
@@ -38,11 +39,45 @@
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
                         <li>
+                            <a href="/panel_admin" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Admin
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Dashboard_Direccion" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Dirección
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="buttons_sidebar ">
+                                <i class="fa-solid fa-school"></i>
+                                Inicio Coordinación
+                            </a>
+                        <li>
+                        <li>
+                            <a href="/dashboard-presidencial" class="buttons_sidebar ">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Presidente
+                            </a>
+                        <li>
+                        <li>
+                            <a href="/dashboard_asesor" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Asesor
+                            </a>
+                        </li>
+                        <li>
                             <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Inicio
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Estudiante
                             </button>
                         </li>
+
+
+
+
                         <li>
                             <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
                                 <i class="fa-solid fa-school"></i></i>
@@ -63,34 +98,11 @@
                                 Alumnos asesorados
                             </a>
                         </li>
-                        <li>
-                            <a href="/dashboard_asesor" class="buttons_sidebar">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Asesor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/panel_admin" class="buttons_sidebar">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Admin
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Dashboard_Direccion" class="buttons_sidebar">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Dirección
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/dashboard-presidencial" class="buttons_sidebar ">
-                                <i class="fa-solid fa-school"></i>
-                                Inicio Presidente
-                            </a>
-                        <li>
-                            <a href="/historial-memorias" class="buttons_sidebar">
-                                <i class="fa-solid fa-landmark"></i>
-                                Historial de memorias
-                            </a>
+
+                        <a href="/historial-memorias" class="buttons_sidebar">
+                            <i class="fa-solid fa-landmark"></i>
+                            Historial de memorias
+                        </a>
                         </li>
                         <li>
                             <a href="/informes" class="buttons_sidebar ">
