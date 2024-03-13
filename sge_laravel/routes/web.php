@@ -7,6 +7,7 @@ use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\Students\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,8 @@ Route::get('/agregar', function () {
     return view('registro');
 })->name('registro');
 
+
+Route::resource('estudiantes', StudentsController::class);
 
 
 //General
