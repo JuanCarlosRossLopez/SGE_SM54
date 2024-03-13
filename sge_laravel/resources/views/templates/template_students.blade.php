@@ -52,7 +52,7 @@
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
                         <li>
-                            <button onclick="location.href='/'"
+                            <button onclick="location.href='/dashboard_alumno'"
                                 class="buttons_sidebar text-[#c8c8c8] w-full flex flex-row align-items-center items-center gap-2 transition-all hover:bg-[#4D6781] hover:text-white hover:scale-110 hover:w-[96%]">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio
@@ -103,20 +103,21 @@
         </div>
     </div>
 
-    <main class="w-full pl-8">
-        <div class="flex justify-left">
-            <div class="w-full m-4">
-                @yield('contenido')
-
-                @yield('formulario')
+    <div class="flex flex-col justify-between h-screen">
+        <main class="w-screen overflow-x-hidden mb-4">
+            <div class="flex justify-left">
+                <div class="w-full h-full">
+                    @yield('contenido')
+                </div>
             </div>
-        </div>
-    </main>
-    <footer class="absolute bottom-0 left-7 inset-y-full inset-x-3/4">
-        <div class="container">
-            <p class="text-gray-700"></p>
-        </div>
-    </footer>
+        </main>
+        <footer class="w-screen pl-12 bottom-0">
+            <div>
+                <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
+            </div>
+        </footer>
+    </div>
+
 </body>
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: Valier , estan bien att:Wilberth-->
