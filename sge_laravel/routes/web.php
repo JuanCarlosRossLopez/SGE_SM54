@@ -21,15 +21,10 @@ use App\Http\Controllers\Students\StudentsController;
 */
 
 
-<<<<<<< HEAD
 Route::get('/plantilla', function () {
     return view('test.test_standars');
 });
 
-//Mision, vision, valores
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //Dashboard Asesor
 Route::get('/dashboard_asesor', function () {
@@ -46,13 +41,11 @@ Route::get('/dashboard_asesor', function () {
 Route::get('/anteproyecto', function () {
     return view('students.anteproyecto');
 })->name('anteproyecto');
-=======
 Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');})->name('perfil_profesor');
 Route::get('/Perfil_Student', function () {return view('students.userStudent');})->name('perfil_estudiante');
 Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
 Route::get('/registro', function (){return view ('registro');});
 Route::get('/DashboardD', function (){return view ('dashDireccion');});
->>>>>>> origin/angel
 
 
 
