@@ -45,20 +45,20 @@
                     </div>
 
 
-                        <p>
+                    <p>
 
-                        </p>
-                        <select  name="role" id="" class="rounded">
-                       
-                            <option value="{{ $role->name }}">Seleciona un rol</option>
-                            <option value="student">Alumno</option>
-                            <option value="teacher">Maestro</option>
-                            <option value="admin">Administrador</option>
-                            <option value="coordination">Coordinación</option>
-                            <option value="president">Presidencia</option>
-                            <option value="applicants">Aspirante</option>
-                        </select>
-                        <p>{{ $user->id }}</p>
+                    </p>
+                    <select name="role" id="" class="rounded">
+
+                        <option value="{{ $role->name }}">Seleciona un rol</option>
+                        <option value="student">Alumno</option>
+                        <option value="teacher">Maestro</option>
+                        <option value="admin">Administrador</option>
+                        <option value="coordination">Coordinación</option>
+                        <option value="president">Presidencia</option>
+                        <option value="applicants">Aspirante</option>
+                    </select>
+                    <p>{{ $user->id }}</p>
 
 
                     <div class="flex justify-center">
@@ -81,9 +81,9 @@
     <div class="bg-white w-96 p-4 rounded-lg">
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
-                <h3 class="  font-semibold text-lg text-gray-800">Datos del usuarios:
-                    {{ $user->name_user }}</h3>
-                <button class="close-modal text-gray-500 hover:text-gray-700">
+                <h3 class="font-semibold text-lg text-gray-800">Datos del usuarios:
+                    {{ $user->username }}</h3>
+                <button class="close-modal-view text-gray-500 hover:text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
@@ -92,9 +92,6 @@
                 </button>
             </div>
             <div class="py-4">
-                <h5 class="py-2">Nombre: {{ $user->name_user }} </h5>
-
-                <h5 class="py-2">Apellidos: {{ $user->lastname_user }} </h5>
                 <h5 class="py-2">Nombre de Usuario: {{ $user->username }} </h5>
                 <h5 class="py-2">Email: {{ $user->email }} </h5>
                 <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
@@ -103,27 +100,22 @@
     </div>
 </div>
 
-<div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div id="delete{{$user->id}}" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-white w-96 p-4 rounded-lg">
         <div class="flex justify-between items-center">
-            <h3 class="font-semibold text-lg text-gray-800">¿Realmente desea eliminar este usuario?</h3>
-            <button class="close-modal text-gray-500 hover:text-gray-700">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+        <form action="{{url('usuarios', $user->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <h3 class="font-semibold text-lg text-gray-800">¿Realmente desea eliminar al usuario: {{$user->username}}?</h3>
         </div>
-
-        <form >
-            <button>
+        
+            <button type="submit">
                 si
             </button>
 
-        <button>
-            No
-        </button>
+            <a href="" type="button" class="close-modal">
+                No
+            </a>
         </form>
     </div>
 

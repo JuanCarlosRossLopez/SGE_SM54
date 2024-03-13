@@ -113,8 +113,7 @@
                                             </div>
                                         </button>
 
-                                        <button class="show-modal">
-
+                                        <button class="show-modal" data-target="#delete{{$user->id}}">
                                             <div class="comment-icon flex items-center justify-center">
                                                 <i class="bi bi-trash" style="color: red;"></i>
                                             </div>
@@ -213,13 +212,25 @@
 
 
                 <script>
-                    const modal = document.querySelector('.modal');
-                    const showModal = document.querySelector('.show-modal');
-                    // const closeModal = document.querySelectorAll('.close-modal');
+                    const modalDelete = document.querySelector('.modal');
+                    const showModalDelete = document.querySelectorAll('.show-modal');
+                    const closeModalDelete = document.querySelectorAll('.close-modal');
 
-                    showModal.addEventListener('click', function() {
-                        modal.classList.remove('hidden')
+                    showModalDelete.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault()
+                            const modalId = button.dataset.target
+                            const modal = document.querySelector(modalId)
+                            modal.classList.remove('hidden')
+                            console.log(modal)
+                        })
                     })
+
+                    closeModalDelete.forEach(close => {
+                        close.addEventListener('click', function() {
+                            modalDelete.classList.add('hidden')
+                        });
+                    });
 
                     // closeModal.forEach(closeModal => {
                     //     closeModal.addEventListener('click', (e) => {
@@ -231,8 +242,8 @@
                 </script>
                 <script>
                     const modalview = document.querySelectorAll('.modal-view');
-                    const closeModalview = document.querySelectorAll('.close-modal');
                     const showModalview = document.querySelectorAll('.show-modal-view');
+                    const closeModalview = document.querySelectorAll('.close-modal-view');
 
                     showModalview.forEach(button => {
                         button.addEventListener('click', (e) => {
@@ -280,7 +291,6 @@
 
                 <script>
                     const modal4 = document.querySelector('.modal4');
-
                     const showModal4 = document.querySelectorAll('.show-modal4');
                     const closeModal4 = document.querySelectorAll('.close-modal4');
 
@@ -293,6 +303,12 @@
                             console.log(modal)
                         })
                     })
+
+                    closeModal4.forEach(close => {
+                        close.addEventListener('click', function() {
+                            modal4.classList.add('hidden')
+                        });
+                    });
                 </script>
 
                 <script>

@@ -120,6 +120,6 @@ if($role) {
         $user = User::find($id);
         $user->delete();
 
-        return redirect("usuarios")->with('notificacion', "Usuario editado correctamente");
+        return redirect("usuarios")->with('notificacion', "Usuario eliminado correctamente");
     }
 }
