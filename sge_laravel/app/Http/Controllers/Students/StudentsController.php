@@ -15,7 +15,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::all();
+        $students = Students::paginate(10);
         return view('students.manager_student', compact('students'));
     }
 
