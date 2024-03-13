@@ -29,6 +29,7 @@
                         <i class="fas fa-search text-gray-500"></i>
                     </button>
                     <input type="text" class="search_input" placeholder="Buscar..." />
+                    
                 </div>
                 <div class="search_button_conteiner">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
@@ -57,12 +58,10 @@
                                 <td class="text-center border-b">        
                                     <a href="{{ route('estudiantes.show' , $student->id) }}" class="text-blue-500">Ver</a>
                                     <a href="{{ route('estudiantes.edit' , $student->id) }}" class="text-yellow-500">Editar</a>
+                                    <button onclick="showConfirmationModal({{ $student->id }})" class="text-red-500 show-modal">Eliminar</button>
                                     <form id="deleteForm{{$student->id}}" action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <div>
-                                            <button type="button" onclick="showConfirmationModal({{$student->id}})" class="text-red-500">Eliminar</button>
-                                        </div>
                                     </form>
                                 </td>
                             </tr>
@@ -81,100 +80,50 @@
                     </div>
                 </div>
             </div>
-                                    <script>
-                            let studentIdToDelete;
-                        
-                            function showConfirmationModal(studentId) {
-                                studentIdToDelete = studentId;
-                                const modal = document.getElementById('confirmationModal');
-                                modal.classList.remove('hidden');
-                            }
-                        
-                            function hideConfirmationModal() {
-                                const modal = document.getElementById('confirmationModal');
-                                modal.classList.add('hidden');
-                            }
-                        
-                            function deleteStudent() {
-                                const form = document.getElementById('deleteForm' + studentIdToDelete);
-                                form.submit();
-                            }
-                        </script>
-
-
-
-            <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-            <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-                <div>
-                    <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        < </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                1
-                            </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                2
-                            </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                3
-                            </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                >
-                            </button>
-                </div>
-                <div>
-                    <span>Cantidad de registros :</span>
-                    <span id="rowCount"></span>
-                </div>
-            </div>
+       <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
+       <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
+        <div>
+            <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
+                < </button>
+                    <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                        1
+                    </button>
+                    <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                        2
+                    </button>
+                    <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                        3
+                    </button>
+                    <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
+                        >
+                    </button>
+        </div>
+        <div>
+            <span>Cantidad de registros :</span>
+            <span id="rowCount"></span>
         </div>
     </div>
+</div>
+</div>
+
 
     <script>
-        //Lo hizo roto, es un contador
-        const tableBody = document.querySelector('tbody');
-        const rowCount = tableBody.querySelectorAll('tr').length;
-        document.getElementById('rowCount').textContent = rowCount;
-        const modal = document.querySelector('.modal');
-
-        //Funcionamiento de modal
-        const showModal = document.querySelector('.show-modal');
-        const closeModal = document.querySelectorAll('.close-modal');
-
-        showModal.addEventListener('click', function() {
-            modal.classList.remove('hidden')
-        })
-
-        closeModal.forEach(close => {
-            close.addEventListener('click', function() {
-                modal.classList.add('hidden')
-            })
-        })
-
-        function showConfirmationModal(id) {
-            // Show modal
+        let studentIdToDelete;
+                        
+        function showConfirmationModal(studentId) {
+            studentIdToDelete = studentId;
+            const modal = document.getElementById('confirmationModal');
             modal.classList.remove('hidden');
-            // Set up delete form action
-            const deleteForm = document.getElementById('deleteForm' + id);
-            deleteForm.action = "{{ route('estudiantes.destroy', '') }}" + "/" + id;
         }
-        const showModalButtons = document.querySelectorAll('.show-modal');
-
-                showModalButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                modal.classList.remove('hidden');
-          });
-         });
-
+                        
+        function hideConfirmationModal() {
+            const modal = document.getElementById('confirmationModal');
+            modal.classList.add('hidden');
+        }
+                        
         function deleteStudent() {
-            // Submit form for deletion
-            const deleteForm = document.querySelector('form[id^="deleteForm"]');
-            deleteForm.submit();
+            const form = document.getElementById('deleteForm' + studentIdToDelete);
+            form.submit();
         }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
 @endsection
