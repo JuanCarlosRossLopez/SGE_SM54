@@ -1,137 +1,179 @@
-@extends('test.template')
-
-@section('title') 
-Dashboard dirección 
+@extends('test.test_template')
+@section('titulo')
+    Panel de control administrador
 @endsection
-
-
 @section('contenido')
-<div class="back_conteiner">
-  <div class="top_conteiner">
-      <label>Bienvenido(a) Director(a)</label>
-      <label>
-          <!-- Este svg es el icono -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-8 h-8">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
-          </svg>
-      </label>
-  </div>
+    <div class="back_conteiner">
+        <div class="top_conteiner">
+            <label>Dashboard administrador</label>
+            <label>
+                <!-- Este svg es el icono -->
+                <i class="fa-solid fa-user-tie"></i>
+            </label>
+        </div>
+        <div class=" conteiner_cards">
+            <div class="conteiner_cards1 flex flex-col w-fit">
+                <div class="content_conteiner w-fit h-fit">
+                    <label class="conteiner_word_title flex flex-col items-center">Visualizacion de Informacion</label>
+                    <div class="conteiner_cards2 ">
+                        <!-- Panel 1 -->
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">ASESORES ACADEMICOS</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
+                            </div>
+                            <div>
+                            <button class="action-button">VISUALIZAR</button>
+                            </div>
+                        </div>
 
-  <div class="content_conteiner">
-      <div class="flex flex-row items-center gap-2">
-          <label class="conteiner_word_title">Si tiene un subtema tu vista ponlo aqui</label>
-          <label id="infoButton" class="cursor-pointer mt-3"
-              data-tooltip="Recomiendo ponerle una descripción a la vista">
-              <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
-          </label>
-      </div>
+                        <!-- Panel 2 -->
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
+                                    Estudiantes</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
+                            </div>
+                            <div>
+                            <button class="action-button">VISUALIZAR</button>
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
+                                    Presidencia</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
+                            </div>
+                            <div>
+                            <button class="action-button">VISUALIZAR</button>
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
+                                    Cordinacion</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Asignar asesores</label>
+                            </div>
+                            <div>
+                            <button class="action-button">VISUALIZAR</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
 
-      <label>De aqui en adelante puedes trabajar 🚬</label>
-      <!-- Aqui va todo lo que esta en tu vista -->
-  
+                <!-- Graficas -->
+                <div class="content_conteiner gap-0 w-full h-fit">
+                    <label class="conteiner_word_title w-full flex flex-col items-center">Graficas</label>
+                    <div class="conteiner_cards w-full">
+                        <!-- Panel 1 -->
+                        <div class="bg-white  rounded">
+                            <div class="line-chart-container">
+                                <h1>AVANCE DE LOS ALUMNOS</h1>
+                                <canvas id="line-chart" width="800" height="600"></canvas> <!-- Ajusta el tamaño del lienzo aquí -->
+                            </div>
+                        </div>
+                        <div class="bg-white w-fit h-fit p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-sm text-start w-full">Descripciones</label>
+                            </div>
+                        </div>
+                  
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progresos -->
+            <div class="content_conteiner h-fit p-1 w-fit md:ml-[-2.5rem] sm:ml-0">
+                <div class="flex flex-col gap-1">
+                    <label class="conteiner_word_title  h-fit flex flex-col items-center">Progresos</label>
+                    
+                    <div class="bg-white p-3 rounded">
+            <div class="flex flex-col items-center">
+                <div class="progress-item">
+                    <label class="font-semibold font-poppins text-base">PROGRESO DE PROYECTOS</label>
+                    <svg width="190" height="190" class="progress-chart">
+                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none"></circle>
+                        <circle cx="85" cy="85" r="80" class="progress-front" fill="none" stroke-dasharray="0 1000000"></circle>
+                        <g class="progress-text">
+                        <text x="92" y="88" alignment-baseline="middle" text-anchor="middle" id="percentage">0%</text>
+                        </g>
+                    </svg>
+                    <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-3 rounded">
+            <div class="flex flex-col items-center">
+                <div class="progress-item">
+                    <label class="font-semibold font-poppins text-base">PROGRESO DE PROYECTOS</label>
+                    <svg width="190" height="190" class="progress-chart">
+                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none"></circle>
+                        <circle cx="85" cy="85" r="80" class="progress-front2" fill="none" stroke-dasharray="0 1000000"></circle>
+                        <g class="progress-text">
+                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle" id="percentage2">0%</text>
+                        </g>
+                    </svg>
+                    <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-3 rounded">
+            <div class="flex flex-col items-center">
+                <div class="progress-item">
+                    <label class="font-semibold font-poppins text-base">ESTADIAS FINALIZADAS</label>
+                    <svg width="190" height="190" class="progress-chart">
+                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none"></circle>
+                        <circle cx="85" cy="85" r="80" class="progress-front3" fill="none" stroke-dasharray="0 1000000"></circle>
+                        <g class="progress-text">
+                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle" id="percentage3">0%</text>
+                        </g>
+                    </svg>
+                    <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                </div>
+            </div>
+        </div>
+                </div>
+             
+
+            </div>
+        </div>
 
 
-<!-- De aqui para abajo es tu vista -->
-<div class="content-wrapper">
-  <div class="container">  
 
-  <div class="progress-container flex flex-row">
-    <!-- Círculos de progreso -->
-    <div class="progress-box flex flex-col items-center">
-      <h2>PROGRESO DE ANTEPROYECTOS </h2>
-      <div class="progress-item h-fit w-fit">
-        <svg width="190" height="190" class="progress-chart">
-          <circle cx="85" cy="85" r="80" class="progress-back" fill="none"></circle>
-          <circle cx="85" cy="85" r="80" class="progress-front" fill="none" stroke-dasharray="0 1000000"></circle>
-          <g class="progress-text">
-            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle" id="percentage">0%</text>
-          </g>
-        </svg>
-      </div>
-      <button class="Button-progress">VISUALIZAR</button>
+
     </div>
+    <script src="{{ asset('js/progress.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('js/line-chart.js') }}"></script>
 
-    <!--Segundo círculo de progreso -->
-    <div class="progress-box flex flex-col items-center">
-      <h2>PROGRESO DE PROYECTOS</h2>
-      <div class="progress-item">
-        <svg width="190" height="190" class="progress-chart">
-          <circle cx="85" cy="85" r="80" class="progress-back" fill="none"></circle>
-          <circle cx="85" cy="85" r="80" class="progress-front2" fill="none" stroke-dasharray="0 1000000"></circle>
-          <g class="progress-text">
-            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle" id="percentage2">0%</text>
-          </g>
-        </svg>
-      </div>
-      <button class="Button-progress">VISUALIZAR</button>
-    </div>
-
-    <!-- Tercer círculo de progreso -->
-    <div class="progress-box flex flex-col items-center">
-      <h2>ESTADIAS FINALIZADAS</h2>
-      <div class="progress-item ">
-        <svg width="190" height="190" class="progress-chart">
-          <circle cx="85" cy="85" r="80" class="progress-back" fill="none"></circle>
-          <circle cx="85" cy="85" r="80" class="progress-front3" fill="none" stroke-dasharray="0 1000000"></circle>
-          <g class="progress-text">
-            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle" id="percentage3">0%</text>
-          </g>
-        </svg>
-      </div>
-      <button class="Button-progress">VISUALIZAR</button>
-    </div>
-  </div>
-
-  <!-- Cuadrados con título, icono y botón -->
-<div class="action-boxes">
-  <div class="action-box">
-    <h2>HISTORIAL DE MEMORIAS</h2>
-    <div class="button-wrapper">
-      <i class="bi bi-journal-bookmark"></i>
-      <button class="action-button">VISUALIZAR</button>
-    </div>
-  </div>
-  <div class="action-box">
-    <h2>PROYECTOS FINALIZADOS</h2>
-    <div class="button-wrapper">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-40 h-40">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
-    </svg>
-      <button class="action-button">VISUALIZAR</button>
-    </div>
-  </div>
-  <div class="action-box">
-    <h2>PROYECTOS APROBADOS</h2>
-    <div class="button-wrapper">
-    <i class="bi bi-patch-check"></i>
-      <button class="action-button">VISUALIZAR</button>
-    </div>
-  </div>
-  <div class="action-box">
-    <h2>ASESORES ACADEMICOS</h2>
-    <div class="button-wrapper">
-      <i class="bi bi-people-fill"></i>
-      <button class="action-button">VISUALIZAR</button>
-    </div>
-  </div>
-</div>
-
-  <div class="line-chart-container">
-    <h3>AVANCE DE LOS ALUMNOS</h3>
-    <canvas id="line-chart"></canvas>
-  </div>
-
-</div>
-</div>
-</div>
-</div>
-  <script src="{{ asset('js/progress.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="{{ asset('js/line-chart.js') }}"></script>
-</body>
-</html>
+    <script>
+        // Desplaza automáticamente hacia abajo al cargar la página
+        window.onload = function() {
+            var container = document.querySelector('.content_conteiner');
+            container.scrollTop = container.scrollHeight;
+        };
+    </script>
 @endsection

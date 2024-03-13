@@ -7,8 +7,7 @@
 
     <title>@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @vite('resources/css/app.css')
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,22 +15,29 @@
     <link href="{{ asset('css/font.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/progress.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body class="w- flex flex-col overflow-x-hidden">
+<body class="w-full flex flex-col overflow-x-hidden">
 
     <div class="bg-[#2F4050] w-fit min-h-screen fixed flex items-start">
         <button class="text-gray-300 hover:text-white transition-all text-2xl w-fit" onclick="mostrarMenu()">
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    <div class="w-screen flex flex-row fixed" id="sidebar">
+    
+    <div class="w-fit flex flex-row fixed" id="sidebar">
+        <div class="bg-[#2F4050] fixed flex mr-auto">
+            <!--lo puse negro xq se ve mejor atte: jotomar -->
+            <button class="text-gray-300 w-full hover:text-white transition-all text-2xl" onclick="ocultarMenu()">
+                <i class="fa-solid fa-bars p-2"></i>
+            </button>
+        </div>
         <div class="sidebar_background">
             <div>
-                <a href="/">
-                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="">
+                <a>
+                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
                 </a>
                 <ul class="flex flex-col justify-between">
 
@@ -39,45 +45,11 @@
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
                         <li>
-                            <a href="/panel_admin" class="buttons_sidebar">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Admin
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Dashboard_Direccion" class="buttons_sidebar">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Dirección
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="buttons_sidebar ">
-                                <i class="fa-solid fa-school"></i>
-                                Inicio Coordinación
-                            </a>
-                        <li>
-                        <li>
-                            <a href="/dashboard-presidencial" class="buttons_sidebar ">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Presidente
-                            </a>
-                        <li>
-                        <li>
-                            <a href="/dashboard_asesor" class="buttons_sidebar">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Asesor
-                            </a>
-                        </li>
-                        <li>
                             <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Inicio Estudiante
+                                <i class="fa-solid fa-school"></i></i>
+                                Inicio
                             </button>
                         </li>
-
-
-
-
                         <li>
                             <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
                                 <i class="fa-solid fa-school"></i></i>
@@ -98,11 +70,34 @@
                                 Alumnos asesorados
                             </a>
                         </li>
-
-                        <a href="/historial-memorias" class="buttons_sidebar">
-                            <i class="fa-solid fa-landmark"></i>
-                            Historial de memorias
-                        </a>
+                        <li>
+                            <a href="/dashboard_asesor" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Asesor
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/panel_admin" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Admin
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Dashboard_Direccion" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Dirección
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dashboard-presidencial" class="buttons_sidebar ">
+                                <i class="fa-solid fa-school"></i>
+                                Inicio Presidente
+                            </a>
+                        <li>
+                            <a href="/historial-memorias" class="buttons_sidebar">
+                                <i class="fa-solid fa-landmark"></i>
+                                Historial de memorias
+                            </a>
                         </li>
                         <li>
                             <a href="/informes" class="buttons_sidebar ">
@@ -135,18 +130,13 @@
             </div>
 
         </div>
-        <div class="sidebar_active">
-            <!--lo puse negro xq se ve mejor atte: jotomar -->
-            <button class="button_hide_sidebar" onclick="ocultarMenu()">
-                <i class="fa-solid fa-angle-left"></i>
-            </button>
-        </div>
+
     </div>
 
-    <div class="content_main_footer">
-        <main class="main">
+    <div class="content_main_footer" id="content_main_expand">
+        <main class="main_collapse">
             <div class="flex justify-left">
-                <div class="w-screen h-full">
+                <div class="">
                     @yield('contenido')
                 </div>
             </div>
@@ -170,12 +160,21 @@
     function ocultarMenu() {
         var div = document.getElementById("sidebar")
         div.classList.add("hidden")
+
+        var content = document.getElementById("content_main_expand")
+        content.classList.add("main_expand")
+        content.classList.remove("main_collapse")
     }
 
     function mostrarMenu() {
         var div = document.getElementById("sidebar")
         div.classList.remove("hidden")
+
+        var content = document.getElementById("content_main_expand")
+        content.classList.remove("main_expand")
+        content.classList.add("main_collapse")
     }
 </script>
+
 
 </html>
