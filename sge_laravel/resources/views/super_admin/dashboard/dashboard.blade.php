@@ -327,25 +327,6 @@ Panel de control administrador
 <script src="{{ asset('js/line-chart.js') }}"></script>
 <s ript></script>
     <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {}
-        });
-    </script>
-
-    <script>
         // Desplaza automáticamente hacia abajo al cargar la página
         window.onload = function() {
             var container = document.querySelector('.content_conteiner');

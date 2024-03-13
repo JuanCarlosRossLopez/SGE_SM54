@@ -10,6 +10,7 @@ use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
 use Spatie\Permission\Contracts\Role;
 use App\Http\Controllers\Projects_management\Projects_managementController;
+use App\Http\Controllers\Students\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,12 @@ use App\Http\Controllers\Projects_management\Projects_managementController;
 */
 
 
-Route::get('/Perfil_Maestro', function () {return view('teachers.userTeacher');})->name('perfil_maestro');
+Route::get('/Perfil_Maestro', function () {return view('teachers.userTeacher');})->name('perfil_profesor');
 Route::get('/Perfil_Estudiante', function () {return view('students.userStudent');})->name('perfil_estudiante');
 Route::get('/Perfil_Administrador', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
+Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');})->name('perfil_maestro');
+Route::get('/Perfil_Student', function () {return view('students.userStudent');})->name('perfil_estudiante');
+Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
 Route::get('/registro', function (){return view ('registro');});
 Route::get('/Dashboard_Direccion', function (){return view ('dashDireccion');});
 
@@ -97,6 +101,8 @@ Route::get('/agregar', function () {
     return view('registro');
 })->name('registro');
 
+
+Route::resource('estudiantes', StudentsController::class);
 
 
 //General

@@ -20,10 +20,6 @@ class StudentsFactory extends Factory
             'student_name' => $this->faker->name,
             'id_student' => $this->faker->randomNumber(8),
             'project_creator' => $this->faker->boolean(),
-            'user_id' => $this->faker->unique()->randomNumber(1),
-                
-            
-        
         ];
     }
 }
