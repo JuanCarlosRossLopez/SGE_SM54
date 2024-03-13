@@ -314,6 +314,19 @@
     gap: 0.7rem;
     justify-content: space-between;
 }
+.conteiner_cards1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: space-between;
+}
+.conteiner_cards2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.7rem;
+    justify-content: space-between; 
+}
+
 
 @media (max-width: 768px) {
     .conteiner_cards {
