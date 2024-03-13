@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenido')
-    <div class="back_conteiner">
+    <div class=" w-[1220px] mx-[70px]">
         <div class="top_conteiner">
             <label>Cédula de Anteproyecto</label>
             <label>
