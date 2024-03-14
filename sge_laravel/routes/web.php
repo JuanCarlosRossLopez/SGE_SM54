@@ -139,20 +139,30 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
+
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');
-
 Route::get('/descarga_informes', function () {
     return view('report_generation.student_download');
 });
-Route::get('/informes', function(){ 
+Route::get('/informes', function(){
     return view('report_generation.teacher_generation');
 });
-
-Route::get('/pdf_muestra', function () {
-    return view('report_generation.pdf_cedula');
+// Route::get('/pdf_muestra', function () {
+//     return view('report_generation.pdf_cedula');
+// });
+Route::get('/dashboard_coordinacion', function () {
+    return view('coordination.dashboard_coordination');
 });
+Route::get('/libros', function () {
+    return view('coordination.books_table');
+});
+
+Route::get('/registro_libros', function () {
+    return view('report_generation.form_books');
+});
+
 //End equipo dano
 
 #RUTAS EQUIPO YAHIR
@@ -178,10 +188,10 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     // equipo rocha
-    Route::resource('roles',RoleController::class);
     //End equipo rocha
 
 });
+Route::resource('roles',RoleController::class);
 
 Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');

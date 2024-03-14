@@ -133,7 +133,7 @@
     border-color: #01a080;
 }
 
-/*Buttons sidebars*/
+/* /Buttons sidebars/ */
 .buttons_sidebar {
     color: #c8c8c8;
     width: 100%;
@@ -224,7 +224,7 @@
     overflow-y: auto;
 }
 
-/*Main*/
+/* /Main/ */
 .main {
     width: 100vw;
     overflow-x: none;
@@ -240,7 +240,7 @@
     text-align: center;
 }
 
-/*Contenedor donde esta main y footer*/
+/* /Contenedor donde esta main y footer/ */
 .content_main_footer {
     display: flex;
     flex-direction: column;

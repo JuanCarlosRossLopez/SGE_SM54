@@ -89,10 +89,17 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/dashboard_coordinacion" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio coordinación
+                            </a>
+                        </li>
+                        <li>
                             <a href="/dashboard-presidencial" class="buttons_sidebar ">
                                 <i class="fa-solid fa-school"></i>
                                 Inicio Presidente
                             </a>
+                        </li>
                         <li>
                             <a href="/historial-memorias" class="buttons_sidebar">
                                 <i class="fa-solid fa-landmark"></i>
@@ -105,16 +112,24 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/descarga_informe" class="buttons_sidebar ">
+                                <i class="fa-solid fa-file"></i> Generacion de informes
+                            </a>
+                        </li>
+                        <li>
                             <a href='/Perfil_Estudiante' class="buttons_sidebar">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </a>
-
                         </li>
                         <li>
                             <a class="buttons_sidebar" href="/roles">
                                 <i class="fa-solid fa-cog "></i>
                                 Asignación de roles
+                            </a>
+                            <a class="buttons_sidebar" href="estudiantes">
+                                <i class="fa-solid fa-address-card "></i>
+                                Estudiantes
                             </a>
                         </li>
                     </div>

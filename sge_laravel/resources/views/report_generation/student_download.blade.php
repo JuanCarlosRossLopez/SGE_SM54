@@ -1,5 +1,5 @@
-@extends('templates.template_teacher')
-@section('titulo')
+@extends('test.test_template')
+@section('title')
     Descargas
 @endsection
 
@@ -8,7 +8,7 @@
 
 
         <div class="top_conteiner">
-            <label>Generación de informes</label>
+            <label>Descarga de archivos</label>
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
@@ -44,7 +44,7 @@
                         <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Autorización Digitalización</h3>
                         <div class="">
                             <button type="button"
-                                class="group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
+                                class="group flex flex-row items-center gap-2 show-modal1 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
                                 Descargar en
                                 <img src="{!! asset('img/icon_pdf.png') !!}"
                                     class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Separacion -->
                 <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#2F4050]  flex flex-col">
                     <div class="w-full flex flex-col items-center gap-3">
@@ -76,7 +76,7 @@
             <div class="border-b px-4 py-2 flex justify-content-end">
                 <button class="close-modal">
                     <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full"
-                            style="color: #c97979;"></i></p>
+                            style="color: #d50101;"></i></p>
                 </button>
             </div>
             <div class="bg-white p-2 rounded-b-2xl">
@@ -96,23 +96,28 @@
 
     <script>
         const modal = document.querySelector('.modal');
-
         const showModal1 = document.querySelector('.show-modal1');
-        const showModal2 = document.querySelector('.show-modal2');
-        const showModal3 = document.querySelector('.show-modal3');
+
         const closeModal = document.querySelectorAll('.close-modal');
 
         showModal1.addEventListener('click', function() {
             modal.classList.remove('hidden')
         })
-        showModal2.addEventListener('click', function() {
-            modal.classList.remove('hidden')
-        })
-        showModal3.addEventListener('click', function() {
-            modal.classList.remove('hidden')
-        })
+
 
         closeModal.forEach(close => {
+            close.addEventListener('click', function() {
+                modal.classList.add('hidden')
+            });
+        });
+    </script>
+    <script>
+        const showModal2 = document.querySelector('.show-modal2');
+        const closeModal1 = document.querySelectorAll('.close-modal1');
+        showModal2.addEventListener('click', function() {
+            modal.classList.remove('hidden')
+        });
+        closeModal1.forEach(close => {
             close.addEventListener('click', function() {
                 modal.classList.add('hidden')
             });
