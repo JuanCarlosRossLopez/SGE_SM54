@@ -16,20 +16,19 @@ return new class extends Migration
             $table->string('student_name');
             $table->string('student_group');
             $table->string('student_email');
-            $table->integer('student_phone');
-            $table->foreignId('student_id')->constrained('students')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->string('student_phone', 10);
+            $table->integer('student_id');
             $table->string('project_title');
             $table->string('project_company');
             $table->string('project_advisor');
-            $table->integer('project_advisor_phone');
+            $table->string('project_advisor_phone', 10);
             $table->text('general_objective');
-            $table->text('specific_objectives');
-            $table->text('project_scope');
+            $table->text('problem_statement');
+            $table->text('justification');
+            $table->text('activities');
             $table->date('start_date'); // Fecha de inicio
             $table->date('end_date'); // Fecha de finalización
-            $table->timestamps(); 
+            $table->timestamps();
         });
     }
 

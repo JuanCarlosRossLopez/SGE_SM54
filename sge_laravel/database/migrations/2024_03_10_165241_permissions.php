@@ -14,11 +14,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // $permission1 = Permission::create(['name' => 'create']);
-        // $permission2 = Permission::create(['name' => 'read']);
-        // $permission3 = Permission::create(['name' => 'update']);
-        // $permission4 = Permission::create(['name' => 'delete']);
+        $permission1 = Permission::create(['name' => 'create']);
+        $permission2 = Permission::create(['name' => 'read']);
+        $permission3 = Permission::create(['name' => 'update']);
+        $permission4 = Permission::create(['name' => 'delete']);
    
+
+         $roles = Role::all();
+        $roles[0]->givePermissionTo([$permission1, $permission2, $permission3, $permission4]);
+        $roles[1]->givePermissionTo([$permission1, $permission2, $permission3, $permission4]);
+        $roles[2]->givePermissionTo([$permission1, $permission2, $permission3, $permission4]);
+        $roles[3]->givePermissionTo([$permission1, $permission2, $permission3, $permission4]);
+        $roles[4]->givePermissionTo([$permission1, $permission2, $permission3, $permission4]);
+        $roles[5]->givePermissionTo([$permission1, $permission2, $permission3, $permission4]);
 
 
     }

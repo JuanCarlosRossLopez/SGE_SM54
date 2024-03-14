@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 class RoleController extends Controller
@@ -15,10 +16,10 @@ class RoleController extends Controller
      */
     public function index()
     {   
+        $roles = Role::all();
+        $permissions = Permission::all();
         
-        $users = User::all();
-
-        return view('admin.manage_rol', compact('users'));
+        return view('admin.manage_rol', compact('roles','permissions'));
     }
 
     /**
@@ -34,10 +35,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = $request->input('user_id');
-        $user = User::find($userId);
-        $user->assignRole($request->role);
-        return view('admin.manage_rol');
+        
     }
 
     /**

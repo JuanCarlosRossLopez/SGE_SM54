@@ -15,7 +15,7 @@ class Memory_History_Controller extends Controller
     public function index()
     {
         $memories = Memories::paginate(10);
-        return view('Test_memory.memory_history',["memories"=>$memories]);
+        return view('Memories.memory_history',["memories"=>$memories]);
     }
 
     /**

@@ -18,9 +18,9 @@
 
         <div class="content_conteiner">
             <div class="flex flex-row items-center gap-2">
-                <label class="conteiner_word_title">Si tiene un subtema tu vista ponlo aqui</label>
+                <label class="conteiner_word_title">Bienvenido Jose</label>
                 <label id="infoButton" class="cursor-pointer mt-3"
-                    data-tooltip="Recomiendo ponerle una descripción a la vista">
+                    data-tooltip="Este es tu dashboard, administra tu proyecto">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                 </label>
             </div>
@@ -28,8 +28,8 @@
             <div class="flex flex-row gap-4 justify-center">
                 <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
                     <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
-                    <p class=" text-center">Astroseiza</p>
-                    <img src="image/progreso_estudiante.png" alt="" class="">
+                    <p class="text-center">Astroseiza</p>
+                    <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
                 </div>
                 <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
                     <div class="overflow-auto p-2">

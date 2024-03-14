@@ -25,7 +25,7 @@
             <div class="flex flex-row items-center justify-start gap-2">
                 <label class="conteiner_word_title items-center">Tabla de estudiantes asesorados</label>
                 <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
-                    data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
+                    data-tooltip="Aquí usted puede ver sus estudiantes asesorados y asignar amosnestaciones en caso de merecerla.">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
                 </label>
             </div>
@@ -47,23 +47,21 @@
                 <table class="standar_table">
                     <thead class="standar_thead">
                         <tr>
-                            <th class="theader">Campo</th>
-                            <th class="theader">Campo</th>
-                            <th class="theader">Campo</th>
-                            <th class="theader">Campo</th>
-                            <th class="theader">Campo</th>
-                            <th class="theader">Campo</th>
-                            <th class="theader">Campo</th>
+                            <th class="theader">Nombre</th>
+                            <th class="theader">Matricula</th>
+                            <th class="theader">Amonestaciones</th>
+                            <th class="theader">Anteproyecto</th>
+                            <th class="theader">Asesor</th>
+                            <th class="theader">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
                         <tr class="trow">
-                            <td class="trowc">Lorum</td>
-                            <td class="trowc">Lorum</td>
-                            <td class="trowc">Lorum</td>
-                            <td class="trowc">Lorum</td>
-                            <td class="trowc">Lorum</td>
-                            <td class="trowc">Lorum</td>
+                            <td class="trowc">Alexis Zamora</td>
+                            <td class="trowc">22393434</td>
+                            <td class="trowc">No</td>
+                            <td class="trowc">Task In</td>
+                            <td class="trowc">Mayra Guadalupe</td>
                             <td class="trowc">
                                 <div>
                                     <button class="show-modal bg-[#ae0808] text-white font-semibold px-2 py-2 rounded">

@@ -23,6 +23,7 @@ class ControllerCalendar extends Controller
         ]);
     }
 
+
     // Ruta para un mes específico
     public function indexMonth($month)
     {
@@ -53,7 +54,7 @@ class ControllerCalendar extends Controller
         $week2 = date("W", strtotime($dayLast));
 
         $semana = $week1 == 1 && $week2 >= 52 ? 5 : $week2 - $week1 + 1;
-        
+
         $dataFecha = $dateIni;
         $calendario = [];
         $iWeek = 0;

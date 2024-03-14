@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-green-500 flex items-stretch justify-center h-screen">
-    <!-- Left side with image -->
+    <!-- Left side with imagen -->
     <div class="hidden lg:block lg:w-1/2 bg-green-500 rounded-l">
         <!-- You can replace the src with your own image -->
         <img src="{{ asset('image/SGE.png') }}" alt="Login Image" class="object-cover w-full h-full rounded-tl-xl">
