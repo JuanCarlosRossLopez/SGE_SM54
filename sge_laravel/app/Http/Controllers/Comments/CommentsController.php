@@ -32,20 +32,14 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'general_comment'=>'required|string',
-            'teacher_id'=>'null',
-            'anteproject_id'=>'null'
+            'general_comment'=>'required|string'
         ]);
 
         $comments = new Comments();
         $comments->general_comment = $request->input('general_comment');
-        $comments->teacher_id = $request->input('teacher_id');
-        $comments->anteproject_id = $request->input('anteproject_id');
         $comments->save();
 
-
         return redirect('information_project')->with('Notification', 'Comentario creado');
-        
     }
 
     /**

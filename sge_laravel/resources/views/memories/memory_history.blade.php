@@ -54,6 +54,7 @@
                                 <td class="trowc">{{ $memory->memory_name }}</td>
                                 <td class="trowc">{{ $memory->memorie_pdf }}</td>
                                 <td class="trowc">{{ $memory->created_at }}</td>
+                                <!--
                                 <td class="trowc">
                                     <div>
                                         <button class="show-modal">
@@ -66,15 +67,16 @@
                                     </div>
 
                                 </td>
-                                <td class="border px-2 py-2">
-                                    <a href="{{ route('memory.edit', $memory->id) }}"
-                                        class="bg-green-400 text-black py-1 px-2 rounded w-1/3 ml-4">
-                                        Editar</a>
-                                </td>
+                                
+                                    <td class="border px-2 py-2">
+                                        <a href="{{ route('memory.edit', $memory->id) }}"
+                                            class="bg-green-400 text-black py-1 px-2 rounded w-1/3 ml-4">
+                                            Editar</a>
+                                    </td>
+                                -->
                                 <td>
                                     <a href="{{ route('memory_history.download_pdf', ['id' => $memory->id]) }}"
-                                        class="bg-green-400 text-black py-1 px-2 rounded w-1/3 ml-4">
-                                        descargar</a>
+                                        class="text-[#464646] py-1 px-2 rounded text-xl w-full ml-4"> <i class="fa-solid fa-download"></i> </a>
                                 </td>
                             </tr>
                         @endforeach

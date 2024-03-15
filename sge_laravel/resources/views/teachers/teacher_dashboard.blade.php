@@ -92,7 +92,7 @@
                                         </g>
                                     </svg>
                                 </div>
-                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
+                                <a href="/information_project" class="Button-progress">Visualizar detalles</a>
                             </div>
                             <!-- Panel 2 -->
                             <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
@@ -109,7 +109,7 @@
                                         </g>
                                     </svg>
                                 </div>
-                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
+                                <a href="/information_project" class="Button-progress">Visualizar detalles</a>
                             </div>
                             <!-- Panel 3 -->
                             <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
@@ -126,7 +126,7 @@
                                         </g>
                                     </svg>
                                 </div>
-                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
+                                <a href="/information_project" class="Button-progress">Visualizar detalles</a>
                             </div>
                         </div>
                     </div>

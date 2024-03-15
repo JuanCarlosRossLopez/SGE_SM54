@@ -27,6 +27,7 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
+                    <label class="text-blue-600 text-2xl p-2"><i class="fa-solid fa-thumbs-up"></i></label>
                 </div>
                 <div class="bg-green-300 w-full">
                     <div class="justify-between items-center w-full">
@@ -266,9 +267,12 @@
                     <label class="conteiner_word_title">Comentarios de revisión:</label>
                 </div>
                 <div class="justify-between items-center w-full">
-                    <div class="bg-white shadow-md w-full">
-                        <label>Aqui se mapea el comentario</label>
-                    </div>
+                    @foreach ($comments as $comment)
+                        <div class="bg-white p-2 shadow-md w-full flex flex-col rounded mt-1">
+                            <label class="font-semibold font-poppins text-lg text-start w-full">Comentario realizado por: usuario1</label>
+                            <label class="font-normal font-poppins text-base italic text-start w-full px-2">{{$comment->general_comment }}</label>
+                        </div>
+                    @endforeach
                 </div>
 
 
@@ -285,24 +289,46 @@
                     </div>
                     <!-- Botones de calendario -->
                     <!--
-                            <div class="flex flex-col gap-1 pt-1">
-                                <button
-                                    class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
-                                    cita de revisión</button>
-                                <button
-                                    class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
-                                    cita de revisión</button>
-                            </div>
-                            -->
+                                <div class="flex flex-col gap-1 pt-1">
+                                    <button
+                                        class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
+                                        cita de revisión</button>
+                                    <button
+                                        class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
+                                        cita de revisión</button>
+                                </div>
+                                -->
                 </div>
                 <div class="content_conteiner w-full h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>
-                    <label>No se que más podria ir aqui</label>
+                    <a href="/crear_comentario"
+                        class="bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Realizar
+                        comentario a la cedula</a>
                 </div>
             </div>
         </div>
     </div>
     </div>
+
+    <!-- Modal Formulario -->
+    <div class="modalf h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+                <h3 class="font-semibold text-lg ml-60 text-white">Realizar comentario general</h3>
+                <button class="close-modalf bg-white rounded-full h-[1rem] flex items-center">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="modal_conteiner">
+                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
+                <div class="modal-body h-fit">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Modal -->
     <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
@@ -373,12 +399,25 @@
 
 
     <script>
-        //Lo hizo roto, es un contador
-        const modal = document.querySelector('.modal');
-        const modalb = document.querySelector('.modalb');
+        /*const modal = document.querySelector('.modal');
+        const modalb = document.querySelector('.modalb');*/
+        const modalf = document.querySelector('.modalf');
 
         //Funcionamiento de modal
 
+        const showModalf = document.querySelector('.show-modalf');
+        const closeModalf = document.querySelectorAll('.close-modalf');
+
+        showModalf.addEventListener('click', function() {
+            modalf.classList.remove('hidden')
+        })
+
+        closeModalf.forEach(close => {
+            close.addEventListener('click', function() {
+                modalf.classList.add('hidden')
+            })
+        })
+        /*
         const showModal = document.querySelector('.show-modal');
         const closeModal = document.querySelectorAll('.close-modal');
 
@@ -404,7 +443,7 @@
             close.addEventListener('click', function() {
                 modalb.classList.add('hidden')
             })
-        })
+        })*/
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

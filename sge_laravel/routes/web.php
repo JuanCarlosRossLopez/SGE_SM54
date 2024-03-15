@@ -113,34 +113,27 @@ Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
-//Memoria getsion Valier
-Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
-Route::resource('memory',Memory_History_Controller::class);
-Route::get('/crear_memoria', function(){
-    return view('Test_memory.create_memory');
-});
-Route::get('/edit_memory', function(){
-    return view('Test_memory.edit_memory');
-});
+    //Memoria getsion Valier
+    Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
+    Route::resource('memory',Memory_History_Controller::class);
+    Route::get('/crear_memoria', function(){
+        return view('Test_memory.create_memory');
+    });
+    Route::get('/edit_memory', function(){
+        return view('Test_memory.edit_memory');
+    });
 
-//Comentarios gestion Valier
-Route::resource('information_project', CommentsController::class);
-Route::get('/crear_comentario', function () {
-    return view('teacher_dates.create_comment');
-});
-
-
-
-Route::get('/datos_proyecto', function () {
-    return view('teacher_dates.information_project');
-});
-
-Route::get('/editar_cita', function () {
-    return view('teacher_dates.edit_meet_date');
-});
-Route::get('/alumnos_asesorados' , function () {
-    return view('strikes.advised_students');            
-});
+    //Comentarios gestion Valier
+    Route::resource('information_project', CommentsController::class);
+    Route::get('/crear_comentario', function () {
+        return view('teacher_dates.create_comment');
+    });
+    Route::get('/editar_cita', function () {
+        return view('teacher_dates.edit_meet_date');
+    });
+    Route::get('/alumnos_asesorados' , function () {
+        return view('strikes.advised_students');            
+    });
 
 
 //End equipo valier
