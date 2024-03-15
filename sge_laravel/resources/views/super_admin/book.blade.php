@@ -33,7 +33,7 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button   class="standar_button "><span class="show-modal2 ">Agregar</span></button>
+                    <button  id="showModalButton2"  class="show-modal2 standar_button"><span class="show-modal2 ">Agregar</span></button>
                 </div>
             </div>
 
@@ -129,7 +129,7 @@
         <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
             <div class="border-b px-4 py-2 flex justify-between items-center">
                 <h3 class="font-semibold text-lg ml-60 text-white">Revision de Cedula AnteProyecto</h3>
-                <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
+                <button id="closeModalButton" class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                     <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                 </button>
             </div>
@@ -155,7 +155,7 @@
         </div>
     </div>
 
-    <div  class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div id="modal2" class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
             <div class="border-b px-4 py-2 flex justify-between items-center text-center">
                 <h3 class="font-semibold text-lg ml-60 text-white ">Agregar libro</h3>
@@ -256,41 +256,43 @@
     </div>
 
     <script>
+       <script>
+    document.addEventListener('DOMContentLoaded', function() {
         const tableBody = document.querySelector('tbody');
         const rowCount = tableBody.querySelectorAll('tr').length;
         document.getElementById('rowCount').textContent = rowCount;
-        const modal = document.querySelector('.modal');
-        const modalb = document.querySelector('.modal2');
 
-        //Funcionamiento de modal
+        // Selección de los modales por su id
+        const modal = document.getElementById('modal1'); // Utilizamos el id "modal1"
+        const modalb = document.getElementById('modal2'); // Utilizamos el id "modal2"
 
-        const showModal = document.querySelector('.show-modal');
-        const closeModal = document.querySelectorAll('.close-modal');
+        // Funcionamiento de modal
+        const showModal = document.getElementById('showModalButton');
+        const closeModal = document.getElementById('closeModalButton');
 
         showModal.addEventListener('click', function() {
-            modal.classList.remove('hidden')
-        })
+            modal.classList.remove('hidden');
+        });
 
-        closeModal.forEach(close => {
-            close.addEventListener('click', function() {
-                modal.classList.add('hidden')
-            })
-        })
+        closeModal.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
 
-        //
-        const showModalb = document.querySelector('.show-modal2');
-        const closeModalb = document.querySelectorAll('.close-modal2');
+        const showModalb = document.getElementById('showModalButton2');
+        const closeModalb = document.getElementById('closeModalButton2');
 
         showModalb.addEventListener('click', function() {
-            modalb.classList.remove('hidden')
-        })
+            modalb.classList.remove('hidden');
+        });
 
-        closeModalb.forEach(close => {
-            close.addEventListener('click', function() {
-                modalb.classList.add('hidden')
-            })
-        })
+        closeModalb.addEventListener('click', function() {
+            modalb.classList.add('hidden');
+        });
+    });
+</script>
+
     </script>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

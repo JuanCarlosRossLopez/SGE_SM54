@@ -155,7 +155,7 @@ Route::get('/informes', function(){
 Route::get('/dashboard_coordinacion', function () {
     return view('coordination.dashboard_coordination');
 });
-Route::get('/libros', function () {
+Route::get('/libro', function () {
     return view('coordination.books_table');
 });
 
