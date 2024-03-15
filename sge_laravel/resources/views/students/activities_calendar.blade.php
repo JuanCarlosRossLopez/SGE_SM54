@@ -92,16 +92,18 @@
                 <div
                     class="border shadow bg-[#ceeae4] md:p-3 p-2 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[44%] rounded-[7px_7px_7px_7px]">
                     <div class="flex flex-row  items-center justify-between">
-                        <a href="{{ route('calendar.month', ['month' => $data['last']]) }}" class="m-[10px] transition-transform hover:scale-110">
+                        <a href="{{ route('calendar.month', ['month' => $data['last']]) }}"
+                            class="m-[10px] transition-transform hover:scale-110">
                             <i class="fas fa-chevron-circle-left" style="font-size:30px;color:white;"></i>
-                        </a>                        
+                        </a>
                         <p class="text-[#18A689] font-semibold text-3xl text-center my-5">{{ $mesSpanish }}
                             {{ $data['year'] }}</p>
                         <!-- Enlace al mes siguiente -->
-                        <a href="{{ route('calendar.month', ['month' => $data['next']]) }}" class="m-[10px] transition-transform hover:scale-110">
+                        <a href="{{ route('calendar.month', ['month' => $data['next']]) }}"
+                            class="m-[10px] transition-transform hover:scale-110">
                             <i class="fas fa-chevron-circle-right" style="font-size:30px;color:white;"></i>
                         </a>
-                        
+
                     </div>
                     <table class="mb-3">
                         <thead>
@@ -120,10 +122,13 @@
                                 <tr>
                                     @foreach ($weekData['datos'] as $dayweek)
                                         @if ($dayweek['mes'] == $mes)
-                                            <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer">
+                                            <td
+                                                class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer">
                                                 {{ $dayweek['dia'] }}</td>
                                         @else
-                                            <td class="text-center p-3 text-gray-700 transition-transform hover:scale-110 cursor-pointer"></td>
+                                            <td
+                                                class="text-center p-3 text-gray-700 transition-transform hover:scale-110 cursor-pointer">
+                                            </td>
                                         @endif
                                     @endforeach
                                 </tr>
@@ -132,11 +137,20 @@
                     </table>
                 </div>
             </div>
-            <div class="flex flex-row justify-center items-center mt-4 border-[#18A689]">
-                <button class="bg-[#18A689] p-2 text-white rounded transition-transform hover:scale-110">Subir Memoria</button>
+            <div class="flex flex-row gap-3 items-center justify-center">
+                <div class=" mt-4 border-[#18A689]">
+                    <button class="bg-[#18A689] p-2 flex flex-row gap-2 text-white rounded transition-transform hover:scale-110">Desacargar
+                        Cédula de Anteproyecto                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg></button>
+                </div>
+                <div class="flex mt-4 border-[#18A689]">
+                    <button class="bg-[#18A689] p-2 text-white rounded transition-transform hover:scale-110" hidden>Subir
+                        Memoria</button>
+                </div>
             </div>
-            </div>
+        </div>
     </div>
 
     <!-- De aqui para abajo es tu vista -->
-    @endsection
+@endsection
