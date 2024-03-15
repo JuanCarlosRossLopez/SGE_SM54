@@ -140,6 +140,10 @@ Route::get('/test', function () {
     return $pdf->stream('cedula.pdf');
 });
 
+Route::get('/anteproyectosss', function () {
+    $pdf = PDF::loadView('pdf.carta_cedula_ante');
+    return $pdf->stream('cedula.pdf');
+});
 
 
 Route::get('/envio_informes', function () {

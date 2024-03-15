@@ -28,12 +28,13 @@
                     <div class="w-full flex flex-col items-center gap-4">
                         <h3 class="text-[#01A080] font-bold text-2xl text-center">Cédula de Anteproyecto</h3>
                         <div class="">
-                            <button type="button"
-                                class="group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
-                                Descargar en
-                                <img src="{!! asset('img/icon_word.png') !!}"
-                                    class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
+                            <button type="button">
+                                <a href="/anteproyectosss" target="_blank" class="group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
+                                    Descargar en
+                                    <img src="{!! asset('img/icon_pdf.png') !!}" class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
+                                </a>
                             </button>
+                            
                         </div>
                     </div>
                 </div>
