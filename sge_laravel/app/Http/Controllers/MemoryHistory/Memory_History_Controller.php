@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MemoryHistory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Memories;
+use Illuminate\Support\Facades\Storage;
 
 
 class Memory_History_Controller extends Controller
@@ -89,5 +90,22 @@ class Memory_History_Controller extends Controller
         $memory->delete();
         
         return redirect('Test_memory.memory_history');
+    }
+
+    public function downloadPdf(string $id) {
+
+        $memory=Memories::find($id);
+
+        if(!$memory){
+            abort(404, 'Memory not found');
+        }
+
+        $pdfPath = $memory->memorie_pdf;
+
+        if(Storage::exists($pdfPath)){
+            return response()->download(storage_path('app/' . $pdfPath));
+        } else {
+            abort(404, 'PDF file Not Found');
+        }
     }
 }

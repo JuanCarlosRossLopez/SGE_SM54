@@ -114,6 +114,7 @@ Route::get('/gestion_asesor_anteproyecto', function () {
 });
 
 //Memoria getsion Valier
+Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
 Route::resource('memory',Memory_History_Controller::class);
 Route::get('/crear_memoria', function(){
     return view('Test_memory.create_memory');

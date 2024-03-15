@@ -72,7 +72,7 @@
                                         Editar</a>
                                 </td>
                                 <td>
-                                    <a href="../Test_memory/download.php?id={{$memory->id}}"
+                                    <a href="{{ route('memory_history.download_pdf', ['id' => $memory->id]) }}"
                                         class="bg-green-400 text-black py-1 px-2 rounded w-1/3 ml-4">
                                         descargar</a>
                                 </td>
