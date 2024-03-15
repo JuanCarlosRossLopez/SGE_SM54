@@ -16,8 +16,8 @@
     </div>
 
     <div>
-    <label  for="memorie_pdf">pdf memoria</label>
-    <input type="text" name="memorie_pdf" id="memorie_pdf">
+    <label  for="memorie_pdf" class="form-label">pdf memoria</label>
+    <input type="file" name="memorie_pdf" id="memorie_pdf" class="form-control" required>
     </div>
 
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Guardar</button>

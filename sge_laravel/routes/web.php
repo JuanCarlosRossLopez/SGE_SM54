@@ -119,6 +119,11 @@ Route::resource('memory',Memory_History_Controller::class);
 Route::get('/crear_memoria', function(){
     return view('Test_memory.create_memory');
 });
+
+Route::get('/edit_memory', function(){
+    return view('Test_memory.edit_memory');
+});
+
 Route::get('/datos_proyecto', function () {
     return view('teacher_dates.information_project');
 });

@@ -6,6 +6,7 @@
             <th class="px-2 py-1">Nombre de memoria</th>
             <th class="px-2 py-1">Pdf de memoria</th>
             <th class="px-2 py-1">Estudiante</th>
+            <th class="px-2 py-1">Acción</th>
         </tr>
     </thead>
     <tbody>
