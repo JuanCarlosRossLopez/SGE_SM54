@@ -80,6 +80,9 @@ Route::get('/panel_admin', function () {
 });
 //End equipo rocha
 
+Route::get('/ListaEstudiantes', function () {
+    return view('students.manager_student');
+});
 
 //Ruteo jomar
 Route::get('/Perfil_Maestro', function () {

@@ -29,9 +29,9 @@
                         <i class="fas fa-search text-gray-500"></i>
                     </button>
                     <input type="text" class="search_input" placeholder="Buscar..." />
-                    <a href="{{ route('estudiantes.create') }}" class="add_button">
+                    <button onclick="showAddModal()" class="add_button">Agregar estudiante
                         <i class="fas fa-plus text-black"></i>
-                    </a>
+                    </button>
                 </div>
                 <div class="search_button_conteiner">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
@@ -47,6 +47,7 @@
                             <th class="theader">Matricula</th>
                             <th class="theader">Nombre</th>
                             <th class="theader">Creador de proyecto</th>
+                            <th class="theader">Amonestaciones</th>
                             <th class="theader">Acciones</th>
                         </tr>
                     </thead>
@@ -57,11 +58,12 @@
                                 <td class="text-center border-b">{{ $student->id_student }} </td>
                                 <td class="text-center border-b">{{ $student->student_name }} </td>
                                 <td class="text-center border-b">{{ $student->project_creator }} </td>
+                                <td class="text-center border-b">{{ $student->strike }} </td>
                                 <td class="text-center border-b">        
-                                    <a href="{{ route('estudiantes.show' , $student->id) }}" class="text-blue-500">Ver</a>
-                                    <a href="{{ route('estudiantes.edit' , $student->id) }}" class="text-yellow-500">Editar</a>
+                                    <a href="{{ route('estudiantes.show', $student->id) }}" class="text-blue-500">Ver</a>
+                                    <a href="#" onclick="showEditModal({{ $student->id }}, '{{ $student->student_name }}', {{ $student->id_student }}, {{ $student->strike }}, {{ $student->project_creator }})" class="text-yellow-500">Editar</a>
                                     <button onclick="showConfirmationModal({{ $student->id }})" class="text-red-500 show-modal">Eliminar</button>
-                                    <form id="deleteForm{{$student->id}}" action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
+                                    <form id="deleteForm{{ $student->id }}" action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -72,7 +74,51 @@
                 </table>
             </div>
 
-            <!-- Modal -->
+            <!-- Modal para agregar estudiantes -->
+            <div id="addModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-gray-500">
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <!-- Contenido del modal -->
+                    <p>Por favor, ingrese los datos del estudiante:</p>
+                    <form action="{{ route('estudiantes.store') }}" method="POST">
+                        @csrf
+                        <input type="text" name="student_name" placeholder="Nombre del estudiante">
+                        <input type="number" name="id_student" placeholder="Matrícula">
+                        <input type="number" name="strike" placeholder="Amonestaciones">
+                        <label for="project_creator">¿Es el creador del proyecto?</label>
+                        <select name="project_creator" id="project_creator">
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                        <button type="submit">Agregar Estudiante</button>
+                    </form>
+                    <button onclick="hideAddModal()" class="bg-gray-300 px-4 py-2">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Modal para editar estudiantes -->
+            <div id="editModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-gray-500">
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <!-- Contenido del modal -->
+                    <p>Editando estudiante:</p>
+                    <form id="editForm" action="" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="student_id" id="editStudentId">
+                        <input type="text" name="student_name" id="editStudentName" placeholder="Nombre del estudiante">
+                        <input type="number" name="id_student" id="editStudentIdStudent" placeholder="Matrícula" disabled>
+                        <input type="number" name="strike" id="editStudentStrike" placeholder="Amonestaciones">
+                        <label for="editProjectCreator">¿Es el creador del proyecto?</label>
+                        <select name="project_creator" id="editProjectCreator">
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                        <button type="submit">Guardar Cambios</button>
+                    </form>
+                    <button onclick="hideEditModal()" class="bg-gray-300 px-4 py-2">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Modal para confirmación de eliminación -->
             <div id="confirmationModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-gray-500">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
                     <p>¿Estás seguro de que deseas eliminar este estudiante?</p>
@@ -82,49 +128,53 @@
                     </div>
                 </div>
             </div>
-       <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-       <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-        <div>
-            <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                < </button>
-                    <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                        1
-                    </button>
-                    <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                        2
-                    </button>
-                    <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                        3
-                    </button>
-                    <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        >
-                    </button>
-        </div>
-        <div>
-            <span>Cantidad de registros :</span>
-            <span id="rowCount"></span>
         </div>
     </div>
-</div>
-</div>
 
     <script>
         let studentIdToDelete;
-                        
+        let studentIdToEdit;
+
         function showConfirmationModal(studentId) {
             studentIdToDelete = studentId;
             const modal = document.getElementById('confirmationModal');
             modal.classList.remove('hidden');
         }
-                        
+
         function hideConfirmationModal() {
             const modal = document.getElementById('confirmationModal');
             modal.classList.add('hidden');
         }
-                        
+
         function deleteStudent() {
             const form = document.getElementById('deleteForm' + studentIdToDelete);
             form.submit();
+        }
+
+        function showAddModal() {
+            const modal = document.getElementById('addModal');
+            modal.classList.remove('hidden');
+        }
+
+        function hideAddModal() {
+            const modal = document.getElementById('addModal');
+            modal.classList.add('hidden');
+        }
+
+        function showEditModal(id, name, studentId, strike, projectCreator) {
+            studentIdToEdit = id;
+            document.getElementById('editStudentId').value = id;
+            document.getElementById('editStudentName').value = name;
+            document.getElementById('editStudentIdStudent').value = studentId;
+            document.getElementById('editStudentStrike').value = strike;
+            document.getElementById('editProjectCreator').value = projectCreator;
+            const modal = document.getElementById('editModal');
+            modal.classList.remove('hidden');
+        }
+
+        function hideEditModal() {
+            const modal = document.getElementById('editModal');
+            modal.classList.add('hidden');
         }
     </script>
 @endsection
