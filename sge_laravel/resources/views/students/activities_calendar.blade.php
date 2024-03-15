@@ -1,5 +1,5 @@
 @extends('test.test_template')
-@section('titulo')
+@section('title')
     Dashboard
 @endsection
 @section('contenido')
@@ -38,19 +38,19 @@
                             <p class="flex text-xl my-2 font-medium">Comentario referente al título</p>
                             <p class="flex text-lg my-1 font-medium">Rafael Villegas Velasco</p>
                             <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la mamoria a realizar.</p>
+                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
                         </div>
                         <div>
                             <p class="flex text-xl my-2 font-medium">Comentario referente al título</p>
                             <p class="flex text-lg my-1 font-medium">Mayra Guadalupe Fuentes Sosa</p>
                             <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la mamoria a realizar.</p>
+                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
                         </div>
                         <div>
                             <p class="flex text-xl my-2 font-medium">Comentario referente al título</p>
                             <p class="flex text-lg my-1 font-medium">Irvin Arlin Chan Ac</p>
                             <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la mamoria a realizar.</p>
+                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
                         </div>
                     </div>
                 </div>
@@ -68,11 +68,6 @@
                             </div>
                             <div
                                 class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                <p>09 Febrero | 1:15 PM</p>
-                                <p>Revisión de Memoria</p>
-                            </div>
-                            <div
-                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
                                 <p>20 Febrero | 1:15 PM</p>
                                 <p>Revisión de Memoria</p>
                             </div>
@@ -83,7 +78,12 @@
                             </div>
                             <div
                                 class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                <p>20 Febrero | 1:15 PM</p>
+                                <p>29 Febrero | 1:15 PM</p>
+                                <p>Revisión de Memoria</p>
+                            </div>
+                            <div
+                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
+                                <p>05 Marzo | 1:15 PM</p>
                                 <p>Revisión de Memoria</p>
                             </div>
                         </div>
@@ -92,26 +92,27 @@
                 <div
                     class="border shadow bg-[#ceeae4] md:p-3 p-2 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[44%] rounded-[7px_7px_7px_7px]">
                     <div class="flex flex-row  items-center justify-between">
-                        <a href="{{ route('calendar.month', ['month' => $data['last']]) }}" class="m-[10px]">
+                        <a href="{{ route('calendar.month', ['month' => $data['last']]) }}" class="m-[10px] transition-transform hover:scale-110">
                             <i class="fas fa-chevron-circle-left" style="font-size:30px;color:white;"></i>
-                        </a>
+                        </a>                        
                         <p class="text-[#18A689] font-semibold text-3xl text-center my-5">{{ $mesSpanish }}
                             {{ $data['year'] }}</p>
                         <!-- Enlace al mes siguiente -->
-                        <a href="{{ route('calendar.month', ['month' => $data['next']]) }}" class="m-[10px]">
+                        <a href="{{ route('calendar.month', ['month' => $data['next']]) }}" class="m-[10px] transition-transform hover:scale-110">
                             <i class="fas fa-chevron-circle-right" style="font-size:30px;color:white;"></i>
                         </a>
+                        
                     </div>
                     <table class="mb-3">
                         <thead>
                             <tr>
                                 <th class="font-bold text-center text-xs md:text-lg">LUN</th>
                                 <th class="font-bold text-center text-xs md:text-lg">MAR</th>
-                                <th class="font-bold text-center text-xl md:text-lg">MIÉ</th>
-                                <th class="font-bold text-center text-xl md:text-lg">JUE</th>
-                                <th class="font-bold text-center text-xl md:text-lg">VIE</th>
-                                <th class="font-bold text-center text-xl md:text-lg">SÁB</th>
-                                <th class="font-bold text-center text-xl md:text-lg">DOM</th>
+                                <th class="font-bold text-center text-xs md:text-lg">MIÉ</th>
+                                <th class="font-bold text-center text-xs md:text-lg">JUE</th>
+                                <th class="font-bold text-center text-xs md:text-lg">VIE</th>
+                                <th class="font-bold text-center text-xs md:text-lg">SÁB</th>
+                                <th class="font-bold text-center text-xs md:text-lg">DOM</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,10 +120,10 @@
                                 <tr>
                                     @foreach ($weekData['datos'] as $dayweek)
                                         @if ($dayweek['mes'] == $mes)
-                                            <td class="text-center p-3 mb-1 text-black">
+                                            <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer">
                                                 {{ $dayweek['dia'] }}</td>
                                         @else
-                                            <td class="text-center p-3 text-black"></td>
+                                            <td class="text-center p-3 text-gray-700 transition-transform hover:scale-110 cursor-pointer"></td>
                                         @endif
                                     @endforeach
                                 </tr>
@@ -131,7 +132,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+            <div class="flex flex-row justify-center items-center mt-4 border-[#18A689]">
+                <button class="bg-[#18A689] p-2 text-white rounded transition-transform hover:scale-110">Subir Memoria</button>
+            </div>
+            </div>
     </div>
 
     <!-- De aqui para abajo es tu vista -->

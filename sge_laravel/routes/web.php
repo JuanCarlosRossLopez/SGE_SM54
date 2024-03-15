@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use Spatie\Permission\Contracts\Role;
 use App\Http\Controllers\Projects_management\Projects_managementController;
+use App\Http\Controllers\Calendar\Calendar2Controller;
+use App\Http\Controllers\Calendar\ControllerEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,9 +116,9 @@ Route::get('/gestion_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
-Route::get('/datos_proyecto', function () {
-    return view('teacher_dates.information_project');
-});
+Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
+Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
+Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 
 
 Route::get('/editar_cita', function () {
@@ -174,6 +176,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
+Route::get('/dashboard_alumno/events', [ControllerEvent::class, 'indexView'])->name('students.activities_calendar.events');
 
 
 require __DIR__.'/auth.php';

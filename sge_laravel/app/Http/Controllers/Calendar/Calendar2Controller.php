@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Calendar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerCalendar extends Controller
+class Calendar2Controller extends Controller
 {
     public function index()
     {
@@ -16,13 +16,12 @@ class ControllerCalendar extends Controller
         // Obtiene el mes en español
         $mesSpanish = $this->spanishMonth($mes);
 
-        return view('students.activities_calendar', [
+        return view('teacher_dates.information_project', [
             'data' => $data,
             'mes' => $mes,
             'mesSpanish' => $mesSpanish,
         ]);
     }
-
 
     // Ruta para un mes específico
     public function indexMonth($month)
@@ -33,7 +32,7 @@ class ControllerCalendar extends Controller
         // Obtiene el mes en español
         $mesSpanish = $this->spanishMonth($mes);
 
-        return view('students.activities_calendar', [
+        return view('teacher_dates.information_project', [
             'data' => $data,
             'mes' => $mes,
             'mesSpanish' => $mesSpanish,
