@@ -22,7 +22,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('super_admin.book');
     }
 
     /**
@@ -30,7 +30,21 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'book_name'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
+            'book_front_page'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
+            'book_description'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
+            'author'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
+            'price'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
+        ]);
+        $libro = new Books();
+        $libro->book_name = $request->input('book_name');
+        $libro->book_front_page = $request->input('book_front_page');
+        $libro->book_description = $request->input('book_description');
+        $libro->author = $request->input('author');
+        $libro->price = $request->input('price');
+        $libro->save();
+        return redirect()->route('super_admin.book');
     }
 
     /**

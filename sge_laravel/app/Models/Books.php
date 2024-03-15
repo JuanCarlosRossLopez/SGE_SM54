@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Books extends Model
 {
@@ -16,4 +17,8 @@ class Books extends Model
         'price',
         'students_id',
     ];
+
+    public function students():BelongsTo{
+        return $this->belongsTo(Students::class);
+    }
 }
