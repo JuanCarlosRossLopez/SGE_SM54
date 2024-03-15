@@ -22,7 +22,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('super_admin.book');
+        return view('super_admin.modal_book');
     }
 
     /**

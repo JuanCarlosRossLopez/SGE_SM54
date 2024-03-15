@@ -33,7 +33,7 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button  id="showModalButton2"  class="show-modal2 standar_button"><span class="show-modal2 ">Agregar</span></button>
+                    <button  data-target="#hola"  class="showmodal2 standar_button"><span class="show-modal2 ">Agregar</span></button>
                 </div>
             </div>
 
@@ -123,6 +123,8 @@
             </div>
         </div>
     </div>
+    @include('super_admin.add_book_modal')
+    
 
     <!-- Modal -->
     <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
@@ -155,143 +157,50 @@
         </div>
     </div>
 
-    <div id="modal2" class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-        <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
-            <div class="border-b px-4 py-2 flex justify-between items-center text-center">
-                <h3 class="font-semibold text-lg ml-60 text-white ">Agregar libro</h3>
-                <button class="close-modal2 bg-white rounded-full h-[1rem] flex items-center">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                </button>
-            </div>
-            
-            <div class="bg-white p-10">
-                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
-                <div class="modal-body max-h-full h-auto">
-                    <form action="{{route('libros.store')}}" method="POST" class="w-full max-w-lg">
-                        @csrf
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-first-name">
-                                    Nombre
-                                </label>
-                                <input
-                                    class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="grid-first-name" type="text" name="book_name" placeholder="Jane">
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
-                                @error('book_name')
-                <span style="color: red">{{ $message }}</span>
-            @enderror
-                            </div>
-                            <div class="w-full md:w-1/2 px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-last-name">
-                                    Pagina
-                                </label>
-                                <input
-                                    class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-last-name" name="book_front_page" type="text" placeholder="Doe">
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-password">
-                                    Descripción
-                                </label>
-                                <input
-                                    class="appearance-none block w-full h-16  bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4  focus:outline-none focus:bg-white focus:border-gray-500"
-                                     name="book_description" type="text" >
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap -mx-3 mb-2">
-                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-city">
-                                    Autor
-                                </label>
-                                <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-city" name="author" type="text" placeholder="Carlos">
-                            </div>
-                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-city">
-                                    Precio
-                                </label>
-                                <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-city"  name="price" type="text" placeholder="$$$$">
-                            </div>
-                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-state">
-                                    Estudiantes
-                                </label>
-                                <div class="relative">
-                                    <select
-                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="grid-state">
-                                        <option>New Mexico</option>
-                                        <option>Missouri</option>
-                                        <option>Texas</option>
-                                    </select>
-                                    <div
-                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20">
-                                            <path
-                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        </div>
-                    </form>
-                    <button type="submit" class="bg-[#05af9b] pl-[0.5rem] pr-[0.5rem]  border-[#05af9b] item-center rounded-lg w-full  text-white px-2  py-1 hover:bg-green-950">Añadir libro</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
-       <script>
     document.addEventListener('DOMContentLoaded', function() {
         const tableBody = document.querySelector('tbody');
         const rowCount = tableBody.querySelectorAll('tr').length;
         document.getElementById('rowCount').textContent = rowCount;
 
-        // Selección de los modales por su id
-        const modal = document.getElementById('modal1'); // Utilizamos el id "modal1"
-        const modalb = document.getElementById('modal2'); // Utilizamos el id "modal2"
+            const modal_libro = document.querySelector('.modal2');
+            const modal_roles = document.querySelector('.modal-roles');
+            //Funcionamiento de modal
+            const showModal = document.querySelector('.show-modal');
+            const showModalRoles = document.querySelectorAll('.showmodal2');
 
-        // Funcionamiento de modal
-        const showModal = document.getElementById('showModalButton');
-        const closeModal = document.getElementById('closeModalButton');
 
-        showModal.addEventListener('click', function() {
-            modal.classList.remove('hidden');
+            const closeModal = document.querySelectorAll('.close-modal');
+
+            // showModal.addEventListener('click', function() {    
+            //     modal_permision.classList.remove('hidden')
+            // })
+            
+
+            showModalRoles.forEach(button =>{
+                button.addEventListener('click',(e)=>{
+                    e.preventDefault()
+                    console.log("click")
+                    const modalId =button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                    console.log(modalId)
+
+                })
+            })
+
+         closeModal.forEach(closeModal=>{
+            closeModal.addEventListener('click',(e)=>{
+                e.preventDefault();
+                const modal = closeModal.closest('.modal2')
+                modal.classList.add('hidden')
+            })
+         })
         });
-
-        closeModal.addEventListener('click', function() {
-            modal.classList.add('hidden');
-        });
-
-        const showModalb = document.getElementById('showModalButton2');
-        const closeModalb = document.getElementById('closeModalButton2');
-
-        showModalb.addEventListener('click', function() {
-            modalb.classList.remove('hidden');
-        });
-
-        closeModalb.addEventListener('click', function() {
-            modalb.classList.add('hidden');
-        });
-    });
 </script>
 
-    </script>
     
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
