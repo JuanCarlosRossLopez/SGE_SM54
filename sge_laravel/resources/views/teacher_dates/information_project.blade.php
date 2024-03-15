@@ -7,9 +7,12 @@
 @section('contenido')
     <div class="back_conteiner">
         <div class="w-full">
-            <div class="top_conteiner">
-                <label>Consulta individual de anteproyecto</label>
-                <i class="fa-solid fa-calendar-check"></i>
+            <div class="top_conteiner justify-between">
+                <div>
+                    <label>Consulta individual de anteproyecto</label>
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <a href="/dashboard_asesor" class="bg-[#01a080] p-2 text-white text-base font-semibold rounded">Regresar</a>
             </div>
 
         </div>
@@ -24,11 +27,6 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
-
-                    <select class="bg-gray-200 text-sm w-fit h-fit">
-                        <option>Ver citas proxímas</option>
-                        <option>11-mayo-2024</option>
-                    </select>
                 </div>
                 <div class="bg-green-300 w-full">
                     <div class="justify-between items-center w-full">
@@ -262,61 +260,40 @@
                     </div>
 
                 </div>
+
+                <!--  Aqui se mapean los comentarios  -->
+                <div class=" w-full flex flex-row justify-between items-center">
+                    <label class="conteiner_word_title">Comentarios de revisión:</label>
+                </div>
+                <div class="justify-between items-center w-full">
+                    <div class="bg-white shadow-md w-full">
+                        <label>Aqui se mapea el comentario</label>
+                    </div>
+                </div>
+
+
+
             </div>
             <div class="flex flex-col items-center w-[30rem] h-fit">
-                <div class="content_conteiner ">
-                    <label class="conteiner_word_title flex flex-col items-center">Control de revisiones</label>
-                    <div>
-                        <div class="bg-green-500 bg-opacity-40 shadow overflow-hidden p-2 sm:rounded-lg ">
-                            <h1 class="font-bold text-2xl p-2 text-center text-green-800">Febrero 2024</h1>
-                            <ol class="grid grid-cols-7 gap-2 p-2 text-sm">
-                                <li class="font-bold">Lun</li>
-                                <li class="font-bold">Mar</li>
-                                <li class="font-bold">Mie</li>
-                                <li class="font-bold">Jue</li>
-                                <li class="font-bold">Vie</li>
-                                <li class="font-bold">Sab</li>
-                                <li class="font-bold">Dom</li>
-                                <li class="col-start-4">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li>5</li>
-                                <li>6</li>
-                                <li>7</li>
-                                <li>8</li>
-                                <li>9</li>
-                                <li>10</li>
-                                <li>11</li>
-                                <li>12</li>
-                                <li>13</li>
-                                <li>14</li>
-                                <li>15</li>
-                                <li>16</li>
-                                <li>17</li>
-                                <li>18</li>
-                                <li>19</li>
-                                <li>20</li>
-                                <li>21</li>
-                                <li>22</li>
-                                <li>23</li>
-                                <li>24</li>
-                                <li>25</li>
-                                <li>26</li>
-                                <li>27</li>
-                                <li>28</li>
-                                <li>29</li>
-                            </ol>
-                        </div>
+                <div class="content_conteiner w-full">
+                    <label class="conteiner_word_title flex flex-col items-center">Información relevante</label>
+                    <div class="flex flex-col">
+                        <label>Poner informacion como: </label>
+                        <label>- Aceptado por asesor?</label>
+                        <label>- Colavorativo</label>
+                        <label>- Likes</label>
                     </div>
-                    <div class="flex flex-col gap-1 pt-1">
-                        <button
-                            class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
-                            cita de revisión</button>
-                        <button
-                            class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
-                            cita de revisión</button>
-                    </div>
+                    <!-- Botones de calendario -->
+                    <!--
+                            <div class="flex flex-col gap-1 pt-1">
+                                <button
+                                    class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
+                                    cita de revisión</button>
+                                <button
+                                    class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
+                                    cita de revisión</button>
+                            </div>
+                            -->
                 </div>
                 <div class="content_conteiner w-full h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>

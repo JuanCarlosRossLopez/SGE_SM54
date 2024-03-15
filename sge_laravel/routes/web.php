@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
@@ -108,21 +109,26 @@ Route::get('/dashboard', function () {
 
 
 //Equipo valier
-Route::get('/gestion_anteproyect', function () {
+Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
-//Pruebas en Equipo_Valier
-
+//Memoria getsion Valier
 Route::resource('memory',Memory_History_Controller::class);
-
 Route::get('/crear_memoria', function(){
     return view('Test_memory.create_memory');
 });
-
 Route::get('/edit_memory', function(){
     return view('Test_memory.edit_memory');
 });
+
+//Comentarios gestion Valier
+Route::resource('information_project', CommentsController::class);
+Route::get('/crear_comentario', function () {
+    return view('teacher_dates.create_comment');
+});
+
+
 
 Route::get('/datos_proyecto', function () {
     return view('teacher_dates.information_project');

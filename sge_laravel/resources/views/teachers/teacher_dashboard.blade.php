@@ -165,7 +165,7 @@
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="hidden dropdown-content">
-                                        <a href="/historial-memorias"
+                                        <a href="/memory"
                                             class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver memorias</a>
                                     </div>
                                 </div>
