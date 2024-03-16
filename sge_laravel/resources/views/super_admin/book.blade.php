@@ -33,7 +33,8 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button  data-target="#hola"  class="showmodal2 standar_button"><span class="show-modal2 ">Agregar</span></button>
+                    <button data-target="#hola" class="showmodal2 standar_button"><span
+                            class="show-modal2 ">Agregar</span></button>
                 </div>
             </div>
 
@@ -53,33 +54,30 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        @foreach ($books as $books)
+                        @foreach ($books as $book)
                             <tr class="trow">
                                 <td class="trowc">1</td>
-                                <td class="trowc">{{ $books->book_name }}</td>
-                                <td class="trowc">{{ $books->book_front_page }}</td>
-                                <td class="trowc">{{ $books->book_description }}</td>
-                                <td class="trowc">{{ $books->author }}</td>
-                                <td class="trowc">{{ $books->price }}</td>
-                                <td class="trowc">{{ $books->students_id }}</td>
+                                <td class="trowc">{{ $book->book_name }}</td>
+                                <td class="trowc">{{ $book->book_front_page }}</td>
+                                <td class="trowc">{{ $book->book_description }}</td>
+                                <td class="trowc">{{ $book->author }}</td>
+                                <td class="trowc">{{ $book->price }}</td>
+                                <td class="trowc">{{ $book->students_id }}</td>
                                 <td class="trowc">
-                                    <div>
-                                        <button class="show-modal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round"stroke-linejoin="round"
-                                                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
-                                            </svg>
+
+                                        <button class="showView" data-target="#view{{ $book->id }}">
+                                            Ver
                                         </button>
-                                    </div>
 
                                 </td>
 
                             </tr>
+                            @include('super_admin.view_book_modal')
+
                         @endforEach
                         <tr class="trow">
                             <div>
-                                <button class="show-modalb">
+                                <button class="">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24"stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round"stroke-linejoin="round"
@@ -123,67 +121,42 @@
             </div>
         </div>
     </div>
+
     @include('super_admin.add_book_modal')
-    
-
-    <!-- Modal -->
-    <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
-            <div class="border-b px-4 py-2 flex justify-between items-center">
-                <h3 class="font-semibold text-lg ml-60 text-white">Revision de Cedula AnteProyecto</h3>
-                <button id="closeModalButton" class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                </button>
-            </div>
-            <div class="modal_conteiner">
-                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
-                <div class="modal-body h-fit">
-                    <h1 class="titles">Titulo de Proyecto</h1>
-                    <text class="modal_parrafs">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-                        archivos de texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                        texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                        texto.</text>
-
-                    <h1 class="subtitles">Realizar Comentario Referente al Titulo:</h1>
-                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
 
 
-                    <div class="flex justify-center items-center w-full border-t pt-2">
-                        <button
-                            class="bg-blue-600 hover:bg-blue-700 p-2 py-1 rounded text-white">Realizarcomentarios</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tableBody = document.querySelector('tbody');
-        const rowCount = tableBody.querySelectorAll('tr').length;
-        document.getElementById('rowCount').textContent = rowCount;
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableBody = document.querySelector('tbody');
+            const rowCount = tableBody.querySelectorAll('tr').length;
+            document.getElementById('rowCount').textContent = rowCount;
 
             const modal_libro = document.querySelector('.modal2');
-            const modal_roles = document.querySelector('.modal-roles');
+            const modal_view = document.querySelector('.modalView')
+
             //Funcionamiento de modal
-            const showModal = document.querySelector('.show-modal');
+            const showModalView = document.querySelectorAll('.showView');
             const showModalRoles = document.querySelectorAll('.showmodal2');
 
 
             const closeModal = document.querySelectorAll('.close-modal');
 
-            // showModal.addEventListener('click', function() {    
-            //     modal_permision.classList.remove('hidden')
-            // })
-            
+            showModalView.forEach(button => {
+    button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const modalId = button.dataset.target;
+        const modal = document.querySelector(modalId);
+        console.log(modal);
+    });
+});
 
-            showModalRoles.forEach(button =>{
-                button.addEventListener('click',(e)=>{
+            const closeModalView = document.querySelectorAll('.close-modalView');
+            showModalRoles.forEach(button => {
+                button.addEventListener('click', (e) => {
                     e.preventDefault()
                     console.log("click")
-                    const modalId =button.dataset.target
+                    const modalId = button.dataset.target
                     const modal = document.querySelector(modalId)
                     modal.classList.remove('hidden')
                     console.log(modalId)
@@ -191,17 +164,17 @@
                 })
             })
 
-         closeModal.forEach(closeModal=>{
-            closeModal.addEventListener('click',(e)=>{
-                e.preventDefault();
-                const modal = closeModal.closest('.modal2')
-                modal.classList.add('hidden')
+            closeModal.forEach(closeModal => {
+                closeModal.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modal = closeModal.closest('.modal2')
+                    modal.classList.add('hidden')
+                })
             })
-         })
         });
-</script>
+    </script>
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
