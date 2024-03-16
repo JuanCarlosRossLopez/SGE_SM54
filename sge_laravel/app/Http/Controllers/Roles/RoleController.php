@@ -35,7 +35,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $role_name = $request->input('role_name');
+        $role = Role::create(['name' => $role_name]);
+        $permissions = $request->input('permissions', []);
+        $role->syncPermissions($permissions);
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -61,14 +65,29 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+    
+        // Update the role name if it's provided in the request
+        $role->name = $request->input('role_name', $role->name);
+    
+        // Sync permissions
+        $permissions = $request->input('permissions', []); // Get selected permissions from the request
+        $role->syncPermissions($permissions); // Sync the permissions with the role
+    
+        $role->save(); // Save the changes
+    
+        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::find($id);
+        $role->delete();
+        return redirect()->route('roles.index');
+        
     }
 }

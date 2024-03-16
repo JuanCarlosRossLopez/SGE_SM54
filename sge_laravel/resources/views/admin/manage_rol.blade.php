@@ -13,7 +13,7 @@ Historial de memorias
             <div class="w-[1600px]">
                 <label>Historial de memorias</label>
                 <label>
-                    <!-- Este svg es el icono -->
+                            <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
                 </label>
             </div>
@@ -35,7 +35,7 @@ Historial de memorias
                 </div>
                 <div class="search_button_conteiner">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button class="standar_button hidden"><span class="inside_button ">Si lo necesitas</span></button>
+                    <button   class="standar_button show-modal">Crear Rol</button>
                 </div>
             </div>
 
@@ -65,21 +65,21 @@ Historial de memorias
 
                             </td>
                             <td class="trowc">
-                                <div>
-                                    Ver
-                                </div>
+                             
 
-                                <button class="show-modal-rol" data-target="#edit{{$role->id}}">
+                                <button class="show-modal-rol bg-blue-500 rounded p-1 text-white" data-target="#edit{{$role->id}}">
                                     Editar
                                     </button>
-                                    
-                                <div>
+
+                                    <button class="show-delete bg-red-500 rounded p-1 text-white" data-target="#delete{{$role->id}}">
                                     Eliminar
-                                </div>
+                                </button>
+
 
 
                             </td>
                         </tr>
+                        @include('admin.delete-modal')
                         @include('admin.view-modal-rol')
                         @endforeach
 
@@ -124,6 +124,39 @@ Historial de memorias
 </div>
 
 
+
+
+<div  class="modal-create-rol h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+        <div class="border-b px-4 py-2 flex justify-between items-center">
+            <h3 class="font-semibold text-lg ml-60 text-white">Asginación de permisos</h3>
+            <button class="close-modal bg-white rounded-full">
+                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+            </button>
+        </div>
+        <div class="bg-white p-2">
+            <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10 ">
+                <div>
+                    <h1>Crear Rol</h1>
+                    <form action="{{ route('roles.store') }}" method="POST">
+                        @csrf
+                        <input type="text" name="role_name" id="name" placeholder="Nombre del rol">
+                        <label for="permissions">Permisos</label>
+                        @foreach($permissions as $permission)
+                            <div>
+                                <input type="checkbox" name="permissions[]" id="permission{{$permission->id}}" value="{{$permission->name}}">
+                                <label for="permission{{$permission->id}}">{{$permission->name}}</label>
+                            </div>
+                        @endforeach
+                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 <script>
             //Lo hizo roto, es un contador
             const tableBody = document.querySelector('tbody');
@@ -131,16 +164,33 @@ Historial de memorias
             document.getElementById('rowCount').textContent = rowCount;
             const modal_permision = document.querySelector('.modal-permision');
             const modal_roles = document.querySelector('.modal-roles');
+            const create_rol = document.querySelector('.modal-create-rol');
+            const delete_modal = document.querySelector('.delete-modal');
+
             //Funcionamiento de modal
+            const showDelete = document.querySelectorAll('.show-delete');
             const showModal = document.querySelector('.show-modal');
             const showModalRoles = document.querySelectorAll('.show-modal-rol');
-
+            const showModalDeletePermission = document.querySelectorAll('.show-modal-permission')
+            
 
             const closeModal = document.querySelectorAll('.close-modal');
 
-            // showModal.addEventListener('click', function() {    
-            //     modal_permision.classList.remove('hidden')
-            // })
+            showModal.addEventListener('click', function() {    
+                create_rol.classList.remove('hidden')
+            })
+            
+            showDelete.forEach(button =>{
+                button.addEventListener('click',(e)=>{
+                    e.preventDefault()
+                    console.log("click")
+                    const modalId = button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                    console.log(modalId)
+
+                })
+            })
             
 
             showModalRoles.forEach(button =>{
@@ -154,6 +204,15 @@ Historial de memorias
 
                 })
             })
+
+            showModalDeletePermission.forEach(button =>{
+                button.addEventListener('click',(e)=>{
+                    e.preventDefault();
+                    console.log("click")
+                    const modalId =button.dataset.target
+                    const modal = document.querySelector(modalId)
+                })
+            });
 
          closeModal.forEach(closeModal=>{
             closeModal.addEventListener('click',(e)=>{

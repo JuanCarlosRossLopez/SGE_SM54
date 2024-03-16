@@ -216,7 +216,7 @@ Panel de control administrador
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
+                                <a href="/gestion_asesor_anteproyecto" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver</a>
                                 <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Previsualizar</a>
                             </div>
                         </div>

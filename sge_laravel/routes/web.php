@@ -105,10 +105,10 @@ Route::get('/agregar', function () {
 Route::resource('estudiantes', StudentsController::class);
 
 
-//General
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// General
+// Route::get('/dashboard', function () {
+//     return view('super_admin.dashboard.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Equipo valier
@@ -185,10 +185,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('super_admin.dashboard.dashboard');
     })->name('dashboard');
     // equipo rocha
-    //End equipo rocha
+    // End equipo rocha
+    //     return view('super_admin.dashboard.dashboard');
+
 
 });
 Route::resource('roles',RoleController::class);

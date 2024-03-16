@@ -13,7 +13,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {   $permission0 = Permission::create(['name' => 'none']);
         $permission1 = Permission::create(['name' => 'create']);
         $permission2 = Permission::create(['name' => 'read']);
         $permission3 = Permission::create(['name' => 'update']);
