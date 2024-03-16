@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
@@ -83,7 +84,10 @@ Route::get('/gestion_roles', function () {
 Route::get('/panel_admin', function () {
     return view('super_admin.dashboard.dashboard');
 });
-Route::resource('/libros', BooksController::class);
+// Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
+// Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
+
+Route::resource('libros', BooksController::class);
 //End equipo rocha
 
 
