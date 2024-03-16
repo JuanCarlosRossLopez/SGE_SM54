@@ -162,6 +162,7 @@
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
+<script src="{!! asset('js/modals.js') !!}"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         ocultarMenu()
