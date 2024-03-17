@@ -17,18 +17,17 @@
                     <button data-target="#delete{{$role->id}}">
                         <i class="fa-solid fa-circle-plus" style="color: #01A080;"></i>Agregar
                     </button>
+                    <label class="poppins-light text-[15px]" for="">El rol cuenta con estos permisos:</label>
 
-                    <div>
-                        <label class="poppins-light text-[15px]" for="">El rol cuenta con estos permisos:</label>
+                    <div class="flex flex-wrap">
                         @foreach($permissions as $permission)
-                        <div class=" k">
-                            <div class="text-center">
-                                <input type="checkbox" name="permissions[]" id="{{$permission->name}}" value="{{$permission->name}}" @if($role->permissions->contains($permission->id)) checked @endif>
-                                <label class="poppins-light text-[15px]" for="{{$permission->name}}">{{$permission->name}}</label>
-                            </div>
+                        <div class="flex items-center space-x-2 m-2 ">
+                            <input type="checkbox" name="permissions[]" id="{{$permission->name}}" value="{{$permission->name}}" @if($role->permissions->contains($permission->id)) checked @endif>
+                            <label class="poppins-light text-[20px]" for="{{$permission->name}}">{{$permission->name}}</label>
                         </div>
                         @endforeach
                     </div>
+
                     <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                 </div>
             </div>

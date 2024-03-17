@@ -12,15 +12,14 @@
                 <h1 class="poppins-light text-[20px]">
                     ¿Estas seguro de eliminar el permiso del rol?
                 </h1>
-                <form action="{{url('roles',$role->id)  }}" method="POST">
-                @method('DELETE')    
-                @csrf
-                    <button>
+                <div class="flex flex-row gap-4 text-white ">
+                    <button class="bg-red-500 p-2 rounded-md">
                         Si
                     </button>
-                    <button>
+                    <button class="bg-blue-500 p-2 rounded-md close-modal">
                         No
                     </button>
+                </div>
                 </form>
 
 
