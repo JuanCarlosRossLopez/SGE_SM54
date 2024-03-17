@@ -37,6 +37,18 @@
                         class="absolute inset-y-0 right-0 pr-3 flex items-center h-full focus:outline-none">
                         <i class="fas fa-eye"></i>
                     </button>
+                    {{-- script para que funcione el boton del ojo --}}
+                    <script>
+                        const togglePassword = document.querySelector('#togglePassword');
+                        const password = document.querySelector('#password');
+                    
+                        togglePassword.addEventListener('click', function () {
+                            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                            password.setAttribute('type', type);
+                            this.querySelector('i').classList.toggle('fa-eye-slash');
+                        });
+                    </script>
+                    
                 </div>
                 <a href="{{ route('password.request') }}" class="block text-gray-700 font-semibold mb-2 text-center">¿Haz
                     Olvidado la contraseña? Recupérala aquí</a>

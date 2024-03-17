@@ -111,11 +111,11 @@
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="/descarga_informe" class="buttons_sidebar ">
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href='/Perfil_Estudiante' class="buttons_sidebar">
                                 <i class="fa-solid fa-address-card"></i>
@@ -136,12 +136,15 @@
                 </ul>
             </div>
             <div>
-                <!--Linea de separación atte: guayabo -->
+                <!-- Línea de separación -->
                 <p class="border-top opacity-60"></p>
-                <button class="logout_sidebar buttons_sidebar">
-                    <i class="fa-solid fa-right-from-bracket "></i>
-                    Cerrar sesión
-                </button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="logout_sidebar buttons_sidebar">
+                        <i class="fa-solid fa-right-from-bracket "></i>
+                        Cerrar sesión
+                    </button>
+                </form>
             </div>
 
         </div>

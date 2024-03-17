@@ -41,7 +41,7 @@ Route::get('/plantilla', function () {
 
 //Mision, vision, valores
 Route::get('/', function () {
-    return view('login.login');
+    return view('auth.login');
 });
 
 //Dashboard Asesor
@@ -66,7 +66,7 @@ Route::resource('/anteproyecto', Projects_managementController::class);
 
 //Equipo rocha
 Route::get('/iniciar_session', function () {
-    return view('login.login');
+    return view('auth.login');
 });
 
 Route::get('/recuperar_contraseña', function () {
@@ -196,9 +196,9 @@ Route::middleware('auth')->group(function () {
 
 });
 Route::resource('roles',RoleController::class);
-
+Route::middleware('auth')->group(function () {
 Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
-
+});
 
 require __DIR__.'/auth.php';
