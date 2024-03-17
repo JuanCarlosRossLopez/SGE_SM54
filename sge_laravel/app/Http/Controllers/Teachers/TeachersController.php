@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teachers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teachers;
+
 class TeachersController extends Controller
 {
     /**
@@ -12,9 +13,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-
         $teachers = Teachers::all();
-        return view ('teachers', compact('teachers'));
+        return view('teachers.teachers', compact('teachers'));
     }
 
     /**
@@ -22,8 +22,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return view('create_Teacher');
-
+        return view('teachers.create');
     }
 
     /**
@@ -32,31 +31,29 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-            'id_teacher' => 'required|unique:teacher|max:8',
-            'teacher_name' => 'required|max:250',
-            'teacher_email' => 'required',
-            'division_id' => 'required',
-            'user_id' => 'required'
+            'teacher_name' => 'required|max:250|unique:teachers',
+            'payroll' => 'required|integer|unique:teachers',
+            'id_user' => 'nullable',
+            'division_id' => 'nullable'
         ]);
-        
-            $teacher = new Teachers();
-            $teacher -> teacher_name = $request ->teacher_name;
-            $teacher -> teacher_email = $request ->teacher_email;
-            $teacher -> division_id = $request ->division_id;
-            $teacher -> user_id = $request ->user_id;
-            $teacher -> save();
 
-            return redirect('teachers');
-        }
+        $teacher = new Teachers();
+        $teacher->teacher_name = $request->teacher_name;
+        $teacher->payroll = $request->payroll;
+        $teacher->id_user = $request->id_user;
+        $teacher->division_id = $request->division_id;
+        $teacher->save();
+
+        return redirect('teachers')->with('notification', 'Teacher created successfully');
+    }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $teacher=Teachers::find($id);
-        return view('show-teacher', compact('teachers'));
+        $teacher = Teachers::find($id);
+        return view('teachers.show', compact('teacher'));
     }
 
     /**
@@ -65,35 +62,29 @@ class TeachersController extends Controller
     public function edit(string $id)
     {
         $teacher = Teachers::find($id);
-        return view('edit-teacher', ['teachers' => $teacher]);
+        return view('teachers.edit', compact('teacher'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-
-    /* valida los datos del docente nuevamente, toma sus datos, lo busca por id, tomando el model, los guarda
-    y manda una notificación y los regresa a la vista donde se encuentran los otros datos */
     {
         $request->validate([
-
-            'id_teacher' => 'required|unique:teacher|max:8',
             'teacher_name' => 'required|max:250',
-            'teacher_email' => 'required',
-            'division_id' => 'required',
-            'user_id' => 'required'
-           
+            'payroll' => 'required|integer',
+            'id_user' => 'nullable',
+            'division_id' => 'nullable'
         ]);
-        
-        $teacher = Teachers::find($id);
-        $teacher -> teacher_name = $request ->teacher_name;
-        $teacher -> teacher_email = $request ->teacher_email;
-        $teacher -> division_id = $request ->division_id;
-        $teacher -> user_id = $request ->user_id;
-        $teacher -> save();
 
-        return redirect('teachers')->with('notificacion', 'Cambio Guardado');
+        $teacher = Teachers::find($id);
+        $teacher->teacher_name = $request->teacher_name;
+        $teacher->payroll = $request->payroll;
+        $teacher->id_user = $request->id_user;
+        $teacher->division_id = $request->division_id;
+        $teacher->save();
+
+        return redirect('teachers')->with('notification', 'Teacher updated successfully');
     }
 
     /**
@@ -101,10 +92,8 @@ class TeachersController extends Controller
      */
     public function destroy(string $id)
     {
-        /*toma el model y lo busca po id, lo llama con el nombre teacher, con el cual lo elimina y lo vuelve a llevar a 
-        la vista donde se encuentra el resto de la información*/
         $teacher = Teachers::find($id);
-        $teacher -> delete();
-        return redirect('teachers') -> with('notificación', 'Se elimino correctamente');
+        $teacher->delete();
+        return redirect('teachers')->with('notification', 'Teacher deleted successfully');
     }
 }

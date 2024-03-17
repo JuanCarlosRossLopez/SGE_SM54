@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\RoleController;
+use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
 use FontLib\Table\Type\name;
@@ -84,10 +85,14 @@ Route::get('/gestion_roles', function () {
 Route::get('/panel_admin', function () {
     return view('super_admin.dashboard.dashboard');
 });
+
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 Route::resource('libros', BooksController::class);
+
+Route::resource('teachers', TeachersController::class);
+
 //End equipo rocha
 
 
