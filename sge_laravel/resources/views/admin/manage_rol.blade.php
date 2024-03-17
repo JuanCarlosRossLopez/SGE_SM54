@@ -67,13 +67,19 @@ Historial de memorias
                             <td class="trowc">
                              
 
-                                <button class="show-modal-rol bg-blue-500 rounded p-1 text-white" data-target="#edit{{$role->id}}">
-                                    Editar
-                                    </button>
+                                <button class="show-modal-rol  rounded p-1 text-white" data-target="#edit{{$role->id}}">
+                                <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7    ">
 
-                                    <button class="show-delete bg-red-500 rounded p-1 text-white" data-target="#delete{{$role->id}}">
-                                    Eliminar
+                            </button>
+
+                                    <button class="show-delete rounded p-1 text-white" data-target="#delete{{$role->id}}">
+                                    <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7   text-red-500  ">
+
                                 </button>
+
+                                <!-- <button>
+                                    <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
+                                </button> -->
 
 
 
@@ -213,12 +219,13 @@ Historial de memorias
                     const modal = document.querySelector(modalId)
                 })
             });
+            
 
          closeModal.forEach(closeModal=>{
             closeModal.addEventListener('click',(e)=>{
                 e.preventDefault();
-                const modal = closeModal.closest('.modal-roles')
-                modal.classList.add('hidden')
+                const modal = closeModal.closest('.modal-roles');
+                modal.classList.add('hidden');
             })
          })
             
