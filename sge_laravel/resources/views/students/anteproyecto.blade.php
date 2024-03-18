@@ -226,29 +226,30 @@
                     </div>
                 </div>
         </div>
-        <div class="flex flex-row -mx-2 w-full">
+        {{-- <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
                 <!-- Los otros elementos omitidos por brevedad -->
             </div>
-        </div>
+        </div> --}}
         <div class="flex flex-col mt-3">
             <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
                 type="submit">Guardar</button>
         </div>
         </form>
 
-        <div
+        {{-- <div
             class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
             <!-- Contenido de la modal omitido por brevedad -->
-        </div>
+        </div> --}}
 
         <!-- Contenido de la modal-edit omitido por brevedad -->
 
         </form>
     </div>
     </div>
-
-    </div>
+    
+</div>
+@endsection
 
     <script>
         function initializeModalEvents(triggerSelector, modalSelector) {
@@ -280,4 +281,3 @@
             }
         }, 5000);
     </script>
-@endsection
