@@ -52,16 +52,18 @@ class BooksController extends Controller
      */
     public function show($id)
     {
+        $students =Students::all();
         $libro = books::find($id);
-        return view('super_admin.show_book', compact("books"));
+        return view('super_admin.show_book', compact("books","students"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( )
     {
-        //
+        $students =Students::all();
+        return view('super_admin.edit_book_modal', ['students'=>$students]);
     }
 
     /**
@@ -69,7 +71,15 @@ class BooksController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $books = Books::findOrFail($id);
+        $books->book_name = $request->input('book_name');
+        $books->book_front_page = $request->input('book_front_page');
+        $books->book_description = $request->input('book_description');
+        $books->author = $request->input('author');
+        $books->price = $request->input('price');
+        $books->students_id = $request->input('students_id');
+        $books->save();
+        return redirect()->route('super_admin.book');
     }
 
     /**
@@ -77,6 +87,8 @@ class BooksController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $books = Books::find($id);
+        $books->delete();
+        return redirect()->route('super_admin.book');
     }
 }
