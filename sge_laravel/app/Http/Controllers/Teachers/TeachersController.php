@@ -31,17 +31,17 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'teacher_name' => 'required|max:250|unique:teachers',
+            'name_teacher' => 'required|max:250|unique:teachers',
             'payroll' => 'required|integer|unique:teachers',
             'id_user' => 'nullable',
             'division_id' => 'nullable'
         ]);
 
         $teacher = new Teachers();
-        $teacher->teacher_name = $request->teacher_name;
-        $teacher->payroll = $request->payroll;
-        $teacher->id_user = $request->id_user;
-        $teacher->division_id = $request->division_id;
+        $teacher->name_teacher = $request->input('teacher_name');
+        $teacher->payroll = $request->input('payroll');
+        $teacher->id_user = $request->input('id_user');
+        $teacher->division_id = $request->input('division_id');
         $teacher->save();
 
         return redirect('teachers')->with('notification', 'Teacher created successfully');
