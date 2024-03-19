@@ -33,4 +33,3 @@ return new class extends Migration {
         Schema::dropIfExists('Teachers');
     }
 };
-db.createUser({user:"root",pwd:passwordPrompt(),roles:[{role:"userAdminAnyDatabase","db":"admin"},{"role":"readWriteAnyDatabase","db":"admin"}]})
