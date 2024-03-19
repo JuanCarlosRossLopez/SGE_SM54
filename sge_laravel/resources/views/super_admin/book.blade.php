@@ -5,9 +5,10 @@
 @endsection
 
 @section('contenido')
-    <div class="back_conteiner">
-        <div class="top_conteiner">
-            <div class="w-[70rem]">
+    <div class="lg:w-[112rem] sm:w-[50rem] ml-[3rem] items-center flex-col">
+        <div
+            class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
+            <div class="">
                 <label>Historial de libros</label>
                 <label>
                     <!-- Este svg es el icono -->
@@ -16,15 +17,15 @@
             </div>
 
         </div>
-        <div class="content_conteiner  h-fit">
-            <div class="flex flex-row items-center justify-start gap-2">
+        <div class="bg-[#e6e6e6] mt-4 pt-[0.1rem] pb-4 p-8 rounded-md grid grid-flow-row  ">
+            <div class="flex flex-row items-center  justify-start gap-2">
                 <label class="conteiner_word_title items-center">Tabla de libros</label>
                 <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
                     data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
                 </label>
             </div>
-            <div class="inside_content_conteiner">
+            <div class="inside_content_conteiner justify-between">
                 <div class="search_conteiner">
                     <button class="search_button">
                         <i class="fas fa-search text-gray-500"></i>
@@ -38,42 +39,44 @@
                 </div>
             </div>
 
-            <div class="table_conteiner">
-                <table class="standar_table">
-                    <thead class="standar_thead">
+            <div class=" overflow-y-auto">
+                <table class="standar_table ">
+                    <thead class="bg-[#01a080] text-center text-white">
 
                         <tr>
-                            <th class="theader">id</th>
-                            <th class="theader">Nombre(s)</th>
-                            <th class="theader">Pagina</th>
-                            <th class="theader">Descripción</th>
-                            <th class="theader">Autor</th>
-                            <th class="theader">Precio</th>
-                            <th class="theader">Estudiante</th>
-                            <th class="theader">Acciones</th>
+                            <th class="theader md:table-cell">id</th>
+                            <th class="theader  md:table-cell">Nombre(s)</th>
+                            <th class="theader md:table-cell">Pagina</th>
+                            <th class="theader md:table-cell">Descripción</th>
+                            <th class="theader md:table-cell">Autor</th>
+                            <th class="theader md:table-cell">Precio</th>
+                            <th class="theader md:table-cell">Estudiante</th>
+                            <th class="theader md:table-cell">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
                         @foreach ($books as $book)
                             <tr class="trow">
-                                <td class="trowc">1</td>
-                                <td class="trowc">{{ $book->book_name }}</td>
-                                <td class="trowc">{{ $book->book_front_page }}</td>
-                                <td class="trowc">{{ $book->book_description }}</td>
-                                <td class="trowc">{{ $book->author }}</td>
-                                <td class="trowc">{{ $book->price }}</td>
-                                <td class="trowc">{{ $book->students_id }}</td>
+                                <td class="trowc md:table-cell">1</td>
+                                <td class="trowc md:table-cell">{{ $book->book_name }}</td>
+                                <td class="trowc md:table-cell">{{ $book->book_front_page }}</td>
+                                <td class="trowc md:table-cell">{{ $book->book_description }}</td>
+                                <td class="trowc md:table-cell">{{ $book->author }}</td>
+                                <td class="trowc md:table-cell">{{ $book->price }}</td>
+                                <td class="trowc md:table-cell">{{ $book->students_id }}</td>
                                 <td class="trowc">
-
-                                        <button class="showView" data-target="#view{{ $book->id }}">
-                                            Ver
-                                        </button>
-
+                                    <button class="showView" data-target="#view{{ $book->id }}">
+                                        Ver
+                                    </button>
+                                    <button class="showEdit" data-target="#edit{{ $book->id }}">
+                                        Editar
+                                    </button>
+                                    <button class="deleteBook" data-target="#delete{{ $book->id }}">Eliminar</button>
                                 </td>
-
                             </tr>
                             @include('super_admin.view_book_modal')
-
+                            @include('super_admin.edit_book_modal')
+                            @include('super_admin.delete_book_modal')
                         @endforEach
                         <tr class="trow">
                             <div>
@@ -122,6 +125,7 @@
         </div>
     </div>
 
+
     @include('super_admin.add_book_modal')
 
 
@@ -134,24 +138,61 @@
 
             const modal_libro = document.querySelector('.modal2');
             const modal_view = document.querySelector('.modalView')
+            const modal_edit = document.querySelector('.modalEdit')
+            const modal_delete = document.querySelector('.modalDelete')
 
             //Funcionamiento de modal
             const showModalView = document.querySelectorAll('.showView');
             const showModalRoles = document.querySelectorAll('.showmodal2');
-
+            const showModalEdit = document.querySelectorAll('.showEdit');
+            const showModalDelete = document.querySelectorAll('.deleteBook');
 
             const closeModal = document.querySelectorAll('.close-modal');
 
             showModalView.forEach(button => {
-    button.addEventListener("click", (e) => {
-        e.preventDefault();
-        const modalId = button.dataset.target;
-        const modal = document.querySelector(modalId);
-        console.log(modal);
-    });
-});
+                button.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const modalId = button.dataset.target;
+                    const modal = document.querySelector(modalId);
+                    console.log(modal);
+                });
+            });
 
-            const closeModalView = document.querySelectorAll('.close-modalView');
+            showModalDelete.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const modalId = button.dataset.target;
+                    const modal = document.querySelector(modalId);
+                    modal.classList.remove('hidden');
+                    console.log(modal);
+                });
+            })
+
+            const closeModalView = document.querySelectorAll('.modalView');
+            showModalView.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    console.log("click")
+                    const modalId = button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                    console.log(modalId)
+
+                })
+            })
+            showModalEdit.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    console.log("click")
+                    const modalId = button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                    console.log(modalId)
+
+                })
+            })
+
+
             showModalRoles.forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault()
@@ -161,6 +202,13 @@
                     modal.classList.remove('hidden')
                     console.log(modalId)
 
+                })
+            })
+            closeModalView.forEach(closeModalView => {
+                closeModalView.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modal = closeModalView.closest('.modalView')
+                    modal.classList.add('hidden')
                 })
             })
 

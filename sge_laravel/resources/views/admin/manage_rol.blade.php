@@ -1,11 +1,10 @@
 @extends('test.test_template')
 
 @section('title')
-Historial de memorias
+    Historial de memorias
 @endsection
 @section('contenido')
-
-<div class="min-h-screen ">
+    <div class="min-h-screen ">
 
 
     <div class="back_conteiner ">
@@ -59,7 +58,7 @@ Historial de memorias
                         <tr class="trow">
                             <td class="trowc">
 
-                                {{ $role->name }}
+                                        {{ $role->name }}
 
                             </td>
                             <td class="trowc">
@@ -80,19 +79,19 @@ Historial de memorias
                                 <button class="show-delete rounded p-1 text-white" data-target="#delete{{$role->id}}">
                                     <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7   text-red-500  ">
 
-                                </button>
+                                        </button>
 
-                                <!-- <button>
-                                    <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
-                                </button> -->
+                                        <!-- <button>
+                                        <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
+                                    </button> -->
 
 
 
-                            </td>
-                        </tr>
-                        @include('admin.delete-modal')
-                        @include('admin.view-modal-rol')
-                        @endforeach
+                                    </td>
+                                </tr>
+                                @include('admin.delete-modal')
+                                @include('admin.view-modal-rol')
+                            @endforeach
 
                         <tr class="trow">
 
@@ -103,36 +102,41 @@ Historial de memorias
                             </td>
                         </tr>
 
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-            <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-                <div>
-                    <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        < </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                1
-                            </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                2
-                            </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                3
-                            </button>
-                            <button class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                >
-                            </button>
+                        </tbody>
+                    </table>
                 </div>
-                <div>
-                    <span>Cantidad de registros :</span>
-                    <span id="rowCount"></span>
+
+                <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
+                <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
+                    <div>
+                        <button
+                            class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
+                            < </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                    1
+                                </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                    2
+                                </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                    3
+                                </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
+                                    >
+                                </button>
+                    </div>
+                    <div>
+                        <span>Cantidad de registros :</span>
+                        <span id="rowCount"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
@@ -375,8 +379,10 @@ Historial de memorias
     })
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
 @endsection

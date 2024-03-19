@@ -89,7 +89,11 @@ Route::get('/panel_admin', function () {
 
 Route::resource('libros', BooksController::class);
 
-Route::resource('teachers', TeachersController::class);
+Route::resource('maestros', TeachersController::class);
+
+
+
+//Route::post('/teachers', [TeachersController::class, 'store'])->name('teachers.store');
 
 //End equipo rocha
 

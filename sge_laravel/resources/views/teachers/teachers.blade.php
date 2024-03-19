@@ -1,14 +1,14 @@
 @extends('test.template')
 
 @section('title')
-    Libros
+    Asesores
 @endsection
 
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
             <div class="w-[70rem]">
-                <label>Lista de Maestros</label>
+                <label>Lista de Asesores</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
@@ -18,7 +18,7 @@
         </div>
         <div class="content_conteiner  h-fit">
             <div class="flex flex-row items-center justify-start gap-2">
-                <label class="conteiner_word_title items-center">Tabla de libros</label>
+                <label class="conteiner_word_title items-center">Tabla de Asesores</label>
                 <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
                     data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
@@ -33,8 +33,7 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button data-target="#hola" class="showmodal2 standar_button"><span
-                            class="show-modal2 ">Agregar</span></button>
+                    <button class="show-modal-add standar_button"><span>Agregar</span></button>
                 </div>
             </div>
 
@@ -60,17 +59,16 @@
                                 <td class="trowc">{{ $teachers->id_user }}</td>
                                 <td class="trowc">{{ $teachers->division_id }}</td>
                                 <td class="trowc">
-                                  <button class="show-modal-rol bg-blue-500 rounded p-1 text-white"
-                                  data-target="#edit{{ $teachers->id }}">
-                                  Editar
-                              </button>
-                              <button class="show-delete bg-red-500 rounded p-1 text-white"
-                                  data-target="#delete{{ $teachers->id }}">
-                                  Eliminar
-                              </button>
+                                    <button class="show-modal-edit" data-target="#edit{{ $teachers->id }}">
+                                        <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7">
+                                    </button>
+                                    <button class="show-delete" data-target="#delete{{ $teachers->id }}">
+                                        <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto"  class="w-7 h-7">
+                                    </button>
                                 </td>
 
                             </tr>
+                            @include('teachers.edit_modal_teacher')
                             @include('teachers.delete_modal_teacher')
                             @include('teachers.view_modal_teachers')
                         @endforEach
@@ -119,4 +117,89 @@
                 </div>
             </div>
         </div>
+
     </div>
+
+
+    <div class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+                <h3 class="font-semibold text-lg ml-60 text-white">Agregar Asesor</h3>
+                <button class="close-modal bg-white rounded-full">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="bg-white p-2">
+                <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10 ">
+                    <div>
+                        <h1>Crear Asesor</h1>
+                        <form action="{{ route('maestros.store') }}" method="POST">
+                            @csrf
+                            <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor">
+                            <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor">
+                            <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor">
+                            <input type="text" name="division_id" id="division_id" placeholder="ID de la división del asesor">
+                            <!-- Aquí puedes agregar más campos según sea necesario -->
+                            <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const tableBody = document.querySelector('tbody');
+        const rowCount = tableBody.querySelectorAll('tr').length;
+        document.getElementById('rowCount').textContent = rowCount;
+        const modal_add = document.querySelector('.modal-add-asesor');
+        const show_modal_add = document.querySelector('.show-modal-add');
+        show_modal_add.addEventListener('click', function() {
+            modal_add.classList.remove('hidden')
+        })
+        const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
+        const show_modal_edit = document.querySelectorAll('.show-modal-edit')
+        show_modal_edit.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+
+        const delete_modal_teacher = document.querySelectorAll('.delete-modal')
+        const show_delete = document.querySelectorAll('.show-delete')
+        show_delete.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+                console.log(modal)
+                console.log(modalId)
+            })
+        })
+
+
+
+        const close_modal = document.querySelectorAll('.close-modal');
+        close_modal.forEach(close_modal => {
+            close_modal.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modal_edit = close_modal.closest('.modal-edit-asesor')
+                const modal_add = close_modal.closest('.modal-add-asesor')
+                const modal_delete = close_modal.closest('.delete-modal')
+                if (modal_add) {
+                    modal_add.classList.add('hidden')
+                }
+                if (modal_edit) {
+                    modal_edit.classList.add('hidden')
+                }
+                if (modal_delete) {
+                    modal_delete.classList.add('hidden')
+                }
+            })
+        })
+    </script>
