@@ -22,7 +22,6 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
     }
 
     /**
@@ -30,12 +29,7 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name_teacher' => 'required|max:250|unique:teachers',
-            'payroll' => 'required|integer|unique:teachers',
-            'id_user' => 'nullable',
-            'division_id' => 'nullable'
-        ]);
+
 
         $teacher = new Teachers();
         $teacher->name_teacher = $request->input('teacher_name');
@@ -44,7 +38,7 @@ class TeachersController extends Controller
         $teacher->division_id = $request->input('division_id');
         $teacher->save();
 
-        return redirect('teachers')->with('notification', 'Teacher created successfully');
+        return redirect('maestros')->with('notification', 'Teacher created successfully');
     }
 
     /**
@@ -71,20 +65,17 @@ class TeachersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'teacher_name' => 'required|max:250',
-            'payroll' => 'required|integer',
-            'id_user' => 'nullable',
-            'division_id' => 'nullable'
+      
         ]);
 
         $teacher = Teachers::find($id);
-        $teacher->teacher_name = $request->teacher_name;
+        $teacher->name_teacher = $request->name_teacher;
         $teacher->payroll = $request->payroll;
         $teacher->id_user = $request->id_user;
         $teacher->division_id = $request->division_id;
         $teacher->save();
 
-        return redirect('teachers')->with('notification', 'Teacher updated successfully');
+        return redirect('maestros')->with('notification', 'Teacher updated successfully');
     }
 
     /**
@@ -93,7 +84,12 @@ class TeachersController extends Controller
     public function destroy(string $id)
     {
         $teacher = Teachers::find($id);
+    
+        if (!$teacher) {
+            return redirect('maestros')->with('error', 'Teacher not found');
+        }
+    
         $teacher->delete();
-        return redirect('teachers')->with('notification', 'Teacher deleted successfully');
+        return redirect('maestros')->with('notification', 'Teacher deleted successfully');
     }
-}
+}    

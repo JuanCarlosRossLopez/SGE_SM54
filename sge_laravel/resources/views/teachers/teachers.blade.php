@@ -136,7 +136,7 @@
                         <form action="{{ route('maestros.store') }}" method="POST">
                             @csrf
                             <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor">
-                            <input type="integer" name="payroll" id="payroll" placeholder="Número de nómina del asesor">
+                            <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor">
                             <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor">
                             <input type="text" name="division_id" id="division_id" placeholder="ID de la división del asesor">
                             <!-- Aquí puedes agregar más campos según sea necesario -->
