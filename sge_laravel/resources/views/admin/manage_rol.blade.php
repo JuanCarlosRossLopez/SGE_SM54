@@ -218,12 +218,13 @@ Historial de memorias
                                     <button class="show-modal-permission rounded p-1 text-white" data-target="#delete_permission{{$permission->id}}">
                                         <img src="{{ asset('icons/trash.svg') }}" alt="Delete button" class="w-7 h-7 text-red-500">
                                     </button>
-                                    <button>
+                                    <button class="show-permission-edit" data-target="#edit_permission{{$permission->id}}">
                                         <img src="{{ asset('icons/edit.svg') }}" alt="Edit button" class="w-7 h-7 text-[#01A080]">
                                     </button>
                                 </div>
                             </td>
                         </tr>
+                        @include('admin.edit-modal-permission')
                         @include('admin.delete-modal-permission')
                         @endforeach
                     </tbody>
@@ -256,11 +257,16 @@ Historial de memorias
     const showModal = document.querySelector('.show-modal');
     const showModalPermisions = document.querySelector('.show-modal-permisions');
     const showModalRoles = document.querySelectorAll('.show-modal-rol');
+
+
+    const showEditPermissions = document.querySelectorAll('.show-permission-edit');
+    
+
     const showModalDeletePermissions = document.querySelectorAll('.show-modal-permission');
     const showModalDeletePermission = document.querySelectorAll('.show-modal-permission')
     const show_permission_options = document.querySelector('.show-modal-permision-options');
 
-
+    
 
     show_permission_options.addEventListener('click', () => {
         show_permission.classList.remove('hidden')
@@ -283,6 +289,17 @@ Historial de memorias
             modal.classList.remove('hidden')
         })
     });
+
+    showEditPermissions.forEach(button =>{
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = button.dataset.target
+            const modal = document.querySelector(modalId)
+            console.log(modal)
+            modal.classList.remove('hidden')
+        })
+    
+    })
 
     showDelete.forEach(button => {
         button.addEventListener('click', (e) => {

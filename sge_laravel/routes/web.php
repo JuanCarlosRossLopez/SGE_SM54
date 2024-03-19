@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Roles\RoleController;
+use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
 use FontLib\Table\Type\name;
@@ -82,10 +83,14 @@ Route::get('/cambiar_contraseña', function () {
 Route::get('/panel_admin', function () {
     return view('super_admin.dashboard.dashboard');
 });
+
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 Route::resource('libros', BooksController::class);
+
+Route::resource('teachers', TeachersController::class);
+
 //End equipo rocha
 
 
@@ -195,8 +200,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
-Route::post('roles/delete_permission', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
-
+Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
+Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');
 
 
 

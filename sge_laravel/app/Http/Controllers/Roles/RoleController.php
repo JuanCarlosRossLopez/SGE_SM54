@@ -87,6 +87,14 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role updated successfully');
     }
     
+    public function update_permission(Request $request, string $id)
+    {
+        $permission = Permission::findOrFail($id);
+        $permission->name = $request->input('permission_name', $permission->name);
+        $permission->save();
+        return redirect()->route('roles.index');
+    }
+    
 
     /**
      * Remove the specified resource from storage.
