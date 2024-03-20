@@ -40,7 +40,7 @@
                     <thead class="standar_thead">
                         <tr>
                             <th class="theader">#</th>
-                            <th class="theader">Nombre del coordinador</th>
+                            <th class="theader">Nombre de coordinador</th>
                             <th class="theader">Número de nomina</th>
                             <th class="theader">id_usuario</th>
                             <th class="theader">Division</th>
