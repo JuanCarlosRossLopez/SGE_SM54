@@ -15,6 +15,8 @@ use App\Http\Controllers\Projects_management\Projects_managementController;
 use App\Http\Controllers\Calendar\Calendar2Controller;
 use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
+use App\Http\Controllers\Coordination\CoordinatorsController;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +117,8 @@ Route::get('/agregar', function () {
 
 Route::resource('estudiantes', StudentsController::class);
 
+Route::resource('estudiantes', StudentsController::class);
+
 
 // General
 // Route::get('/dashboard', function () {
@@ -150,7 +154,20 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
-        
+Route::get('/test', function () {
+
+    $pdf = PDF::loadView('pdf.cartaau');
+    return $pdf->stream('cedula.pdf');
+});
+
+Route::get('/anteproyectosss', function () {
+    $imagen_path = public_path("img/LogoUT.png");
+
+    $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path"=>$imagen_path]);
+    return $pdf->stream('cedula.pdf');
+});
+Route::resource('/coordinacion', CoordinatorsController::class);
+
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');
@@ -169,7 +186,6 @@ Route::get('/dashboard_coordinacion', function () {
 Route::get('/libro', function () {
     return view('coordination.books_table');
 });
-
 Route::get('/registro_libros', function () {
     return view('report_generation.form_books');
 });
