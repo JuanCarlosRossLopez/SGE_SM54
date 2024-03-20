@@ -154,7 +154,7 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
-Route::get('/test', function () {
+Route::get('/auto_digitalizacion', function () {
 
     $pdf = PDF::loadView('pdf.cartaau');
     return $pdf->stream('cedula.pdf');
