@@ -1,6 +1,5 @@
-@role('admin')
+@role('Administrador')
 
-@if(Auth::user()->hasRole('admin'))
 
 
 @extends('test.test_template')
@@ -347,7 +346,6 @@ Panel de control administrador
     @endsection
 
 
-    @endif
-    
+
 
     @endrole

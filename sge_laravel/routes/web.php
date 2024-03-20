@@ -148,7 +148,7 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
-
+        
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');
