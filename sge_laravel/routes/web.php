@@ -100,7 +100,7 @@ Route::get('/agregar', function () {
 
 
 Route::resource('estudiantes', StudentsController::class);
-
+Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
 
 
 //General
