@@ -63,7 +63,7 @@
                                         <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7">
                                     </button>
                                     <button class="show-delete" data-target="#delete{{ $teachers->id }}">
-                                        <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto"  class="w-7 h-7">
+                                        <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7">
                                     </button>
                                 </td>
 
@@ -121,7 +121,8 @@
     </div>
 
 
-    <div class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div
+        class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
             <div class="border-b px-4 py-2 flex justify-between items-center">
                 <h3 class="font-semibold text-lg ml-60 text-white">Agregar Asesor</h3>
@@ -130,25 +131,36 @@
                 </button>
             </div>
             <div class="bg-white p-2">
-                <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10 ">
-                    <div>
-                        <h1>Crear Asesor</h1>
-                        <form action="{{ route('maestros.store') }}" method="POST">
+                <div class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
+                    <div class="flex flex-col items-center justify-center">
+                        <h1 class="text-xl font-bold mb-4">Crear Asesor</h1>
+                        <form action="{{ route('maestros.store') }}" method="POST" class="flex flex-col gap-4">
                             @csrf
-                            <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor">
-                            <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor">
-                            <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor">
-                            <input type="text" name="division_id" id="division_id" placeholder="ID de la división del asesor">
-                            <!-- Aquí puedes agregar más campos según sea necesario -->
-                            <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                            <div class="flex gap-4">
+                                <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="number" name="payroll" id="payroll"
+                                    placeholder="Número de nómina del asesor"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                            </div>
+                            <div class="flex gap-4">
+                                <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="text" name="division_id" id="division_id"
+                                    placeholder="ID de la división del asesor"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                            </div>
+                            <!-- Puedes agregar más campos aquí según sea necesario -->
+                            <div class="flex justify-center">
+                                <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                            </div>
                         </form>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script>
         const tableBody = document.querySelector('tbody');
         const rowCount = tableBody.querySelectorAll('tr').length;
