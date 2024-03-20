@@ -7,7 +7,7 @@
 @section('contenido')
     <div class=" w-[1220px] mx-[70px]">
         <div class="top_conteiner">
-            <label>Cédula de Anteproyecto</label>
+            <label>Cédula de Anteproyecto De Estadías</label>
             <label>
                 <!-- Este svg es el icono -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -41,9 +41,10 @@
             <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
                 @csrf
-                <h1 class="text-lg text-center font-medium uppercase my-4">Datos Anteproyecto</h1>
+                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Anteproyecto</h1>
+                <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
                 <div class="flex flex-col mb-3 items-center">
-                    <div class="grid grid-cols-2 gap-24">
+                    <div class="grid grid-cols-3 gap-24">
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <input type="text" name="project_title" id="project_title"
@@ -247,8 +248,8 @@
 
         </form>
     </div>
-    </div>
 
+    </div>
     </div>
 @endsection
 
