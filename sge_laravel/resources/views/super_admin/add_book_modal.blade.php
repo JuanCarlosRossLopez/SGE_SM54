@@ -39,9 +39,9 @@
                                 for="grid-password">
                                 Descripción
                             </label>
-                            <input
-                                class="appearance-none block w-full h-16  bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4  focus:outline-none focus:bg-white focus:border-gray-500"
-                                 name="book_description" type="text" >
+                            <textarea
+                                class="appearance-none w-full h-40  bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 text-start  focus:outline-none focus:bg-white focus:border-gray-500"
+                                name="book_description"></textarea>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-2">
@@ -74,7 +74,7 @@
                                     id="grid-state">
                                     @foreach ($students as $student)
                                    
-                                      <option  value="{{$student->id}}">{{$student->id}}</option>  
+                                      <option  value="{{$student->id}}">{{$student->student_name}}</option>  
                                     @endforeach
                                     
                                 </select>
