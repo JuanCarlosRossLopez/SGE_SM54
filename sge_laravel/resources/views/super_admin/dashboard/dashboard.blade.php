@@ -1,3 +1,8 @@
+@role('admin')
+
+@if(Auth::user()->hasRole('admin'))
+
+
 @extends('test.test_template')
 @section('titulo')
 Panel de control administrador
@@ -340,3 +345,9 @@ Panel de control administrador
         };
     </script>
     @endsection
+
+
+    @endif
+    
+
+    @endrole

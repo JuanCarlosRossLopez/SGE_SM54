@@ -1,152 +1,152 @@
-@extends('test.test_template')
+    @extends('test.test_template')
 
-@section('titulo', 'Usuarios')
-@section('contenido')
+    @section('titulo', 'Usuarios')
+    @section('contenido')
 
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
-<div class="view_conteiner">
-    <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>
-                Gestión de Usuarios
-            </label>
-            <label>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
-                </svg>
-            </label>
-        </div>
-
-        <div class="content_conteiner">
-            <label class="word_title">Tabla de Gestión de Alumnos</label>
-            <div class="inside_content_conteiner">
-                @if (session()->has('notificacion'))
-                <div class="text-blue-800">
-                    {{ session('notificacion') }}
-                </div>
-                @endif
-                <div class="search_conteiner">
-                    <button class="search_button">
-                        <i class="fas fa-search text-gray-500"></i>
-                    </button>
-                    <input type="text" class="search_input" placeholder="Buscar..." />
-                </div>
-                <div class="search_button_conteiner">
-                    <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button class="show-modal3 standar_button"><span class="inside_button">Agregar
-                            Usuario</span></button>
-
-                </div>
-                <button class="show-modal-u standar_button2 "><span class="inside_button">Agregar
-                        Usuarios</span></button>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    </head>
+    <div class="view_conteiner">
+        <div class="back_conteiner">
+            <div class="top_conteiner">
+                <label>
+                    Gestión de Usuarios
+                </label>
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
+                    </svg>
+                </label>
             </div>
 
-
-            <div
-                class="modal-user h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-                <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
-                    <div class="border-b px-4 py-2 flex justify-between items-center">
-                        <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar Usuarios</h3>
-                        <button class="close-modal-u bg-white rounded-full h-[1rem] flex items-center">
-                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                        </button>
+            <div class="content_conteiner">
+                <label class="word_title">Tabla de Gestión de Alumnos</label>
+                <div class="inside_content_conteiner">
+                    @if (session()->has('notificacion'))
+                    <div class="text-blue-800">
+                        {{ session('notificacion') }}
                     </div>
+                    @endif
+                    <div class="search_conteiner">
+                        <button class="search_button">
+                            <i class="fas fa-search text-gray-500"></i>
+                        </button>
+                        <input type="text" class="search_input" placeholder="Buscar..." />
+                    </div>
+                    <div class="search_button_conteiner">
+                        <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
+                        <button class="show-modal3 standar_button"><span class="inside_button">Agregar
+                                Usuario</span></button>
 
-                    <form class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center" method="POST"
-                        action="{{route('muchos-usuarios.store')}}">
-                        @csrf
-                        <div>
-                            <label for="number_of_users" class="block text-gray-700 text-sm font-bold mb-2">Número de
-                                Usuarios:</label>
-                            <input type="number" id="number_of_users" name="number_of_users" min="1"
-                                class="rounded input-field">
-                        </div>
-                        <div>
-                            <label for="role_name">Rol:</label>
-                            <select name="role_name" id="role_name"
-                                class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-                                <option value="">Selecciona un rol</option>
-                                <option value="student">Alumno</option>
-                                <option value="teacher">Maestro</option>
-                                <option value="admin">Administrador</option>
-                                <option value="coordination">Coordinación</option>
-                                <option value="president">Presidencia</option>
-                                <option value="applicants">Aspirante</option>
-
-                            </select>
-                        </div>
-                        <button type="submit"
-                            class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Crear
-                            Usuarios</button>
-
-                    </form>
+                    </div>
+                    <button class="show-modal-u standar_button2 "><span class="inside_button">Agregar
+                            Usuarios</span></button>
                 </div>
-            </div>
-        
 
 
-                <div class="table_conteiner">
-                    <table class="standar_table">
-                        <thead class="standar_thead">
-                            <tr>
-                                <th class="theader">
-                                    #</th>
-                                <th class="theader">
-                                    Nombre de
-                                    Usuario</th>
-                                <th class="theader">
-                                    Email
-                                </th>
-                                <th class="theader">
-                                    Roles
-                                </th>
-                                <th class="theader">
-                                    Acciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="tbody">
-                            @foreach ($users as $user)
-                                <tr class="trow">
-                                    <td class="trowc"> {{ $loop->iteration }} </td>
-                                    <td class="trowc"> {{ $user->name }} </td>
-                                    <td class="trowc"> {{ $user->email }} </td>
-                                    <td>
-                @foreach ($user->roles as $role)
-                    {{ $role->name }}
-            </td>
-                                    <td class="trowc">
-                                        <button class="show-modal-view" data-target="#show{{ $user->id }}">
-                                            <div class="comment-icon flex items-center justify-center">
-                                                <i class="bi bi-eye-fill"></i>
-                                            </div>
-                                        </button>
-                                        <button class="show-modal4" data-target="#edit{{ $user->id }}">
-                                            <div class="comment-icon flex items-center justify-center">
-                                                <i class="bi bi-pencil-square" style="color: blue;"></i>
-                                            </div>
-                                        </button>
-
-                            <button class="show-modal" data-target="#delete{{$user->id}}">
-                                <div class="comment-icon flex items-center justify-center">
-                                    <i class="bi bi-trash" style="color: red;"></i>
-                                </div>
+                <div
+                    class="modal-user h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
+                        <div class="border-b px-4 py-2 flex justify-between items-center">
+                            <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar Usuarios</h3>
+                            <button class="close-modal-u bg-white rounded-full h-[1rem] flex items-center">
+                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                             </button>
-                        </td>
-                    </tr>
-                    @include('UserManagement.modal-users')
-                    @endforeach
+                        </div>
 
-                    @endforeach
-                </tbody>
-            </table>
-            <div class="mt-5">{{ $users->links() }}</div>
-        </div>
+                        <form class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center" method="POST"
+                            action="{{route('muchos-usuarios.store')}}">
+                            @csrf
+                            <div>
+                                <label for="number_of_users" class="block text-gray-700 text-sm font-bold mb-2">Número de
+                                    Usuarios:</label>
+                                <input type="number" id="number_of_users" name="number_of_users" min="1"
+                                    class="rounded input-field">
+                            </div>
+                            <div>
+                                <label for="role_name">Rol:</label>
+                                <select name="role_name" id="role_name"
+                                    class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+                                    <option value="">Selecciona un rol</option>
+                                    <option value="student">Alumno</option>
+                                    <option value="teacher">Maestro</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="coordination">Coordinación</option>
+                                    <option value="president">Presidencia</option>
+                                    <option value="applicants">Aspirante</option>
+
+                                </select>
+                            </div>
+                            <button type="submit"
+                                class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Crear
+                                Usuarios</button>
+
+                        </form>
+                    </div>
+                </div>
+            
+
+
+                    <div class="table_conteiner">
+                        <table class="standar_table">
+                            <thead class="standar_thead">
+                                <tr>
+                                    <th class="theader">
+                                        #</th>
+                                    <th class="theader">
+                                        Nombre de
+                                        Usuario</th>
+                                    <th class="theader">
+                                        Email
+                                    </th>
+                                    <th class="theader">
+                                        Roles
+                                    </th>
+                                    <th class="theader">
+                                        Acciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+                                @foreach ($users as $user)
+                                    <tr class="trow">
+                                        <td class="trowc"> {{ $loop->iteration }} </td>
+                                        <td class="trowc"> {{ $user->name }} </td>
+                                        <td class="trowc"> {{ $user->email }} </td>
+                                        <td>
+                    @foreach ($user->roles as $role)
+                        {{ $role->name }}
+                </td>
+                                        <td class="trowc">
+                                            <button class="show-modal-view" data-target="#show{{ $user->id }}">
+                                                <div class="comment-icon flex items-center justify-center">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </div>
+                                            </button>
+                                            <button class="show-modal4" data-target="#edit{{ $user->id }}">
+                                                <div class="comment-icon flex items-center justify-center">
+                                                    <i class="bi bi-pencil-square" style="color: blue;"></i>
+                                                </div>
+                                            </button>
+
+                                <button class="show-modal" data-target="#delete{{$user->id}}">
+                                    <div class="comment-icon flex items-center justify-center">
+                                        <i class="bi bi-trash" style="color: red;"></i>
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        @include('UserManagement.modal-users')
+                        @endforeach
+
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="mt-5">{{ $users->links() }}</div>
+            </div>
 
 
 
