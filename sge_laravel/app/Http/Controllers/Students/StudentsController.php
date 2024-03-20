@@ -25,7 +25,7 @@ class StudentsController extends Controller
     public function create()
     {
         $students = Students::all();
-        return view('students.manager_student', ['students' => $students]);
+        return view('estudiantes', ['students' => $students]);
     }
 
     /**
@@ -69,13 +69,13 @@ class StudentsController extends Controller
     public function edit($id)
     {
         $student = Students::find($id);
-        return view('students.show_student', ['student' => $student]);
+        return view('students.manager_student', ['student' => $student]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StudentsRequest $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         //Busca el estudiante
         $student = Students::find($id);
@@ -86,7 +86,7 @@ class StudentsController extends Controller
         //guarda
         $student->update($request->all());
         //lo manda a la vista de estudiante
-        return redirect('students.show_student')->with('notificacion','Estudiante editado correctamente');
+        return redirect('students.manager_student')->route('students.manager_student', ['id' => $student->id])->with('notificacion', 'Estudiante editado correctamente');
     }
 
     /**

@@ -102,6 +102,7 @@ Route::get('/agregar', function () {
 Route::resource('estudiantes', StudentsController::class);
 
 
+
 //General
 Route::get('/dashboard', function () {
     return view('dashboard');

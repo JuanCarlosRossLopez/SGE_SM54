@@ -61,7 +61,7 @@
                                 <td class="text-center border-b">{{ $student->strike }} </td>
                                 <td class="text-center border-b">        
                                     <a href="{{ route('estudiantes.show', $student->id) }}" class="text-blue-500">Ver</a>
-                                    <a href="#" onclick="showEditModal({{ $student->id }}, '{{ $student->student_name }}', {{ $student->id_student }}, {{ $student->strike }}, {{ $student->project_creator }})" class="text-yellow-500">Editar</a>
+                                    <a href="{{ route('estudiantes.edit', $student->id) }}" class="text-yellow-500">Editar</a>
                                     <button onclick="showConfirmationModal({{ $student->id }})" class="text-red-500 show-modal">Eliminar</button>
                                     <form id="deleteForm{{ $student->id }}" action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
                                         @csrf
@@ -100,7 +100,7 @@
                 <div class="bg-white p-4 rounded-lg shadow-lg">
                     <!-- Contenido del modal -->
                     <p>Editando estudiante:</p>
-                    <form id="editForm" action="" method="POST">
+                    <form id="editForm" action="{{ route('estudiantes.update', $student->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="student_id" id="editStudentId">
