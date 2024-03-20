@@ -19,7 +19,7 @@
 
         <div class=" flex flex-nowrap space-x-1 w-full gap-2 mb-4">
             <div class="content_conteiner2 w-full ">
-                <div class=" w-full flex flex-row justify-between items-center">
+                <div class=" w-full flex flex-row items-center">
                     <div>
                         <label class="conteiner_word_title">Información de anteproyecto</label>
                         <label id="infoButton" class="cursor-pointer mt-3"
@@ -27,7 +27,8 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
-                    <label class="text-blue-600 text-2xl p-2"><i class="fa-solid fa-thumbs-up"></i></label>
+                    <button class="text-xl font-medium text-black bg-[#01A080] h-12 w-24 rounded-xl mt-2 ml-96 ">Aceptar</button>
+                    <button class="text-xl font-medium text-white bg-[#a02301] h-12 w-24 rounded-xl mt-2 ml-10">Rechazar</button>
                 </div>
                 <div class="bg-green-300 w-full">
                     <div class="justify-between items-center w-full">
@@ -280,12 +281,13 @@
             </div>
             <div class="flex flex-col items-center w-[30rem] h-fit">
                 <div class="content_conteiner w-full">
-                    <label class="conteiner_word_title flex flex-col items-center">Información relevante</label>
+                    <label class="conteiner_word_title flex flex-col items-center font-semibold">Información relevante</label>
                     <div class="flex flex-col">
-                        <label>Poner informacion como: </label>
-                        <label>- Aceptado por asesor?</label>
-                        <label>- Colavorativo</label>
-                        <label>- Likes</label>
+                        <br/>
+                        <label class="font-medium text-xl ">Poner informacion como: </label>
+                        <label class="font-medium text-lg ">- Aceptado por asesor?</label>
+                        <label class="font-medium text-lg ">- Colavorativo</label>
+                        <label class="font-medium text-lg ">- Likes</label>
                     </div>
                     <!-- Botones de calendario -->
                     <!--
