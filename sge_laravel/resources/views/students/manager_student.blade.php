@@ -60,7 +60,7 @@
                                 <td class="text-center border-b">{{ $student->project_creator }} </td>
                                 <td class="text-center border-b">{{ $student->strike }} </td>
                                 <td class="text-center border-b">        
-                                    <a href="{{ route('estudiantes.show', $student->id) }}" class="btn btn-primary">Ver</a>
+                                    <a href="{{ route('estudiantes.show', $student->id) }}" class="text-blue-500">Ver</a>
                                     <a href="{{ route('estudiantes.edit', $student->id) }}" class="text-yellow-500">Editar</a>
                                     <button onclick="showConfirmationModal({{ $student->id }})" class="text-red-500 show-modal">Eliminar</button>
                                     <form id="deleteForm{{ $student->id }}" action="{{ route('estudiantes.destroy', $student->id) }}" method="post">
