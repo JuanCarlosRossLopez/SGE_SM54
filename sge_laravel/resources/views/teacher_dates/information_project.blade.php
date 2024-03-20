@@ -1,4 +1,4 @@
-@extends('test.template')
+@extends('test.test_template')
 
 @section('title')
     Plantilla base
@@ -6,14 +6,17 @@
 
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>Consulta individual de anteproyecto</label>
-            <i class="fa-solid fa-calendar-check"></i>
+        <div class="w-full">
+            <div class="top_conteiner">
+                <label>Consulta individual de anteproyecto</label>
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+
         </div>
 
-        <div class="flex flex-nowrap space-x-4">
-            <div class="content_conteiner">
-                <div class="conteiner flex flex-row justify-between items-center">
+        <div class=" flex flex-nowrap space-x-1 w-full gap-2 mb-4">
+            <div class="content_conteiner2 w-full ">
+                <div class=" w-full flex flex-row justify-between items-center">
                     <div>
                         <label class="conteiner_word_title">Información de anteproyecto</label>
                         <label id="infoButton" class="cursor-pointer mt-3"
@@ -27,10 +30,10 @@
                         <option>11-mayo-2024</option>
                     </select>
                 </div>
-                <div class="inside_content_conteiner">
-                    <div class="justify-between items-center">
-                        <div class="bg-white shadow-md w-18/19">
-                            <div class="overflow-y-auto h-[38rem]">
+                <div class="bg-green-300 w-full">
+                    <div class="justify-between items-center w-full">
+                        <div class="bg-white shadow-md w-full">
+                            <div class="overflow-y-auto overflow-x-hidden mt-3 h-[80vh]">
                                 <div class="snap-start">
                                     <br />
                                     <br />
@@ -260,12 +263,12 @@
 
                 </div>
             </div>
-            <div class="flex flex-col items-center w-[85%] h-fit">
+            <div class="flex flex-col items-center w-[30rem] h-fit">
                 <div class="content_conteiner ">
                     <label class="conteiner_word_title flex flex-col items-center">Control de revisiones</label>
                     <div>
-                        <div class="bg-green-500 bg-opacity-40 shadow overflow-hidden sm:rounded-lg ">
-                            <h1 class="font-bold text-2xl p-2 text-center text-green-500">Febrero 2024</h1>
+                        <div class="bg-green-500 bg-opacity-40 shadow overflow-hidden p-2 sm:rounded-lg ">
+                            <h1 class="font-bold text-2xl p-2 text-center text-green-800">Febrero 2024</h1>
                             <ol class="grid grid-cols-7 gap-2 p-2 text-sm">
                                 <li class="font-bold">Lun</li>
                                 <li class="font-bold">Mar</li>
@@ -320,7 +323,6 @@
                     <label>No se que más podria ir aqui</label>
                 </div>
             </div>
-
         </div>
     </div>
     </div>

@@ -11,7 +11,7 @@ body {
 
 
 .container {
-  max-width: 1200px; /* Establece un ancho máximo para el contenido */
+  max-width: 1600px; /* Establece un ancho máximo para el contenido */
   margin: 0 auto; /* Centra el contenido horizontalmente */
   padding: 20px; /* Añade un espacio interno al contenedor */
 }
@@ -81,6 +81,7 @@ body {
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* Oculta el desbordamiento de contenido */
+    background-color: #ffffff;
 }
 
   .Button-progress {
@@ -113,6 +114,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  background-color: #ffffff;
 }
 
 .action-box h2 {
@@ -174,6 +176,7 @@ body {
 .line-chart-container {
   text-align: center;
   margin-top: 20px;
+  background-color: #ffffff;
 }
 
   @keyframes display {

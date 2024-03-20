@@ -5,10 +5,9 @@
 
 @section('contenido')
     <div class="back_conteiner">
-
-
+        
         <div class="top_conteiner">
-            <label>Descarga de archivos</label>
+            <label>Generación de informes</label>
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
@@ -19,65 +18,64 @@
         </div>
 
 
-
-        <div class="bg-[#E9E9E9] min-h-screen rounded-xl ">
-
-            <div class="flex flex-raw ml-[100px] py-12">
-                <!-- Separacion -->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl mt-[10px] text-center">Cédula de Anteproyecto</h3>
-                        <div class="">
-                            <button type="button">
-                                <a href="/anteproyectosss" target="_blank" class="group flex flex-row items-center gap-2 show-modal1 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none mt-[20px] p-[8px] hover:bg-[#DFDFDF]">
-                                    Descargar en
-                                    <img src="{!! asset('img/icon_pdf.png') !!}" class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
-                                </a>
-                            </button>
-                            
+        <div class="bg-[#E9E9E9] min-h-screen rounded-xl">
+            <div class="flex flex-raw mx-[100px] py-12">
+                <div class="grid gap-14 md:grid-cols-3 md:gap-8">
+                    <div class="rounded-xl bg-white p-2 text-center shadow-xl flex flex-col">
+                        <div
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
+                            <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
                         </div>
+                        <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Cédula de
+                            Anteproyecto</h1>
+                        <button type="button">
+                            <a href="/anteproyectosss" target="_blank" 
+                                class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
+                                <span>Descargar</span>
+                            </a>
+                        </button>
                     </div>
-                </div>
 
-                <!-- Separacion -->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] mx-[30px] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Autorización Digitalización</h3>
-                        <div class="">
-                            <button type="button">
-                                <a href="/test" target="_blank" class="group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
-                                    Descargar en
-                                    <img src="{!! asset('img/icon_pdf.png') !!}" class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
-                                </a>
-                            </button>
-                        </div>                        
-                    </div>
-                </div>
-
-                <!-- Separacion -->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#2F4050]  flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-3">
-                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Autorización Digitalización</h3>
-                        <div class="">
-                            <button type="button"
-                                class="group hidden flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
-                                Descargar en
-                                <img src="{!! asset('img/icon_pdf.png') !!}"
-                                    class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
-                            </button>
+                    <div class="rounded-xl bg-white p-2 text-center shadow-xl flex flex-col">
+                        <div
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
+                            <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
                         </div>
+                        <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Carta de
+                            Autorización Digitalización</h1>
+                        <button type="button">
+                            <a href="/test" target="_blank" data-modal="modal2"
+                                class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
+                                <span>Descargar</span>
+                            </a>
+                        </button>
+                    </div>
+
+                    <div class="rounded-xl bg-gray-500 p-2 text-center shadow-xl flex flex-col saturate-50">
+                        <div
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
+                            <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
+                        </div>
+                        <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#5faf9f] font-bold text-xl">Carta de
+                            Autorización Digitalización</h1>
+                        <button type="button">
+                            <a href="/test" target="_blank" data-modal="modal3"
+                                class="flex items-center justify-center gap-2 show-modal bg-gray-400 text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
+                                <span>Descargar</span>
+                            </a>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+
+    <div id="modal1" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
             <div class="border-b px-4 py-2 flex justify-content-end">
-                <button class="close-modal">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full"
-                            style="color: #d50101;"></i></p>
+                <button class="close-modal" >
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full" 
+                            style="color: #c97979;"></i></p>
                 </button>
             </div>
             <div class="bg-white p-2 rounded-b-2xl">
