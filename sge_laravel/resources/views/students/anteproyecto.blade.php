@@ -1,13 +1,13 @@
 @extends('test.test_template')
 
 @section('title')
-    Cédula
+    Cédula Anteproyecto
 @endsection
 
 @section('contenido')
     <div class=" w-[1220px] mx-[70px]">
         <div class="top_conteiner">
-            <label>Cédula de Anteproyecto</label>
+            <label>Cédula de Anteproyecto De Estadías</label>
             <label>
                 <!-- Este svg es el icono -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -25,6 +25,13 @@
                     data-tooltip="Llena correctamente el formulario de anteproyecto">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                 </label>
+                <div class="transform-transition hover:scale-110 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+                    </svg>
+                </div>
             </div>
             @if (session()->has('status'))
                 <div class="text-md text-green-700" id="timeMessage">
@@ -34,9 +41,10 @@
             <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
                 @csrf
-                <h1 class="text-lg text-center font-medium uppercase my-4">Datos Anteproyecto</h1>
+                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Anteproyecto</h1>
+                <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
                 <div class="flex flex-col mb-3 items-center">
-                    <div class="grid grid-cols-2 gap-24">
+                    <div class="grid grid-cols-3 gap-24">
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <input type="text" name="project_title" id="project_title"
@@ -130,13 +138,12 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <select name="project_company" id="project_company"
-                                    class="block py-3 px-4 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer">
-                                    <option value="" disabled selected class=" text-transparent">Escoja su
-                                        empresa
+                                    class="cursor-pointer block py-3 px-4 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer">
+                                    <option value="" disabled selected class=" text-transparent">Empresa
                                     </option>
-                                    <option value="empresa1">Empresa 1</option>
-                                    <option value="empresa2">Empresa 2</option>
-                                    <option value="empresa3">Empresa 3</option>
+                                    <option value="Upnify">Upnify</option>
+                                    <option value="DotNet">DotNet</option>
+                                    <option value="Dapper Technologies">Dapper Technologies</option>
                                 </select>
                                 @error('project_company')
                                     <span class="text-red-500">{{ $message }}</span>
@@ -211,7 +218,7 @@
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="activities" id="activities"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Actividades para realizar">{{ old('activities')}}</textarea>
+                                    placeholder="Actividades para realizar">{{ old('activities') }}</textarea>
                                 @error('activities')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -221,58 +228,58 @@
                     </div>
                 </div>
         </div>
-        <div class="flex flex-row -mx-2 w-full">
+        {{-- <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
                 <!-- Los otros elementos omitidos por brevedad -->
             </div>
-        </div>
+        </div> --}}
         <div class="flex flex-col mt-3">
             <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
                 type="submit">Guardar</button>
         </div>
         </form>
 
-        <div
+        {{-- <div
             class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
             <!-- Contenido de la modal omitido por brevedad -->
-        </div>
+        </div> --}}
 
         <!-- Contenido de la modal-edit omitido por brevedad -->
 
         </form>
     </div>
-    </div>
 
     </div>
-
-    <script>
-        function initializeModalEvents(triggerSelector, modalSelector) {
-            const modal = document.querySelector(modalSelector);
-            const showTriggers = document.querySelectorAll(triggerSelector);
-            const closeModalButtons = modal.querySelectorAll('.close-modal');
-
-            showTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    modal.classList.remove('hidden');
-                });
-            });
-
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    modal.classList.add('hidden');
-                });
-            });
-        }
-
-        initializeModalEvents('.show-modal', '.modal');
-        initializeModalEvents('.show-modal-edit', '.modal-edit');
-    </script>
-    <script>
-        setTimeout(function() {
-            var element = document.getElementById('timeMessage');
-            if (element) {
-                element.style.display = 'none';
-            }
-        }, 5000);
-    </script>
+    </div>
 @endsection
+
+<script>
+    function initializeModalEvents(triggerSelector, modalSelector) {
+        const modal = document.querySelector(modalSelector);
+        const showTriggers = document.querySelectorAll(triggerSelector);
+        const closeModalButtons = modal.querySelectorAll('.close-modal');
+
+        showTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.classList.add('hidden');
+            });
+        });
+    }
+
+    initializeModalEvents('.show-modal', '.modal');
+    initializeModalEvents('.show-modal-edit', '.modal-edit');
+</script>
+<script>
+    setTimeout(function() {
+        var element = document.getElementById('timeMessage');
+        if (element) {
+            element.style.display = 'none';
+        }
+    }, 5000);
+</script>

@@ -12,23 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::create('activity_histories', function (Blueprint $table) {
+        Schema::create('event', function (Blueprint $table) {
             $table->id();
             //Aun no se cuantas citas hay por cuatri de estadias
             $table->string('title');
             $table->string('description');
             $table->date('date');
-            $table->foreignId('teacher_id')
-            ->nullable()
-            ->constrained('teachers')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            // $table->foreignId('teacher_id')
+            // ->nullable()
+            // ->constrained('teachers')
+            // ->onUpdate('restrict')
+            // ->onDelete('restrict');
 
-            $table->foreignId('anteprojects_id')
-            ->nullable()
-            ->constrained('anteprojects')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            // $table->foreignId('anteprojects_id')
+            // ->nullable()
+            // ->constrained('anteprojects')
+            // ->onUpdate('restrict')
+            // ->onDelete('restrict');
             $table->timestamps();
         });
     }
