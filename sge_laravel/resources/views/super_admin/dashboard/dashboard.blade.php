@@ -1,12 +1,12 @@
-@role('Administrador')
 
 
 
 @extends('test.test_template')
-@section('titulo')
+@section('title')
 Panel de control administrador
 @endsection
 @section('contenido')
+@role('Administrador')
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
