@@ -96,7 +96,7 @@ class BooksController extends Controller
         $books->price = $request->input('price');
         $books->students_id = $request->input('students_id');
         $books->save();
-        return redirect()->route('super_admin.book');
+        return back();
     }
 
     /**
@@ -106,6 +106,6 @@ class BooksController extends Controller
     {
         $books = Books::find($id);
         $books->delete();
-        return redirect()->route('super_admin.book');
+        return back();
     }
 }
