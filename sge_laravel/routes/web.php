@@ -210,11 +210,11 @@ Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permissi
 Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');
 
 
-
-Route::middleware('auth')->group(function () {
 Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 Route::get('/dashboard_alumno/events', [ControllerEvent::class, 'indexView'])->name('students.activities_calendar.events');
+
+Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
