@@ -135,6 +135,13 @@ Route::get('/test', function () {
     $pdf = PDF::loadView('pdf.cartaau');
     return $pdf->stream('cedula.pdf');
 });
+
+Route::get('/anteproyectosss', function () {
+    $pdf = PDF::loadView('pdf.carta_cedula_ante');
+    return $pdf->stream('cedula.pdf');
+});
+
+
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');

@@ -24,16 +24,17 @@
 
             <div class="flex flex-raw ml-[100px] py-12">
                 <!-- Separacion -->
-                <div class="max-w-sm h-fit py-10 p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
+                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
                     <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Cédula de Anteproyecto</h3>
+                        <h3 class="text-[#01A080] font-bold text-2xl mt-[10px] text-center">Cédula de Anteproyecto</h3>
                         <div class="">
-                            <button type="button"
-                                class="group flex flex-row items-center gap-2 show-modal2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
-                                Descargar en
-                                <img src="{!! asset('img/icon_pdf.png') !!}"
-                                    class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
+                            <button type="button">
+                                <a href="/anteproyectosss" target="_blank" class="group flex flex-row items-center gap-2 show-modal1 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none mt-[20px] p-[8px] hover:bg-[#DFDFDF]">
+                                    Descargar en
+                                    <img src="{!! asset('img/icon_pdf.png') !!}" class="w-[40px] h-[40px] rounded-[10px] group-hover:opacity-10">
+                                </a>
                             </button>
+                            
                         </div>
                     </div>
                 </div>
@@ -97,7 +98,6 @@
     <script>
         const modal = document.querySelector('.modal');
         const showModal1 = document.querySelector('.show-modal1');
-
         const closeModal = document.querySelectorAll('.close-modal');
 
         showModal1.addEventListener('click', function() {
@@ -113,15 +113,11 @@
     </script>
     <script>
         const showModal2 = document.querySelector('.show-modal2');
-        const closeModal1 = document.querySelectorAll('.close-modal1');
+        
         showModal2.addEventListener('click', function() {
             modal.classList.remove('hidden')
         });
-        closeModal1.forEach(close => {
-            close.addEventListener('click', function() {
-                modal.classList.add('hidden')
-            });
-        });
+        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="resources/css/app.css" rel="stylesheet">
-    <title>PDF CEDULA</title>
+    <title>Carta de Autorización</title>
     @vite('resources/css/app.css')
 </head>
 
