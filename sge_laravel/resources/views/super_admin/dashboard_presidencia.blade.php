@@ -1,110 +1,153 @@
-@extends('templates.template_admin')
+@extends('test.test_template')
 @section('titulo')
-    Inicio
+    Panel de control dirección
 @endsection
 @section('contenido')
-    <div class="py-2 px-6 ">
-        <h1 class="text-4xl font-normal uppercase mb-2 bg-stone-100 px-3 py-3 rounded-md ">Bienvenido, Presidente Mayra.</h1>
-        <h1 class="text-2xl font-normal uppercase mb- bg-stone-300 px-3 py-3 rounded-md ">Panel de presidencia desarrollo de
-            software multiplataforma</h1>
+    <div class="back_conteiner">
+        <div class="top_conteiner">
+            <label>Dashboard dirección</label>
+            <label>
+                <!-- mostrar graficas relevantes -->
+                <!-- cambiar icono -->
+                <i class="fa-solid fa-crown"></i>
+            </label>
+        </div>
+        <div class=" conteiner_cards">
+            <div class="conteiner_cards flex flex-col w-fit">
 
+                <!--acciones varias-->
+                <div class="content_conteiner w-fit h-fit">
+                    <label class="conteiner_word_title flex flex-col items-center">Acciones varias</label>
+                    <div class="conteiner_cards">
+                        <!-- Panel 1 -->
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Asesores</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Mas información</label>
+                            </div>
+                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+                                <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
+                            </div>
+                        </div>
 
-        <div class="bg-stone-100 flex flex-row gap-6 py-10 pl-10">
-            <div class="pt-4 bg-white border border-stone-100 rounded-xl">
-                <h1 class="font-normal uppercase px-64 text-2xl">Gráfica de cedulas de anteproyecto</h1>
-                <div class="flex flex-col px-24 gap-1">
-                    <h5>75 +</h5>
-                    <h5>70</h5>
-                    <h5>65</h5>
-                    <h5>60</h5>
-                    <h5>55</h5>
-                    <h5>50</h5>
-                    <h5>45</h5>
-                    <h5>40</h5>
-                    <h5>35</h5>
-                    <h5>30</h5>
-                    <h5>25</h5>
-                    <h5>20</h5>
-                    <h5>15</h5>
-                    <h5>10</h5>
-                    <h5 class="border-b border-slate-300 ">5</h5>
-                </div>
-                <div class=" flex flex-row justify-center gap-5 py-4">
-                    <div class="flex flex-row gap-2">
-                        <h1 class="font-normal uppercase"> pendientes</h1>
-                        <button class="bg-red-800 text-red-800 px-3 rounded-md">X</button>
+                        <!-- Panel 2 -->
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Proyectos aprobados</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Mas información</label>
+                            </div>
+                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+                                <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
+                            </div>
+                        </div>
+                        <!-- Panel 3 -->
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-lg text-start w-full">Proyectos finalizados </label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-base text-start w-full">Mas información</label>
+                            </div>
+                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+                                <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-row gap-2">
-                        <h1 class="font-normal uppercase">aprobados</h1>
-                        <button class="bg-green-700 text-green-700 px-3 rounded-md">X</button>
+                </div>
+                <!--termina acciones varias-->
+
+                <!--grafica de cedulas de anteproyecto-->
+                <div class="content_conteiner gap-0 w-full h-fit">
+                    <label class="conteiner_word_title w-full flex flex-col items-center">Graficas</label>
+                    <div class="conteiner_cards w-full">
+                        <!-- Panel 1 -->
+                        <div class=" flex flex-col gap-3">
+                            <div class="bg-white w-[34rem] rounded">
+                                <div class="line-chart-container">
+                                    <h1 class="uppercase">Gráfica de alumnos por grupo</h1>
+                                    <canvas id="line-chart2"></canvas>
+                                </div>
+                            </div>
+                            <div class="bg-white w-[34rem] rounded">
+                                <div class="line-chart-container">
+                                    <h1 class="uppercase">Gráficas de cedulas de anteproyectos</h1>
+                                    <canvas id="line-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-[15rem]">
+                        <div class="bg-white w-fit h-fit p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-base text-start w-full">Información relevante</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-sm text-start w-full">Descripciones</label>
+                            </div>
+                        </div>
+                        <div class="bg-white w-fit h-fit p-3 rounded">
+                            <div class="w-[15rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-base text-start w-full">Información relevante</label>
+                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-sm text-start w-full">Descripciones</label>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
-
+                <!--termina grafica-->
             </div>
-            <div class="bg-white border border-stone-100 rounded-xl pb-96 pt-4">
-                <h1 class="font-normal uppercase px-12 text-lg">Proyectos de desarrollo de software</h1>
+
+
+            <div class="content_conteiner h-fit p-1 w-fit ml-[-2.5rem]">
+                <div class="flex flex-col gap-1">
+                    <label class="conteiner_word_title  h-fit flex flex-col items-center">¿Qué más?</label>
+                    <div class="bg-white p-3 rounded">
+                        <div class="w-[16rem] text-center flex flex-row items-center">
+                            <label class=" font-semibold font-poppins text-base text-start w-full ">Historial de memorias</label>
+                            <button  class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                    class="fa-solid fa-ellipsis-vertical" ></i></button>
+                                    
+                        </div>
+                        <div>
+                            <label class="font-normal font-poppins text-sm text-start w-full">Visualizacion de historial</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="bg-stone-100 flex flex-row justify-around">
-            
-            <div class="bg-white border border-stone-100 rounded-xl px-4 py-4 flex flex-col gap-56">
-                <h1 class="text-center font-thin text-2xl uppercase pt-2">Historial de memorias</h1>
-                <button class="bg-emerald-500 text-white px-4 rounded-md py-2">Visualizar</button>
-            </div>
-            <div class="bg-white border border-stone-100 rounded-xl px-4 py-4 flex flex-col gap-56">
-                <h1 class="text-center font-thin text-2xl uppercase pt-2">Proyectos finalizados </h1>
-                <button class="bg-emerald-500 text-white px-4 rounded-md py-2">Visualizar</button>
-            </div>
-            <div class="bg-white border border-stone-100 rounded-xl px-4 py-4 flex flex-col gap-56">
-                <h1 class="text-center font-thin text-2xl uppercase pt-2">Proyectos aprobados</h1>
-                <button class="bg-emerald-500 text-white px-4 rounded-md py-2">Visualizar</button>
-            </div>
-            <div class="bg-white border border-stone-100 rounded-xl px-20 py-4 flex flex-col gap-56" >
-                <h1 class="text-center font-thin text-2xl uppercase pt-2">Asesores</h1>
-                <button class="bg-emerald-500 text-white px-4 rounded-md py-2">Visualizar</button>
-            </div>
-
-        </div>
-        <div class="bg-stone-100 py-10 px-5">
-            <div class="pt-4 bg-white border border-stone-100 rounded-xl">
-                <h1 class="font-normal uppercase px-64 text-2xl text-center">Gráfica de alumnos por grupo</h1>
-                <div class="flex flex-col px-24 gap-1">
-                    <h5>75 +</h5>
-                    <h5>70</h5>
-                    <h5>65</h5>
-                    <h5>60</h5>
-                    <h5>55</h5>
-                    <h5>50</h5>
-                    <h5>45</h5>
-                    <h5>40</h5>
-                    <h5>35</h5>
-                    <h5>30</h5>
-                    <h5>25</h5>
-                    <h5>20</h5>
-                    <h5>15</h5>
-                    <h5>10</h5>
-                    <h5 class="border-b border-slate-300 ">5</h5>
-                </div>
-                <div class=" flex flex-row justify-center gap-3 py-4">
-                    <div class="flex flex-row gap-2">
-                        <h1 class="font-normal uppercase"> SM51</h1>
-                        <button class="bg-red-800 text-red-800 px-4 rounded-md">X</button>
-                    </div>
-                    <div class="flex flex-row gap-2">
-                        <h1 class="font-normal uppercase">SM52</h1>
-                        <button class="bg-green-700 text-green-700 px-4 rounded-md">X</button>
-                    </div>
-                    <div class="flex flex-row gap-2">
-                        <h1 class="font-normal uppercase"> SM53</h1>
-                        <button class="bg-blue-800 text-blue-800 px-4 rounded-md">X</button>
-                    </div>
-                    <div class="flex flex-row gap-2">
-                        <h1 class="font-normal uppercase"> SM54</h1>
-                        <button class="bg-yellow-500 text-yellow-500 px-4 rounded-md">X</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h1 class="bg-stone-100 pl-3 py-2 rounded-b-lg font-thin">Copyright Universidad Tecnológica de Cancún © 2024</h1>
     </div>
+
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('js/line-chart.js') }}"></script>
+    <script src="{{ asset('js/line-chart2.js') }}"></script>
+
+   
+    <script>
+        // Desplaza automáticamente hacia abajo al cargar la página
+        window.onload = function() {
+            var container = document.querySelector('.content_conteiner');
+            container.scrollTop = container.scrollHeight;
+        };
+    </script>
 @endsection
+<!-- mostrar graficas relevantes -->
+<!-- cambiar icono -->

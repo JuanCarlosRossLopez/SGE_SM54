@@ -1,190 +1,377 @@
-@extends('templates.test_template_teacher')
-
+@extends('test.test_template')
 @section('title')
-    Dashboard asesores
+    Panel de control asesor
 @endsection
-
 @section('contenido')
-    <div class="back_conteiner overflow-x-hidden">
-        <div class="top_conteiner ">
-            <label>Bienvenido(a) asesor(a) Mayra</label>
+    <div class="back_conteiner">
+        <div class="top_conteiner">
+            <label>Dashboard asesor, </label>
+            <label>Mayra Guadalupe</label>
             <label>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
-                </svg>
+                <!-- Este svg es el icono -->
+                <i class="fa-solid fa-person-chalkboard"></i>
             </label>
         </div>
+        <div class="conteiner_cards w-full flex flex-row">
+            <div class="conteiner_cards1 flex flex-col w-[79%]">
+                <div>
+                    <div class="content_conteiner w-full h-fit">
+                        <label class="conteiner_word_title flex flex-col items-center">Acciones varias</label>
+                        <div class="conteiner_cards2 w-full mt-3">
+                            <!-- Panel 2 -->
+                            <div class=" bg-white w-full p-3 rounded">
+                                <div class=" justify-between w-full text-center flex flex-row items-center">
+                                    <label
+                                        class="font-semibold font-poppins text-lg text-start w-full">Anteproyectos</label>
+                                    <div class=" flex relative dropdown-trigger">
+                                        <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="hidden dropdown-content">
+                                            <a href="/gestion_asesor_anteproyecto"
+                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">En proceso</a>
+                                            <a href="/gestion_asesor_anteproyecto"
+                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Finalizados</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="font-normal font-poppins text-base text-start w-full">Ver
+                                        anteproyectos</label>
+                                </div>
+                                <div
+                                    class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+                                    <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
+                                </div>
+                            </div>
 
-        <div class="content_conteiner">
-            <div class="bg-gray-200 -m-2 rounded-t mb-2">
-                <label class="subtitles">Resumen de avances en la corrección del anteproyecto.</label>
-            </div>
-            <div class="flex flex-row gap-3 text-center titles">
-                <button class="bg-white w-[25rem] flex flex-col items-center">
-                    <a href="/gestion_anteproyecto">
-                        <label>GYM BRO</label>
-                        <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
-                    </a>
 
-
-                </button>
-                <div class="bg-white w-[25rem] flex flex-col items-center">
-                    <label>FERRECUN</label>
-                    <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
-                </div>
-                <div class="bg-white w-[25rem] flex flex-col items-center">
-                    <label>ASTROSEISA</label>
-                    <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
-                </div>
-                <div class="bg-white w-[25rem] flex flex-col items-center">
-                    <label>TASK IN</label>
-                    <img src="image/progreso_asesor.PNG" alt="Descripción de la imagen">
-                </div>
-            </div>
-        </div>
-        <div class="content_conteiner">
-            <h1 class="text-4xl font-normal uppercase mb-5">Calendario de Actividades</h1>
-            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8">
-                <div
-                    class="border-2 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[645px] h-[410px]">
-                    <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Recordatorios</h1>
-                    <div class="overflow-auto h-[325px] p-2">
-                        <div class="flex flex-col">
-                            <div
-                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
-                                <p>05 Febrero | 8:30 AM</p>
-                                <p>Revisión de Memoria</p>
+                            <!-- Panel 1 -->
+                            <div class="bg-white p-3 rounded">
+                                <div class="justify-between w-full text-center flex flex-row items-center">
+                                    <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
+                                        alumnos</label>
+                                    <div class="relative dropdown-trigger">
+                                        <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="hidden absolute dropdown-content">
+                                            <a href="/alumnos_asesorados"
+                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver
+                                                mis asesorados</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="font-normal font-poppins text-base text-start w-full">Gestión de mis
+                                        asesorados</label>
+                                </div>
+                                <div
+                                    class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+                                    <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
+                                </div>
                             </div>
-                            <div
-                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                <p>09 Febrero | 1:15 PM</p>
-                                <p>Revisión de Memoria</p>
+                        </div>
+                    </div>
+                    <div class="content_conteiner w-full h-fit">
+                        <label class="conteiner_word_title w-full flex flex-col items-center">Resumen de anteproyectos
+                            asesorados</label>
+                        <div class="conteiner_cards2 mt-3">
+                            <!-- Panel 1 -->
+                            <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
+                                <label>Kisaku</label>
+                                <div class="progress-item ">
+                                    <svg width="190" height="190" class="progress-chart">
+                                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                        </circle>
+                                        <circle cx="85" cy="85" r="80" class="progress-front3" fill="none"
+                                            stroke-dasharray="0 1000000"></circle>
+                                        <g class="progress-text">
+                                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                id="percentage3">0%</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
                             </div>
-                            <div
-                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                <p>20 Febrero | 1:15 PM</p>
-                                <p>Revisión de Memoria</p>
+                            <!-- Panel 2 -->
+                            <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
+                                <label>Gym Bro</label>
+                                <div class="progress-item ">
+                                    <svg width="190" height="190" class="progress-chart">
+                                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                        </circle>
+                                        <circle cx="85" cy="85" r="80" class="progress-front2" fill="none"
+                                            stroke-dasharray="0 1000000"></circle>
+                                        <g class="progress-text">
+                                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                id="percentage2">0%</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
                             </div>
-                            <div
-                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                <p>20 Febrero | 1:15 PM</p>
-                                <p>Revisión de Memoria</p>
-                            </div>
-                            <div
-                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                <p>20 Febrero | 1:15 PM</p>
-                                <p>Revisión de Memoria</p>
+                            <!-- Panel 3 -->
+                            <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
+                                <label>Tas'k in</label>
+                                <div class="progress-item ">
+                                    <svg width="190" height="190" class="progress-chart">
+                                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                        </circle>
+                                        <circle cx="85" cy="85" r="80" class="progress-front" fill="none"
+                                            stroke-dasharray="0 1000000"></circle>
+                                        <g class="progress-text">
+                                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                id="percentage">0%</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div
-                    class="border shadow bg-[#ceeae4] md:p-3 p-0 justify-center flex flex-col h-[410px] w-[220px] md:w-[715px] lg:w-[645px] rounded-[7px_7px_7px_7px]">
-                    <p class="text-[#18A689] font-semibold text-3xl text-left ml-9 mb-4">Febrero</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="font-semibold text-center text-xs md:text-sm">DOM</th>
-                                <th class="font-semibold text-center text-xs md:text-sm">LUN</th>
-                                <th class="font-semibold text-center text-xs md:text-sm">MAR</th>
-                                <th class="font-semibold text-center text-xs md:text-sm">MIÉ</th>
-                                <th class="font-semibold text-center text-xs md:text-sm">JUE</th>
-                                <th class="font-semibold text-center text-xs md:text-sm">VIE</th>
-                                <th class="font-semibold text-center text-xs md:text-sm">SÁB</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center p-3 text-gray-500">28</td>
-                                <td class="text-center p-3 text-gray-500">29</td>
-                                <td class="text-center p-3 text-gray-500">30</td>
-                                <td class="text-center p-3 text-gray-500">31</td>
-                                <td class="text-center p-3">1</td>
-                                <td class="text-center p-3">2</td>
-                                <td class="text-center p-3">3</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center p-3">4</td>
-                                <td
-                                    class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
-                                    <span
-                                        class="border-[#2F4050] p-2 rounded-[7px_7px_7px_7px] bg-[#2F4050] text-white">5</span>
-                                </td>
-                                <td class="text-center p-3">6</td>
-                                <td class="text-center p-3">7</td>
-                                <td class="text-center p-3">8</td>
-                                <td
-                                    class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
-                                    <span
-                                        class="border-[#07D7A9] p-2 rounded-[7px_7px_7px_7px] bg-[#07D7A9] text-white">9</span>
-                                </td>
-                                <td class="text-center p-3">10</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center p-3">11</td>
-                                <td class="text-center p-3">12</td>
-                                <td class="text-center p-3">13</td>
-                                <td class="text-center p-3">14</td>
-                                <td class="text-center p-3">15</td>
-                                <td class="text-center p-3">16</td>
-                                <td class="text-center p-3">17</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center p-3">18</td>
-                                <td class="text-center p-3">19</td>
-                                <td
-                                    class="text-center p-3 transition-transform hover:scale-110 duration-100 cursor-pointer">
-                                    <span
-                                        class="border-[#07D7A9] p-2 rounded-[7px_7px_7px_7px] bg-[#07D7A9] text-white">20</span>
-                                </td>
-                                <td class="text-center p-3">21</td>
-                                <td class="text-center p-3">22</td>
-                                <td class="text-center p-3">23</td>
-                                <td class="text-center p-3">24</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center p-3">25</td>
-                                <td class="text-center p-3">26</td>
-                                <td class="text-center p-3">27</td>
-                                <td class="text-center p-3">28</td>
-                                <td class="text-center p-3">29</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            </div>
+
+            <div class="w-fit">
+                <div class="content_conteiner h-fit p-1 w-[20rem]  sm:ml-0">
+                    <div class="flex flex-col gap-1">
+                        <label class="conteiner_word_title  h-fit flex flex-col items-center">¿Qué más?</label>
+                        <div class="bg-white p-3 rounded">
+                            <div class="w-[16rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-base text-start w-full">Libros</label>
+                                <div class="relative dropdown-trigger">
+                                    <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <div class="hidden absolute dropdown-content">
+                                        <button class="w-full show-modal px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                            Ver libros
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-sm text-start w-full">Información de los
+                                    Libros</label>
+                            </div>
+                        </div>
+                        <div class="bg-white w-full p-3 rounded">
+                            <div class="w-[16rem] text-center flex flex-row items-center">
+                                <label class="font-semibold font-poppins text-base text-start w-full">Historial de
+                                    memorias</label>
+                                <div class="relative dropdown-trigger">
+                                    <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <div class="hidden dropdown-content">
+                                        <a href="/historial-memorias"
+                                            class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver memorias</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="font-normal font-poppins text-sm text-start w-full">Consultar
+                                    memorias</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_conteiner h-fit p-0 w-[20rem] sm:ml-0">
+                    <div class="flex flex-col gap-0">
+                        <div
+                            class="border-2  rounded-[7px_7px_7px_7px] p-1 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[645px] h-fit">
+                            <label
+                                class="conteiner_word_title  h-fit flex flex-col items-center font-semibold text-lg text-[#18A689]">Recordatorios</label>
+                            <div class="overflow-auto h-fit p-0">
+                                <div class="flex flex-col">
+                                    <div
+                                        class="flex flex-row gap-0 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-2 bg-[#2F4050] text-white mt-4 mb-1 font-base">
+                                        <p>05 Febrero | 8:30 AM</p>
+                                        <p>Revisión de Memoria</p>
+                                    </div>
+                                    <div
+                                        class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-2 bg-[#18A689] text-white my-1 font-base text-[12px]">
+                                        <p>20 Febrero | 1:15 PM</p>
+                                        <p>Revisión de Memoria</p>
+                                    </div>
+                                    <div
+                                        class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-2 bg-[#18A689] text-white my-1 font-base text-[12px]">
+                                        <p>20 Febrero | 1:15 PM</p>
+                                        <p>Revisión de Memoria</p>
+                                    </div>
+                                    <div
+                                        class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-2 bg-[#18A689] text-white my-1 font-base text-[12px]">
+                                        <p>20 Febrero | 1:15 PM</p>
+                                        <p>Revisión de Memoria</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        //Lo hizo roto, es un contador
-        const tableBody = document.querySelector('tbody');
-        const rowCount = tableBody.querySelectorAll('tr').length;
-        document.getElementById('rowCount').textContent = rowCount;
-        const modal = document.querySelector('.modal');
+    <!-- Modal -->
+    <div class="modal h-screen/2 w-full fixed flex-col left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
 
-        //Funcionamiento de modal
-        const showModal = document.querySelector('.show-modal');
-        const closeModal = document.querySelectorAll('.close-modal');
-
-        showModal.addEventListener('click', function() {
-            modal.classList.remove('hidden')
-        })
-
-        closeModal.forEach(close => {
-            close.addEventListener('click', function() {
-                modal.classList.add('hidden')
-            })
-        })
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
+        <div class="bg-[#01A080] w-2/3 rounded shadow-lg ">
+            <div class=" border-b px-2 py-2 flex justify-between items-center">
+                <div></div>
+                <label class="font-semibold text-lg text-white text-center">Lista de libros este cuatri</label>
+                <div class="w-fit flex flex-col items-end justify-end p-2">
+                    <button class="close-modal  rounded-full">
+                        <p class="text-2xl  "><i class="fa-solid fa-circle-xmark bg-white rounded-full"
+                                style="color: #d50101;"></i></p>
+                    </button>
+                </div>
+            </div>
+            <div class="bg-white w-full h-[85vh] p-2 flex flex-col items-center overflow-y-auto">
+                <div class="conteiner_cards2 w-full mt-3">
+                    <!-- Panel 2 -->
+                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
+                        <div class="w-full flex flex-row p-2 ">
+                            <label class="font-semibold font-poppins text-lg text-center w-full">Clean Code</label>
+                            <div class="w-fit  flex relative dropdown-trigger">
+                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <div class="hidden dropdown-content">
+                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
+                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white w-fit">
+                            <img src="{{ asset('image/libro.jpeg') }}" alt="Libro Image" class="">
+                        </div>
+                    </div>
+                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
+                        <div class="w-full flex flex-row p-2 ">
+                            <label class="font-semibold font-poppins text-lg text-center w-full">Eloquent</label>
+                            <div class="w-fit  flex relative dropdown-trigger">
+                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <div class="hidden dropdown-content">
+                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
+                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white w-fit">
+                            <img src="{{ asset('image/libro1.jpeg') }}" alt="Libro Image" class="">
+                        </div>
+                    </div>
+                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
+                        <div class="w-full flex flex-row p-2 ">
+                            <label class="font-semibold font-poppins text-lg text-center w-full">Python para principiantes</label>
+                            <div class="w-fit  flex relative dropdown-trigger">
+                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <div class="hidden dropdown-content">
+                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
+                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white w-fit">
+                            <img src="{{ asset('image/libro2.jpeg') }}" alt="Libro Image" class="">
+                        </div>
+                    </div>
+                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
+                        <div class="w-full flex flex-row p-2 ">
+                            <label class="font-semibold font-poppins text-lg text-center w-full">Fundamentos de sistemas operativos</label>
+                            <div class="w-fit  flex relative dropdown-trigger">
+                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <div class="hidden dropdown-content">
+                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
+                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white w-fit">
+                            <img src="{{ asset('image/libro3.jpg') }}" alt="Libro Image" class="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-@endsection
+        <script src="{{ asset('js/progress.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{{ asset('js/line-chart.js') }}"></script>
+        <script>
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                    }]
+                },
+                options: {}
+            });
+        </script>
+
+        <script>
+            const modal = document.querySelector('.modal');
+            //Funcionamiento de modal
+            const showModal = document.querySelector('.show-modal');
+            const closeModal = document.querySelectorAll('.close-modal');
+
+            showModal.addEventListener('click', function() {
+                modal.classList.remove('hidden')
+            })
+
+            closeModal.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal.classList.add('hidden')
+                })
+            })
+        </script>
+
+        <script>
+            // Desplaza automáticamente hacia abajo al cargar la página
+            window.onload = function() {
+                var container = document.querySelector('.content_conteiner');
+                container.scrollTop = container.scrollHeight;
+            };
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");
+
+                dropdownTriggers.forEach(function(dropdownTrigger) {
+                    var dropdownBtn = dropdownTrigger.querySelector(".dropdown-btn");
+                    var dropdownContent = dropdownTrigger.querySelector(".dropdown-content");
+
+                    dropdownBtn.addEventListener("click", function(event) {
+                        event
+                            .stopPropagation(); // Evita que el evento de clic se propague al contenedor externo
+                        dropdownContent.classList.toggle("hidden");
+                    });
+
+                    // Para cerrar el dropdown si se hace clic fuera de él
+                    window.addEventListener("click", function(event) {
+                        if (!dropdownContent.contains(event.target) && !dropdownBtn.contains(event
+                                .target)) {
+                            dropdownContent.classList.add("hidden");
+                        }
+                    });
+                });
+            });
+        </script>
+    @endsection
