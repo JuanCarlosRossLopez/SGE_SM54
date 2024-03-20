@@ -17,9 +17,11 @@
         </div>
         @endif
 
-        <div class="flex flex-nowrap space-x-4">
-            <div class="content_conteiner">
-                <div class="conteiner flex flex-row justify-between items-center">
+        </div>
+
+        <div class=" flex flex-nowrap space-x-1 w-full gap-2 mb-4">
+            <div class="content_conteiner2 w-full ">
+                <div class=" w-full flex flex-row justify-between items-center">
                     <div>
                         <label class="conteiner_word_title">Información de anteproyecto</label>
                         <label id="infoButton" class="cursor-pointer mt-3"
@@ -33,10 +35,10 @@
                         <option>11-mayo-2024</option>
                     </select>
                 </div>
-                <div class="inside_content_conteiner">
-                    <div class="justify-between items-center">
-                        <div class="bg-white shadow-md w-18/19">
-                            <div class="overflow-y-auto h-[38rem]">
+                <div class="bg-green-300 w-full">
+                    <div class="justify-between items-center w-full">
+                        <div class="bg-white shadow-md w-full">
+                            <div class="overflow-y-auto overflow-x-hidden mt-3 h-[80vh]">
                                 <div class="snap-start">
                                     <br />
                                     <br />
@@ -266,7 +268,7 @@
 
                 </div>
             </div>
-            <div class="flex flex-col items-center w-[85%] h-fit">
+            <div class="flex flex-col items-center w-[30rem] h-fit">
                 <div class="content_conteiner ">
                     <label class="conteiner_word_title flex flex-col items-center">Control de revisiones</label>
                     <div>
@@ -325,7 +327,6 @@
                     <label>No se que más podria ir aqui</label>
                 </div>
             </div>
-
         </div>
     </div>
     </div>
