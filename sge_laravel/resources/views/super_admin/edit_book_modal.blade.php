@@ -37,15 +37,14 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-password">
                                 Descripción
                             </label>
-                            <input
-                                class="appearance-none block w-full h-16  bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4  focus:outline-none focus:bg-white focus:border-gray-500"
-                                 name="book_description" type="text" value="{{$book ->book_description}}" >
-                        </div>
+                            <textarea
+                                class="appearance-none w-full h-40  bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 text-start  focus:outline-none focus:bg-white focus:border-gray-500"
+                                name="book_description" >{{$book ->book_description}}</textarea>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-2">
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -96,7 +95,7 @@
                 
                     </div>
                     <br>
-                    <button type="submit" class="bg-[#05af9b] pl-[0.5rem] pr-[0.5rem]  border-[#05af9b] item-center rounded-lg w-full  text-white px-2  py-1 hover:bg-green-950">Añadir libro</button>
+                    <button type="submit" class="bg-[#05af9b] pl-[0.5rem] pr-[0.5rem]  border-[#05af9b] item-center rounded-lg w-full  text-white px-2  py-1 hover:bg-green-950">Editar libro</button>
                 </form>
             
             </div>

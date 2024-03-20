@@ -1,6 +1,6 @@
 @extends('test.test_template')
 
-@section('titulo', 'Usuarios')
+@section('title', 'Usuarios')
 @section('contenido')
 
 <head>

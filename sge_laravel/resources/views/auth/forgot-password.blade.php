@@ -10,11 +10,14 @@
 </head>
 
 <body class="bg-green-500 flex items-stretch justify-center h-screen">
-    <!-- Left side with image -->
-    <div class="hidden lg:block lg:w-1/2 bg-green-500 rounded-l">
-        <!-- You can replace the src with your own image -->
-        <img src="{{ asset('image/SGE.svg') }}" alt="Login Image" class="object-cover w-full h-full rounded-tl-xl">
-    </div>
+    <!-- Left side with video -->
+<div class="hidden lg:block lg:w-1/2 bg-green-500 rounded-l">
+    <video autoplay muted loop class="object-cover w-full h-full rounded-tl-xl">
+        <source src="{{ asset('video/VideoUT.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
 
     <!-- Right side with password reset form -->
     <div class="w-full lg:w-1/2 bg-white px-20 shadow-md rounded-2xl rounded-tl-2xl rounded-bl-2xl">
