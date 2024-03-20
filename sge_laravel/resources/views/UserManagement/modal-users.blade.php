@@ -50,7 +50,7 @@
                     <select name="role" id="" class="rounded">
 
                         <option value="{{ $role->name }}">Seleciona un rol</option>
-                        <option value="student">Alumno</option>
+                        <option value="student">Alumnoss</option>
                         <option value="teacher">Maestro</option>
                         <option value="admin">Administrador</option>
                         <option value="coordination">Coordinación</option>

@@ -14,9 +14,10 @@ class UsersController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $roles = Role::all();
         $users = User::paginate(10);
-        return view('UserManagement.users', compact('users'));
+        return view('UserManagement.users', compact('users', 'roles'));
     }
 
     /**

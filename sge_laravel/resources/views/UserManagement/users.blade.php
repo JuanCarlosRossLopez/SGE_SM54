@@ -67,19 +67,14 @@
                                 class="rounded input-field">
                         </div>
                         <div>
-                            <label for="role_name">Rol:</label>
-                            <select name="role_name" id="role_name"
-                                class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-                                <option value="">Selecciona un rol</option>
-                                <option value="student">Alumno</option>
-                                <option value="teacher">Maestro</option>
-                                <option value="admin">Administrador</option>
-                                <option value="coordination">Coordinación</option>
-                                <option value="president">Presidencia</option>
-                                <option value="applicants">Aspirante</option>
-
-                            </select>
-                        </div>
+    <label for="role_name">Rol:</label>
+    <select name="role_name" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+        <option value="">Selecciona un rol</option>
+        @foreach($roles as $role)
+            <option value="{{ $role->name }}">{{ $role->name }}</option>
+        @endforeach
+    </select>
+</div>
                         <button type="submit"
                             class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Crear
                             Usuarios</button>
@@ -202,16 +197,12 @@
                                 <input type="password" name="password" class="rounded input-field">
                             </div>
 
-                            <select name="role" id="" class="rounded">
-                                <option value="">Selecciona un rol</option>
-                                <option value="student">Alumno</option>
-                                <option value="teacher">Maestro</option>
-                                <option value="admin">Administrador</option>
-                                <option value="coordination">Coordinación</option>
-                                <option value="president">Presidencia</option>
-                                <option value="applicants">Aspirante</option>
-
-                            </select>
+                           <select name="role" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+        <option value="">Selecciona un rol</option>
+        @foreach($roles as $role)
+            <option value="{{ $role->name }}">{{ $role->name }}</option>
+        @endforeach
+    </select>
 
                             <div class="flex justify-center">
                                 <button type="submit">
