@@ -101,6 +101,9 @@ Route::resource('maestros', TeachersController::class);
 
 //End equipo rocha
 
+Route::get('/ListaEstudiantes', function () {
+    return view('students.manager_student');
+});
 
 //Ruteo jomar
 
@@ -116,6 +119,7 @@ Route::get('/agregar', function () {
 
 
 Route::resource('estudiantes', StudentsController::class);
+Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
 
 Route::resource('estudiantes', StudentsController::class);
 
