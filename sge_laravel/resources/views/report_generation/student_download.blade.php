@@ -80,7 +80,7 @@
             </div>
             <div class="bg-white p-2 rounded-b-2xl">
                 <div class="modal-body mb-0 overflow-y-auto h-[190px]">
-                    <h4 class="text-black text-center mt-3 text-2xl font-bold">El archfasdfa descargado</h4>
+                    <h4 class="text-black text-center mt-3 text-2xl font-bold">El archivo ha sido descargado</h4>
                     <div class=" flex justify-center">
                         <img src="{!! asset('img/check.png') !!}" class="w-[50px] h-[50px] items-center mt-[20px]">
                     </div>

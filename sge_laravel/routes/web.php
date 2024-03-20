@@ -13,6 +13,7 @@ use App\Http\Controllers\Users\UsersCreateManyController;
 use Spatie\Permission\Contracts\Role;
 use App\Http\Controllers\Projects_management\Projects_managementController;
 use App\Http\Controllers\Students\StudentsController;
+use App\Http\Controllers\Coordination\CoordinatorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,6 +149,7 @@ Route::get('/alumnos_asesorados' , function () {
 //End equipo valier
 
 //Equipo dano
+Route::resource('/coordinacion', CoordinatorsController::class);
 
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
