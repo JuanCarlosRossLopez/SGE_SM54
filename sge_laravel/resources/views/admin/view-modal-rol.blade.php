@@ -16,9 +16,10 @@
                 </p>
                 <form action="{{ route('roles.store') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    <p>
+                    </p>
                     <select name="role" id="" class="rounded">
-                        <option value="">Selecciona un rol</option>
+                        <option value="">{{}}</option>
                         <option value="student">Alumno</option>
                         <option value="teacher">Maestro</option>
                         <option value="admin">Administrador</option>

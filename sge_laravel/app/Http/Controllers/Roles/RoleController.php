@@ -37,7 +37,7 @@ class RoleController extends Controller
         $userId = $request->input('user_id');
         $user = User::find($userId);
         $user->assignRole($request->role);
-        return view('admin.manage_rol');
+        return view('UserManagement.users');
     }
 
     /**
