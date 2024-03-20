@@ -42,6 +42,14 @@ class RoleController extends Controller
         return redirect()->route('roles.index');
     }
 
+    public function store_permision(Request $request)
+    {
+        $permision_name = $request->input('permision_name');
+         Permission::create(['name' => $permision_name]);
+
+        return redirect()->route('roles.index');
+
+    }
     /**
      * Display the specified resource.
      */
@@ -79,6 +87,14 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role updated successfully');
     }
     
+    public function update_permission(Request $request, string $id)
+    {
+        $permission = Permission::findOrFail($id);
+        $permission->name = $request->input('permission_name', $permission->name);
+        $permission->save();
+        return redirect()->route('roles.index');
+    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -89,5 +105,12 @@ class RoleController extends Controller
         $role->delete();
         return redirect()->route('roles.index');
         
+    }
+
+    public function delete_permission(string $id)
+    {
+        $permission = Permission::find($id);
+        $permission->delete();
+        return redirect()->route('roles.index');
     }
 }

@@ -11,12 +11,8 @@
             </div>
             <div class="bg-white p-2">
                 <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10">
-                    <h1 class="poppins-light text-[20px]">
-                        Selecciona el rol que el usuario tendrá
-                    </h1>
-                    <button data-target="#delete{{$role->id}}">
-                        <i class="fa-solid fa-circle-plus" style="color: #01A080;"></i>Agregar
-                    </button>
+                   
+                
                     <label class="poppins-light text-[15px]" for="">El rol cuenta con estos permisos:</label>
 
                     <div class="flex flex-wrap">
@@ -34,3 +30,4 @@
         </div>
     </form>
 </div>
+
