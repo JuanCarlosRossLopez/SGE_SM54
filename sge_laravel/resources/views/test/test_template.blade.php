@@ -132,6 +132,12 @@
                                 <i class="fa-solid fa-cog "></i>
                                 Asignación de roles
                             </a>
+                            <li>
+                            <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
+                                <i class="fa-solid fa-school"></i></i>
+                                Gestión de Coordinación
+                            </button>
+                        </li>
                             <a class="buttons_sidebar" href="estudiantes">
                                 <i class="fa-solid fa-address-card "></i>
                                 Estudiantes
