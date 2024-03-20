@@ -19,25 +19,25 @@ class ControllerEvent extends Controller
     public function create()
     {
         $events = Event::all();
-        return view("evento.create", compact("events"));
+        return view("datos_proyecto.create", compact("events"));
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'titulo' => 'required',
-            'descripcion' => 'required',
-            'fecha' => 'required|date',
-            'student' => 'required|exists:students,id',
-            // 'teacher' => 'required|exists:teachers,id'
+            'title' => 'required',
+            'description' => 'required',
+            'date' => 'required|date',
+            // 'teacher' => 'required|exists:teachers,id',
+            // 'anteprojects' => 'required|exists:anteprojects,id'
         ]);
 
         $event = new Event;
-        $event->titulo = $validatedData['titulo'];
-        $event->descripcion = $validatedData['descripcion'];
-        $event->fecha = $validatedData['fecha'];
-        $event->student_id = $validatedData['student'];
-        // $event->teacher_id = $validatedData['teacher']; // Asegúrate de descomentar esta línea si tu modelo Event tiene un teacher_id
+        $event->title = $validatedData['title'];
+        $event->description = $validatedData['description'];
+        $event->date = $validatedData['date'];
+        // $event->teacher_id = $validatedData['teacher'];
+        // $event->anteprojects_id = $validatedData['anteprojects'];
         $event->save();
 
         return back()->with('status', 'Evento creado con éxito');
@@ -46,7 +46,13 @@ class ControllerEvent extends Controller
     public function show(string $id)
     {
         $event = Event::findOrFail($id);
-        return view("evento.show", ["event" => $event]);
+        return view("activities_calendar.show", compact('events'));
+    }
+
+    public function indexView()
+    {
+        $events = Event::all();
+        return view("students.activities_calendar", ["events" => $events]);
     }
 
     //------CALENDARIO-------

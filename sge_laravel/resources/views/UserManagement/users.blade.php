@@ -1,6 +1,6 @@
 @extends('test.test_template')
 
-@section('titulo', 'Usuarios')
+@section('title', 'Usuarios')
 @section('contenido')
 
 <head>
@@ -67,19 +67,14 @@
                                 class="rounded input-field">
                         </div>
                         <div>
-                            <label for="role_name">Rol:</label>
-                            <select name="role_name" id="role_name"
-                                class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-                                <option value="">Selecciona un rol</option>
-                                <option value="student">Alumno</option>
-                                <option value="teacher">Maestro</option>
-                                <option value="admin">Administrador</option>
-                                <option value="coordination">Coordinación</option>
-                                <option value="president">Presidencia</option>
-                                <option value="applicants">Aspirante</option>
-
-                            </select>
-                        </div>
+    <label for="role_name">Rol:</label>
+    <select name="role_name" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+        <option value="">Selecciona un rol</option>
+        @foreach($roles as $role)
+            <option value="{{ $role->name }}">{{ $role->name }}</option>
+        @endforeach
+    </select>
+</div>
                         <button type="submit"
                             class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Crear
                             Usuarios</button>
@@ -202,16 +197,12 @@
                                 <input type="password" name="password" class="rounded input-field">
                             </div>
 
-                            <select name="role" id="" class="rounded">
-                                <option value="">Selecciona un rol</option>
-                                <option value="student">Alumno</option>
-                                <option value="teacher">Maestro</option>
-                                <option value="admin">Administrador</option>
-                                <option value="coordination">Coordinación</option>
-                                <option value="president">Presidencia</option>
-                                <option value="applicants">Aspirante</option>
-
-                            </select>
+                           <select name="role" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+        <option value="">Selecciona un rol</option>
+        @foreach($roles as $role)
+            <option value="{{ $role->name }}">{{ $role->name }}</option>
+        @endforeach
+    </select>
 
                             <div class="flex justify-center">
                                 <button type="submit">
@@ -231,6 +222,26 @@
 
 
         <script>
+
+const modalview = document.querySelectorAll('.modal-view');
+        const showModalview = document.querySelectorAll('.show-modal-view');
+        const closeModalview = document.querySelectorAll('.close-modal-view');
+
+        showModalview.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+                console.log(modal)
+            })
+        })
+
+        closeModalview.forEach(close => {
+            close.addEventListener('click', function() {
+                modalview.classList.add('hidden')
+            });
+        });
         const modalDelete = document.querySelector('.modal');
         const showModalDelete = document.querySelectorAll('.show-modal');
         const closeModalDelete = document.querySelectorAll('.close-modal');
@@ -261,35 +272,20 @@
         })
         </script>
         <script>
-        const modalview = document.querySelectorAll('.modal-view');
-        const showModalview = document.querySelectorAll('.show-modal-view');
-        const closeModalview = document.querySelectorAll('.close-modal-view');
+        const modal9 = document.querySelector('.modal9');
 
-        showModalview.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault()
-                const modalId = button.dataset.target
-                const modal = document.querySelector(modalId)
-                modal.classList.remove('hidden')
-                console.log(modal)
-            })
-        })
+const showModal9 = document.querySelector('.show-modal9');
+const closeModal9 = document.querySelectorAll('.close-modal9');
 
-        closeModalview.forEach(close => {
-            close.addEventListener('click', function() {
-                modalview.classList.add('hidden')
-            });
-        });
+showModal9.addEventListener('click', function() {
+    modal9.classList.remove('hidden')
+})
 
-        // closeModal.forEach(closeModal => {
-        //     closeModal.addEventListener('click', (e) => {
-        //         e.preventDefault()
-        //         const modal = closeModal.closest('.modal-insert')
-        //         const modal_agregar = closeModal.closest('.modal3')
-        //         modal.classList.add('hidden')
-        //         modal_agregar.classList.add('hidden')
-        //     })
-        // })
+closeModal9.forEach(close => {
+    close.addEventListener('click', function() {
+        modal3.classList.add('hidden')
+    });
+});
         </script>
         <script>
         const modal3 = document.querySelector('.modal3');
