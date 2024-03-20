@@ -222,6 +222,26 @@
 
 
         <script>
+
+const modalview = document.querySelectorAll('.modal-view');
+        const showModalview = document.querySelectorAll('.show-modal-view');
+        const closeModalview = document.querySelectorAll('.close-modal-view');
+
+        showModalview.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+                console.log(modal)
+            })
+        })
+
+        closeModalview.forEach(close => {
+            close.addEventListener('click', function() {
+                modalview.classList.add('hidden')
+            });
+        });
         const modalDelete = document.querySelector('.modal');
         const showModalDelete = document.querySelectorAll('.show-modal');
         const closeModalDelete = document.querySelectorAll('.close-modal');
@@ -252,35 +272,20 @@
         })
         </script>
         <script>
-        const modalview = document.querySelectorAll('.modal-view');
-        const showModalview = document.querySelectorAll('.show-modal-view');
-        const closeModalview = document.querySelectorAll('.close-modal-view');
+        const modal9 = document.querySelector('.modal9');
 
-        showModalview.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault()
-                const modalId = button.dataset.target
-                const modal = document.querySelector(modalId)
-                modal.classList.remove('hidden')
-                console.log(modal)
-            })
-        })
+const showModal9 = document.querySelector('.show-modal9');
+const closeModal9 = document.querySelectorAll('.close-modal9');
 
-        closeModalview.forEach(close => {
-            close.addEventListener('click', function() {
-                modalview.classList.add('hidden')
-            });
-        });
+showModal9.addEventListener('click', function() {
+    modal9.classList.remove('hidden')
+})
 
-        // closeModal.forEach(closeModal => {
-        //     closeModal.addEventListener('click', (e) => {
-        //         e.preventDefault()
-        //         const modal = closeModal.closest('.modal-insert')
-        //         const modal_agregar = closeModal.closest('.modal3')
-        //         modal.classList.add('hidden')
-        //         modal_agregar.classList.add('hidden')
-        //     })
-        // })
+closeModal9.forEach(close => {
+    close.addEventListener('click', function() {
+        modal3.classList.add('hidden')
+    });
+});
         </script>
         <script>
         const modal3 = document.querySelector('.modal3');

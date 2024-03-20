@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('book_name');
+            $table->string('book_name', 255);
             $table->text('book_front_page'); //Portada del libro que se subirá como imagen (Eso me dijo dano)
             $table->text('book_description');
             $table->string('author');

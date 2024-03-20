@@ -118,9 +118,10 @@
                     <label class="conteiner_word_title  h-fit flex flex-col items-center">¿Qué más?</label>
                     <div class="bg-white p-3 rounded">
                         <div class="w-[16rem] text-center flex flex-row items-center">
-                            <label class="font-semibold font-poppins text-base text-start w-full">Historial de memorias</label>
-                            <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
-                                    class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <label class=" font-semibold font-poppins text-base text-start w-full ">Historial de memorias</label>
+                            <button  class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
+                                    class="fa-solid fa-ellipsis-vertical" ></i></button>
+                                    
                         </div>
                         <div>
                             <label class="font-normal font-poppins text-sm text-start w-full">Visualizacion de historial</label>
