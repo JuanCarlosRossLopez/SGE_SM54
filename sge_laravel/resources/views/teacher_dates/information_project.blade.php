@@ -6,22 +6,20 @@
 
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>Consulta individual de anteproyecto</label>
-            <i class="fa-solid fa-calendar-check"></i>
-        </div>
-
-        @if (session()->has('status'))
-        <div class="text-md text-green-700" id="timeMessage">
-            {{ session('status') }}
-        </div>
-        @endif
+        <div class="w-full">
+            <div class="top_conteiner justify-between">
+                <div>
+                    <label>Consulta individual de anteproyecto</label>
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <a href="/dashboard_asesor" class="bg-[#01a080] p-2 text-white text-base font-semibold rounded">Regresar</a>
+            </div>
 
         </div>
 
         <div class=" flex flex-nowrap space-x-1 w-full gap-2 mb-4">
             <div class="content_conteiner2 w-full ">
-                <div class=" w-full flex flex-row justify-between items-center">
+                <div class=" w-full flex flex-row items-center">
                     <div>
                         <label class="conteiner_word_title">Información de anteproyecto</label>
                         <label id="infoButton" class="cursor-pointer mt-3"
@@ -29,11 +27,8 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
-
-                    <select class="bg-gray-200 text-sm w-fit h-fit">
-                        <option>Ver citas proxímas</option>
-                        <option>11-mayo-2024</option>
-                    </select>
+                    <button class="text-xl font-medium text-black bg-[#01A080] h-12 w-24 rounded-xl mt-2 ml-96 ">Aceptar</button>
+                    <button class="text-xl font-medium text-white bg-[#a02301] h-12 w-24 rounded-xl mt-2 ml-10">Rechazar</button>
                 </div>
                 <div class="bg-green-300 w-full">
                     <div class="justify-between items-center w-full">
@@ -267,73 +262,78 @@
                     </div>
 
                 </div>
+
+                <!--  Aqui se mapean los comentarios  -->
+                <div class=" w-full flex flex-row justify-between items-center">
+                    <label class="conteiner_word_title">Comentarios de revisión:</label>
+                </div>
+                <div class="justify-between items-center w-full">
+                    @foreach ($comments as $comment)
+                        <div class="bg-white p-2 shadow-md w-full flex flex-col rounded mt-1">
+                            <label class="font-semibold font-poppins text-lg text-start w-full">Comentario realizado por: usuario1</label>
+                            <label class="font-normal font-poppins text-base italic text-start w-full px-2">{{$comment->general_comment }}</label>
+                        </div>
+                    @endforeach
+                </div>
+
+
+
             </div>
             <div class="flex flex-col items-center w-[30rem] h-fit">
-                <div class="content_conteiner ">
-                    <label class="conteiner_word_title flex flex-col items-center">Control de revisiones</label>
-                    <div>
-                        <div class="bg-green-500 bg-opacity-40 shadow overflow-hidden sm:rounded-lg ">
-                            {{-- <div class="flex flex-row  items-center justify-between"> --}}
-                            {{-- <a href="{{ route('calendar.month', ['month' => $data['last']]) }}" class="m-[10px] transition-transform hover:scale-110">
-                                <i class="fas fa-chevron-circle-left" style="font-size:30px;color:white;"></i>
-                            </a> --}}
-                            <h1 class="font-bold text-2xl p-2 text-center text-green-500">{{ $mesSpanish }}</h1>
-                            <!-- Enlace al mes siguiente -->
-                            {{-- <a href="{{ route('calendar.month', ['month' => $data['next']]) }}" class="m-[10px] transition-transform hover:scale-110">
-                                <i class="fas fa-chevron-circle-right" style="font-size:30px;color:white;"></i>
-                            </a> --}}
-                            {{-- </div> --}}
-                            <table class="">
-                                <thead>
-                                    <tr>
-                                        <th class="font-bold p-1">Lun</th>
-                                        <th class="font-bold p-1">Mar</th>
-                                        <th class="font-bold p-1">Mie</th>
-                                        <th class="font-bold p-1">Jue</th>
-                                        <th class="font-bold p-1">Vie</th>
-                                        <th class="font-bold p-1">Sab</th>
-                                        <th class="font-bold p-1">Dom</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data['calendar'] as $weekData)
-                                        <tr>
-                                            @foreach ($weekData['datos'] as $dayweek)
-                                                @if ($dayweek['mes'] == $mes)
-                                                    <td class="p-1">
-                                                        {{ $dayweek['dia'] }}
-                                                    </td>
-                                                @else
-                                                    <td class="p-1"></td>
-                                                @endif
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="content_conteiner w-full">
+                    <label class="conteiner_word_title flex flex-col items-center font-semibold">Información relevante</label>
+                    <div class="flex flex-col">
+                        <br/>
+                        <label class="font-medium text-xl ">Poner informacion como: </label>
+                        <label class="font-medium text-lg ">- Aceptado por asesor?</label>
+                        <label class="font-medium text-lg ">- Colavorativo</label>
+                        <label class="font-medium text-lg ">- Likes</label>
                     </div>
-                    <div class="flex flex-col gap-1 pt-1">
-                        <button
-                            class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
-                            cita de revisión</button>
-                        <button
-                            class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
-                            cita de revisión</button>
-                    </div>
+                    <!-- Botones de calendario -->
+                    <!--
+                                <div class="flex flex-col gap-1 pt-1">
+                                    <button
+                                        class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
+                                        cita de revisión</button>
+                                    <button
+                                        class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
+                                        cita de revisión</button>
+                                </div>
+                                -->
                 </div>
                 <div class="content_conteiner w-full h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>
-                    <label>No se que más podria ir aqui</label>
+                    <a href="/crear_comentario"
+                        class="bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Realizar
+                        comentario a la cedula</a>
                 </div>
             </div>
         </div>
     </div>
     </div>
 
+    <!-- Modal Formulario -->
+    <div class="modalf h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+                <h3 class="font-semibold text-lg ml-60 text-white">Realizar comentario general</h3>
+                <button class="close-modalf bg-white rounded-full h-[1rem] flex items-center">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="modal_conteiner">
+                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
+                <div class="modal-body h-fit">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Modal -->
     <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-
         <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
             <div class="border-b px-4 py-2 flex justify-between items-center">
                 <h3 class="font-semibold text-lg ml-60 text-white">Agendar Citas Para Revisión</h3>
@@ -344,30 +344,20 @@
             <div class="modal_conteiner">
                 <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
                 <div class="modal-body h-fit">
-                    <form method="POST" action="{{route('datos_proyecto.store')}}">
-                        @csrf
-                    <label class="titles">Asunto</label>
-                    <input type="text" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3" id="title" name="title" />
-                    @error('title')
-                        <div class="text-red-500">{{ $message }}</div>                        
-                    @enderror
+                    <h1 class="titles">Fecha de Revisión</h1>
+                    <input type="date" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3"></input>
 
-                    <label class="titles">Descripción</label>
-                    <textarea type="time" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3" id="description" name="description"></textarea>
-                    @error('description')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
+                    <h1 class="titles">Hora de Revisión</h1>
+                    <input type="time" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3"></input>
 
-                    <label class="titles">Fecha</label>
-                    <input type="date" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3" id="date" name="date">
-                    @error('date')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
+
+                    <h1 class="titles">Motivo de Cita</h1>
+                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
+
 
                     <div class="flex justify-center items-center w-full border-t pt-2">
-                        <button type="submit" class="bg-green-600 hover:bg-green-700 p-2 py-1 rounded text-white">Confirmar Cita</button>
-                    </div> 
-                    </form>             
+                        <button class="bg-green-600 hover:bg-green-700 p-2 py-1 rounded text-white">Confirmar Cita</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -384,34 +374,52 @@
             </div>
             <div class="modal_conteiner">
                 <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
-                <form method="POST" action="{{route('datos_proyecto.store')}}">
-                    @csrf
-                <label class="titles">Asunto</label>
-                <input type="text" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3" id="title" name="title" />
+                <div class="modal-body h-fit">
+                    <h1 class="titles ">Primera Cita</h1>
+                    <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                    <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                    <a href="/editar_cita" class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
+                        Cita</a>
 
-                <label class="titles">Descripción</label>
-                <textarea type="time" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3" id="description" name="description"></textarea>
+                    <h1 class="titles mt-4">Segunda Cita</h1>
+                    <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                    <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                    <a href="/editar_cita" class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
+                        Cita</a>
 
-
-                <label class="titles">Fecha</label>
-                <input type="date" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3" id="date" name="date">
-
-                <div class="flex justify-center items-center w-full border-t pt-2">
-                    <button type="submit" class="bg-green-600 hover:bg-green-700 p-2 py-1 rounded text-white">Confirmar Cita</button>
-                </div> 
-                </form> 
+                    <h1 class="titles mt-4">Segunda Cita</h1>
+                    <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                    <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                    <a href="/editar_cita" class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
+                        Cita</a>
+                    <div class="flex justify-center items-center w-full border-t pt-2">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
 
     <script>
-        //Lo hizo roto, es un contador
-        const modal = document.querySelector('.modal');
-        const modalb = document.querySelector('.modalb');
+        /*const modal = document.querySelector('.modal');
+        const modalb = document.querySelector('.modalb');*/
+        const modalf = document.querySelector('.modalf');
 
         //Funcionamiento de modal
 
+        const showModalf = document.querySelector('.show-modalf');
+        const closeModalf = document.querySelectorAll('.close-modalf');
+
+        showModalf.addEventListener('click', function() {
+            modalf.classList.remove('hidden')
+        })
+
+        closeModalf.forEach(close => {
+            close.addEventListener('click', function() {
+                modalf.classList.add('hidden')
+            })
+        })
+        /*
         const showModal = document.querySelector('.show-modal');
         const closeModal = document.querySelectorAll('.close-modal');
 
@@ -437,17 +445,8 @@
             close.addEventListener('click', function() {
                 modalb.classList.add('hidden')
             })
-        })
+        })*/
     </script>
-
-<script>
-    setTimeout(function() {
-        var element = document.getElementById('timeMessage');
-        if (element) {
-            element.style.display = 'none';
-        }
-    }, 5000);
-</script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

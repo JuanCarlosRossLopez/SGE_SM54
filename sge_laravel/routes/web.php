@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
 use FontLib\Table\Type\name;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
 use Spatie\Permission\Contracts\Role;
@@ -45,6 +46,10 @@ Route::get('/plantilla', function () {
 });
 
 //Mision, vision, valores
+Route::get('/', function () { 
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -55,9 +60,9 @@ Route::get('/dashboard_asesor', function () {
 });
 
 //Dashboard Alumno
-// Route::get('/dashboard_alumno', function () {
-//     return view('students.activities_calendar');
-// })->name('activities_calendar');
+Route::get('/dashboard_alumno', function () {
+    return view('students.activities_calendar');
+})->name('activities_calendar');
 
 
 //Rutas principales en dashboard alumno
@@ -66,7 +71,7 @@ Route::resource('/anteproyecto', Projects_managementController::class);
 
 
 
-//End equipo coronado
+//End quipo coronado
 
 
 //Equipo rocha
@@ -74,17 +79,19 @@ Route::get('/iniciar_session', function () {
     return view('auth.login');
 });
 
-Route::get('/recuperar_contraseña', function () {
+Route::get('/recuperar_contraseña',function(){
     return view('login.recovery_password');
 });
 
-Route::get('/cambiar_contraseña', function () {
+Route::get('/cambiar_contraseña',function(){
     return view('login.change_password');
 });
 
+Route::get('/gestion_roles',function(){
+    return view('admin.manage_rol');
+});
 
-
-Route::get('/panel_admin', function () {
+Route::get('/panel_admin',function(){
     return view('super_admin.dashboard.dashboard');
 });
 
@@ -131,28 +138,35 @@ Route::resource('estudiantes', StudentsController::class);
 
 
 //Equipo valier
-Route::get('/memorias', function () {
-    return view('Memories.memory');
-});
-Route::get('/historial-memorias', function () {
-    return view('Memories.memory_history');
-});
-
 Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
+    //Memoria getsion Valier
+    Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
+    Route::resource('memory',Memory_History_Controller::class);
+    Route::get('/crear_memoria', function(){
+        return view('Test_memory.create_memory');
+    });
+    Route::get('/edit_memory', function(){
+        return view('Test_memory.edit_memory');
+    });
+
+    //Comentarios gestion Valier
+    Route::resource('information_project', CommentsController::class);
+    Route::get('/crear_comentario', function () {
+        return view('teacher_dates.create_comment');
+    });
+    Route::get('/editar_cita', function () {
+        return view('teacher_dates.edit_meet_date');
+    });
+    Route::get('/alumnos_asesorados' , function () {
+        return view('strikes.advised_students');            
+    });
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 
-
-Route::get('/editar_cita', function () {
-    return view('teacher_dates.edit_meet_date');
-});
-Route::get('/alumnos_asesorados' , function () {
-    return view('strikes.advised_students');            
-});
 
 
 //End equipo valier
@@ -206,7 +220,7 @@ Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
 });
 
-Route::get('/ejemplo', function () {
+Route::get('/ejemplo', function(){
     return view('UserManagement.cuadro');
 });
 

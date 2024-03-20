@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('memories', function (Blueprint $table) {
             $table->id();
+            $table->string('memory_name');
             $table->text('memorie_pdf');
-            $table->foreignId('students_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->foreignId('student_id')->nullable()->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

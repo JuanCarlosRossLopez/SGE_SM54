@@ -101,7 +101,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/historial-memorias" class="buttons_sidebar">
+                            <a href="/memory" class="buttons_sidebar">
                                 <i class="fa-solid fa-landmark"></i>
                                 Historial de memorias
                             </a>
@@ -166,7 +166,6 @@
         </main>
         <footer class="w-screen pl-12 bottom-0">
             <div>
-                <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
             </div>
         </footer>
     </div>
