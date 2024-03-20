@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+
 
 class UsersController extends Controller
 {
@@ -14,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('UserManagement.users', ['users' => $users]);
+        return view('UserManagement.users', compact('users'));
     }
 
     /**
@@ -31,20 +33,30 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name_user' => 'required|max:250',
-            'lastname_user' => 'required|max:250',
-            'username' => 'required|unique:users|max:250',
+            //'name_user' => 'required|max:250',
+            //'lastname_user' => 'required|max:250',
+            'name' => 'required|unique:users|max:250',
             'email' => 'required|unique:users|email',
             'password' => 'required'
         ]);
 
         $users = new User();
-        $users->name_user = $request->input('name_user');
-        $users->lastname_user = $request->input('lastname_user');
-        $users->username = $request->input('username');
+        // $users->name_user = $request->input('name_user');
+        // $users->lastname_user = $request->input('lastname_user');
+        $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
+        $roleName = $request->input('role');
+
+
+        
+        
+        $role = Role::where('name', $roleName)->first();
+if($role) {
+    $users->assignRole($role);
+}
+
 
         return redirect('usuarios')->with('notificacion', "Usuario creado correctamente");
 
@@ -56,7 +68,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.modal2', ['user' => $user]);
+        return view('UserManagement.modal-users.modal-view', ['user' => $user]);
     }
 
     /**
@@ -65,7 +77,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.modal4', ['user' => $user]);
+        
+        return view('UserManagement.modal-users.modal4', ['user' => $user]);
     }
 
     /**
@@ -74,20 +87,27 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name_user' => 'required|max:250' . $id,
-            'lastname_user' => 'required|max:250',
-            'username' => 'required|unique:users|max:250',
-            'email' => 'required|unique:users|email',
+            //'name_user' => 'required|max:250',
+            //'lastname_user' => 'required|max:250',
+            'name' => 'required|max:250|unique:users,name,' . $id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'required'
         ]);
 
         $users = User::find($id);
-        $users->name_user = $request->input('name_user');
-        $users->lastname_user = $request->input('lastname_user');
-        $users->username = $request->input('username');
+        $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
+        
+        $users->roles()->detach();
+
+        if ($request->role) {
+            $role = Role::where('name', $request->role)->first();
+            $users->assignRole($role);
+        }
+
+        $users->assignRole($request->role);
 
         return redirect('usuarios')->with('notificacion', "Usuario editado correctamente");
     }
@@ -100,6 +120,6 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect("usuarios");
+        return redirect("usuarios")->with('notificacion', "Usuario eliminado correctamente");
     }
 }
