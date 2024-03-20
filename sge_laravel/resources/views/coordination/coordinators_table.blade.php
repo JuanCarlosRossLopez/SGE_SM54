@@ -5,6 +5,7 @@
 @endsection
 
 @section('contenido')
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <div class="back_conteiner">
         <div class="top_conteiner mr-[3rem]">
             <div class="w-[70rem]">
@@ -29,9 +30,9 @@
                     </button>
                     <input type="text" class="border border-gray-300 w-[30rem] px-2 py-1 rounded-r-md"
                         placeholder="Buscar..." />
-                    <a href="{{ route('coordinacion.create') }}" class="add_button">
-                        <i class="fas fa-plus text-black"></i>
-                    </a>
+                    <button class="show-create ml-[1rem] bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] ">
+                        Agregar
+                    </button>
                 </div>
             </div>
             <div class="table_conteiner">
@@ -39,7 +40,7 @@
                     <thead class="standar_thead">
                         <tr>
                             <th class="theader">#</th>
-                            <th class="theader">Nombre del coordinador</th>
+                            <th class="theader">Nombre de coordinador</th>
                             <th class="theader">Número de nomina</th>
                             <th class="theader">id_usuario</th>
                             <th class="theader">Division</th>
@@ -73,9 +74,10 @@
                 </table>
             </div>
 
-            
+
             <!-- Modal -->
-            <div id="confirmationModal" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-gray-500">
+            <div id="confirmationModal"
+                class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center bg-opacity-50 bg-gray-500">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
                     <p>¿Estás seguro de que deseas eliminar este coordinador?</p>
                     <div class="flex justify-end mt-4">
@@ -97,26 +99,120 @@
                 </button>
             </div>
 
-            
+
 
             <div class="text-gray-700 ml-auto">Total de registros: <span id="rowCount">2</span></div>
         </div>
         <br>
 
+        <div class="">
+            <div
+                class="modal-create fixed  h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-opacity-500">
+                <div class="bg-[#01A080] w-[600px] rounded shadow-lg max-w-4xl ">
+                    <div class="border-b px-4 py-2 flex justify-between items-center">
+                        <h3 class="font-semibold text-lg justify-center items-center text-[#FFFF] text-center">Registrar
+                            Coordinador</h3>
+                        <button class="close-create ">
+                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark bg-white rounded-full" style="color: #d50101;"></i></p>
+                        </button>
+                    </div>
+                    <div class="bg-white p-2">
+                        <div class="modal-body mb-0 overflow-y-auto h-[38vh]">
+                            <div class="container mx-auto px-4 py-8">
+                                <h1 class="text-center font-semibold text-2xl">Registrar Coordinador</h1>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    <div class="bg-white rounded-lg p-8 mx-auto flex justify-center items-center flex-col">
+                                        <form action="{{ route('coordinacion.store') }}" method="POST"
+                                            class="flex flex-col gap-4">
+                                            @csrf
+                                            @method('POST')
+                                            <div class="flex gap-4">
+                                                <div class="flex flex-col gap-4">
+                                                    <input type="text" name="coordinator_name" id="coordinator_name"
+                                                        placeholder="Nombre del coordinador"
+                                                        class="rounded-md border border-gray-300 p-2">
+                                                    <input type="text" name="user_id" id="user_id"
+                                                        placeholder="ID de usuario del coordinador"
+                                                        class="rounded-md border border-gray-300 p-2">
+                                                </div>
+                                                <div class="flex flex-col gap-4">
+                                                    <input type="number" name="payroll" id="payroll"
+                                                        placeholder="Número de nómina del coordinador"
+                                                        class="rounded-md border border-gray-300 p-2">
+                                                    <input type="text" name="division_id" id="division_id"
+                                                        placeholder="ID de la división del coordinador"
+                                                        class="rounded-md border border-gray-300 p-2">
+                                                </div>
+                                            </div>
+                                            <!-- Puedes agregar más campos aquí según sea necesario -->
+                                            <div class="flex justify-end mt-4">
+                                                <button type="submit"
+                                                    class="bg-[#01A080] text-white rounded font-bold p-2">Agregar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const modal = document.querySelector('.modal');
+
+            const showModal = document.querySelector('.show-modal');
+            const closeModal = document.querySelectorAll('.close-modal');
+            const addStudentBtn = document.querySelector('.add-student');
+
+            showModal.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+
+            closeModal.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal.classList.add('hidden');
+                });
+            });
+
+            addStudentBtn.addEventListener('click', function() {
+                const form = document.getElementById('studentForm');
+                const formData = new FormData(form);
+
+                alert('Alumno Agregado correctamente');
+
+                form.reset();
+            });
+        </script>
+        <script>
+            const modalCreate = document.querySelector('.modal-create');
+            const showCreate = document.querySelector('.show-create');
+            const closeCreate = document.querySelectorAll('.close-create');
+
+            showCreate.addEventListener('click', function() {
+                modalCreate.classList.remove('hidden');
+            });
+
+            closeCreate.forEach(close => {
+                close.addEventListener('click', function() {
+                    modalCreate.classList.add('hidden')
+                });
+            });
+        </script>
         <script>
             let studentIdToDelete;
-                            
+
             function showConfirmationModal(studentId) {
                 studentIdToDelete = studentId;
                 const modal = document.getElementById('confirmationModal');
                 modal.classList.remove('hidden');
             }
-                            
+
             function hideConfirmationModal() {
                 const modal = document.getElementById('confirmationModal');
                 modal.classList.add('hidden');
             }
-                            
+
             function deleteStudent() {
                 const form = document.getElementById('deleteForm' + studentIdToDelete);
                 form.submit();
