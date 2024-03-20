@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
-
+use App\Http\Controllers\Presidency\presidenciescontroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,7 +131,7 @@ Route::get('/pdf_muestra', function () {
 #RUTAS EQUIPO YAHIR
 
 Route::resource('usuarios', UsersController::class);
-
+Route::resource('presidencies', presidenciescontroller::class);
 Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
 });
