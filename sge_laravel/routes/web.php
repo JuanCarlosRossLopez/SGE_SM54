@@ -182,7 +182,9 @@ Route::get('/registro_libros', function () {
 Route::resource('usuarios', UsersController::class);
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
-Rote::resource('presidencias', presidenciescontroller::class);
+
+Route::resource('presidencias', presidenciescontroller::class);
+Route::post('presidencias/store',[Presidenciescontroller::class,'store'])->name('presidencies.store');
 Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
 });
