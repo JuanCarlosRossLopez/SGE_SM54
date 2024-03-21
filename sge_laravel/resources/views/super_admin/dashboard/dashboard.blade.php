@@ -6,7 +6,6 @@
 Panel de control administrador
 @endsection
 @section('contenido')
-@role('Administrador')
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -348,4 +347,7 @@ Panel de control administrador
 
 
 
-    @endrole
+
+    
+
+

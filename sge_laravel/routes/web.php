@@ -18,6 +18,8 @@ use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Spatie\Permission\Middlewares\RoleMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -91,9 +93,7 @@ Route::get('/gestion_roles',function(){
     return view('admin.manage_rol');
 });
 
-Route::get('/panel_admin',function(){
-    return view('super_admin.dashboard.dashboard');
-});
+
 
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
@@ -131,10 +131,6 @@ Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.sho
 Route::resource('estudiantes', StudentsController::class);
 
 
-// General
-// Route::get('/dashboard', function () {
-//     return view('super_admin.dashboard.dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Equipo valier
@@ -225,18 +221,28 @@ Route::get('/ejemplo', function(){
 });
 
 Route::middleware('auth')->group(function () {
+ 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    Route::get('/dashboard', function () {
-        return view('super_admin.dashboard.dashboard');
-    })->name('dashboard');
+
+      
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
 
 
+});
+
+
+Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+    Route::get('/dashboard', function () {
+        return view('super_admin.dashboard.dashboard');
+    })->name('dashboard');
+    
+    // Otras rutas protegidas por el middleware 'role' de Spatie
 });
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
