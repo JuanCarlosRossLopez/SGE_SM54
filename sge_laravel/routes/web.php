@@ -19,6 +19,7 @@ use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
+use App\Http\Controllers\Divisions\DivisionController;
 
 
 /*
@@ -164,17 +165,27 @@ Route::get('/edit_memory', function () {
     return view('Test_memory.edit_memory');
 });
 
-//Comentarios gestion Valier
-Route::resource('information_project', CommentsController::class);
-Route::get('/crear_comentario', function () {
-    return view('teacher_dates.create_comment');
-});
-Route::get('/editar_cita', function () {
-    return view('teacher_dates.edit_meet_date');
-});
-Route::get('/alumnos_asesorados', function () {
-    return view('strikes.advised_students');
-});
+    //Crud division
+    Route::resource('division',DivisionController::class);
+    Route::get('/crear_division', function(){
+        return view('division_forms.create_division');
+    });
+    Route::get('/editar_division', function(){
+        return view('division_forms.edit_division');
+    });
+    //End crud division
+
+    //Comentarios gestion Valier
+    Route::resource('information_project', CommentsController::class);
+    Route::get('/crear_comentario', function () {
+        return view('teacher_dates.create_comment');
+    });
+    Route::get('/editar_cita', function () {
+        return view('teacher_dates.edit_meet_date');
+    });
+    Route::get('/alumnos_asesorados' , function () {
+        return view('strikes.advised_students');            
+    });
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
@@ -242,8 +253,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> 55ca32d4131ba5ee5281d83bef75545d599e9832
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');

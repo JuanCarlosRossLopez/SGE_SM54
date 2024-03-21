@@ -59,7 +59,7 @@ class AnteprojectsController extends Controller
      */
     public function edit($id)
     {
-        $anteproject=Anteproject::find($id); //Sotosexual
+        $anteproject=Anteproject::find($id); 
         return view('anteprojects.edit', compact('anteproject'));
     }
 

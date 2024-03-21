@@ -24,7 +24,6 @@ class Memory_History_Controller extends Controller
      */
     public function create()
     {
-        //
         return view('Test_memory.create_memory');
     }
 
