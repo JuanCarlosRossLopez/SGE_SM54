@@ -3,7 +3,7 @@
     Panel de control administrador
 @endsection
 @section('contenido')
-    <div class="back_conteiner">
+    <div class="back_conteiners">
         <div class="top_conteiner">
             <label>Dashboard Direccion</label>
             <label>
@@ -15,7 +15,7 @@
             <div class="conteiner_cards1 flex flex-col w-fit overflow-hidden-x">
                 <div class="content_conteiner w-fit h-fit ">
                     <label class="conteiner_word_title flex flex-col items-center">Visualizacion de Informacion</label>
-                    <div class="conteiner_cards2 overflow-y-auto" style="max-height: 165px;"> <!-- Agregué max-height y overflow-y-auto aquí -->
+                    <div class="conteiner_cards2 overflow-y-auto" style="max-height: 140px;"> <!-- Agregué max-height y overflow-y-auto aquí -->
                         <!-- Panel 1 -->
                         <div class="bg-white p-3 rounded">
                             <div class="w-[15rem] text-center flex flex-row items-center">
