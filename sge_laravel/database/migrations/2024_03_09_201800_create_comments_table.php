@@ -11,21 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            //De momento aun sigo pensando como voy a trabajar el estado de los comentarios
             $table->string('general_comment');
-            $table->string('title_comment');
-            $table->string('objective_comment');
-            $table->string('planteamiento_comment');
-            $table->string('justification_comment');
-            $table->string('activities_comment');
-            $table->foreignId('teacher_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('anteproject_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->foreignId('teacher_id')->nullable()->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('anteproject_id')->nullable()->constrained()
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

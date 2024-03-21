@@ -1,4 +1,4 @@
-@extends('test.template')
+@extends('test.test_template')
 
 @section('title')
     Plantilla base
@@ -6,14 +6,20 @@
 
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>Consulta individual de anteproyecto</label>
-            <i class="fa-solid fa-calendar-check"></i>
+        <div class="w-full">
+            <div class="top_conteiner justify-between">
+                <div>
+                    <label>Consulta individual de anteproyecto</label>
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <a href="/dashboard_asesor" class="bg-[#01a080] p-2 text-white text-base font-semibold rounded">Regresar</a>
+            </div>
+
         </div>
 
-        <div class="flex flex-nowrap space-x-4">
-            <div class="content_conteiner">
-                <div class="conteiner flex flex-row justify-between items-center">
+        <div class=" flex flex-nowrap space-x-1 w-full gap-2 mb-4">
+            <div class="content_conteiner2 w-full ">
+                <div class=" w-full flex flex-row items-center">
                     <div>
                         <label class="conteiner_word_title">Información de anteproyecto</label>
                         <label id="infoButton" class="cursor-pointer mt-3"
@@ -21,16 +27,13 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
-
-                    <select class="bg-gray-200 text-sm w-fit h-fit">
-                        <option>Ver citas proxímas</option>
-                        <option>11-mayo-2024</option>
-                    </select>
+                    <button class="text-xl font-medium text-black bg-[#01A080] h-12 w-24 rounded-xl mt-2 ml-96 ">Aceptar</button>
+                    <button class="text-xl font-medium text-white bg-[#a02301] h-12 w-24 rounded-xl mt-2 ml-10">Rechazar</button>
                 </div>
-                <div class="inside_content_conteiner">
-                    <div class="justify-between items-center">
-                        <div class="bg-white shadow-md w-18/19">
-                            <div class="overflow-y-auto h-[38rem]">
+                <div class="bg-green-300 w-full">
+                    <div class="justify-between items-center w-full">
+                        <div class="bg-white shadow-md w-full">
+                            <div class="overflow-y-auto overflow-x-hidden mt-3 h-[80vh]">
                                 <div class="snap-start">
                                     <br />
                                     <br />
@@ -259,71 +262,75 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="flex flex-col items-center w-[85%] h-fit">
-                <div class="content_conteiner ">
-                    <label class="conteiner_word_title flex flex-col items-center">Control de revisiones</label>
-                    <div>
-                        <div class="bg-green-500 bg-opacity-40 shadow overflow-hidden sm:rounded-lg ">
-                            <h1 class="font-bold text-2xl p-2 text-center text-green-500">Febrero 2024</h1>
-                            <ol class="grid grid-cols-7 gap-2 p-2 text-sm">
-                                <li class="font-bold">Lun</li>
-                                <li class="font-bold">Mar</li>
-                                <li class="font-bold">Mie</li>
-                                <li class="font-bold">Jue</li>
-                                <li class="font-bold">Vie</li>
-                                <li class="font-bold">Sab</li>
-                                <li class="font-bold">Dom</li>
-                                <li class="col-start-4">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li>5</li>
-                                <li>6</li>
-                                <li>7</li>
-                                <li>8</li>
-                                <li>9</li>
-                                <li>10</li>
-                                <li>11</li>
-                                <li>12</li>
-                                <li>13</li>
-                                <li>14</li>
-                                <li>15</li>
-                                <li>16</li>
-                                <li>17</li>
-                                <li>18</li>
-                                <li>19</li>
-                                <li>20</li>
-                                <li>21</li>
-                                <li>22</li>
-                                <li>23</li>
-                                <li>24</li>
-                                <li>25</li>
-                                <li>26</li>
-                                <li>27</li>
-                                <li>28</li>
-                                <li>29</li>
-                            </ol>
+
+                <!--  Aqui se mapean los comentarios  -->
+                <div class=" w-full flex flex-row justify-between items-center">
+                    <label class="conteiner_word_title">Comentarios de revisión:</label>
+                </div>
+                <div class="justify-between items-center w-full">
+                    @foreach ($comments as $comment)
+                        <div class="bg-white p-2 shadow-md w-full flex flex-col rounded mt-1">
+                            <label class="font-semibold font-poppins text-lg text-start w-full">Comentario realizado por: usuario1</label>
+                            <label class="font-normal font-poppins text-base italic text-start w-full px-2">{{$comment->general_comment }}</label>
                         </div>
+                    @endforeach
+                </div>
+
+
+
+            </div>
+            <div class="flex flex-col items-center w-[30rem] h-fit">
+                <div class="content_conteiner w-full">
+                    <label class="conteiner_word_title flex flex-col items-center font-semibold">Información relevante</label>
+                    <div class="flex flex-col">
+                        <br/>
+                        <label class="font-medium text-xl ">Poner informacion como: </label>
+                        <label class="font-medium text-lg ">- Aceptado por asesor?</label>
+                        <label class="font-medium text-lg ">- Colavorativo</label>
+                        <label class="font-medium text-lg ">- Likes</label>
                     </div>
-                    <div class="flex flex-col gap-1 pt-1">
-                        <button
-                            class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
-                            cita de revisión</button>
-                        <button
-                            class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
-                            cita de revisión</button>
-                    </div>
+                    <!-- Botones de calendario -->
+                    <!--
+                                <div class="flex flex-col gap-1 pt-1">
+                                    <button
+                                        class="show-modal bg-gray-700 text-white font-medium px-2 text-lg py-1 rounded-lg border-solid border-1 border-green-600">Asignar
+                                        cita de revisión</button>
+                                    <button
+                                        class="show-modalb bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Editar
+                                        cita de revisión</button>
+                                </div>
+                                -->
                 </div>
                 <div class="content_conteiner w-full h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>
-                    <label>No se que más podria ir aqui</label>
+                    <a href="/crear_comentario"
+                        class="bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Realizar
+                        comentario a la cedula</a>
                 </div>
             </div>
-
         </div>
     </div>
     </div>
+
+    <!-- Modal Formulario -->
+    <div class="modalf h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
+            <div class="border-b px-4 py-2 flex justify-between items-center">
+                <h3 class="font-semibold text-lg ml-60 text-white">Realizar comentario general</h3>
+                <button class="close-modalf bg-white rounded-full h-[1rem] flex items-center">
+                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                </button>
+            </div>
+            <div class="modal_conteiner">
+                <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
+                <div class="modal-body h-fit">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Modal -->
     <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
@@ -394,12 +401,25 @@
 
 
     <script>
-        //Lo hizo roto, es un contador
-        const modal = document.querySelector('.modal');
-        const modalb = document.querySelector('.modalb');
+        /*const modal = document.querySelector('.modal');
+        const modalb = document.querySelector('.modalb');*/
+        const modalf = document.querySelector('.modalf');
 
         //Funcionamiento de modal
 
+        const showModalf = document.querySelector('.show-modalf');
+        const closeModalf = document.querySelectorAll('.close-modalf');
+
+        showModalf.addEventListener('click', function() {
+            modalf.classList.remove('hidden')
+        })
+
+        closeModalf.forEach(close => {
+            close.addEventListener('click', function() {
+                modalf.classList.add('hidden')
+            })
+        })
+        /*
         const showModal = document.querySelector('.show-modal');
         const closeModal = document.querySelectorAll('.close-modal');
 
@@ -425,7 +445,7 @@
             close.addEventListener('click', function() {
                 modalb.classList.add('hidden')
             })
-        })
+        })*/
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

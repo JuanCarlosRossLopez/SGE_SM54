@@ -1,175 +1,388 @@
-@extends('test.template')
-@section('titulo')
+@extends('test.test_template')
+
+@section('title')
     Gestión de roles
 @endsection
 @section('contenido')
+    <div class="min-h-screen ">
 
 
-<style>
-    .comment-icon {
-        position: relative;
-        width: 30px;
-        height: 22px;
-        background-color: #007bff;
-        border-radius: 50%;
-    }
-
-    .comment-icon::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        right: 4px;
-        width: 20px;
-        height: 15px;
-        border-style: solid;
-        border-width: 0 8px 8px 0;
-        border-color: transparent #007bff transparent transparent;
-    }
-</style>
-
-@section('contenido')
-    <div class="mr-5">
-        <div class="w-full pr-4 pl-12 items-center">
-            <div class="bg-gray-100 text-3xl rounded border mt-2 p-2 flex flex-row items-center gap-2">
-                <div>
-                    <label class="font-sans">Gestión de roles</label>
-                    <label>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
-                        </svg>
-                    </label>
-                </div>
-
+    <div class="back_conteiner ">
+        <div class="top_conteiner">
+            <div class="w-[1600px]">
+                <label>Roles</label>
+                <label>
+                    <!-- Este svg es el icono -->
+                    <i class="fa-solid fa-bars-progress"></i>
+                </label>
             </div>
 
-            <div class="bg-gray-100 rounded border mt-1 p-2">
-
-                <div class="w-full flex flex-row justify-between mt-2 ">
-                    <div class="flex">
-                        <button class="border border-gray-500 bg-gray-300 px-4 py-1 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                            <i class="fas fa-search text-gray-500"></i>
-                        </button>
-                        <input type="text" class="border border-gray-300 w-[30rem] px-2 py-1 rounded-r-md  "
-                            placeholder="Buscar..." />
-
-                    </div>
+        </div>
+        <div class="content_conteiner  h-fit">
+            <div class="flex flex-row items-center justify-start gap-2">
+                <label class="conteiner_word_title items-center">Tabla de Roles</label>
+                <label id="infoButton" class="cursor-pointer mt-[0.8rem]" data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
+                    <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
+                </label>
+            </div>
+            <div class="inside_content_conteiner">
+                <div class="search_conteiner">
+                    <button class="search_button">
+                        <i class="fas fa-search text-gray-500"></i>
+                    </button>
+                    <input type="text" class="search_input" placeholder="Buscar..." />
                 </div>
-                <table class="w-full mt-2 border">
-                    <thead class="bg-[#01A080] text-center text-white">
+                <div class="search_button_conteiner gap-2">
+                    <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
+                    <button class="standar_button show-modal">Crear Rol</button>
+                    <button class="standar_button show-modal-permisions"> Crear permiso</button>
+                    <button class="standar_button  flex flex-row gap-1 show-modal-permision-options">
+                        <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7  m-auto   ">
+                        <p class="m-auto">Permisos</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table_conteiner">
+                <table class="standar_table">
+                    <thead class="standar_thead">
                         <tr>
-                            <th class="px-4 py-2 border-b">id</th>
-                            <th class="px-4 py-2 border-b">Alumnos</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="px-4 py-2 border-b">Proyectos</th>
-                            <th class="py-2 border-b">Opcion</th>
+                            <th class="theader">Nombre Rol</th>
+                            <th class="theader">Permisos del rol</th>
+                            <th class="theader">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
-                        <tr class="bg-red-white hover:bg-[#5e5f5f46]">
-                            @foreach ($users as $user)
-                            <td class="px-4 py-2 border-b">{{$user->id}}</td>
-                            <td class="px-4 border-b">{{$user-> name}}</td>
-                            <td class="px-4 border-b">Comercio web e-commer</td>
-                            <td class="px-4 border-b">Lorum</td>
-                            <td class="px-4 border-b">Lorum</td>
-                            <td class="px-4 border-b">Lorum</td>
-                            <td class="px-4 border-b">Lorum</td>
-                            <td class="px-4 border-b">Lorum</td>
-                            <td class="w-full  flex flex-row items-center justify-center py-2 gap-2 border-b">
-                                <button class="show-modal-rol" type="button" data-target="#add{{$user->id}}">
-                                    Rol
-                                </button>
-                                <button class="show-modal">
-                                   Permiso
-                                </button>
-                                <button>
-                                    <i class="fi fi-sr-journal-alt"></i>
-                                </button>
+                    <tbody class="tbody">
+                        @foreach($roles as $role)
+
+                        <tr class="trow">
+                            <td class="trowc">
+
+                                        {{ $role->name }}
 
                             </td>
-                        </tr>
-                        @include('admin.view-modal-rol')
+                            <td class="trowc">
+                                @foreach($role->permissions as $permission)
 
+                                {{ $permission->name }}
+                                @endforeach
+
+                            </td>
+                            <td class="trowc">
+
+
+                                <button class="show-modal-rol  rounded p-1 text-white" data-target="#edit{{$role->id}}">
+                                    <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7    ">
+
+                                </button>
+
+                                <button class="show-delete rounded p-1 text-white" data-target="#delete{{$role->id}}">
+                                    <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7   text-red-500  ">
+
+                                        </button>
+
+                                        <!-- <button>
+                                        <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
+                                    </button> -->
+
+
+
+                                    </td>
+                                </tr>
+                                @include('admin.delete-modal')
+                                @include('admin.view-modal-rol')
+                            @endforeach
+
+                        <tr class="trow">
+
+                            <td class="trowc">
+                                <div>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
+                <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
+                    <div>
+                        <button
+                            class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
+                            < </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                    1
+                                </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                    2
+                                </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
+                                    3
+                                </button>
+                                <button
+                                    class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
+                                    >
+                                </button>
+                    </div>
+                    <div>
+                        <span>Cantidad de registros :</span>
+                        <span id="rowCount"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="modal-create-rol h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+        <div class="border-b px-4 py-2 flex justify-between items-center">
+            <h3 class="font-semibold text-lg ml-60 text-white">Asginación de permisos</h3>
+            <button class="close-modal bg-white rounded-full">
+                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+            </button>
+        </div>
+        <div class="bg-white p-2">
+            <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10 ">
+                <div>
+                    <h1>Crear Rol</h1>
+                    <form action="{{ route('roles.store') }}" method="POST">
+                        @csrf
+                        <input type="text" name="role_name" id="name" placeholder="Nombre del rol">
+                        <label for="permissions">Permisos</label>
+                        @foreach($permissions as $permission)
+                        <div>
+                            <input type="checkbox" name="permissions[]" id="permission{{$permission->id}}" value="{{$permission->name}}">
+                            <label for="permission{{$permission->id}}">{{$permission->name}}</label>
+                        </div>
+                        @endforeach
+                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-permisions h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+        <div class="border-b px-4 py-2 flex justify-between items-center">
+            <h3 class="font-semibold text-lg ml-60 text-white">Creacion de permisos</h3>
+            <button class="close-modal bg-white rounded-full">
+                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+            </button>
+        </div>
+        <div class="bg-white p-2">
+            <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10 ">
+                <div>
+                    <form class="flex flex-col gap-2" action="{{ route('roles.store_permision') }}" method="POST">
+                        @csrf
+                        <h1>Crear Permiso</h1>
+
+                        <input type="text" name="permision_name" id="name" placeholder="Nombre del permiso">
+                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Crear</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-show-permisions h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+        <div class="border-b px-4 py-2 flex justify-between items-center">
+            <h3 class="font-semibold text-lg ml-60 text-white">Gestion de permisos</h3>
+            <button class="close-modal bg-white rounded-full">
+                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+            </button>
+        </div>
+        <div class="bg-white p-2">
+            <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10 ">
+                <div>
+                <table>
+                    <thead>
+                        <tr class="">
+                            <th>Nombre del permiso </th>
+                            <th class="text-center">Aciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($permissions as $permission)
+                        <tr>
+                            <td>{{$permission->name}}</td>
+                            <td>
+                                <div class="flex flex-row gap-4">
+                                    <button class="show-modal-permission rounded p-1 text-white" data-target="#delete_permission{{$permission->id}}">
+                                        <img src="{{ asset('icons/trash.svg') }}" alt="Delete button" class="w-7 h-7 text-red-500">
+                                    </button>
+                                    <button class="show-permission-edit" data-target="#edit_permission{{$permission->id}}">
+                                        <img src="{{ asset('icons/edit.svg') }}" alt="Edit button" class="w-7 h-7 text-[#01A080]">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        @include('admin.edit-modal-permission')
+                        @include('admin.delete-modal-permission')
                         @endforeach
                     </tbody>
                 </table>
-                <div class="text-gray-700">Total de registros: <span id="rowCount">2</span></div>
+                </div>
             </div>
         </div>
-                <!-- modal roles -->
-
-        <!-- Modal -->
-     
-
-
-        <script>
-            //Lo hizo roto, es un contador
-            const tableBody = document.querySelector('tbody');
-            const rowCount = tableBody.querySelectorAll('tr').length;
-            document.getElementById('rowCount').textContent = rowCount;
-            const modal_permision = document.querySelector('.modal-permision');
-            const modal_roles = document.querySelector('.modal-roles');
-            //Funcionamiento de modal
-            const showModal = document.querySelector('.show-modal');
-            const showModalRoles = document.querySelectorAll('.show-modal-rol');
-
-
-            const closeModal = document.querySelectorAll('.close-modal');
-
-            showModal.addEventListener('click', function() {    
-                modal_permision.classList.remove('hidden')
-            })
-            
-
-            showModalRoles.forEach(button =>{
-                button.addEventListener('click',(e)=>{
-                    e.preventDefault()
-                    const modalId =button.dataset.target
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                    console.log(modalId)
-
-                })
-            })
-
-         closeModal.forEach(closeModal=>{
-            closeModal.addEventListener('click',(e)=>{
-                e.preventDefault();
-                const modal = closeModal.closest('.modal-roles')
-                modal.classList.add('hidden')
-            })
-         })
-            
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-        </script>
     </div>
-    <h1 class="text-center">Sin rol</h1>
-    @role('admin')
-    <h1 class="text-center">Admin</h1>
-    @endrole
-    @role('teacher')
-    <h1 class="text-center">Maestro</h1>
-    @endrole
-    @role('student')
-    <h1 class="text-center">Alumno</h1>
-    @endrole
-    @role('coordination')
-    <h1 class="text-center">Coordinación</h1>
-    @endrole
-    @role('president')
-    <h1 class="text-center">Presidencia</h1>
-    @endrole
+</div>
 
-   
+
+</div>
+
+<script>
+    //Lo hizo roto, es un contador
+    const tableBody = document.querySelector('tbody');
+    const rowCount = tableBody.querySelectorAll('tr').length;
+    document.getElementById('rowCount').textContent = rowCount;
+    
+    const modal_permision = document.querySelector('.modal-permision');
+    const modal_roles = document.querySelector('.modal-roles');
+    const create_rol = document.querySelector('.modal-create-rol');
+    const create_permision = document.querySelector('.modal-permisions');
+    const show_permission = document.querySelector('.modal-show-permisions');
+
+    const delete_modal = document.querySelector('.delete-modal');
+
+    //Funcionamiento de modal
+    const showDelete = document.querySelectorAll('.show-delete');
+    const showModal = document.querySelector('.show-modal');
+    const showModalPermisions = document.querySelector('.show-modal-permisions');
+    const showModalRoles = document.querySelectorAll('.show-modal-rol');
+
+
+    const showEditPermissions = document.querySelectorAll('.show-permission-edit');
+    
+
+    const showModalDeletePermissions = document.querySelectorAll('.show-modal-permission');
+    const showModalDeletePermission = document.querySelectorAll('.show-modal-permission')
+    const show_permission_options = document.querySelector('.show-modal-permision-options');
+
+    
+
+    show_permission_options.addEventListener('click', () => {
+        show_permission.classList.remove('hidden')
+    })
+
+    showModal.addEventListener('click', function() {
+        create_rol.classList.remove('hidden')
+    })
+
+    showModalPermisions.addEventListener('click', () => {
+        create_permision.classList.remove('hidden')
+    });
+
+    showModalDeletePermission.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("click")
+            const modalId = button.dataset.target
+            const modal = document.querySelector(modalId)
+            modal.classList.remove('hidden')
+        })
+    });
+
+    showEditPermissions.forEach(button =>{
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = button.dataset.target
+            const modal = document.querySelector(modalId)
+            console.log(modal)
+            modal.classList.remove('hidden')
+        })
+    
+    })
+
+    showDelete.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log("click")
+            const modalId = button.dataset.target
+            const modal = document.querySelector(modalId)
+            modal.classList.remove('hidden')
+            console.log(modalId)
+
+        })
+    })
+
+
+    showModalRoles.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log("click")
+            const modalId = button.dataset.target
+            const modal = document.querySelector(modalId)
+            modal.classList.remove('hidden')
+            console.log(modalId)
+
+        })
+    })
+
+
+
+    showModalDeletePermission.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("click")
+            const modalId = button.dataset.target
+            const modal = document.querySelector(modalId)
+        })
+    });
+
+    const closeModal = document.querySelectorAll('.close-modal');
+
+    closeModal.forEach(closeModal => {
+        closeModal.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const modal = closeModal.closest('.modal-roles');
+            const modal1 = closeModal.closest('.modal-create-rol');
+            const modal2 = closeModal.closest('.delete-modal');
+            const modal3 = closeModal.closest('.modal-permisions');
+            const modal4 = closeModal.closest('.modal-show-permisions');
+            const modal5 = closeModal.closest('.delete-modal-permissions');
+
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+            if (modal1) {
+                modal1.classList.add('hidden');
+            }
+            if (modal2) {
+                modal2.classList.add('hidden');
+            }
+            if (modal3) {
+                modal3.classList.add('hidden');
+            }
+            if (modal4) {
+                modal4.classList.add('hidden');
+            }
+            if (modal5) {
+                modal5.classList.add('hidden');
+            }
+
+
+
+        })
+    })
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
 @endsection

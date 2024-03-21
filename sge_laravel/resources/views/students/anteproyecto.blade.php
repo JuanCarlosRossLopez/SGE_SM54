@@ -1,65 +1,69 @@
-@extends('test.test_standars')
+@extends('test.test_template')
 
-@section('titulo')
-    SGE
+@section('title')
+    Cédula Anteproyecto
 @endsection
 
 @section('contenido')
-<div class="back_conteiner">
-    <div class="top_conteiner">
-        <label>Aqui el titulo de tu vista, te recomiendo cambiar el icono</label>
-        <label>
-            <!-- Este svg es el icono -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
-            </svg>
-        </label>
-    </div>
-
-    <div class="content_conteiner">
-        <div class="flex flex-row items-center gap-2">
-            <label class="conteiner_word_title">Si tiene un subtema tu vista ponlo aqui</label>
-            <label id="infoButton" class="cursor-pointer mt-3"
-                data-tooltip="Recomiendo ponerle una descripción a la vista">
-                <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
-            </label>
-        </div>
-
-        <label>De aqui en adelante puedes trabajar 🚬</label>
-        <!-- Aqui va todo lo que esta en tu vista -->
-    </div>
-</div>
-
-<!-- De aqui para abajo es tu vista -->
-
-<div class="w-screen">
-    <div class="w-full pr-4 pl-12 items-center">
-        <div class="bg-gray-100 text-3xl rounded border mt-2 p-2 flex flex-row items-center gap-2">
-            <div class="flex flex-row items-center gap-3">
-                <label class="font-sans">Cédula de Anteproyecto</label>
+    <div class=" w-[1220px] mx-[70px]">
+        <div class="top_conteiner">
+            <label>Cédula de Anteproyecto De Estadías</label>
+            <label>
+                <!-- Este svg es el icono -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                 </svg>
-            </div>
-
+            </label>
         </div>
 
-        <div>
-            <div class="bg-gray-100 rounded border mt-1 p-2">
-            <form>
+        <div class="content_conteiner">
+            <div class="flex flex-row items-center gap-2">
+                <label class="conteiner_word_title">Datos de Anteproyecto</label>
+                <label id="infoButton" class="cursor-pointer mt-3"
+                    data-tooltip="Llena correctamente el formulario de anteproyecto">
+                    <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
+                </label>
+                <div class="transform-transition hover:scale-110 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+                    </svg>
+                </div>
+            </div>
+            @if (session()->has('status'))
+                <div class="text-md text-green-700" id="timeMessage">
+                    {{ session('status') }}
+                </div>
+            @endif
+            <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
-                <h1 class="text-lg text-center font-medium uppercase my-4">Datos Anteproyecto</h1>
+                @csrf
+                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Anteproyecto</h1>
+                <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
                 <div class="flex flex-col mb-3 items-center">
-                    <div class="grid grid-cols-2 gap-12">
+                    <div class="grid grid-cols-3 gap-24">
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="text" name="project_title" id="project_title"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Título de Anteproyecto" value="{{ old('project_title') }}" />
+                                @error('project_title')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
                                 <input type="text" name="student_name" id="student_name"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Nombre del estudiante" required />
+                                    placeholder="Nombre del estudiante" value="{{ old('student_name') }}" />
+                                @error('student_name')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
@@ -67,7 +71,10 @@
                             <div class="relative z-0 w-full mb-10 group">
                                 <input type="text" name="student_group" id="student_group"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Grupo" required />
+                                    placeholder="Grupo" value="{{ old('student_group') }}" />
+                                @error('student_group')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
@@ -75,46 +82,72 @@
                             <div class="relative z-0 w-full mb-5 group">
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" required />
+                                    placeholder="Correo electrónico" value="{{ old('student_email') }}" />
+                                @error('student_email')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-10 group">
+                                <label class="bg-transparent">Fecha Inicio</label>
+                                <input type="date" name="start_date" id="start_date"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Fecha de Inicio" value="{{ old('start_date') }}" />
+                                @error('start_date')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="student_phone"
-                                    id="student_phone"
+                                <label>Fecha Finalización</label>
+                                <input type="date" name="end_date" id="end_date"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Teléfono (123-456-7890)" required />
+                                    placeholder="Fecha de Término" value="{{ old('end_date') }}" />
+                                @error('end_date')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="student_matricula" id="student_matricula"
+                                <input type="text" name="student_phone" id="student_phone"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Matrícula" required />
+                                    placeholder="Teléfono (123-456-7890)" value="{{ old('student_phone') }}" />
+                                @error('student_phone')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="text" name="project_title" id="project_title"
+                                <input type="text" name="student_id" id="student_id"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Título de Anteproyecto" required />
+                                    placeholder="Matrícula" value="{{ old('student_id') }}" />
+                                @error('student_id')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <select name="project_company" id="project_company"
-                                    class="block py-3 px-4 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    required>
-                                    <option value="" disabled selected class=" text-transparent">Escoja su empresa
+                                    class="cursor-pointer block py-3 px-4 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer">
+                                    <option value="" disabled selected class=" text-transparent">Empresa
                                     </option>
-                                    <option value="empresa1">Empresa 1</option>
-                                    <option value="empresa2">Empresa 2</option>
-                                    <option value="empresa3">Empresa 3</option>
+                                    <option value="Upnify">Upnify</option>
+                                    <option value="DotNet">DotNet</option>
+                                    <option value="Dapper Technologies">Dapper Technologies</option>
                                 </select>
+                                @error('project_company')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
@@ -122,16 +155,21 @@
                             <div class="relative z-0 w-full mb-5 group">
                                 <input type="text" name="project_advisor" id="project_advisor"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Asesor Empresarial" required />
+                                    placeholder="Asesor Empresarial" value="{{ old('project_advisor') }}" />
+                                @error('project_advisor')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
-                                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="project_advisor_phone"
-                                    id="project_advisor_phone"
+                                <input type="text" name="project_advisor_phone" id="project_advisor_phone"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Teléfono del Asesor" required />
+                                    placeholder="Teléfono del Asesor" value="{{ old('project_advisor_phone') }}" />
+                                @error('project_advisor_phone')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
@@ -139,70 +177,109 @@
                             <div class=" z-0 w-full group">
                                 <textarea name="general_objective" id="general_objective"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Objetivo General" required></textarea>
+                                    placeholder="Objetivo General">{{ old('general_objective') }}</textarea>
+                                @error('general_objective')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-2 mb-5">
                             <div class="relative z-0 w-full group">
-                                <textarea name="specific_objectives" id="specific_objectives"
+                                <label id="infoButton"
+                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><i
+                                        class="fas fa-exclamation-circle text-[#01A080] "></i></label>
+                                <textarea name="problem_statement" id="problem_statement"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Objetivos Específicos" required></textarea>
+                                    placeholder="Planteamiento del Problema">{{ old('problem_statement') }}</textarea>
+                                @error('problem_statement')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                         <div class="col-span-2 mb-5">
                             <div class="relative z-0 w-full group">
-                                <textarea name="project_scope" id="project_scope"
+                                <label id="infoButton"
+                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><i
+                                        class="fas fa-exclamation-circle text-[#01A080] "></i></label>
+                                <textarea name="justification" id="justification"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Alcance de Proyecto" required></textarea>
+                                    placeholder="Justificación">{{ old('justification') }}</textarea>
+                                @error('justification')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                        <div class="col-span-2 mb-5">
+                            <div class="relative z-0 w-full group">
+                                <label id="infoButton" data-tooltip="listar las actividades a llevar a cabo en orden."><i
+                                        class="fas fa-exclamation-circle text-[#01A080] "></i></label>
+                                <textarea name="activities" id="activities"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Actividades para realizar">{{ old('activities') }}</textarea>
+                                @error('activities')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
-        <div class="flex flex-row -mx-2 w-full">
+        {{-- <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
                 <!-- Los otros elementos omitidos por brevedad -->
             </div>
+        </div> --}}
+        <div class="flex flex-col mt-3">
+            <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
+                type="submit">Guardar</button>
         </div>
-    <div class="flex flex-col mt-3">
-        <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto">Guardar</button>
-    </div>
-    </form>
+        </form>
 
-    <div class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
-        <!-- Contenido de la modal omitido por brevedad -->
-    </div>
+        {{-- <div
+            class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
+            <!-- Contenido de la modal omitido por brevedad -->
+        </div> --}}
 
-    <!-- Contenido de la modal-edit omitido por brevedad -->
+        <!-- Contenido de la modal-edit omitido por brevedad -->
 
-    </form>
-    </div>
-    </div>
+        </form>
     </div>
 
-    <script>
-        function initializeModalEvents(triggerSelector, modalSelector) {
-            const modal = document.querySelector(modalSelector);
-            const showTriggers = document.querySelectorAll(triggerSelector);
-            const closeModalButtons = modal.querySelectorAll('.close-modal');
-
-            showTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    modal.classList.remove('hidden');
-                });
-            });
-
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    modal.classList.add('hidden');
-                });
-            });
-        }
-
-        initializeModalEvents('.show-modal', '.modal');
-        initializeModalEvents('.show-modal-edit', '.modal-edit');
-    </script>
+    </div>
+    </div>
 @endsection
+
+<script>
+    function initializeModalEvents(triggerSelector, modalSelector) {
+        const modal = document.querySelector(modalSelector);
+        const showTriggers = document.querySelectorAll(triggerSelector);
+        const closeModalButtons = modal.querySelectorAll('.close-modal');
+
+        showTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.classList.add('hidden');
+            });
+        });
+    }
+
+    initializeModalEvents('.show-modal', '.modal');
+    initializeModalEvents('.show-modal-edit', '.modal-edit');
+</script>
+<script>
+    setTimeout(function() {
+        var element = document.getElementById('timeMessage');
+        if (element) {
+            element.style.display = 'none';
+        }
+    }, 5000);
+</script>

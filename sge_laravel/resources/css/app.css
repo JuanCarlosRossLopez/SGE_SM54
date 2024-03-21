@@ -7,13 +7,12 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .back_conteiner {
-    width: 100%;
+    width: 100rem;
     margin-left: 3rem;
     align-items: center;
     flex-direction: column;
 }
 .top_conteiner {
-    width: auto;
     color: #3a3a3a;
     background-color: #e6e6e6;
     font-size: 1.8rem;
@@ -39,6 +38,15 @@
     padding-bottom: 1rem;
     display: grid; /* Utiliza un diseño de cuadrícula */
     grid-auto-flow: row;
+}
+.content_conteiner2 {
+    background-color: #e6e6e6;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    margin-top: 1rem;
+    padding: 1rem;
+    padding-top: 0.1rem;
+    padding-bottom: 1rem;
 }
 .inside_content_conteiner {
     width: 100%;
@@ -84,6 +92,19 @@
 }
 
 /* Boton estandar */
+.standar_button2 {
+    background-color: #1bd170;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 100%;
+    border-radius: 0.375rem;
+    color: #fff;
+    margin-left: .5rem;
+
+}
+.standar_button2:hover {
+    background-color: #128149;
+}
 .standar_button {
     background-color: #05af9b;
     padding-left: 0.5rem;
@@ -112,7 +133,7 @@
     border-color: #01a080;
 }
 
-/*Buttons sidebars*/
+/* /Buttons sidebars/ */
 .buttons_sidebar {
     color: #c8c8c8;
     width: 100%;
@@ -203,7 +224,7 @@
     overflow-y: auto;
 }
 
-/*Main*/
+/* /Main/ */
 .main {
     width: 100vw;
     overflow-x: none;
@@ -212,12 +233,14 @@
 
 /* Footer */
 .footer {
-    width: 100vw;
+    width: screen;
+    background: #dfdfdf;
     padding-left: 3rem;
-    bottom: 0;
+    margin-top: 4rem;
+    text-align: center;
 }
 
-/*Contenedor donde esta main y footer*/
+/* /Contenedor donde esta main y footer/ */
 .content_main_footer {
     display: flex;
     flex-direction: column;
@@ -269,7 +292,7 @@
 }
 
 #infoButton {
-    position: relative; /* Asegura que el contenido absoluto sea relativo a este elemento */
+
 }
 
 #infoButton::after {
@@ -314,13 +337,32 @@
     gap: 0.7rem;
     justify-content: space-between;
 }
-
-.conteiner_cards2 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+.conteiner_cards1 {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.7rem;
     justify-content: space-between;
 }
+.conteiner_cards2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 0.7rem;
+    justify-content: space-between; 
+}
+
+.conteiner_cards1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: space-between;
+}
+.conteiner_cards2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    
+    gap: 0.7rem;
+}
+
 
 @media (max-width: 768px) {
     .conteiner_cards {
@@ -340,4 +382,20 @@
 .main_expand {
     margin-left: 0rem;
     width: screen;
+}
+
+/*Dropdown*/
+.dropdown-content {
+    position: absolute;
+    margin-left: -10rem;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e2e8f0;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    width: 12rem;
+    z-index: 10;
 }

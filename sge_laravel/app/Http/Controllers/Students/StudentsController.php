@@ -15,8 +15,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::all();
-        return view('students.index', compact('students'));
+        $students = Students::paginate(10);
+        return view('students.manager_student', compact('students'));
     }
 
     /**
@@ -24,7 +24,8 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $students = Students::all();
+        return view('estudiantes', ['students' => $students]);
     }
 
     /**
@@ -33,20 +34,23 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'student_name' => 'required|string',
+            'student_name' => 'required|string|max:255',
             'id_student' => 'required|integer',
-            'project_creator' => 'required|string',
-            'strike' => 'required|string',
-            'user_id' => 'required|exists:users,id',
-            'division_id' => 'required|exists:divisions,id',
-            'anteproject_id' => 'required|exists:anteprojects,id',
-            'adviser_id' => 'required|exists:teachers,id',
-            'evaluation_date_id' => 'required|exists:activity_histories,id',
+            'project_creator' => 'required|boolean',
+            'strike' => 'required|integer',
         ]);
-        //crea la informacion del estudiante
-        Students::create($request->all());
-        //lo manda a su respectivo apartado 
-        return redirect()->route('students.index');
+        //crear un nuevo estudiante
+
+        $student = new Students();
+        $student->student_name = $request->student_name;
+        $student->id_student = $request->id_student;
+        $student->project_creator = $request->project_creator;
+        $student->strike = $request->strike;
+
+        $student->save();
+ 
+        //lo manda a su respectivo apartado
+        return redirect('estudiantes')->with('notificacion','Estudiante creado correctamente');
     }
 
     /**
@@ -55,7 +59,8 @@ class StudentsController extends Controller
     public function show(string $id)
     {
         $student=Students::find($id);
-        return view('students.show', compact('student'));
+        return view('students.show_student', compact('student'));
+
     }
 
     /**
@@ -63,21 +68,25 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        $student=Students::find($id);
-        return view('students.edit', compact('student'));
+        $student = Students::find($id);
+        return view('students.manager_student', ['student' => $student]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StudentsRequest $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         //Busca el estudiante
-        $student=Students::find($id);
+        $student = Students::find($id);
         //actualiza
+        $student->student_name = $request->input('student');
+        $student->id_student = $request->input('id_student');
+        $student->project_creator = $request->input('project_creator');
+        //guarda
         $student->update($request->all());
         //lo manda a la vista de estudiante
-        return redirect()->route('students.show')->with('notificacion','Estudiante editado correctamente');
+        return redirect('students.manager_student')->route('students.manager_student', ['id' => $student->id])->with('notificacion', 'Estudiante editado correctamente');
     }
 
     /**
@@ -90,6 +99,6 @@ class StudentsController extends Controller
         //Elimina el estudiante
         $student->delete();
         //lo manda a la vista del estudiante
-        return redirect()->route('students.index');
+        return back()->with('notificacion','Estudiante eliminado correctamente');
     }
 }
