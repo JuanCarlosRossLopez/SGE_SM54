@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Divisions;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Division;
 
 class DivisionController extends Controller
 {
@@ -12,7 +13,8 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        //
+        $divisions = Division::paginate(10);
+        return view('division_forms.division_view',["division"=>$divisions]);
     }
 
     /**
@@ -29,16 +31,15 @@ class DivisionController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([])
-        /*$request->validate([
-            'anteproject_title' => 'required|string',
-            'information' => 'required|string',
-            'company_id' => 'required|exists:companies,id',
-            'project_status_id' => 'required|exists:status_projects,id',
-            'intership_id' => 'required|exists:interships,id',
-            'start_date' => 'required|date',
-            'finished_date' => 'required|date|after:start_date',
-        ]); o:>*/
+        $request->validate([
+            'division_name'=>'required|string'
+        ]);
+
+        $divisions = new Division();
+        $divisions->division_name=$request->input('division_name');
+        $divisions->save();
+
+        return redirect('division');
     }
 
     /**
@@ -54,15 +55,20 @@ class DivisionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $divisions = Division::find($id);
+        return view('division_forms.edit_division', ['division_view' => $divisions]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id):RedirectResponse
     {
-        //
+        $division=Division::find($id);
+        
+        $division->update($request->all());
+        
+        //falta return
     }
 
     /**
@@ -71,5 +77,9 @@ class DivisionController extends Controller
     public function destroy(string $id)
     {
         //
+        $division=Division::find($id);
+        
+        $division->delete();
+        //falta return
     }
 }

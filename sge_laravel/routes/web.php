@@ -19,6 +19,7 @@ use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
+use App\Http\Controllers\Divisions\DivisionController;
 
 
 /*
@@ -148,6 +149,16 @@ Route::get('/gestion_asesor_anteproyecto', function () {
         return view('Test_memory.edit_memory');
     });
 
+    //Crud division
+    Route::resource('division',DivisionController::class);
+    Route::get('/crear_division', function(){
+        return view('division_forms.create_division');
+    });
+    Route::get('/editar_division', function(){
+        return view('division_forms.edit_division');
+    });
+    //End crud division
+
     //Comentarios gestion Valier
     Route::resource('information_project', CommentsController::class);
     Route::get('/crear_comentario', function () {
@@ -221,13 +232,13 @@ Route::get('/ejemplo', function(){
 });
 
 Route::middleware('auth')->group(function () {
- 
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
 
-      
+    
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
