@@ -180,6 +180,13 @@ Route::get('/anteproyectosss', function () {
     $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path"=>$imagen_path]);
     return $pdf->stream('cedula.pdf');
 });
+
+Route::get('/amonestacionn', function () {
+    $imagen_path = public_path("img/LogoUT.png");
+
+    $pdf = PDF::loadView('pdf.cartaamonestacion', ["imagen_path"=>$imagen_path]);
+    return $pdf->stream('cedula.pdf');
+});
 Route::resource('/coordinacion', CoordinatorsController::class);
 
 
