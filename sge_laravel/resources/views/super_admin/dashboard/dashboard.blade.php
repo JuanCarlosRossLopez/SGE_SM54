@@ -12,7 +12,7 @@ Panel de control administrador
 </head>
 <div class="back_conteiner">
     <div class="top_conteiner">
-        <label>Dashboard administrador</label>
+    <label>Dashboard administrador, bienvenido {{ Auth::user()->name }}</label>
         <label>
             <!-- Este svg es el icono -->
             <i class="fa-solid fa-user-tie"></i>
