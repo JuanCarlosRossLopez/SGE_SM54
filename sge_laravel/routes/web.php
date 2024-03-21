@@ -146,6 +146,7 @@ Route::get('/anteproyectosss', function () {
 });
 
 
+
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
 })->name('envio');
