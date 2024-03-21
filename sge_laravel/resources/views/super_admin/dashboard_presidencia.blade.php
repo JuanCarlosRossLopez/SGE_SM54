@@ -1,7 +1,6 @@
 @extends('test.test_template')
-@section('titulo')
-    Panel de control dirección
-@endsection
+@section('title', 'Presidencia')
+    ''
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
