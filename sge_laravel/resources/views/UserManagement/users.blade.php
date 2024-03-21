@@ -220,7 +220,20 @@
                                         Agregar usuario
                                     </div>
                                 </button>
+                            <div class="flex justify-center">
+                                <button type="submit">
+                                    <div
+                                        class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                        Agregar usuario
+                                    </div>
+                                </button>
 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
                             </div>
                         </form>
                     </div>
@@ -301,6 +314,8 @@ closeModal9.forEach(close => {
 
             const showModal3 = document.querySelector('.show-modal3');
             const closeModal3 = document.querySelectorAll('.close-modal3');
+            const showModal3 = document.querySelector('.show-modal3');
+            const closeModal3 = document.querySelectorAll('.close-modal3');
 
             showModal3.addEventListener('click', function() {
                 modal3.classList.remove('hidden')
@@ -348,7 +363,11 @@ closeModal9.forEach(close => {
 
             <script>
             const modal6 = document.querySelector('.modal6');
+            <script>
+            const modal6 = document.querySelector('.modal6');
 
+            const showModal6 = document.querySelector('.show-modal6');
+            const closeModal6 = document.querySelectorAll('.close-modal6');
             const showModal6 = document.querySelector('.show-modal6');
             const closeModal6 = document.querySelectorAll('.close-modal6');
 
