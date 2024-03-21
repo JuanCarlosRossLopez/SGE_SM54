@@ -23,8 +23,17 @@
                         <div class="bg-white p-3 rounded">
                             <div class="w-[15rem] text-center flex flex-row items-center">
                                 <label class="font-semibold font-poppins text-lg text-start w-full">Asesores</label>
-                                <button class="w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full "><i
-                                        class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="relative dropdown-trigger">
+                                    <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
+                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Turismo</a>
+                                        <a  href="/maestros" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Ingeniería y Tecnología</a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División Económico-Administrativo</a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Gastronomía</a>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <label class="font-normal font-poppins text-base text-start w-full">Mas información</label>
@@ -131,6 +140,30 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");
+
+            dropdownTriggers.forEach(function(dropdownTrigger) {
+                var dropdownBtn = dropdownTrigger.querySelector(".dropdown-btn");
+                var dropdownContent = dropdownTrigger.querySelector(".dropdown-content");
+
+                dropdownBtn.addEventListener("click", function(event) {
+                    event.stopPropagation(); // Evita que el evento de clic se propague al contenedor externo
+                    dropdownContent.classList.toggle("hidden");
+                });
+
+                // Para cerrar el dropdown si se hace clic fuera de él
+                window.addEventListener("click", function(event) {
+                    if (!dropdownContent.contains(event.target) && !dropdownBtn.contains(event.target)) {
+                        dropdownContent.classList.add("hidden");
+                    }
+                });
+            });
+        });
+    </script>
 
 
     

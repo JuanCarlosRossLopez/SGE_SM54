@@ -1,4 +1,4 @@
-@extends('test.template')
+@extends('test.test_template')
 
 @section('title')
     Asesores
