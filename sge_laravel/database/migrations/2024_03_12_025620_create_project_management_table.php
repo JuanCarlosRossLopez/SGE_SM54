@@ -28,6 +28,9 @@ return new class extends Migration
             $table->text('activities');
             $table->date('start_date'); // Fecha de inicio
             $table->date('end_date'); // Fecha de finalización
+            $table->foreignId('user_id')->nullable()->constrained()
+            ->onUpdate('restrict')
+            ->onDelete('restrict');
             $table->timestamps();
         });
     }
