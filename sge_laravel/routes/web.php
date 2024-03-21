@@ -98,7 +98,7 @@ Route::get('/gestion_roles',function(){
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
-Route::resource('libros', BooksController::class);
+
 
 Route::resource('maestros', TeachersController::class);
 
@@ -240,6 +240,14 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
+    })->name('dashboard');
+
+});
+
+Route::group(['middleware' => ['auth', 'role:Cordinacion']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+    Route::get('/dashboard', function () {
+        return view('coordination.dashboard_coordination');
     })->name('dashboard');
 
 });
