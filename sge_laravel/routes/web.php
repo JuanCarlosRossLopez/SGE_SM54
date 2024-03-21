@@ -260,7 +260,8 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
-    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
+    
+    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('dashboard_alumno');
 
     // Otras rutas protegidas por el middleware 'role' de Spatie
 });

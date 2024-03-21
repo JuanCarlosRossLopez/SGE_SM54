@@ -62,7 +62,7 @@
                                 <label for="student_name">Nombre del Estudiante</label>
                                 <input type="text" name="student_name" id="student_name"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Nombre del estudiante" value="{{Auth::user()->name}}" />
+                                    placeholder="Nombre del estudiante" value="{{ optional(Auth::user())->name }}" />
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -86,7 +86,7 @@
                                 <label for="student_email">Correo del Estudiante</label>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" value="{{Auth::user()->email}}" />
+                                    placeholder="Correo electrónico" value="{{ optional(Auth::user())->email }}" />
                                 @error('student_email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -131,9 +131,10 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="student_id">Matrícula</label>
                                 <input type="text" name="student_id" id="student_id"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Matrícula" value="{{ old('student_id') }}" />
+                                    placeholder="Matrícula" value="22393130" />
                                 @error('student_id')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -142,6 +143,7 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_company">Empresa</label>
                                 <select name="project_company" id="project_company"
                                     class="cursor-pointer block py-3 px-4 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer">
                                     <option value="" disabled selected class=" text-transparent">Empresa
@@ -158,6 +160,7 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_advisor">Asesor en la Empresa</label>
                                 <input type="text" name="project_advisor" id="project_advisor"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Asesor Empresarial" value="{{ old('project_advisor') }}" />
@@ -169,6 +172,7 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_advisor_phone">Celular Asesor</label>
                                 <input type="text" name="project_advisor_phone" id="project_advisor_phone"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Teléfono del Asesor" value="{{ old('project_advisor_phone') }}" />
@@ -180,6 +184,7 @@
                         </div>
                         <div class="col-span-2 mb-5">
                             <div class=" z-0 w-full group">
+                                <label for="general_objective">Objetivo General</label>
                                 <textarea name="general_objective" id="general_objective"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Objetivo General">{{ old('general_objective') }}</textarea>
@@ -192,7 +197,7 @@
                         <div class="col-span-2 mb-5">
                             <div class="relative z-0 w-full group">
                                 <label id="infoButton"
-                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><i
+                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><span class="mr-2">Planteamiento del Problema</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="problem_statement" id="problem_statement"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -206,7 +211,7 @@
                         <div class="col-span-2 mb-5">
                             <div class="relative z-0 w-full group">
                                 <label id="infoButton"
-                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><i
+                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><span class="mr-2">Justificación</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="justification" id="justification"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -219,7 +224,7 @@
                         </div>
                         <div class="col-span-2 mb-5">
                             <div class="relative z-0 w-full group">
-                                <label id="infoButton" data-tooltip="listar las actividades a llevar a cabo en orden."><i
+                                <label id="infoButton" data-tooltip="listar las actividades a llevar a cabo en orden."><span class="mr-2">Actividades para realizar</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="activities" id="activities"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"

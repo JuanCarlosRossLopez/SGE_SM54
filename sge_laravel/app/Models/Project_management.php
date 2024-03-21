@@ -28,8 +28,8 @@ class Project_management extends Model
 
     protected $table = 'project_management';
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+public function student()
+{
+    return $this->belongsTo(Students::class, 'id_student');
+}
 }
