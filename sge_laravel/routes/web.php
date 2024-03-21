@@ -155,15 +155,15 @@ Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
-    //Memoria getsion Valier
-    Route::get('/memories/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('downloadPdf');
-    Route::resource('memory',Memory_History_Controller::class);
-    Route::get('/crear_memoria', function(){
-        return view('Test_memory.create_memory');
-    });
-    Route::get('/edit_memory', function(){
-        return view('Test_memory.edit_memory');
-    });
+//Memoria getsion Valier
+Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
+Route::resource('memory', Memory_History_Controller::class);
+Route::get('/crear_memoria', function () {
+    return view('Test_memory.create_memory');
+});
+Route::get('/edit_memory', function () {
+    return view('Test_memory.edit_memory');
+});
 
     //Crud division
     Route::resource('division',DivisionController::class);
@@ -254,8 +254,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 539e7e01c0417cdd3a951e53c61c8cc311ffb85a
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
