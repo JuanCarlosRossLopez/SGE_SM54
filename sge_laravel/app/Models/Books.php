@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Books extends Model
 {
@@ -18,7 +18,7 @@ class Books extends Model
         'students_id',
     ];
 
-    public function students():BelongsTo{
-        return $this->belongsTo(Students::class);
+    public function students():BelongsToMany{
+        return $this->belongsToMany(Students::class);
     }
 }

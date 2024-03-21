@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Books;
+use App\Models\Students;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -13,8 +14,10 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $libros= Books::all();
-        return view('super_admin.book', [ 'books'=> $libros]);
+        $books = Books::all();
+        $students = Students::all();
+
+        return view('super_admin.book', compact("books", "students"));
     }
 
     /**
@@ -22,7 +25,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('super_admin.modal_book');
+        $students = Students::all();
+        return view('super_admin.add_book_modal', ['students' => $students]);
     }
 
     /**
@@ -31,36 +35,42 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'book_name'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
-            'book_front_page'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
-            'book_description'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
-            'author'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
-            'price'=>'required'|'max:255|min:3|regex:/^(?!.*\b(OR|AND|&&)\b).*$/i',
+            'book_name' => 'required|max:255|min:3',
+            'book_description' => 'required|max:255|min:3',
+            'author' => 'required|max:255|min:3',
+            'students_id' => 'required'
         ]);
+
         $libro = new Books();
         $libro->book_name = $request->input('book_name');
         $libro->book_front_page = $request->input('book_front_page');
         $libro->book_description = $request->input('book_description');
         $libro->author = $request->input('author');
         $libro->price = $request->input('price');
+        $libro->students_id = $request->input('students_id');
         $libro->save();
-        return redirect()->route('super_admin.book');
+        
+        return back();
+        // return redirect()->route('super_admin.book');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $students = Students::all();
+        $libro = books::find($id);
+        return view('super_admin.show_book', compact("books", "students"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $students = Students::all();
+        return view('super_admin.edit_book_modal', ['students' => $students]);
     }
 
     /**
@@ -68,7 +78,24 @@ class BooksController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'book_name' => 'required|max:255|min:3',
+            'book_front_page' => 'required',
+            'book_description' => 'required|max:255|min:3',
+            'author' => 'required|max:255|min:3',
+            'price' => 'required|numeric|min:13',
+        ]);
+
+
+        $books = Books::findOrFail($id);
+        $books->book_name = $request->input('book_name');
+        $books->book_front_page = $request->input('book_front_page');
+        $books->book_description = $request->input('book_description');
+        $books->author = $request->input('author');
+        $books->price = $request->input('price');
+        $books->students_id = $request->input('students_id');
+        $books->save();
+        return back();
     }
 
     /**
@@ -76,6 +103,8 @@ class BooksController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $books = Books::find($id);
+        $books->delete();
+        return back();
     }
 }

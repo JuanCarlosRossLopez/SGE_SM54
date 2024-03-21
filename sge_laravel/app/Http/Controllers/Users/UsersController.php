@@ -14,9 +14,10 @@ class UsersController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $roles = Role::all();
         $users = User::paginate(10);
-        return view('UserManagement.users', compact('users'));
+        return view('UserManagement.users', compact('users', 'roles'));
     }
 
     /**
@@ -31,15 +32,14 @@ class UsersController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        //'name_user' => 'required|max:250',
-        //'lastname_user' => 'required|max:250',
-        'name' => 'required|unique:users|max:250',
-        'email' => 'required|email|unique:users,email|max:250',
-        'password' => 'required'
-    ]);
-
+    {
+        $request->validate([
+            //'name_user' => 'required|max:250',
+            //'lastname_user' => 'required|max:250',
+            'name' => 'required|unique:users|max:250',
+            'email' => 'required|unique:users|email',
+            'password' => 'required'
+        ]);
 
         $users = new User();
         // $users->name_user = $request->input('name_user');

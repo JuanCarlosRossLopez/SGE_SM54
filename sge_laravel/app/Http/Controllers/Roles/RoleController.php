@@ -35,9 +35,21 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $role_name = $request->input('role_name');
+        $role = Role::create(['name' => $role_name]);
+        $permissions = $request->input('permissions', []);
+        $role->syncPermissions($permissions);
+        return redirect()->route('roles.index');
     }
 
+    public function store_permision(Request $request)
+    {
+        $permision_name = $request->input('permision_name');
+         Permission::create(['name' => $permision_name]);
+
+        return redirect()->route('roles.index');
+
+    }
     /**
      * Display the specified resource.
      */
@@ -61,14 +73,44 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+    
+        // Update the role name if it's provided in the request
+        $role->name = $request->input('role_name', $role->name);
+    
+        // Sync permissions
+        $permissions = $request->input('permissions', []); // Get selected permissions from the request
+        $role->syncPermissions($permissions); // Sync the permissions with the role
+    
+        $role->save(); // Save the changes
+    
+        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
     }
+    
+    public function update_permission(Request $request, string $id)
+    {
+        $permission = Permission::findOrFail($id);
+        $permission->name = $request->input('permission_name', $permission->name);
+        $permission->save();
+        return redirect()->route('roles.index');
+    }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::find($id);
+        $role->delete();
+        return redirect()->route('roles.index');
+        
+    }
+
+    public function delete_permission(string $id)
+    {
+        $permission = Permission::find($id);
+        $permission->delete();
+        return redirect()->route('roles.index');
     }
 }

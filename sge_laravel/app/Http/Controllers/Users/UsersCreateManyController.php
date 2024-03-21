@@ -30,41 +30,37 @@ class UsersCreateManyController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'number_of_users' => 'required|integer|min:1',
-        'role_name' => 'required|string',
-    ]);
-
-    $number_of_users = $request->input('number_of_users');
-    $role_name = $request->input('role_name');
-
-    $role = Role::where('name', $role_name)->first();
-    if (!$role) {
-        return redirect()->back()->with('error', 'El rol especificado no existe.');
-    }
-
-    for ($i = 0; $i < $number_of_users; $i++) {
-        $username = 'usuario' . ($i + 1);
-        $email = $username . '@utcancun.edu.mx';
-
-        // Verifica si el correo electrónico ya existe en la base de datos
-        if (User::where('email', $email)->exists()) {
-            // Si el correo electrónico ya existe, omite este usuario y pasa al siguiente
-            continue;
+    {
+        $request->validate([
+            'number_of_users' => 'required|integer|min:1',
+            'role_name' => 'required|string',
+        ]);
+    
+        $number_of_users = $request->input('number_of_users');
+        $role_name = $request->input('role_name');
+    
+        $role = Role::where('name', $role_name)->first();
+        if (!$role) {
+            return redirect()->back()->with('error', 'El rol especificado no existe.');
         }
-
-        $user = new User();
-        $user->name = $username;
-        $user->email = $email;
-        $user->password = bcrypt('SGE2024');
-        $user->save();
-        $user->assignRole($role);
+    
+        for ($i = 0; $i < $number_of_users; $i++) {
+            $username = 'usuario' . ($i + 1);
+    
+            while (User::where('name', $username)->exists()) {
+                $username = 'usuario' . ($i + 1) . '_' . mt_rand(100, 999);
+            }
+    
+            $user = new User();
+            $user->name = $username;
+            $user->email = $username . '@utcancun.edu.mx';
+            $user->password = bcrypt('SGE2024');
+            $user->save();
+            $user->assignRole($role);
+        }
+    
+        return redirect()->back()->with('notificacion', 'Usuarios creados con éxito.');
     }
-
-    return redirect()->back()->with('notificacion', 'Usuarios creados con éxito.');
-}
-
     
     /**
      * Display the specified resource.
