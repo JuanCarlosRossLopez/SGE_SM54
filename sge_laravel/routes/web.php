@@ -253,12 +253,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-<<<<<<< HEAD
-
-
-=======
     
->>>>>>> 55ca32d4131ba5ee5281d83bef75545d599e9832
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
