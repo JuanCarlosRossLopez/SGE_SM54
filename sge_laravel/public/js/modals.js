@@ -39,8 +39,9 @@ Modal correspondiente:
 const modals = document.querySelectorAll(".modal");
 
 // Acciones para cada modal
-function handleModal(action, modalId) {
-    const modal = document.getElementById(modalId);
+function handleModal(action, idModal) {
+    const modal = document.querySelector(`.modal[idModal="${idModal}"]`);
+
     modals.forEach((m) => m.classList.add("hidden"));
 
     // Abrir o cerrar modal
@@ -57,15 +58,14 @@ const closeModalButtons = document.querySelectorAll(".close-modal");
 
 modalTriggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
-        const modalId = trigger.dataset.modal;
-        handleModal("open", modalId);
+        const idModal = trigger.dataset.modal;
+        handleModal("open", idModal);
     });
 });
 
 closeModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        const modalId = button.closest(".modal").id;
-        handleModal("close", modalId);
+        const idModal = button.closest(".modal").getAttribute("idModal");
+        handleModal("close", idModal);
     });
 });
-
