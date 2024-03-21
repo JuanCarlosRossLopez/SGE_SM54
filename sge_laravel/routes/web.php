@@ -254,11 +254,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 539e7e01c0417cdd3a951e53c61c8cc311ffb85a
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
