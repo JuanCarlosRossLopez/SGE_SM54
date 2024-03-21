@@ -14,7 +14,8 @@ class Teachers extends Model
         'name_teachers',
         'payroll',
         'id_user',
-        'division_id'  
+        'division_id',
+        'id_student',
     ];
 
     public function user(): BelongsTo

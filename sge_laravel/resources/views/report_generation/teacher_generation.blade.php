@@ -86,7 +86,7 @@
 
             <div class="flex flex-raw ml-[100px]">
                 <!--Separacion-->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
+                <div class="max-w-sm hidden h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
                     <div class="w-full flex flex-col items-center gap-4">
                         <h3 class="  text-[#01A080] font-bold text-2xl text-center">Subir Excel</h3>
                         <div class="">

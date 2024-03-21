@@ -17,7 +17,7 @@
                 </label>
             </div>
         </div>
-        
+
         <div class="content_conteiner">
             <label class="conteiner_word_title">Tabla de proyectos asesorados</label>
             <div class="inside_content_conteiner">
@@ -50,7 +50,7 @@
                             <td class="trowc">Comercio web e-commer</td>
                             <td class="trowc">
                                 <div>
-                                    <button class="show-modal standar_button my-1">
+                                    <button class="show-modal2 standar_button my-1">
                                         Enviar
                                     </button>
                                 </div>
@@ -62,7 +62,7 @@
                             <td class="trowc">Comercio web e-commer</td>
                             <td class="trowc">
                                 <div>
-                                    <button class="show-modal standar_button my-1">
+                                    <button class="show-modal1 standar_button my-1">
                                         Enviar
                                     </button>
                                 </div>
@@ -99,7 +99,8 @@
 
         </div>
     </div>
-    <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+
+    {{-- <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
             <div class="border-b px-4 py-2 flex justify-content-end">
                 <button class="close-modal">
@@ -112,14 +113,14 @@
                     <h4 class="text-black text-center mt-3 text-2xl font-bold">Tipo de archivo</h4>
                     <div class=" flex justify-center">
                         <img src="{!! asset('img/icon_word.png') !!}"
-                            class="cursor-pointer show-modal1 close-modal w-[50px] h-[50px] items-center mt-[20px] mr-[20px]">
+                            class="cursor-pointer close-modal w-[50px] h-[50px] items-center mt-[20px] mr-[20px]">
                         <img src="{!! asset('img/icon_pdf.png') !!}"
-                            class="cursor-pointer show-modal2 close-modal w-[50px] h-[50px] items-center mt-[20px] ml-[20px]">
+                            class="cursor-pointer close-modal w-[50px] h-[50px] items-center mt-[20px] ml-[20px]">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="modal1 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
             <div class="border-b px-4 py-2 flex justify-content-end">
@@ -164,8 +165,8 @@
         const showModal1 = document.querySelector('.show-modal1');
         const closeModal1 = document.querySelectorAll('.close-modal1');
         const showModal2 = document.querySelector('.show-modal2');
-        
-        showModal2.addEventListener('click', function(){
+
+        showModal2.addEventListener('click', function() {
             modal1.classList.remove('hidden')
         });
         showModal1.addEventListener('click', function() {
@@ -177,9 +178,7 @@
             });
         });
     </script>
-    <script>
-        
-    </script>
+    <script></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
