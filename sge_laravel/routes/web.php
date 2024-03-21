@@ -244,21 +244,12 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
 
 });
 
-Route::group(['middleware' => ['auth', 'role:Cordinacion']], function () {
-    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
-    Route::get('/dashboard', function () {
-        return view('coordination.dashboard_coordination');
-    })->name('dashboard');
-
-});
-
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
     Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 
-    // Otras rutas protegidas por el middleware 'role' de Spatie
-});
-    
 
+}); 
+//esto si funciona
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
