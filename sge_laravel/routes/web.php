@@ -208,13 +208,22 @@ Route::get('/registro_libros', function () {
 
 #RUTAS EQUIPO YAHIR
 
-Route::resource('usuarios', UsersController::class);
+Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
+    Route::resource('usuarios', UsersController::class);
+    Route::get('/dashboard-presidencial', function(){
+        return view('super_admin.dashboard_presidencia');
+    });
+
+
+});
+
+
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
-Route::get('/dashboard-presidencial', function(){
-    return view('super_admin.dashboard_presidencia');
-});
+// equipo rocha
+
+
 
 Route::get('/ejemplo', function(){
     return view('UserManagement.cuadro');
@@ -238,6 +247,7 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
     })->name('dashboard');
