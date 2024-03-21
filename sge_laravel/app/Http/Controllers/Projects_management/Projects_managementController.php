@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Projects_management;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anteproject;
 use Illuminate\Http\Request;
 use App\Models\Project_management;
 use Illuminate\Http\RedirectResponse;
+use DragonCode\Contracts\Cashier\Auth\Auth as CashierAuth;
+use Illuminate\Support\Facades\Auth;
 
 class Projects_managementController extends Controller
 {
@@ -34,6 +37,18 @@ class Projects_managementController extends Controller
      */
     public function store(Request $request)
     {
+
+        if(Anteproject::where('student_id', $request->input('student_id'))->exists()){
+            return back()->with('status', 'Ya existe un anteproyecto registrado con esa matrícula');
+        }
+
+        if(Anteproject::where('user_id', Auth::id())->exists()){
+            return back()->with('status', 'Ya existe un anteproyecto registrado con ese usuario');
+        }
+
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+
         //
         $request->validate([
         'project_title' => 'required', // Título del Anteproyecto 

@@ -47,6 +47,7 @@
                     <div class="grid grid-cols-3 gap-24">
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_title">Título de Proyecto</label>
                                 <input type="text" name="project_title" id="project_title"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Título de Anteproyecto" value="{{ old('project_title') }}" />
@@ -58,9 +59,10 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
+                                <label for="student_name">Nombre del Estudiante</label>
                                 <input type="text" name="student_name" id="student_name"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Nombre del estudiante" value="{{ old('student_name') }}" />
+                                    placeholder="Nombre del estudiante" value="{{Auth::user()->name}}" />
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -69,6 +71,7 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
+                                <label for="student_group">Grupo del Estudiante</label>
                                 <input type="text" name="student_group" id="student_group"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Grupo" value="{{ old('student_group') }}" />
@@ -80,9 +83,10 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="student_email">Correo del Estudiante</label>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" value="{{ old('student_email') }}" />
+                                    placeholder="Correo electrónico" value="{{Auth::user()->email}}" />
                                 @error('student_email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -115,6 +119,7 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="student_phone">Número del Estudiante</label>
                                 <input type="text" name="student_phone" id="student_phone"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Teléfono (123-456-7890)" value="{{ old('student_phone') }}" />
