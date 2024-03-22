@@ -117,7 +117,7 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="/descarga_informe" class="buttons_sidebar ">
+                            <a href="/descarga_informes" class="buttons_sidebar ">
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
                         </li>
