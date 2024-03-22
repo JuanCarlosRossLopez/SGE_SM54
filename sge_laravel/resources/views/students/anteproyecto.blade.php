@@ -41,10 +41,29 @@
             <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
                 @csrf
-                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Anteproyecto</h1>
+                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Estudiante</h1>
                 <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
                 <div class="flex flex-col mb-3 items-center">
                     <div class="grid grid-cols-3 gap-24">
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="educational_program">Programa Educativo</label>
+                                <select type="text" name="educational_program" id="educational_program"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Programa Educativo" value="{{ old('educational_program') }}">
+                                    <option value="" disabled selected class=" text-transparent">Programa Educativo
+                                    </option>
+                                    <option value="Ingeniería">Ingeniería</option>
+                                    <option value="Licenciatura">Licenciatura</option>
+                                    <option value="Técnico Superior Universitario">Técnico Superior Universitario</option>
+                                    <option value="Posgrado">Posgrado</option>
+                                </select>
+                                @error('educational_program')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="project_title">Título de Proyecto</label>
@@ -141,6 +160,10 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
+                    </div>
+                    <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Asesor</h1>
+                    <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
+                    <div class="grid grid-cols-3 gap-24">
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="project_company">Empresa</label>
@@ -160,11 +183,35 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="direction">Dirección de la Empresa</label>
+                                <input type="text" name="direction" id="direction"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Dirección de la Empresa" value="{{ old('direction') }}" />
+                                @error('direction')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
                                 <label for="project_advisor">Asesor en la Empresa</label>
                                 <input type="text" name="project_advisor" id="project_advisor"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Asesor Empresarial" value="{{ old('project_advisor') }}" />
                                 @error('project_advisor')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="position">Cargo del Asesor</label>
+                                <input type="text" name="position" id="position"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Cargo" value="{{ old('position') }}" />
+                                @error('position')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
@@ -182,7 +229,23 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="email_asesor">Correo Asesor</label>
+                                <input type="email" name="email_asesor" id="email_asesor"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Teléfono del Asesor" value="{{ old('email_asesor') }}" />
+                                @error('email_asesor')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Proyecto</h1>
+                    <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
+                    <div class="grid grid-cols-3 gap-24">
+                        <div class="col-span-8 mb-5">
                             <div class=" z-0 w-full group">
                                 <label for="general_objective">Objetivo General</label>
                                 <textarea name="general_objective" id="general_objective"
@@ -194,10 +257,11 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-8 mb-5">
                             <div class="relative z-0 w-full group">
                                 <label id="infoButton"
-                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><span class="mr-2">Planteamiento del Problema</span><i
+                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><span
+                                        class="mr-2">Planteamiento del Problema</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="problem_statement" id="problem_statement"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -208,10 +272,11 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-8 mb-5">
                             <div class="relative z-0 w-full group">
                                 <label id="infoButton"
-                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><span class="mr-2">Justificación</span><i
+                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><span
+                                        class="mr-2">Justificación</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="justification" id="justification"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -222,9 +287,11 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-8 mb-5">
                             <div class="relative z-0 w-full group">
-                                <label id="infoButton" data-tooltip="listar las actividades a llevar a cabo en orden."><span class="mr-2">Actividades para realizar</span><i
+                                <label id="infoButton"
+                                    data-tooltip="listar las actividades a llevar a cabo en orden."><span
+                                        class="mr-2">Actividades para realizar</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="activities" id="activities"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -238,25 +305,26 @@
                     </div>
                 </div>
         </div>
-        {{-- <div class="flex flex-row -mx-2 w-full">
+    </div>
+    {{-- <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
                 <!-- Los otros elementos omitidos por brevedad -->
             </div>
         </div> --}}
-        <div class="flex flex-col mt-3">
-            <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
-                type="submit">Guardar</button>
-        </div>
-        </form>
+    <div class="flex flex-col mt-3">
+        <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
+            type="submit">Guardar</button>
+    </div>
+    </form>
 
-        {{-- <div
+    {{-- <div
             class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
             <!-- Contenido de la modal omitido por brevedad -->
         </div> --}}
 
-        <!-- Contenido de la modal-edit omitido por brevedad -->
+    <!-- Contenido de la modal-edit omitido por brevedad -->
 
-        </form>
+    </form>
     </div>
 
     </div>

@@ -40,6 +40,7 @@ class Projects_managementController extends Controller
 
         //
         $request->validate([
+            'educational_program' => 'required|string', // Programa Educativo
             'project_title' => 'required', // Título del Anteproyecto
             'student_name' => 'required|max:255', // Nombre del estudiante
             'student_group' => 'required|string', // Grupo
@@ -49,6 +50,9 @@ class Projects_managementController extends Controller
             'student_phone' => 'required|string|max:10', // Teléfono
             'student_id' => 'required|max:8', // Matrícula
             'project_company' => 'required', // Empresa 
+            'direction' => 'required|string', // Dirección
+            'position' => 'required|string', // Puesto
+            'email_asesor' => 'required', // Correo del Asesor
             'project_advisor' => 'required', // Asesor Empresarial
             'project_advisor_phone' => 'required', // Teléfono del Asesor
             'general_objective' => 'required', // Objetivo General
@@ -58,6 +62,7 @@ class Projects_managementController extends Controller
         ]);
 
         $projects_management = new Project_management();
+        $projects_management->educational_program = $request->input('educational_program');
         $projects_management->project_title = $request->input('project_title');
         $projects_management->student_name = $request->input('student_name');
         $projects_management->student_group = $request->input('student_group');
@@ -65,6 +70,9 @@ class Projects_managementController extends Controller
         $projects_management->student_phone = $request->input('student_phone');
         $projects_management->student_id = $request->input('student_id');
         $projects_management->project_company = $request->input('project_company');
+        $projects_management->direction = $request->input('direction');
+        $projects_management->position = $request->input('position');
+        $projects_management->email_asesor = $request->input('email_asesor');
         $projects_management->project_advisor = $request->input('project_advisor');
         $projects_management->project_advisor_phone = $request->input('project_advisor_phone');
         $projects_management->general_objective = $request->input('general_objective');
