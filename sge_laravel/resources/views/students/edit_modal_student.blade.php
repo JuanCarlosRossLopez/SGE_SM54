@@ -14,38 +14,72 @@
                 <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
                     <div class="flex flex-col items-center justify-center">
                         <div class="flex items-center justify-between w-full mb-4">
-                            <h1 class="text-xl font-bold">Editando al Estudiante</h1>
-                            <p class="text-gray-500">{{ $students->name }}</p>
+                            <h1 class="text-xl font-bold">Editando al estudiante</h1>
+                            <p class="text-gray-500">{{ $students->student_name }}</p>
                         </div>
                         <form action="{{ route('estudiantes.update', $students->id) }}" method="POST"
                             class="flex flex-col gap-4">
                             @csrf
-                            @method('PUT')
                             <div class="flex gap-4">
-                                <div class="flex flex-col gap-4">
-                                    <input type="text" name="name_students" id="name_students"
-                                        placeholder="Nombre del Estudiante" class="rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="id_user" id="id_user"
-                                        placeholder="ID de usuario del Estudiante"
-                                        class="rounded-md border border-gray-300 p-2">
-                                </div>
-                                <div class="flex flex-col gap-4">
-                                    <input type="number" name="id_student" id="id_student"
-                                        placeholder="Número de nómina del Estudiante"
-                                        class="rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="division_id" id="division_id"
-                                        placeholder="ID de la división del asesor"
-                                        class="rounded-md border border-gray-300 p-2">
-                                </div>
+                                <input type="text" name="student_name" id="student_name " value="{{$students->student_name}}" 
+                                "
+                                    placeholder="Nombre del estudiante"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="text" name="id_student" id="id_student" value="{{$students->id_student}}" placeholder="Matrìcula"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
                             </div>
-                            <!-- Puedes agregar más campos aquí según sea necesario -->
-                            <div class="flex justify-end mt-4">
-                                <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+
+                            <div class="flex gap-4">
+                                <label class="">Creador de anteproyecto</label>
+                                <select name="project_creator" id="project_creator" class="rounded-md border">
+                                    <option value="0">No</option>
+                                    <option value="1">Sí</option>
+                                </select>
                             </div>
-                        </form>
+
+                            <div class="flex gap-4">
+                                <select type="text" name="user_id" id="user_id"
+                                    class="flex-1 rounded-md border text-black border-gray-300 p-2">
+                                    <option selected>Elige un usuario</option>
+                                    @foreach ($Users as $user)
+                                        <option value="{{ $students->user_id }}">{{ $user->name }}</option>
+                                        
+                                    @endforeach
+                                </select>
+
+                                <input type="text" name="anteproject_id" id="anteproject_id"
+                                    placeholder="Nombre del anteproyecto"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                            </div>
+
+                            <div class="flex gap-4">
+
+                                <select type="text" name="adviser_id" id="adviser_id"
+                                    class="flex-1 rounded-md border text-black border-gray-300 p-2">
+                                    <option selected>Elige un asesor</option>
+                                    @foreach ($Teachers as $teacher)
+                                        <option value="{{ $teacher->teacher_name }}">{{ $teacher->name_teacher }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="flex gap-4"></div>
+                            <select name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
+                                <option selected>Elige una división</option>
+                                @foreach ($Divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                @endforeach
+
+                            </select>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <!-- Puedes agregar más campos aquí según sea necesario -->
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                    </div>
     </form>
+</div>
+</div>
+</div>
+</div>
+</form>
 </div>

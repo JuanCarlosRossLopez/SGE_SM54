@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeachingAdvice\TeachingAdviceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
@@ -123,6 +124,7 @@ Route::get('/gestion_roles', function () {
 
 Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
+Route::resource('asignar_alumnos', TeachingAdviceController::class);
 
 
 //Route::post('/teachers', [TeachersController::class, 'store'])->name('teachers.store');
