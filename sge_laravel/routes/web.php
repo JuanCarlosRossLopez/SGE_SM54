@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherDashboard\AnteprotecMapDashController;
 use App\Http\Controllers\TeacherDashboard\TeacherDashboardController;
 use App\Http\Controllers\TeachingAdvice\TeachingAdviceController;
 use Illuminate\Support\Facades\Route;
@@ -79,9 +80,12 @@ Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
     //aaaaaaa
     Route::get('/dashboard_asesor', function () {
         return view('teachers.teacher_dashboard');
-    }); 
+    })->name('redirect_asesor'); 
 
-    Route::resource('/alumnos_asesorados', TeacherDashboardController::class);
+    Route::resource('alumnos_asesorados', TeacherDashboardController::class);
+    Route::resource('test_dash_ante', AnteprotecMapDashController::class);
+    
+    Route::resource('information_project', CommentsController::class);
 });
 
 //Dashboard Asesor
@@ -129,6 +133,8 @@ Route::get('/gestion_roles', function () {
 Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
 Route::resource('asignar_alumnos', TeachingAdviceController::class);
+
+
 
 
 //Route::post('/teachers', [TeachersController::class, 'store'])->name('teachers.store');
@@ -182,14 +188,18 @@ Route::get('/edit_memory', function () {
     //End crud division
 
     //Comentarios gestion Valier
-    Route::resource('information_project', CommentsController::class);
+    
+
+
     Route::get('/crear_comentario', function () {
         return view('teacher_dates.create_comment');
     });
     Route::get('/editar_cita', function () {
         return view('teacher_dates.edit_meet_date');
     });
-    
+
+
+//Ignorar de mientras
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
