@@ -56,10 +56,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-//Dashboard Asesor
+Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
+   
 Route::get('/dashboard_asesor', function () {
     return view('teachers.teacher_dashboard');
+})->name('redirect_asesor'); 
 });
+
+//Dashboard Asesor
+
 
 //Dashboard Alumno
 Route::get('/dashboard_alumno', function () {
@@ -212,8 +217,13 @@ Route::resource('usuarios', UsersController::class);
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
+
+
+Route::group(['middleware' => ['auth', 'role:Presidente']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
 Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
+})->name('dashboard-presidencial');
 });
 
 Route::get('/ejemplo', function(){
@@ -249,7 +259,7 @@ Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
 
 
 }); 
-//esto si funciona
+//esto si
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');

@@ -36,9 +36,9 @@ class AuthenticatedSessionController extends Controller
         } elseif ($user->hasRole('Administrador')) {
             return redirect()->route('dashboard');
          }elseif($user->hasRole('Presidente')){
-             // Ruta
+             return redirect()->route('dashboard-presidencial');
             }elseif($user->hasRole('Asesor')){
-                // Ruta
+                return redirect()->route('redirect_asesor');
             }elseif($user->hasRole('Aspirante')){
                 // Ruta
             }elseif($user->hasRole('Cordinacion')){
