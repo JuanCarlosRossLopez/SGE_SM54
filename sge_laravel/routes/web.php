@@ -79,9 +79,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
     //aaaaaaa
-    Route::get('/dashboard_asesor', function () {
-        return view('teachers.teacher_dashboard');
-    })->name('redirect_asesor'); 
+    Route::get('/dashboard_asesor', [AnteprotecMapDashController::class,'index'])->name('redirect_asesor'); 
 
     Route::resource('alumnos_asesorados', TeacherDashboardController::class);
     Route::resource('test_dash_ante', AnteprotecMapDashController::class);
