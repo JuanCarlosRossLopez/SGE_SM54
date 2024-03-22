@@ -18,7 +18,7 @@
 
         <div class="content_conteiner">
             <div class="flex flex-row items-center gap-2">
-                <label class="conteiner_word_title">Bienvenido Jose</label>
+                <label class="conteiner_word_title">Bienvenido {{ Auth::user()->name }}</label>
                 <label id="infoButton" class="cursor-pointer mt-3"
                     data-tooltip="Este es tu dashboard, administra tu proyecto">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>

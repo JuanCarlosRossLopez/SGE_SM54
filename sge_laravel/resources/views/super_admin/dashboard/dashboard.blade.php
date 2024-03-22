@@ -1,12 +1,8 @@
-
-
-
 @extends('test.test_template')
 @section('title')
 Panel de control administrador
 @endsection
 @section('contenido')
-@role('Administrador')
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -343,12 +339,5 @@ Panel de control administrador
             container.scrollTop = container.scrollHeight;
         };
     </script>
-    @endsection
-
-
-
-
-
-    
-
-
+    </script>
+    @endsection
