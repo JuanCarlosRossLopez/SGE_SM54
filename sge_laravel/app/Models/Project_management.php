@@ -38,4 +38,8 @@ public function user()
     return $this->belongsTo(User::class, 'id_user');
 }
 
+public function comments()
+{
+    return $this->hasMany(Comments::class, 'id_project');
+}
 }
