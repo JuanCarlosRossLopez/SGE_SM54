@@ -20,6 +20,11 @@ class Teachers extends Model
         'user_id',
         'division_id'  
     ];
+
+    protected $hidden = [
+        'id'
+    ];
+    
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_user');

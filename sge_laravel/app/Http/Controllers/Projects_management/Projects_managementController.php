@@ -69,6 +69,7 @@ class Projects_managementController extends Controller
         $projects_management->student_email = $request->input('student_email');
         $projects_management->student_phone = $request->input('student_phone');
         $projects_management->student_id = $request->input('student_id');
+        $projects_management->id_student = $request->input('id_student');
         $projects_management->project_company = $request->input('project_company');
         $projects_management->direction = $request->input('direction');
         $projects_management->position = $request->input('position');

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherDashboard\TeacherDashboardController;
 use App\Http\Controllers\TeachingAdvice\TeachingAdviceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
@@ -75,9 +76,12 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
+    //aaaaaaa
     Route::get('/dashboard_asesor', function () {
         return view('teachers.teacher_dashboard');
-    })->name('redirect_asesor'); 
+    }); 
+
+    Route::resource('/alumnos_asesorados', TeacherDashboardController::class);
 });
 
 //Dashboard Asesor
@@ -135,7 +139,8 @@ Route::get('/ListaEstudiantes', function () {
     return view('students.manager_student');
 });
 
-//Ruteo jomar
+
+//Ruteo jomar JOMAR hola
 
 Route::get('/Perfil_Estudiante', function () {
     return view('students.userStudent');
@@ -146,9 +151,6 @@ Route::get('/Perfil', function () {
 Route::get('/agregar', function () {
     return view('registro');
 })->name('registro');
-
-
-
 
 
 
@@ -187,9 +189,7 @@ Route::get('/edit_memory', function () {
     Route::get('/editar_cita', function () {
         return view('teacher_dates.edit_meet_date');
     });
-    Route::get('/alumnos_asesorados' , function () {
-        return view('strikes.advised_students');            
-    });
+    
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');

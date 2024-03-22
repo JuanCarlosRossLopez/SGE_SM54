@@ -36,8 +36,8 @@ return new class extends Migration
             // ->onUpdate('restrict')
             // ->onDelete('restrict');
             $table->foreignId('id_student')->nullable()->constrained('students')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

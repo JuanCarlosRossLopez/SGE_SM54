@@ -56,12 +56,14 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
+
+                    @foreach
                         <tr class="trow">
-                            <td class="trowc">Alexis Zamora</td>
-                            <td class="trowc">22393434</td>
-                            <td class="trowc">No</td>
-                            <td class="trowc">Task In</td>
-                            <td class="trowc">Mayra Guadalupe</td>
+                            <td class="trowc"></td>
+                            <td class="trowc"></td>
+                            <td class="trowc"></td>
+                            <td class="trowc"></td>
+                            <td class="trowc"></td>
                             <td class="trowc">
                                 <div>
                                     <button class="show-modal bg-[#ae0808] text-white font-semibold px-2 py-2 rounded">
@@ -70,6 +72,7 @@
                                 </div>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

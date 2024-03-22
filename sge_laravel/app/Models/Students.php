@@ -24,6 +24,10 @@ class Students extends Model
         'adviser_id',
         'evaluation_date_id',
     ];
+
+    protected $hidden =[
+        'id'
+    ];
     public function books():Hasmany{
         return $this->hasMany(Books::class);
     }
