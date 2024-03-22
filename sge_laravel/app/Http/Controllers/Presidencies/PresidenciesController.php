@@ -16,12 +16,12 @@ class PresidenciesController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         $careers = Career::all();
         $divisions = Division::all();
-        $users = User::all();
         $presidencies = presidencies::paginate(10);
 
-        return view('presidencies.presidencies', compact('presidencies', 'careers', 'divisions', 'users'));
+        return view('presidencies.presidencies', compact('presidencies', 'users', 'careers', 'divisions'));
     }
 
     /**
@@ -48,32 +48,14 @@ class PresidenciesController extends Controller
         $presidencies->president_name = $request->input('president_name');
         $presidencies->president_lastname = $request->input('president_lastname');
         $presidencies->payroll_president = $request->input('payroll_president');
+        $presidencies->user_id = $request->user_id;
+        $presidencies->career_id = $request->career_id;
+        $presidencies->division_id = $request->division_id;
+        
+        
 
-        // Guardar el modelo presidencies antes de asignar relaciones
         $presidencies->save();
 
-        $userName = $request->input('user');
-        $careerName = $request->input('career');
-        $divisionName = $request->input('division');
-
-        // Obtener el usuario, la carrera y la división
-        $user = User::where('name', $userName)->first();
-        $career = Career::where('career_name', $careerName)->first();
-        $division = Division::where('division_name', $divisionName)->first();
-
-        // Asignar usuario, carrera y división si se encontraron
-        if ($user) {
-            $presidencies->user()->associate($user);
-        }
-        if ($career) {
-            $presidencies->career()->associate($career);
-        }
-        if ($division) {
-            $presidencies->division()->associate($division);
-        }
-
-        // Guardar el modelo presidencies después de asignar relaciones
-        $presidencies->save();
 
 
         return redirect('presidentes')->with('notificacion', "Presidente creado correctamente");

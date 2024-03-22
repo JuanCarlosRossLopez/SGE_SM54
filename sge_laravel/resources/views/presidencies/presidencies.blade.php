@@ -114,9 +114,6 @@
                                             Nombre de
                                             Usuario</th>
                                         <th class="theader">
-                                            Email
-                                        </th>
-                                        <th class="theader">
                                             Carrera
                                         </th>
                                         <th class="theader">
@@ -134,22 +131,31 @@
                                             <td class="trowc"> {{ $president->president_name }} </td>
                                             <td class="trowc"> {{ $president->president_lastname }} </td>
                                             <td class="trowc"> {{ $president->payroll_president }} </td>
-                                            <td>
+                                            <td class="trowc"> {{ $president->user_id }} </td>
+                                            <td class="trowc"> {{ $president->career_id }} </td>
+                                            <td class="trowc"> {{ $president->division_id }} </td>
+
+
+                                            {{-- <td>
                                                 @foreach ($president->users as $user)
                                                     {{ $user->name }}
+                                                @endforeach
                                             </td>
                                             <td>
                                                 @foreach ($president->users as $user)
                                                     {{ $user->email }}
+                                                    @endforeach
                                             </td>
                                             <td>
                                                 @foreach ($president->carrers as $careers)
                                                     {{ $career->career_name }}
+                                                @endforeach
                                             </td>
                                             <td>
                                                 @foreach ($president->divisions as $division)
                                                     {{ $division->division_name }}
-                                            </td>
+                                                    @endforeach
+                                            </td> --}}
                                             <td class="trowc">
                                                 <button class="show-modal-view" data-target="#show{{ $president->id }}">
                                                     <div class="comment-icon flex items-center justify-center">
@@ -170,11 +176,7 @@
                                             </td>
                                         </tr>
                                         @include('presidencies.modal-presidencies')
-                                    @endforeach
-                                    @endforeach
-                                    @endforeach
-                                    @endforeach
-                                    @endforeach
+                                        @endforeach
                                 </tbody>
                             </table>
                             <div class="mt-5">{{ $presidencies->links() }}</div>
@@ -236,39 +238,38 @@
                                                 <input type="number" name="payroll_president" class="rounded input-field">
                                             </div>
                                             <div>
-                                                <select name="user" id="user_name"
+                                                <select name="user_id" id="user_id"
                                                     class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
                                                     required>
                                                     <option value="">Selecciona un usuario</option>
                                                     @foreach ($users as $user)
-                                                        <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-
+                                            
                                             <div>
-                                                <select name="career" id="carrer_name"
+                                                <select name="career_id" id="career_id"
                                                     class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
                                                     required>
                                                     <option value="">Selecciona una carrera</option>
                                                     @foreach ($careers as $career)
-                                                        <option value="{{ $career->career_name }}">
-                                                            {{ $career->career_name }}</option>
+                                                        <option value="{{ $career->id }}">{{ $career->career_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-
+                                            
                                             <div>
-                                                <select name="division" id="division_name"
+                                                <select name="division_id" id="division_id"
                                                     class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
                                                     required>
-                                                    <option value="">Selecciona una division</option>
+                                                    <option value="">Selecciona una división</option>
                                                     @foreach ($divisions as $division)
-                                                        <option value="{{ $division->division_name }}">
-                                                            {{ $division->division_name }}</option>
+                                                        <option value="{{ $division->id }}">{{ $division->division_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            
 
                                             <div class="flex justify-center">
                                                 <button type="submit">
