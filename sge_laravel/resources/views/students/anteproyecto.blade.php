@@ -229,7 +229,7 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-1">
+                        <div class="col-span-1"></div>
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="email_asesor">Correo Asesor</label>
                                 <input type="email" name="email_asesor" id="email_asesor"
