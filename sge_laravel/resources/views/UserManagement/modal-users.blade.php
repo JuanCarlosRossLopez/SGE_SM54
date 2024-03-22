@@ -48,7 +48,7 @@
 
                     </p>
                     <select name="role" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-        <option value="">Selecciona un rol</option>
+        <option value="{{$role->name}}">{{$role->name}}</option>
         @foreach($roles as $role)
             <option value="{{ $role->name }}">{{ $role->name }}</option>
         @endforeach

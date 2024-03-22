@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comments;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
+use App\Models\Project_management;
 class CommentsController extends Controller
 {
     /**
@@ -47,8 +47,9 @@ class CommentsController extends Controller
      */
     public function show(string $id)
     {
+        // $projects = Project_management::find($id);
         $comment = Comments::find($id);
-        return view('information_project', compact('comments'));
+        // return view('comment', compact('comment'));
     }
 
     /**
