@@ -1,6 +1,6 @@
-    @extends('test.test_template')
+@extends('test.test_template')
 
-@section('title', 'Usuarios')
+@section('title', 'Presidentes')
 @section('contenido')
 
     <head>
@@ -18,7 +18,7 @@
                 <div class="back_conteiner">
                     <div class="top_conteiner">
                         <label>
-                            Gestión de Usuarios
+                            Gestión de Presidentes
                         </label>
                         <label>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="content_conteiner">
-                        <label class="word_title">Tabla de Gestión de Usuarios</label>
+                        <label class="word_title">Tabla de Gestión de Presidentes</label>
                         <div class="inside_content_conteiner">
                             @if (session()->has('notificacion'))
                                 <div class="text-blue-800">
@@ -46,15 +46,15 @@
                             <div class="search_button_conteiner">
                                 <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
                                 <button class="show-modal3 standar_button"><span class="inside_button">Agregar
-                                        Usuario</span></button>
+                                        Presidente</span></button>
 
                             </div>
-                            <button class="show-modal-u standar_button2 "><span class="inside_button">Agregar
-                                    Usuarios</span></button>
+                            {{-- <button class="show-modal-u standar_button2 "><span class="inside_button">Agregar
+                                    Usuarios</span></button> --}}
                         </div>
 
 
-                        <div
+                        {{-- <div
                             class="modal-user h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
                             <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                 <div class="border-b px-4 py-2 flex justify-between items-center">
@@ -91,7 +91,7 @@
 
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
@@ -102,13 +102,22 @@
                                         <th class="theader">
                                             #</th>
                                         <th class="theader">
+                                            Nombre del Presidente
+                                        </th>
+                                        <th class="theader">
+                                            Apellidos del Presidente
+                                        </th>
+                                        <th class="theader">
+                                            Nómina
+                                        </th>
+                                        <th class="theader">
                                             Nombre de
                                             Usuario</th>
                                         <th class="theader">
-                                            Email
+                                            Carrera
                                         </th>
                                         <th class="theader">
-                                            Roles
+                                            División
                                         </th>
                                         <th class="theader">
                                             Acciones
@@ -116,40 +125,61 @@
                                     </tr>
                                 </thead>
                                 <tbody class="tbody">
-                                    @foreach ($users as $user)
+                                    @foreach ($presidencies as $president)
                                         <tr class="trow">
                                             <td class="trowc"> {{ $loop->iteration }} </td>
-                                            <td class="trowc"> {{ $user->name }} </td>
-                                            <td class="trowc"> {{ $user->email }} </td>
-                                            <td>
-                                                @foreach ($user->roles as $role)
-                                                    {{ $role->name }}
+                                            <td class="trowc"> {{ $president->president_name }} </td>
+                                            <td class="trowc"> {{ $president->president_lastname }} </td>
+                                            <td class="trowc"> {{ $president->payroll_president }} </td>
+                                            <td class="trowc"> {{ $president->user_id }} </td>
+                                            <td class="trowc"> {{ $president->career_id }} </td>
+                                            <td class="trowc"> {{ $president->division_id }} </td>
+
+
+                                            {{-- <td>
+                                                @foreach ($president->users as $user)
+                                                    {{ $user->name }}
+                                                @endforeach
                                             </td>
+                                            <td>
+                                                @foreach ($president->users as $user)
+                                                    {{ $user->email }}
+                                                    @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach ($president->carrers as $careers)
+                                                    {{ $career->career_name }}
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach ($president->divisions as $division)
+                                                    {{ $division->division_name }}
+                                                    @endforeach
+                                            </td> --}}
                                             <td class="trowc">
-                                                <button class="show-modal-view" data-target="#show{{ $user->id }}">
+                                                <button class="show-modal-view" data-target="#show{{ $president->id }}">
                                                     <div class="comment-icon flex items-center justify-center">
                                                         <i class="bi bi-eye-fill"></i>
                                                     </div>
                                                 </button>
-                                                <button class="show-modal4" data-target="#edit{{ $user->id }}">
+                                                <button class="show-modal4" data-target="#edit{{ $president->id }}">
                                                     <div class="comment-icon flex items-center justify-center">
                                                         <i class="bi bi-pencil-square" style="color: blue;"></i>
                                                     </div>
                                                 </button>
 
-                                                <button class="show-modal" data-target="#delete{{ $user->id }}">
+                                                <button class="show-modal" data-target="#delete{{ $president->id }}">
                                                     <div class="comment-icon flex items-center justify-center">
                                                         <i class="bi bi-trash" style="color: red;"></i>
                                                     </div>
                                                 </button>
                                             </td>
                                         </tr>
-                                        @include('UserManagement.modal-users')
-                                    @endforeach
-                                    @endforeach
+                                        @include('presidencies.modal-presidencies')
+                                        @endforeach
                                 </tbody>
                             </table>
-                            <div class="mt-5">{{ $users->links() }}</div>
+                            <div class="mt-5">{{ $presidencies->links() }}</div>
                         </div>
 
 
@@ -163,7 +193,8 @@
                             class="modal3 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
                             <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                 <div class="border-b px-4 py-2 flex justify-between items-center">
-                                    <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar Usuario</h3>
+                                    <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar Presidente
+                                    </h3>
                                     <button class="close-modal3 bg-white rounded-full h-[1rem] flex items-center">
                                         <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i>
                                         </p>
@@ -185,43 +216,66 @@
                                         </div>
                                     @endif
                                     <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                                        <form action="{{ route('usuarios.store') }}" method="POST"
+                                        <form action="{{ route('presidentes.store') }}" method="POST"
                                             class="flex flex-col items-center">
                                             @csrf
 
 
                                             <div class="mb-4">
                                                 <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
-                                                    de
-                                                    usuario</label>
-                                                <input type="text" name="name" class="rounded input-field">
+                                                    del Presidente</label>
+                                                <input type="text" name="president_name" class="rounded input-field">
                                             </div>
 
                                             <div class="mb-4">
-                                                <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                                                <input type="email" name="email" class="rounded input-field">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos del
+                                                    Presidente</label>
+                                                <input type="text" name="president_lastname" class="rounded input-field">
                                             </div>
 
                                             <div class="mb-4">
-                                                <label
-                                                    class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                                                <input type="password" name="password" class="rounded input-field">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
+                                                <input type="number" name="payroll_president" class="rounded input-field">
                                             </div>
-
-                                            <select name="role" id="role_name"
-                                                class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
-                                                required>
-                                                <option value="">Selecciona un rol</option>
-                                                @foreach ($roles as $role)
-                                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <div>
+                                                <select name="user_id" id="user_id"
+                                                    class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
+                                                    required>
+                                                    <option value="">Selecciona un usuario</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            
+                                            <div>
+                                                <select name="career_id" id="career_id"
+                                                    class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
+                                                    required>
+                                                    <option value="">Selecciona una carrera</option>
+                                                    @foreach ($careers as $career)
+                                                        <option value="{{ $career->id }}">{{ $career->career_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            
+                                            <div>
+                                                <select name="division_id" id="division_id"
+                                                    class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
+                                                    required>
+                                                    <option value="">Selecciona una división</option>
+                                                    @foreach ($divisions as $division)
+                                                        <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            
 
                                             <div class="flex justify-center">
                                                 <button type="submit">
                                                     <div
                                                         class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                                        Agregar usuario
+                                                        Agregar presidente
                                                     </div>
                                                 </button>
 

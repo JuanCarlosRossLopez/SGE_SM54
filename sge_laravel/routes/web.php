@@ -20,6 +20,7 @@ use App\Http\Controllers\Calendar\Calendar2Controller;
 use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
+use App\Http\Controllers\Presidencies\PresidenciesController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use App\Http\Controllers\Divisions\DivisionController;
@@ -251,6 +252,7 @@ Route::get('/registro_libros', function () {
 
 Route::resource('usuarios', UsersController::class);
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
+Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usyyyuarios.update');
 
 

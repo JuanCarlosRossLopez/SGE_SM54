@@ -1,6 +1,3 @@
-
-
-
 @extends('test.test_template')
 @section('title')
 Panel de control administrador
@@ -342,12 +339,5 @@ Panel de control administrador
             container.scrollTop = container.scrollHeight;
         };
     </script>
-    @endsection
-
-
-
-
-
-    
-
-
+    </script>
+    @endsection

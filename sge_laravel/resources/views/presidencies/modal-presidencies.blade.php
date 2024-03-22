@@ -1,4 +1,4 @@
-<div id="edit{{ $user->id }}"
+{{-- <div id="edit{{ $user->id }}"
     class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
         <div class="border-b px-4 py-2 flex justify-between items-center">
@@ -47,12 +47,16 @@
                     <p>
 
                     </p>
-                    <select name="role" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-        <option value="{{$role->name}}">{{$role->name}}</option>
-        @foreach($roles as $role)
-            <option value="{{ $role->name }}">{{ $role->name }}</option>
-        @endforeach
-    </select>
+                    <select name="role" id="" class="rounded">
+
+                        <option value="{{ $role->name }}">Seleciona un rol</option>
+                        <option value="student">Alumnoss</option>
+                        <option value="teacher">Maestro</option>
+                        <option value="admin">Administrador</option>
+                        <option value="coordination">Coordinación</option>
+                        <option value="president">Presidencia</option>
+                        <option value="applicants">Aspirante</option>
+                    </select>
 
 
                     <div class="flex justify-center">
@@ -147,4 +151,4 @@
             </button>
         </div>
     </div>
-</div>
+</div> --}}

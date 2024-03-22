@@ -59,7 +59,7 @@ class UsersCreateManyController extends Controller
             $user->assignRole($role);
         }
     
-        return redirect()->back()->with('success', 'Usuarios creados con éxito.');
+        return redirect()->back()->with('notificacion', 'Usuarios creados con éxito.');
     }
     
     /**
