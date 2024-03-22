@@ -1,6 +1,9 @@
 /*
 Instrucciones para utilizar los modals con este JavaScript:
 
+0. Incluye lo siguiente en tu vista o template:
+        <script src="{!! asset('js/modals.js') !!}"></script>
+
 1. Agrega el atributo 'data-modal' al botón que abre el modal, con el valor igual al 'idModal' del modal que deseas abrir.
    Ejemplo: 
             <button data-modal="editMaestro" class="show-modal">Abrir Modal</button>
