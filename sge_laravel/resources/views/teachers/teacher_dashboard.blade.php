@@ -92,42 +92,11 @@
                                         </g>
                                     </svg>
                                 </div>
-                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
+                                <a href="/information_project" class="Button-progress">Visualizar detalles</a>
                             </div>
-                            <!-- Panel 2 -->
-                            <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
-                                <label>Gym Bro</label>
-                                <div class="progress-item ">
-                                    <svg width="190" height="190" class="progress-chart">
-                                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
-                                        </circle>
-                                        <circle cx="85" cy="85" r="80" class="progress-front2" fill="none"
-                                            stroke-dasharray="0 1000000"></circle>
-                                        <g class="progress-text">
-                                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
-                                                id="percentage2">0%</text>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
-                            </div>
+                            
                             <!-- Panel 3 -->
-                            <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
-                                <label>Tas'k in</label>
-                                <div class="progress-item ">
-                                    <svg width="190" height="190" class="progress-chart">
-                                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
-                                        </circle>
-                                        <circle cx="85" cy="85" r="80" class="progress-front" fill="none"
-                                            stroke-dasharray="0 1000000"></circle>
-                                        <g class="progress-text">
-                                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
-                                                id="percentage">0%</text>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <a href="/datos_proyecto" class="Button-progress">Visualizar detalles</a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -165,7 +134,7 @@
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="hidden dropdown-content">
-                                        <a href="/historial-memorias"
+                                        <a href="/memory"
                                             class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver memorias</a>
                                     </div>
                                 </div>
@@ -183,28 +152,12 @@
                             class="border-2  rounded-[7px_7px_7px_7px] p-1 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[645px] h-fit">
                             <label
                                 class="conteiner_word_title  h-fit flex flex-col items-center font-semibold text-lg text-[#18A689]">Recordatorios</label>
-                            <div class="overflow-auto h-fit p-0">
+                             <br/>
+                                <div class="overflow-auto h-fit p-0">
                                 <div class="flex flex-col">
-                                    <div
-                                        class="flex flex-row gap-0 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-2 bg-[#2F4050] text-white mt-4 mb-1 font-base">
-                                        <p>05 Febrero | 8:30 AM</p>
-                                        <p>Revisión de Memoria</p>
-                                    </div>
-                                    <div
-                                        class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-2 bg-[#18A689] text-white my-1 font-base text-[12px]">
-                                        <p>20 Febrero | 1:15 PM</p>
-                                        <p>Revisión de Memoria</p>
-                                    </div>
-                                    <div
-                                        class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-2 bg-[#18A689] text-white my-1 font-base text-[12px]">
-                                        <p>20 Febrero | 1:15 PM</p>
-                                        <p>Revisión de Memoria</p>
-                                    </div>
-                                    <div
-                                        class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-2 bg-[#18A689] text-white my-1 font-base text-[12px]">
-                                        <p>20 Febrero | 1:15 PM</p>
-                                        <p>Revisión de Memoria</p>
-                                    </div>
+                                
+                                    <p class="font-medium text-xl text-center">Sin revisiones</p>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -231,74 +184,9 @@
             <div class="bg-white w-full h-[85vh] p-2 flex flex-col items-center overflow-y-auto">
                 <div class="conteiner_cards2 w-full mt-3">
                     <!-- Panel 2 -->
-                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
-                        <div class="w-full flex flex-row p-2 ">
-                            <label class="font-semibold font-poppins text-lg text-center w-full">Clean Code</label>
-                            <div class="w-fit  flex relative dropdown-trigger">
-                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <div class="hidden dropdown-content">
-                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
-                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white w-fit">
-                            <img src="{{ asset('image/libro.jpeg') }}" alt="Libro Image" class="">
-                        </div>
-                    </div>
-                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
-                        <div class="w-full flex flex-row p-2 ">
-                            <label class="font-semibold font-poppins text-lg text-center w-full">Eloquent</label>
-                            <div class="w-fit  flex relative dropdown-trigger">
-                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <div class="hidden dropdown-content">
-                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
-                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white w-fit">
-                            <img src="{{ asset('image/libro1.jpeg') }}" alt="Libro Image" class="">
-                        </div>
-                    </div>
-                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
-                        <div class="w-full flex flex-row p-2 ">
-                            <label class="font-semibold font-poppins text-lg text-center w-full">Python para principiantes</label>
-                            <div class="w-fit  flex relative dropdown-trigger">
-                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <div class="hidden dropdown-content">
-                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
-                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white w-fit">
-                            <img src="{{ asset('image/libro2.jpeg') }}" alt="Libro Image" class="">
-                        </div>
-                    </div>
-                    <div class=" bg-[#e8e8e8] w-full p-3 rounded flex flex-col items-center">
-                        <div class="w-full flex flex-row p-2 ">
-                            <label class="font-semibold font-poppins text-lg text-center w-full">Fundamentos de sistemas operativos</label>
-                            <div class="w-fit  flex relative dropdown-trigger">
-                                <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <div class="hidden dropdown-content">
-                                    <label class="block px-4 py-2 text-gray-800 text-lg font-semibold text-center">Estudiantes</label>
-                                    <label  class="block px-4 py-2 text-gray-800 text-center">22393231</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white w-fit">
-                            <img src="{{ asset('image/libro3.jpg') }}" alt="Libro Image" class="">
-                        </div>
-                    </div>
+                        <p class="text-2xl font-light text-center">Ningún libro subido este cuatrimestre</p>
+                   
+                   
                 </div>
             </div>
         </div>

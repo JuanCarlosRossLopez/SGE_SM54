@@ -1,7 +1,7 @@
-@extends('test.test_template')
+    @extends('test.test_template')
 
-@section('title', 'Usuarios')
-@section('contenido')
+    @section('title', 'Usuarios')
+    @section('contenido')
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">

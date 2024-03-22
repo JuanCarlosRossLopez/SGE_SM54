@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
 use FontLib\Table\Type\name;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
 use Spatie\Permission\Contracts\Role;
@@ -17,6 +18,9 @@ use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Presidency\presidenciescontroller;
 use App\Http\Controllers\Coordination\CoordinatorsController;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Spatie\Permission\Middlewares\RoleMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +49,10 @@ Route::get('/plantilla', function () {
 });
 
 //Mision, vision, valores
+Route::get('/', function () { 
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -55,9 +63,9 @@ Route::get('/dashboard_asesor', function () {
 });
 
 //Dashboard Alumno
-// Route::get('/dashboard_alumno', function () {
-//     return view('students.activities_calendar');
-// })->name('activities_calendar');
+Route::get('/dashboard_alumno', function () {
+    return view('students.activities_calendar');
+})->name('activities_calendar');
 
 
 //Rutas principales en dashboard alumno
@@ -66,7 +74,7 @@ Route::resource('/anteproyecto', Projects_managementController::class);
 
 
 
-//End equipo coronado
+//End quipo coronado
 
 
 //Equipo rocha
@@ -74,19 +82,19 @@ Route::get('/iniciar_session', function () {
     return view('auth.login');
 });
 
-Route::get('/recuperar_contraseña', function () {
+Route::get('/recuperar_contraseña',function(){
     return view('login.recovery_password');
 });
 
-Route::get('/cambiar_contraseña', function () {
+Route::get('/cambiar_contraseña',function(){
     return view('login.change_password');
 });
 
-
-
-Route::get('/panel_admin', function () {
-    return view('super_admin.dashboard.dashboard');
+Route::get('/gestion_roles',function(){
+    return view('admin.manage_rol');
 });
+
+
 
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
@@ -101,6 +109,9 @@ Route::resource('maestros', TeachersController::class);
 
 //End equipo rocha
 
+Route::get('/ListaEstudiantes', function () {
+    return view('students.manager_student');
+});
 
 //Ruteo jomar
 
@@ -116,42 +127,60 @@ Route::get('/agregar', function () {
 
 
 Route::resource('estudiantes', StudentsController::class);
+Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
+
+Route::resource('estudiantes', StudentsController::class);
 
 
-// General
-// Route::get('/dashboard', function () {
-//     return view('super_admin.dashboard.dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Equipo valier
-Route::get('/memorias', function () {
-    return view('Memories.memory');
-});
-Route::get('/historial-memorias', function () {
-    return view('Memories.memory_history');
-});
-
 Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
+    //Memoria getsion Valier
+    Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
+    Route::resource('memory',Memory_History_Controller::class);
+    Route::get('/crear_memoria', function(){
+        return view('Test_memory.create_memory');
+    });
+    Route::get('/edit_memory', function(){
+        return view('Test_memory.edit_memory');
+    });
+
+    //Comentarios gestion Valier
+    Route::resource('information_project', CommentsController::class);
+    Route::get('/crear_comentario', function () {
+        return view('teacher_dates.create_comment');
+    });
+    Route::get('/editar_cita', function () {
+        return view('teacher_dates.edit_meet_date');
+    });
+    Route::get('/alumnos_asesorados' , function () {
+        return view('strikes.advised_students');            
+    });
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 
 
-Route::get('/editar_cita', function () {
-    return view('teacher_dates.edit_meet_date');
-});
-Route::get('/alumnos_asesorados' , function () {
-    return view('strikes.advised_students');            
-});
-
 
 //End equipo valier
 
 //Equipo dano
+Route::get('/auto_digitalizacion', function () {
+
+    $pdf = PDF::loadView('pdf.cartaau');
+    return $pdf->stream('cedula.pdf');
+});
+
+Route::get('/anteproyectosss', function () {
+    $imagen_path = public_path("img/LogoUT.png");
+
+    $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path"=>$imagen_path]);
+    return $pdf->stream('cedula.pdf');
+});
 Route::resource('/coordinacion', CoordinatorsController::class);
 
 Route::get('/envio_informes', function () {
@@ -172,7 +201,6 @@ Route::get('/dashboard_coordinacion', function () {
 Route::get('/libro', function () {
     return view('coordination.books_table');
 });
-
 Route::get('/registro_libros', function () {
     return view('report_generation.form_books');
 });
@@ -181,41 +209,65 @@ Route::get('/registro_libros', function () {
 
 #RUTAS EQUIPO YAHIR
 
-Route::resource('usuarios', UsersController::class);
+Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
+
+    Route::resource('usuarios', UsersController::class);
+    Route::get('/dashboard-presidencial', function(){
+        return view('super_admin.dashboard_presidencia');
+    });
+
+});
+
+
+
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
-Route::resource('presidencias', presidenciescontroller::class);
-Route::post('presidencias/store',[Presidenciescontroller::class,'store'])->name('presidencies.store');
-Route::get('/dashboard-presidencial', function(){
-    return view('super_admin.dashboard_presidencia');
-});
+// equipo rocha
 
-Route::get('/ejemplo', function () {
+
+
+Route::get('/ejemplo', function(){
     return view('UserManagement.cuadro');
 });
 
 Route::middleware('auth')->group(function () {
+ 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    Route::get('/dashboard', function () {
-        return view('super_admin.dashboard.dashboard');
-    })->name('dashboard');
+
+      
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
 
 
 });
+
+
+Route::group(['middleware' => ['auth']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+    Route::get('/dashboard', function () {
+        return view('super_admin.dashboard.dashboard');
+    })->name('dashboard');
+
+});
+
+Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
+    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
+
+    // Otras rutas protegidas por el middleware 'role' de Spatie
+});
+    
+
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
 Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');
 
 
-Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 Route::get('/dashboard_alumno/events', [ControllerEvent::class, 'indexView'])->name('students.activities_calendar.events');
 

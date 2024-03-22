@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Comments;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comments;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -13,7 +14,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        return view("comments", compact('comments'));
+        $comment = Comments::paginate(10);
+        return view('teacher_dates.information_project',["comments"=>$comment]);
     }
 
     /**
@@ -21,7 +23,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view("comments");
+        return view("teacher_dates.create_comment");
     }
 
     /**
@@ -30,15 +32,14 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'general_comment' => 'nullable',
-            'title_comment' => 'nullable',
-            'objective_comment' => 'nullable',
-            'planteamiento_comment' => 'nullable',
-            'justification_comment' => 'nullable',
-            'activities_comment' => 'nullable'
+            'general_comment'=>'required|string'
         ]);
 
-        return redirect()->route('comments.index')->with('success', '¡Se ha realizado con exito el envio!');
+        $comments = new Comments();
+        $comments->general_comment = $request->input('general_comment');
+        $comments->save();
+
+        return redirect('information_project')->with('Notification', 'Comentario creado');
     }
 
     /**
@@ -46,9 +47,8 @@ class CommentsController extends Controller
      */
     public function show(string $id)
     {
-        $comments = Comments::find($id);
-        //Aqui usa la ruta donde se vayan a mostrar los comentarios
-        return view('show-comments', compact('commments'));
+        $comment = Comments::find($id);
+        return view('information_project', compact('comments'));
     }
 
     /**
@@ -56,17 +56,19 @@ class CommentsController extends Controller
      */
     public function edit(string $id)
     {
-        $comments = Comments::find($id);
+        $comment = Comments::find($id);
+        return view('teacher_dates.edit_comment', ['memory' => $comment]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id):RedirectResponse
     {
-        $comments = Comments::find($id);
-        //dd($comments);
-        return redirect('comments')->with('notificacion', '¡He ha realizado la edición correctamente!');
+        $comment = Comments::find($id);
+
+        $comment->general_comment = $request->all();
+        return redirect('teacher_dates.information_project')->with('success', '¡El comentario se realizó correctamente!');
     }
 
     /**
@@ -74,8 +76,9 @@ class CommentsController extends Controller
      */
     public function destroy(string $id)
     {
-        $comments = Comments::find($id);
-        $comments -> delete();
-        return redirect('');
+        $comment = Comments::find($id);
+        $comment->delete();
+
+        return redirect('teacher_dates.information_project')->with('success','¡El comentario se borró correctamente!');
     }
 }

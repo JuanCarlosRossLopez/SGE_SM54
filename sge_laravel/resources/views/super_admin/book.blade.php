@@ -128,7 +128,7 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
             const tableBody = document.querySelector('tbody');
             const rowCount = tableBody.querySelectorAll('tr').length;
             document.getElementById('rowCount').textContent = rowCount;
@@ -145,6 +145,9 @@
             const showModalDelete = document.querySelectorAll('.deleteBook');
 
             const closeModal = document.querySelectorAll('.close-modal');
+            const closeModalView = document.querySelectorAll('.modalView');
+            const closeModalEdit = document.querySelectorAll('.modalEdit');
+            const closeModalDelete = document.querySelectorAll('.modalDelete');
 
             showModalView.forEach(button => {
                 button.addEventListener("click", (e) => {
@@ -165,9 +168,9 @@
                 });
             })
 
-            const closeModalView = document.querySelectorAll('.modalView');
-            const closeModalEdit = document.querySelectorAll('.modalEdit');
-            const closeModalDelete = document.querySelectorAll('.modalDelete');
+            
+
+            
             
             showModalView.forEach(button => {
                 button.addEventListener('click', (e) => {
@@ -205,8 +208,45 @@
                 })
             })
             
+
+
             
-        });
+    closeModal.forEach(closeModal => {
+        closeModal.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const modal = closeModal.closest('.modal2');
+            const modal1 = closeModal.closest('.modalEdit');
+            const modal2 = closeModal.closest('.modalView');
+            const modal3 = closeModal.closest('.modalEdit');
+            const modal4 = closeModal.closest('.modalDelete');
+            const modal5 = closeModal.closest('.delete-modal-permissions');
+
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+            if (modal1) {
+                modal1.classList.add('hidden');
+            }
+            if (modal2) {
+                modal2.classList.add('hidden');
+            }
+            if (modal3) {
+                modal3.classList.add('hidden');
+            }
+            if (modal4) {
+                modal4.classList.add('hidden');
+            }
+            if (modal5) {
+                modal5.classList.add('hidden');
+            }
+
+
+
+        })
+    })
+            
+        
     </script>
 
 

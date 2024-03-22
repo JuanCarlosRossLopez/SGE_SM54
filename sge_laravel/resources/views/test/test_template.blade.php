@@ -101,7 +101,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/historial-memorias" class="buttons_sidebar">
+                            <a href="/memory" class="buttons_sidebar">
                                 <i class="fa-solid fa-landmark"></i>
                                 Historial de memorias
                             </a>
@@ -117,6 +117,11 @@
                             </a>
                         </li> --}}
                         <li>
+                            <a href="/descarga_informe" class="buttons_sidebar ">
+                                <i class="fa-solid fa-file"></i> Generacion de informes
+                            </a>
+                        </li>
+                        <li>
                             <a href='/Perfil_Estudiante' class="buttons_sidebar">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
@@ -127,6 +132,12 @@
                                 <i class="fa-solid fa-cog "></i>
                                 Asignación de roles
                             </a>
+                            <li>
+                            <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
+                                <i class="fa-solid fa-school"></i></i>
+                                Gestión de Coordinación
+                            </button>
+                        </li>
                             <a class="buttons_sidebar" href="estudiantes">
                                 <i class="fa-solid fa-address-card "></i>
                                 Estudiantes
@@ -161,7 +172,6 @@
         </main>
         <footer class="w-screen pl-12 bottom-0">
             <div>
-                <p class="text-gray-700">Copyright Universidad Tecnológica de Cancún © 2024</p>
             </div>
         </footer>
     </div>

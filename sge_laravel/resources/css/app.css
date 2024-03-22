@@ -292,7 +292,7 @@
 }
 
 #infoButton {
-    position: relative; /* Asegura que el contenido absoluto sea relativo a este elemento */
+
 }
 
 #infoButton::after {

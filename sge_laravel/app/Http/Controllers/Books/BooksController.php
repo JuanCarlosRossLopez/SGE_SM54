@@ -38,7 +38,6 @@ class BooksController extends Controller
             'book_name' => 'required|max:255|min:3',
             'book_description' => 'required|max:255|min:3',
             'author' => 'required|max:255|min:3',
-            'price' => 'required|numeric|min:13',
             'students_id' => 'required'
         ]);
 
@@ -96,7 +95,7 @@ class BooksController extends Controller
         $books->price = $request->input('price');
         $books->students_id = $request->input('students_id');
         $books->save();
-        return redirect()->route('super_admin.book');
+        return back();
     }
 
     /**
@@ -106,6 +105,6 @@ class BooksController extends Controller
     {
         $books = Books::find($id);
         $books->delete();
-        return redirect()->route('super_admin.book');
+        return back();
     }
 }
