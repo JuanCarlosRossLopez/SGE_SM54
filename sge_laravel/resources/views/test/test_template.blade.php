@@ -76,12 +76,14 @@
                                 Inicio Asesor
                             </a>
                         </li>
+                        @role('Administrador')
                         <li>
                             <a href="/panel_admin" class="buttons_sidebar">
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 Inicio Admin
                             </a>
                         </li>
+                        @endrole
                         <li>
                             <a href="/Dashboard_Direccion" class="buttons_sidebar">
                                 <i class="fa-solid fa-chalkboard-user"></i>

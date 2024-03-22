@@ -9,7 +9,7 @@
         <div
             class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
             <div class="">
-                <label>Historial de libros</label>
+                <label>Historial de librose</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>

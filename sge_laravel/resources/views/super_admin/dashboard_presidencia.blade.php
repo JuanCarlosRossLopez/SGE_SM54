@@ -4,7 +4,7 @@
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
-            <label>Dashboard dirección</label>
+            <label>Bienvenido al dashboard de dirección {{Auth::user()->name}}</label>
             <label>
                 <!-- mostrar graficas relevantes -->
                 <!-- cambiar icono -->

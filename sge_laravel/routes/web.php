@@ -57,10 +57,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-//Dashboard Asesor
+Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
+   
 Route::get('/dashboard_asesor', function () {
     return view('teachers.teacher_dashboard');
+})->name('redirect_asesor'); 
 });
+
+//Dashboard Asesor
+
 
 //Dashboard Alumno
 Route::get('/dashboard_alumno', function () {
@@ -99,7 +104,7 @@ Route::get('/gestion_roles',function(){
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
-Route::resource('libros', BooksController::class);
+
 
 Route::resource('maestros', TeachersController::class);
 
@@ -214,8 +219,13 @@ Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
+
+
+Route::group(['middleware' => ['auth', 'role:Presidente']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
 Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
+})->name('dashboard-presidencial');
 });
 
 Route::get('/ejemplo', function(){
@@ -249,10 +259,9 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
     Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 
-    // Otras rutas protegidas por el middleware 'role' de Spatie
-});
-    
 
+}); 
+//esto si
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
