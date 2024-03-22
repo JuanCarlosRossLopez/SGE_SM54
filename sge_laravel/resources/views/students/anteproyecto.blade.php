@@ -118,6 +118,8 @@
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="student_email">Correo del Estudiante</label>
                                 <input type="text" name="student_id" id="" value="{{ Auth::user()->id }}" hidden>
+
+                                <input type="text" name="likes" id="likes" value="0" hidden>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" />

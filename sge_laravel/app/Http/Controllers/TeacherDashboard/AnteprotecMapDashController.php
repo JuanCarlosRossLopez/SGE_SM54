@@ -59,7 +59,8 @@ class AnteprotecMapDashController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $project_management = Project_management::find($id);
+         return view('teacher_dates.information_project',["project_management"=>$project_management]);
     }
 
     /**

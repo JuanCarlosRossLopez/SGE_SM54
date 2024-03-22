@@ -30,6 +30,9 @@ return new class extends Migration
             $table->text('problem_statement');
             $table->text('justification');
             $table->text('activities');
+            //Se le agrego like
+            $table->integer('likes')->default(0);
+
             $table->date('start_date'); // Fecha de inicio
             $table->date('end_date'); // Fecha de finalización
             // $table->foreignId('user_id')->nullable()->constrained('users')
