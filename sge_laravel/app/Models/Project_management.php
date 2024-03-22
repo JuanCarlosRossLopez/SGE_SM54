@@ -32,4 +32,10 @@ public function student()
 {
     return $this->belongsTo(Students::class, 'id_student');
 }
+
+public function user()
+{
+    return $this->belongsTo(User::class, 'id_user');
+}
+
 }

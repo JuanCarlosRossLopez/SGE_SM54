@@ -48,12 +48,12 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        @foreach ($anteprojectsInProcess as $anteprojectInProcess)
+                        @foreach ($project_management as $anteproject)
                             <tr class="trow">
-                                <td class="trowc">{{$anteprojectInProcess->project_title}}</td>
-                                <td class="trowc">{{$anteprojectInProcess->student_name}}</td>
-                                <td class="trowc">{{$anteprojectInProcess->project_company}}</td>
-                                <td class="trowc">{{$anteprojectInProcess->project_advisor}}</td>
+                                <td class="trowc">{{$anteproject->project_title}}</td>
+                                <td class="trowc">{{$anteproject->student_name}}</td>
+                                <td class="trowc">{{$anteproject->project_company}}</td>
+                                <td class="trowc">{{$anteproject->project_advisor}}</td>
                                 <td class="trowc">
                                     <div>
                                         <button class="show-modalb"> <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -77,9 +77,10 @@
 
                                 </td>
                             </tr>
-                        @endforEach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                    @endforEach
+                <div class="mt-5">{{ $project_management->links() }}</div>
             </div>
 
             <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->

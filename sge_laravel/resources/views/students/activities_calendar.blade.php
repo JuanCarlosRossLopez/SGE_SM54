@@ -19,8 +19,8 @@
         <div class="content_conteiner">
             <div class="flex flex-row items-center gap-2">
             <label class="container_word_title">
-    @if(Auth::user()->student)
-        Bienvenido Estudiante, {{ Auth::user()->student->student_name }}
+    @if(Auth::user()->name)
+        Bienvenido Estudiante, {{ Auth::user()->name }}
         
     @else
         No se encontró información del estudiante para este usuario.

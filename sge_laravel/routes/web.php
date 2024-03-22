@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TeacherDashboard\TeacherDashboardController;
-use App\Http\Controllers\TeachingAdvice\TeachingAdviceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
@@ -19,10 +18,9 @@ use App\Http\Controllers\Calendar\Calendar2Controller;
 use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
-use App\Http\Controllers\Presidencies\PresidenciesController;
+use App\Models\presidencies;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
-use App\Http\Controllers\Divisions\DivisionController;
 
 
 /*
@@ -77,12 +75,10 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
-    //aaaaaaa
-    Route::get('/dashboard_asesor', function () {
-        return view('teachers.teacher_dashboard');
-    }); 
-
-    Route::resource('/alumnos_asesorados', TeacherDashboardController::class);
+   
+Route::get('/dashboard_asesor', function () {
+    return view('teachers.teacher_dashboard');
+})->name('redirect_asesor'); 
 });
 
 //Dashboard Asesor
@@ -128,8 +124,7 @@ Route::get('/gestion_roles', function () {
 
 
 Route::resource('maestros', TeachersController::class);
-Route::resource('estudiantes', StudentsController::class);
-Route::resource('asignar_alumnos', TeachingAdviceController::class);
+
 
 
 //Route::post('/teachers', [TeachersController::class, 'store'])->name('teachers.store');
@@ -140,8 +135,7 @@ Route::get('/ListaEstudiantes', function () {
     return view('students.manager_student');
 });
 
-
-//Ruteo jomar JOMAR hola
+//Ruteo jomar
 
 Route::get('/Perfil_Estudiante', function () {
     return view('students.userStudent');
@@ -154,13 +148,20 @@ Route::get('/agregar', function () {
 })->name('registro');
 
 
+Route::resource('estudiantes', StudentsController::class);
+Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
+
+Route::resource('estudiantes', StudentsController::class);
+
 
 
 
 //Equipo valier
-Route::get('/gestion_asesor_anteproyecto', function () {
-    return view('anteproject_cedule.table_anteprojects');
-});
+// Route::get('/ante', function () {
+//     return view('anteproject_cedule.table_anteprojects');
+// })->name('gestion_asesor_anteproyecto');
+
+Route::get('gestion_asesor_anteproyecto',[ Anteprojects2Controller::class, 'index']);
 
 //Memoria getsion Valier
 Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
@@ -172,25 +173,17 @@ Route::get('/edit_memory', function () {
     return view('Test_memory.edit_memory');
 });
 
-    //Crud division
-    Route::resource('division',DivisionController::class);
-    Route::get('/crear_division', function(){
-        return view('division_forms.create_division');
-    });
-    Route::get('/editar_division', function(){
-        return view('division_forms.edit_division');
-    });
-    //End crud division
-
-    //Comentarios gestion Valier
-    Route::resource('information_project', CommentsController::class);
-    Route::get('/crear_comentario', function () {
-        return view('teacher_dates.create_comment');
-    });
-    Route::get('/editar_cita', function () {
-        return view('teacher_dates.edit_meet_date');
-    });
-    
+//Comentarios gestion Valier
+Route::resource('information_project', CommentsController::class);
+Route::get('/crear_comentario', function () {
+    return view('teacher_dates.create_comment');
+});
+Route::get('/editar_cita', function () {
+    return view('teacher_dates.edit_meet_date');
+});
+Route::get('/alumnos_asesorados', function () {
+    return view('strikes.advised_students');
+});
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
@@ -242,8 +235,8 @@ Route::get('/registro_libros', function () {
 
 Route::resource('usuarios', UsersController::class);
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
-Route::resource('presidentes', PresidenciesController::class);
-//Route::put('usuarios/{id}', 'UserController@update')->name('usyyyuarios.update');
+Route::resource('presidentes', presidencies::class);
+//Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
 
 
@@ -264,7 +257,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    
+
+
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
@@ -282,7 +276,7 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
 
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
     
-    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('dashboard_alumno');
+    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 
 
 }); 
