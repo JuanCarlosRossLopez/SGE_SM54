@@ -6,7 +6,7 @@
     <div class="back_conteiner">
         <div class="top_conteiner">
             <label>Dashboard asesor, </label>
-            <label>Mayra Guadalupe</label>
+            <label>{{ Auth::user()->name }}</label>
             <label>
                 <!-- Este svg es el icono -->
                 <i class="fa-solid fa-person-chalkboard"></i>

@@ -73,10 +73,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-//Dashboard Asesor
-Route::get('/dashboard_asesor', function () {
-    return view('teachers.teacher_dashboard');
+Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
+    Route::get('/dashboard_asesor', function () {
+        return view('teachers.teacher_dashboard');
+    })->name('redirect_asesor'); 
 });
+
+//Dashboard Asesor
+
 
 //Dashboard Alumno
 Route::get('/dashboard_alumno', function () {
@@ -115,10 +119,10 @@ Route::get('/gestion_roles', function () {
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
-Route::resource('libros', BooksController::class);
+
 
 Route::resource('maestros', TeachersController::class);
-
+Route::resource('estudiantes', StudentsController::class);
 
 
 //Route::post('/teachers', [TeachersController::class, 'store'])->name('teachers.store');
@@ -142,10 +146,8 @@ Route::get('/agregar', function () {
 })->name('registro');
 
 
-Route::resource('estudiantes', StudentsController::class);
-Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
 
-Route::resource('estudiantes', StudentsController::class);
+
 
 
 
@@ -239,8 +241,13 @@ Route::resource('usuarios', UsersController::class);
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usyyyuarios.update');
 
-Route::get('/dashboard-presidencial', function () {
+
+
+Route::group(['middleware' => ['auth', 'role:Presidente']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+Route::get('/dashboard-presidencial', function(){
     return view('super_admin.dashboard_presidencia');
+})->name('dashboard-presidencial');
 });
 
 Route::get('/ejemplo', function () {
@@ -273,11 +280,10 @@ Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
     
     Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('dashboard_alumno');
 
-    // Otras rutas protegidas por el middleware 'role' de Spatie
-});
 
-
-Route::resource('roles', RoleController::class);
+}); 
+//esto si
+Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
 Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');
