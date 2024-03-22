@@ -15,9 +15,11 @@ Instrucciones para utilizar los modals con este JavaScript:
    Ejemplo: 
             <button class="close-modal">Cerrar Modal</button>
 
-Si tu modal usa una variable de Laravel, como {{ $teachers->id }}, puedes utilizar la misma variable en el atributo 'idModal':
+Si tu modal usa una variable de Laravel, como {{ $teacher->id }}, puedes utilizar la misma variable en el atributo 'idModal':
     Ejemplo: 
-            <div idModal="editMaestro_{{ $teachers->id }}" class="modal">...</div>
+            <div idModal="editMaestro_{{ $teacher->id }}" class="modal">
+                <h3 >Datos del maestro: {{ $teacher->name }}</h3>
+            </div>
 */
 
 // Lista de modals
