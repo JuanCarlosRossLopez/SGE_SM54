@@ -3,6 +3,7 @@
     Dashboard
 @endsection
 @section('contenido')
+
     <div class="back_conteiner">
         <div class="top_conteiner">
             <label>Dashboard Estudiante</label>
@@ -26,32 +27,25 @@
             </div>
 
             <div class="flex flex-row gap-4 justify-center">
-                <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
-                    <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
-                    <p class="text-center">Astroseiza</p>
-                    <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
-                </div>
-                <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
-                    <div class="overflow-auto p-2">
-                        <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Comentarios de Anteproyecto</h1>
-                        <div>
-                            <p class="flex text-lg my-1 font-medium">Rafael Villegas Velasco</p>
-                            <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
-                        </div>
-                        <div>
-                            <p class="flex text-lg my-1 font-medium">Mayra Guadalupe Fuentes Sosa</p>
-                            <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
-                        </div>
-                        <div>
-                            <p class="flex text-lg my-1 font-medium">Irvin Arlin Chan Ac</p>
-                            <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
+        <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
+        <p class="text-center">Astroseiza</p>
+        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+    </div>
+    <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
+        
+    <div class="overflow-auto p-2">
+        <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Comentarios de Anteproyecto</h1>
+        @foreach ($comments as $comment)
+            <div class="comment-block">
+                <h2>Comentario de: {{ $comment->teacher->name_teachers }}</h2>
+                <p>{{ $comment->general_comment }}</p>
             </div>
+        @endforeach
+    </div>
+</div>
+</div>
+
             <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8">
                 <div
                     class="border-2 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[44%] h-[410px]">

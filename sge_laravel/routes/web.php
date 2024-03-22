@@ -21,6 +21,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,7 +90,7 @@ Route::resource('/anteproyecto', Projects_managementController::class);
 
 
 
-//End quipo coronado
+//End equipo coronado
 
 
 //Equipo rocha
@@ -275,7 +276,10 @@ Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
 Route::get('/dashboard_alumno/events', [ControllerEvent::class, 'indexView'])->name('students.activities_calendar.events');
 
+Route::get('/dashboard_alumno', [CommentsController::class, 'index'])->name('students.activities_calendar');
+
 Route::middleware('auth')->group(function () {
 });
+
 
 require __DIR__ . '/auth.php';

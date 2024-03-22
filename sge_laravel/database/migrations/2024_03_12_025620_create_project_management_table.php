@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('student_group');
             $table->string('student_email');
             $table->string('student_phone', 10);
-            $table->integer('student_id');
+            $table->integer('student_id');  
             $table->string('project_title');
             $table->string('project_company');
             $table->string('project_advisor');

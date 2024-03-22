@@ -14,10 +14,12 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comment = Comments::paginate(10);
-        return view('teacher_dates.information_project',["comments"=>$comment]);
-    }
+        // Cargar los comentarios junto con las relaciones 'teacher' y 'anteproject' si es necesario
+        $comments = Comments::with('teacher')->get();
 
+        // Pasar los comentarios a la vista
+        return view('students.activities_calendar', ['dashboard_alumno'=>$comments]);
+    }
     /**
      * Show the form for creating a new resource.
      */

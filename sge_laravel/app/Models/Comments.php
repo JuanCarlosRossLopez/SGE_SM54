@@ -11,11 +11,12 @@ class Comments extends Model
     use HasFactory;
     protected $fillable=['id_comment', 'general_comment', 'teacher_id', 'anteproject_id' ];
 
-    public function anteproject():BelongsTo {
-        return $this->belongsTo(anteproject::class);
+    public function anteproject(): BelongsTo
+    {
+        return $this->belongsTo(Project_management::class);
     }
 
     public function teacher():BelongsTo {
-        return $this->belongsTo(teachers::class);
+        return $this->belongsTo(Teachers::class);
     }
 }
