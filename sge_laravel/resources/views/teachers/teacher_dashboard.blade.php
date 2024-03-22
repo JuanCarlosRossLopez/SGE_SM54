@@ -103,7 +103,7 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <a href="/information_project/{{ $project->id }}" class="Button-progress">Visualizar
+                                    <a href="{{ route('information_project.show', $project->id) }}" class="Button-progress">Visualizar
                                         detalles</a>
                                 </div>
                             @endforeach

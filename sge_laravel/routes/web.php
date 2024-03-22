@@ -80,12 +80,12 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
     //aaaaaaa
-    Route::get('/dashboard_asesor', [AnteprotecMapDashController::class,'index'])->name('redirect_asesor'); 
+    Route::resource('/dashboard_asesor', AnteprotecMapDashController::class);
 
     Route::resource('alumnos_asesorados', TeacherDashboardController::class);
     Route::resource('test_dash_ante', AnteprotecMapDashController::class);
     
-    Route::resource('information_project', CommentsController::class);
+    //Route::resource('information_project', CommentsController::class);
 });
 
 //Dashboard Asesor
@@ -158,7 +158,7 @@ Route::get('/agregar', function () {
 
 
 Route::resource('estudiantes', StudentsController::class);
-Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
+// Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
 
 Route::resource('estudiantes', StudentsController::class);
 
@@ -202,7 +202,7 @@ Route::get('/edit_memory', function () {
 
 //Ignorar de mientras
 //Comentarios gestion Valier
-Route::resource('information_project', CommentsController::class);
+Route::resource('information_project', AnteprotecMapDashController::class);
 Route::get('/crear_comentario', function () {
     return view('teacher_dates.create_comment');
 });
