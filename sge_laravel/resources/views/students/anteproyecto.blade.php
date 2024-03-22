@@ -94,7 +94,7 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
                                 <label for="student_name">Nombre del Estudiante</label>
-                                <input type="text" name="student_name" id="student_name" class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer" placeholder="Nombre del estudiante" value="{{ Auth::user()->student->student_name }}" readonly />
+                                <input type="text" name="student_name" id="student_name" class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer" placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
 
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
@@ -117,7 +117,7 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="student_email">Correo del Estudiante</label>
-                                <input type="text" name="student_id" id="" value="{{ Auth::user()->student->id }}" hidden>
+                                <input type="text" name="student_id" id="" value="{{ Auth::user()->id }}" hidden>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" />

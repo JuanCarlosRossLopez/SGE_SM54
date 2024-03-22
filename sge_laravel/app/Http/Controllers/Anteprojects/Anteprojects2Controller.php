@@ -17,11 +17,11 @@ class Anteprojects2Controller extends Controller
     {
         $students = Students::all();
         $users = User::all();
-        $anteprojectsInProcess = Project_management::paginate(10);
+        $project_management = Project_management::paginate(10);
 
-        return view('anteproject_cedule.table_anteprojects', compact('students', 'users', 'anteprojectInProcces'));
+        return view('anteproject_cedule.table_anteprojects', compact('project_management','students', 'users'));
 
-       }
+    }
 
     /**
      * Show the form for creating a new resource.
