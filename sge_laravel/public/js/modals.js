@@ -30,7 +30,7 @@ const modals = document.querySelectorAll(".modal");
 
 // Acciones para cada modal
 function handleModal(action, idModal) {
-    const modal = document.querySelector(.modal[idModal="${idModal}"]);
+    const modal = document.querySelector(`.modal[idModal="${idModal}"]`);
 
     modals.forEach((m) => m.classList.add("hidden"));
 
