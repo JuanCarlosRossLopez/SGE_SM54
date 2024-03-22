@@ -21,6 +21,7 @@ class Project_management extends Model
         'problem_statement',
         'justification',
         'activities',
+        'likes',
         'start_date',
         'end_date',
         'user_id',
