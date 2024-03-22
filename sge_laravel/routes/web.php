@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherDashboard\TeacherDashboardController;
+use App\Http\Controllers\TeachingAdvice\TeachingAdviceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
@@ -20,6 +22,7 @@ use App\Http\Controllers\Coordination\CoordinatorsController;
 use App\Http\Controllers\Presidencies\PresidenciesController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
+use App\Http\Controllers\Divisions\DivisionController;
 
 
 /*
@@ -34,14 +37,30 @@ use Spatie\Permission\Middlewares\RoleMiddleware;
 */
 
 
-Route::get('/Perfil_Maestro', function () {return view('teachers.userTeacher');})->name('perfil_profesor');
-Route::get('/Perfil_Estudiante', function () {return view('students.userStudent');})->name('perfil_estudiante');
-Route::get('/Perfil_Administrador', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
-Route::get('/Perfil_Teacher', function () {return view('teachers.userTeacher');})->name('perfil_maestro');
-Route::get('/Perfil_Student', function () {return view('students.userStudent');})->name('perfil_estudiante');
-Route::get('/Perfil_Admin', function () {return view('super_admin.userAdmin');})->name('perfil_admin');
-Route::get('/registro', function (){return view ('registro');});
-Route::get('/Dashboard_Direccion', function (){return view ('dashDireccion');});
+Route::get('/Perfil_Maestro', function () {
+    return view('teachers.userTeacher');
+})->name('perfil_profesor');
+Route::get('/Perfil_Estudiante', function () {
+    return view('students.userStudent');
+})->name('perfil_estudiante');
+Route::get('/Perfil_Administrador', function () {
+    return view('super_admin.userAdmin');
+})->name('perfil_admin');
+Route::get('/Perfil_Teacher', function () {
+    return view('teachers.userTeacher');
+})->name('perfil_maestro');
+Route::get('/Perfil_Student', function () {
+    return view('students.userStudent');
+})->name('perfil_estudiante');
+Route::get('/Perfil_Admin', function () {
+    return view('super_admin.userAdmin');
+})->name('perfil_admin');
+Route::get('/registro', function () {
+    return view('registro');
+});
+Route::get('/Dashboard_Direccion', function () {
+    return view('dashDireccion');
+});
 
 
 Route::get('/plantilla', function () {
@@ -49,7 +68,7 @@ Route::get('/plantilla', function () {
 });
 
 //Mision, vision, valores
-Route::get('/', function () { 
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -58,10 +77,12 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
-   
-Route::get('/dashboard_asesor', function () {
-    return view('teachers.teacher_dashboard');
-})->name('redirect_asesor'); 
+    //aaaaaaa
+    Route::get('/dashboard_asesor', function () {
+        return view('teachers.teacher_dashboard');
+    }); 
+
+    Route::resource('/alumnos_asesorados', TeacherDashboardController::class);
 });
 
 //Dashboard Asesor
@@ -87,15 +108,15 @@ Route::get('/iniciar_session', function () {
     return view('auth.login');
 });
 
-Route::get('/recuperar_contraseña',function(){
+Route::get('/recuperar_contraseña', function () {
     return view('login.recovery_password');
 });
 
-Route::get('/cambiar_contraseña',function(){
+Route::get('/cambiar_contraseña', function () {
     return view('login.change_password');
 });
 
-Route::get('/gestion_roles',function(){
+Route::get('/gestion_roles', function () {
     return view('admin.manage_rol');
 });
 
@@ -107,7 +128,8 @@ Route::get('/gestion_roles',function(){
 
 
 Route::resource('maestros', TeachersController::class);
-
+Route::resource('estudiantes', StudentsController::class);
+Route::resource('asignar_alumnos', TeachingAdviceController::class);
 
 
 //Route::post('/teachers', [TeachersController::class, 'store'])->name('teachers.store');
@@ -118,7 +140,8 @@ Route::get('/ListaEstudiantes', function () {
     return view('students.manager_student');
 });
 
-//Ruteo jomar
+
+//Ruteo jomar JOMAR hola
 
 Route::get('/Perfil_Estudiante', function () {
     return view('students.userStudent');
@@ -131,11 +154,6 @@ Route::get('/agregar', function () {
 })->name('registro');
 
 
-Route::resource('estudiantes', StudentsController::class);
-Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
-
-Route::resource('estudiantes', StudentsController::class);
-
 
 
 
@@ -144,15 +162,25 @@ Route::get('/gestion_asesor_anteproyecto', function () {
     return view('anteproject_cedule.table_anteprojects');
 });
 
-    //Memoria getsion Valier
-    Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
-    Route::resource('memory',Memory_History_Controller::class);
-    Route::get('/crear_memoria', function(){
-        return view('Test_memory.create_memory');
+//Memoria getsion Valier
+Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
+Route::resource('memory', Memory_History_Controller::class);
+Route::get('/crear_memoria', function () {
+    return view('Test_memory.create_memory');
+});
+Route::get('/edit_memory', function () {
+    return view('Test_memory.edit_memory');
+});
+
+    //Crud division
+    Route::resource('division',DivisionController::class);
+    Route::get('/crear_division', function(){
+        return view('division_forms.create_division');
     });
-    Route::get('/edit_memory', function(){
-        return view('Test_memory.edit_memory');
+    Route::get('/editar_division', function(){
+        return view('division_forms.edit_division');
     });
+    //End crud division
 
     //Comentarios gestion Valier
     Route::resource('information_project', CommentsController::class);
@@ -162,9 +190,7 @@ Route::get('/gestion_asesor_anteproyecto', function () {
     Route::get('/editar_cita', function () {
         return view('teacher_dates.edit_meet_date');
     });
-    Route::get('/alumnos_asesorados' , function () {
-        return view('strikes.advised_students');            
-    });
+    
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
@@ -183,7 +209,7 @@ Route::get('/auto_digitalizacion', function () {
 Route::get('/anteproyectosss', function () {
     $imagen_path = public_path("img/LogoUT.png");
 
-    $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path"=>$imagen_path]);
+    $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path" => $imagen_path]);
     return $pdf->stream('cedula.pdf');
 });
 Route::resource('/coordinacion', CoordinatorsController::class);
@@ -194,7 +220,7 @@ Route::get('/envio_informes', function () {
 Route::get('/descarga_informes', function () {
     return view('report_generation.student_download');
 });
-Route::get('/informes', function(){
+Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });
 // Route::get('/pdf_muestra', function () {
@@ -217,7 +243,7 @@ Route::get('/registro_libros', function () {
 Route::resource('usuarios', UsersController::class);
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', PresidenciesController::class);
-//Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
+//Route::put('usuarios/{id}', 'UserController@update')->name('usyyyuarios.update');
 
 
 
@@ -228,18 +254,17 @@ Route::get('/dashboard-presidencial', function(){
 })->name('dashboard-presidencial');
 });
 
-Route::get('/ejemplo', function(){
+Route::get('/ejemplo', function () {
     return view('UserManagement.cuadro');
 });
 
 Route::middleware('auth')->group(function () {
- 
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
 
-      
+    
     // equipo rocha
     // End equipo rocha
     //     return view('super_admin.dashboard.dashboard');
@@ -253,11 +278,11 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
     })->name('dashboard');
-
 });
 
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
-    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
+    
+    Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('dashboard_alumno');
 
 
 }); 
@@ -274,4 +299,4 @@ Route::get('/dashboard_alumno/events', [ControllerEvent::class, 'indexView'])->n
 Route::middleware('auth')->group(function () {
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

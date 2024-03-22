@@ -24,7 +24,6 @@ class Memory_History_Controller extends Controller
      */
     public function create()
     {
-        //
         return view('Test_memory.create_memory');
     }
 
@@ -103,7 +102,7 @@ class Memory_History_Controller extends Controller
         $pdfPath = $memory->memorie_pdf;
 
         if(Storage::exists($pdfPath)){
-            return response()->download(storage_path('app/' . $pdfPath));
+            return response()->download(storage_path('/app' . $pdfPath));
         } else {
             abort(404, 'PDF file Not Found');
         }
