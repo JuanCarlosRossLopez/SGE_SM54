@@ -41,6 +41,6 @@ public function user()
 
 public function comments()
 {
-    return $this->hasMany(Comments::class, 'id_project');
+    return $this->hasMany(Comment::class, 'id_project');
 }
 }

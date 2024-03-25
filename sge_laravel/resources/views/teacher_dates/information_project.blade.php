@@ -117,7 +117,7 @@
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Nombre del asesor
                                             Empresarial:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Diego Horacio Dorantes</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->project_advisor}}</p>
                                     </div>
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Cargo:</h2>
