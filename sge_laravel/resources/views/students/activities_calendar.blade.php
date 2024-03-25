@@ -36,26 +36,24 @@
                 <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
                     <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
                     <p class="text-center">Astroseiza</p>
+                    <h1>{{ Auth::user()->student ? Auth::user()->student->student_name : 'No se encontró un estudiante asociado' }}</h1>
                     <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
                 </div>
                 <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
                     <div class="overflow-auto p-2">
                         <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Comentarios de Anteproyecto</h1>
-                        <div>
-                            <p class="flex text-lg my-1 font-medium">Rafael Villegas Velasco</p>
-                            <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
-                                bien lo que trata su anteproyecto de la memoria a realizar.</p>
-                        </div>
-                        <div>
+
+                       
+                        {{-- <div></div>
                             <p class="flex text-lg my-1 font-medium">Mayra Guadalupe Fuentes Sosa</p>
                             <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
                                 bien lo que trata su anteproyecto de la memoria a realizar.</p>
                         </div>
                         <div>
-                            <p class="flex text-lg my-1 font-medium">Irvin Arlin Chan Ac</p>
+                            <p class="flex text-lg my-1 font-medium">Rafa Villegas</p>
                             <p>El título está bien pensado de acuerdo al proyecto que me presentas, el título resume muy
                                 bien lo que trata su anteproyecto de la memoria a realizar.</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
