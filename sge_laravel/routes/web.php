@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
 use App\Http\Controllers\Comments\CommentsController;
+use App\Http\Controllers\Divisions\DivisionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherDashboard\AnteprotecMapDashController;
+use App\Http\Controllers\TeacherDashboard\TeacherDashboardController;
+use App\Http\Controllers\TeachingAdvice\TeachingAdviceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
@@ -75,10 +79,13 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
-   
-Route::get('/dashboard_asesor', function () {
-    return view('teachers.teacher_dashboard');
-})->name('redirect_asesor'); 
+    //aaaaaaa
+    Route::resource('/dashboard_asesor', AnteprotecMapDashController::class);
+
+    Route::resource('alumnos_asesorados', TeacherDashboardController::class);
+    Route::resource('test_dash_ante', AnteprotecMapDashController::class);
+    
+    //Route::resource('information_project', CommentsController::class);
 });
 
 //Dashboard Asesor
@@ -123,7 +130,6 @@ Route::get('/gestion_roles', function () {
 
 
 
-Route::resource('maestros', TeachersController::class);
 
 
 
@@ -148,11 +154,12 @@ Route::get('/agregar', function () {
 })->name('registro');
 
 
+// Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
+Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
-Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
+Route::resource('asignar_alumnos', TeachingAdviceController::class);
 
-Route::resource('estudiantes', StudentsController::class);
-
+Route::resource('advised_students', TeacherDashboardController::class);
 
 
 
@@ -173,8 +180,27 @@ Route::get('/edit_memory', function () {
     return view('Test_memory.edit_memory');
 });
 
+    //Crud division
+    Route::resource('division',DivisionController::class);
+    Route::get('/crear_division', function(){
+        return view('division_forms.create_division');
+    });
+    Route::get('/editar_division', function(){
+        return view('division_forms.edit_division');
+    });
+    //End crud division
+
+    //Comentarios gestion Valier
+    
+
+    Route::get('/editar_cita', function () {
+        return view('teacher_dates.edit_meet_date');
+    });
+
+
+//Ignorar de mientras
 //Comentarios gestion Valier
-Route::resource('information_project', CommentsController::class);
+Route::resource('information_project', AnteprotecMapDashController::class);
 Route::get('/crear_comentario', function () {
     return view('teacher_dates.create_comment');
 });
@@ -184,6 +210,7 @@ Route::get('/editar_cita', function () {
 Route::get('/alumnos_asesorados', function () {
     return view('strikes.advised_students');
 });
+
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');

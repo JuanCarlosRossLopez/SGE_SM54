@@ -50,7 +50,7 @@ class TeachingAdviceController extends Controller
         $teaching_advice-> save();
 
         
-        redirect()->route('asignar_alumnos')->with('notificacion','Docente asignado al Alumno correctamente');
+        return redirect('asignar_alumnos')->with('notificacion','Docente asignado al Alumno correctamente');
 
     }
 

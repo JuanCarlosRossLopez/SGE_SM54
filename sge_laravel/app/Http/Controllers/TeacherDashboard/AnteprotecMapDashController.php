@@ -3,23 +3,18 @@
 namespace App\Http\Controllers\TeacherDashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Division;
+use App\Models\Project_management;
 use App\Models\Students;
-use App\Models\Teaching_advice;
-use App\Models\Teachers;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TeacherDashboardController extends Controller
+class AnteprotecMapDashController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
-        // Verifica si el usuario está autenticado
         if (Auth::check()) {
             // Usuario autenticado
             $usuario = Auth::user();
@@ -30,14 +25,19 @@ class TeacherDashboardController extends Controller
                 $maestro = $usuario->teachers;
                 // Accede a las propiedades del maestro
                 $id = $maestro->id;
-                // Realiza acciones basadas en la relación con el maestro
-                $Students = Students::all();
-                $students = Teaching_advice::where('teacher_id', $id)->get();
-                
-                return view('strikes.advised_students', compact('students', 'Students'));
+
+                // Obtener los estudiantes asesorados por el maestro
+                $students = Students::where('adviser_id', $id)->paginate(10); // Cambia el número 10 según tu necesidad de resultados por página
+                // Obtener los proyectos de gestión de proyectos paginados
+                $Project_management = Project_management::paginate(10);
+
+
+                return view('teachers.teacher_dashboard', compact('students', 'Project_management'));
             }
         }
+
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -59,7 +59,8 @@ class TeacherDashboardController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $project_management = Project_management::find($id);
+         return view('teacher_dates.information_project',["project_management"=>$project_management]);
     }
 
     /**

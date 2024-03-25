@@ -48,27 +48,21 @@
                     <thead class="standar_thead">
                         <tr>
                             <th class="theader">Nombre</th>
-                            <th class="theader">Matricula</th>
-                            <th class="theader">Amonestaciones</th>
-                            <th class="theader">Anteproyecto</th>
                             <th class="theader">Asesor</th>
+                            <th class="theader">Amonestaciones</th>
                             <th class="theader">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
 
-                    @foreach
+                    @foreach($students as $student)
                         <tr class="trow">
-                            <td class="trowc"></td>
-                            <td class="trowc"></td>
-                            <td class="trowc"></td>
-                            <td class="trowc"></td>
+                            <td class="trowc">{{$student->student_id}}</td>
+                            <td class="trowc">{{$student->teacher_id}}</td>
                             <td class="trowc"></td>
                             <td class="trowc">
                                 <div>
-                                    <button class="show-modal bg-[#ae0808] text-white font-semibold px-2 py-2 rounded">
-                                        Realizar amonestación
-                                    </button>
+                                    <button class="show-modal bg-[#ae0808] text-white font-semibold px-2 py-2 rounded">Amonestar</button>
                                 </div>
                             </td>
                         </tr>

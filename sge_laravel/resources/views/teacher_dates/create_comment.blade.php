@@ -16,9 +16,9 @@
                     <form action="{{ route('information_project.store') }}" method="POST">
                         @csrf
                         <div class="flex flex-col items-center" >
-                            <div class="flex flex-col justify-start w-full pb-2">
+                            <div class="flex flex-col justify-start w-[800px] pb-2">
                                 <label for="general_comment" class="conteiner_word_title flex flex-col items-center">Comentario general</label>
-                                <input type="text" name="general_comment" id="general_comment" class="rounded h-[10rem]">
+                                <textarea type="text" name="general_comment" id="general_comment" class="rounded h-auto"></textarea>
                             </div>
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-fit">Guardar</button>

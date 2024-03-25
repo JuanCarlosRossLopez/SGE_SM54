@@ -5,13 +5,13 @@
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
-        <label>
-    @if (Auth::user()->teachers)
-        Bienvenido Asesor, {{ Auth::user()->teachers->name_teacher }}
-    @else
-        No se encontró información del asesor para este usuario.
-    @endif
-</label>
+            <label>
+                @if (Auth::user()->teachers)
+                    Bienvenido Asesor, {{ Auth::user()->teachers->name_teacher }}
+                @else
+                    No se encontró información del asesor para este usuario.
+                @endif
+            </label>
 
             <label>
                 <!-- Este svg es el icono -->
@@ -85,22 +85,28 @@
                             asesorados</label>
                         <div class="conteiner_cards2 mt-3">
                             <!-- Panel 1 -->
-                            <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
-                                <label>Kisaku</label>
-                                <div class="progress-item ">
-                                    <svg width="190" height="190" class="progress-chart">
-                                        <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
-                                        </circle>
-                                        <circle cx="85" cy="85" r="80" class="progress-front3" fill="none"
-                                            stroke-dasharray="0 1000000"></circle>
-                                        <g class="progress-text">
-                                            <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
-                                                id="percentage3">0%</text>
-                                        </g>
-                                    </svg>
+                            @foreach ($Project_management as $project)
+                                <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
+                                    <label>
+                                        <p>{{ $project->project_title }}</p>
+                                        <!-- Mostrar más información del proyecto según tus necesidades -->
+                                    </label>
+                                    <div class="progress-item">
+                                        <svg width="190" height="190" class="progress-chart">
+                                            <circle cx="85" cy="85" r="80" class="progress-back"
+                                                fill="none"></circle>
+                                            <circle cx="85" cy="85" r="80" class="progress-front3"
+                                                fill="none" stroke-dasharray="0 1000000"></circle>
+                                            <g class="progress-text">
+                                                <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                    id="percentage3">0%</text>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <a href="{{ route('information_project.show', $project->id) }}" class="Button-progress">Visualizar
+                                        detalles</a>
                                 </div>
-                                <a href="/information_project" class="Button-progress">Visualizar detalles</a>
-                            </div>
+                            @endforeach
 
                             <!-- Panel 3 -->
 
