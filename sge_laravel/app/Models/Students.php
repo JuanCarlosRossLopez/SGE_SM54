@@ -40,6 +40,8 @@ class Students extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
     public function projects():HasOne{
-        return $this->hasOne(Project_management::class);
+        return $this->hasOne(Project_management::class,'id_student');
     }
+    
+
 }

@@ -43,6 +43,6 @@ public function user(): BelongsTo
 
 public function comments(): HasMany
 {
-    return $this->hasMany(Comments::class, 'id_comment');
+    return $this->hasMany(Comments::class, 'id');
 }
 }
