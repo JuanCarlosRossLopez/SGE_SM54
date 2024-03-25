@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Teachers\TeachersController;
+use App\Http\Controllers\Companies\CompaniesController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
 use FontLib\Table\Type\name;
@@ -106,6 +107,10 @@ Route::get('/gestion_roles',function(){
 
 
 Route::resource('maestros', TeachersController::class);
+Route::resource('empresas', CompaniesController::class);
+//Route::get('/empresas',function(){
+//    return view('companies.companies');
+//});
 
 
 
