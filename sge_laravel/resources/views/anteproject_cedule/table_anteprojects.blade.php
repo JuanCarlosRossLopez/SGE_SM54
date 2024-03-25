@@ -75,8 +75,9 @@
                                             <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                                         </button>
                                     </div>
-                                    <form action="{{ route('anteproyecto.store') }}" method="POST" class="flex flex-col gap-4">
+                                    <form action="{{ route('anteproyecto.update', ['anteproyecto' => $anteproject->id]) }}" method="POST" class="flex flex-col gap-4">
                                         @csrf
+                                        @method('PATCH')
                                         <div class="modal_conteiner">
                                             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades -->
                                             <div class="modal-body h-[fit] p-4">
@@ -98,7 +99,8 @@
                                                 <label lass="modal_parrafs">{{ $anteproject->activities }}</label>
                     
                                                 <div class="flex justify-center items-center w-full border-t pt-2">
-                                                    <button type="submit" class="bg-[#2546b3] p-2 rounded text-white font-bold">Realizar aprovación <i class="fa-regular fa-thumbs-up"></i></button>
+                                                    <input id="likes" type="text" value="{{$anteproject->likes }}" name="likes" >
+                                                    <button type="submit" onclick="increaseLikes()" class="bg-[#2546b3] p-2 rounded text-white font-bold">Realizar aprovación <i class="fa-regular fa-thumbs-up"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,6 +124,12 @@
     <script>
         //Lo hizo roto, es un contador
         const tableBody = document.querySelector('tbody');
+
+        function increaseLikes() {
+        var likesInput = document.getElementById('likes');
+        likesInput.value = parseInt(likesInput.value) + 1;
+    }
+
     </script>
     <script src="{!! asset('js/modals.js') !!}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
