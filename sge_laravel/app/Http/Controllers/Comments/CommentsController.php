@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Comments;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comments;
+use App\Models\Comment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Project_management;
@@ -14,7 +14,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comment = Comments::paginate(10);
+        $comment = Comment::paginate(10);
         return view('teacher_dates.information_project',["comments"=>$comment]);
     }
 
@@ -35,7 +35,7 @@ class CommentsController extends Controller
             'general_comment'=>'required|string'
         ]);
 
-        $comments = new Comments();
+        $comments = new Comment();
         $comments->general_comment = $request->input('general_comment');
         $comments->save();
 
@@ -48,7 +48,7 @@ class CommentsController extends Controller
     public function show(string $id)
     {
         // $projects = Project_management::find($id);
-        $comment = Comments::find($id);
+        $comment = Comment::find($id);
         // return view('comment', compact('comment'));
     }
 
@@ -57,7 +57,7 @@ class CommentsController extends Controller
      */
     public function edit(string $id)
     {
-        $comment = Comments::find($id);
+        $comment = Comment::find($id);
         return view('teacher_dates.edit_comment', ['memory' => $comment]);
     }
 
@@ -66,7 +66,7 @@ class CommentsController extends Controller
      */
     public function update(Request $request, string $id):RedirectResponse
     {
-        $comment = Comments::find($id);
+        $comment = Comment::find($id);
 
         $comment->general_comment = $request->all();
         return redirect('teacher_dates.information_project')->with('success', '¡El comentario se realizó correctamente!');
@@ -77,7 +77,7 @@ class CommentsController extends Controller
      */
     public function destroy(string $id)
     {
-        $comment = Comments::find($id);
+        $comment = Comment::find($id);
         $comment->delete();
 
         return redirect('teacher_dates.information_project')->with('success','¡El comentario se borró correctamente!');
