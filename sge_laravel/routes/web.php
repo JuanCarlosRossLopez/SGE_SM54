@@ -123,7 +123,9 @@ Route::get('/gestion_roles', function () {
     return view('admin.manage_rol');
 });
 
-
+Route::get('dashboard_maestro', function() {
+    return view('teachers.teacher_dashboard');
+});
 
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
