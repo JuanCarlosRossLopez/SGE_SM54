@@ -43,14 +43,28 @@
                     <div class="overflow-auto p-2">
                         <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Comentarios de Anteproyecto</h1>
 
-                        @foreach (auth()->user()->student->projects->comments as $comment)
-    <div>
-        <p class="flex text-lg my-1 font-medium">{{ $comment->teacher->name_teacher }}</p>
-        <p>{{ $comment->general_comment }}</p>
-    </div>
-@endforeach
+              
+            <div>
+            <div>
+    @if(Auth::user()->student)
+        @if(Auth::user()->student->projects->comments->isEmpty())
+            <p class="text-black">No hay comentarios para este anteproyecto.</p>
+        @else
+            @foreach(Auth::user()->student->projects->comments as $comment)
+                <div class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
+                    <p>{{ $comment->created_at->format('d F Y') }}</p>
+                    <p>{{ $comment->general_comment }}</p>
+                </div>
+            @endforeach
+        @endif
+    @else
+        <p class="text-black">No se encontraron comentarios para este anteproyecto.</p>
+    @endif
+</div>
 
+              
 
+            </div>
                            
                         </div>
                        

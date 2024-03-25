@@ -32,6 +32,8 @@ class Comments extends Model // Nombre de clase en singular
         // Similar a anteproject, asegúrate de que el nombre de la clase del modelo sea Teachers y su tabla correspondiente teachers.
         return $this->belongsTo(Teachers::class); // Asegúrate de que el nombre del modelo sea Teacher
     }
+    
+
 
 }
 
