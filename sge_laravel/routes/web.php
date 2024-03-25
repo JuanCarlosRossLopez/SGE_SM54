@@ -132,9 +132,6 @@ Route::get('dashboard_maestro', function() {
 
 
 
-Route::resource('maestros', TeachersController::class);
-
-
 
 
 
@@ -159,11 +156,12 @@ Route::get('/agregar', function () {
 })->name('registro');
 
 
-Route::resource('estudiantes', StudentsController::class);
 // Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
-
+Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
+Route::resource('asignar_alumnos', TeachingAdviceController::class);
 
+Route::resource('advised_students', TeacherDashboardController::class);
 
 
 
@@ -214,6 +212,7 @@ Route::get('/editar_cita', function () {
 Route::get('/alumnos_asesorados', function () {
     return view('strikes.advised_students');
 });
+
 Route::get('/datos_proyecto', [Calendar2Controller::class, 'index'])->name('teacher_dates.information_project');
 Route::post('/datos_proyecto', [ControllerEvent::class, 'store'])->name('datos_proyecto.store');
 Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
