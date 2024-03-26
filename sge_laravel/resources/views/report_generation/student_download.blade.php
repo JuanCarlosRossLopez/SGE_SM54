@@ -57,10 +57,24 @@
                             <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
                         </div>
                         <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#5faf9f] font-bold text-xl">Carta de
-                            Autorización Digitalización</h1>
+                            Aprobación de Memoria</h1>
                         <button type="button">
                             <a href="/test" target="_blank" data-modal="modal3"
                                 class="flex items-center justify-center gap-2 show-modal bg-gray-400 text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
+                                <span>Descargar</span>
+                            </a>
+                        </button>
+                    </div>
+
+                    <div class="rounded-xl bg-white p-2 text-center shadow-xl flex flex-col margin mt-8">
+                        <div
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
+                            <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
+                        </div>
+                        <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Carta de Amonestación</h1>
+                        <button type="button">
+                            <a href="/amonestacionn" target="_blank" data-modal="modal2"
+                                class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
                                 <span>Descargar</span>
                             </a>
                         </button>
