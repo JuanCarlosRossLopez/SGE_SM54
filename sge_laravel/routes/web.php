@@ -134,6 +134,7 @@ Route::get('dashboard_maestro', function() {
 
 
 
+Route::resource('maestros', TeachersController::class);
 Route::resource('empresas', CompaniesController::class);
 //Route::get('/empresas',function(){
 //    return view('companies.companies');
