@@ -1,5 +1,4 @@
-@extends('test.template')
-
+@extends('test.test_template')
 @section('title')
     Asesores
 @endsection
@@ -14,7 +13,6 @@
                     <i class="fa-solid fa-bars-progress"></i>
                 </label>
             </div>
-
         </div>
         <div class="content_conteiner  h-fit">
             <div class="flex flex-row items-center justify-start gap-2">

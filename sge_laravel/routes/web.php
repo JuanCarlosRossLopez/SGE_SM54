@@ -244,7 +244,15 @@ Route::get('/anteproyectosss', function () {
     $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path" => $imagen_path]);
     return $pdf->stream('cedula.pdf');
 });
+
+Route::get('/amonestacionn', function () {
+    $imagen_path = public_path("img/LogoUT.png");
+
+    $pdf = PDF::loadView('pdf.cartaamonestacion', ["imagen_path"=>$imagen_path]);
+    return $pdf->stream('cedula.pdf');
+});
 Route::resource('/coordinacion', CoordinatorsController::class);
+
 
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
@@ -255,9 +263,7 @@ Route::get('/descarga_informes', function () {
 Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });
-// Route::get('/pdf_muestra', function () {
-//     return view('report_generation.pdf_cedula');
-// });
+
 Route::get('/dashboard_coordinacion', function () {
     return view('coordination.dashboard_coordination');
 });
