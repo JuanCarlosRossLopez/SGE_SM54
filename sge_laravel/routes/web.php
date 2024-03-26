@@ -273,14 +273,14 @@ Route::get('/registro_libros', function () {
 #RUTAS EQUIPO YAHIR
 
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
-    Route::resource('usuarios', UsersController::class);
+   
     Route::get('/dashboard-presidencial', function(){
         return view('super_admin.dashboard_presidencia');
     });
 
 
 });
-
+ Route::resource('usuarios', UsersController::class);
 
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', presidencies::class);
