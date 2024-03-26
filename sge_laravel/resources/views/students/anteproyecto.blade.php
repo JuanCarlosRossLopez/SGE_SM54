@@ -94,8 +94,8 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
                                 <label for="student_name">Nombre del Estudiante</label>
+                                <input type="text" name="id_student" value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}" class="hidden">
                                 <input type="text" name="student_name" id="student_name" class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer" placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
-
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -122,7 +122,7 @@
                                 <input type="text" name="likes" id="likes" value="0" hidden>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" />
+                                    placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" readonly/>
                                 @error('student_email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -170,7 +170,7 @@
                                 <label for="student_id">Matrícula</label>
                                 <input type="text" name="student_id" id="student_id"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Matrícula" value="22393130" />
+                                    placeholder="Matrícula" value="22393130" readonly/>
                                 @error('student_id')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror

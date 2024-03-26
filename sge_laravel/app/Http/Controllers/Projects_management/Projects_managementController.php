@@ -9,6 +9,7 @@ use App\Models\Students;
 use Illuminate\Http\RedirectResponse;
 use DragonCode\Contracts\Cashier\Auth\Auth as CashierAuth;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Comments;
 
 class Projects_managementController extends Controller
 {
@@ -19,7 +20,10 @@ class Projects_managementController extends Controller
     {
         //
         $project_management = Project_management::all();
-        return view('students.anteproyecto', compact('project_management'));
+        $comments = Comments::all();
+        
+
+        return view('students.anteproyecto', compact('project_management', 'comments'));
     }
 
     /**

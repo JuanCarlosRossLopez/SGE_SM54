@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\User;
+use App\Models\Project_management;
 
 
 class Students extends Model
@@ -38,4 +39,9 @@ class Students extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function projects():HasOne{
+        return $this->hasOne(Project_management::class,'id_student');
+    }
+    
+
 }

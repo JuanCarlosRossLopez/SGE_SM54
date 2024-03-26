@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoryHistory\Memory_History_Controller;
 use App\Http\Controllers\Roles\RoleController;
 use App\Http\Controllers\Teachers\TeachersController;
+use App\Http\Controllers\Companies\CompaniesController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
 use FontLib\Table\Type\name;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use App\Models\presidencies;
+use App\Models\Project_management;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 
@@ -123,13 +125,20 @@ Route::get('/gestion_roles', function () {
     return view('admin.manage_rol');
 });
 
-
+Route::get('dashboard_maestro', function() {
+    return view('teachers.teacher_dashboard');
+});
 
 // Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 
 
+Route::resource('maestros', TeachersController::class);
+Route::resource('empresas', CompaniesController::class);
+//Route::get('/empresas',function(){
+//    return view('companies.companies');
+//});
 
 
 
@@ -204,6 +213,9 @@ Route::resource('information_project', AnteprotecMapDashController::class);
 Route::get('/crear_comentario', function () {
     return view('teacher_dates.create_comment');
 });
+
+Route::post('/crear_comentario', [CommentsController::class, 'store'])->name('crear_comentario.store');
+
 Route::get('/editar_cita', function () {
     return view('teacher_dates.edit_meet_date');
 });
@@ -304,8 +316,6 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
     
     Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
-
-
 }); 
 //esto si
 Route::resource('roles',RoleController::class);

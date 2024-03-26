@@ -29,5 +29,10 @@ class Teachers extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comments::class, 'id_comment');
+    }
 }
 

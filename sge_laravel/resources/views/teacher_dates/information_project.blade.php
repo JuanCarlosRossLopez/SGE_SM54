@@ -1,4 +1,4 @@
-@extends('test.test_template')
+    @extends('test.test_template')
 
 @section('title')
     Plantilla base
@@ -117,7 +117,7 @@
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Nombre del asesor
                                             Empresarial:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Diego Horacio Dorantes</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->project_advisor}}</p>
                                     </div>
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Cargo:</h2>
@@ -230,13 +230,13 @@
                 <div class=" w-full flex flex-row justify-between items-center">
                     <label class="conteiner_word_title">Comentarios de revisión:</label>
                 </div>
-                <div class="justify-between items-center w-full">
-                    {{-- @foreach ($comments as $comment)
-                        <div class="bg-white p-2 shadow-md w-full flex flex-col rounded mt-1">
-                            <label class="font-semibold font-poppins text-lg text-start w-full">Comentario realizado por: usuario1</label>
+                <div class="justify-between items-center gap-4 w-full overflow-auto h-[450px] p-3">
+                    @foreach ($comments as $comment)
+                        <div class="bg-white p-2 mb-2 shadow-md w-full flex flex-col rounded">
+                            <label class="font-semibold font-poppins text-xl text-start w-full">{{$comment->teacher->name_teacher}}</label>
                             <label class="font-normal font-poppins text-base italic text-start w-full px-2">{{$comment->general_comment }}</label>
                         </div>
-                    @endforeach --}}
+                    @endforeach
                 </div>
 
 
@@ -268,7 +268,7 @@
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>
                     <a href="/crear_comentario"
                         class="bg-[#01a080] bg-opacity-80 text-white font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 ">Realizar
-                        comentario a la cedula</a>
+                        comentario a la cédula</a>
                 </div>
             </div>
         </div>

@@ -29,15 +29,21 @@ class CommentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        $request->validate([
-            'general_comment'=>'required|string'
-        ]);
+        // $request->validate([
+        //     'general_comment'=>'required|string',
+        //     'teacher_id'=>'required|string',
+        //     'anteproject_id'=>'required|string'
+        // ]);
 
         $comments = new Comments();
         $comments->general_comment = $request->input('general_comment');
+        $comments->teacher_id = $request->input('teacher_id');
+        $comments->project_management_id = $request->input('project_management_id');
         $comments->save();
+
+        $proyectoid = $comments -> project_management_id;
 
         return redirect('information_project')->with('Notification', 'Comentario creado');
     }
@@ -49,7 +55,7 @@ class CommentsController extends Controller
     {
         // $projects = Project_management::find($id);
         $comment = Comments::find($id);
-        // return view('comment', compact('comment'));
+        
     }
 
     /**
