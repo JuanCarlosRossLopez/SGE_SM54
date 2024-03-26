@@ -1,4 +1,4 @@
-@extends('test.test_template')
+    @extends('test.test_template')
 
 @section('title')
     Plantilla base
@@ -27,8 +27,10 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
-                    <button class="text-xl font-medium text-black bg-[#01A080] h-12 w-24 rounded-xl mt-2 ml-96 ">Aceptar</button>
+                    @role('Asesor')
+                    <button class="text-xl font-medium text-white bg-[#01A080] h-12 w-24 rounded-xl mt-2 ml-96 ">Aceptar</button>
                     <button class="text-xl font-medium text-white bg-[#a02301] h-12 w-24 rounded-xl mt-2 ml-10">Rechazar</button>
+                    @endrole
                 </div>
                 <div class="bg-green-300 w-full">
                     <div class="justify-between items-center w-full">
@@ -44,36 +46,35 @@
                                     <br />
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">División:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Ingeniería y Tecnología</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">Ingenieria y Tecnología</p>
                                     </div>
 
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Programa educativo:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">TSU en TI Área Desarrollo de
-                                            Software Múltiplataforma</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->educational_program}}</p>
                                     </div>
 
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Título del anteproyecto:
                                         </h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Reto Tokio</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->project_title}}</p>
                                     </div>
 
 
 
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Nombre del alumno:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Daniela Morantes Ricalde</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->student_name}}</p>
                                     </div>
 
                                     <div class="flex">
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Matrícula:</h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">21393143</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->student_id}}</p>
                                         </div>
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Grupo:</h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">SM54</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->student_group}}</p>
                                         </div>
                                     </div>
 
@@ -81,12 +82,12 @@
                                     <div class="flex">
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Teléfono:</h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">9988235671</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->student_phone}}</p>
                                         </div>
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Correo electrónico:
                                             </h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">21393143@utcancun.edu.mx</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->student_email}}</p>
                                         </div>
                                     </div>
 
@@ -95,12 +96,12 @@
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Fecha de inicio del
                                                 proyecto:</h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">19/05/2024</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->start_date}}</p>
                                         </div>
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Fecha de término del
                                                 proyecto:</h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">19/07/2024</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->end_date}}</p>
                                         </div>
                                     </div>
 
@@ -109,21 +110,20 @@
 
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Empresa:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Upnify</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->project_company}}</p>
                                     </div>
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Dirección:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Calle Robalo 72, 77500 Cancún,
-                                            Q.R.</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->direction}}</p>
                                     </div>
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Nombre del asesor
                                             Empresarial:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Diego Horacio Dorantes</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->project_advisor}}</p>
                                     </div>
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Cargo:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Gerente</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->position}}</p>
                                     </div>
 
 
@@ -135,7 +135,7 @@
                                         <div class="flex">
                                             <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Correo electrónico:
                                             </h2>
-                                            <p class="text-left font-light text-lg  mr-20 py-2">upnify23@gmail.com</p>
+                                            <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->email_asesor}}</p>
                                         </div>
                                     </div>
 
@@ -152,32 +152,14 @@
                                     <div>
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">1. Objetivo general:</h2>
                                         <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                            Al contrario del pensamiento popular, el texto de Lorem
-                                            Ipsum no es simplemente texto aleatorio. Tiene sus raices en una
-                                            pieza cl´sica de la literatura del Latin, que d
-                                            ata del año 45 antes de Cristo, haciendo que este a
-                                            dquiera mas de 2000 años de antiguedad. Ric
-                                            hard McClintock, un profesor de Latin de la Uni
-                                            versidad de Hampden-Sydney en Virginia, encontró una d
-                                            e las palabras más oscuras de la lengua del latín,
-                                            "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo
-                                            distintos textos del latín,
+                                            {{$project_management->general_objective}}
                                         </p>
                                     </div>
                                     <div>
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">2.Planteamiento del
                                             Problema: exponer los aspectos, elementos y relaciones del problema:</h2>
                                         <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                            Al contrario del pensamiento popular, el texto de Lorem
-                                            Ipsum no es simplemente texto aleatorio. Tiene sus raices en una
-                                            pieza cl´sica de la literatura del Latin, que d
-                                            ata del año 45 antes de Cristo, haciendo que este a
-                                            dquiera mas de 2000 años de antiguedad. Ric
-                                            hard McClintock, un profesor de Latin de la Uni
-                                            versidad de Hampden-Sydney en Virginia, encontró una d
-                                            e las palabras más oscuras de la lengua del latín,
-                                            "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo
-                                            distintos textos del latín,
+                                            {{$project_management->problem_statement}}
                                         </p>
                                     </div>
 
@@ -189,16 +171,7 @@
                                             preguntas: ¿Cuáles son los beneficios que este trabajo proporcionará? ¿Quiénes
                                             serán los beneficiados? ¿Cuál es su utilidad?</h2>
                                         <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                            Al contrario del pensamiento popular, el texto de Lorem
-                                            Ipsum no es simplemente texto aleatorio. Tiene sus raices en una
-                                            pieza clsica de la literatura del Latin, que d
-                                            ata del año 45 antes de Cristo, haciendo que este a
-                                            dquiera mas de 2000 años de antiguedad. Ric
-                                            hard McClintock, un profesor de Latin de la Uni
-                                            versidad de Hampden-Sydney en Virginia, encontró una d
-                                            e las palabras más oscuras de la lengua del latín,
-                                            "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo
-                                            distintos textos del latín,
+                                            {{$project_management->justification}}
                                         </p>
                                     </div>
 
@@ -206,16 +179,7 @@
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">4. Actividades para
                                             realizar: listar las actividades a llevar a cabo en orden</h2>
                                         <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                            Al contrario del pensamiento popular, el texto de Lorem
-                                            Ipsum no es simplemente texto aleatorio. Tiene sus raices en una
-                                            pieza clsica de la literatura del Latin, que d
-                                            ata del año 45 antes de Cristo, haciendo que este a
-                                            dquiera mas de 2000 años de antiguedad. Ric
-                                            hard McClintock, un profesor de Latin de la Uni
-                                            versidad de Hampden-Sydney en Virginia, encontró una d
-                                            e las palabras más oscuras de la lengua del latín,
-                                            "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo
-                                            distintos textos del latín,
+                                            {{$project_management->activities}}
                                         </p>
                                     </div>
                                     <br />
@@ -249,12 +213,13 @@
                                     </div>
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Asesor académico:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">Raúl Baas Can</p>
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->project_advisor}}</p>
                                     </div>
 
                                     <div class="flex">
                                         <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Correo electrónico:</h2>
-                                        <p class="text-left font-light text-lg  mr-20 py-2">rbaas@utcancun.edu.mx</p>
+                                        
+                                        <p class="text-left font-light text-lg  mr-20 py-2">{{$project_management->email_asesor}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -267,10 +232,10 @@
                 <div class=" w-full flex flex-row justify-between items-center">
                     <label class="conteiner_word_title">Comentarios de revisión:</label>
                 </div>
-                <div class="justify-between items-center w-full">
+                <div class="justify-between items-center gap-4 w-full overflow-auto h-[450px] p-3">
                     @foreach ($comments as $comment)
-                        <div class="bg-white p-2 shadow-md w-full flex flex-col rounded mt-1">
-                            <label class="font-semibold font-poppins text-lg text-start w-full">Comentario realizado por: usuario1</label>
+                        <div class="bg-white p-2 mb-2 shadow-md w-full flex flex-col rounded">
+                            <label class="font-semibold font-poppins text-xl text-start w-full">{{$comment->teacher->name_teacher}}</label>
                             <label class="font-normal font-poppins text-base italic text-start w-full px-2">{{$comment->general_comment }}</label>
                         </div>
                     @endforeach
@@ -286,8 +251,9 @@
                         <br/>
                         <label class="font-medium text-xl ">Poner informacion como: </label>
                         <label class="font-medium text-lg ">- Aceptado por asesor?</label>
-                        <label class="font-medium text-lg ">- Colavorativo</label>
-                        <label class="font-medium text-lg ">- Likes</label>
+                        <label class="font-medium text-lg ">- Colaborativo</label>
+                        <label class="font-medium text-lg ">- Likes {{$project_management->project__likes->count()}}</label>
+
                     </div>
                     <!-- Botones de calendario -->
                     <!--
@@ -301,12 +267,14 @@
                                 </div>
                                 -->
                 </div>
+                @role('Asesor')
                 <div class="content_conteiner w-full h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>
                     <a href="/crear_comentario"
-                        class="bg-green-600 bg-opacity-80 text-gray-800 font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 border-gray-700">Realizar
-                        comentario a la cedula</a>
+                        class="bg-[#01a080] bg-opacity-80 text-white font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 ">Realizar
+                        comentario a la cédula</a>
                 </div>
+                @endrole
             </div>
         </div>
     </div>
@@ -318,7 +286,7 @@
             <div class="border-b px-4 py-2 flex justify-between items-center">
                 <h3 class="font-semibold text-lg ml-60 text-white">Realizar comentario general</h3>
                 <button class="close-modalf bg-white rounded-full h-[1rem] flex items-center">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                    <textarea class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></textarea>
                 </button>
             </div>
             <div class="modal_conteiner">

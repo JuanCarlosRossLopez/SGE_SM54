@@ -9,6 +9,7 @@ use App\Models\Students;
 use Illuminate\Http\RedirectResponse;
 use DragonCode\Contracts\Cashier\Auth\Auth as CashierAuth;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Comments;
 
 class Projects_managementController extends Controller
 {
@@ -19,7 +20,10 @@ class Projects_managementController extends Controller
     {
         //
         $project_management = Project_management::all();
-        return view('students.anteproyecto', compact('project_management'));
+        $comments = Comments::all();
+        
+
+        return view('students.anteproyecto', compact('project_management', 'comments'));
     }
 
     /**
@@ -59,8 +63,10 @@ class Projects_managementController extends Controller
             'problem_statement' => 'required', // Planteamiento del Problema
             'justification' => 'required', // Justificación
             'activities' => 'required', // Actividades a realizar
+            'likes' => 'required',
+            //Mover de aqui en adelante
         ]);
-
+        
         $projects_management = new Project_management();
         $projects_management->educational_program = $request->input('educational_program');
         $projects_management->project_title = $request->input('project_title');
@@ -69,6 +75,7 @@ class Projects_managementController extends Controller
         $projects_management->student_email = $request->input('student_email');
         $projects_management->student_phone = $request->input('student_phone');
         $projects_management->student_id = $request->input('student_id');
+        $projects_management->id_student = $request->input('id_student');
         $projects_management->project_company = $request->input('project_company');
         $projects_management->direction = $request->input('direction');
         $projects_management->position = $request->input('position');
@@ -79,6 +86,7 @@ class Projects_managementController extends Controller
         $projects_management->problem_statement = $request->input('problem_statement');
         $projects_management->justification = $request->input('justification');
         $projects_management->activities = $request->input('activities');
+        $projects_management->likes = $request->input('likes');
         $projects_management->start_date = $request->input('start_date');
         $projects_management->end_date = $request->input('end_date');
         $projects_management->save();
@@ -113,7 +121,7 @@ class Projects_managementController extends Controller
         //
         $projects_management = Project_management::find($id);
         $projects_management->update($request->all());
-        return redirect()->route('projects_management.show');
+        return back()->with('status', 'Anteproyecto registrado correctamente');
     }
 
     /**

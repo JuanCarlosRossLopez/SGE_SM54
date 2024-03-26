@@ -1,11 +1,10 @@
 @extends('test.test_template')
-@section('titulo')
-    Panel de control dirección
-@endsection
+@section('title', 'Presidencia')
+    ''
 @section('contenido')
     <div class="back_conteine">
         <div class="top_conteiner">
-            <label>Dashboard dirección</label>
+            <label>Bienvenido al dashboard de dirección {{Auth::user()->name}}</label>
             <label>
                 <!-- mostrar graficas relevantes -->
                 <!-- cambiar icono -->

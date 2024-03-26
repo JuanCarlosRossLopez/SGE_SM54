@@ -34,9 +34,24 @@
                 </div>
             </div>
             @if (session()->has('status'))
-                <div class="text-md text-green-700" id="timeMessage">
-                    {{ session('status') }}
-                </div>
+
+
+
+<div class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+    <div class="modal-content bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-end">
+            <button class="modal-close">
+                <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="timeMessage" class="text-2xl font-sans text-green-700">{{ session('status') }}</div>
+    </div>
+</div>
+
+
+
             @endif
             <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
@@ -79,9 +94,8 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
                                 <label for="student_name">Nombre del Estudiante</label>
-                                <input type="text" name="student_name" id="student_name"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Nombre del estudiante" value="{{ optional(Auth::user())->name }}" />
+                                <input type="text" name="id_student" value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}" class="hidden">
+                                <input type="text" name="student_name" id="student_name" class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer" placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -103,9 +117,12 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="student_email">Correo del Estudiante</label>
+                                <input type="text" name="student_id" id="" value="{{ Auth::user()->id }}" hidden>
+
+                                <input type="text" name="likes" id="likes" value="0" hidden>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" value="{{ optional(Auth::user())->email }}" />
+                                    placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" readonly/>
                                 @error('student_email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -153,7 +170,7 @@
                                 <label for="student_id">Matrícula</label>
                                 <input type="text" name="student_id" id="student_id"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Matrícula" value="22393130" />
+                                    placeholder="Matrícula" value="22393130" readonly/>
                                 @error('student_id')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -229,12 +246,12 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-1">
+                        <div class="col-span-1"></div>
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="email_asesor">Correo Asesor</label>
                                 <input type="email" name="email_asesor" id="email_asesor"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Teléfono del Asesor" value="{{ old('email_asesor') }}" />
+                                    placeholder="Correo del Asesor" value="{{ old('email_asesor') }}" />
                                 @error('email_asesor')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -358,6 +375,27 @@
         var element = document.getElementById('timeMessage');
         if (element) {
             element.style.display = 'none';
+        }
+    }, 5000);
+
+
+//Script para Modal del Señor R//
+
+    setTimeout(function() {
+        var element = document.getElementById('timeMessage');
+        if (element) {
+            var modalMessage = document.getElementById('modalMessage');
+            modalMessage.innerHTML = element.innerHTML;
+            var modal = document.querySelector('.modal');
+            var closeModalButtons = document.querySelectorAll('.modal-close');
+
+            modal.classList.remove('hidden');
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    modal.classList.add('hidden');
+                });
+            });
         }
     }, 5000);
 </script>

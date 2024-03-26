@@ -68,7 +68,7 @@
 /* Titulos, subtitulos, parrafos y demas para las letras*/
 .conteiner_word_title {
     font-size: 1.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif;
 }

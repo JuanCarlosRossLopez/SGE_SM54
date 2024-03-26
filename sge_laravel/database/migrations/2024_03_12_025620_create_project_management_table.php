@@ -30,15 +30,19 @@ return new class extends Migration
             $table->text('problem_statement');
             $table->text('justification');
             $table->text('activities');
+            //Se le agrego like
+            $table->integer('likes')->default(0);
             $table->date('start_date'); // Fecha de inicio
-            $table->date('end_date'); // Fecha de finalización
+            $table->date('end_date'); // Fecha de finalizacion
             // $table->foreignId('user_id')->nullable()->constrained('users')
             // ->onUpdate('restrict')
             // ->onDelete('restrict');
             $table->foreignId('id_student')->nullable()->constrained('students')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
+            //Aqui en adelante mover
+
         });
     }
 

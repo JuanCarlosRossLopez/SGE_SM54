@@ -18,10 +18,10 @@
                         <div class="flex flex-col items-center" >
                             <div class="flex flex-col items-center w-full pb-2">
                                 <label for="memory_name" class="conteiner_word_title flex flex-col items-center">Titulo de memoria</label>
-                                <input type="text" name="memory_name" class="w-[20rem]">
-
+                                <input type="text" name="memory_name" id="memory_name" class="w-[20rem]">
+                                
                                 <label for="memorie_pdf" class="conteiner_word_title flex flex-col items-center pt-4">Subir archivo PDF</label>
-                                <input type="file" name="memorie_pdf" id="memorie_pdf" class="form-control w-fit bg-[#979797] px-2" required>
+                                <input type="file" name="memorie_pdf" id="memorie_pdf" class="form-control w-fit bg-[#979797] px-2" required>                                
                             </div>
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-fit mt-4">Subir</button>
