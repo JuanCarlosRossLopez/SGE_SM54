@@ -27,8 +27,10 @@
                             <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                         </label>
                     </div>
+                    @role('Asesor')
                     <button class="text-xl font-medium text-white bg-[#01A080] h-12 w-24 rounded-xl mt-2 ml-96 ">Aceptar</button>
                     <button class="text-xl font-medium text-white bg-[#a02301] h-12 w-24 rounded-xl mt-2 ml-10">Rechazar</button>
+                    @endrole
                 </div>
                 <div class="bg-green-300 w-full">
                     <div class="justify-between items-center w-full">
@@ -250,7 +252,8 @@
                         <label class="font-medium text-xl ">Poner informacion como: </label>
                         <label class="font-medium text-lg ">- Aceptado por asesor?</label>
                         <label class="font-medium text-lg ">- Colaborativo</label>
-                        <label class="font-medium text-lg ">- Likes</label>
+                        <label class="font-medium text-lg ">- Likes {{$project_management->project__likes->count()}}</label>
+
                     </div>
                     <!-- Botones de calendario -->
                     <!--
@@ -264,12 +267,14 @@
                                 </div>
                                 -->
                 </div>
+                @role('Asesor')
                 <div class="content_conteiner w-full h-fit">
                     <label class="conteiner_word_title flex flex-col items-center">¿Qué más?</label>
                     <a href="/crear_comentario"
                         class="bg-[#01a080] bg-opacity-80 text-white font-medium text-lg px-2 py-1 rounded-lg border-solid border-1 ">Realizar
                         comentario a la cédula</a>
                 </div>
+                @endrole
             </div>
         </div>
     </div>

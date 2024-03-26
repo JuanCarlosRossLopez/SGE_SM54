@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('project__likes', function (Blueprint $table) {
             $table->id();
-            $table->integer('like');
-            $table->foreignId('teacher_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('anteproject_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->foreignId('teacher_id')->constrained('Teachers')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+            $table->foreignId('project_management_id')->constrained('project_management')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

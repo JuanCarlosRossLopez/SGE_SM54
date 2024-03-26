@@ -45,6 +45,7 @@
                             <th class="theader">Empresa</th>
                             <th class="theader">Aprovaciones (likes)</th>
                             <th class="theader">Acciones</th>
+                            <th class="theader">Aprovaciones chidas</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -53,29 +54,53 @@
                                 <td class="trowc">{{ $anteproject->project_title }}</td>
                                 <td class="trowc">{{ $anteproject->student_name }}</td>
                                 <td class="trowc">{{ $anteproject->project_company }}</td>
-                                <td class="trowc">{{ $anteproject->likes }}</td>
+                                <td class="trowc">{{ $anteproject->project__likes()->count() }}</td>
+
                                 <td class="trowc">
                                     <div>
-                                        <button class="show-modal" data-modal="datosProyecto_{{ $anteproject->id }}"> <svg
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
-                                                <path stroke-linecap="round"
-                                                    stroke-linejoin="round"d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                                            </svg>
-                                        </button>
+                                        @if (Auth::user()->teachers)
+                                            @php
+                                                $teacherId = Auth::user()->teachers->id;
+                                                $projectManagementId = $anteproject->id;
+                                                $like = App\Models\Project_Likes::where('teacher_id', $teacherId)
+                                                    ->where('project_management_id', $projectManagementId)
+                                                    ->first();
+                                            @endphp
+                                            <form
+                                                action="{{ $like ? route('gestion_asesor_anteproyecto.destroy', ['gestion_asesor_anteproyecto' => $like->id]) : route('gestion_asesor_anteproyecto.store') }}"
+                                                method="POST">
+                                                @csrf
+                                                @if ($like)
+                                                    @method('DELETE')
+                                                    <button class="bg-red-500 rounded-md text-white">Quitar like</button>
+                                                @else
+                                                    <input type="hidden" name="teacher_id" value="{{ $teacherId }}">
+                                                    <input type="hidden" name="project_management_id"
+                                                        value="{{ $projectManagementId }}">
+                                                    <button class="bg-blue-500 rounded-md text-white">Dar like</button>
+                                                @endif
+                                            </form>
+                                        @else
+                                            <p>No se encontró información del asesor para este usuario.</p>
+                                        @endif
                                     </div>
                                 </td>
+
+
                             </tr>
                             <div idModal="datosProyecto_{{ $anteproject->id }}"
                                 class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
                                 <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
                                     <div class="border-b px-4 py-2 flex justify-between items-center">
-                                        <h3 class="font-semibold text-lg ml-60 text-white">Revision de Cedula AnteProyecto</h3>
+                                        <h3 class="font-semibold text-lg ml-60 text-white">Revision de Cedula AnteProyecto
+                                        </h3>
                                         <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
+                                                    style="color: #d50101;"></i></p>
                                         </button>
                                     </div>
-                                    <form action="{{ route('anteproyecto.update', ['anteproyecto' => $anteproject->id]) }}" method="POST" class="flex flex-col gap-4">
+                                    <form action="{{ route('anteproyecto.update', ['anteproyecto' => $anteproject->id]) }}"
+                                        method="POST" class="flex flex-col gap-4">
                                         @csrf
                                         @method('PATCH')
                                         <div class="modal_conteiner">
@@ -83,24 +108,27 @@
                                             <div class="modal-body h-[fit] p-4">
                                                 <h1 class="titles">Titulo de Proyecto</h1>
                                                 <label class="modal_parrafs">{{ $anteproject->project_title }}</label>
-                    
+
                                                 <h1 class="titles">Objetivo General</h1>
                                                 <label class="modal_parrafs">{{ $anteproject->general_objective }}</label>
-                    
-                    
+
+
                                                 <h1 class="titles">Alcance de Proyecto</h1>
                                                 <label class="modal_parrafs"></label>
-                    
-                    
+
+
                                                 <h1 class="titles">Justificacion</h1>
                                                 <label class="modal_parrafs">{{ $anteproject->justification }}</label>
-                    
+
                                                 <h1 class="titles">Actividades a realizar</h1>
                                                 <label lass="modal_parrafs">{{ $anteproject->activities }}</label>
-                    
+
                                                 <div class="flex justify-center items-center w-full border-t pt-2">
-                                                    <input id="likes" type="text" value="{{$anteproject->likes }}" name="likes" >
-                                                    <button type="submit" onclick="increaseLikes()" class="bg-[#2546b3] p-2 rounded text-white font-bold">Realizar aprovación <i class="fa-regular fa-thumbs-up"></i></button>
+                                                    <input id="likes" type="text" value="{{ $anteproject->likes }}"
+                                                        name="likes">
+                                                    <button type="submit" onclick="increaseLikes()"
+                                                        class="bg-[#2546b3] p-2 rounded text-white font-bold">Realizar
+                                                        aprovación <i class="fa-regular fa-thumbs-up"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,12 +152,12 @@
     <script>
         //Lo hizo roto, es un contador
         const tableBody = document.querySelector('tbody');
+        var likesInput = document.getElementById('likes');
 
         function increaseLikes() {
-        var likesInput = document.getElementById('likes');
-        likesInput.value = parseInt(likesInput.value) + 1;
-    }
 
+            likesInput.value = parseInt(likesInput.value) + 1;
+        }
     </script>
     <script src="{!! asset('js/modals.js') !!}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

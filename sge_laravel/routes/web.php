@@ -177,8 +177,8 @@ Route::resource('advised_students', TeacherDashboardController::class);
 //     return view('anteproject_cedule.table_anteprojects');
 // })->name('gestion_asesor_anteproyecto');
 
-Route::get('gestion_asesor_anteproyecto',[ Anteprojects2Controller::class, 'index']);
-
+// Route::get('gestion_asesor_anteproyecto',[ Anteprojects2Controller::class, 'index']);
+Route::resource('gestion_asesor_anteproyecto', Anteprojects2Controller::class);
 //Memoria getsion Valier
 Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
 Route::resource('memory', Memory_History_Controller::class);

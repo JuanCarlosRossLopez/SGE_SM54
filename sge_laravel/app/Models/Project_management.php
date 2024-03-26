@@ -31,18 +31,22 @@ class Project_management extends Model
 
     protected $table = 'project_management';
 
-public function student()
-{
-    return $this->belongsTo(Students::class, 'id_student');
-}
+    public function student()
+    {
+        return $this->belongsTo(Students::class, 'id_student');
+    }
 
-public function user(): BelongsTo
-{
-    return $this->belongsTo(User::class, 'id_user');
-}
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 
-public function comments(): HasMany
-{
-    return $this->hasMany(Comments::class, 'project_management_id');
-}
+    public function comments(): HasMany
+    {
+        return $this->HasMany(Comments::class, 'project_management_id');
+    }
+    public function project__likes(): HasMany
+    {
+        return $this->HasMany(Project_Likes::class,'project_management_id');
+    }
 }

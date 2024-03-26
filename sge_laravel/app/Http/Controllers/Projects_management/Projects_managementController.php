@@ -63,7 +63,8 @@ class Projects_managementController extends Controller
             'problem_statement' => 'required', // Planteamiento del Problema
             'justification' => 'required', // Justificación
             'activities' => 'required', // Actividades a realizar
-            'likes' => 'required'
+            'likes' => 'required',
+            //Mover de aqui en adelante
         ]);
         
         $projects_management = new Project_management();
