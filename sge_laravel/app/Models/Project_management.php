@@ -23,7 +23,19 @@ class Project_management extends Model
         'activities',
         'start_date',
         'end_date',
+        'user_id',
     ];
 
     protected $table = 'project_management';
+
+public function student()
+{
+    return $this->belongsTo(Students::class, 'id_student');
+}
+
+public function user()
+{
+    return $this->belongsTo(User::class, 'id_user');
+}
+
 }

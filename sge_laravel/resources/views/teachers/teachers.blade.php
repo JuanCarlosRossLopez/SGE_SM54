@@ -7,7 +7,7 @@
     <div class="back_conteiner">
         <div class="top_conteiner">
             <div class="w-[70rem]">
-                <label>Lista de Asesores</label>
+                <label>Asignacion de usuario al asesor</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>

@@ -75,7 +75,7 @@
                                     </td>
                                 -->
                                 <td>
-                                    <a href="{{ route('memory_history.download_pdf', ['id' => $memory->id]) }}"
+                                    <a href="{{ route('downloadPdf', ['id' => $memory->id]) }}"
                                         class="text-[#464646] py-1 px-2 rounded text-xl w-full ml-4"> <i class="fa-solid fa-download"></i> </a>
                                 </td>
                             </tr>
