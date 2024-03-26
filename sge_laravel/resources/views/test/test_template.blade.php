@@ -7,7 +7,8 @@
 
     <title>@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @vite('resources/css/app.css')
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,8 +16,8 @@
     <link href="{{ asset('css/font.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/progress.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="w-full flex flex-col overflow-x-hidden">
@@ -26,7 +27,7 @@
             <i class="fa-solid fa-bars p-2"></i>
         </button>
     </div>
-    
+
     <div class="w-fit flex flex-row fixed" id="sidebar">
         <div class="bg-[#2F4050] fixed flex mr-auto">
             <!--lo puse negro xq se ve mejor atte: jotomar -->
@@ -37,94 +38,106 @@
         <div class="sidebar_background">
             <div>
                 <a>
-                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
+                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
+                        class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
                 </a>
                 <ul class="flex flex-col justify-between">
 
                     <div>
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
-                        <li>
-                            <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Inicio
-                            </button>
-                        </li>
+                        @role('Estudiante')
+                            <li>
+                                <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
+                                    <i class="fa-solid fa-school"></i></i>
+                                    Inicio
+                                </button>
+                            </li>
+                        @endrole
+                        @role('Estudiante') 
                         <li>
                             <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
                                 <i class="fa-solid fa-school"></i></i>
                                 Gestión de Anteproyectos
                             </button>
                         </li>
-
+                    @endrole
+                    @role('Administrador')
                         <li>
                             <a href="/usuarios" class="buttons_sidebar ">
                                 <i class="fa-solid fa-school"></i>
                                 Usuarios
                             </a>
                         </li>
-
-                        <li>
-                            <a href="/alumnos_asesorados" class="buttons_sidebar">
-                                <i class="fa-solid fa-users-line"></i>
-                                Alumnos asesorados
-                            </a>
-                        </li>
+                    @endrole
+                    @role('Asesor')
                         <li>
                             <a href="/dashboard_asesor" class="buttons_sidebar">
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 Inicio Asesor
                             </a>
                         </li>
-                        @role('Administrador')
+                    @endrole
+                    @role('Asesor')
+                        <li>
+                            <a href="/alumnos_asesorados" class="buttons_sidebar">
+                                <i class="fa-solid fa-users-line"></i>
+                                Alumnos asesorados
+                            </a>
+                        </li>
+                    @endrole
+                    @role('Administrador')
                         <li>
                             <a href="/panel_admin" class="buttons_sidebar">
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 Inicio Admin
                             </a>
                         </li>
-                        @endrole
+                    @endrole
+                    @role('Cordinacion')
                         <li>
                             <a href="/Dashboard_Direccion" class="buttons_sidebar">
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 Inicio Dirección
                             </a>
                         </li>
+                    @endrole
+                    @role('Cordinacion')
                         <li>
                             <a href="/dashboard_coordinacion" class="buttons_sidebar">
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 Inicio coordinación
                             </a>
                         </li>
-                        <li>
-                            <a href="/dashboard-presidencial" class="buttons_sidebar ">
-                                <i class="fa-solid fa-school"></i>
-                                Inicio Presidente
-                            </a>
-                        </li>
+                        @endrole
+                        @role('Presidente')
+                            <li>
+                                <a href="/dashboard-presidencial" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-school"></i>
+                                    Inicio Presidente
+                                </a>
+                            </li>
+                        @endrole
                         <li>
                             <a href="/memory" class="buttons_sidebar">
                                 <i class="fa-solid fa-landmark"></i>
                                 Historial de memorias
                             </a>
                         </li>
+                        @role('Cordinacion')
                         <li>
                             <a href="/informes" class="buttons_sidebar ">
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="/descarga_informe" class="buttons_sidebar ">
-                                <i class="fa-solid fa-file"></i> Generacion de informes
-                            </a>
-                        </li> --}}
+                        @endrole
                         <li>
                             <a href="/descarga_informes" class="buttons_sidebar ">
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
                         </li>
                         <li>
-                            <a href='/Perfil_Estudiante' class="buttons_sidebar">
+                            <a href='/Profile' class="buttons_sidebar">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </a>
@@ -134,16 +147,16 @@
                                 <i class="fa-solid fa-cog "></i>
                                 Asignación de roles
                             </a>
-                            <li>
+                        <li>
                             <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
                                 <i class="fa-solid fa-school"></i></i>
                                 Gestión de Coordinación
                             </button>
                         </li>
-                            <a class="buttons_sidebar" href="estudiantes">
-                                <i class="fa-solid fa-address-card "></i>
-                                Estudiantes
-                            </a>
+                        <a class="buttons_sidebar" href="estudiantes">
+                            <i class="fa-solid fa-address-card "></i>
+                            Estudiantes
+                        </a>
                         </li>
                     </div>
                 </ul>
@@ -205,6 +218,4 @@
         content.classList.add("main_collapse")
     }
 </script>
-
-
 </html>

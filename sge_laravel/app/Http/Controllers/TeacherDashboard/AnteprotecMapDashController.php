@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TeacherDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comments;
 use App\Models\Project_management;
 use App\Models\Students;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class AnteprotecMapDashController extends Controller
                 $students = Students::where('adviser_id', $id)->paginate(10); // Cambia el número 10 según tu necesidad de resultados por página
                 // Obtener los proyectos de gestión de proyectos paginados
                 $Project_management = Project_management::paginate(10);
+                //$comments = Comments::all();
 
 
                 return view('teachers.teacher_dashboard', compact('students', 'Project_management'));
@@ -59,7 +61,9 @@ class AnteprotecMapDashController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $project_management = Project_management::find($id);
+        $comments = Comments::where('project_management_id', $id)->get();
+        return view('teacher_dates.information_project',["project_management"=>$project_management, "comments"=>$comments]);
     }
 
     /**
@@ -85,4 +89,6 @@ class AnteprotecMapDashController extends Controller
     {
         //
     }
+
+   
 }

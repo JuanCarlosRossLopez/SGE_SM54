@@ -1,22 +1,24 @@
-@extends('test.test_template')
+@extends('test.template')
+
 @section('title')
-    Asesores
+    Empresas
 @endsection
 
 @section('contenido')
     <div class="back_conteiner">
         <div class="top_conteiner">
             <div class="w-[70rem]">
-                <label>Asignacion de usuario al asesor</label>
+                <label>Lista de Empresas</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
                 </label>
             </div>
+
         </div>
         <div class="content_conteiner  h-fit">
             <div class="flex flex-row items-center justify-start gap-2">
-                <label class="conteiner_word_title items-center">Tabla de Asesores</label>
+                <label class="conteiner_word_title items-center">Tabla de Empresas</label>
                 <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
                     data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
@@ -41,34 +43,42 @@
 
                         <tr>
                             <th class="theader">id</th>
-                            <th class="theader">Nombre del maestro</th>
-                            <th class="theader">Número de nomina</th>
-                            <th class="theader">Nombre usuario</th>
-                            <th class="theader">Division</th>
+                            <th class="theader">Nombre de la empresa</th>
+                            <th class="theader">Dirección</th>
+                            <th class="theader">Nombre asesor</th>
+                            <th class="theader">Trabajo</th>
+                            <th class="theader">Número telefónico</th>
+                            <th class="theader">Correo electrónico</th>
+                            <th class="theader">Área de Trabajo</th>
+                            <th class="theader">Descripción</th>
                             <th class="theader">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        @foreach ($teachers as $teachers)
+                        @foreach ($companies as $companies)
                             <tr class="trow">
                                 <td class="trowc">1</td>
-                                <td class="trowc">{{ $teachers->name_teacher }}</td>
-                                <td class="trowc">{{ $teachers->payroll }}</td>
-                                <td>{{ $teachers->user ? $teachers->user->name : 'Sin usuario asociado' }}</td> 
-                                <td class="trowc">{{ $teachers->division_id }}</td>
+                                <td class="trowc">{{ $companies->company_name }}</td>
+                                <td class="trowc">{{ $companies->addres }}</td>
+                                <td class="trowc">{{ $companies->asesor_name }}</td>
+                                <td class="trowc">{{ $companies->job }}</td>
+                                <td class="trowc">{{ $companies->company_phone_number }}</td>
+                                <td class="trowc">{{ $companies->company_email }}</td>
+                                <td class="trowc">{{ $companies->work_area }}</td>
+                                <td class="trowc">{{ $companies->company_description }}</td>
                                 <td class="trowc">
-                                    <button class="show-modal-edit" data-target="#edit{{ $teachers->id }}">
+                                    <button class="show-modal-edit" data-target="#edit{{ $companies->id }}">
                                         <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7">
                                     </button>
-                                    <button class="show-delete" data-target="#delete{{ $teachers->id }}">
+                                    <button class="show-delete" data-target="#delete{{ $companies->id }}">
                                         <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7">
                                     </button>
                                 </td>
 
                             </tr>
-                            @include('teachers.edit_modal_teacher')
-                            @include('teachers.delete_modal_teacher')
-                            @include('teachers.view_modal_teachers')
+                            @include('companies.edit_modal_company')
+                            @include('companies.delete_modal_company')
+                            @include('companies.view_modal_companies')
                         @endforEach
                         <tr class="trow">
                             <div>
@@ -120,10 +130,10 @@
 
 
     <div
-        class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        class="modal-add-empresa h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
             <div class="border-b px-4 py-2 flex justify-between items-center">
-                <h3 class="font-semibold text-lg ml-60 text-white">Agregar Asesor</h3>
+                <h3 class="font-semibold text-lg ml-60 text-white">Agregar Empresa</h3>
                 <button class="close-modal bg-white rounded-full">
                     <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                 </button>
@@ -131,22 +141,34 @@
             <div class="bg-white p-2">
                 <div class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
                     <div class="flex flex-col items-center justify-center">
-                        <h1 class="text-xl font-bold mb-4">Crear Asesor</h1>
-                        <form action="{{ route('maestros.store') }}" method="POST" class="flex flex-col gap-4">
+                        <h1 class="text-xl font-bold mb-4">Crear Empresa</h1>
+                        <form action="{{ route('empresas.store') }}" method="POST" class="flex flex-col gap-4">
                             @csrf
                             <div class="flex gap-4">
-                                <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor"
+                                <input type="text" name="company_name" id="company_name" placeholder="Nombre de la empresa"
                                     class="flex-1 rounded-md border border-gray-300 p-2">
-                                <input type="number" name="payroll" id="payroll"
-                                    placeholder="Número de nómina del asesor"
+                                <input type="text" name="addres" id="addres"  placeholder="Dirección"
                                     class="flex-1 rounded-md border border-gray-300 p-2">
                             </div>
                         
                             <div class="flex gap-4">
-                                <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor"
+                                <input type="text" name="asesor_name" id="asesor_name" placeholder="Nombre del asesor"
                                     class="flex-1 rounded-md border border-gray-300 p-2">
-                                <input type="text" name="division_id" id="division_id"
-                                    placeholder="ID de la división del asesor"
+                                <input type="text" name="job" id="job" placeholder="Trabajo"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                            </div>
+
+                            <div class="flex gap-4">
+                                <input type="text" name="company_phone_number" id="company_phone_number" placeholder="Numero telefónico de la empresa"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="text" name="company_email" id="company_email"  placeholder="Correo Electronico "
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                            </div>
+                        
+                            <div class="flex gap-4">
+                                <input type="text" name="work_area" id="work_area" placeholder="Area de trabajo"
+                                    class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="text" name="company_description" id="company_description" placeholder="Descripción"
                                     class="flex-1 rounded-md border border-gray-300 p-2">
                             </div>
                             <!-- Puedes agregar más campos aquí según sea necesario -->
@@ -164,12 +186,12 @@
         const tableBody = document.querySelector('tbody');
         const rowCount = tableBody.querySelectorAll('tr').length;
         document.getElementById('rowCount').textContent = rowCount;
-        const modal_add = document.querySelector('.modal-add-asesor');
+        const modal_add = document.querySelector('.modal-add-empresa');
         const show_modal_add = document.querySelector('.show-modal-add');
         show_modal_add.addEventListener('click', function() {
             modal_add.classList.remove('hidden')
         })
-        const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
+        const modal_edit_empresa = document.querySelectorAll('.modal-edit-empresa')
         const show_modal_edit = document.querySelectorAll('.show-modal-edit')
         show_modal_edit.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -180,7 +202,7 @@
             })
         })
 
-        const delete_modal_teacher = document.querySelectorAll('.delete-modal')
+        const delete_modal_empresa = document.querySelectorAll('.delete-modal')
         const show_delete = document.querySelectorAll('.show-delete')
         show_delete.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -199,8 +221,8 @@
         close_modal.forEach(close_modal => {
             close_modal.addEventListener('click', (e) => {
                 e.preventDefault()
-                const modal_edit = close_modal.closest('.modal-edit-asesor')
-                const modal_add = close_modal.closest('.modal-add-asesor')
+                const modal_edit = close_modal.closest('.modal-edit-empresa')
+                const modal_add = close_modal.closest('.modal-add-empresa')
                 const modal_delete = close_modal.closest('.delete-modal')
                 if (modal_add) {
                     modal_add.classList.add('hidden')

@@ -5,6 +5,7 @@ use App\Models\Students;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project_management;
+use App\Models\Project_Likes;
 use App\Models\User;
 
 
@@ -36,7 +37,14 @@ class Anteprojects2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $like = new Project_Likes();
+        $like->teacher_id=$request->input('teacher_id');
+        $like->project_management_id=$request->input('project_management_id');
+
+        $like->save();
+
+        return back()->with('notification','Dio like correctamente');
+
     }
 
     /**
@@ -68,6 +76,15 @@ class Anteprojects2Controller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $like = Project_Likes::find($id);
+
+        if(!$like){
+            return back()->with('error','No se encontro el Like');
+        }
+
+        $like->delete();
+        return back()->with('notifiaction','Like quitado correctamente');
+
+    
     }
 }
