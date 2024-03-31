@@ -42,64 +42,41 @@
                 </svg>
             </label>
         </div>
+        
         <div class="content_conteiner">
-            <!-- Te recomiendo cabiar el color de el background de esas cards -->
-            <div class="flex flex-raw ml-[100px] py-12">
-                <!--Separacion-->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl mt-4 text-center">Cédula de Anteproyecto</h3>
-                        <div class="">
-                            <button type="button"
-                                class="bg-[#01A080] items-center text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none mt-[10px] hover:bg-[#DFDFDF] p-[8px]">
-                                <a href="{{ route('envio') }}">Generar</a>
-                            </button>
-                        </div>
-                    </div>
+            <div class="flex items-center space-x-20 m-6">
+                <!-- Card 1 -->
+                <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
+                    <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Cédula de Anteproyecto</h3>
+                    <button type="button" class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF]">
+                        <a href="{{ route('envio') }}">Generar</a>
+                    </button>
                 </div>
-                <!--Separacion-->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] mx-[30px] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Autorización Digitalización</h3>
-                        <div class="">
-                            <button type="button"
-                                class="bg-[#01A080] items-center text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[8px]">
-                                <a href="{{ route('envio') }}">Generar</a>
-                            </button>
-                        </div>
-                    </div>
+                <!-- Card 2 -->
+                <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
+                    <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Carta de Autorización Digitalización</h3>
+                    <button type="button" class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF]">
+                        <a href="{{ route('envio') }}">Generar</a>
+                    </button>
                 </div>
-                <!--Separacion-->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="text-[#01A080] font-bold text-2xl text-center">Carta de Aprobación Memoria</h3>
-                        <div class="">
-                            <button type="button"
-                                class="bg-[#01A080] items-center text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[8px]">
-                                <a href="{{ route('envio') }}">Generar</a>
-                            </button>
-                        </div>
-                    </div>
+                <!-- Card 3 -->
+                <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
+                    <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Carta de Aprobación Memoria</h3>
+                    <button type="button" class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF]">
+                        <a href="{{ route('envio') }}">Generar</a>
+                    </button>
                 </div>
-            </div>
-
-
-            <div class="flex flex-raw ml-[100px]">
-                <!--Separacion-->
-                <div class="max-w-sm h-fit p-6 rounded-[20px] bg-[#F6F6F6] flex flex-col">
-                    <div class="w-full flex flex-col items-center gap-4">
-                        <h3 class="  text-[#01A080] font-bold text-2xl text-center">Subir Excel</h3>
-                        <div class="">
-                            <button type="button"
-                                class="show-modal group flex flex-row items-center gap-2 bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF] ">
-                                Subir
-                            </button>
-                        </div>
-                    </div>
+                <!-- Card 4 -->
+                <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
+                    <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center mt-4">Carta de Amonestación</h3>
+                    <button type="button" class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF]">
+                        <a href="{{ route('envio') }}">Generar</a>
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
+        
+        
     <!--Modal-->
     <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-[550px] rounded-xl shadow-lg max-w-4xl">
