@@ -244,6 +244,12 @@ Route::get('/anteproyectosss', function () {
     $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path" => $imagen_path]);
     return $pdf->stream('cedula.pdf');
 });
+Route::get('/aprobacion', function () {
+    $imagen_path = public_path("img/LogoUT.png");
+
+    $pdf = PDF::loadView('pdf.carta_aprobacion', ["imagen_path" => $imagen_path]);
+    return $pdf->stream('aprobacion_memoria.pdf');
+});
 
 Route::get('/amonestacionn', function () {
     $imagen_path = public_path("img/LogoUT.png");

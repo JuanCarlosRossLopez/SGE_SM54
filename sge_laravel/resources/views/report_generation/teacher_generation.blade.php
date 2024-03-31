@@ -1,6 +1,6 @@
 @extends('test.test_template')
 @section('title')
-    visualizar
+    Informes Asesor
 @endsection
 @section('contenido')
 <div class="back_conteiner">

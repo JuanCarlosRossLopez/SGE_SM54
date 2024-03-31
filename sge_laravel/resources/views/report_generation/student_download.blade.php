@@ -7,7 +7,7 @@
     <div class="back_conteiner">
         
         <div class="top_conteiner">
-            <label>Generación de informes</label>
+            <label>Descarga de informes</label>
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
@@ -44,6 +44,7 @@
                         <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Carta de
                             Autorización Digitalización</h1>
                         <button type="button">
+                            
                             <a href="/auto_digitalizacion" target="_blank" data-modal="modal2"
                                 class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
                                 <span>Descargar</span>
@@ -59,7 +60,7 @@
                         <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#5faf9f] font-bold text-xl">Carta de
                             Aprobación de Memoria</h1>
                         <button type="button">
-                            <a href="/test" target="_blank" data-modal="modal3"
+                            <a href="/aprobacion" target="_blank" data-modal="modal3"
                                 class="flex items-center justify-center gap-2 show-modal bg-gray-400 text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
                                 <span>Descargar</span>
                             </a>
