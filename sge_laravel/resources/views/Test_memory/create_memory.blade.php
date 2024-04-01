@@ -13,7 +13,7 @@
             <div class="modal_conteiner">
                 <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
                 <div class="modal-body h-fit">
-                    <form action="{{ route('memory.store') }}" method="POST">
+                    <form action="{{ route('memory.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-col items-center" >
                             <div class="flex flex-col items-center w-full pb-2">
