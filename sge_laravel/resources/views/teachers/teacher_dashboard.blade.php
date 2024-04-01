@@ -1,184 +1,95 @@
-@extends('test.test_template')
+@extends('test.final_template')
 @section('title')
     Panel de control asesor
 @endsection
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>
-                @if (Auth::user()->teachers)
-                    Bienvenido Asesor, {{ Auth::user()->teachers->name_teacher }}
-                @else
-                    No se encontró información del asesor para este usuario.
-                @endif
-            </label>
+        <div class="conteiner_cards justify-center flex flex-row">
+            <div class="conteiner_cards1 flex flex-col w-3/4">
 
-            <label>
-                <!-- Este svg es el icono -->
-                <i class="fa-solid fa-person-chalkboard"></i>
-            </label>
-        </div>
-        <div class="conteiner_cards w-full flex flex-row">
-            <div class="conteiner_cards1 flex flex-col w-[79%]">
-                <div>
-                    <div class="content_conteiner w-full h-fit">
-                        <label class="conteiner_word_title flex flex-col items-center">Acciones varias</label>
-                        <div class="conteiner_cards2 w-full mt-3">
-                            <!-- Panel 2 -->
-                            <div class=" bg-white w-full p-3 rounded">
-                                <div class=" justify-between w-full text-center flex flex-row items-center">
-                                    <label
-                                        class="font-semibold font-poppins text-lg text-start w-full">Anteproyectos</label>
-                                    <div class=" flex relative dropdown-trigger">
-                                        <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                                        </button>
-                                        <div class="hidden dropdown-content">
-                                            <a href="/gestion_asesor_anteproyecto"
-                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">En proceso</a>
-                                            <a href="/gestion_asesor_anteproyecto"
-                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Finalizados</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="font-normal font-poppins text-base text-start w-full">Ver
-                                        anteproyectos</label>
-                                </div>
-                                <div
-                                    class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
-                                    <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
-                                </div>
+
+                <!-- Contenedor para cards de acciones -->
+                <div class="conteiner_card">
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
                             </div>
-
-
-                            <!-- Panel 1 -->
-                            <div class="bg-white p-3 rounded">
-                                <div class="justify-between w-full text-center flex flex-row items-center">
-                                    <label class="font-semibold font-poppins text-lg text-start w-full">Panel de
-                                        alumnos</label>
-                                    <div class="relative dropdown-trigger">
-                                        <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                                        </button>
-                                        <div class="hidden absolute dropdown-content">
-                                            <a href="/alumnos_asesorados"
-                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver
-                                                mis asesorados</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="font-normal font-poppins text-base text-start w-full">Gestión de mis
-                                        asesorados</label>
-                                </div>
-                                <div
-                                    class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
-                                    <i class="fa-regular fa-clock"></i><label>Hace 3hrs</label>
+                            <div class="">
+                                <h1>Ver anteproyectos</h1>
+                                <div class="flex flex-col gap-1">
+                                    <button class="buttons_card">Todos los anteproyectos</button>
+                                    <button class="buttons_card ">Solo anteproyectos en revisión</button>
+                                    <button class="buttons_card">Solo anteproyectos aprobados</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Mapeo de anteproyectos -->
-                    <div class="content_conteiner w-full h-fit">
-                        <label class="conteiner_word_title w-full flex flex-col items-center">Resumen de anteproyectos
-                            asesorados</label>
-                        <div class="conteiner_cards2 mt-3">
-                            <!-- Panel 1 -->
-                            @foreach ($Project_management as $project)
-                                <div class="bg-white rounded p-3 w-full h-fit flex flex-col items-center">
-                                    <label>
-                                        <p>{{ $project->project_title }}</p>
-                                        <!-- Mostrar más información del proyecto según tus necesidades -->
-                                    </label>
-                                    <div class="progress-item">
-                                        <svg width="190" height="190" class="progress-chart">
-                                            <circle cx="85" cy="85" r="80" class="progress-back"
-                                                fill="none"></circle>
-                                            <circle cx="85" cy="85" r="80" class="progress-front3"
-                                                fill="none" stroke-dasharray="0 1000000"></circle>
-                                            <g class="progress-text">
-                                                <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
-                                                    id="percentage3">0%</text>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <a href="{{ route('information_project.show', $project->id) }}" class="Button-progress">Visualizar
-                                        detalles</a>
+                    <!-- FINAL CARD DISEÑADA -->
+
+                    <!-- INICIO CARD ejemplo-->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-users"></i></label>
+                            </div>
+                            <div>
+                                <h1>Mis estudiantes</h1>
+                                <div class="flex flex-col gap-1">
+                                    <button class="buttons_card">Ver mis estudiantes asesorados</button>
                                 </div>
-                            @endforeach
-
-                            <!-- Panel 3 -->
-
+                            </div>
                         </div>
+                    </div>
+                    <!-- FINAL CARD ejemplo -->
+                </div>
+
+
+
+
+                <!-- Mapeo de anteproyectos -->
+                <div class="content_conteiner w-full h-fit p-4">
+                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Resumen diario de mis anteproyectos como asesor:</label>
+                    <div class="conteiner_cards2">
+                        <!-- Panel 1 -->
+                        @foreach ($Project_management as $project)
+                            <div class="bg-[#F7FAFC] border rounded p-4 w-full h-fit flex flex-col items-center">
+                                <label class="text-xl text-[#333333] uppercase font-semibold">{{ $project->project_title }}</label>
+                                <a href="{{ route('information_project.show', $project->id) }}" class="buttons_card flex justify-center mt-2">Visualizar detalles</a>
+                            </div>
+                        @endforeach
+
+                        <!-- Panel 3 -->
+
                     </div>
                 </div>
             </div>
 
-            <div class="w-fit">
-                <div class="content_conteiner h-fit p-1 w-[20rem]  sm:ml-0">
-                    <div class="flex flex-col gap-1">
-                        <label class="conteiner_word_title  h-fit flex flex-col items-center">¿Qué más?</label>
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[16rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-base text-start w-full">Libros</label>
-                                <div class="relative dropdown-trigger">
-                                    <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    </button>
-                                    <div class="hidden absolute dropdown-content">
-                                        <button class="w-full show-modal px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                            Ver libros
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-sm text-start w-full">Información de los
-                                    Libros</label>
-                            </div>
-                        </div>
-                        <div class="bg-white w-full p-3 rounded">
-                            <div class="w-[16rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-base text-start w-full">Historial de
-                                    memorias</label>
-                                <div class="relative dropdown-trigger">
-                                    <button class="dropdown-btn w-[2rem] h-[2rem] hover:bg-slate-300 rounded-full">
-                                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    </button>
-                                    <div class="hidden dropdown-content">
-                                        <a href="/memory" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ver
-                                            memorias</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-sm text-start w-full">Consultar
-                                    memorias</label>
-                            </div>
-                        </div>
+
+            <div class="w-1/5 h-fit gap-0 flex flex-col">
+                <div class="content_conteiner h-fit p-2 card flex justify-center">
+                    <div class="flex flex-col gap-2 items-center">
+                        <h1>¿Qué más hacer?</h1>
+                        <button class="show-modal bg-[#DEF7EC] w-full p-2 rounded text-center flex flex-row text-[#046C4E] items-center justify-center gap-2 text-lg">
+                            <i class="fi fi-sr-books flex"></i><label class="font-poppins font-normal text-start cursor-pointer">Ver libros</label>
+                        </button>
+                        <a href="/memory" class="bg-[#DEF7EC] w-full p-2 rounded text-center flex flex-row text-[#046C4E] items-center justify-center gap-2 text-lg">
+                            <i class="fi fi-sr-memo-circle-check flex"></i><button  class="font-poppins font-normal text-start cursor-pointer"> Ver memorias finalizadas</button>
+                        </a>
                     </div>
                 </div>
-                <div class="content_conteiner h-fit p-0 w-[20rem] sm:ml-0">
-                    <div class="flex flex-col gap-0">
-                        <div
-                            class="border-2  rounded-[7px_7px_7px_7px] p-1 bg-[#F6F6F6] shadow w-full max-w-[220px] md:max-w-[715px] lg:max-w-[645px] h-fit">
-                            <label
-                                class="conteiner_word_title  h-fit flex flex-col items-center font-semibold text-lg text-[#18A689]">Recordatorios</label>
-                            <br />
-                            <div class="overflow-auto h-fit p-0">
-                                <div class="flex flex-col">
 
-                                    <p class="font-medium text-xl text-center">Sin revisiones</p>
-
-                                </div>
-                            </div>
-                        </div>
+                <div class="content_conteiner h-fit p-4 card">
+                    <div class="flex flex-col gap-2 justify-center w-full items-center">
+                        <h1>Recordatorios</h1>
+                        <p class="font-normal font-poppins text-center cursor-pointer text-lg">Sin nada que hacer hijo de su pinche madre</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Modal -->
     <div
