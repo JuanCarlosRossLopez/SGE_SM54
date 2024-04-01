@@ -34,17 +34,51 @@
                 </div>
             </div>
             @if (session()->has('status'))
-                <div class="text-md text-green-700" id="timeMessage">
-                    {{ session('status') }}
-                </div>
+
+
+
+<div class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+    <div class="modal-content bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-end">
+            <button class="modal-close">
+                <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="timeMessage" class="text-2xl font-sans text-green-700">{{ session('status') }}</div>
+    </div>
+</div>
+
+
+
             @endif
             <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
                 @csrf
-                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Anteproyecto</h1>
+                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Estudiante</h1>
                 <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
                 <div class="flex flex-col mb-3 items-center">
                     <div class="grid grid-cols-3 gap-24">
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="educational_program">Programa Educativo</label>
+                                <select type="text" name="educational_program" id="educational_program"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Programa Educativo" value="{{ old('educational_program') }}">
+                                    <option value="" disabled selected class=" text-transparent">Programa Educativo
+                                    </option>
+                                    <option value="Ingeniería">Ingeniería</option>
+                                    <option value="Licenciatura">Licenciatura</option>
+                                    <option value="Técnico Superior Universitario">Técnico Superior Universitario</option>
+                                    <option value="Posgrado">Posgrado</option>
+                                </select>
+                                @error('educational_program')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="project_title">Título de Proyecto</label>
@@ -60,9 +94,8 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
                                 <label for="student_name">Nombre del Estudiante</label>
-                                <input type="text" name="student_name" id="student_name"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Nombre del estudiante" value="{{Auth::user()->name}}" />
+                                <input type="text" name="id_student" value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}" class="hidden">
+                                <input type="text" name="student_name" id="student_name" class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer" placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -84,9 +117,12 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="student_email">Correo del Estudiante</label>
+                                <input type="text" name="student_id" id="" value="{{ Auth::user()->id }}" hidden>
+
+                                <input type="text" name="likes" id="likes" value="0" hidden>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" value="{{Auth::user()->email}}" />
+                                    placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" readonly/>
                                 @error('student_email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -131,17 +167,23 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="student_id">Matrícula</label>
                                 <input type="text" name="student_id" id="student_id"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Matrícula" value="{{ old('student_id') }}" />
+                                    placeholder="Matrícula" value="22393130" readonly/>
                                 @error('student_id')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
+                    </div>
+                    <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Asesor</h1>
+                    <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
+                    <div class="grid grid-cols-3 gap-24">
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_company">Empresa</label>
                                 <select name="project_company" id="project_company"
                                     class="cursor-pointer block py-3 px-4 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer">
                                     <option value="" disabled selected class=" text-transparent">Empresa
@@ -158,6 +200,19 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="direction">Dirección de la Empresa</label>
+                                <input type="text" name="direction" id="direction"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Dirección de la Empresa" value="{{ old('direction') }}" />
+                                @error('direction')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_advisor">Asesor en la Empresa</label>
                                 <input type="text" name="project_advisor" id="project_advisor"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Asesor Empresarial" value="{{ old('project_advisor') }}" />
@@ -169,6 +224,19 @@
                         </div>
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
+                                <label for="position">Cargo del Asesor</label>
+                                <input type="text" name="position" id="position"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Cargo" value="{{ old('position') }}" />
+                                @error('position')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="project_advisor_phone">Celular Asesor</label>
                                 <input type="text" name="project_advisor_phone" id="project_advisor_phone"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Teléfono del Asesor" value="{{ old('project_advisor_phone') }}" />
@@ -178,8 +246,25 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-1"></div>
+                            <div class="relative z-0 w-full mb-5 group">
+                                <label for="email_asesor">Correo Asesor</label>
+                                <input type="email" name="email_asesor" id="email_asesor"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Correo del Asesor" value="{{ old('email_asesor') }}" />
+                                @error('email_asesor')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                @enderror
+                                <hr class="border-t-2 border-[#18A689]" />
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Proyecto</h1>
+                    <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
+                    <div class="grid grid-cols-3 gap-24">
+                        <div class="col-span-8 mb-5">
                             <div class=" z-0 w-full group">
+                                <label for="general_objective">Objetivo General</label>
                                 <textarea name="general_objective" id="general_objective"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
                                     placeholder="Objetivo General">{{ old('general_objective') }}</textarea>
@@ -189,10 +274,11 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-8 mb-5">
                             <div class="relative z-0 w-full group">
                                 <label id="infoButton"
-                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><i
+                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><span
+                                        class="mr-2">Planteamiento del Problema</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="problem_statement" id="problem_statement"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -203,10 +289,11 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-8 mb-5">
                             <div class="relative z-0 w-full group">
                                 <label id="infoButton"
-                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><i
+                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><span
+                                        class="mr-2">Justificación</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="justification" id="justification"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -217,9 +304,11 @@
                                 <hr class="border-t-2 border-[#18A689]" />
                             </div>
                         </div>
-                        <div class="col-span-2 mb-5">
+                        <div class="col-span-8 mb-5">
                             <div class="relative z-0 w-full group">
-                                <label id="infoButton" data-tooltip="listar las actividades a llevar a cabo en orden."><i
+                                <label id="infoButton"
+                                    data-tooltip="listar las actividades a llevar a cabo en orden."><span
+                                        class="mr-2">Actividades para realizar</span><i
                                         class="fas fa-exclamation-circle text-[#01A080] "></i></label>
                                 <textarea name="activities" id="activities"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
@@ -233,25 +322,26 @@
                     </div>
                 </div>
         </div>
-        {{-- <div class="flex flex-row -mx-2 w-full">
+    </div>
+    {{-- <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
                 <!-- Los otros elementos omitidos por brevedad -->
             </div>
         </div> --}}
-        <div class="flex flex-col mt-3">
-            <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
-                type="submit">Guardar</button>
-        </div>
-        </form>
+    <div class="flex flex-col mt-3">
+        <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
+            type="submit">Guardar</button>
+    </div>
+    </form>
 
-        {{-- <div
+    {{-- <div
             class="modal h-screen w-full fixed left-0 top-0 hidden-flex justify-center items-center bg-black bg-opacity-50 ">
             <!-- Contenido de la modal omitido por brevedad -->
         </div> --}}
 
-        <!-- Contenido de la modal-edit omitido por brevedad -->
+    <!-- Contenido de la modal-edit omitido por brevedad -->
 
-        </form>
+    </form>
     </div>
 
     </div>
@@ -285,6 +375,27 @@
         var element = document.getElementById('timeMessage');
         if (element) {
             element.style.display = 'none';
+        }
+    }, 5000);
+
+
+//Script para Modal del Señor R//
+
+    setTimeout(function() {
+        var element = document.getElementById('timeMessage');
+        if (element) {
+            var modalMessage = document.getElementById('modalMessage');
+            modalMessage.innerHTML = element.innerHTML;
+            var modal = document.querySelector('.modal');
+            var closeModalButtons = document.querySelectorAll('.modal-close');
+
+            modal.classList.remove('hidden');
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    modal.classList.add('hidden');
+                });
+            });
         }
     }, 5000);
 </script>

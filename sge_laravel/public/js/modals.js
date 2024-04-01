@@ -1,46 +1,37 @@
-/* 
-Instrucciones para utilizar los modals con este js:
+/*
+Instrucciones para utilizar los modals con este JavaScript:
 
-<!-- Paso 1: Agrega el atributo data-modal a tu botón que abre el modal con el valor igual al id del modal que deseas abrir. -->
+0. Incluye lo siguiente en tu vista o template:
+        <script src="{!! asset('js/modals.js') !!}"></script>
 
-    <button type="button">
-        <!-- Agregamos el atributo data-modal con el valor "modal1" -->
-        <a href="/test" target="_blank" data-modal="modal1" class="show-modal">
-            <span>Descargar</span>
-        </a>
-    </button>
+1. Agrega el atributo 'data-modal' al botón que abre el modal, con el valor igual al 'idModal' del modal que deseas abrir.
+   Ejemplo: 
+            <button data-modal="editMaestro" class="show-modal">Abrir Modal</button>
 
-<!-- Paso 2: Asegúrate de que el botón tenga la clase "show-modal". -->
-<!-- El botón debe tener la clase "show-modal". Esto significa que activará la apertura del modal al ser clickeado. -->
+2. Asegúrate de que el botón tenga la clase 'show-modal'. Esta clase activará la apertura del modal al ser clickeado.
 
+3. En el modal, agrega el atributo 'idModal' con el mismo valor que el 'data-modal' del botón correspondiente, y la clase 'modal'.
+   Ejemplo:
+            <div idModal="idMaestro" class="modal">...</div>
 
-Modal correspondiente:
-<!-- Paso 3: En el modal, asegúrate de que el id coincida con el valor de data-modal en el botón y que tenga la clase "modal". -->
-<!-- Este modal tiene el id "modal1" y la clase "modal" -->
+4. El botón para cerrar el modal debe tener la clase 'close-modal'. Al ser clickeado, cerrará el modal correspondiente.
+   Ejemplo: 
+            <button class="close-modal">Cerrar Modal</button>
 
-    <div id="modal1" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-        <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
-            <div class="border-b px-4 py-2 flex justify-content-end">
-                <!-- Paso 4: El botón para cerrar el modal debe tener la clase close-modal. -->
-                <!-- Este botón tiene la clase close-modal -->
-                <!-- Al ser clickeado, cerrará el modal -->
-                <button class="close-modal">
-                    <!-- Icono de cierre -->
-                    <p class="text-2xl">
-                        <i class="fa-solid fa-circle-xmark items-end bg-white rounded-full" style="color: #c97979;"></i>
-                    </p>
-                </button>
+Si tu modal usa una variable de Laravel, como {{ $teacher->id }}, puedes utilizar la misma variable en el atributo 'idModal':
+    Ejemplo: 
+            <div idModal="editMaestro_{{ $teacher->id }}" class="modal">
+                <h3 >Datos del maestro: {{ $teacher->name }}</h3>
             </div>
-        </div>
-    </div>
 */
 
 // Lista de modals
 const modals = document.querySelectorAll(".modal");
 
 // Acciones para cada modal
-function handleModal(action, modalId) {
-    const modal = document.getElementById(modalId);
+function handleModal(action, idModal) {
+    const modal = document.querySelector(`.modal[idModal="${idModal}"]`);
+
     modals.forEach((m) => m.classList.add("hidden"));
 
     // Abrir o cerrar modal
@@ -57,15 +48,14 @@ const closeModalButtons = document.querySelectorAll(".close-modal");
 
 modalTriggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
-        const modalId = trigger.dataset.modal;
-        handleModal("open", modalId);
+        const idModal = trigger.dataset.modal;
+        handleModal("open", idModal);
     });
 });
 
 closeModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        const modalId = button.closest(".modal").id;
-        handleModal("close", modalId);
+        const idModal = button.closest(".modal").getAttribute("idModal");
+        handleModal("close", idModal);
     });
 });
-

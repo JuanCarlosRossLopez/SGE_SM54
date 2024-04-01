@@ -1,5 +1,5 @@
 <?php
-
+//Esto no funciona
 namespace App\Http\Controllers\Anteprojects;
 
 use App\Http\Controllers\Controller;

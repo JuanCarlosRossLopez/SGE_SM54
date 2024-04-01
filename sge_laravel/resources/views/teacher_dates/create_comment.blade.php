@@ -13,12 +13,20 @@
             <div class="modal_conteiner">
                 <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
                 <div class="modal-body h-fit">
-                    <form action="{{ route('information_project.store') }}" method="POST">
+                    <form action="{{ route('crear_comentario.store') }}" method="POST">
                         @csrf
                         <div class="flex flex-col items-center" >
-                            <div class="flex flex-col justify-start w-full pb-2">
+                            <div class="flex flex-col justify-start w-[800px] pb-2">
                                 <label for="general_comment" class="conteiner_word_title flex flex-col items-center">Comentario general</label>
-                                <input type="text" name="general_comment" id="general_comment" class="rounded h-[10rem]">
+                                <textarea type="text" name="general_comment" id="general_comment" class="rounded h-auto"></textarea>
+                            </div>
+                            <div>
+                                <label for="teacher_id" class="conteiner_word_title flex flex-col items-center">Asesor</label>
+                                <input type="text" name="teacher_id" id="teacher_id" class="rounded">
+                            </div>
+                            <div>
+                                <label for="project_management_id" class="conteiner_word_title flex flex-col items-center">Proyecto</label>
+                                <input type="text" name="project_management_id" id="project_management_id" class="rounded">
                             </div>
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-fit">Guardar</button>
