@@ -1,5 +1,4 @@
-<div id="edit{{ $teachers->id }}"
-    class="modal-edit-asesor  h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div id="edit{{ $teachers->id }}" class="modal-edit-asesor  h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <form method="POST" action="{{ url('maestros', $teachers->id) }}">
         @method('PUT')
         @csrf
@@ -15,27 +14,46 @@
                     <div class="flex flex-col items-center justify-center">
                         <div class="flex items-center justify-between w-full mb-4">
                             <h1 class="text-xl font-bold">Editando al asesor</h1>
-                            <p class="text-gray-500">{{ $teachers->id }}</p>
                         </div>
-                        <form action="{{ route('maestros.update', $teachers->id) }}" method="POST"
-                            class="flex flex-col gap-4">
+                        <form action="{{ route('maestros.update', $teachers->id) }}" method="POST" class="flex flex-col gap-4">
                             @csrf
                             @method('PUT')
                             <div class="flex gap-4">
                                 <div class="flex flex-col gap-4">
-                                    <input type="text" name="name_teacher" id="name_teacher"
-                                        placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="id_user" id="id_user"
-                                        placeholder="ID de usuario del asesor"
-                                        class="rounded-md border border-gray-300 p-2">
+
+                                    <input type="text" value="{{$teachers->name_teacher}}" name="name_teacher" id="name_teacher" placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
+                                   
+
+                                    <select name="id_user" id="" class="rounded-md border border-gray-300 p-2">
+                                        <option value="" selected>{{ $teachers->user->name}}</option>
+                                        @php
+                                        $asesorEncontrado = false;
+                                        @endphp
+                                        @foreach ($users as $user)
+                                        @if ($user->hasRole('Asesor'))
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @php
+                                        $asesorEncontrado = true;
+                                        @endphp
+                                        @endif
+                                        @endforeach
+                                        @if (!$asesorEncontrado)
+                                        <option value="" disabled>No hay usuarios asesores</option>
+                                        @endif
+                                    </select>
+
                                 </div>
                                 <div class="flex flex-col gap-4">
-                                    <input type="number" name="payroll" id="payroll"
-                                        placeholder="Número de nómina del asesor"
-                                        class="rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="division_id" id="division_id"
-                                        placeholder="ID de la división del asesor"
-                                        class="rounded-md border border-gray-300 p-2">
+                                    <input type="number" value="{{$teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
+
+                                    <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
+                                        <option value="{{$teachers->division_id}}" selected>{{$teachers->division->division_name}}</option>
+
+                                        @foreach ($division as $divisions)
+                                        <option value="{{$divisions->id}}">{{$divisions->division_name}}</option>
+                                        @endforeach
+                                    </select>
+
                                 </div>
                             </div>
                             <!-- Puedes agregar más campos aquí según sea necesario -->

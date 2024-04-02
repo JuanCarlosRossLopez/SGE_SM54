@@ -34,5 +34,12 @@ class Teachers extends Model
     {
         return $this->hasMany(Comments::class, 'id_comment');
     }
+
+
+    public function division(): BelongsTo
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+    
 }
 
