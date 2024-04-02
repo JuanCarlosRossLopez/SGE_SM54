@@ -168,7 +168,7 @@ Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
 Route::resource('asignar_alumnos', TeachingAdviceController::class);
 
-Route::resource('advised_students', TeacherDashboardController::class);
+Route::resource('mis_asesorados', TeacherDashboardController::class);
 
 
 
@@ -181,7 +181,7 @@ Route::resource('advised_students', TeacherDashboardController::class);
 Route::resource('gestion_asesor_anteproyecto', Anteprojects2Controller::class);
 //Memoria getsion Valier
 Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
-Route::resource('memory', Memory_History_Controller::class);
+Route::resource('historial_de_memorias', Memory_History_Controller::class);
 Route::get('/crear_memoria', function () {
     return view('Test_memory.create_memory');
 });
@@ -209,10 +209,10 @@ Route::get('/edit_memory', function () {
 
 //Ignorar de mientras
 //Comentarios gestion Valier
-Route::resource('information_project', AnteprotecMapDashController::class);
-Route::get('/crear_comentario', function () {
-    return view('teacher_dates.create_comment');
-});
+Route::resource('informacion_anteproyecto', AnteprotecMapDashController::class);
+
+
+
 
 Route::post('/crear_comentario', [CommentsController::class, 'store'])->name('crear_comentario.store');
 

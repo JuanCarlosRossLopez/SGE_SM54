@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comments;
 use App\Models\Project_management;
 use App\Models\Students;
+use App\Models\Teaching_advice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,17 +25,15 @@ class AnteprotecMapDashController extends Controller
             if ($usuario->teachers) {
                 // Accede al maestro asociado
                 $maestro = $usuario->teachers;
-                // Accede a las propiedades del maestro
                 $id = $maestro->id;
-
-                // Obtener los estudiantes asesorados por el maestro
-                $students = Students::where('adviser_id', $id)->paginate(10); // Cambia el número 10 según tu necesidad de resultados por página
-                // Obtener los proyectos de gestión de proyectos paginados
-                $Project_management = Project_management::paginate(10);
-                //$comments = Comments::all();
-
-
-                return view('teachers.teacher_dashboard', compact('students', 'Project_management'));
+                $Project_management = Teaching_advice::where('teacher_id', $id)->get();
+        
+                foreach ($Project_management as $project_management) {
+                    $project_management->student->load('projectManagement');
+                }
+        
+                $Students = Students::all();
+                return view('teachers.teacher_dashboard', compact('Students', 'Project_management'));
             }
         }
 

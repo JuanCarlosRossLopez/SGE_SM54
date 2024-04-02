@@ -58,7 +58,7 @@ class Memory_History_Controller extends Controller
         }
         
     
-        return redirect('memory')->with('Notification', 'Memory created successfully');
+        return redirect('historial_de_memorias')->with('Notification', 'Memory created successfully');
     }
 
     /**
