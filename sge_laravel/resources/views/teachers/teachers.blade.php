@@ -1,5 +1,4 @@
-@extends('test.template')
-
+@extends('test.test_template')
 @section('title')
     Asesores
 @endsection
@@ -8,13 +7,12 @@
     <div class="back_conteiner">
         <div class="top_conteiner">
             <div class="w-[70rem]">
-                <label>Lista de Asesores</label>
+                <label>Asignacion de usuario al asesor</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
                 </label>
             </div>
-
         </div>
         <div class="content_conteiner  h-fit">
             <div class="flex flex-row items-center justify-start gap-2">
@@ -45,8 +43,8 @@
                             <th class="theader">id</th>
                             <th class="theader">Nombre del maestro</th>
                             <th class="theader">Número de nomina</th>
-                            <th class="theader">id_usuario</th>
-                            <th class="theader">Division_id</th>
+                            <th class="theader">Nombre usuario</th>
+                            <th class="theader">Division</th>
                             <th class="theader">Acciones</th>
                         </tr>
                     </thead>
@@ -56,7 +54,7 @@
                                 <td class="trowc">1</td>
                                 <td class="trowc">{{ $teachers->name_teacher }}</td>
                                 <td class="trowc">{{ $teachers->payroll }}</td>
-                                <td class="trowc">{{ $teachers->id_user }}</td>
+                                <td>{{ $teachers->user ? $teachers->user->name : 'Sin usuario asociado' }}</td> 
                                 <td class="trowc">{{ $teachers->division_id }}</td>
                                 <td class="trowc">
                                     <button class="show-modal-edit" data-target="#edit{{ $teachers->id }}">
@@ -143,6 +141,7 @@
                                     placeholder="Número de nómina del asesor"
                                     class="flex-1 rounded-md border border-gray-300 p-2">
                             </div>
+                        
                             <div class="flex gap-4">
                                 <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor"
                                     class="flex-1 rounded-md border border-gray-300 p-2">

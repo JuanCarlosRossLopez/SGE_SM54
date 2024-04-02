@@ -1,7 +1,7 @@
 @extends('test.test_template')
 
 @section('title')
-    Historial de memorias
+    Gestión de roles
 @endsection
 @section('contenido')
     <div class="min-h-screen ">

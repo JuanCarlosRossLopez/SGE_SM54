@@ -20,9 +20,7 @@ return new class extends Migration
             ->constrained('companies')
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignId('project_status_id')
-            ->nullable()
-            ->constrained('status_projects')
+            $table->foreignId('project_status_id')->nullable()->constrained('status_projects')
             ->onUpdate('restrict')
             ->onDelete('restrict');
             $table->foreignId('intership_id')->constrained('interships')

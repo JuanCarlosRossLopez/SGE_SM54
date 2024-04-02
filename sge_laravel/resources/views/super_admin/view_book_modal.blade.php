@@ -3,7 +3,7 @@
     <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
         <div class="border-b px-4 py-2 flex justify-between items-center text-center">
             <h3 class="font-semibold text-lg ml-60 text-white ">{{$book->book_name}}</h3>
-            <button class="closeModalView bg-white rounded-full h-[1rem] flex items-center">
+            <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
             </button>
         </div>

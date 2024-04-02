@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Students;
 use Illuminate\Http\Request;
 use App\Models\Teachers;
+use App\Models\User;
+
 
 class TeachersController extends Controller
 {
@@ -13,15 +16,18 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teachers::all();
-        return view('teachers.teachers', compact('teachers'));
+        $Students = Students::all();
+        $teachers = Teachers::paginate(10);
+    
+        return view('teachers.teachers', compact('teachers', 'Students'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        return view('teachers.teachers', compact('Students'));
     }
 
     /**
@@ -65,7 +71,6 @@ class TeachersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-      
         ]);
 
         $teacher = Teachers::find($id);

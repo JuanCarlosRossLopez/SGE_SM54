@@ -1,5 +1,5 @@
 @extends('test.test_template')
-@section('titulo')
+@section('title')
 Panel de control administrador
 @endsection
 @section('contenido')
@@ -9,7 +9,7 @@ Panel de control administrador
 </head>
 <div class="back_conteiner">
     <div class="top_conteiner">
-        <label>Dashboard administrador</label>
+    <label>Dashboard administrador, bienvenido {{ Auth::user()->name }}</label>
         <label>
             <!-- Este svg es el icono -->
             <i class="fa-solid fa-user-tie"></i>
@@ -339,4 +339,5 @@ Panel de control administrador
             container.scrollTop = container.scrollHeight;
         };
     </script>
-    @endsection
+    </script>
+    @endsection

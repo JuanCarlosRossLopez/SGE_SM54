@@ -11,7 +11,7 @@
             </div>
             <div class="bg-white p-2">
                 <div class="modal-body flex-col gap-4 mb-0 overflow-y-auto flex items-center justify-center P-10">
-                   
+                
                 
                     <label class="poppins-light text-[15px]" for="">El rol cuenta con estos permisos:</label>
 

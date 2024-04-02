@@ -1,5 +1,5 @@
-@extends('test.template')
-@section('titulo')
+@extends('test.test_template')
+@section('title')
     Descargas
 @endsection
 
@@ -7,7 +7,7 @@
     <div class="back_conteiner">
         
         <div class="top_conteiner">
-            <label>Generación de informes</label>
+            <label>Descarga de informes</label>
             <label>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
@@ -18,7 +18,7 @@
         </div>
 
 
-        <div class="bg-[#E9E9E9] min-h-screen rounded-xl ">
+        <div class="bg-[#E9E9E9] min-h-screen rounded-xl">
             <div class="flex flex-raw mx-[100px] py-12">
                 <div class="grid gap-14 md:grid-cols-3 md:gap-8">
                     <div class="rounded-xl bg-white p-2 text-center shadow-xl flex flex-col">
@@ -44,7 +44,8 @@
                         <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Carta de
                             Autorización Digitalización</h1>
                         <button type="button">
-                            <a href="/test" target="_blank" data-modal="modal2"
+                            
+                            <a href="/auto_digitalizacion" target="_blank" data-modal="modal2"
                                 class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
                                 <span>Descargar</span>
                             </a>
@@ -57,10 +58,24 @@
                             <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
                         </div>
                         <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#5faf9f] font-bold text-xl">Carta de
-                            Autorización Digitalización</h1>
+                            Aprobación de Memoria</h1>
                         <button type="button">
-                            <a href="/test" target="_blank" data-modal="modal3"
+                            <a href="/aprobacion" target="_blank" data-modal="modal3"
                                 class="flex items-center justify-center gap-2 show-modal bg-gray-400 text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
+                                <span>Descargar</span>
+                            </a>
+                        </button>
+                    </div>
+
+                    <div class="rounded-xl bg-white p-2 text-center shadow-xl flex flex-col margin mt-8">
+                        <div
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
+                            <img src="{!! asset('img/pdf_icon.svg') !!}" class="w-[40px] items-center">
+                        </div>
+                        <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Carta de Amonestación</h1>
+                        <button type="button">
+                            <a href="/amonestacionn" target="_blank" data-modal="modal2"
+                                class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
                                 <span>Descargar</span>
                             </a>
                         </button>
@@ -93,6 +108,30 @@
         const tableBody = document.querySelector('tbody');
     </script>
 
+    <script>
+        const modal = document.querySelector('.modal');
+        const showModal1 = document.querySelector('.show-modal1');
+        const closeModal = document.querySelectorAll('.close-modal');
+
+        showModal1.addEventListener('click', function() {
+            modal.classList.remove('hidden')
+        })
+
+
+        closeModal.forEach(close => {
+            close.addEventListener('click', function() {
+                modal.classList.add('hidden')
+            });
+        });
+    </script>
+    <script>
+        const showModal2 = document.querySelector('.show-modal2');
+        
+        showModal2.addEventListener('click', function() {
+            modal.classList.remove('hidden')
+        });
+        
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

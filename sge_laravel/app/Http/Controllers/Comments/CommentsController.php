@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Comments;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comments;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
+use App\Models\Project_management;
 class CommentsController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        return view("comments", compact('comments'));
+        $comment = Comments::paginate(10);
+        return view('teacher_dates.information_project',["comments"=>$comment]);
     }
 
     /**
@@ -21,24 +23,29 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view("comments");
+        return view("teacher_dates.create_comment");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        $request->validate([
-            'general_comment' => 'nullable',
-            'title_comment' => 'nullable',
-            'objective_comment' => 'nullable',
-            'planteamiento_comment' => 'nullable',
-            'justification_comment' => 'nullable',
-            'activities_comment' => 'nullable'
-        ]);
+        // $request->validate([
+        //     'general_comment'=>'required|string',
+        //     'teacher_id'=>'required|string',
+        //     'anteproject_id'=>'required|string'
+        // ]);
 
-        return redirect()->route('comments.index')->with('success', '¡Se ha realizado con exito el envio!');
+        $comments = new Comments();
+        $comments->general_comment = $request->input('general_comment');
+        $comments->teacher_id = $request->input('teacher_id');
+        $comments->project_management_id = $request->input('project_management_id');
+        $comments->save();
+
+        $proyectoid = $comments -> project_management_id;
+
+        return redirect('information_project')->with('Notification', 'Comentario creado');
     }
 
     /**
@@ -46,9 +53,9 @@ class CommentsController extends Controller
      */
     public function show(string $id)
     {
-        $comments = Comments::find($id);
-        //Aqui usa la ruta donde se vayan a mostrar los comentarios
-        return view('show-comments', compact('commments'));
+        // $projects = Project_management::find($id);
+        $comment = Comments::find($id);
+        
     }
 
     /**
@@ -56,17 +63,19 @@ class CommentsController extends Controller
      */
     public function edit(string $id)
     {
-        $comments = Comments::find($id);
+        $comment = Comments::find($id);
+        return view('teacher_dates.edit_comment', ['memory' => $comment]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id):RedirectResponse
     {
-        $comments = Comments::find($id);
-        //dd($comments);
-        return redirect('comments')->with('notificacion', '¡He ha realizado la edición correctamente!');
+        $comment = Comments::find($id);
+
+        $comment->general_comment = $request->all();
+        return redirect('teacher_dates.information_project')->with('success', '¡El comentario se realizó correctamente!');
     }
 
     /**
@@ -74,8 +83,9 @@ class CommentsController extends Controller
      */
     public function destroy(string $id)
     {
-        $comments = Comments::find($id);
-        $comments -> delete();
-        return redirect('');
+        $comment = Comments::find($id);
+        $comment->delete();
+
+        return redirect('teacher_dates.information_project')->with('success','¡El comentario se borró correctamente!');
     }
 }

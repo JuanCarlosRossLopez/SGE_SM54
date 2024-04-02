@@ -40,61 +40,52 @@
                 <table class="standar_table">
                     <thead class="standar_thead">
                         <tr>
-                            <th class="theader">Titulo de memoria</th>
-                            <th class="theader">Fecha dde realizaciones</th>
+                            <th class="theader">#</th>
+                            <th class="theader">Titulo</th>
+                            <th class="theader">PDF</th>
+                            <th class="theader">Fecha de subido</th>
                             <th class="theader">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        <tr class="trow">
-                            <td class="trowc">Reto Tokio</td>
-                            <td class="trowc">20 oct 2024</td>
-                            <td class="trowc">
-                                <div>
-                                    <button class="show-modal">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round"stroke-linejoin="round"
-                                                d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
-                                        </svg>
-                                    </button>
-                                </div>
+                        @foreach ($memories as $memory)
+                            <tr class="trow">
+                                <td class="trowc">{{ $memory->id }}</td>
+                                <td class="trowc">{{ $memory->memory_name }}</td>
+                                <td class="trowc">{{ $memory->memorie_pdf }}</td>
+                                <td class="trowc">{{ $memory->created_at }}</td>
+                                <!--
+                                <td class="trowc">
+                                    <div>
+                                        <button class="show-modal">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round"stroke-linejoin="round"
+                                                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
 
-                            </td>
-                        </tr>
-                        
+                                </td>
+                                
+                                    <td class="border px-2 py-2">
+                                        <a href="{{ route('memory.edit', $memory->id) }}"
+                                            class="bg-green-400 text-black py-1 px-2 rounded w-1/3 ml-4">
+                                            Editar</a>
+                                    </td>
+                                -->
+                                <td>
+                                    <a href="{{ route('downloadPdf', ['id' => $memory->id]) }}"
+                                        class="text-[#464646] py-1 px-2 rounded text-xl w-full ml-4"> <i class="fa-solid fa-download"></i> </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                <div class="mt-5">{{ $memories->links() }}</div>
             </div>
 
-            <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-            <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-                <div>
-                    <button
-                        class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        < </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                1
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                2
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                3
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                >
-                            </button>
-                </div>
-                <div>
-                    <span>Cantidad de registros :</span>
-                    <span id="rowCount"></span>
-                </div>
-            </div>
+
         </div>
     </div>
 

@@ -5,11 +5,11 @@
 @endsection
 
 @section('contenido')
-    <div class="lg:w-[112rem] sm:w-[50rem] ml-[3rem] items-center flex-col">
+    <div class="lg:w-[98rem] sm:w-[12rem] ml-[3rem] items-center flex-col">
         <div
             class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
             <div class="">
-                <label>Historial de libros</label>
+                <label>Historial de librose</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
@@ -55,41 +55,37 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
+                        @php
+                            $i = 0;
+                        @endphp
                         @foreach ($books as $book)
                             <tr class="trow">
-                                <td class="trowc md:table-cell">1</td>
+                                <td class="trowc md:table-cell">@php echo ++$i @endphp</td>
                                 <td class="trowc md:table-cell">{{ $book->book_name }}</td>
-                                <td class="trowc md:table-cell">{{ $book->book_front_page }}</td>
+                                <td class="trowc md:table-cell">
+                                    imagen
+                                </td>
                                 <td class="trowc md:table-cell">{{ $book->book_description }}</td>
                                 <td class="trowc md:table-cell">{{ $book->author }}</td>
                                 <td class="trowc md:table-cell">{{ $book->price }}</td>
                                 <td class="trowc md:table-cell">{{ $book->students_id }}</td>
                                 <td class="trowc">
                                     <button class="showView" data-target="#view{{ $book->id }}">
-                                        Ver
+                                        <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7  m-auto   ">
                                     </button>
                                     <button class="showEdit" data-target="#edit{{ $book->id }}">
-                                        Editar
+                                        <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7    ">
                                     </button>
-                                    <button class="deleteBook" data-target="#delete{{ $book->id }}">Eliminar</button>
+                                    <button class="deleteBook" data-target="#delete{{ $book->id }}">
+                                        <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7   text-red-500  ">
+                                    </button>
                                 </td>
                             </tr>
                             @include('super_admin.view_book_modal')
                             @include('super_admin.edit_book_modal')
                             @include('super_admin.delete_book_modal')
                         @endforEach
-                        <tr class="trow">
-                            <div>
-                                <button class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24"stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round"stroke-linejoin="round"
-                                            d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
-                                    </svg>
-                                </button>
-                            </div>
-                            </td>
-                        </tr>
+                     
                     </tbody>
                 </table>
             </div>
@@ -99,6 +95,7 @@
                 <div>
                     <button
                         class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
+                    <
                     </button>
                     <button
                         class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
@@ -114,7 +111,7 @@
                     </button>
                     <button
                         class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-
+>
                     </button>
                 </div>
                 <div>
@@ -131,7 +128,7 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
             const tableBody = document.querySelector('tbody');
             const rowCount = tableBody.querySelectorAll('tr').length;
             document.getElementById('rowCount').textContent = rowCount;
@@ -148,6 +145,9 @@
             const showModalDelete = document.querySelectorAll('.deleteBook');
 
             const closeModal = document.querySelectorAll('.close-modal');
+            const closeModalView = document.querySelectorAll('.modalView');
+            const closeModalEdit = document.querySelectorAll('.modalEdit');
+            const closeModalDelete = document.querySelectorAll('.modalDelete');
 
             showModalView.forEach(button => {
                 button.addEventListener("click", (e) => {
@@ -168,7 +168,10 @@
                 });
             })
 
-            const closeModalView = document.querySelectorAll('.modalView');
+            
+
+            
+            
             showModalView.forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault()
@@ -204,22 +207,46 @@
 
                 })
             })
-            closeModalView.forEach(closeModalView => {
-                closeModalView.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const modal = closeModalView.closest('.modalView')
-                    modal.classList.add('hidden')
-                })
-            })
+            
 
-            closeModal.forEach(closeModal => {
-                closeModal.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const modal = closeModal.closest('.modal2')
-                    modal.classList.add('hidden')
-                })
-            })
-        });
+
+            
+    closeModal.forEach(closeModal => {
+        closeModal.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const modal = closeModal.closest('.modal2');
+            const modal1 = closeModal.closest('.modalEdit');
+            const modal2 = closeModal.closest('.modalView');
+            const modal3 = closeModal.closest('.modalEdit');
+            const modal4 = closeModal.closest('.modalDelete');
+            const modal5 = closeModal.closest('.delete-modal-permissions');
+
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+            if (modal1) {
+                modal1.classList.add('hidden');
+            }
+            if (modal2) {
+                modal2.classList.add('hidden');
+            }
+            if (modal3) {
+                modal3.classList.add('hidden');
+            }
+            if (modal4) {
+                modal4.classList.add('hidden');
+            }
+            if (modal5) {
+                modal5.classList.add('hidden');
+            }
+
+
+
+        })
+    })
+            
+        
     </script>
 
 

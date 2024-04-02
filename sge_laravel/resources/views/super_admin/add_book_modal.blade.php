@@ -21,6 +21,9 @@
                             <input
                                 class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 id="grid-first-name" type="text" name="book_name" placeholder="Jane">
+                                @error('book_name')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             
                         </div>
                         <div class="w-full md:w-1/2 px-3">
@@ -31,6 +34,9 @@
                             <input
                                 class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-last-name" name="book_front_page" type="text" placeholder="Doe">
+                                @error('book_front_page')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -39,9 +45,12 @@
                                 for="grid-password">
                                 Descripción
                             </label>
-                            <input
-                                class="appearance-none block w-full h-16  bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4  focus:outline-none focus:bg-white focus:border-gray-500"
-                                 name="book_description" type="text" >
+                            <textarea
+                                class="appearance-none w-full h-40  bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 text-start  focus:outline-none focus:bg-white focus:border-gray-500"
+                                name="book_description"></textarea>
+                                @error('book_description')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-2">
@@ -53,6 +62,9 @@
                             <input
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-city" name="author" type="text" placeholder="Carlos">
+                                @error('author')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -62,6 +74,9 @@
                             <input
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-city"  name="price" type="text" placeholder="$$$$">
+                                @error('price')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -74,7 +89,7 @@
                                     id="grid-state">
                                     @foreach ($students as $student)
                                    
-                                      <option  value="{{$student->id}}">{{$student->id}}</option>  
+                                      <option  value="{{$student->id}}">{{$student->student_name}}</option>  
                                     @endforeach
                                     
                                 </select>

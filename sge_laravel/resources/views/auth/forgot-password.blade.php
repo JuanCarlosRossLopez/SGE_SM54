@@ -9,15 +9,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-green-500 flex items-stretch justify-center h-screen">
-    <!-- Left side with image -->
-    <div class="hidden lg:block lg:w-1/2 bg-green-500 rounded-l">
-        <!-- You can replace the src with your own image -->
-        <img src="{{ asset('image/SGE.svg') }}" alt="Login Image" class="object-cover w-full h-full rounded-tl-xl">
-    </div>
+<body class="bg-white flex items-stretch justify-center h-screen">
+    <!-- Left side with video -->
+<div class="hidden lg:block lg:w-1/2 bg-white rounded-l">
+    <video autoplay muted loop class="object-cover w-full h-full rounded-t1-xl">
+        <source src="{{ asset('video/VideoUT4.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
 
     <!-- Right side with password reset form -->
-    <div class="w-full lg:w-1/2 bg-white px-20 shadow-md rounded-2xl rounded-tl-2xl rounded-bl-2xl">
+    <div class="w-full lg:w-1/2 bg-white px-20 shadow-md rounded-tr-xl rounded-br-xl">
         <img src="{{ asset('image/Logo.png') }}" alt="Logo Image" class="object-cover mx-auto my-20">
         <h2 class="text-3xl font-semibold text-black mb-6 text-center">Ingresa el Código</h2>
         <h2>Se envió un correo electrónico para restablecer tu contraseña.</h2>
