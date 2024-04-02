@@ -44,8 +44,7 @@
                         <h1 class="text-darken mb-3 lg:px-14 flex-grow text-[#01A080] font-bold text-xl">Carta de
                             Autorización Digitalización</h1>
                         <button type="button">
-                            
-                            <a href="/auto_digitalizacion" target="_blank" data-modal="modal2"
+                            <a href="/autodigit" target="_blank"
                                 class="flex items-center justify-center gap-2 show-modal bg-[#01A080] text-[#F6F6F6] font-bold cursor-pointer text-center rounded-[5px] border-none p-[8px] hover:bg-[#DFDFDF]">
                                 <span>Descargar</span>
                             </a>

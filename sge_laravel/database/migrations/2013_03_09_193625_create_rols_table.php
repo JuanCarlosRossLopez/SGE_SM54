@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('rol');
             $table->foreignId('auth_rol_id')->constrained('rol_auths')
-                ->onUpdate('restrict')
-                ->oDelete('restrict');
+            ->onUpdate('restrict')
+            ->onDelete('restrict');
         });
     }
 

@@ -58,14 +58,14 @@
     <div class="container" style="">
         <img src="{{ $imagen_path }}" alt="logo UT" style="align-self: center">
         <h4 style="text-align: center;">CARTA DE APROBACIÓN DE MEMORIA</h4>
-        <p style="text-align: right;">Cancún, Quintana Roo; a [fecha] de [mes] de [año]</p>
+        <p style="text-align: right;">Cancún, Quintana Roo; a 20 de Julio de 2024</p>
         <h4>DRA.ROCÍO ARCEO DÍAZ</h4>
         <h4>DIRECTORA DE LA CARRERA DE TSU EN TI, ÁREA<br /> DESAROLLO DE SOFTWARE MULTIPLATAFORMA <br /> DIVISIÓN DE
             INGENIERÍA Y TECNOLOGÍA </h4>
         <h4>P R E S E N T E</h4>
         <p class="ptext">
-            Sirva la presente para informarle que el estudiante [nombre del estudiante]
-            ha concluido satisfactoriamente la elaboración de su memoria titulada [Proyecto] que
+            Sirva la presente para informarle que el estudiante 
+            ha concluido satisfactoriamente la elaboración de su memoria titulada {{ Auth::user()->student->projects->project_title }} que
             como requisito para la conclusión de su estadía y proceso de titulación
             establece la normatividad de la Universidad Tecnológica de Cancún.
         </p>
@@ -81,7 +81,7 @@
                 <p>ASESOR EMPRESARIAL</p>
                 <br/>
                 <hr style="width: 250px;"/>
-                <p>[asesor empresarial]</p>
+                <p>{{ Auth::user()->student->projects->project_advisor}}</p>
             </div>
             <div class="columna">
                 <p>ASESOR ACADÉMICO</p>
