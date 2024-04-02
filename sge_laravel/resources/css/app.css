@@ -399,3 +399,12 @@
     width: 12rem;
     z-index: 10;
 }
+
+#flash-message {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+#flash-message.fade-out {
+    opacity: 0;
+}

@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
+use App\Http\Controllers\DocumentSend\DocumentsController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\Divisions\DivisionController;
@@ -244,6 +245,7 @@ Route::get('/anteproyectosss', function () {
     $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path" => $imagen_path]);
     return $pdf->stream('cedula.pdf');
 });
+//Route::get('/anteproyectosss',[ReportsController::class, 'index'])->name('anteproyectosss');
 Route::get('/aprobacion', function () {
     $imagen_path = public_path("img/LogoUT.png");
 
@@ -257,15 +259,13 @@ Route::get('/amonestacionn', function () {
     $pdf = PDF::loadView('pdf.cartaamonestacion', ["imagen_path"=>$imagen_path]);
     return $pdf->stream('cedula.pdf');
 });
+
+Route::resource('documents', DocumentsController::class);
 Route::resource('/coordinacion', CoordinatorsController::class);
+Route::resource('descarga', DocumentsDownloadController::class);
 
+Route::post('/documents', [DocumentsController::class, 'enviar'])->name('documents.enviar');
 
-Route::get('/envio_informes', function () {
-    return view('report_generation.teacher_table');
-})->name('envio');
-Route::get('/descarga_informes', function () {
-    return view('report_generation.student_download');
-});
 Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });
