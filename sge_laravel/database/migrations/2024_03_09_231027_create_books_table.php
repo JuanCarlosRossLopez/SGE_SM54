@@ -15,13 +15,12 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('book_name', 255);
+            $table->text('voucher'); //Comprobante de pago que se subirá como imagen (Eso me dijo dano)
             $table->text('book_front_page'); //Portada del libro que se subirá como imagen (Eso me dijo dano)
             $table->text('book_description');
             $table->string('author');
             $table->float('price');
-            $table->foreignId('students_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

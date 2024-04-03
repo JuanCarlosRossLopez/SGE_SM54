@@ -1,4 +1,4 @@
-<div  id="hola" class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div  id="add" class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
         <div class="border-b px-4 py-2 flex justify-between items-center text-center">
             <h3 class="font-semibold text-lg ml-60 text-white ">Agregar libro</h3>
@@ -10,13 +10,13 @@
         <div class="bg-white p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class=" max-h-full h-auto">
-                <form  method="POST" class="w-full max-w-lg">
+                <form action={{route('libros.store')}} method="POST" class="w-full max-w-lg">
                     @csrf
-                    <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="flex flex-col flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-first-name">
-                                Nombre
+                                Nombre del libro
                             </label>
                             <input
                                 class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -29,7 +29,17 @@
                         <div class="w-full md:w-1/2 px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Pagina
+                                Comprobante de pago
+                            </label>
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " name="voucher" type="text">
+                                @error('book_front_page')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="grid-last-name">
+                                Portada
                             </label>
                             <input
                                 class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -57,7 +67,7 @@
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-city">
-                                Autor
+                                Autor del libro
                             </label>
                             <input
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -79,30 +89,12 @@
                                 @enderror
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="grid-state">
-                                Estudiantes
-                            </label>
-                            <div class="relative">
-                                <select name="students_id" 
-                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-state">
-                                    @foreach ($students as $student)
-                                   
-                                      <option  value="{{$student->id}}">{{$student->student_name}}</option>  
-                                    @endforeach
-                                    
-                                </select>
-                                <div
-                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                    
-                                </div>
-                            </div>
+                            
+                            <input
+                                class=" hidden "
+                                 name="student_id" type="text" value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}">
+                            
+                                
                         </div>
                 
                     </div>

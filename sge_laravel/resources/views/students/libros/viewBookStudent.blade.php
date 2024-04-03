@@ -40,10 +40,10 @@
                         {{$book->students_id}}
                     </p>
                     <div class="flex flex-row gap-4">
-                     <button class="bg-green-400 rounded w-20 h-12 text-white">
+                     <button class="bg-green-400 rounded hidden w-20 h-12 text-white">
                     Aceptar
                 </button>
-                <button class="bg-red-500 rounded w-20 h-12 text-white">
+                <button class="bg-red-500 hidden rounded w-20 h-12 text-white">
                     rechazar
                 </button>
                 </div>

@@ -129,7 +129,9 @@ Route::get('dashboard_maestro', function() {
     return view('teachers.teacher_dashboard');
 });
 
-// Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
+Route::resource('/gestion_libros',BooksController::class);   
+    
+Route::resource('libros',BooksController::class);
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 

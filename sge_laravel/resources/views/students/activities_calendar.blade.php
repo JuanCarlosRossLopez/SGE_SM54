@@ -45,7 +45,7 @@
 
 
                         <div>
-                            <div>
+                     {{--       <div>
                                 @if(Auth::user()->student)
                                 @if(Auth::user()->student->projects->comments->isEmpty())
                                     <p class="text-black">No hay comentarios para este anteproyecto.</p>
@@ -62,7 +62,7 @@
                             @endif
 
                             </div>
-
+ comment --}}
 
 
                         </div>

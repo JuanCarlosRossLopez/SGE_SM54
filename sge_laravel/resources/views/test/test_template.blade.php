@@ -142,12 +142,13 @@
                                 Mi perfil
                             </a>
                         </li>
-                        <li>
-                            <a class="buttons_sidebar" href="/roles">
-                                <i class="fa-solid fa-cog "></i>
-                                Asignación de roles
-                            </a>
-                        <li>
+                        
+                            <li>
+                                <a class="buttons_sidebar" href="/roles">
+                                    <i class="fa-solid fa-cog "></i>
+                                    Asignación de roles
+                                </a>
+                            <li>
                             <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
                                 <i class="fa-solid fa-school"></i></i>
                                 Gestión de Coordinación
@@ -158,6 +159,12 @@
                             Estudiantes
                         </a>
                         </li>
+                        <li>
+                            <a class="buttons_sidebar" href="/libross">
+                                <i class="bi bi-book-fill"></i>
+                                Libros
+                            </a>
+                        <li>
                     </div>
                 </ul>
             </div>
