@@ -330,7 +330,7 @@
         </div> --}}
     <div class="flex flex-col ml-[87rem] mt-3 fixed">
         <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
-            type="submit">Guardar</button>
+                type="submit">Guardar</button>
     </div>
     </form>
 
