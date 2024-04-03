@@ -159,12 +159,14 @@
                             Estudiantes
                         </a>
                         </li>
+                        @role('Estudiante')
                         <li>
-                            <a class="buttons_sidebar" href="/libross">
+                            <a class="buttons_sidebar" href="/libros">
                                 <i class="bi bi-book-fill"></i>
                                 Libros
                             </a>
                         <li>
+                            @endrole
                     </div>
                 </ul>
             </div>
