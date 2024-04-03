@@ -49,6 +49,7 @@
               <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
                 <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Cédula de Anteproyecto</h3>
                 <form class="flex" action="{{ route('documents.index') }}" method="GET">
+                    @csrf
                   <input type="hidden" name="type" value="1">
                   <button class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF] mx-auto" type="submit">Generar</button>
                 </form>
@@ -57,6 +58,7 @@
               <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
                 <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Carta de Autorización Digitalización</h3>
                 <form class="flex"  action="{{ route('documents.index') }}" method="GET">
+                    @csrf
                   <input type="hidden" name="type" value="2">
                   <button class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF] mx-auto" type="submit">Generar</button>
                 </form>
@@ -65,6 +67,7 @@
               <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
                 <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Carta de Aprobación Memoria</h3>
                 <form class="flex" action="{{ route('documents.index') }}" method="GET">
+                    @csrf
                   <input type="hidden" name="type" value="3">
                   <button class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF] mx-auto" type="submit">Generar</button>
                 </form>
@@ -73,6 +76,7 @@
               <div class="max-w-xs w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
                 <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center mt-4">Carta de Amonestación</h3>
                 <form class="flex" action="{{ route('documents.index') }}" method="GET">
+                    @csrf
                   <input type="hidden" name="type" value="4">
                   <button class="btn-generate bg-[#01A080] text-white font-bold px-4 py-2 rounded-md hover:bg-[#DFDFDF] mx-auto" type="submit">Generar</button>
                 </form>
