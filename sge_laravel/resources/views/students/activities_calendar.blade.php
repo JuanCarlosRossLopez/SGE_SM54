@@ -40,10 +40,7 @@
                         {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
                     </h1>
                     @if(optional(optional(Auth::user()->student)->projects)->id)
-                        <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
-                            class="Button-progress">
-                            Visualizar detalles
-                        </a>
+                    <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}" class="Button-progress">Visualizar detalles</a>
                     @else
                     <a href="/anteproyecto" class="buttons_card_anteproyect"><label class="cursor-pointer">Crear Anteproyecto</label></a>
                     @endif
