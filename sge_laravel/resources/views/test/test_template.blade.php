@@ -54,14 +54,7 @@
                                 </button>
                             </li>
                         @endrole
-                        @role('Estudiante') 
-                        <li>
-                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Gestión de Anteproyectos
-                            </button>
-                        </li>
-                    @endrole
+                        
                     @role('Administrador')
                         <li>
                             <a href="/usuarios" class="buttons_sidebar ">
@@ -137,7 +130,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href='/Profile' class="buttons_sidebar">
+                            <a href='/profile' class="buttons_sidebar">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </a>

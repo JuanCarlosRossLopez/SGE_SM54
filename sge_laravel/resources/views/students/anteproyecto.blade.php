@@ -7,7 +7,7 @@
 @section('contenido')
     <div class=" w-[1220px] mx-[70px]">
         <div class="top_conteiner">
-            <label>Cédula de Anteproyecto De Estadías</label>
+            <label>Creación de cédula de anteproyecto para estadías</label>
             <label>
                 <!-- Este svg es el icono -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -18,7 +18,7 @@
             </label>
         </div>
 
-        <div class="content_conteiner">
+        <div class="p-4 my-2 border bg-[#F7FAFC] mb-4">
             <div class="flex flex-row items-center gap-2">
                 <label class="conteiner_word_title">Datos de Anteproyecto</label>
                 <label id="infoButton" class="cursor-pointer mt-3"
@@ -34,24 +34,20 @@
                 </div>
             </div>
             @if (session()->has('status'))
-
-
-
-<div class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
-    <div class="modal-content bg-white p-6 rounded-lg shadow-md">
-        <div class="flex justify-end">
-            <button class="modal-close">
-                <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-        <div id="timeMessage" class="text-2xl font-sans text-green-700">{{ session('status') }}</div>
-    </div>
-</div>
-
-
-
+                <div class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+                    <div class="modal-content bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex justify-end">
+                            <button class="modal-close">
+                                <svg class="h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="timeMessage" class="text-2xl font-sans text-green-700">{{ session('status') }}</div>
+                    </div>
+                </div>
             @endif
             <form method="POST" action="{{ route('anteproyecto.store') }}">
                 <!-- En este apartado podemos cambiar el color del fondo del container -->
@@ -94,8 +90,12 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-10 group">
                                 <label for="student_name">Nombre del Estudiante</label>
-                                <input type="text" name="id_student" value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}" class="hidden">
-                                <input type="text" name="student_name" id="student_name" class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer" placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
+                                <input type="text" name="id_student"
+                                    value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}"
+                                    class="hidden">
+                                <input type="text" name="student_name" id="student_name"
+                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                    placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -117,12 +117,13 @@
                         <div class="col-span-1">
                             <div class="relative z-0 w-full mb-5 group">
                                 <label for="student_email">Correo del Estudiante</label>
-                                <input type="text" name="student_id" id="" value="{{ Auth::user()->id }}" hidden>
+                                <input type="text" name="student_id" id="" value="{{ Auth::user()->id }}"
+                                    hidden>
 
                                 <input type="text" name="likes" id="likes" value="0" hidden>
                                 <input type="email" name="student_email" id="student_email"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo electrónico" value="{{ (Auth::user())->email }}" readonly/>
+                                    placeholder="Correo electrónico" value="{{ Auth::user()->email }}" readonly />
                                 @error('student_email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -170,7 +171,7 @@
                                 <label for="student_id">Matrícula</label>
                                 <input type="text" name="student_id" id="student_id"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Matrícula" value="22393130" readonly/>
+                                    placeholder="Matrícula" value="22393130" readonly />
                                 @error('student_id')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
@@ -247,88 +248,87 @@
                             </div>
                         </div>
                         <div class="col-span-1"></div>
-                            <div class="relative z-0 w-full mb-5 group">
-                                <label for="email_asesor">Correo Asesor</label>
-                                <input type="email" name="email_asesor" id="email_asesor"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Correo del Asesor" value="{{ old('email_asesor') }}" />
-                                @error('email_asesor')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                                <hr class="border-t-2 border-[#18A689]" />
-                            </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <label for="email_asesor">Correo Asesor</label>
+                            <input type="email" name="email_asesor" id="email_asesor"
+                                class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                placeholder="Correo del Asesor" value="{{ old('email_asesor') }}" />
+                            @error('email_asesor')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                            <hr class="border-t-2 border-[#18A689]" />
                         </div>
                     </div>
-                    <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Proyecto</h1>
-                    <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
-                    <div class="grid grid-cols-3 gap-24">
-                        <div class="col-span-8 mb-5">
-                            <div class=" z-0 w-full group">
-                                <label for="general_objective">Objetivo General</label>
-                                <textarea name="general_objective" id="general_objective"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Objetivo General">{{ old('general_objective') }}</textarea>
-                                @error('general_objective')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                                <hr class="border-t-2 border-[#18A689]" />
-                            </div>
+                </div>
+                <h1 class="text-lg text-center font-medium uppercase mt-4">Datos Proyecto</h1>
+                <div class="w-full h-1 border border-[#18A689] bg-[#18A689] mb-5 mt-2"></div>
+                <div class="grid grid-cols-3 gap-24">
+                    <div class="col-span-8 mb-5">
+                        <div class=" z-0 w-full group">
+                            <label for="general_objective">Objetivo General</label>
+                            <textarea name="general_objective" id="general_objective"
+                                class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                placeholder="Objetivo General">{{ old('general_objective') }}</textarea>
+                            @error('general_objective')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                            <hr class="border-t-2 border-[#18A689]" />
                         </div>
-                        <div class="col-span-8 mb-5">
-                            <div class="relative z-0 w-full group">
-                                <label id="infoButton"
-                                    data-tooltip="exponer los aspectos, elementos y relaciones del problema."><span
-                                        class="mr-2">Planteamiento del Problema</span><i
-                                        class="fas fa-exclamation-circle text-[#01A080] "></i></label>
-                                <textarea name="problem_statement" id="problem_statement"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Planteamiento del Problema">{{ old('problem_statement') }}</textarea>
-                                @error('problem_statement')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                                <hr class="border-t-2 border-[#18A689]" />
-                            </div>
+                    </div>
+                    <div class="col-span-8 mb-5">
+                        <div class="relative z-0 w-full group">
+                            <label id="infoButton"
+                                data-tooltip="exponer los aspectos, elementos y relaciones del problema."><span
+                                    class="mr-2">Planteamiento del Problema</span><i
+                                    class="fas fa-exclamation-circle text-[#01A080] "></i></label>
+                            <textarea name="problem_statement" id="problem_statement"
+                                class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                placeholder="Planteamiento del Problema">{{ old('problem_statement') }}</textarea>
+                            @error('problem_statement')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                            <hr class="border-t-2 border-[#18A689]" />
                         </div>
-                        <div class="col-span-8 mb-5">
-                            <div class="relative z-0 w-full group">
-                                <label id="infoButton"
-                                    data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><span
-                                        class="mr-2">Justificación</span><i
-                                        class="fas fa-exclamation-circle text-[#01A080] "></i></label>
-                                <textarea name="justification" id="justification"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Justificación">{{ old('justification') }}</textarea>
-                                @error('justification')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                                <hr class="border-t-2 border-[#18A689]" />
-                            </div>
+                    </div>
+                    <div class="col-span-8 mb-5">
+                        <div class="relative z-0 w-full group">
+                            <label id="infoButton"
+                                data-tooltip="debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la investigación."><span
+                                    class="mr-2">Justificación</span><i
+                                    class="fas fa-exclamation-circle text-[#01A080] "></i></label>
+                            <textarea name="justification" id="justification"
+                                class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                placeholder="Justificación">{{ old('justification') }}</textarea>
+                            @error('justification')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                            <hr class="border-t-2 border-[#18A689]" />
                         </div>
-                        <div class="col-span-8 mb-5">
-                            <div class="relative z-0 w-full group">
-                                <label id="infoButton"
-                                    data-tooltip="listar las actividades a llevar a cabo en orden."><span
-                                        class="mr-2">Actividades para realizar</span><i
-                                        class="fas fa-exclamation-circle text-[#01A080] "></i></label>
-                                <textarea name="activities" id="activities"
-                                    class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Actividades para realizar">{{ old('activities') }}</textarea>
-                                @error('activities')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                @enderror
-                                <hr class="border-t-2 border-[#18A689]" />
-                            </div>
+                    </div>
+                    <div class="col-span-8 mb-5">
+                        <div class="relative z-0 w-full group">
+                            <label id="infoButton" data-tooltip="listar las actividades a llevar a cabo en orden."><span
+                                    class="mr-2">Actividades para realizar</span><i
+                                    class="fas fa-exclamation-circle text-[#01A080] "></i></label>
+                            <textarea name="activities" id="activities"
+                                class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
+                                placeholder="Actividades para realizar">{{ old('activities') }}</textarea>
+                            @error('activities')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                            <hr class="border-t-2 border-[#18A689]" />
                         </div>
                     </div>
                 </div>
         </div>
+    </div>
     </div>
     {{-- <div class="flex flex-row -mx-2 w-full">
             <div class="flex flex-col w-1/2 px-2 gap-4">
                 <!-- Los otros elementos omitidos por brevedad -->
             </div>
         </div> --}}
-    <div class="flex flex-col mt-3">
+    <div class="flex flex-col ml-[87rem] mt-3 fixed">
         <button class="border p-3 rounded bg-[#18A689] text-white w-24 hover:bg-[#306157] mx-auto"
             type="submit">Guardar</button>
     </div>
@@ -379,7 +379,7 @@
     }, 5000);
 
 
-//Script para Modal del Señor R//
+    //Script para Modal del Señor R//
 
     setTimeout(function() {
         var element = document.getElementById('timeMessage');

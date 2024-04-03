@@ -33,7 +33,7 @@
             </div>
 
             <div class="flex flex-row gap-4 justify-center">
-                <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
+                <div class="bg-white w-fit flex flex-col rounded h-fit items-center  p-3">
                     <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
                     <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
                     <h1 class="text-center">
@@ -45,6 +45,7 @@
                             Visualizar detalles
                         </a>
                     @else
+                    <a href="/anteproyecto" class="buttons_card_anteproyect"><label class="cursor-pointer">Crear Anteproyecto</label></a>
                     @endif
                 </div>
                 
