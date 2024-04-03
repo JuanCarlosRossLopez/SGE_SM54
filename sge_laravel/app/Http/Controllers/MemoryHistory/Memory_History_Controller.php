@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Memories;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 
 class Memory_History_Controller extends Controller
@@ -32,22 +33,32 @@ class Memory_History_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
-            'memory_name'=>'required|string',
-            'memorie_pdf'=>'required|string',
-            'student_id'=>'null'
+            'memory_name' => 'required|string',
+            'memorie_pdf' => 'required|mimes:pdf',
+            'student_id' => 'nullable'
         ]);
-
-        $memories = new Memories();
-        $memories->memory_name = $request->input('memory_name');
-        $memories->memorie_pdf = $request->input('memorie_pdf');
-        $memories->student_id = $request->input('student_id');
-        $memories->save();
-
-
-        return redirect('memory')->with('Notification', 'Memory created successfully');
+    
+        try {
+            DB::beginTransaction();
+            $memories = new Memories();
+            $memories->memory_name = $request->input('memory_name');
         
+            if ($request->hasFile('memorie_pdf')) {
+                $archivo = $request->file('memorie_pdf');
+                $archivo->move(public_path().'/Archivos/', $archivo->getClientOriginalName());
+                $memories->memorie_pdf=$archivo->getClientOriginalName();
+            }
+        
+            $memories->student_id = $request->input('student_id');
+            $memories->save();
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollback();
+        }
+        
+    
+        return redirect('historial_de_memorias')->with('Notification', 'Memory created successfully');
     }
 
     /**

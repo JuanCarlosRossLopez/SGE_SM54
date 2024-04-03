@@ -15,18 +15,26 @@
                 <div class="modal-body h-fit">
                     <form action="{{ route('crear_comentario.store') }}" method="POST">
                         @csrf
-                        <div class="flex flex-col items-center" >
+                        <div class="flex flex-col items-center">
                             <div class="flex flex-col justify-start w-[800px] pb-2">
-                                <label for="general_comment" class="conteiner_word_title flex flex-col items-center">Comentario general</label>
+                                <label for="general_comment"
+                                    class="conteiner_word_title flex flex-col items-center">Comentario general</label>
                                 <textarea type="text" name="general_comment" id="general_comment" class="rounded h-auto"></textarea>
                             </div>
                             <div>
-                                <label for="teacher_id" class="conteiner_word_title flex flex-col items-center">Asesor</label>
-                                <input type="text" name="teacher_id" id="teacher_id" class="rounded">
+                                <label for="teacher_id"
+                                    class="conteiner_word_title flex flex-col items-center">Asesor</label>
+                                @if (Auth::user()->teachers)
+                                <input type="text" name="teacher_id" id="teacher_id" class="rounded hidden" value="{{ Auth::user()->teachers->id }}">
+                                @else
+                                    No se encontró información del asesor para este usuario.
+                                @endif
                             </div>
                             <div>
-                                <label for="project_management_id" class="conteiner_word_title flex flex-col items-center">Proyecto</label>
-                                <input type="text" name="project_management_id" id="project_management_id" class="rounded">
+                                <label for="project_management_id"
+                                    class="conteiner_word_title flex flex-col items-center">Proyecto</label>
+                                <input type="text" name="project_management_id" id="project_management_id"
+                                    class="rounded">
                             </div>
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-fit">Guardar</button>

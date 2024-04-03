@@ -18,23 +18,20 @@ class TeacherDashboardController extends Controller
      */
     public function index()
     {
-        
-        // Verifica si el usuario está autenticado
         if (Auth::check()) {
-            // Usuario autenticado
             $usuario = Auth::user();
-
-            // Verifica si el usuario tiene un maestro asociado
+        
             if ($usuario->teachers) {
-                // Accede al maestro asociado
                 $maestro = $usuario->teachers;
-                // Accede a las propiedades del maestro
                 $id = $maestro->id;
-                // Realiza acciones basadas en la relación con el maestro
+                $Advising = Teaching_advice::where('teacher_id', $id)->get();
+        
+                foreach ($Advising as $advising) {
+                    $advising->student->load('projectManagement');
+                }
+        
                 $Students = Students::all();
-                $students = Teaching_advice::where('teacher_id', $id)->get();
-                
-                return view('strikes.advised_students', compact('students', 'Students'));
+                return view('strikes.advised_students', compact('Advising', 'Students'));
             }
         }
     }
@@ -59,7 +56,8 @@ class TeacherDashboardController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $teacher = Teachers::find($id);
+        return view('teachers.show', compact('teacher'));
     }
 
     /**
