@@ -45,11 +45,11 @@
                             </div>
                             <div class="search_button_conteiner">
                                 <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                                <button class="show-modal3 standar_button"><span class="inside_button">Agregar
+                                <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
                                         Usuario</span></button>
 
                             </div>
-                            <button class="show-modal-u standar_button2 "><span class="inside_button">Agregar
+                            <button class="show-modal-u standar_button2 "><span class="inside_button">Agregar muchos
                                     Usuarios</span></button>
                         </div>
 

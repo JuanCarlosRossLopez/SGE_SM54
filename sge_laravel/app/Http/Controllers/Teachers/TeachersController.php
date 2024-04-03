@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use App\Models\Teachers;
+use App\Models\Division;
 use App\Models\User;
 
 
@@ -18,8 +19,11 @@ class TeachersController extends Controller
     {
         $Students = Students::all();
         $teachers = Teachers::paginate(10);
+        $division = Division::all();
+        $users = User::all();
+
     
-        return view('teachers.teachers', compact('teachers', 'Students'));
+        return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
     }
     
     /**

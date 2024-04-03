@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{ route('memory.update', $memory->id) }}" method="POST">
+    <form action="{{ route('historial_de_memorias.update', $memory->id) }}" method="POST">
         @method('PUT')
         @csrf
         <div>
