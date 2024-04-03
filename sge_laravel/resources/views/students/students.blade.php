@@ -1,4 +1,4 @@
-@extends('test.template')
+@extends('test.test_template')
 
 @section('title')
     Alumnos
@@ -59,7 +59,6 @@
                             <th class="theader">Usuario</th>
                             <th class="theader">División</th>
                             <th class="theader">Anteproyecto</th>
-                            <th class="theader">Asesor</th>
                             <th class="theader">Acciones</th>
                         </tr>
                     </thead>
@@ -74,7 +73,7 @@
                                 <td>{{ $students->user ? $students->user->name : 'Sin usuario asociado' }}</td>
                                 <td class="trowc">{{ $students->division_id }}</td>
                                 <td class="trowc">{{ $students->anteproject_id }}</td>
-                                <td class="trowc">{{ $students->adviser_id }}</td>
+                                
                                 
                                 <td class="trowc">
                                     <button class="show-modal-edit" data-target="#edit{{ $students->id }}">
@@ -129,70 +128,41 @@
     <div class="modal-add-student h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded shadow-lg max-w-3xl">
             <div class="border-b px-4 py-2 flex justify-between items-center">
-                <h3 class="font-semibold text-lg ml-60 text-white">Agregar Estudiante</h3>
+                <h3 class="text-center items-center font-semibold text-lg text-white">Agregar Estudiante</h3>
                 <button class="close-modal bg-white rounded-full">
                     <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                 </button>
             </div>
-            <div class="bg-white w-full p-2">
-                <div class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10 ">
-                    <div class="flex flex-col items-center justify-center w-full ">
-                        <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>
-                        <form action="{{ route('estudiantes.store') }}" method="POST" class="flex flex-col gap-4 w-full">
-                            @csrf
-                            <div class="flex gap-4">
-                                <input type="text" name="student_name" id="student" placeholder="Nombre del estudiantes" class="flex-1 rounded-md border border-gray-300 p-2">
-                                <input type="text" name="id_student" id="id_student" placeholder="Matrìcula" class="flex-1 rounded-md border border-gray-300 p-2">
-                            </div>
-
-                            <div class="flex gap-4">
-                                <label class="">Creador de anteproyecto</label>
-                            <select name="project_creator" id="project_creator" class="rounded-md border">
-                                <option value="0">No</option>
-                                <option value="1">Sí</option>
-                            </select>
-                            </div>
-                            
-                            <div class="flex gap-4"> 
-                                <select type="text" name="user_id" id="user_id" class="flex-1 rounded-md border text-black border-gray-300 p-2">
-                                    <option selected>Elige un usuario</option>
-                                    @foreach ($Users as $user)
+            <div class="bg-white w-full p-4">
+                <div class="modal-body flex flex-col gap-4 items-center justify-center p-4">
+                    <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>
+                    <form action="{{ route('estudiantes.store') }}" method="POST" class="w-full">
+                        @csrf
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" name="student_name" id="student" placeholder="Nombre del estudiante" class="rounded-md border border-gray-300 p-2">
+                            <input type="text" name="id_student" id="id_student" placeholder="Matrícula" class="rounded-md border border-gray-300 p-2">
+                            <select type="text" name="user_id" id="user_id" class="rounded-md border text-black border-gray-300 p-2">
+                                <option selected disabled>Elige un usuario</option>
+                                @foreach ($Users as $user)
                                     <option value="{{$user->id}}">{{$user->name}}</option>
-                                    @endforeach
-                                </select>
-                                
-                                <input type="text" name="anteproject_id" id="anteproject_id" placeholder="Nombre del anteproyecto" class="flex-1 rounded-md border border-gray-300 p-2">
-                            </div>
-
-                            <div class="flex gap-4">
-                                
-                                <select type="text" name="adviser_id" id="adviser_id" class="flex-1 rounded-md border text-black border-gray-300 p-2">
-                                <option selected>Elige un asesor</option>
-                                    @foreach ($Teachers as $teacher)
-                                    <option value="{{$teacher->id}}">{{$teacher->name_teacher}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="flex gap-4"></div>
-                                <select name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <option selected>Elige una división</option>
-                                    @foreach ($Divisions as $division)
+                                @endforeach
+                            </select>
+                            <select name="division_id" class="rounded-md border border-gray-300 p-2">
+                                <option selected disabled>Elige una división</option>
+                                @foreach ($Divisions as $division)
                                     <option value="{{$division->id}}">{{$division->division_name}}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                            <!-- Puedes agregar más campos aquí según sea necesario -->
-                            <div class="flex justify-center">
-                                <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>
+    
 
     <script>
         const tableBody = document.querySelector('tbody');

@@ -124,6 +124,11 @@
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
                         </li>
+                        <li>
+                            <a href="/profile" class="buttons_sidebar ">
+                                <i class="fa-solid fa-address-card"></i> Mi perfil
+                            </a>
+                        </li>
                     </div>
                 </ul>
             </div>
@@ -136,6 +141,7 @@
                         @if (Auth::user()->teachers)
                             <label class="text-3xl text-[#d7d7d7]">Buen día, {{ Auth::user()->teachers->name_teacher }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión asesor</label>
+                            
                         @else
                             No se encontró información del asesor para este usuario.
                         @endif
