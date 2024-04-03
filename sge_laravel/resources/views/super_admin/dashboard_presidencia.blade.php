@@ -28,6 +28,7 @@
                                     </button>
                                     <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
                                         <a  href="/maestros" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Ingeniería y Tecnología</a>
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -47,10 +48,7 @@
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                        <a href="/gestion_asesor_anteproyecto" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Turismo</a>
                                         <a  href="/gestion_asesor_anteproyecto" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Ingeniería y Tecnología</a>
-                                        <a href="/gestion_asesor_anteproyecto" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División Económico-Administrativo</a>
-                                        <a href="/gestion_asesor_anteproyecto" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Gastronomía</a>
                                     </div>
                                 </div>
                             </div>
