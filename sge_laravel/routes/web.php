@@ -26,9 +26,8 @@ use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use App\Models\presidencies;
 use App\Models\Project_management;
-use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
-
+use App\Http\Controllers\Pdf\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -233,32 +232,12 @@ Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->w
 //End equipo valier
 
 //Equipo dano
-Route::get('/auto_digitalizacion', function () {
+//PDF
 
-    $pdf = PDF::loadView('pdf.cartaau');
-    return $pdf->stream('cedula.pdf');
-});
-
-Route::get('/anteproyectosss', function () {
-    $imagen_path = public_path("img/LogoUT.png");
-
-    $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path" => $imagen_path]);
-    return $pdf->stream('cedula.pdf');
-});
-//Route::get('/anteproyectosss',[ReportsController::class, 'index'])->name('anteproyectosss');
-Route::get('/aprobacion', function () {
-    $imagen_path = public_path("img/LogoUT.png");
-
-    $pdf = PDF::loadView('pdf.carta_aprobacion', ["imagen_path" => $imagen_path]);
-    return $pdf->stream('aprobacion_memoria.pdf');
-});
-
-Route::get('/amonestacionn', function () {
-    $imagen_path = public_path("img/LogoUT.png");
-
-    $pdf = PDF::loadView('pdf.cartaamonestacion', ["imagen_path"=>$imagen_path]);
-    return $pdf->stream('cedula.pdf');
-});
+Route::get('/autodigit', [PdfController::class, 'auto_digit']);
+Route::get('/anteproyectosss', [PdfController::class, 'anteproyecto']);
+Route::get('/aprobacion', [PdfController::class, 'aprobacion']);
+Route::get('/amonestacionn', [PdfController::class, 'amonestacion']);
 
 Route::resource('documents', DocumentsController::class);
 Route::resource('/coordinacion', CoordinatorsController::class);
@@ -266,6 +245,12 @@ Route::resource('descarga', DocumentsDownloadController::class);
 
 Route::post('/documents', [DocumentsController::class, 'enviar'])->name('documents.enviar');
 
+Route::get('/envio_informes', function () {
+    return view('report_generation.teacher_table');
+})->name('envio');
+Route::get('/descarga_informes', function () {
+    return view('report_generation.student_download');
+});
 Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });

@@ -42,7 +42,7 @@ footer {
     <header>
         <h1>Amonestación por Incumplimiento de Deberes Escolares</h1>
     </header>
-    <p>Estimado/a [Nombre del Estudiante],</p>
+    <p>Estimado/a {{ Auth::user()->student->student_name }},</p>
     <p>Mediante la presente, nos dirigimos a ti con el propósito de comunicarte que hemos observado un incumplimiento continuado en la entrega de tus deberes escolares, lo cual va en contra de las normativas y expectativas académicas de nuestra institución.</p>
     <p>Es fundamental recordarte la importancia de la responsabilidad y el compromiso con tus obligaciones académicas, ya que estas actividades no solo contribuyen a tu aprendizaje y desarrollo personal, sino que también son parte integral de tu proceso de evaluación y calificación.</p>
     <p>Esperamos que tomes esta amonestación como una oportunidad para reflexionar sobre tus acciones y reafirmar tu compromiso con tus estudios. Te instamos a que tomes las medidas necesarias para mejorar tu desempeño y cumplir con las tareas asignadas en los plazos establecidos.</p>
