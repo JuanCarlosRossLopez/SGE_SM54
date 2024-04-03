@@ -14,6 +14,7 @@ use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Companies\CompaniesController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
+use App\Http\Controllers\Books\BookCordinacionController;
 use FontLib\Table\Type\name;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
@@ -129,7 +130,7 @@ Route::get('dashboard_maestro', function() {
     return view('teachers.teacher_dashboard');
 });
 
-Route::resource('/gestion_libros',BooksController::class);   
+Route::resource('/gestion_libros',BookCordinacionController::class);   
     
 Route::resource('libros',BooksController::class);
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
