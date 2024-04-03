@@ -95,7 +95,7 @@
                                     class="hidden">
                                 <input type="text" name="student_name" id="student_name"
                                     class="block py-3 px-0 w-full text-lg text-black bg-transparent border-0 border-b-2 border-green-600 appearance-none focus:outline-none focus:ring-0 peer"
-                                    placeholder="Nombre del estudiante" value="{{ Auth::user()->name }}" readonly />
+                                    placeholder="Nombre del estudiante" value="{{ Auth::user()->student->student_name }}" readonly />
                                 @error('student_name')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror

@@ -20,7 +20,7 @@
                                     <th class="theader">Nombre anteproyecto</th>
                                     <th class="theader">Creador del proyecto</th>
                                     <th class="theader">Empresa</th>
-                                    <th class="theader">Aprovaciones</th>
+                                    <th class="theader">Aprobaciones</th>
                                     <th class="theader">Ver detalles</th>
                                 </tr>
                             </thead>
