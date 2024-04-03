@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
+use App\Http\Controllers\DocumentSend\DocumentsController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\Divisions\DivisionController;
@@ -238,14 +239,13 @@ Route::get('/anteproyectosss', [PdfController::class, 'anteproyecto']);
 Route::get('/aprobacion', [PdfController::class, 'aprobacion']);
 Route::get('/amonestacionn', [PdfController::class, 'amonestacion']);
 
-Route::resource('/coordinacion', CoordinatorsController::class);
 
-Route::get('/envio_informes', function () {
-    return view('report_generation.teacher_table');
-})->name('envio');
-Route::get('/descarga_informes', function () {
-    return view('report_generation.student_download');
-});
+Route::resource('documents', DocumentsController::class);
+Route::resource('/coordinacion', CoordinatorsController::class);
+Route::resource('descarga', DocumentsDownloadController::class);
+
+Route::post('/documents', [DocumentsController::class, 'enviar'])->name('documents.enviar');
+
 Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });

@@ -54,7 +54,7 @@ Asesores
                         <td class="trowc">{{ $teachers->name_teacher }}</td>
                         <td class="trowc">{{ $teachers->payroll }}</td>
                         <td>{{ $teachers->user ? $teachers->user->name : 'Sin usuario asociado' }}</td>
-                        <td class="trowc">{{ $teachers->division->division_name }}</td>
+                        <td class="trowc">{{ $teachers->division ? $teachers->division->division_name : 'Sin división' }}</td>
                         <td class="trowc">
                             <button class="show-modal-edit" data-target="#edit{{ $teachers->id }}">
                                 <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7">
@@ -158,8 +158,6 @@ Asesores
                                 <option value="{{ $divisions->id }}">{{ $divisions->division_name }}</option>
                                 @endforeach
                             </select>
-                            
-                       
                         </div>
 
                         <!-- Puedes agregar más campos aquí según sea necesario -->

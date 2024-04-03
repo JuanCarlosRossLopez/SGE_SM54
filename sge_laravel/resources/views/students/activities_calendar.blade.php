@@ -36,11 +36,12 @@
                 <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
                     <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
                     <h1 class="text-center">
-    {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
-</h1>
-<a href="{{ route('information_project.show', optional(optional(Auth::user()->student)->projects)->id) }}" class="Button-progress">
-    Visualizar detalles
-</a>
+                        {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
+                    </h1>
+                    <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
+                        class="Button-progress">
+                        Visualizar detalles
+                    </a>
 
                     <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
                 </div>

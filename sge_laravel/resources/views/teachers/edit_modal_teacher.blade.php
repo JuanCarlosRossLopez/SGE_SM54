@@ -22,10 +22,9 @@
                                 <div class="flex flex-col gap-4">
 
                                     <input type="text" value="{{$teachers->name_teacher}}" name="name_teacher" id="name_teacher" placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
-                                   
 
                                     <select name="id_user" id="" class="rounded-md border border-gray-300 p-2">
-                                        <option value="" selected>{{ $teachers->user->name}}</option>
+                                        <option value="{{ $teachers->user->id}}" selected>{{ $teachers->user->name}}</option>
                                         @php
                                         $asesorEncontrado = false;
                                         @endphp
@@ -47,7 +46,7 @@
                                     <input type="number" value="{{$teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
 
                                     <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
-                                        <option value="{{$teachers->division_id}}" selected>{{$teachers->division->division_name}}</option>
+                                        <option value="{{$teachers->division_id}}" selected>{{$teachers->division ? $teachers->division->division_name : 'Sin división'}}</option>
 
                                         @foreach ($division as $divisions)
                                         <option value="{{$divisions->id}}">{{$divisions->division_name}}</option>
