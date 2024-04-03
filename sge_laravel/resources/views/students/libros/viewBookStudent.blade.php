@@ -2,7 +2,7 @@
     class="modalView h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
         <div class="border-b px-4 py-2 flex justify-between items-center text-center">
-            <h3 class="font-semibold text-lg ml-60 text-white ">{{ $book->book_name }}</h3>
+            <h3 class="font-semibold text-lg ml-60 text-white ">{{$book->book_name}}</h3>
             <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
             </button>
@@ -37,20 +37,21 @@
                     </p>
                     <label for="">Estudiante</label>
                     <p>
-                        {{ $book->students_id }}
+                        {{$book->students_id}}
                     </p>
-                    <div class="flex flex-row gap-4 hidden">
-                        <button class="bg-green-400 rounded w-20 h-12 text-white">
-                            Aceptar
-                        </button>
-                        <button class="bg-red-500 rounded w-20 h-12 text-white">
-                            rechazar
-                        </button>
-                    </div>
+                    <div class="flex flex-row gap-4">
+                     <button class="bg-green-400 rounded hidden w-20 h-12 text-white">
+                    Aceptar
+                </button>
+                <button class="bg-red-500 hidden rounded w-20 h-12 text-white">
+                    rechazar
+                </button>
                 </div>
-
-
+                </div>
+                
+               
             </div>
         </div>
     </div>
 </div>
+

@@ -72,7 +72,7 @@
                 <div class="content_conteiner h-fit p-2 card flex justify-center">
                     <div class="flex flex-col gap-2 items-center">
                         <h1>¿Qué más hacer?</h1>
-                        <a href="/libro" class=" buttons_card_green w-full">
+                        <a href="/libros" class=" buttons_card_green w-full">
                             <i class="fi fi-sr-books flex"></i><button class="w-full text-start">Ver libros</button>
                         </a>
                         <a href="/historial_de_memorias" class="buttons_card_green">

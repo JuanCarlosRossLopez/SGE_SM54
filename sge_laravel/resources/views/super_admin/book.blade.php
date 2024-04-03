@@ -6,10 +6,9 @@
 
 @section('contenido')
     <div class="lg:w-[98rem] sm:w-[12rem] ml-[3rem] items-center flex-col">
-        <div
-            class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
+        <div class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
             <div class="">
-                <label>Historial de librose</label>
+                <label>Historial de libros</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
@@ -34,8 +33,8 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button data-target="#hola" class="showmodal2 standar_button"><span
-                            class="show-modal2 ">Agregar</span></button>
+                    <button data-target="#hola" class="showmodal2 standar_button "><span
+                            class="show-modal2  ">Agregar</span></button>
                 </div>
             </div>
 

@@ -102,5 +102,3 @@ class StudentsController extends Controller
         return back()->with('notification', 'Estudiante elimindao correctamente');
     }
 }
-
-
