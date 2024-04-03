@@ -107,7 +107,7 @@
                             </li>
                         @endrole
                         <li>
-                            <a href="/memory" class="buttons_sidebar">
+                            <a href="/historial_de_memorias" class="buttons_sidebar">
                                 <i class="fa-solid fa-landmark"></i>
                                 Historial de memorias
                             </a>
@@ -120,31 +120,9 @@
                             </li>
                         @endrole
                         <li>
-                            <a href="/descarga_informe" class="buttons_sidebar ">
+                            <a href="/informes" class="buttons_sidebar ">
                                 <i class="fa-solid fa-file"></i> Generacion de informes
                             </a>
-                        </li>
-                        <li>
-                            <a href='/Profile' class="buttons_sidebar">
-                                <i class="fa-solid fa-address-card"></i>
-                                Mi perfil
-                            </a>
-                        </li>
-                        <li>
-                            <a class="buttons_sidebar" href="/roles">
-                                <i class="fa-solid fa-cog "></i>
-                                Asignación de roles
-                            </a>
-                        <li>
-                            <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Gestión de Coordinación
-                            </button>
-                        </li>
-                        <a class="buttons_sidebar" href="estudiantes">
-                            <i class="fa-solid fa-address-card "></i>
-                            Estudiantes
-                        </a>
                         </li>
                     </div>
                 </ul>

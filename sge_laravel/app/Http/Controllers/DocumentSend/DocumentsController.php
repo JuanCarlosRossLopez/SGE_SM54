@@ -64,7 +64,7 @@ class DocumentsController extends Controller
                 break;
         }
         
-        return view('report_generation.index');
+        return back();
     }
     public function index(Request $request)
     {
