@@ -35,8 +35,14 @@
             <div class="flex flex-row gap-4 justify-center">
                 <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
                     <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
-                    <h1 class="text-center">{{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
+                    <h1 class="text-center">
+                        {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
                     </h1>
+                    <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
+                        class="Button-progress">
+                        Visualizar detalles
+                    </a>
+
                     <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
                 </div>
                 <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
@@ -46,25 +52,22 @@
 
                         <div>
                             <div>
-                                @if(Auth::user()->student)
-                                @if(Auth::user()->student->projects->comments->isEmpty())
-                                    <p class="text-black">No hay comentarios para este anteproyecto.</p>
+                                @if (Auth::user()->student)
+                                    @if (Auth::user()->student->projects->comments->isEmpty())
+                                        <p class="text-black">No hay comentarios para este anteproyecto.</p>
+                                    @else
+                                        @foreach (Auth::user()->student->projects->comments as $comment)
+                                            <div
+                                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
+                                                <p>{{ $comment->created_at->format('d F Y') }}</p>
+                                                <p>{{ $comment->general_comment }}</p>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 @else
-                                    @foreach(Auth::user()->student->projects->comments as $comment)
-                                        <div class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
-                                            <p>{{ $comment->created_at->format('d F Y') }}</p>
-                                            <p>{{ $comment->general_comment }}</p>
-                                        </div>
-                                    @endforeach
+                                    <p class="text-black">No se encontraron comentarios para este anteproyecto.</p>
                                 @endif
-                            @else
-                                <p class="text-black">No se encontraron comentarios para este anteproyecto.</p>
-                            @endif
-
                             </div>
-
-
-
                         </div>
 
                     </div>

@@ -23,7 +23,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view("teacher_dates.create_comment");
+        return view("informacion_anteproyecto.create");
     }
 
     /**
@@ -45,7 +45,7 @@ class CommentsController extends Controller
 
         $proyectoid = $comments -> project_management_id;
 
-        return redirect('information_project')->with('Notification', 'Comentario creado');
+        return back()->with('Notification', 'Comentario creado');
     }
 
     /**

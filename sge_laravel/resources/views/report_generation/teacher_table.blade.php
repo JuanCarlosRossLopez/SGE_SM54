@@ -32,42 +32,70 @@
                     <button class="standar_button hidden"><span class="inside_button">Si lo necesitas</span></button>
                 </div>
             </div>
-
+            @if (session('notificacion'))
+                <div class="alert alert-success" id="flash-message">
+                    {{ session('notificacion') }}
+                </div>
+            @endif
             <div class="table_conteiner">
                 <table class="standar_table">
                     <thead class="standar_thead">
                         <tr>
+                            <th class="theader">#</th>
                             <th class="theader">Matricula</th>
-                            <th class="theader">Alumnos</th>
-                            <th class="theader">Proyectos</th>
+                            <th class="theader">Alumno</th>
+                            <th class="theader">Proyecto</th>
                             <th class="theader">Opciones</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        <tr class="trow">
-                            <td class="trowc">22393169</td>
-                            <td class="trowc">Marco Antonio Hau Pech</td>
-                            <td class="trowc">Comercio web e-commer</td>
-                            <td class="trowc">
-                                <div>
-                                    <button class="show-modal2 standar_button my-1">
-                                        Enviar
-                                    </button>
+                        @foreach ($students as $student)
+                            <tr class="trow">
+                                <td class="trowc">{{ $loop->iteration }}</td>
+                                <td class="trowc">{{ $student->student_id }}</td>
+                                <td class="trowc">{{ $student->student_name }}</td>
+                                <td class="trowc">{{ !$student->anteproject_id ? 'N/A' : $student->anteproject_id }}</td>
+                                <td class="trowc">
+                                    <div>
+                                        <button data-modal="Envio_{{ $student->id }}"
+                                            class="show-modal standar_button my-1">
+                                            Enviar
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <div idModal="Envio_{{ $student->id }}"
+                                class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                                <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[350px]">
+                                    <div class="border-b px-4 py-2 flex justify-content-end">
+                                        <button class="close-modal">
+                                            <p class="text-2xl"><i
+                                                    class="fa-solid fa-circle-xmark items-end bg-white rounded-full"
+                                                    style="color: #d50101;"></i></p>
+                                        </button>
+                                    </div>
+                                    <div class="bg-white p-2 rounded-b-2xl">
+                                        <div class="modal-body mb-0 overflow-y-auto h-[250px]">
+                                            <h4 class="text-black text-center mt-3 text-2xl font-bold">¿Enviar documento a
+                                                {{ $student->student_name }}?</h4>
+                                            <div class="space-x-12 mt-12">
+                                                <form action="{{ route('documents.enviar') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="type" value="{{ $type }}">
+                                                    <input type="hidden" name="student_id" value="{{ $student->id }}">
+                                                    <button type="submit" class="bg-blue-500 p-2 rounded-md">
+                                                        Aceptar
+                                                    </button>
+                                                </form>
+                                                <button class="bg-red-500 p-2 rounded-md close-modal">
+                                                    Cancelar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </td>
-                        </tr>
-                        <tr class="trow">
-                            <td class="trowc">22393169</td>
-                            <td class="trowc">Sánchez Martínez Daniel Jesús</td>
-                            <td class="trowc">Comercio web e-commer</td>
-                            <td class="trowc">
-                                <div>
-                                    <button class="show-modal1 standar_button my-1">
-                                        Enviar
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                            </div>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -100,6 +128,8 @@
         </div>
     </div>
 
+
+
     {{-- <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
             <div class="border-b px-4 py-2 flex justify-content-end">
@@ -121,64 +151,24 @@
             </div>
         </div>
     </div> --}}
-    <div class="modal1 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-        <div class="bg-[#01A080] w-full rounded-2xl shadow-lg max-w-[300px]">
-            <div class="border-b px-4 py-2 flex justify-content-end">
-                <button class="close-modal1">
-                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark items-end bg-white rounded-full"
-                            style="color: #d50101;"></i></p>
-                </button>
-            </div>
-            <div class="bg-white p-2 rounded-b-2xl">
-                <div class="modal-body mb-0 overflow-y-auto h-[190px]">
-                    <h4 class="text-black text-center mt-3 text-2xl font-bold">Envío Realizado!</h4>
-                    <div class=" flex justify-center">
-                        <img src="{!! asset('img/check.png') !!}" class="w-[50px] h-[50px] items-center mt-[20px] ">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script>
         const tableBody = document.querySelector('tbody');
         const rowCount = tableBody.querySelectorAll('tr').length;
         document.getElementById('rowCount').textContent = rowCount;
+
+        window.addEventListener('load', function() {
+            var flashMessage = document.getElementById('flash-message');
+            if (flashMessage) {
+                setTimeout(function() {
+                    flashMessage.classList.add('hidden');
+                }, 5000); // 5000 milliseconds = 5 seconds
+            }
+        });
     </script>
 
-    <script>
-        const modal = document.querySelector('.modal');
-        const showModal = document.querySelector('.show-modal');
-        const closeModal = document.querySelectorAll('.close-modal');
-
-        showModal.addEventListener('click', function() {
-            modal.classList.remove('hidden')
-        });
-        closeModal.forEach(close => {
-            close.addEventListener('click', function() {
-                modal.classList.add('hidden')
-            });
-        });
-    </script>
-    <script>
-        const modal1 = document.querySelector('.modal1');
-        const showModal1 = document.querySelector('.show-modal1');
-        const closeModal1 = document.querySelectorAll('.close-modal1');
-        const showModal2 = document.querySelector('.show-modal2');
-
-        showModal2.addEventListener('click', function() {
-            modal1.classList.remove('hidden')
-        });
-        showModal1.addEventListener('click', function() {
-            modal1.classList.remove('hidden')
-        });
-        closeModal1.forEach(close => {
-            close.addEventListener('click', function() {
-                modal1.classList.add('hidden')
-            });
-        });
-    </script>
-    <script></script>
+    <script src="{!! asset('js/modals.js') !!}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

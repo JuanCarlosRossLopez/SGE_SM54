@@ -18,13 +18,13 @@ class Teachers extends Model
         'name_teachers',
         'payroll',
         'user_id',
-        'division_id'  
+        'division_id'
     ];
 
     protected $hidden = [
         'id'
     ];
-    
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_user');
@@ -34,5 +34,16 @@ class Teachers extends Model
     {
         return $this->hasMany(Comments::class, 'id_comment');
     }
+    public function likes(): BelongsTo
+    {
+        return $this->belongsTo(Project_Likes::class);
+    }
+
+
+    public function division(): BelongsTo
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+    
 }
 

@@ -13,14 +13,7 @@
                 <h1 class="poppins-light text-[20px]">
                     ¿Estas seguro de eliminar al asesor?
                 </h1>
-                
-                
-
-
                 <div>
-
-
-
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
+use App\Http\Controllers\DocumentSend\DocumentsController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\Divisions\DivisionController;
@@ -25,9 +26,8 @@ use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use App\Models\presidencies;
 use App\Models\Project_management;
-use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Spatie\Permission\Middlewares\RoleMiddleware;
-
+use App\Http\Controllers\Pdf\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,7 +168,7 @@ Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
 Route::resource('asignar_alumnos', TeachingAdviceController::class);
 
-Route::resource('advised_students', TeacherDashboardController::class);
+Route::resource('mis_asesorados', TeacherDashboardController::class);
 
 
 
@@ -177,11 +177,11 @@ Route::resource('advised_students', TeacherDashboardController::class);
 //     return view('anteproject_cedule.table_anteprojects');
 // })->name('gestion_asesor_anteproyecto');
 
-Route::get('gestion_asesor_anteproyecto',[ Anteprojects2Controller::class, 'index']);
-
+// Route::get('gestion_asesor_anteproyecto',[ Anteprojects2Controller::class, 'index']);
+Route::resource('gestion_asesor_anteproyecto', Anteprojects2Controller::class);
 //Memoria getsion Valier
 Route::get('/memory-history/{id}/download-pdf', 'App\Http\Controllers\MemoryHistory\Memory_History_Controller@downloadPdf')->name('memory_history.download_pdf');
-Route::resource('memory', Memory_History_Controller::class);
+Route::resource('historial_de_memorias', Memory_History_Controller::class);
 Route::get('/crear_memoria', function () {
     return view('Test_memory.create_memory');
 });
@@ -209,10 +209,10 @@ Route::get('/edit_memory', function () {
 
 //Ignorar de mientras
 //Comentarios gestion Valier
-Route::resource('information_project', AnteprotecMapDashController::class);
-Route::get('/crear_comentario', function () {
-    return view('teacher_dates.create_comment');
-});
+Route::resource('informacion_anteproyecto', AnteprotecMapDashController::class);
+
+
+
 
 Route::post('/crear_comentario', [CommentsController::class, 'store'])->name('crear_comentario.store');
 
@@ -232,34 +232,20 @@ Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->w
 //End equipo valier
 
 //Equipo dano
-Route::get('/auto_digitalizacion', function () {
+//PDF
 
-    $pdf = PDF::loadView('pdf.cartaau');
-    return $pdf->stream('cedula.pdf');
-});
+Route::get('/autodigit', [PdfController::class, 'auto_digit']);
+Route::get('/anteproyectosss', [PdfController::class, 'anteproyecto']);
+Route::get('/aprobacion', [PdfController::class, 'aprobacion']);
+Route::get('/amonestacionn', [PdfController::class, 'amonestacion']);
 
-Route::get('/anteproyectosss', function () {
-    $imagen_path = public_path("img/LogoUT.png");
 
-    $pdf = PDF::loadView('pdf.carta_cedula_ante', ["imagen_path" => $imagen_path]);
-    return $pdf->stream('cedula.pdf');
-});
-
-Route::get('/amonestacionn', function () {
-    $imagen_path = public_path("img/LogoUT.png");
-
-    $pdf = PDF::loadView('pdf.cartaamonestacion', ["imagen_path"=>$imagen_path]);
-    return $pdf->stream('cedula.pdf');
-});
+Route::resource('documents', DocumentsController::class);
 Route::resource('/coordinacion', CoordinatorsController::class);
+Route::resource('descarga', DocumentsDownloadController::class);
 
+Route::post('/documents', [DocumentsController::class, 'enviar'])->name('documents.enviar');
 
-Route::get('/envio_informes', function () {
-    return view('report_generation.teacher_table');
-})->name('envio');
-Route::get('/descarga_informes', function () {
-    return view('report_generation.student_download');
-});
 Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });
