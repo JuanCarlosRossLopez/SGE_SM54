@@ -219,7 +219,7 @@
                 <button class="bg-[#18A689] p-2 text-white rounded transition-transform hover:scale-110" hidden>Subir
                     Memoria</button>
             </div>
-        </div>
+        </div>
     </div>
     </div>
 

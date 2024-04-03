@@ -85,7 +85,7 @@
                 <div class="content_conteiner h-fit p-2 card flex justify-center">
                     <div class="flex flex-col gap-2 items-center">
                         <h1>¿Qué más hacer?</h1>
-                        <a class="show-modal buttons_card_green w-full">
+                        <a href="/libro" class=" buttons_card_green w-full">
                             <i class="fi fi-sr-books flex"></i><button class="w-full text-start">Ver libros</button>
                         </a>
                         <a href="/historial_de_memorias" class="buttons_card_green">
@@ -98,15 +98,6 @@
                     <div class="flex flex-col gap-2 justify-center w-full items-center">
                         <h1>Recordatorios</h1>
                         <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>
-                        <label>Soy valier profe, en caso de fallar el ruteo las vistas importantes son: </label>
-                        <div class="flex flex-col">
-                            <a href="/gestion_asesor_anteproyecto" class="underline text-blue-600">/gestion_asesor_anteproyecto</a>
-                            <a href="/mis_asesorados" class="underline text-blue-600">/mis_asesorados</a>
-                            <a href="/historial_de_memorias" class="underline text-blue-600">/historial_de_memorias</a>
-
-                            
-                        </div>
-                        <label>Y el boton de visualizar detalles pero estoy seguro que ese si funciona</label>
                     </div>
                 </div>
             </div>

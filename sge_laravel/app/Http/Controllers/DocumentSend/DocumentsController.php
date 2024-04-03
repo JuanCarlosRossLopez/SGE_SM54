@@ -15,6 +15,7 @@ class DocumentsController extends Controller
 
     public function enviar(Request $request){
         $userID = Students::where('id', $request->student_id)->first()->user_id;
+        
         //$student = Notifications::where('user_id', $userID)->first();
 
         switch($request->type){
@@ -63,17 +64,15 @@ class DocumentsController extends Controller
                 break;
         }
         
-        return view('report_generation.index');
+        return back();
     }
     public function index(Request $request)
     {
         $userId = Auth::user()->id;
-        $student = Students::where('user_id', $userId)->first();
         $type = $request->input('type');
+        
 
-        if ($student) {
-            $adviserId = $student->adviser_id;
-            $studentList = Teaching_advice::where('teacher_id', $adviserId)->get();
+            $studentList = Teaching_advice::where('teacher_id', $userId)->get();
     
             $filteredStudents = $studentList->filter(function ($student) use ( $type) {
                 $studentId = Students::where('id', $student->student_id)->first()->user_id;
@@ -101,9 +100,7 @@ class DocumentsController extends Controller
             });    
     
             return view('report_generation.teacher_table', compact('students', 'type'));
-        }
-    
-        return redirect()->back();
+
     }
     
 
