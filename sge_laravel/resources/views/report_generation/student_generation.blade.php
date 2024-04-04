@@ -18,6 +18,8 @@
                 <h2 class=" text-white">Descargar</h2>
             </button>
         </div>
+
+        
         <div class="w-[900px] rounded-[10px] bg-[#F6F6F6] border-2 border-[#01A080] mt-[20px] p-[10px] flex justify-between">
             <h3 class=" text-black mt-[5px]">Carta de Aprobación de Memoria</h3>
             <button type="submit" class=" show-modal3 bg-[#01A080] text-white cursor-pointer text-center rounded-[5px] border-none hover:bg-green-400 p-[8px]">

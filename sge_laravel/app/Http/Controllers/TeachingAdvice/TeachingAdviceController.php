@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TeachingAdvice;
 
 use App\Http\Controllers\Controller;
+use App\Models\Students;
 use App\Models\Teachers;
 use App\Models\Teaching_advice;
 use Illuminate\Http\Request;
@@ -14,8 +15,11 @@ class TeachingAdviceController extends Controller
      */
     public function index()
     {
-        //
-        return view('teaching_advice');
+        $Teachers = Teachers::all();
+        $Students = Students::all();
+
+        $Teaching_advice = Teaching_advice::paginate(10);
+        return view('teaching_advice.teaching_advice', compact('Students','Teachers','Teaching_advice'));
     }
 
     /**
@@ -24,7 +28,7 @@ class TeachingAdviceController extends Controller
     public function create()
     {
         //
-        return view('teaching_advice');
+        return view('teaching_advice.teaching_advice');
     }
 
     /**
@@ -33,14 +37,20 @@ class TeachingAdviceController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'teacher_id'=>'required',
-            'student_id'=>'required'
-        ]);
+        // $request->validate([
+        //     'teacher_id'=>'required',
+        //     'student_id'=>'required'
+        // ]);
 
-        Teaching_advice::find($request->all());
+        $teaching_advice = new Teaching_advice();
 
-        redirect()->route('teaching_advice')->with('success','Docente asignado al Alumno correctamente');
+        
+        $teaching_advice->teacher_id=$request->input('adviser_id');
+        $teaching_advice->student_id=$request->input('student_id');
+        $teaching_advice-> save();
+
+        
+        return redirect('asignar_alumnos')->with('notificacion','Docente asignado al Alumno correctamente');
 
     }
 

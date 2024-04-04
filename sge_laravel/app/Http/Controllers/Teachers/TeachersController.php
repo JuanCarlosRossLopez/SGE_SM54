@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use App\Models\Teachers;
+use App\Models\Division;
 use App\Models\User;
 
 
@@ -17,9 +18,12 @@ class TeachersController extends Controller
     public function index()
     {
         $Students = Students::all();
-        $teachers = Teachers::with('user')->get();
+        $teachers = Teachers::paginate(10);
+        $division = Division::all();
+        $users = User::all();
+
     
-        return view('teachers.teachers', compact('teachers', 'Students'));
+        return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
     }
     
     /**
@@ -71,7 +75,6 @@ class TeachersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-      
         ]);
 
         $teacher = Teachers::find($id);
