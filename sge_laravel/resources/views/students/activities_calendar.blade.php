@@ -28,19 +28,21 @@
                                 <div
                                     class="bg-[#F7FAFC] border-2 border-[#d0d0d0] w-1/3 flex flex-col p-4 rounded justify-center items-center">
                                     <!--
-                                            <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
-                                        -->
-                                    <div class="flex flex-row items-center justify-center w-full gap-2">
-                                        <h1 class="font-semibold text-xl bg-[#18a68a40] px-2 rounded text-[#18A689] md:text-2xl">
-                                            {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
-                                        </h1>
-                                        <div class="bg-blue-200 text-lg px-2 w-fit font-bold text-blue-700 rounded flex flex-row items-center justify-center gap-2">
-                                            <label>Aprobaciones: {{ optional(optional(Auth::user()->student)->projects)->project__likes()->count() ?? 'No se encontró un proyecto asociado' }}</label>
-                                            <i class="fa-solid fa-face-smile"></i>
-                                        </div>
-                                    </div>
-
+                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+                                    -->
                                     @if (optional(optional(Auth::user()->student)->projects)->id)
+                                        <div class="flex flex-col items-center justify-center w-full gap-2">
+                                            <h1
+                                                class="font-semibold text-xl bg-[#18a68a40] px-2 rounded text-[#18A689] md:text-2xl">
+                                                {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
+                                            </h1>
+                                            <div class="bg-blue-200 text-lg px-2 w-fit font-bold text-blue-700 rounded flex flex-row items-center justify-center gap-2">
+                                                <label>Aprobaciones:
+                                                    {{ optional(optional(Auth::user()->student)->projects)->project__likes()->count() ?? 'Sin aprobaciones' }}
+                                                </label>
+                                                <i class="fa-solid fa-face-smile"></i>
+                                            </div>
+                                        </div>
                                         <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
                                             class="buttons_card_anteproyect ">Visualizar mi anteproyecto<i
                                                 class="fa-solid fa-file-lines"></i></a>
@@ -49,7 +51,7 @@
                                                 class="cursor-pointer">Crear
                                                 Anteproyecto</label></a>
                                     @endif
-                                </div>
+                                </div>
                                 <div
                                     class="w-2/3 h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
                                     <div class="w-full h-[20rem] px-2">
