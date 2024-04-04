@@ -40,7 +40,8 @@ class AuthenticatedSessionController extends Controller
             }elseif($user->hasRole('Asesor')){
                 return redirect('/dashboard_asesor');
             }elseif($user->hasRole('Aspirante')){
-                // Ruta
+                return redirect()->route('students.activities_calendar'); // Cambiar 'student.dashboard' al nombre de tu ruta para el panel de estudiante
+
             }elseif($user->hasRole('Cordinacion')){
                 // Ruta
         } else {

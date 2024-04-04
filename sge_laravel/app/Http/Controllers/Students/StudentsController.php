@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Students;
 use App\Models\Division;
+use Spatie\Permission\Models\Role;
 
 class StudentsController extends Controller 
 {
@@ -34,17 +35,32 @@ class StudentsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
+
     {
+
+        $user = new User();
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+
+        $role = Role::where('name', 'Estudiante')->first();
+        $user->assignRole($role);
+
+        $user_id = $user->id;
+
+
         $student = new Students();
         $student->student_name = $request->input('student_name');
         $student->id_student = $request->input('id_student');
         $student->project_creator = $request->input('project_creator');
-        $student->user_id = $request->input('user_id');
-        $student->division_id = $request->input('division_id');
+        $student->user_id = $user_id; // Asignar el ID del usuario
+                $student->division_id = $request->input('division_id');
         $student->anteproject_id = $request->input('anteproject_id');
         $student->adviser_id = $request->input('adviser_id');        
         $student->save();
-        return redirect('estudiantes')->with('notification', 'Estudiante creado correctamente');
+        return redirect('usuarios')->with('notification', 'Estudiante creado correctamente');
     }
 
     /**

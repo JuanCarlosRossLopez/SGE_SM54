@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Teachers;
 use App\Models\Division;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 
 class TeachersController extends Controller
 {
@@ -40,11 +40,23 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
 
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        $user_id = $user->id;
+
+        $role = Role::where('name', 'Asesor')->first();
+        $user->assignRole($role);
+
+
 
         $teacher = new Teachers();
         $teacher->name_teacher = $request->input('teacher_name');
         $teacher->payroll = $request->input('payroll');
-        $teacher->id_user = $request->input('id_user');
+        $teacher->id_user = $user_id;
         $teacher->division_id = $request->input('division_id');
         $teacher->save();
 
