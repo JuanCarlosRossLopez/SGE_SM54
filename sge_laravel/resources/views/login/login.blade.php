@@ -25,7 +25,7 @@
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 font-semibold mb-2">Correo electrónico</label>
                 <input type="email" id="email" name="email"
-                    class="w-full px-4 py-2 border rounded-md  focus:border-gray-500" required>
+                    class="w-full px-4 py-2 border rounded-md focus:border-gray-500" required>
             </div>
             <div class="mb-4 relative">
                 <label for="password" class="block text-gray-700 font-semibold mb-2">Contraseña</label>

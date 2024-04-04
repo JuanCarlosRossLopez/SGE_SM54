@@ -24,6 +24,7 @@ use App\Http\Controllers\Projects_management\Projects_managementController;
 use App\Http\Controllers\Calendar\Calendar2Controller;
 use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
+use App\Http\Controllers\Presidency\presidenciescontroller;
 use App\Http\Controllers\Coordination\CoordinatorsController;
 use App\Models\presidencies;
 use App\Models\Project_management;
@@ -272,7 +273,17 @@ Route::get('/registro_libros', function () {
 
 #RUTAS EQUIPO YAHIR
 
-Route::resource('usuarios', UsersController::class);
+//Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
+
+    Route::resource('usuarios', UsersController::class);
+    Route::get('/dashboard-presidencial', function(){
+        return view('super_admin.dashboard_presidencia');
+    });
+
+//});
+
+
+
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', presidencies::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
@@ -306,7 +317,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
+Route::group(['middleware' => ['auth']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');

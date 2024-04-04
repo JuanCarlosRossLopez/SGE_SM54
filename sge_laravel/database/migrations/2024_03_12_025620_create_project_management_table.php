@@ -37,12 +37,13 @@ return new class extends Migration
             // $table->foreignId('user_id')->nullable()->constrained('users')
             // ->onUpdate('restrict')
             // ->onDelete('restrict');
-            $table->foreignId('id_student')->nullable()->constrained('students')
+            $table->foreignId('id_student')
+                ->nullable()
+                ->constrained('students')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
             $table->timestamps();
             //Aqui en adelante mover
-
         });
     }
 

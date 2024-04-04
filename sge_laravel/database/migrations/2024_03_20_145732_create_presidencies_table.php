@@ -14,21 +14,20 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('presidencies', function (Blueprint $table) {
             $table->id();
-            $table->string('president_name');
-            $table->string('president_lastname');
-            $table->float('payroll_president');
-            $table->foreignid('user_id')
-            //->nullable()
+            $table->string('presidencies_name');
+            $table->float('payroll_presidencies');
+            $table->foreignid('users')
+            ->nullable()
             ->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignid('division_id')
-            //->nullable()
+            $table->foreignid('divisions')
+            ->nullable()
             ->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
-            $table->foreignid('career_id')
-            //->nullable()
+            $table->foreignid('careers')
+            ->nullable()
             ->constrained()
             ->onUpdate('restrict')
             ->onDelete('restrict');
@@ -41,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('presidencies');
+        Schema::dropIfExists('precidencies');
     }
 };

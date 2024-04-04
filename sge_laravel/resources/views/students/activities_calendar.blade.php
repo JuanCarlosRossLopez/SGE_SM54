@@ -25,8 +25,7 @@
                     @else
                         No se encontró información del estudiante para este usuario.
                     @endif
-                </label>
-                <label id="infoButton" class="cursor-pointer mt-3"
+                    <label id="infoButton" class="cursor-pointer mt-4"
                     data-tooltip="Este es tu dashboard, administra tu proyecto">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-2xl "></i>
                 </label>
