@@ -52,8 +52,8 @@
                 <div class="content_conteiner w-full h-fit p-4">
                     <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Resumen diario de mis
                         anteproyectos como asesor:</label>
-                    <div class="flex flex-row w-full conteiner_card">
-                        <div class="w-full">
+                    <div class="w-full ">
+                        <div class="w-full conteiner_card">
                             @foreach ($Project_management as $advising)
                                 @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
                                     <div class="card_anteproyect w-fit bg-[#F7FAFC]">
