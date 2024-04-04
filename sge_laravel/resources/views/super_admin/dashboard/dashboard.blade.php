@@ -1,7 +1,9 @@
-@extends('test.test_template')
+@extends('test.final_template')
+
 @section('title')
 Panel de control administrador
 @endsection
+
 @section('contenido')
 
 <head>
