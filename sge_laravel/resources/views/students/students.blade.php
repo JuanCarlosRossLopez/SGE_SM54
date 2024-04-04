@@ -29,10 +29,12 @@
                     <button class="search_button">
                         <i class="fas fa-search text-gray-500"></i>
                     </button>
+                    
                     <input type="text" class="search_input" placeholder="Buscar..." />
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
+                    
                     <button class="show-modal-add standar_button"><span>Agregar</span></button>
                 </div>
             </div>
@@ -133,6 +135,7 @@
                     <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                 </button>
             </div>
+            
             <div class="bg-white w-full p-4">
                 <div class="modal-body flex flex-col gap-4 items-center justify-center p-4">
                     <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>

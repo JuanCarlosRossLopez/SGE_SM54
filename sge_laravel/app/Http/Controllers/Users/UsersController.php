@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Division;
 use Illuminate\Http\Request;
+
 use Spatie\Permission\Models\Role;
 
 
@@ -16,9 +18,27 @@ class UsersController extends Controller
     public function index()
     {   
         $roles = Role::all();
+        $Divisions = Division::all();
         $users = User::paginate(10);
-        return view('UserManagement.users', compact('users', 'roles'));
+
+        return view('UserManagement.users', compact('users', 'roles','Divisions'));
     }
+    
+
+    public function filterByRole(Request $request)
+    {
+        // Obtén el nombre del rol seleccionado desde la solicitud
+        $roleName = $request->input('role');
+
+        // Filtra los usuarios según el rol utilizando Spatie
+        $users = User::role($roleName)->paginate(10);
+        $roles = Role::all();
+        $Divisions = Division::all();
+        // Carga la vista con los usuarios filtrados y otros datos necesarios
+        return view('UserManagement.users', compact('users', 'roles','Divisions'));
+    }
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -69,7 +89,7 @@ if($role) {
     public function show($id)
     {
         $user = User::find($id);
-        return view('UserManagement.modal-users.modal-view', ['user' => $user]);
+        // return view('UserManagement.modal-users.modal-view', ['user' => $user]);
     }
 
     /**
