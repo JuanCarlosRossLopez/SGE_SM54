@@ -45,7 +45,7 @@ class CommentsController extends Controller
 
         $proyectoid = $comments -> project_management_id;
 
-        return back()->with('Notification', 'Comentario creado');
+        return back()->with('notificacion', '¡Comentario realizado correctamente!');
     }
 
     /**
@@ -75,7 +75,7 @@ class CommentsController extends Controller
         $comment = Comments::find($id);
 
         $comment->general_comment = $request->all();
-        return redirect('teacher_dates.information_project')->with('success', '¡El comentario se realizó correctamente!');
+        return redirect('teacher_dates.information_project')->with('notificacion', '¡El comentario se realizó correctamente!');
     }
 
     /**
@@ -86,6 +86,6 @@ class CommentsController extends Controller
         $comment = Comments::find($id);
         $comment->delete();
 
-        return redirect('teacher_dates.information_project')->with('success','¡El comentario se borró correctamente!');
+        return redirect('teacher_dates.information_project')->with('notificacion','¡El comentario se borró correctamente!');
     }
 }

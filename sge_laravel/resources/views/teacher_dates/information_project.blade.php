@@ -6,6 +6,15 @@
 
     @section('contenido')
         <div class="back_conteiner">
+            @if (session()->has('notificacion'))
+                <div id="notification" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                    {{ session('notificacion') }}</div>
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('notification').style.display = 'none';
+                    }, 3000);
+                </script>
+            @endif
             <div class="conteiner_cards justify-center flex flex-row">
                 <div class="conteiner_cards1 flex flex-col w-3/4">
                     <!-- Mapeo de anteproyectos -->
@@ -337,8 +346,10 @@
                         <div class="flex flex-col gap-2 justify-center w-full items-center">
                             <h1>Recordatorios</h1>
                             <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>
-                            <label>Soy yo de nuevo, ya realiza los comentarios <i class="fa-solid fa-thumbs-up"></i> </label>
-                            <label>Perooo, aun esta en desarrollo el aceptar anteproyecto<i class="fa-solid fa-thumbs-down"></i> </label>
+                            <label>Soy yo de nuevo, ya realiza los comentarios <i class="fa-solid fa-thumbs-up"></i>
+                            </label>
+                            <label>Perooo, aun esta en desarrollo el aceptar anteproyecto<i
+                                    class="fa-solid fa-thumbs-down"></i> </label>
                         </div>
                     </div>
                 </div>
@@ -346,12 +357,16 @@
         </div>
 
         <!-- Modal Formulario -->
-        <div class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div
+            class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
             <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
                 <div class="border-b px-4 py-2 w-full flex flex-row items-center justify-end ">
-                    <label class="font-poppins w-full font-normal text-2xl text-white flex mt-2 text-center justify-center">Realizar una observación a "{{ $project_management->project_title }}"</label>
+                    <label
+                        class="font-poppins w-full font-normal text-2xl text-white flex mt-2 text-center justify-center">Realizar
+                        una observación a "{{ $project_management->project_title }}"</label>
                     <button class="close-modal bg-white rounded-full h-[1rem] flex items-center justify-center w-fit">
-                        <label class="text-2xl cursor-pointer"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></label>
+                        <label class="text-2xl cursor-pointer"><i class="fa-solid fa-circle-xmark"
+                                style="color: #d50101;"></i></label>
                     </button>
                 </div>
                 <div class="modal_conteiner">
@@ -362,7 +377,8 @@
                             <div class="flex flex-col items-center">
                                 <div class="flex flex-col justify-start w-[800px]">
 
-                                    <label class="font-poppins font-normal text-lg text-[#333333] text-start mt-2">Realizar una observación:</label>
+                                    <label class="font-poppins font-normal text-lg text-[#333333] text-start mt-2">Realizar
+                                        una observación:</label>
                                     <textarea type="text" name="general_comment" id="general_comment" class="rounded h-[5rem]"></textarea>
                                     <p id="mensajeError" style="color: red;"></p>
                                 </div>
@@ -392,77 +408,77 @@
 
 
         <!-- Modal
-                <div
-                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
-                        <div class="border-b px-4 py-2 flex justify-between items-center">
-                            <h3 class="font-semibold text-lg ml-60 text-white">Agendar Citas Para Revisión</h3>
-                            <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                            </button>
-                        </div>
-                        <div class="modal_conteiner">
-                            Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]
-                            <div class="modal-body h-fit">
-                                <h1 class="titles">Fecha de Revisión</h1>
-                                <input type="date" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3"></input>
+                    <div
+                        class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
+                            <div class="border-b px-4 py-2 flex justify-between items-center">
+                                <h3 class="font-semibold text-lg ml-60 text-white">Agendar Citas Para Revisión</h3>
+                                <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
+                                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                                </button>
+                            </div>
+                            <div class="modal_conteiner">
+                                Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]
+                                <div class="modal-body h-fit">
+                                    <h1 class="titles">Fecha de Revisión</h1>
+                                    <input type="date" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3"></input>
 
-                                <h1 class="titles">Hora de Revisión</h1>
-                                <input type="time" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3"></input>
-
-
-                                <h1 class="titles">Motivo de Cita</h1>
-                                <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
+                                    <h1 class="titles">Hora de Revisión</h1>
+                                    <input type="time" class="border-2 border-[#01A080] rounded-md w-full px-2 py-1 mb-3"></input>
 
 
-                                <div class="flex justify-center items-center w-full border-t pt-2">
-                                    <button class="bg-green-600 hover:bg-green-700 p-2 py-1 rounded text-white">Confirmar
-                                        Cita</button>
+                                    <h1 class="titles">Motivo de Cita</h1>
+                                    <textarea placeholder="cometarios...." class="border-2 border-[#01A080] rounded-md w-full h-[7rem] px-2 py-1 mb-3"></textarea>
+
+
+                                    <div class="flex justify-center items-center w-full border-t pt-2">
+                                        <button class="bg-green-600 hover:bg-green-700 p-2 py-1 rounded text-white">Confirmar
+                                            Cita</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div
-                    class="modalb h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
-                        <div class="border-b px-4 py-2 flex justify-between items-center">
-                            <h3 class="font-semibold text-lg ml-60 text-white">Editar Citas Para Revisión</h3>
-                            <button class="close-modalb bg-white rounded-full h-[1rem] flex items-center">
-                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                            </button>
-                        </div>
-                        <div class="modal_conteiner">
-                            Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]
-                            <div class="modal-body h-fit">
-                                <h1 class="titles ">Primera Cita</h1>
-                                <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                                <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                                <a href="/editar_cita"
-                                    class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
-                                    Cita</a>
+                    <div
+                        class="modalb h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-4xl">
+                            <div class="border-b px-4 py-2 flex justify-between items-center">
+                                <h3 class="font-semibold text-lg ml-60 text-white">Editar Citas Para Revisión</h3>
+                                <button class="close-modalb bg-white rounded-full h-[1rem] flex items-center">
+                                    <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                                </button>
+                            </div>
+                            <div class="modal_conteiner">
+                                Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]
+                                <div class="modal-body h-fit">
+                                    <h1 class="titles ">Primera Cita</h1>
+                                    <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                                    <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                                    <a href="/editar_cita"
+                                        class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
+                                        Cita</a>
 
-                                <h1 class="titles mt-4">Segunda Cita</h1>
-                                <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                                <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                                <a href="/editar_cita"
-                                    class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
-                                    Cita</a>
+                                    <h1 class="titles mt-4">Segunda Cita</h1>
+                                    <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                                    <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                                    <a href="/editar_cita"
+                                        class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
+                                        Cita</a>
 
-                                <h1 class="titles mt-4">Segunda Cita</h1>
-                                <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                                <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
-                                <a href="/editar_cita"
-                                    class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
-                                    Cita</a>
-                                <div class="flex justify-center items-center w-full border-t pt-2">
+                                    <h1 class="titles mt-4">Segunda Cita</h1>
+                                    <input type="date" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                                    <input type="time" class="border-2 border-[#01A080] rounded-md w-64 px-2 py-1 mr-20"></input>
+                                    <a href="/editar_cita"
+                                        class="bg-green-600 hover:bg-green-700 p-2 py-1 w-44 rounded text-white">Editar
+                                        Cita</a>
+                                    <div class="flex justify-center items-center w-full border-t pt-2">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>-->
+                    </div>-->
 
 
         <script>
