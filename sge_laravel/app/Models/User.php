@@ -58,5 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Teachers::class, 'id_user');
     }
+    public function presidents()
+    {
+        return $this->hasOne(presidencies::class, 'user_id');
+    }
     
 }

@@ -21,7 +21,7 @@ class PresidenciesController extends Controller
         $divisions = Division::all();
         $presidencies = presidencies::paginate(10);
 
-        return view('presidencies.presidencies', compact('presidencies', 'users', 'careers', 'divisions'));
+        return view('presidencies.presidencies', compact('presidencies', 'users', 'divisions', 'careers'));
     }
 
     /**
