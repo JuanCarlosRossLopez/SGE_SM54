@@ -1,6 +1,6 @@
 <?php
-use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
 use App\Http\Controllers\DocumentSend\DocumentsController;
+use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\Divisions\DivisionController;
@@ -15,6 +15,7 @@ use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Companies\CompaniesController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
+use App\Http\Controllers\Books\BookCordinacionController;
 use FontLib\Table\Type\name;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
@@ -129,7 +130,9 @@ Route::get('dashboard_maestro', function() {
     return view('teachers.teacher_dashboard');
 });
 
-// Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
+Route::resource('/gestion_libros',BookCordinacionController::class);   
+    
+Route::resource('libros',BooksController::class);
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 
@@ -239,13 +242,18 @@ Route::get('/anteproyectosss', [PdfController::class, 'anteproyecto']);
 Route::get('/aprobacion', [PdfController::class, 'aprobacion']);
 Route::get('/amonestacionn', [PdfController::class, 'amonestacion']);
 
-
 Route::resource('documents', DocumentsController::class);
-Route::resource('/coordinacion', CoordinatorsController::class);
 Route::resource('descarga', DocumentsDownloadController::class);
-
 Route::post('/documents', [DocumentsController::class, 'enviar'])->name('documents.enviar');
 
+Route::resource('/coordinacion', CoordinatorsController::class);
+
+Route::get('/envio_informes', function () {
+    return view('report_generation.teacher_table');
+})->name('envio');
+Route::get('/descarga_informes', function () {
+    return view('report_generation.student_download');
+});
 Route::get('/informes', function () {
     return view('report_generation.teacher_generation');
 });

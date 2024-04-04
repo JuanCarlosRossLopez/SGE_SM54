@@ -34,35 +34,13 @@
                     <div>
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
-                        @role('Estudiante')
-                            <li>
-                                <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
-                                    <i class="fa-solid fa-school"></i></i>
-                                    Inicio
-                                </button>
-                            </li>
-                        @endrole
-                        @role('Estudiante')
-                            <li>
-                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                    <i class="fa-solid fa-school"></i></i>
-                                    Gestión de Anteproyectos
-                                </button>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/usuarios" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-school"></i>
-                                    Usuarios
-                                </a>
-                            </li>
-                        @endrole
+
+                        <!-- Todo en lo que navega el asesor -->
                         @role('Asesor')
                             <li>
                                 <a href="/dashboard_asesor" class="buttons_sidebar">
                                     <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio Asesor
+                                    Inicio
                                 </a>
                             </li>
                         @endrole
@@ -74,6 +52,81 @@
                                 </a>
                             </li>
                         @endrole
+                        @role('Asesor')
+                            <li>
+                                <a href="/historial_de_memorias" class="buttons_sidebar">
+                                    <i class="fa-solid fa-landmark"></i>
+                                    Historial de memorias
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('Asesor')
+                            <li>
+                                <a href="/informes" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Generacion de informes
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('Asesor')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
+                        <!-- End todo en lo que navega el asesor -->
+
+                        <!-- Todo lo que navega el estudiante -->
+                        @role('Estudiante')
+                            <li>
+                                <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
+                                    <i class="fa-solid fa-school"></i></i>
+                                    Inicio
+                                </button>
+                            </li>
+                        @endrole
+                        @role('Estudiante')
+                            <li>
+                                <a href="/descarga" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Descargar mis informes
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Estudiante')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
+
+
+
+                        <!--
+                            No lo vi necesario, porque regresariamos a crearlo?
+                            @role('Estudiante')
+    <li>
+                                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                            </button>
+                                        </li>
+@endrole
+                            -->
+                        <!-- End todo lo que navega el estudiante -->
+
+
+                        @role('Administrador')
+                            <li>
+                                <a href="/usuarios" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-school"></i>
+                                    Usuarios
+                                </a>
+                            </li>
+                        @endrole
+
+
                         @role('Administrador')
                             <li>
                                 <a href="/panel_admin" class="buttons_sidebar">
@@ -106,12 +159,7 @@
                                 </a>
                             </li>
                         @endrole
-                        <li>
-                            <a href="/memory" class="buttons_sidebar">
-                                <i class="fa-solid fa-landmark"></i>
-                                Historial de memorias
-                            </a>
-                        </li>
+
                         @role('Cordinacion')
                             <li>
                                 <a href="/informes" class="buttons_sidebar ">
@@ -119,33 +167,7 @@
                                 </a>
                             </li>
                         @endrole
-                        <li>
-                            <a href="/descarga_informe" class="buttons_sidebar ">
-                                <i class="fa-solid fa-file"></i> Generacion de informes
-                            </a>
-                        </li>
-                        <li>
-                            <a href='/Profile' class="buttons_sidebar">
-                                <i class="fa-solid fa-address-card"></i>
-                                Mi perfil
-                            </a>
-                        </li>
-                        <li>
-                            <a class="buttons_sidebar" href="/roles">
-                                <i class="fa-solid fa-cog "></i>
-                                Asignación de roles
-                            </a>
-                        <li>
-                            <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Gestión de Coordinación
-                            </button>
-                        </li>
-                        <a class="buttons_sidebar" href="estudiantes">
-                            <i class="fa-solid fa-address-card "></i>
-                            Estudiantes
-                        </a>
-                        </li>
+
                     </div>
                 </ul>
             </div>
@@ -156,8 +178,13 @@
                 <div class="w-full flex justify-between items-center">
                     <div class="text-white text-2xl flex flex-col">
                         @if (Auth::user()->teachers)
-                            <label class="text-3xl text-[#d7d7d7]">Buen día, {{ Auth::user()->teachers->name_teacher }}</label>
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->teachers->name_teacher }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión asesor</label>
+                        @elseif (Auth::user()->student)
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->student->student_name }}</label>
+                            <label class="text-xl text-[#a8a8a8]">Gestión estudiante</label>
                         @else
                             No se encontró información del asesor para este usuario.
                         @endif

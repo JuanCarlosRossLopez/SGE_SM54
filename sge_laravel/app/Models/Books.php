@@ -11,14 +11,17 @@ class Books extends Model
     use HasFactory;
     protected $fillable = [
         'book_name',
+        'voucher',
         'book_front_page',
         'book_description',
         'author',
         'price',
-        'students_id',
+        'status',
     ];
 
-    public function students():BelongsToMany{
+    public function students(): BelongsToMany
+    {
         return $this->belongsToMany(Students::class);
     }
+    
 }

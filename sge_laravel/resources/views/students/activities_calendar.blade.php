@@ -33,47 +33,46 @@
             </div>
 
             <div class="flex flex-row gap-4 justify-center">
-                <div class="bg-white w-1/5 rounded h-[350px] my-3 p-3">
+                <div class="bg-white w-fit flex flex-col rounded h-fit items-center  p-3">
                     <p class="font-medium text-sm text-center sm:text-xl">ESTADO DE ANTEPROYECTO</p>
+                    <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
                     <h1 class="text-center">
                         {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
                     </h1>
-                    <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
-                        class="Button-progress">
-                        Visualizar detalles
-                    </a>
-
-                    <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+                    @if(optional(optional(Auth::user()->student)->projects)->id)
+                    <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}" class="Button-progress">Visualizar detalles</a>
+                    @else
+                    <a href="/anteproyecto" class="buttons_card_anteproyect"><label class="cursor-pointer">Crear Anteproyecto</label></a>
+                    @endif
                 </div>
+                
                 <div class="bg-white w-[68%] rounded h-[350px] my-3 p-3 flex flex-col">
                     <div class="overflow-auto p-2">
                         <h1 class="font-semibold text-xl text-[#18A689] md:text-3xl">Comentarios de Anteproyecto</h1>
-
-
+            
                         <div>
                             <div>
-                                @if (Auth::user()->student)
-                                    @if (Auth::user()->student->projects->comments->isEmpty())
-                                        <p class="text-black">No hay comentarios para este anteproyecto.</p>
-                                    @else
-                                        @foreach (Auth::user()->student->projects->comments as $comment)
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
-                                                <p>{{ $comment->created_at->format('d F Y') }}</p>
-                                                <p>{{ $comment->general_comment }}</p>
-                                            </div>
-                                        @endforeach
-                                    @endif
+                                @php
+                                    $comments = optional(optional(Auth::user()->student)->projects)->comments;
+                                @endphp
+                                @if ($comments && $comments->isNotEmpty())
+                                    @foreach ($comments as $comment)
+                                        <div class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
+                                            <p>{{ $comment->created_at->format('d F Y') }}</p>
+                                            <p>{{ $comment->general_comment }}</p>
+                                        </div>
+                                    @endforeach
                                 @else
-                                    <p class="text-black">No se encontraron comentarios para este anteproyecto.</p>
+                                    <p class="text-black">No hay comentarios para este anteproyecto.</p>
                                 @endif
                             </div>
                         </div>
-
+            
                     </div>
-
+            
                 </div>
             </div>
+            
         </div>
         <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8">
             <div
@@ -157,7 +156,7 @@
                 </table>
             </div>
         </div>
-        <div class="flex flex-row gap-3 items-center justify-center">
+        <div class="flex flex-row gap-3 items-center justify-center py-4">
             <div class=" mt-4 border-[#18A689]">
                 <button
                     class="bg-[#18A689] p-2 flex flex-row gap-2 text-white rounded transition-transform hover:scale-110">
@@ -169,13 +168,57 @@
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                    </svg></button>
+                    </svg>
+                </button>
+
+            </div>
+            <div class=" mt-4 border-[#18A689]">
+                <button
+                    class="bg-[#18A689] p-2 flex flex-row gap-2 text-white rounded transition-transform hover:scale-110">
+                    <a href="/aprobacion" target="_blank">
+                        Desacargar
+                        Carta Aprobación de Memoria
+                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                </button>
+            </div>
+            <div class=" mt-4 border-[#18A689]">
+                <button class="bg-[#18A689] p-2 flex flex-row gap-2 text-white rounded transition-transform hover:scale-110">
+                    <a href="/autodigit" target="_blank">
+                        Desacargar
+                        Autorización de Digitalización
+                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                </button>
+            </div>
+            <div class=" mt-4 border-[#18A689]">
+                <button
+                    class="bg-[#18A689] p-2 flex flex-row gap-2 text-white rounded transition-transform hover:scale-110">
+                    <a href="/amonestacionn" target="_blank">
+                        Desacargar
+                        Carta de amonestación
+                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                </button>
+                
             </div>
             <div class="flex mt-4 border-[#18A689]">
                 <button class="bg-[#18A689] p-2 text-white rounded transition-transform hover:scale-110" hidden>Subir
                     Memoria</button>
             </div>
-        </div>
+        </div>
     </div>
     </div>
 

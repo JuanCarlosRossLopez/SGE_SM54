@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('student_name');
             $table->integer('id_student')->unique(); // matricula
-            $table->boolean('project_creator');
+            $table->boolean('project_creator')-> nullable();
             $table->integer('strike')->default(0); // amonestacion
             $table->foreignId('user_id')->nullable()->constrained('users')
                 ->onUpdate('restrict')
