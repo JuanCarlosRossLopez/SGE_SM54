@@ -1,9 +1,14 @@
 <?php
 
+namespace App\Http\Controllers\Careers;
+
+
 use App\Http\Controllers\Careers;
 use Illuminate\Http\Request;
 use App\Models\Career;
 use App\Http\Controllers\Controller;
+use App\Models\Division;
+
 
 class CareerController extends Controller
 {
@@ -13,7 +18,8 @@ class CareerController extends Controller
     public function index()
     {
         $careers = Career::all();
-        return view ('careers', compact ('careers'));
+        $divisions = Division::all();
+        return view ('careers.careers', compact ('careers','divisions'));
     }
 
     /**
@@ -22,7 +28,7 @@ class CareerController extends Controller
     public function create()
     {
         $careers = Career::all();
-        return view ('careers.create', compact ('divisions'));
+        return view ('careers', compact ('divisions'));
     }
 
     /**
@@ -31,19 +37,24 @@ class CareerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'career_name' => 'required|max:250',
-            'career_description' => 'required|max:100',
-            'division_id' => 'required',
+            'career_name' => 'required|string',
+            'career_description' => 'required|string',
+            'division_id' => 'required|exists:divisions,id',
         ]);
 
+
+
         $career = new Career();
-        $career->career_name = $request->career_name;
-        $career->career_description = $request->career_description;
-        $career->division_id = $request->division_id;
-        
+        $career->career_name = $request->input('career_name');
+        $career->career_description = $request->input('career_description');
+        $career->division_id = $request->input('division_id');
         $career->save();
-        return redirect("careers");
+        return redirect("carreras")->with('notificacion', 'Carrera creada correctamente');
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -74,7 +85,7 @@ class CareerController extends Controller
         $career->division_id = $request->division_id;
         $career->save();
 
-        return redirect("careers")->with('notificacion', 'si cambio');
+        return redirect("carreras")->with('notificacion', 'carrera editada correctamente!');
     }
 
     /**
@@ -84,6 +95,6 @@ class CareerController extends Controller
     {
         $career = Career::find($id);
         $career->delete();
-        return redirect("careers")->with('notificacion', 'si elimino');
+        return redirect("carreras")->with('notificacion', 'carrera eliminada correctamente!');
     }
 }
