@@ -763,6 +763,30 @@ span {
     width: fit-content;
 }
 
+.button_edit_rol_yellow{
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 100%;
+    border-width: 4px;
+    border-color: #a67b18c3;
+    background-color: #a69a1800;
+    color: #a69f18;
+    width: 100%;
+    font-weight: 400;
+    padding: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.button_edit_rol_yellow:hover {
+    font-weight: 600;
+    background-color: #a68e18;
+    color: #ffffff;
+    transform: scale(1.1);
+    width: 100%;
+}
 .button_add_green {
     cursor: pointer;
     font-size: 24px;
@@ -866,3 +890,4 @@ span {
     transform: scale(1.1);
     width: 100%;
 }
+

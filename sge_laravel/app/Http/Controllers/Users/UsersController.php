@@ -40,8 +40,9 @@ class UsersController extends Controller
 
         $roles = Role::all();
         $Divisions = Division::all();
+        $careers = Career::all();
 
-        return view('UserManagement.users', compact('users', 'roles', 'Divisions'));
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers'));
     }
 
 

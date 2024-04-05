@@ -80,7 +80,7 @@
                             <div>
                                 <h1>Academias</h1>
                                 <div class="flex flex-col gap-1">
-                                    <a href="/asignar_alumnos" class="buttons_card_blue">Gestionar divisiones</a>
+                                    <a href="#" class="buttons_card_blue">Gestionar divisiones</a>
                                     <a href="#" class="buttons_card_red">Botón sin acción</a>
                                     <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
@@ -116,7 +116,7 @@
                             <div class="">
                                 <h1>Empresas vinculadas</h1>
                                 <div class="flex flex-col gap-1">
-                                    <a href="/gestion_asesor_anteproyecto" class="buttons_card_blue">Gestionar empresas</a>
+                                    <a href="#" class="buttons_card_blue">Gestionar empresas</a>
                                     <a href="#" class="buttons_card_red">Botón sin acción</a>
                                     <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
@@ -131,11 +131,10 @@
 
                 <!-- Mapeo de anteproyectos -->
                 <div class="content_conteiner w-full h-fit p-4">
-                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Resumen diario de mis
-                        anteproyectos como asesor:</label>
+                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Añadir algo si lo crees necesario:</label>
                     <div class="w-full ">
                         <div class="w-full conteiner_card">
-                            <label>Si</label>
+                            <label>Nada por aqui aun</label>
                         </div>
                     </div>
 
