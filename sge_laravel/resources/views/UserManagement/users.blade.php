@@ -49,17 +49,17 @@
 
                             </div>
                             <form action="{{ route('users.filterByRole') }}" method="GET">
-    <label for="role">Filtrar por rol:</label>
-    <select name="role" id="role">
-        <option value="Administrador">Administrador</option>
-        <option value="Asesor">Asesor</option>
-        <option value="Estudiante">Estudiante</option>
-        <option value="Presidente">Presidente</option>
-        <option value="Cordinacion">Cordinacion</option>
+                                <label for="role">Filtrar por rol:</label>
+                                <select name="role" id="role">
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Asesor">Asesor</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Presidente">Presidente</option>
+                                    <option value="Cordinacion">Cordinacion</option>
 
-    </select>
-    <button type="submit">Filtrar</button>
-</form>
+                                </select>
+                                <button type="submit">Filtrar</button>
+                            </form>
 
                             <div class="w-[15rem] bg-[#01A080]  text-center flex flex-row items-center rounded">
                                 <label class="font-semibold font-poppins text-lg text-start w-full text-white">Crear Usuarios</label>
@@ -71,7 +71,7 @@
                                         <a class="show-modal3  block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">Usuario</a>
                                         <a class="show-modal-add  block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">Estudiante</a>
                                         <a class=" show-modal-add-teacher block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">Asesor</a>
-                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">Presidente</a>
+                                        <a class=" show-modal-president block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">Presidente</a>
                                         <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">Cordinador</a>
 
                                     </div>
@@ -133,6 +133,12 @@
                                             Email
                                         </th>
                                         <th class="theader">
+                                            Nombre completo
+                                        </th>
+                                        <th class="theader">
+                                            Division
+                                        </th>
+                                        <th class="theader">
                                             Roles
                                         </th>
                                         <th class="theader">
@@ -146,6 +152,17 @@
                                         <td class="trowc"> {{ $loop->iteration }} </td>
                                         <td class="trowc"> {{ $user->name }} </td>
                                         <td class="trowc"> {{ $user->email }} </td>
+                                        <td class="trowc">
+                                            @if ($user->hasRole('Asesor') && $user->teachers)
+                                            {{ $user->teachers->name_teacher }}
+                                            @elseif ($user->hasRole('Estudiante') && $user->student)
+                                            {{ $user->student->student_name }}
+                                            @else
+                                            <p>No se ha asignado un nombre</p>
+                                            @endif
+
+                                        </td>
+                                        <td class="trowc"> </td>
                                         <td>
 
                                             @if ($user->roles->isEmpty())
@@ -226,6 +243,105 @@
                         </div>
 
 
+
+
+                        <div class="modal-presidente-add h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+                            <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
+                                <div class="border-b px-4 py-2 flex justify-between items-center">
+                                    <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar Presidente
+                                    </h3>
+                                    <button class="close-modal3 bg-white rounded-full h-[1rem] flex items-center">
+                                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i>
+                                        </p>
+                                    </button>
+                                </div>
+
+
+                                <div class="modal-container">
+                                    @if ($errors->any())
+                                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert" role="alert">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>
+                                                {{ $error }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+                                    <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
+                                        <form action="{{ route('presidentes.store') }}" method="POST" class="flex flex-col items-center">
+                                            @csrf
+
+                                            <div class="mb-4">
+                                                <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field">
+
+                                            </div>
+                                            <div class="mb-4">
+                                                <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
+
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
+                                                    del Presidente</label>
+                                                <input type="text" name="president_name" class="rounded input-field">
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos del
+                                                    Presidente</label>
+                                                <input type="text" name="president_lastname" class="rounded input-field">
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
+                                                <input type="number" name="payroll_president" class="rounded input-field">
+                                            </div>
+                                            <div>
+                                                <select name="user_id" id="user_id" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+                                                    <option value="">Selecciona un usuario</option>
+                                                    @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div>
+                                                <select name="career_id" id="career_id" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+                                                    <option value="">Selecciona una carrera</option>
+                                                    @foreach ($careers as $career)
+                                                    <option value="{{ $career->id }}">{{ $career->career_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div>
+                                                <select name="division_id" id="division_id" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
+                                                    <option value="">Selecciona una división</option>
+                                                    @foreach ($Divisions as $division)
+                                                    <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+
+                                            <div class="flex justify-center">
+                                                <button type="submit">
+                                                    <div class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                                        Agregar presidente
+                                                    </div>
+                                                </button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -314,13 +430,13 @@
                                                     <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
                                                     <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
-                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2"  oninput="maxLengthCheck(this)">
+                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
                                                     <script>
-function maxLengthCheck(object) {
-    if (object.value.length > 11)
-        object.value = object.value.slice(0, 11);
-}
-</script>
+                                                        function maxLengthCheck(object) {
+                                                            if (object.value.length > 11)
+                                                                object.value = object.value.slice(0, 11);
+                                                        }
+                                                    </script>
                                                 </div>
 
                                                 <div class="flex gap-4">
@@ -352,6 +468,15 @@ function maxLengthCheck(object) {
                             const closeModalview = document.querySelectorAll('.close-modal-view');
                             const modal_add = document.querySelector('.modal-add-student');
                             const show_modal_add = document.querySelector('.show-modal-add');
+                            const modal_add_president = document.querySelector('.modal-presidente-add');
+                            const show_add_president = document.querySelector('.show-modal-president');
+
+                            show_add_president.addEventListener('click', function() {
+                                modal_add_president.classList.remove('hidden')
+                            })
+
+
+
                             show_modal_add.addEventListener('click', function() {
                                 modal_add.classList.remove('hidden')
                             })

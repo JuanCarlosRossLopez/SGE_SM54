@@ -25,7 +25,7 @@ use App\Http\Controllers\Calendar\Calendar2Controller;
 use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
-use App\Models\presidencies;
+use App\Http\Controllers\Presidencies\PresidenciesController;
 use App\Models\Project_management;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use App\Http\Controllers\Pdf\PdfController;
@@ -276,7 +276,7 @@ Route::resource('usuarios', UsersController::class);
 Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
 
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
-Route::resource('presidentes', presidencies::class);
+Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
 
