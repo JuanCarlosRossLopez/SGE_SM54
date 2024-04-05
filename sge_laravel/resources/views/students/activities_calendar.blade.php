@@ -16,7 +16,7 @@
                     <script>
                         setTimeout(function() {
                             document.getElementById('notification').style.display = 'none';
-                        }, 10000);
+                        }, 8000);
                     </script>
                 @endif
                 <div class="content_conteiner w-full h-fit p-4">

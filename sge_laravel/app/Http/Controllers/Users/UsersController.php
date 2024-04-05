@@ -16,28 +16,31 @@ class UsersController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
         $roles = Role::all();
         $Divisions = Division::all();
         $users = User::paginate(10);
 
-        return view('UserManagement.users', compact('users', 'roles','Divisions'));
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions'));
     }
-    
+
 
     public function filterByRole(Request $request)
     {
-        // Obtén el nombre del rol seleccionado desde la solicitud
         $roleName = $request->input('role');
 
-        // Filtra los usuarios según el rol utilizando Spatie
-        $users = User::role($roleName)->paginate(10);
+        if ($roleName == 'Todos') {
+            $users = User::paginate(10);
+        } else {
+            $users = User::role($roleName)->paginate(10);
+        }
+
         $roles = Role::all();
         $Divisions = Division::all();
-        // Carga la vista con los usuarios filtrados y otros datos necesarios
-        return view('UserManagement.users', compact('users', 'roles','Divisions'));
+
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions'));
     }
-    
+
 
 
     /**
@@ -71,12 +74,12 @@ class UsersController extends Controller
         $roleName = $request->input('role');
 
 
-        
-        
+
+
         $role = Role::where('name', $roleName)->first();
-if($role) {
-    $users->assignRole($role);
-}
+        if ($role) {
+            $users->assignRole($role);
+        }
 
 
         return redirect('usuarios')->with('notificacion', "Usuario creado correctamente");
@@ -98,7 +101,7 @@ if($role) {
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         return view('UserManagement.modal-users.modal4', ['user' => $user]);
     }
 
@@ -120,7 +123,7 @@ if($role) {
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
-        
+
         $users->roles()->detach();
 
         if ($request->role) {
