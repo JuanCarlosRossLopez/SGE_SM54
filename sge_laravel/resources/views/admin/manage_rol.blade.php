@@ -72,21 +72,22 @@
 
                                         <button class="show-modal-rol  rounded p-1 text-white"
                                             data-target="#edit{{ $role->id }}">
-                                            <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto"
-                                                class="w-7 h-7    ">
-
+                                            <div class ="button_edit_yellow">
+                                                <i class ="fa-solid fa-pen-to-square"></i>
+                                            </div>
                                         </button>
 
                                         <button class="show-delete rounded p-1 text-white"
                                             data-target="#delete{{ $role->id }}">
-                                            <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto"
-                                                class="w-7 h-7   text-red-500  ">
+                                            <div class ="button_delete_red">
+                                                <i class ="fa-solid fa-trash"></i>
+                                            </div>
 
                                         </button>
 
                                         <!-- <button>
-                                                        <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
-                                                    </button> -->
+                                                                <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
+                                                            </button> -->
 
 
 
@@ -236,15 +237,24 @@
                                             <div class="flex flex-row gap-4">
                                                 <button class="show-modal-permission rounded p-1 text-white"
                                                     data-target="#delete_permission{{ $permission->id }}">
-                                                    <img src="{{ asset('icons/trash.svg') }}" alt="Delete button"
-                                                        class="w-7 h-7 text-red-500">
+                                                    <button class="show-delete rounded p-1 text-white"
+                                                        data-target="#delete{{ $role->id }}">
+                                                        <div class ="button_delete_red">
+                                                            <i class ="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
                                                 </button>
                                                 <button class="show-permission-edit"
                                                     data-target="#edit_permission{{ $permission->id }}">
-                                                    <img src="{{ asset('icons/edit.svg') }}" alt="Edit button"
-                                                        class="w-7 h-7 text-[#01A080]">
+                                                    <button class="show-modal-rol  rounded p-1 text-white"
+                                                        data-target="#edit{{ $role->id }}">
+                                                        <div class ="button_edit_yellow">
+                                                            <i class ="fa-solid fa-pen-to-square"></i>
+                                                        </div>
+                                                    </button>
                                                 </button>
                                             </div>
+                                            
                                         </td>
                                     </tr>
                                     @include('admin.edit-modal-permission')
