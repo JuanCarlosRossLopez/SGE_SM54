@@ -102,39 +102,39 @@
                             </li>
                         @endrole
 
-
-
                         <!--
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
     <li>
-                                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                                <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
-                                            </button>
-                                        </li>
+                                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                    <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                                </button>
+                                            </li>
 @endrole
                             -->
                         <!-- End todo lo que navega el estudiante -->
 
-
+                        <!-- Todo lo que el administrador puede navegar-->
+                        @role('Administrador')
+                            <li>
+                                <a href="/dashboard" class="buttons_sidebar">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                    Inicio
+                                </a>
+                            </li>
+                        @endrole
                         @role('Administrador')
                             <li>
                                 <a href="/usuarios" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-school"></i>
+                                    <i class="fa-solid fa-users-gear"></i>
                                     Usuarios
                                 </a>
                             </li>
                         @endrole
+                        
+                        <!--END Todo lo que el administrador puede navegar-->
 
 
-                        @role('Administrador')
-                            <li>
-                                <a href="/panel_admin" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio Admin
-                                </a>
-                            </li>
-                        @endrole
                         @role('Cordinacion')
                             <li>
                                 <a href="/Dashboard_Direccion" class="buttons_sidebar">
@@ -185,6 +185,10 @@
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->student->student_name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión estudiante</label>
+                        @elseif (Auth::user()->hasRole('Administrador'))
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->name }}</label>
+                            <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
                         @else
                             No se encontró información del asesor para este usuario.
                         @endif
