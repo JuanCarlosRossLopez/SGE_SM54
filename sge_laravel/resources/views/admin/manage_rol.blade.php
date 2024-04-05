@@ -72,13 +72,15 @@
 
 
                                 <button class="show-modal-rol  rounded p-1 text-white" data-target="#edit{{$role->id}}">
-                                    <img src="{{ asset('icons/edit.svg') }}" alt="Delete buttto" class="w-7 h-7    ">
-
+                                    <div class ="button_edit_yellow">
+                                        <i class ="fa-solid fa-pen-to-square"></i>
+                                    </div>
                                 </button>
 
                                 <button class="show-delete rounded p-1 text-white" data-target="#delete{{$role->id}}">
-                                    <img src="{{ asset('icons/trash.svg') }}" alt="Delete buttto" class="w-7 h-7   text-red-500  ">
-
+                                    <div class ="button_delete_red">
+                                        <i class ="fa-solid fa-trash"></i>
+                                    </div>
                                         </button>
 
                                         <!-- <button>
