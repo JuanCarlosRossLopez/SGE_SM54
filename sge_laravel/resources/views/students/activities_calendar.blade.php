@@ -105,7 +105,7 @@
                                                 class="cursor-pointer">Crear mi
                                                 anteproyecto</label></a>
                                     @endif
-                                </div>
+                                </div>
                                 <div
                                     class="w-full h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
                                     <div class="w-full h-[20rem] px-2">
