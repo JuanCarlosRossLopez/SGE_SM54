@@ -20,44 +20,98 @@
                     </script>
                 @endif
                 <div class="content_conteiner w-full h-fit p-4">
-                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Detalles de mi
-                        anteproyecto:</label>
+
                     <div class="w-full">
                         <div class="w-full">
-                            <div class="flex  w-full flex-row mb-4 gap-4">
+                            <div class="flex w-full flex-row mb-4 gap-4">
                                 <div
-                                    class="bg-[#F7FAFC] border-2 border-[#d0d0d0] w-1/3 flex flex-col p-4 rounded justify-center items-center">
+                                    class="bg-[#F7FAFC] w-1/3 p-3 border-2 border-[#d0d0d0] flex flex-col items-center rounded">
                                     <!--
-                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
-                                    -->
+                                                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+                                                                    -->
                                     @if (optional(optional(Auth::user()->student)->projects)->id)
-                                        <div class="flex flex-col items-center justify-center w-full gap-2">
-                                            <h1
-                                                class="font-semibold text-xl bg-[#18a68a40] px-2 rounded text-[#18A689] md:text-2xl">
-                                                {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
-                                            </h1>
-                                            <div class="bg-blue-200 text-lg px-2 w-fit font-bold text-blue-700 rounded flex flex-row items-center justify-center gap-2">
-                                                <label>Aprobaciones:
-                                                    {{ optional(optional(Auth::user()->student)->projects)->project__likes()->count() ?? 'Sin aprobaciones' }}
+                                        <div class="flex flex-col w-full h-fit px-4 pt-2 mt-0">
+                                            <div
+                                                class="h-fit rounded-t-xl w-full flex  justify-center text-5xl text-[#454545] gap-2">
+                                                <label
+                                                    class="font-poppins font-semibold text-xl text-[#333333] text-start pb-2">Detalles
+                                                    de
                                                 </label>
-                                                <i class="fa-solid fa-face-smile"></i>
+                                                <h1
+                                                    class="font-semibold  bg-[#18a68a31] px-2 h-fit rounded text-[#18A689] md:text-xl">
+                                                    {{ optional(optional(Auth::user()->student)->projects)->project_title ?? 'No se encontró un proyecto asociado' }}
+                                                </h1>
+
                                             </div>
+                                            <div class=" rounded-xl w-full h-full gap-1 flex flex-col items-start">
+                                                <div class="flex flex-col items-start">
+                                                    <label
+                                                        class="font-sans font-semibold text-lg text-[#545454]">Creador:</label>
+                                                    <h1
+                                                        class="font-semibold  bg-[#18a68a31] px-2 rounded text-[#18A689] md:text-base">
+                                                        {{ optional(optional(Auth::user()->student)->projects)->student_name ?? 'No se encontró un alumno asociado' }}
+                                                    </h1>
+                                                </div>
+                                                <div class="flex flex-col items-start">
+                                                    <label class="font-sans font-semibold text-lg text-[#545454]">Correo del
+                                                        estudiante:</label>
+                                                    <h1
+                                                        class="font-semibold bg-[#18a68a31] px-2 rounded text-[#18A689] md:text-base">
+                                                        {{ optional(optional(Auth::user()->student)->projects)->student_email ?? 'No se encontró un correo asociado' }}
+                                                    </h1>
+                                                </div>
+                                                <div class="flex flex-col items-start ">
+                                                    <label class="font-sans font-semibold text-lg text-[#545454]">Asesor
+                                                        empresarial:</label>
+                                                    <h1
+                                                        class="font-semibold text-lg bg-[#a6a61831] px-2 rounded text-[#a68a18] md:text-base">
+                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor asociado' }}
+                                                    </h1>
+                                                </div>
+
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <label
+                                                        class="font-sans font-semibold text-lg text-[#545454]">Estado:</label>
+                                                    <h1
+                                                        class="font-semibold text-lg bg-[#a6181831] px-2 rounded text-[#a61818] md:text-base">
+                                                        Quintana Roo
+                                                    </h1>
+                                                </div>
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <label
+                                                        class="font-sans font-semibold text-lg text-[#545454]">Aprobaciones:</label>
+                                                    <div
+                                                        class="font-semibold text-lg bg-[#1883a631] px-2 rounded text-[#1839a6] md:text-base">
+
+                                                        {{ optional(optional(Auth::user()->student)->projects)->project__likes()->count() ?? 'Sin aprobaciones' }}
+
+                                                        <i class="fa-solid fa-face-smile"></i>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
                                         </div>
-                                        <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
-                                            class="buttons_card_anteproyect ">Visualizar mi anteproyecto<i
-                                                class="fa-solid fa-file-lines"></i></a>
+                                        <div class=" w-full flex justify-center mt-3 ">
+                                            <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
+                                                class="buttons_card_anteproyect m-0">Visualizar mi anteproyecto<i
+                                                    class="fa-solid fa-file-lines"></i>
+                                            </a>
+                                        </div>
                                     @else
+                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto</p>
                                         <a href="/anteproyecto" class="buttons_card_anteproyect"><label
-                                                class="cursor-pointer">Crear
-                                                Anteproyecto</label></a>
+                                                class="cursor-pointer">Crear mi
+                                                anteproyecto</label></a>
                                     @endif
                                 </div>
                                 <div
-                                    class="w-2/3 h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
+                                    class="w-full h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
                                     <div class="w-full h-[20rem] px-2">
                                         <h1 class="font-semibold text-xl text-[#18A689] md:text-2xl">Comentarios de
                                             Anteproyecto</h1>
-                                        <div class="border-1 border-[#d0d0d0] p-3 overflow-auto mt-2 rounded h-[90%]">
+                                        <div class=" bg-[#f2f2f2] p-3 overflow-auto mt-2 rounded h-[90%]">
                                             <div>
                                                 @php
                                                     $comments = optional(optional(Auth::user()->student)->projects)
@@ -66,9 +120,19 @@
                                                 @if ($comments && $comments->isNotEmpty())
                                                     @foreach ($comments as $comment)
                                                         <div
-                                                            class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white my-2 font-medium">
-                                                            <p>{{ $comment->created_at->format('d F Y') }}</p>
-                                                            <p>{{ $comment->general_comment }}</p>
+                                                            class="flex flex-col border-1 border-[#ababab] px-2 py-2 bg-[#ffffff80] text-black my-1 rounded font-medium">
+                                                            <div class="flex flex-col ">
+                                                                <p
+                                                                    class="font-bold px-2 text-[#454545] border-[#b7b7b7] text-base ">
+                                                                    {{ $comment->teacher->name_teacher }}:</p>
+                                                                <p
+                                                                    class="font-medium px-2 text-[#5e5e5e] border-[#b7b7b7] text-base">
+                                                                    {{ $comment->general_comment }}</p>
+                                                            </div>
+                                                            <p class="text-sm text-[#848484] font-semibold text-end">Comentó
+                                                                a el {{ $comment->created_at->format('d F Y') }} a las
+                                                                {{ $comment->created_at->format('H:i:s') }} <i
+                                                                    class="fa-regular fa-clock"></i></p>
                                                         </div>
                                                     @endforeach
                                                 @else

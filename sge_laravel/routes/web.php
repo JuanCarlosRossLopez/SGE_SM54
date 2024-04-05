@@ -273,6 +273,8 @@ Route::get('/registro_libros', function () {
 #RUTAS EQUIPO YAHIR
 
 Route::resource('usuarios', UsersController::class);
+Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
+
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', presidencies::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
