@@ -182,14 +182,12 @@
                                 <div class="w-full flex flex-col">
                                     <label for="project_company" class="font-sans font-semibold text-[#545454]">Nombre de
                                         la empresa:</label>
-                                    <select name="project_company" id="project_company"
-                                        class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
-                                        <option value="" disabled selected class=" text-transparent">Empresa
-                                        </option>
-                                        <option value="Upnify">Upnify</option>
-                                        <option value="DotNet">DotNet</option>
-                                        <option value="Dapper Technologies">Dapper Technologies</option>
-                                    </select>
+                                        <select name="project_company" id="project_company" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
+                                            <option value="" disabled selected class="text-transparent">Empresa</option>
+                                            @foreach ($regionNames as $region)
+                                                <option value="{{ $region }}">{{ $region }}</option>
+                                            @endforeach
+                                        </select>
                                     @error('project_company')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />

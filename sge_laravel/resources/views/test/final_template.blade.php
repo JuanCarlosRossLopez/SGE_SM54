@@ -117,7 +117,7 @@
                         <!-- Todo lo que el administrador puede navegar-->
                         @role('Administrador')
                             <li>
-                                <a href="/panel_admin" class="buttons_sidebar">
+                                <a href="/dashboard" class="buttons_sidebar">
                                     <i class="fa-solid fa-chalkboard-user"></i>
                                     Inicio
                                 </a>
@@ -126,7 +126,7 @@
                         @role('Administrador')
                             <li>
                                 <a href="/usuarios" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-school"></i>
+                                    <i class="fa-solid fa-users-gear"></i>
                                     Usuarios
                                 </a>
                             </li>
