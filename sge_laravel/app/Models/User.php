@@ -39,8 +39,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'id'
     ];
-
     /**
      * The attributes that should be cast.
      *
@@ -58,5 +58,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Teachers::class, 'id_user');
     }
+
+    public function coordinators()
+    {
+        return $this->hasOne(Coordinators::class, 'user_id');
+    }
+    public function presidencies()
+    {
+        return $this->hasOne(presidencies::class, 'user_id');
+    }
+    
     
 }

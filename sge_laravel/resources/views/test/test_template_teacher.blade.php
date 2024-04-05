@@ -59,9 +59,9 @@
                             </a>
                         </li>
                         <li>
-                            <button
+                            <a href="/descarga"
                                 class="buttons_sidebar ">
-                                <i class="fa-solid fa-file"></i> Generacion de informes </button>
+                                <i class="fa-solid fa-file"></i> Generacion de informes </a>
                         </li>
                         <li>
                             <a href="/historial_memorias"

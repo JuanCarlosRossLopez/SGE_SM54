@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Divisions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Division;
+use Illuminate\Http\RedirectResponse;
 
 class DivisionController extends Controller
 {

@@ -4,7 +4,7 @@
 @section('contenido')
     <div class="back_conteine">
         <div class="top_conteiner">
-            <label>Bienvenido al dashboard de dirección {{Auth::user()->name}}</label>
+            <label>Bienvenido al dashboard del presidente {{Auth::user()->name}}</label>
             <label>
                 <!-- mostrar graficas relevantes -->
                 <!-- cambiar icono -->
@@ -27,11 +27,7 @@
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="hidden absolute bg-white border border-gray-200 mt-2 py-2 rounded w-48 z-10 dropdown-content">
-                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Turismo</a>
                                         <a  href="/maestros" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Ingeniería y Tecnología</a>
-                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División Económico-Administrativo</a>
-                                        <a href="#" class="block px-4 py-2 text-gray-800 text-xs hover:bg-gray-200">División de Gastronomía</a>
-                                    </div>
                                 </div>
                             </div>
                             <div>

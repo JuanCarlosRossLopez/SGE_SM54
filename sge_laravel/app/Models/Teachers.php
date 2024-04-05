@@ -38,5 +38,12 @@ class Teachers extends Model
     {
         return $this->belongsTo(Project_Likes::class);
     }
+
+
+    public function division(): BelongsTo
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+    
 }
 

@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use App\Models\Teachers;
+use App\Models\Division;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 
 class TeachersController extends Controller
 {
@@ -18,8 +19,11 @@ class TeachersController extends Controller
     {
         $Students = Students::all();
         $teachers = Teachers::paginate(10);
+        $division = Division::all();
+        $users = User::all();
+
     
-        return view('teachers.teachers', compact('teachers', 'Students'));
+        return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
     }
     
     /**
@@ -36,11 +40,23 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
 
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        $user_id = $user->id;
+
+        $role = Role::where('name', 'Asesor')->first();
+        $user->assignRole($role);
+
+
 
         $teacher = new Teachers();
         $teacher->name_teacher = $request->input('teacher_name');
         $teacher->payroll = $request->input('payroll');
-        $teacher->id_user = $request->input('id_user');
+        $teacher->id_user = $user_id;
         $teacher->division_id = $request->input('division_id');
         $teacher->save();
 

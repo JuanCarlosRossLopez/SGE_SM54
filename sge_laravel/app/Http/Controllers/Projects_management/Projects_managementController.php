@@ -90,7 +90,8 @@ class Projects_managementController extends Controller
         $projects_management->start_date = $request->input('start_date');
         $projects_management->end_date = $request->input('end_date');
         $projects_management->save();
-        return back()->with('status', 'Anteproyecto registrado correctamente');
+
+        return redirect('dashboard_alumno')->with('notificacion', 'Anteproyecto registrado correctamente');
     }
 
     /**

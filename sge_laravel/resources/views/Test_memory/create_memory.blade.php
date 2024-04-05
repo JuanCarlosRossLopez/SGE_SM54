@@ -13,7 +13,7 @@
             <div class="modal_conteiner">
                 <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
                 <div class="modal-body h-fit">
-                    <form action="{{ route('memory.store') }}" method="POST">
+                    <form action="{{ route('historial_de_memorias.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-col items-center" >
                             <div class="flex flex-col items-center w-full pb-2">
@@ -23,8 +23,7 @@
                                 <label for="memorie_pdf" class="conteiner_word_title flex flex-col items-center pt-4">Subir archivo PDF</label>
                                 <input type="file" name="memorie_pdf" id="memorie_pdf" class="form-control w-fit bg-[#979797] px-2" required>                                
                             </div>
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-fit mt-4">Subir</button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-fit mt-4">Subir</button>
                         </div>
                     </form>
                 </div>
