@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Division;
+use App\Models\Career;
+
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -20,8 +22,9 @@ class UsersController extends Controller
         $roles = Role::all();
         $Divisions = Division::all();
         $users = User::paginate(10);
+        $careers = Career::all();
 
-        return view('UserManagement.users', compact('users', 'roles', 'Divisions'));
+        return view('UserManagement.users', compact('users', 'roles','Divisions','careers'));
     }
 
 
@@ -37,8 +40,9 @@ class UsersController extends Controller
 
         $roles = Role::all();
         $Divisions = Division::all();
+        $careers = Career::all();
 
-        return view('UserManagement.users', compact('users', 'roles', 'Divisions'));
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers'));
     }
 
 

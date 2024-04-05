@@ -106,7 +106,7 @@
 
 
         <div
-            class="modal-create fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-500">
+            class="modal-create fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-50">
             <div class="bg-[#01A080] w-[600px] rounded shadow-lg max-w-4xl ">
                 <div class="border-b px-4 py-2 flex justify-between items-center">
                     <h3 class="font-semibold text-lg justify-center items-center text-[#FFFF] text-center">Registrar
@@ -157,6 +157,7 @@
                 </div>
             </div>
         </div>
+
         <script>
             const modal = document.querySelector('.modal');
 
@@ -186,8 +187,12 @@
         <script>
             const modalCreate = document.querySelector('.modal-create');
             const showCreate = document.querySelector('.show-create');
+
             const closeCreate = document.querySelectorAll('.close-create');
 
+
+
+      
             showCreate.addEventListener('click', function() {
                 modalCreate.classList.remove('hidden');
             });
