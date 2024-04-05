@@ -113,7 +113,10 @@ class BookCordinacionController extends Controller
     public function destroy(string $id)
     {
         $books = Books::find($id);
-        
+        if ($books->students()->exists()) {
+            // Detach all related students from the pivot table
+            $books->students()->detach();
+        }
         $books->delete();
         return back();
     }

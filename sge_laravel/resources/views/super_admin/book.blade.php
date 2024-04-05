@@ -49,7 +49,6 @@
                             <th class="theader md:table-cell">Descripción</th>
                             <th class="theader md:table-cell">Autor</th>
                             <th class="theader md:table-cell">Precio</th>
-                            <th class="theader md:table-cell">Estudiante</th>
                             <th class="theader md:table-cell">Acciones</th>
                         </tr>
                     </thead>
@@ -67,7 +66,6 @@
                                 <td class="trowc md:table-cell">{{ $book->book_description }}</td>
                                 <td class="trowc md:table-cell">{{ $book->author }}</td>
                                 <td class="trowc md:table-cell">{{ $book->price }}</td>
-                                <td class="trowc md:table-cell">{{ $book->students_id }}</td>
                                 <td class="trowc">
                                     <button class="showView" data-target="#view{{ $book->id }}">
                                         <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7  m-auto   ">
