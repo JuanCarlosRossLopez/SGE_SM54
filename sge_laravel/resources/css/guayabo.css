@@ -275,14 +275,48 @@
 }
 
 /*Sidebar shadow */
-
 .sidebar_background {
-    background-color: #2f4050; /* Color de fondo */
-    width: 20rem; /* Ancho */
-    height: 100vh; /* Altura igual a la altura de la pantalla */
-    display: flex; /* Hace que el contenedor sea un flexbox */
-    flex-direction: column; /* Establece la dirección de los elementos como columna */
+    background-color: #2f4050;
+    width: 20rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    transform: translateX(-20rem);
 }
+
+.sidebar_hidden {
+    transform: translateX(-20rem);
+}
+
+.content_main_footer {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.small-screen {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar_background {
+        width: 100%;
+        transform: translateX(-100%);
+    }
+
+    .content_main_footer {
+        margin-left: 0;
+    }
+
+    .small-screen {
+        display: block;
+    }
+}
+
+
+
 
 .sidebar_active {
     min-height: 100vh; /* Altura mínima igual a la altura de la pantalla */

@@ -25,21 +25,58 @@
                     </button>
                     <input type="text" class="search_input" placeholder="Buscar..." />
                 </div>
-                <div class="">
-                    <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button data-target="#add" class="showmodal2 ">
-                        <span class="show-modal2 buttons_card_green">Agregar libro</span></button>
-                </div>
-            </div>
 
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @if ($userBooks->isEmpty())
+                    <div class="">
+                        <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
+                        <button data-target="#add" class="showmodal2 ">
+                            <span class="show-modal2 buttons_card_green">Agregar libro</span></button>
+                    </div>
+                @endif
+            </div>
+            <div class="flex flex-col ">
+
+                @if ($userBooks)
+                    @foreach ($userBooks as $book)
+                        <h1 class="">Mis libros</h1>
+                        <button class="showView  rounded-md border text-black w-fit" data-target="#view{{ $book->id }}">
+                            <div
+                                class="flex flex-col w-56  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
+                                <img class=" w-56" src="{{ $book->book_front_page }}" alt="">
+                                <span class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
+                                <span class=" font-light text-[15px] text-[#111111]"> {{ $book->author }}</span>
+                                @if ($book->status == 0)
+                                    <span class="font-light text-[15px] text-[#111111]">Aceptado</span>
+                                @elseif($book->status == 1)
+                                    <span class="font-light text-[15px] text-[#111111]">En Revision</span>
+                                @endif
+
+
+                            </div>
+                        </button>
+                        @include('students.libros.viewBookStudent')
+                    @endforeach
+                @else
+                    <h1 class="">No tienes libros</h1>
+                @endif
+
+            </div>
+            <h1>Mas libros</h1>
             <div class="grid grid-cols-4 gap-4 py-6  ">
+
                 @foreach ($books as $book)
-                    <button class="showView bg-gray-300 rounded-md border text-black w-fit" data-target="#view{{ $book->id }}">
+                    <button class="showView bg-gray-300 rounded-md border text-black w-fit"
+                        data-target="#view{{ $book->id }}">
                         <div
-                            class="flex flex-col w-72  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 bg-[#818181]">
-                            <img class=" w-72 " src="{{ $book->book_front_page }}" alt="">
-                            <span class=" font-semibold">{{ $book->book_name }}</span>
-                            <span class=" font-light"> {{ $book->author }}</span>
+                            class="flex flex-col w-56  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 bg-[#818181]">
+                            <img class=" w-56 " src="{{ $book->book_front_page }}" alt="">
+                            <span class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
+                            <span class=" font-light text-[15px] text-[#111111]"> {{ $book->author }}</span>
                         </div>
                     </button>
                     @include('students.libros.viewBookStudent')

@@ -30,7 +30,7 @@ class Students extends Model
         'id'
     ];
     public function books():BelongsTo{
-        return $this->belongsTo(Books::class);
+        return $this->belongsTo(Books::class,'books_students');
     }
     public function teachers():BelongsTo{
         return $this->belongsTo(Teachers::class);
