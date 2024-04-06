@@ -127,9 +127,64 @@
                             <li>
                                 <a href="/usuarios" class="buttons_sidebar ">
                                     <i class="fa-solid fa-users-gear"></i>
-                                    Usuarios
+                                    Gestión de usuarios
                                 </a>
                             </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/roles" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de roles
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/asignar_alumnos" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Asignación de alumnos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/gestion_asesor_anteproyecto" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Ver anteproyectos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/libros" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Ver libros
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/historial_de_memorias" class="buttons_sidebar">
+                                    <i class="fa-solid fa-landmark"></i>
+                                    Historial de memorias
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('Administrador')
+                            <li>
+                                <a href="/informes" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Generacion de informes
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                        <li>
+                            <a href="/profile" class="buttons_sidebar ">
+                                <i class="fa-solid fa-address-card"></i> Mi perfil
+                            </a>
+                        </li>
                         @endrole
                         
                         <!--END Todo lo que el administrador puede navegar-->

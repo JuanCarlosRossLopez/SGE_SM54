@@ -10,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use DragonCode\Contracts\Cashier\Auth\Auth as CashierAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comments;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Arr;
 
 class Projects_managementController extends Controller
 {
@@ -17,14 +19,37 @@ class Projects_managementController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-        $project_management = Project_management::all();
-        $comments = Comments::all();
-        
+{
+    // Hacer la solicitud a la API
+    $response = Http::get('http://api.worldbank.org/v2/region');
 
-        return view('students.anteproyecto', compact('project_management', 'comments'));
+    // Convertir la respuesta XML a un objeto SimpleXMLElement
+    $xmlData = $response->body();
+    $xml = simplexml_load_string($xmlData);
+
+    // Definir el espacio de nombres
+    $xml->registerXPathNamespace('wb', 'http://www.worldbank.org');
+
+    // Obtener las regiones usando XPath con el espacio de nombres
+    $regions = $xml->xpath('//wb:region');
+
+    // Extraer los nombres de las regiones
+    $regionNames = [];
+    foreach ($regions as $region) {
+        $regionNames[] = (string) $region->children('wb', true)->name;
     }
+
+    // Agregar dd() para verificar los nombres de las regiones
+
+    // Obtener los datos existentes
+    $project_management = Project_management::all();
+    $comments = Comments::all();
+
+    // Pasar los datos a la vista
+    return view('students.anteproyecto', compact('project_management', 'comments', 'regionNames'));
+}
+
+
 
     /**
      * Show the form for creating a new resource.

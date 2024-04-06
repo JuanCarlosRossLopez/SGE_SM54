@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('general_comment');
+            $table->text('general_comment');
             $table->foreignId('teacher_id')->nullable()->constrained('teachers')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');

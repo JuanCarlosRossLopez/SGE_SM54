@@ -29,6 +29,8 @@ use App\Http\Controllers\Presidencies\PresidenciesController;
 use App\Models\Project_management;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use App\Http\Controllers\Pdf\PdfController;
+use App\Http\Controllers\Careers\CareerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -139,6 +141,13 @@ Route::resource('libros',BooksController::class);
 
 Route::resource('maestros', TeachersController::class);
 Route::resource('empresas', CompaniesController::class);
+Route::resource('carreras', CareerController::class);
+
+
+
+
+
+
 //Route::get('/empresas',function(){
 //    return view('companies.companies');
 //});
