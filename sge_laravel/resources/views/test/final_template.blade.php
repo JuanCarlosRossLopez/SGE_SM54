@@ -25,7 +25,10 @@
     <div class="w-screen flex">
         <div class="sidebar_background" id="sidebar">
             <div>
-                <button id="closeSidebarButton" class="small-screen">Cerrar menu</button>
+                <div class="">
+                    <button id="closeSidebarButton" class="small-screen w-full text-end nav1"><i class="fa-solid fa-burger"></i></button>
+                </div>
+                
                 <a>
                     <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
                         class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
@@ -223,7 +226,14 @@
                                 </a>
                             </li>
                         @endrole
-
+                        <!-- Aqui quiero que aparezca el formulario cuando la vista sea pequeña -->
+                        <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                            @csrf
+                            <button type="submit" class="logout_sidebar buttons_sidebar_logout bg-[#2C4454] p-2">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Cerrar sesión
+                            </button>
+                        </form>
                     </div>
                 </ul>
             </div>
@@ -234,13 +244,14 @@
                 <div class="w-full flex justify-between items-center">
                     <div class="text-white text-2xl flex flex-col">
                         @if (Auth::user()->teachers)
-                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                            <label class="nav1">Buen día,
                                 {{ Auth::user()->teachers->name_teacher }}</label>
-                            <label class="text-xl text-[#a8a8a8]">Gestión asesor</label>
+                            <label class="nav2">Gestión asesor</label>
                         @elseif (Auth::user()->student)
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->student->student_name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión estudiante</label>
+                            <button id="openSidebarButton" class="small-screen">Abrir menu</button>
                         @elseif (Auth::user()->hasRole('Administrador'))
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->name }}</label>
@@ -250,14 +261,19 @@
                             No se encontró información del asesor para este usuario.
                         @endif
                     </div>
-
-                    <form method="POST" action="{{ route('logout') }}">
+                    <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
+                    <div>
+                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i class="fa-solid fa-burger"></i></button>
+                    </div>
+                    <!-- Quiero que desaparezca de aqui si la vista se vuelve pequeña pero que este si la vista es grande -->
+                    <form method="POST" action="{{ route('logout') }}" id="logoutForm" class="logout-forms">
                         @csrf
                         <button type="submit" class="logout_sidebar buttons_sidebar_logout bg-[#2C4454] p-2">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Cerrar sesión
                         </button>
                     </form>
+                    
                 </div>
             </div>
             <div class="content_main_footer h-screen">
@@ -320,6 +336,24 @@
     window.addEventListener('resize', function() {
         adjustSidebar();
     });
+
+    function adjustLogoutForm() {
+    var logoutForm = document.getElementById('logoutForm');
+    
+    if (window.innerWidth < 768) {
+        logoutForm.style.display = "block"; // Mostrar el formulario en pantallas pequeñas
+    } else {
+        logoutForm.style.display = "none"; // Ocultar el formulario en pantallas grandes
+    }
+}
+
+// Llamada inicial a la función para ajustar el formulario al cargar la página
+adjustLogoutForm();
+
+// Función para ajustar el formulario cuando cambia el tamaño de la pantalla
+window.addEventListener('resize', function() {
+    adjustLogoutForm();
+});
     
     </script>
     
