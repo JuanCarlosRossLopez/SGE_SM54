@@ -23,8 +23,9 @@
 
 <body class="w-screen overflow-x-hidden background">
     <div class="w-screen flex">
-        <div class="sidebar_background flex">
+        <div class="sidebar_background" id="sidebar">
             <div>
+                <button id="closeSidebarButton" class="small-screen">Cerrar menu</button>
                 <a>
                     <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
                         class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
@@ -106,10 +107,10 @@
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
     <li>
-                                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                                    <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
-                                                </button>
-                                            </li>
+                                                    <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                        <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                                    </button>
+                                                </li>
 @endrole
                             -->
                         <!-- End todo lo que navega el estudiante -->
@@ -180,13 +181,13 @@
                             </li>
                         @endrole
                         @role('Administrador')
-                        <li>
-                            <a href="/profile" class="buttons_sidebar ">
-                                <i class="fa-solid fa-address-card"></i> Mi perfil
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
                         @endrole
-                        
+
                         <!--END Todo lo que el administrador puede navegar-->
 
 
@@ -227,7 +228,7 @@
                 </ul>
             </div>
         </div>
-
+        
         <div class="content_main_footer h-screen overflow-y-auto overflow-x-hidden">
             <div class="w-full p-3 bg-[#1f2e39]">
                 <div class="w-full flex justify-between items-center">
@@ -244,6 +245,7 @@
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
+                            <button id="openSidebarButton" class="small-screen">Abrir menu</button>
                         @else
                             No se encontró información del asesor para este usuario.
                         @endif
@@ -272,6 +274,46 @@
 
 
 </body>
+<script>
+// Función para ajustar el sidebar y el contenido según el tamaño de la pantalla
+// Función para abrir el sidebar
+function openSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.querySelector('.content_main_footer');
+    sidebar.style.transform = "translateX(0)";
+    content.style.marginLeft = "20rem";
+}
+
+// Función para cerrar el sidebar
+function closeSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.querySelector('.content_main_footer');
+    sidebar.style.transform = "translateX(-100%)";
+    content.style.marginLeft = "0";
+}
+
+// Llamada inicial a la función para cerrar el sidebar al cargar la página
+closeSidebar();
+
+// Función para alternar el sidebar cuando se hace clic en el botón de abrir
+document.getElementById('openSidebarButton').addEventListener('click', function() {
+    openSidebar();
+});
+
+// Función para cerrar el sidebar cuando se hace clic en el botón de cerrar
+document.getElementById('closeSidebarButton').addEventListener('click', function() {
+    closeSidebar();
+});
+
+// Función para ajustar el sidebar cuando cambia el tamaño de la pantalla
+window.addEventListener('resize', function() {
+    adjustSidebar();
+});
+
+
+
+
+</script>
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
