@@ -1,5 +1,4 @@
-<div id="edit{{ $user->id }}"
-    class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+<div id="edit{{ $user->id }}" class="modal4 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
         <div class="border-b px-4 py-2 flex justify-between items-center">
             <h3 class="font-semibold text-lg text-white text-center flex-grow">Editar Usuario</h3>
@@ -39,8 +38,7 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                        <input type="password" name="password" value="{{ $user->password }}"
-                            class="rounded input-field">
+                        <input type="password" name="password" value="{{ $user->password }}" class="rounded input-field">
                     </div>
 
 
@@ -48,17 +46,16 @@
 
                     </p>
                     <select name="role" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-        <option value="{{$role->name}}">{{$role->name}}</option>
-        @foreach($roles as $role)
-            <option value="{{ $role->name }}">{{ $role->name }}</option>
-        @endforeach
-    </select>
+                        <option value="{{$role->name}}">{{$role->name}}</option>
+                        @foreach($roles as $role)
+                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                        @endforeach
+                    </select>
 
 
                     <div class="flex justify-center">
                         <button type="submit">
-                            <div
-                                class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                            <div class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                                 Editar usuario
                             </div>
                         </button>
@@ -70,16 +67,15 @@
     </div>
 </div>
 
-<div id="show{{ $user->id }}"
-    class="modal_u h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div id="show{{ $user->id }}" class="modal_u h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-white w-auto p-4 rounded-lg">
         <div class="flex flex-col justify-between items-center">
             <div class="flex flex-row gap-10 ">
                 <h3 class="font-semibold text-lg text-gray-800">Datos del usuarios:
-                    {{ $user->name }}</h3>
+                    {{ $user->name }}
+                </h3>
                 <button class="close-modal-u text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
                     </svg>
@@ -89,7 +85,25 @@
             <div class="py-4">
                 <h5 class="py-2">Nombre de Usuario: {{ $user->name }} </h5>
                 <h5 class="py-2">Email: {{ $user->email }} </h5>
-                <h5 class="py-2">Contraseña: {{ $user->password }} </h5>
+                <h5 class="py-2">Rol: {{ $user->roles->first()->name }} </h5>
+                @if($user->student)
+                <h5 class="py-2">Estudiante: {{ $user->student ? $user->student->student_name : 'No tienen nombre asignado' }} </h5>
+                <h5 class="py-2">Division: {{ $user->student ? $user->student->division->division_name : 'Sin division asignada' }} </h5>   
+                @elseif($user->teachers)
+                <h5 class="py-2">Maestro: {{$user->teachers ?  $user->teachers->name_teacher : 'Sin nombre asignado' }} </h5>
+                <h5 class="py-2">Division: {{$user->teachers ? $user->teachers->division->division_name : 'Sin divison asignada'}} </h5>
+                <h5 class="py-2">Nomina: {{$user->teachers ? $user->teachers->payroll : 'Sin nomina asignada' }} </h5>      
+                @elseif($user->coordinators)
+                <h5 class="py-2">Coordinador: {{ $user->coordinators ?  $user->coordinators->coordinator_name : 'Sin nombre asignado' }} </h5>
+                <h5 class="py-2">Division: {{ $user->coordinators ? $user->coordinators->division->division_name : 'Sin division asignada' }} </h5>
+                <h5 class="py-2">Nomina : {{ $user->coordinators ?  $user->coordinators->payroll : 'Sin nomina asignada' }}
+                </h5>
+                @elseif($user->presidencies)
+                <h5 class="py-2">Presidencia: {{$user->presidencies ? $user->presidencies->president_name : 'No tiene nombre asignado' }} {{$user->presidencies ? $user->presidencies->president_lastname : 'No tiene apellido asignado' }}  </h5>
+                <h5 class="py-2">Division: {{$user->presidencies ? $user->presidencies->division->division_name : 'Sin division asignada' }} </h5>
+                <h5 class="py-2">Carrera: {{$user->presidencies ? $user->presidencies->career->career_name : 'Sin carrera asignada' }} </h5>
+                @endif
+
             </div>
         </div>
     </div>
@@ -100,17 +114,17 @@
         <div class="flex justify-between items-center">
 
             <h3 class="font-semibold text-center text-lg text-gray-800">¿Realmente desea eliminar al usuario:
-                {{$user->username}}?</h3>
+                {{$user->username}}?
+            </h3>
         </div>
         <div class="flex justify-center items-center">
-        <form action="{{url('usuarios', $user->id)}}" method="POST">
-            @csrf
-            @method('DELETE')
-        <button
-            class="close-modal bg-emerald-600 hover:bg-emerald-500 rounded-lg px-2 py-2 m-2 transition delay-150 duration-300 ease-in-out">
-            si
-        </button>
-        </form>
+            <form action="{{url('usuarios', $user->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="close-modal bg-emerald-600 hover:bg-emerald-500 rounded-lg px-2 py-2 m-2 transition delay-150 duration-300 ease-in-out">
+                    si
+                </button>
+            </form>
             <button class="close-modal bg-red-600 hover:bg-red-500 rounded-lg px-2 py-2">
                 No
             </button>
@@ -124,8 +138,7 @@
         <div class="flex justify-between items-center">
             <h3 class="font-semibold text-lg text-gray-800">Usuario agregado correctamente</h3>
             <button class="close-modal5 text-gray-500 hover:text-gray-700">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
@@ -139,8 +152,7 @@
         <div class="flex justify-between items-center">
             <h3 class="font-semibold text-lg text-gray-800">Usuario editado correctamente</h3>
             <button class="close-modal6 text-gray-500 hover:text-gray-700">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>

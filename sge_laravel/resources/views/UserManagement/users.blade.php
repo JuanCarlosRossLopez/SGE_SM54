@@ -54,10 +54,10 @@
                                         <a class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
                                         <a class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
                                         <a class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
-                                        <a  class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
-                                            </a>
+                                        <a class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
+                                        </a>
                                         <a class=" show-create-cordination block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
-                                                </a>
+                                        </a>
 
                                     </div>
                                 </div>
@@ -114,17 +114,17 @@
                                             <form action="{{ route('presidentes.store') }}" method="POST" class="flex flex-col items-center">
                                                 @csrf
 
-                                                    <div class="mb-4">
+                                                <div class="mb-4">
                                                     <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field">
-                                                        
-                                                    </div>
-                                                    <div class="mb-4">
+
+                                                </div>
+                                                <div class="mb-4">
                                                     <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
-                                                    </div>
-                                                    <div class="mb-4">
+                                                </div>
+                                                <div class="mb-4">
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
 
-                                                    </div>
+                                                </div>
 
                                                 <div class="mb-4">
                                                     <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
@@ -142,7 +142,7 @@
                                                     <label class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
                                                     <input type="number" name="payroll_president" class="rounded input-field">
                                                 </div>
-                                              
+
 
                                                 <div>
                                                     <select name="career_id" id="career_id" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
@@ -178,82 +178,67 @@
                             </div>
 
 
-                            <div
-            class="modal-create-cordination fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-50">
-            <div class="bg-[#01A080] w-[600px] rounded shadow-lg max-w-4xl ">
-                <div class="border-b px-4 py-2 flex justify-between items-center">
-                    <h3 class="font-semibold text-lg justify-center items-center text-[#FFFF] text-center">Registrar
-                        Coordinador</h3>
-                    <button class="close-create ">
-                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark bg-white rounded-full"
-                                style="color: #d50101;"></i></p>
-                    </button>
-                </div>
-                <div class="bg-white p-2">
-                    <div class="modal-body mb-0 overflow-y-auto h-[38vh]">
-                        <div class="container mx-auto px-4 py-8">
-                            <h1 class="text-center font-semibold text-2xl">Registrar Coordinador</h1>
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                <div class="bg-white rounded-lg p-8 mx-auto flex justify-center items-center flex-col">
-                                    <form action="{{ route('coordinacion.store') }}" method="POST"
-                                        class="flex flex-col gap-4">
-                                        @csrf
-                                        @method('POST')
-                                        <div class="flex flex-col gap-4">
-                                                <input type="text" name="name" id="name"
-                                                    placeholder="Nombre de usuario"
-                                                    class="rounded-md border border-gray-300 p-2">
+                            <div class="modal-create-cordination fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-50">
+                                <div class="bg-[#01A080] w-[600px] rounded shadow-lg max-w-4xl ">
+                                    <div class="border-b px-4 py-2 flex justify-between items-center">
+                                        <h3 class="font-semibold text-lg justify-center items-center text-[#FFFF] text-center">Registrar
+                                            Coordinador</h3>
+                                        <button class="close-create ">
+                                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark bg-white rounded-full" style="color: #d50101;"></i></p>
+                                        </button>
+                                    </div>
+                                    <div class="bg-white p-2">
+                                        <div class="modal-body mb-0 overflow-y-auto h-[38vh]">
+                                            <div class="container mx-auto px-4 py-8">
+                                                <h1 class="text-center font-semibold text-2xl">Registrar Coordinador</h1>
+                                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                                    <div class="bg-white rounded-lg p-8 mx-auto flex justify-center items-center flex-col">
+                                                        <form action="{{ route('coordinacion.store') }}" method="POST" class="flex flex-col gap-4">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <div class="flex flex-col gap-4">
+                                                                <input type="text" name="name" id="name" placeholder="Nombre de usuario" class="rounded-md border border-gray-300 p-2">
 
-                                                <input type="email" name="email" id="email"
-                                                    placeholder="Correo electronico"
-                                                    class="rounded-md border border-gray-300 p-2">
+                                                                <input type="email" name="email" id="email" placeholder="Correo electronico" class="rounded-md border border-gray-300 p-2">
 
-                                                <div class="flex flex-col ga-4">
-                                                <input type="password" name="password" id="password"
-                                                    placeholder="Contraseña"
-                                                    class="rounded-md border border-gray-300 p-2">
+                                                                <div class="flex flex-col ga-4">
+                                                                    <input type="password" name="password" id="password" placeholder="Contraseña" class="rounded-md border border-gray-300 p-2">
 
+                                                                </div>
+
+                                                                <div class="flex flex-col gap-4">
+                                                                    <input type="text" name="coordinator_name" id="coordinator_name" placeholder="Nombre del coordinador" class="rounded-md border border-gray-300 p-2">
+                                                                </div>
+
+
+                                                                <div class="flex flex-col gap-4">
+                                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del coordinador" class="rounded-md border border-gray-300 p-2">
+
+                                                                    <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
+                                                                        <option selected disabled>Elige una división</option>
+                                                                        @foreach ($Divisions as $division)
+                                                                        <option value="{{ $division->id }}">
+                                                                            {{ $division->division_name }}
+                                                                        </option>
+                                                                        @endforeach
+                                                                    </select>
+
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- Puedes agregar más campos aquí según sea necesario -->
+                                                            <div class="flex justify-end mt-4">
+                                                                <button type="submit" class="bg-[#01A080] text-white rounded font-bold p-2">Agregar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
-    
-                                            <div class="flex flex-col gap-4">
-                                                <input type="text" name="coordinator_name" id="coordinator_name"
-                                                    placeholder="Nombre del coordinador"
-                                                    class="rounded-md border border-gray-300 p-2">
-                                            </div>
-                                          
-
-                                            <div class="flex flex-col gap-4">
-                                                <input type="number" name="payroll" id="payroll"
-                                                    placeholder="Número de nómina del coordinador"
-                                                    class="rounded-md border border-gray-300 p-2">
-
-                                                <select name="division_id" id="division_id"
-                                                    class="rounded-md border border-gray-300 p-2">
-                                                    <option selected disabled>Elige una división</option>
-                                                    @foreach ($Divisions as $division)
-                                                    <option value="{{ $division->id }}">
-                                                        {{ $division->division_name }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-
-                                             
                                             </div>
                                         </div>
-                                        <!-- Puedes agregar más campos aquí según sea necesario -->
-                                        <div class="flex justify-end mt-4">
-                                            <button type="submit"
-                                                class="bg-[#01A080] text-white rounded font-bold p-2">Agregar</button>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+
 
 
 
@@ -465,13 +450,13 @@
                                         <th class="theader">
                                             #</th>
                                         <th class="theader">
-                                            
+
                                             Usuario</th>
                                         <th class="theader">
                                             Email
                                         </th>
                                         <th class="theader">
-                                                            Nombre usuario
+                                            Nombre usuario
                                         </th>
                                         <th class="theader">
                                             Roles
@@ -494,9 +479,9 @@
                                             {{ $user->teachers->name_teacher }}
                                             @elseif($user->presidencies)
                                             {{ $user->presidencies->president_name }}
-{{                                            $user->presidencies->president_lastname
-}}                                            @elseif($user->coordinators)
-                                            {{ $user->coordinators->coordinator_name  }} 
+                                            {{ $user->presidencies->president_lastname
+}} @elseif($user->coordinators)
+                                            {{ $user->coordinators->coordinator_name  }}
                                             @else
                                             No tiene nombre
                                             @endif
@@ -522,6 +507,33 @@
                                                     <i class="fa-solid fa-eye"></i>
                                                 </div>
                                             </button>
+                                            @if($user->teachers)
+                                            <p>
+                                                asesor
+                                                <button class="show-modal-edit-asesor px-1" data-target="#edit{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                            </p>
+                                            @elseif($user->student)
+                                            <p>
+
+                                            </p>
+                                            @elseif($user->presidencies)
+                                            <p>
+
+                                            </p>
+                                            @elseif($user->coordinators)
+                                            <p>
+
+                                            </p>
+                                            @else
+                                            <p>
+                                            </p>
+                                            @endif
+
+
                                             <button class="show-modal4 px-1" data-target="#edit{{ $user->id }}">
                                                 <div class="button_edit_yellow">
                                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -535,6 +547,27 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    @if($user->teachers)
+                                    <p>
+                                        @include('UserManagement.edit_modal_teacher')
+
+                                    </p>
+                                    @elseif($user->student)
+                                    <p>
+
+                                    </p>
+                                    @elseif($user->presidencies)
+                                    <p>
+
+                                    </p>
+                                    @elseif($user->coordinators)
+                                    <p>
+
+                                    </p>
+                                    @else
+                                    <p>
+                                    </p>
+                                    @endif
 
                                     @include('UserManagement.modal-users')
                                     @endforeach
@@ -562,12 +595,23 @@
         })
 
 
+        const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
+        const show_modal_edit_asesor = document.querySelectorAll('.show-modal-edit-asesor')
+        show_modal_edit_asesor.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+
         const modal_create_cordination = document.querySelector('.modal-create-cordination');
 
-            const show_create_cordination = document.querySelector('.show-create-cordination');
-            show_create_cordination.addEventListener('click', function() {
-                modal_create_cordination.classList.remove('hidden');
-            });
+        const show_create_cordination = document.querySelector('.show-create-cordination');
+        show_create_cordination.addEventListener('click', function() {
+            modal_create_cordination.classList.remove('hidden');
+        });
 
         show_modal_add.addEventListener('click', function() {
             modal_add.classList.remove('hidden')

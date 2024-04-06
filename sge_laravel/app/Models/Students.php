@@ -48,6 +48,12 @@ class Students extends Model
         return $this->hasMany(Project_management::class, 'id_student', 'id');
     }
 
+    public function division(): BelongsTo
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+
+    
 
     
 

@@ -86,8 +86,16 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-        ]);
+       
+        $user_id = $request->id_user;
+
+        $user = User::find($user_id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+
 
         $teacher = Teachers::find($id);
         $teacher->name_teacher = $request->name_teacher;
