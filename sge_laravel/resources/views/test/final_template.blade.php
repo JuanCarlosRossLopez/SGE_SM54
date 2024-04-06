@@ -275,45 +275,54 @@
 
 </body>
 <script>
-// Función para ajustar el sidebar y el contenido según el tamaño de la pantalla
-// Función para abrir el sidebar
-function openSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.querySelector('.content_main_footer');
-    sidebar.style.transform = "translateX(0)";
-    content.style.marginLeft = "20rem";
-}
-
-// Función para cerrar el sidebar
-function closeSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.querySelector('.content_main_footer');
-    sidebar.style.transform = "translateX(-100%)";
-    content.style.marginLeft = "0";
-}
-
-// Llamada inicial a la función para cerrar el sidebar al cargar la página
-closeSidebar();
-
-// Función para alternar el sidebar cuando se hace clic en el botón de abrir
-document.getElementById('openSidebarButton').addEventListener('click', function() {
-    openSidebar();
-});
-
-// Función para cerrar el sidebar cuando se hace clic en el botón de cerrar
-document.getElementById('closeSidebarButton').addEventListener('click', function() {
-    closeSidebar();
-});
-
-// Función para ajustar el sidebar cuando cambia el tamaño de la pantalla
-window.addEventListener('resize', function() {
+    // Función para ajustar el sidebar y el contenido según el tamaño de la pantalla
+    function adjustSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        if (window.innerWidth >= 768) {
+            sidebar.style.transform = "translateX(0)";
+            content.style.marginLeft = "20rem";
+        } else {
+            closeSidebar(); // Asegurarse de que el sidebar esté cerrado en pantallas pequeñas
+        }
+    }
+    
+    // Función para abrir el sidebar
+    function openSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        sidebar.style.transform = "translateX(0)";
+        content.style.marginLeft = "20rem";
+    }
+    
+    // Función para cerrar el sidebar
+    function closeSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        sidebar.style.transform = "translateX(-100%)";
+        content.style.marginLeft = "0";
+    }
+    
+    // Llamada inicial a la función para ajustar el sidebar al cargar la página
     adjustSidebar();
-});
-
-
-
-
-</script>
+    
+    // Función para alternar el sidebar cuando se hace clic en el botón de abrir
+    document.getElementById('openSidebarButton').addEventListener('click', function() {
+        openSidebar();
+    });
+    
+    // Función para cerrar el sidebar cuando se hace clic en el botón de cerrar
+    document.getElementById('closeSidebarButton').addEventListener('click', function() {
+        closeSidebar();
+    });
+    
+    // Función para ajustar el sidebar cuando cambia el tamaño de la pantalla
+    window.addEventListener('resize', function() {
+        adjustSidebar();
+    });
+    
+    </script>
+    
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
