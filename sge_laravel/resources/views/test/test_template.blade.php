@@ -18,6 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
 </head>
 
 <body class="w-full flex flex-col overflow-x-hidden">
@@ -54,14 +55,7 @@
                                 </button>
                             </li>
                         @endrole
-                        @role('Estudiante') 
-                        <li>
-                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Gestión de Anteproyectos
-                            </button>
-                        </li>
-                    @endrole
+                        
                     @role('Administrador')
                         <li>
                             <a href="/usuarios" class="buttons_sidebar ">
@@ -137,17 +131,18 @@
                             </a>
                         </li>
                         <li>
-                            <a href='/Profile' class="buttons_sidebar">
+                            <a href='/profile' class="buttons_sidebar">
                                 <i class="fa-solid fa-address-card"></i>
                                 Mi perfil
                             </a>
                         </li>
-                        <li>
-                            <a class="buttons_sidebar" href="/roles">
-                                <i class="fa-solid fa-cog "></i>
-                                Asignación de roles
-                            </a>
-                        <li>
+                        
+                            <li>
+                                <a class="buttons_sidebar" href="/roles">
+                                    <i class="fa-solid fa-cog "></i>
+                                    Asignación de roles
+                                </a>
+                            <li>
                             <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
                                 <i class="fa-solid fa-school"></i></i>
                                 Gestión de Coordinación
@@ -158,6 +153,14 @@
                             Estudiantes
                         </a>
                         </li>
+                        @role('Estudiante')
+                        <li>
+                            <a class="buttons_sidebar" href="/libros">
+                                <i class="bi bi-book-fill"></i>
+                                Libros
+                            </a>
+                        <li>
+                            @endrole
                     </div>
                 </ul>
             </div>

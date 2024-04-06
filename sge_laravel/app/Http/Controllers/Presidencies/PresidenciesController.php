@@ -7,6 +7,7 @@ use App\Models\Career;
 use App\Models\Division;
 use App\Models\presidencies;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
 class PresidenciesController extends Controller
@@ -44,11 +45,23 @@ class PresidenciesController extends Controller
             'payroll_president' => 'required'
         ]);
 
+        $user = new User();
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        $user_id = $user->id;
+        $role = Role::where('name', 'Presidente')->first();
+        $user->assignRole($role);
+
+
         $presidencies = new presidencies();
         $presidencies->president_name = $request->input('president_name');
         $presidencies->president_lastname = $request->input('president_lastname');
         $presidencies->payroll_president = $request->input('payroll_president');
-        $presidencies->user_id = $request->user_id;
+        $presidencies->user_id = $user_id;
         $presidencies->career_id = $request->career_id;
         $presidencies->division_id = $request->division_id;
         

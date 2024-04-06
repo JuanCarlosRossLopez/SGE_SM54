@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Coordination;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Coordinators;
+use Spatie\Permission\Models\Role;
 
 class CoordinatorsController extends Controller
 {
@@ -39,11 +41,23 @@ class CoordinatorsController extends Controller
             'user_id' => 'required'
         ]);*/
 
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+
+        $user->save();
+
+        $user_id = $user->id;
+
+        $role = Role::where('name', 'Cordinacion')->first();
+        $user->assignRole($role);
+
         $coordinator = new Coordinators();
         $coordinator->coordinator_name = $request->coordinator_name;
         $coordinator->payroll = $request->payroll;
         $coordinator->division_id = $request->division_id;
-        $coordinator->user_id = $request->user_id;
+        $coordinator->user_id = $user_id;
         $coordinator->save();
 
         return redirect()->route('coordinacion.index')->with('notificacion','Coordinador creado correctamente');

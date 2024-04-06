@@ -15,6 +15,7 @@ use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Companies\CompaniesController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Books\BooksController;
+use App\Http\Controllers\Books\BookCordinacionController;
 use FontLib\Table\Type\name;
 use App\Http\Controllers\Calendar\ControllerCalendar;
 use App\Http\Controllers\Users\UsersCreateManyController;
@@ -24,10 +25,12 @@ use App\Http\Controllers\Calendar\Calendar2Controller;
 use App\Http\Controllers\Calendar\ControllerEvent;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Coordination\CoordinatorsController;
-use App\Models\presidencies;
+use App\Http\Controllers\Presidencies\PresidenciesController;
 use App\Models\Project_management;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use App\Http\Controllers\Pdf\PdfController;
+use App\Http\Controllers\Careers\CareerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -129,13 +132,22 @@ Route::get('dashboard_maestro', function() {
     return view('teachers.teacher_dashboard');
 });
 
-// Route::get('libros',[BooksController::class, 'index'])->name('libros.index');
+Route::resource('/gestion_libros',BookCordinacionController::class);   
+    
+Route::resource('libros',BooksController::class);
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 
 
 Route::resource('maestros', TeachersController::class);
 Route::resource('empresas', CompaniesController::class);
+Route::resource('carreras', CareerController::class);
+
+
+
+
+
+
 //Route::get('/empresas',function(){
 //    return view('companies.companies');
 //});
@@ -270,8 +282,10 @@ Route::get('/registro_libros', function () {
 #RUTAS EQUIPO YAHIR
 
 Route::resource('usuarios', UsersController::class);
+Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
+
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
-Route::resource('presidentes', presidencies::class);
+Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
 

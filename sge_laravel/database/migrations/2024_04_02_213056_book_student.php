@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->id();
-            $table->string('group_name');
-            $table->foreignId('career_id')->nullable()->constrained('groups')->onUpdate('restrict')
-            ->onDelete('restrict');
+        //
+        Schema::create('books_students', function (Blueprint $table) {
+            $table->foreignId('books_id')->constrained('books');
+            $table->foreignId('students_id')->constrained('students');
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('groups');
+        //
     }
 };
