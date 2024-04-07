@@ -8,7 +8,7 @@
     <div class="back_conteiner">
         <div class="top_conteiner">
             <div class="w-[70rem]">
-                <label>Lista de Asesores</label>
+                <label>Asignacion de usuario al asesor</label>
                 <label>
                     <!-- Este svg es el icono -->
                     <i class="fa-solid fa-bars-progress"></i>
@@ -56,7 +56,7 @@
                                 <td class="trowc">1</td>
                                 <td class="trowc">{{ $teachers->name_teacher }}</td>
                                 <td class="trowc">{{ $teachers->payroll }}</td>
-                                <td>{{ $teachers->user ? $teachers->user->name : 'Sin usuario asociado' }}</td>
+                                <td>{{ $teachers->user ? $teachers->user->name : 'Sin usuario asociado' }}</td> 
                                 <td class="trowc">{{ $teachers->division_id }}</td>
                                 <td class="trowc">
                                     <button class="show-modal-edit" data-target="#edit{{ $teachers->id }}">

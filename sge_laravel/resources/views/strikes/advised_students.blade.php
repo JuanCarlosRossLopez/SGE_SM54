@@ -1,4 +1,4 @@
-@extends('test.test_template')
+@extends('test.final_template')
 
 @section('title')
     Alumnos asesorados
@@ -11,130 +11,115 @@
 
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <div class="w-[70rem]">
-                <label>Mis alumnos asesorados</label>
-                <label>
-                    <!-- Este svg es el icono -->
-                    <i class="fa-solid fa-hands-holding-child"></i>
-                </label>
+        <div class="conteiner_cards justify-center flex flex-row">
+            <div class="conteiner_cards1 flex flex-col w-3/4">
+
+                <!-- Mapeo de anteproyectos -->
+                <div class="content_conteiner w-full h-fit p-4 mt-4">
+                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Tabla de mis alumnos
+                        como asesor</label>
+                    <!-- Panel 1 -->
+                    <div class="table_conteiner">
+                        <table class="standar_table">
+                            <thead class="standar_thead">
+                                <tr>
+                                    <th class="theader">Asesor</th>
+                                    <th class="theader">Alumno</th>
+                                    <th class="theader">Anteproyecto</th>
+                                    <th class="theader">Amonestaciones</th>
+                                    <th class="theader">Realizar amonestación</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+
+                                @foreach ($Advising as $advising)
+                                    <tr class="trow">
+                                        <td class="trowc">
+                                            {{ $advising->teacher ? $advising->teacher->name_teacher : 'Wtf porque hay error?' }}
+                                        </td>
+                                        <td class="trowc">
+                                            {{ $advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}
+                                        </td>
+
+                                        <td class="trowc">
+                                            @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
+                                                @foreach ($advising->student->projectManagement as $project)
+                                                    {{ $project->project_title }}
+                                                @endforeach
+                                            @else
+                                                Sin anteproyecto
+                                            @endif
+
+                                        </td>
+                                        <td class="trowc">
+                                            {{ $advising->student ? $advising->student->strike : 'No se encontro el alumno' }}
+                                        </td>
+                                        <td class="trowc flex items-center justify-center">
+                                            <button class="show-modal button_strike justify-center"><i
+                                                    class="fa-solid fa-bowling-ball"></i>Amonestar</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Panel 3 -->
+                </div>
             </div>
 
+
+            <div class="w-1/5 h-fit gap-0 flex flex-col">
+                <div class="content_conteiner h-fit p-2 card flex justify-center">
+                    <div class="flex flex-col gap-2 items-center">
+                        <h1>¿Qué más hacer?</h1>
+                        <a class="show-modal buttons_card_green w-full">
+                            <i class="fi fi-sr-books flex"></i><button class="w-full text-start">Ver libros</button>
+                        </a>
+                        <a href="/historial_de_memorias" class="buttons_card_green">
+                            <i class="fi fi-sr-memo-circle-check flex"></i><button> Ver memorias finalizadas</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content_conteiner h-fit p-4 card">
+                    <div class="flex flex-col gap-2 justify-center w-full items-center">
+                        <h1>Recordatorios</h1>
+                        <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>
+                        <label>Aun no amonesta, lo estoy trabajando con dano</label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content_conteiner h-fit">
-            <div class="flex flex-row items-center justify-start gap-2">
-                <label class="conteiner_word_title items-center">Tabla de estudiantes asesorados</label>
-                <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
-                    data-tooltip="Aquí usted puede ver sus estudiantes asesorados y asignar amosnestaciones en caso de merecerla.">
-                    <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
-                </label>
-            </div>
+    </div>
 
-            <div class="inside_content_conteiner">
-                <div class="search_conteiner">
-                    <button class="search_button">
-                        <i class="fas fa-search text-gray-500"></i>
+
+
+
+
+
+    <!-- Modal -->
+    <div
+        class="modal h-screen/2 w-full fixed flex-col left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-md">
+            <div class="border-b px-2 py-2 flex justify-between items-center">
+                <label class="font-semibold text-lg text-white text-center">¿Está seguro de que desea amonestar al
+                    estudiante?</label>
+                <div class="max-w-md flex flex-col items-end justify-end p-2">
+                    <button class="close-modal bg-white rounded-full ">
+                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                     </button>
-                    <input type="text" class="search_input" placeholder="Buscar..." />
-                </div>
-                <div class="search_button_conteiner">
-                    <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button class="standar_button hidden"><span class="inside_button ">Si lo necesitas</span></button>
                 </div>
             </div>
-
-            <div class="table_conteiner">
-                <table class="standar_table">
-                    <thead class="standar_thead">
-                        <tr>
-                            <th class="theader">Nombre</th>
-                            <th class="theader">Matricula</th>
-                            <th class="theader">Amonestaciones</th>
-                            <th class="theader">Anteproyecto</th>
-                            <th class="theader">Asesor</th>
-                            <th class="theader">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody">
-                        <tr class="trow">
-                            <td class="trowc">Alexis Zamora</td>
-                            <td class="trowc">22393434</td>
-                            <td class="trowc">No</td>
-                            <td class="trowc">Task In</td>
-                            <td class="trowc">Mayra Guadalupe</td>
-                            <td class="trowc">
-                                <div>
-                                    <button class="show-modal bg-[#ae0808] text-white font-semibold px-2 py-2 rounded">
-                                        Realizar amonestación
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-            <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-                <div>
-                    <button
-                        class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        < </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                1
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                2
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                3
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                >
-                            </button>
-                </div>
-                <div>
-                    <span>Cantidad de registros :</span>
-                    <span id="rowCount"></span>
+            <div class="bg-white rounded p-2 flex flex-col items-center">
+                <h5 class="text-black text-lg mb-2 font-thin">Marco Antonio Hau Pech</h5>
+                <div class="modal-body mb-0 overflow-y-auto h-[auto]">
+                    <button class="bg-[#0064d7] hover:bg-[#1f695a] p-2 py-1 rounded text-white mr-2">Confirmar</button>
                 </div>
             </div>
         </div>
-
-
-        <!-- Modal -->
-        <div
-            class="modal h-screen/2 w-full fixed flex-col left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-
-            <div class="bg-[#01A080] w-full rounded shadow-lg max-w-md">
-                <div class="border-b px-2 py-2 flex justify-between items-center">
-                    <label class="font-semibold text-lg text-white text-center">¿Está seguro de que desea amonestar al
-                        estudiante?</label>
-                    <div class="max-w-md flex flex-col items-end justify-end p-2">
-                        <button class="close-modal bg-white rounded-full ">
-                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                        </button>
-                    </div>
-                </div>
-                <div class="bg-white rounded p-2 flex flex-col items-center">
-                    <h5 class="text-black text-lg mb-2 font-thin">Marco Antonio Hau Pech</h5>
-                    <div class="modal-body mb-0 overflow-y-auto h-[auto]">
-                        <button class="bg-[#0064d7] hover:bg-[#1f695a] p-2 py-1 rounded text-white mr-2">Confirmar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <script>
-        // Contador
-        const tableBody = document.querySelector('tbody');
-        const rowCount = tableBody.querySelectorAll('tr').length;
-        document.getElementById('rowCount').textContent = rowCount;
         const modal = document.querySelector('.modal');
 
         //Funcionamiento de modal
