@@ -11,7 +11,7 @@ class BookCordinacionController extends Controller
 {
     public function index()
     {
-        $books = Books::all();
+        $books = Books::where('status', 0)->get();
         $students = Students::all();
 
         return view('super_admin.book', compact("books", "students"));
@@ -96,14 +96,19 @@ class BookCordinacionController extends Controller
 
 
         $books = Books::findOrFail($id);
-        $books->book_name = $request->input('book_name');
-        $books->voucher = $request->input('voucher');
-        $books->book_front_page = $request->input('book_front_page');
-        $books->book_description = $request->input('book_description');
-        $books->author = $request->input('author');
-        $books->price = $request->input('price');
+        $books->status = '0'; // or whatever status you want to set
+        $books->save();;
         //$books->students_id = $request->input('students_id');
-        $books->save();
+        return back();
+    }
+
+
+    public function updateStatus(Request $request, string $id)
+    {
+        $book = Books::findOrFail($id);
+        $book->status = '0'; // or whatever status you want to set
+        $book->save();
+    
         return back();
     }
 
