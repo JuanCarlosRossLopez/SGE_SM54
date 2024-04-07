@@ -13,7 +13,7 @@
                     ¿Estas seguro de eliminar Este libro?
                 </h1>
                 <div class="flex flex-row gap-4 text-white ">
-                    <form action="{{route('libros.destroy', $book->id)}} " method="POST">
+                    <form action="{{route('gestion_libros.destroy', $book->id)}} " method="POST">
                         @csrf
                         @method('delete')
                         <button class="bg-red-500 p-2 rounded-md">

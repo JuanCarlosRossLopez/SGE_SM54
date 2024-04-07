@@ -45,7 +45,7 @@ class CommentsController extends Controller
 
         $proyectoid = $comments -> project_management_id;
 
-        return back()->with('Notification', 'Comentario creado');
+        return back()->with('notificacion', '¡Comentario realizado correctamente!');
     }
 
     /**

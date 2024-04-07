@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Division;
+use App\Models\Career;
+
 use Illuminate\Http\Request;
+
 use Spatie\Permission\Models\Role;
 
 
@@ -14,11 +18,34 @@ class UsersController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
         $roles = Role::all();
+        $Divisions = Division::all();
         $users = User::paginate(10);
-        return view('UserManagement.users', compact('users', 'roles'));
+        $careers = Career::all();
+
+        return view('UserManagement.users', compact('users', 'roles','Divisions','careers'));
     }
+
+
+    public function filterByRole(Request $request)
+    {
+        $roleName = $request->input('role');
+
+        if ($roleName == 'Todos') {
+            $users = User::paginate(10);
+        } else {
+            $users = User::role($roleName)->paginate(10);
+        }
+
+        $roles = Role::all();
+        $Divisions = Division::all();
+        $careers = Career::all();
+
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -51,12 +78,12 @@ class UsersController extends Controller
         $roleName = $request->input('role');
 
 
-        
-        
+
+
         $role = Role::where('name', $roleName)->first();
-if($role) {
-    $users->assignRole($role);
-}
+        if ($role) {
+            $users->assignRole($role);
+        }
 
 
         return redirect('usuarios')->with('notificacion', "Usuario creado correctamente");
@@ -69,7 +96,7 @@ if($role) {
     public function show($id)
     {
         $user = User::find($id);
-        return view('UserManagement.modal-users.modal-view', ['user' => $user]);
+        // return view('UserManagement.modal-users.modal-view', ['user' => $user]);
     }
 
     /**
@@ -78,7 +105,7 @@ if($role) {
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         return view('UserManagement.modal-users.modal4', ['user' => $user]);
     }
 
@@ -100,7 +127,7 @@ if($role) {
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
-        
+
         $users->roles()->detach();
 
         if ($request->role) {

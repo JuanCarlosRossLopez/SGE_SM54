@@ -2,7 +2,7 @@
     class="modalView h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
         <div class="border-b px-4 py-2 flex justify-between items-center text-center">
-            <h3 class="font-semibold text-lg ml-60 text-white ">{{$book->book_name}}</h3>
+            <h3 class="font-semibold text-lg ml-60 text-white ">{{ $book->book_name }}</h3>
             <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
             </button>
@@ -10,11 +10,12 @@
 
         <div class="bg-white p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
-            <div class="modal-body max-h-full h-auto flex gap-7">
-                <div class="w-full md:w-auto">
-                    <img src="{{ $book->book_front_page }}" alt="" class=" w-[22vh] md:w-[22rem] h-[38rem]">
+            <div class="modal-body max-h-full h-auto flex  gap-7">
+                <div class="w-full  flex flex-row space-x-4">
+                    <img src="{{ $book->book_front_page }}" alt="" class=" w-56  h-[22rem]">
+                    <img src="{{ $book->voucher }}" alt="" class=" w-56 h-[22rem]">
                 </div>
-                <div class=" w-[32rem]  mb-0   items-center justify-center">
+                <div class=" w-[42rem]    items-end justify-end">
 
                     <label class=" font-semibold" for="">Nombre del libro</label>
                     <h1 class="poppins-light text-[20px]">
@@ -37,12 +38,21 @@
                     </p>
                     <label for="">Estudiante</label>
                     <p>
-                        {{$book->students_id}}
+                        {{ $book->students_id }}
                     </p>
                     
+                    <div class="flex flex-row gap-4 ">
+                        <button class="bg-green-400 rounded w-20 h-12 text-white">
+                            Aceptar
+                        </button>
+                        <button class="bg-red-500 rounded w-20 h-12 text-white">
+                            rechazar
+                        </button>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </div>
 </div>
-

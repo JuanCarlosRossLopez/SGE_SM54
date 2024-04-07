@@ -23,8 +23,12 @@
 
 <body class="w-screen overflow-x-hidden background">
     <div class="w-screen flex">
-        <div class="sidebar_background flex">
+        <div class="sidebar_background" id="sidebar">
             <div>
+                <div class="">
+                    <button id="closeSidebarButton" class="small-screen w-full text-end nav1"><i class="fa-solid fa-burger"></i></button>
+                </div>
+                
                 <a>
                     <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
                         class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
@@ -34,35 +38,13 @@
                     <div>
                         <!--Linea de separación atte: guayabo -->
                         <p class="border-top opacity-60"></p>
-                        @role('Estudiante')
-                            <li>
-                                <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
-                                    <i class="fa-solid fa-school"></i></i>
-                                    Inicio
-                                </button>
-                            </li>
-                        @endrole
-                        @role('Estudiante')
-                            <li>
-                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                    <i class="fa-solid fa-school"></i></i>
-                                    Gestión de Anteproyectos
-                                </button>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/usuarios" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-school"></i>
-                                    Usuarios
-                                </a>
-                            </li>
-                        @endrole
+
+                        <!-- Todo en lo que navega el asesor -->
                         @role('Asesor')
                             <li>
                                 <a href="/dashboard_asesor" class="buttons_sidebar">
                                     <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio Asesor
+                                    Inicio
                                 </a>
                             </li>
                         @endrole
@@ -74,14 +56,144 @@
                                 </a>
                             </li>
                         @endrole
-                        @role('Administrador')
+                        @role('Asesor')
                             <li>
-                                <a href="/panel_admin" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio Admin
+                                <a href="/historial_de_memorias" class="buttons_sidebar">
+                                    <i class="fa-solid fa-landmark"></i>
+                                    Historial de memorias
                                 </a>
                             </li>
                         @endrole
+
+                        @role('Asesor')
+                            <li>
+                                <a href="/informes" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Generacion de informes
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('Asesor')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
+                        <!-- End todo en lo que navega el asesor -->
+
+                        <!-- Todo lo que navega el estudiante -->
+                        @role('Estudiante')
+                            <li>
+                                <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
+                                    <i class="fa-solid fa-school"></i></i>
+                                    Inicio
+                                </button>
+                            </li>
+                        @endrole
+                        @role('Estudiante')
+                            <li>
+                                <a href="/descarga" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Descargar mis informes
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Estudiante')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
+
+                        <!--
+                            No lo vi necesario, porque regresariamos a crearlo?
+                            @role('Estudiante')
+    <li>
+                                                    <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                        <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                                    </button>
+                                                </li>
+@endrole
+                            -->
+                        <!-- End todo lo que navega el estudiante -->
+
+                        <!-- Todo lo que el administrador puede navegar-->
+                        @role('Administrador')
+                            <li>
+                                <a href="/dashboard" class="buttons_sidebar">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                    Inicio
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/usuarios" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-users-gear"></i>
+                                    Gestión de usuarios
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/roles" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de roles
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/asignar_alumnos" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Asignación de alumnos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/gestion_asesor_anteproyecto" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Ver anteproyectos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/libros" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Ver libros
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/historial_de_memorias" class="buttons_sidebar">
+                                    <i class="fa-solid fa-landmark"></i>
+                                    Historial de memorias
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('Administrador')
+                            <li>
+                                <a href="/informes" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Generacion de informes
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
+
+                        <!--END Todo lo que el administrador puede navegar-->
+
+
                         @role('Cordinacion')
                             <li>
                                 <a href="/Dashboard_Direccion" class="buttons_sidebar">
@@ -106,12 +218,7 @@
                                 </a>
                             </li>
                         @endrole
-                        <li>
-                            <a href="/memory" class="buttons_sidebar">
-                                <i class="fa-solid fa-landmark"></i>
-                                Historial de memorias
-                            </a>
-                        </li>
+
                         @role('Cordinacion')
                             <li>
                                 <a href="/informes" class="buttons_sidebar ">
@@ -119,57 +226,54 @@
                                 </a>
                             </li>
                         @endrole
-                        <li>
-                            <a href="/descarga_informe" class="buttons_sidebar ">
-                                <i class="fa-solid fa-file"></i> Generacion de informes
-                            </a>
-                        </li>
-                        <li>
-                            <a href='/Profile' class="buttons_sidebar">
-                                <i class="fa-solid fa-address-card"></i>
-                                Mi perfil
-                            </a>
-                        </li>
-                        <li>
-                            <a class="buttons_sidebar" href="/roles">
-                                <i class="fa-solid fa-cog "></i>
-                                Asignación de roles
-                            </a>
-                        <li>
-                            <button class="buttons_sidebar " onclick="location.href='/coordinacion'">
-                                <i class="fa-solid fa-school"></i></i>
-                                Gestión de Coordinación
+                        <!-- Aqui quiero que aparezca el formulario cuando la vista sea pequeña -->
+                        <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                            @csrf
+                            <button type="submit" class="logout_sidebar buttons_sidebar_logout bg-[#2C4454] p-2">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Cerrar sesión
                             </button>
-                        </li>
-                        <a class="buttons_sidebar" href="estudiantes">
-                            <i class="fa-solid fa-address-card "></i>
-                            Estudiantes
-                        </a>
-                        </li>
+                        </form>
                     </div>
                 </ul>
             </div>
         </div>
-
+        
         <div class="content_main_footer h-screen overflow-y-auto overflow-x-hidden">
             <div class="w-full p-3 bg-[#1f2e39]">
                 <div class="w-full flex justify-between items-center">
                     <div class="text-white text-2xl flex flex-col">
                         @if (Auth::user()->teachers)
-                            <label class="text-3xl text-[#d7d7d7]">Buen día, {{ Auth::user()->teachers->name_teacher }}</label>
-                            <label class="text-xl text-[#a8a8a8]">Gestión asesor</label>
+                            <label class="nav1">Buen día,
+                                {{ Auth::user()->teachers->name_teacher }}</label>
+                            <label class="nav2">Gestión asesor</label>
+                        @elseif (Auth::user()->student)
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->student->student_name }}</label>
+                            <label class="text-xl text-[#a8a8a8]">Gestión estudiante</label>
+                            <button id="openSidebarButton" class="small-screen">Abrir menu</button>
+                        @elseif (Auth::user()->hasRole('Administrador'))
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->name }}</label>
+                            <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
+                            <button id="openSidebarButton" class="small-screen">Abrir menu</button>
                         @else
                             No se encontró información del asesor para este usuario.
                         @endif
                     </div>
-
-                    <form method="POST" action="{{ route('logout') }}">
+                    <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
+                    <div>
+                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i class="fa-solid fa-burger"></i></button>
+                    </div>
+                    <!-- Quiero que desaparezca de aqui si la vista se vuelve pequeña pero que este si la vista es grande -->
+                    <form method="POST" action="{{ route('logout') }}" id="logoutForm" class="logout-forms">
                         @csrf
                         <button type="submit" class="logout_sidebar buttons_sidebar_logout bg-[#2C4454] p-2">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Cerrar sesión
                         </button>
                     </form>
+                    
                 </div>
             </div>
             <div class="content_main_footer h-screen">
@@ -186,6 +290,73 @@
 
 
 </body>
+<script>
+    // Función para ajustar el sidebar y el contenido según el tamaño de la pantalla
+    function adjustSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        if (window.innerWidth >= 768) {
+            sidebar.style.transform = "translateX(0)";
+            content.style.marginLeft = "20rem";
+        } else {
+            closeSidebar(); // Asegurarse de que el sidebar esté cerrado en pantallas pequeñas
+        }
+    }
+    
+    // Función para abrir el sidebar
+    function openSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        sidebar.style.transform = "translateX(0)";
+        content.style.marginLeft = "20rem";
+    }
+    
+    // Función para cerrar el sidebar
+    function closeSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        sidebar.style.transform = "translateX(-100%)";
+        content.style.marginLeft = "0";
+    }
+    
+    // Llamada inicial a la función para ajustar el sidebar al cargar la página
+    adjustSidebar();
+    
+    // Función para alternar el sidebar cuando se hace clic en el botón de abrir
+    document.getElementById('openSidebarButton').addEventListener('click', function() {
+        openSidebar();
+    });
+    
+    // Función para cerrar el sidebar cuando se hace clic en el botón de cerrar
+    document.getElementById('closeSidebarButton').addEventListener('click', function() {
+        closeSidebar();
+    });
+    
+    // Función para ajustar el sidebar cuando cambia el tamaño de la pantalla
+    window.addEventListener('resize', function() {
+        adjustSidebar();
+    });
+
+    function adjustLogoutForm() {
+    var logoutForm = document.getElementById('logoutForm');
+    
+    if (window.innerWidth < 768) {
+        logoutForm.style.display = "block"; // Mostrar el formulario en pantallas pequeñas
+    } else {
+        logoutForm.style.display = "none"; // Ocultar el formulario en pantallas grandes
+    }
+}
+
+// Llamada inicial a la función para ajustar el formulario al cargar la página
+adjustLogoutForm();
+
+// Función para ajustar el formulario cuando cambia el tamaño de la pantalla
+window.addEventListener('resize', function() {
+    adjustLogoutForm();
+});
+    
+    </script>
+    
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>
