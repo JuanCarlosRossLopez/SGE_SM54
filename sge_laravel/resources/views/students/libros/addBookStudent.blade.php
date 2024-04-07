@@ -108,6 +108,11 @@
 
                         @if (count($otherStudents) > 0)
                             <button type="button" id="addStudentButton">Añadir otro estudiante</button>
+
+
+                            @foreach ($otherStudents as $student)
+                                <option value="{{ $student->id }}">{{ $student->student_name }}</option>
+                            @endforeach
                         @endif
                     </div>
                     <br>
@@ -121,7 +126,7 @@
     </div>
 </div>
 <script>
-    var count = 0;
+    const count = 0;
 
     document.getElementById('addStudentButton').addEventListener('click', function() {
         if (count < 2) {
@@ -143,34 +148,18 @@
 
             // Opciones de estudiantes
 
-            @php
-                $otherStudents = array_filter($students, function ($student) {
-                    return $student->id != Auth::user()->student->id;
-                });
-            @endphp
+            // Crear un botón de eliminación
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Eliminar estudiante';
+            removeButton.type = 'button';
+            removeButton.addEventListener('click', function() {
+                document.getElementById(div.id).remove();
+            });
 
-            @if (count($otherStudents) == 0)
-                'hola'
-            @else
-                @foreach ($otherStudents as $student)
-                    var option = document.createElement('option');
-                    option.value = '{{ $student->id }}';
-                    option.textContent = '{{ $student->student_name }}';
-                    select.appendChild(option);
-                @endforeach
+            // Agregar el select y el botón de eliminación al div
+            div.appendChild(select);
+            div.appendChild(removeButton);
 
-                // Crear un botón de eliminación
-                var removeButton = document.createElement('button');
-                removeButton.textContent = 'Eliminar estudiante';
-                removeButton.type = 'button';
-                removeButton.addEventListener('click', function() {
-                    document.getElementById(div.id).remove();
-                });
-
-                // Agregar el select y el botón de eliminación al div
-                div.appendChild(select);
-                div.appendChild(removeButton);
-            @endif
 
             // Agregar el div al contenedor
             studentContainer.appendChild(div);

@@ -30,7 +30,7 @@ use App\Models\Project_management;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use App\Http\Controllers\Pdf\PdfController;
 use App\Http\Controllers\Careers\CareerController;
-
+use App\Http\Controllers\Groups\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,6 +142,7 @@ Route::resource('libros',BooksController::class);
 Route::resource('maestros', TeachersController::class);
 Route::resource('empresas', CompaniesController::class);
 Route::resource('carreras', CareerController::class);
+Route::resource('grupos',GroupController::class);
 
 
 
