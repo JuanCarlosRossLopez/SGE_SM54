@@ -1,148 +1,162 @@
-@extends('test.test_template')
+@extends('test.final_template')
 
 @section('title')
     Gestión de roles
 @endsection
 @section('contenido')
-    <div class="min-h-screen ">
-
-
-        <div class="back_conteiner ">
-            <div class="top_conteiner">
-                <div class="w-[1600px]">
-                    <label>Roles</label>
-                    <label>
-                        <!-- Este svg es el icono -->
-                        <i class="fa-solid fa-bars-progress"></i>
-                    </label>
-                </div>
-
-            </div>
-            <div class="content_conteiner  h-fit">
-                <div class="flex flex-row items-center justify-start gap-2">
-                    <label class="conteiner_word_title items-center">Tabla de Roles</label>
-                    <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
-                        data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
-                        <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
-                    </label>
-                </div>
-                <div class="inside_content_conteiner">
-                    <div class="search_conteiner">
-                        <button class="search_button">
-                            <i class="fas fa-search text-gray-500"></i>
-                        </button>
-                        <input type="text" class="search_input" placeholder="Buscar..." />
-                    </div>
-                    <div class="search_button_conteiner gap-2">
-                        <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                        <button class="standar_button show-modal">Crear Rol</button>
-                        <button class="standar_button show-modal-permisions"> Crear permiso</button>
-                        <button class="standar_button  flex flex-row gap-1 show-modal-permision-options">
-                            <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7  m-auto   ">
-                            <p class="m-auto">Permisos</p>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="table_conteiner">
-                    <table class="standar_table">
-                        <thead class="standar_thead">
-                            <tr>
-                                <th class="theader">Nombre Rol</th>
-                                <th class="theader">Permisos del rol</th>
-                                <th class="theader">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tbody">
-                            @foreach ($roles as $role)
-                                <tr class="trow">
-                                    <td class="trowc">
-
-                                        {{ $role->name }}
-
-                                    </td>
-                                    <td class="trowc">
-                                        @foreach ($role->permissions as $permission)
-                                            {{ $permission->name }}
-                                        @endforeach
-
-                                    </td>
-                                    <td class="trowc">
-
-
-                                        <button class="show-modal-rol  rounded p-1 text-white"
-                                            data-target="#edit{{ $role->id }}">
-                                            <div class ="button_edit_yellow">
-                                                <i class ="fa-solid fa-pen-to-square"></i>
-                                            </div>
-                                        </button>
-
-                                        <button class="show-delete rounded p-1 text-white"
-                                            data-target="#delete{{ $role->id }}">
-                                            <div class ="button_delete_red">
-                                                <i class ="fa-solid fa-trash"></i>
-                                            </div>
-
-                                        </button>
-
-                                        <!-- <button>
-                                                                <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
-                                                            </button> -->
-
-
-
-                                    </td>
-                                </tr>
-                                @include('admin.delete-modal')
-                                @include('admin.view-modal-rol')
-                            @endforeach
-
-                            <tr class="trow">
-
-                                <td class="trowc">
-                                    <div>
-
+    <div class="back_conteiner">
+        <div class="conteiner_cards justify-center flex flex-row">
+            <div class="conteiner_cards1 flex flex-col w-3/4">
+                <!-- Mapeo de anteproyectos -->
+                <div class="content_conteiner w-full h-fit p-4 mt-4">
+                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión de todos los
+                        roles:</label>
+                    <div class="w-full ">
+                        <div class="mx-2">
+                            <div class="flex flex-row items-center justify-end">
+                                <div class=" w-full py-2 flex flex-row items-center gap-2">
+                                    <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
+                                    <div
+                                        class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                        <label
+                                            class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Gestionar
+                                            permisos<i class="fa-solid fa-arrow-right flex"></i></label>
+                                        <div class=" gap-2">
+                                            <button class="show-modal-permision-options button_edit_rol_yellow">
+                                                <i class="fa-solid fa-gear"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </td>
-                            </tr>
 
-                        </tbody>
-                    </table>
-                </div>
+                                    <div
+                                        class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                        <label
+                                            class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
+                                            un rol<i class="fa-solid fa-arrow-right flex"></i></label>
+                                        <div class=" gap-2">
 
-                <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-                <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-                    <div>
-                        <button
-                            class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                            < </button>
-                                <button
-                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                    1
-                                </button>
-                                <button
-                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                    2
-                                </button>
-                                <button
-                                    class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                    3
-                                </button>
-                                <button
-                                    class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                    >
-                                </button>
+                                            <button class="show-modal button_add_green">
+                                                <i class="fa-solid fa-circle-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                        <label
+                                            class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
+                                            un permiso<i class="fa-solid fa-arrow-right flex"></i></label>
+                                        <div class=" gap-2">
+                                            <button class="show-modal-permisions button_add_green">
+                                                <i class="fa-solid fa-circle-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table_conteiner">
+                            <table class="standar_table">
+                                <thead class="standar_thead">
+                                    <tr>
+                                        <th class="theader">Nombre Rol</th>
+                                        <th class="theader">Permisos del rol</th>
+                                        <th class="theader">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody">
+                                    @foreach ($roles as $role)
+                                        <tr class="trow">
+                                            <td class="trowc">
+
+                                                {{ $role->name }}
+
+                                            </td>
+                                            <td class="trowc ">
+                                                <?php
+                                                //Jwjdskjds esto lo enseño villa XDDD
+                                                $coloresPorPalabra = [
+                                                    'Crear' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
+                                                    'Leer' => ['bg' => '#1839a6cb', 'text' => '#e1e7fc'],
+                                                    'Actualizar' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
+                                                    'Eliminar' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
+                                                ];
+                                                ?>
+
+                                                @foreach ($role->permissions as $permission)
+                                                    @if (array_key_exists($permission->name, $coloresPorPalabra))
+                                                        @php
+                                                            $color = $coloresPorPalabra[$permission->name];
+                                                        @endphp
+                                                        <label class="text-base font-semibold px-2 rounded"
+                                                            style="background-color: {{ $color['bg'] }}; color: {{ $color['text'] }}">
+                                                            {{ $permission->name }}
+                                                        </label>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td class="trowc">
+
+
+                                                <button class="show-modal-rol  rounded p-1 text-white"
+                                                    data-target="#edit{{ $role->id }}">
+                                                    <div class ="button_edit_yellow">
+                                                        <i class ="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+
+                                                <button class="show-delete rounded p-1 text-white"
+                                                    data-target="#delete{{ $role->id }}">
+                                                    <div class ="button_delete_red">
+                                                        <i class ="fa-solid fa-trash"></i>
+                                                    </div>
+
+                                                </button>
+
+                                                <!-- <button>
+                                                                                        <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7   text-[#01A080]  ">
+                                                                                    </button> -->
+
+
+
+                                            </td>
+                                        </tr>
+                                        @include('admin.delete-modal')
+                                        @include('admin.view-modal-rol')
+                                    @endforeach
+
+                                    <tr class="trow">
+
+                                        <td class="trowc">
+                                            <div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div>
-                        <span>Cantidad de registros :</span>
-                        <span id="rowCount"></span>
+
+                </div>
+            </div>
+
+
+            <div class="w-1/5 h-fit gap-0 flex flex-col">
+                <div class="content_conteiner h-fit p-2 card flex justify-center">
+                    <div class="flex flex-col gap-2 items-center">
+                        <h1>¿Qué más hacer?</h1>
+                        <a href="/libros" class=" buttons_card_green w-full">
+                            <i class="fi fi-sr-books flex"></i><button class="w-full text-start">Ver libros</button>
+                        </a>
+                        <a href="/historial_de_memorias" class="buttons_card_green">
+                            <i class="fi fi-sr-memo-circle-check flex"></i><button> Ver memorias finalizadas</button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 
     <div
@@ -254,7 +268,7 @@
                                                     </button>
                                                 </button>
                                             </div>
-                                            
+
                                         </td>
                                     </tr>
                                     @include('admin.edit-modal-permission')
@@ -272,11 +286,6 @@
     </div>
 
     <script>
-        //Lo hizo roto, es un contador
-        const tableBody = document.querySelector('tbody');
-        const rowCount = tableBody.querySelectorAll('tr').length;
-        document.getElementById('rowCount').textContent = rowCount;
-
         const modal_permision = document.querySelector('.modal-permision');
         const modal_roles = document.querySelector('.modal-roles');
         const create_rol = document.querySelector('.modal-create-rol');

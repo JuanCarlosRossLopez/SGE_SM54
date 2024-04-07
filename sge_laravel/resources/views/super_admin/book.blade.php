@@ -18,7 +18,7 @@
         </div>
         <div class="bg-[#e6e6e6] mt-4 pt-[0.1rem] pb-4 p-8 rounded-md grid grid-flow-row  ">
             <div class="flex flex-row items-center  justify-start gap-2">
-                <label class="conteiner_word_title items-center">Tabla de libros</label>
+                <label class="conteiner_word_title items-center">Tabla de libros por revisar</label>
                 <label id="infoButton" class="cursor-pointer mt-[0.8rem]"
                     data-tooltip="Aquí usted puede realizar amonestaciones, explicando el por qué de la misma.">
                     <i class="fas fa-exclamation-circle text-[#01A080] text-xl "></i>
@@ -49,7 +49,6 @@
                             <th class="theader md:table-cell">Descripción</th>
                             <th class="theader md:table-cell">Autor</th>
                             <th class="theader md:table-cell">Precio</th>
-                            <th class="theader md:table-cell">Estudiante</th>
                             <th class="theader md:table-cell">Acciones</th>
                         </tr>
                     </thead>
@@ -67,7 +66,6 @@
                                 <td class="trowc md:table-cell">{{ $book->book_description }}</td>
                                 <td class="trowc md:table-cell">{{ $book->author }}</td>
                                 <td class="trowc md:table-cell">{{ $book->price }}</td>
-                                <td class="trowc md:table-cell">{{ $book->students_id }}</td>
                                 <td class="trowc">
                                     <button class="showView" data-target="#view{{ $book->id }}">
                                         <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7  m-auto   ">
