@@ -169,6 +169,7 @@
                     </p>
                 </button>
             </div>
+            
             <div class="bg-white p-2">
                 <div class="modal-body  gap-4 mb-0 flex items-center justify-center P-10 ">
                     <form class=" flex flex-col items-center justify-center" action="{{ route('roles.store') }}"

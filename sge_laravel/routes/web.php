@@ -2,6 +2,7 @@
 use App\Http\Controllers\DocumentSend\DocumentsController;
 use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
+use App\Http\Controllers\Anteprojects\AnteprojectsController;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\Divisions\DivisionController;
 use App\Http\Controllers\ProfileController;
@@ -30,7 +31,7 @@ use App\Models\Project_management;
 use Spatie\Permission\Middlewares\RoleMiddleware;
 use App\Http\Controllers\Pdf\PdfController;
 use App\Http\Controllers\Careers\CareerController;
-
+use App\Http\Controllers\Groups\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,8 +143,11 @@ Route::resource('libros',BooksController::class);
 Route::resource('maestros', TeachersController::class);
 Route::resource('empresas', CompaniesController::class);
 Route::resource('carreras', CareerController::class);
+Route::resource('grupos',GroupController::class);
 
 
+Route::post('/projects/{id}/accept', [AnteprojectsController::class, 'accept'])->name('anteprojects.accept');
+Route::post('/projects/{id}/reject', [AnteprojectsController::class, 'reject'])->name('anteprojects.reject');
 
 
 
@@ -283,7 +287,6 @@ Route::get('/registro_libros', function () {
 
 Route::resource('usuarios', UsersController::class);
 Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
-
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
@@ -319,6 +322,7 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
     })->name('dashboard');

@@ -98,9 +98,22 @@
 
                         </div>
                         <div id="studentContainer">
-                          
+
                         </div>
-                        <button type="button" id="addStudentButton">Añadir otro estudiante</button>
+                        @php
+                            $otherStudents = array_filter($students, function ($student) {
+                                return Auth::user()->student ? $student->id != Auth::user()->student->id : true;
+                            });
+                        @endphp
+
+                        @if (count($otherStudents) > 0)
+                            <button type="button" id="addStudentButton">Añadir otro estudiante</button>
+
+
+                            @foreach ($otherStudents as $student)
+                                <option value="{{ $student->id }}">{{ $student->student_name }}</option>
+                            @endforeach
+                        @endif
                     </div>
                     <br>
                     <button type="submit"
@@ -112,53 +125,47 @@
         </div>
     </div>
 </div>
+
 <script>
-     var count = 0;
+    const count = 0;
 
-document.getElementById('addStudentButton').addEventListener('click', function() {
-    if (count < 2) {
-        var studentContainer = document.getElementById('studentContainer');
+    document.getElementById('addStudentButton').addEventListener('click', function() {
+        if (count < 2) {
+            var studentContainer = document.getElementById('studentContainer');
 
-        // Crear un nuevo div para contener el select y el botón de eliminación
-        var div = document.createElement('div');
-        div.id = 'studentDiv' + count;
+            // Crear un nuevo div para contener el select y el botón de eliminación
+            var div = document.createElement('div');
+            div.id = 'studentDiv' + count;
 
-        // Crear un nuevo elemento select
-        var select = document.createElement('select');
-        select.name = 'student_ids[]';
+            // Crear un nuevo elemento select
+            var select = document.createElement('select');
+            select.name = 'student_ids[]';
 
-        // Opción predeterminada
-        var defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = 'Selecciona un estudiante';
-        select.appendChild(defaultOption);
+            // Opción predeterminada
+            var defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = 'Selecciona un estudiante';
+            select.appendChild(defaultOption);
 
-        // Opciones de estudiantes
-        @foreach($students as $student)
-            @if($student->id != Auth::user()->student->id)
-                var option = document.createElement('option');
-                option.value = '{{ $student->id }}';
-                option.textContent = '{{ $student->student_name }}';
-                select.appendChild(option);
-            @endif
-        @endforeach
+            // Opciones de estudiantes
 
-        // Crear un botón de eliminación
-        var removeButton = document.createElement('button');
-        removeButton.textContent = 'Eliminar estudiante';
-        removeButton.type = 'button';
-        removeButton.addEventListener('click', function() {
-            document.getElementById(div.id).remove();
-        });
+            // Crear un botón de eliminación
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Eliminar estudiante';
+            removeButton.type = 'button';
+            removeButton.addEventListener('click', function() {
+                document.getElementById(div.id).remove();
+            });
 
-        // Agregar el select y el botón de eliminación al div
-        div.appendChild(select);
-        div.appendChild(removeButton);
+            // Agregar el select y el botón de eliminación al div
+            div.appendChild(select);
+            div.appendChild(removeButton);
 
-        // Agregar el div al contenedor
-        studentContainer.appendChild(div);
 
-        count++;
-    }
-});
+            // Agregar el div al contenedor
+            studentContainer.appendChild(div);
+
+            count++;
+        }
+    });
 </script>

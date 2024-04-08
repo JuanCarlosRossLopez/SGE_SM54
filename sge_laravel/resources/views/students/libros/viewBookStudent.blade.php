@@ -12,7 +12,7 @@
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class="modal-body max-h-full h-auto flex gap-7">
                 <div class="w-full md:w-auto">
-                    <img src="{{ $book->book_front_page }}" alt="" class=" w-[22vh] md:w-[22rem] h-[38rem]">
+                    <img src="{{ $book->book_front_page }}" alt="" class=" w-fit md:w-[22rem] h-fit">
                 </div>
                 <div class=" w-[32rem]  mb-0   items-center justify-center">
 
@@ -45,14 +45,7 @@
                             En Revision
                         </p>
                     @endif
-                    <div class="flex flex-row gap-4">
-                        <button class="bg-green-400 rounded hidden w-20 h-12 text-white">
-                            Aceptar
-                        </button>
-                        <button class="bg-red-500 hidden rounded w-20 h-12 text-white">
-                            rechazar
-                        </button>
-                    </div>
+                  
                 </div>
 
 

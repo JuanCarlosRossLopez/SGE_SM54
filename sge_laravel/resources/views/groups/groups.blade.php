@@ -20,7 +20,7 @@
                 <div class="content_conteiner w-full h-fit p-4">
                     <div class="w-full ">
                         <label class="w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Tabla de
-                            Carreras:</label>
+                            Grupos:</label>
                     </div>
 
                     <div class="inside_content_conteiner">
@@ -29,7 +29,7 @@
                                 class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                 <label
                                     class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                    carrera <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    grupos <i class="fa-solid fa-arrow-right flex"></i></label>
                                 <div class="relative dropdown-trigger gap-2">
                                     <button class="dropdown-btn button_add_green show-modal-add">
                                         <i class="fa-solid fa-circle-plus"></i>
@@ -48,9 +48,8 @@
                             <thead class="standar_thead">
                                 <tr>
                                     <th class="theader">#</th>
-                                    <th class="theader">Nombre de la carrera</th>
+                                    <th class="theader">Nombre del grupo</th>
                                     <th class="theader">Descripción de la carrera</th>
-                                    <th class="theader">División</th>
                                     <th class="theader">Acciones</th>
                                 </tr>
                             </thead>
@@ -58,20 +57,18 @@
                                 @php
                                     $contador = 1;
                                 @endphp
-                                @foreach ($careers as $career)
+                                @foreach ($grupos as $grupo)
                                     <tr class="trow">
                                         <td class="trowc">{{ $contador }}</td>
-                                        <td class="trowc">{{ $career->career_name }}</td>
-                                        <td class="trowc">{{ $career->career_description }}</td>
+                                        <td class="trowc">{{ $grupo->group_name }}</td>
+                                        <td class="trowc">{{ $grupo->career ? $grupo->career->career_name : 'Sin división' }}</td>
                                         <td class="trowc">
-                                            {{ $career->division ? $career->division->division_name : 'Sin división' }}</td>
-                                        <td class="trowc">
-                                            <button class="show-modal-edit" data-target="#edit{{ $career->id }}">
+                                            <button class="show-modal-edit" data-target="#edit{{ $grupo->id }}">
                                                 <div class="button_edit_yellow">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </div>
                                             </button>
-                                            <button class="show-delete" data-target="#delete{{ $career->id }}">
+                                            <button class="show-delete" data-target="#delete{{ $grupo->id }}">
                                                 <div class="button_delete_red">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </div>
@@ -89,14 +86,14 @@
             </div>
         </div>
 
-        @include('careers.delete_modal_careers')
-        @include('careers.edit_modal_careers')
+        @include('groups.groups_delete')
+        @include('groups.groups_edit')
 
         <div
             class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
             <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
                 <div class="border-b px-4 py-2 flex justify-between items-center">
-                    <h3 class="font-semibold text-lg ml-60 text-white">Agregar carrera</h3>
+                    <h3 class="font-semibold text-lg ml-60 text-white">Agregar grupo</h3>
                     <button class="close-modal bg-white rounded-full">
                         <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                     </button>
@@ -104,27 +101,26 @@
                 <div class="bg-white p-2">
                     <div class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
                         <div class="flex flex-col items-center justify-center">
-                            <h1 class="text-xl font-bold mb-4">Crear Carrera</h1>
-                            <form action="{{ route('carreras.store') }}" method="POST" class="flex flex-col gap-4">
+                            <h1 class="text-xl font-bold mb-4">Crear grupo</h1>
+                            <form action="{{ route('grupos.store') }}" method="POST" class="flex flex-col gap-4">
                                 @csrf
                                 <div class="flex gap-4">
-                                    <input type="text" name="career_name" id="career_name"
-                                        placeholder="Nombre de la carrera"
+                                    <select id="career_id" name="career_id"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="career_description" id="career_description"
-                                        placeholder="Descripción de la carrera"
-                                        class="flex-1 rounded-md border border-gray-300 p-2">
-                                </div>
-
-                                <div class="flex gap-4">
-                                    <select id="division_id" name="division_id"
-                                        class="flex-1 rounded-md border border-gray-300 p-2">
-                                        <option value="">Selecciona una división</option>
-                                        @foreach ($divisions as $division)
-                                            <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                        <option value="">Selecciona una carrera</option>
+                                        @foreach ($carreras as $carrera)
+                                            <option value="{{ $carrera->id }}">{{ $carrera->career_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="flex gap-4">
+                                    <input type="text" name="group_name" id="group_name"
+                                        placeholder="Nombre del grupo"
+                                        class="flex-1 rounded-md border border-gray-300 p-2">
+                                    
+                                </div>
+
+                                
 
                                 <div class="flex justify-center">
                                     <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>

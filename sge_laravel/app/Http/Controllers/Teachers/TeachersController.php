@@ -60,7 +60,7 @@ class TeachersController extends Controller
         $teacher->division_id = $request->input('division_id');
         $teacher->save();
 
-        return redirect('maestros')->with('notification', 'Teacher created successfully');
+        return back()->with('notification', 'Teacher created successfully');
     }
 
     /**

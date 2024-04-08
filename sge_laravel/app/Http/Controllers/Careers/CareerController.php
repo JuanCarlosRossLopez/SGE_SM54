@@ -68,10 +68,11 @@ class CareerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         $career = Career::find($id);
-        return view('careers.edit', compact('career')); 
+        $divisions = Division::all();
+        return view('careers.edit_modal_careers', compact('career','divisions')); 
     }
 
     /**
