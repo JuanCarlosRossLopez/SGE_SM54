@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Comments;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Arr;
+use App\Models\Status_project;
+
 
 class Projects_managementController extends Controller
 {
@@ -88,10 +90,14 @@ class Projects_managementController extends Controller
             'problem_statement' => 'required', // Planteamiento del Problema
             'justification' => 'required', // Justificación
             'activities' => 'required', // Actividades a realizar
+
             'likes' => 'required',
             //Mover de aqui en adelante
         ]);
         
+
+        $status_project = Status_project::where('status_project', 'Pendiente')->first();
+
         $projects_management = new Project_management();
         $projects_management->educational_program = $request->input('educational_program');
         $projects_management->project_title = $request->input('project_title');
@@ -112,6 +118,9 @@ class Projects_managementController extends Controller
         $projects_management->justification = $request->input('justification');
         $projects_management->activities = $request->input('activities');
         $projects_management->likes = $request->input('likes');
+        $projects_management->status_id = $status_project->id;
+        
+        
         $projects_management->start_date = $request->input('start_date');
         $projects_management->end_date = $request->input('end_date');
         $projects_management->save();
@@ -126,6 +135,7 @@ class Projects_managementController extends Controller
     {
         //
         $projects_management = Project_management::find($id);
+        
         return view('projects_management.show', compact('projects_management'));
     }
 
@@ -147,6 +157,16 @@ class Projects_managementController extends Controller
         //
         $projects_management = Project_management::find($id);
         $projects_management->update($request->all());
+        return back()->with('status', 'Anteproyecto registrado correctamente');
+    }
+
+
+    public function updateAprobation(Request $request, string $id): RedirectResponse
+    {
+        //
+        $projects_management = Project_management::find($id);
+
+
         return back()->with('status', 'Anteproyecto registrado correctamente');
     }
 

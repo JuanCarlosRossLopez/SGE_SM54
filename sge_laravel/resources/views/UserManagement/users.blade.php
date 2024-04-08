@@ -47,29 +47,21 @@
                                     </div>
                                 </form>
 
-                                <div
-                                    class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
-                                    <label
-                                        class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                        un usuario <i class="fa-solid fa-arrow-right flex"></i></label>
-                                    <div class="relative dropdown-trigger gap-2">
-                                        <button class="dropdown-btn button_add_green">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button>
-                                        <div
-                                            class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                            <a
-                                                class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
-                                            <a
-                                                class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
-                                            <a
-                                                class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
-                                            <a
-                                                class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
+                            <div class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                <label class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
+                                    un usuario <i class="fa-solid fa-arrow-right flex"></i></label>
+                                <div class="relative dropdown-trigger gap-2">
+                                    <button class="dropdown-btn button_add_green">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </button>
+                                    <div class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                        <a class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                        <a class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
+                                        <a class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
+                                        <a  class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
                                             </a>
-                                            <a
-                                                class=" show-create-cordination block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
-                                            </a>
+                                        <a class=" show-create-cordination block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
+                                                </a>
 
                                         </div>
                                     </div>

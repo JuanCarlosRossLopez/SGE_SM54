@@ -666,6 +666,34 @@ span {
     width: 100%;
 }
 
+
+.buttons_card_yellow {
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #FFF9CC;
+    color: #FFC107;
+    width: 100%;
+    font-weight: 400;
+    display: flex;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.buttons_card_yellow:hover {
+    font-weight: 600;
+    background-color: #FFD600;
+    color: #ffffff;
+    transform: scale(1.1);
+    width: 100%;
+}
+
 .buttons_card_green {
     cursor: pointer;
     font-size: 18px;

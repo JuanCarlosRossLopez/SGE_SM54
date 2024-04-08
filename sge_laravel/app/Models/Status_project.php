@@ -11,4 +11,7 @@ class Status_project extends Model
 
     protected $fillable = [ 'status_project'];
 
+
+    
+
 }

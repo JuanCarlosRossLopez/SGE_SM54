@@ -34,7 +34,6 @@
                 <form method="POST" action="{{ route('anteproyecto.store') }}">
                     <!-- En este apartado podemos cambiar el color del fondo del container -->
                     @csrf
-                    
                     <div class="w-full border-1 border-[#a2a2a2]"></div>
                     <h1 class="text-lg text-center w-full bg-[#dedede] font-medium uppercase py-1 text-[#505050]">
                         Información del Estudiante</h1>

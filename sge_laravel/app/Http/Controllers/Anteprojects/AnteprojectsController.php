@@ -79,6 +79,7 @@ class AnteprojectsController extends Controller
      */
     public function show(Anteproject $anteproject)
     {
+        
         return view('anteprojects.show', compact('anteproject'));
     }
 
