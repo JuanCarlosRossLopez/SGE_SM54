@@ -5,98 +5,108 @@
 @endsection
 
 @section('contenido')
-    <div class="lg:w-[98rem] sm:w-[12rem] ml-[3rem] items-center  ">
+    <div class="back_conteiner items-center  ">
 
-        <div
-            class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
+        <div class="conteiner_cards1  w-full m-4 ">
             <div class="">
-                <label>Historial de libros</label>
+                <label class=" font-semibold text-[32px]">Historial de libros</label>
                 <label>
                     <!-- Este svg es el icono -->
-                    <i class="fa-solid fa-bars-progress"></i>
-                    
+                    <i class=" fa-solid fa-bars-progress"></i>
+
             </div>
-        </div>
-        <div class="bg-[#e6e6e6] mt-4 pt-[0.1rem] pb-4 p-8 rounded-md   ">
-            <div class="inside_content_conteiner justify-between">
-                <div class="search_conteiner">
-                    <button class="search_button">
-                        <i class="fas fa-search text-gray-500"></i>
-                    </button>
-                    <input type="text" class="search_input" placeholder="Buscar..." />
+
+            <div class="content_conteiner flex-col w-full h-fit p-4">
+                <div class="inside_content_conteiner ">
+
+
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @role('Estudiante')
+                        @if ($userBooks->isEmpty())
+                            
+                            <div class="inside_content_conteiner">
+                                <div class="">
+                                    <div
+                                        class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                        <label
+                                            class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Añadir libro
+                                             <i class="fa-solid fa-arrow-right flex"></i></label>
+                                        <div class="relative dropdown-trigger gap-2">
+                                            <button  data-target='#add' class="dropdown-btn button_add_green show-modal2 showmodal2">
+                                                <i class="fa-solid fa-circle-plus"></i>
+                                            </button>
+                                            <div
+                                                class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                                <a
+                                                    class="show-modal-add block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endrole
                 </div>
+                <div class="flex flex-col ">
+                    @if ($userBooks)
+                        @foreach ($userBooks as $book)
+                            <h1 class="text-[18px] mb-6">Mis libros</h1>
+                            <button class="showView  rounded-md border text-black w-fit"
+                                data-target="#view{{ $book->id }}">
+                                <div
+                                    class="flex flex-col w-56 transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
+                                    <img class=" w-56" src="{{ $book->book_front_page }}" alt="img_book">
+                                    <span class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
+                                    <span class=" font-light text-[15px] text-[#111111]"> {{ $book->author }}</span>
+                                    @if ($book->status == 0)
+                                        <span class="font-light text-[15px] text-[#111111]">Aceptado</span>
+                                    @elseif($book->status == 1)
+                                        <span class="font-light text-[15px] text-[#111111]">En Revision</span>
+                                    @endif
 
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                @role('Estudiante')
-                @if ($userBooks->isEmpty())
-                    <div class="">
-                        <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                        <button data-target="#add" class="showmodal2 ">
-                            <span class="show-modal2 buttons_card_green">Agregar libro</span></button>
-                    </div>
-                @endif
-                @endrole
-            </div>
-            <div class="flex flex-col ">
 
+                                </div>
+                            </button>
+                            @include('students.libros.viewBookStudent')
+                        @endforeach
+                    @else
+                        <h1 class="">No tienes libros</h1>
+                    @endif
 
-                @if ($userBooks)
-                    @foreach ($userBooks as $book)
-                        <h1 class="">Mis libros</h1>
-                        <button class="showView  rounded-md border text-black w-fit" data-target="#view{{ $book->id }}">
+                </div>
+                <h1>Mas libros</h1>
+                <div class="grid grid-cols-4 gap-1 py-2">
+
+                    @foreach ($books as $book)
+                        <button class="showView2  rounded-md border text-black w-fit h-fit"
+                            data-target="#view2{{ $book->id }}">
                             <div
-                                class="flex flex-col w-56 transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
-                                <img class=" w-56" src="{{ $book->book_front_page }}" alt="img_book">
+                                class="flex flex-col w-40  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110">
+                                <img class="w-56" src="{{ $book->book_front_page }}" alt="img_book">
                                 <span class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
                                 <span class=" font-light text-[15px] text-[#111111]"> {{ $book->author }}</span>
-                                @if ($book->status == 0)
-                                    <span class="font-light text-[15px] text-[#111111]">Aceptado</span>
-                                @elseif($book->status == 1)
-                                    <span class="font-light text-[15px] text-[#111111]">En Revision</span>
-                                @endif
-
-
                             </div>
                         </button>
-                        @include('students.libros.viewBookStudent')
+                        @include('students.libros.viewBooks')
                     @endforeach
-                @else
-                    <h1 class="">No tienes libros</h1>
-                @endif
-
+                </div>
             </div>
-            <h1>Mas libros</h1>
-            <div class="grid grid-cols-4 gap-4 py-6  ">
 
-                @foreach ($books as $book)
-                    <button class="showView2 bg-gray-300 rounded-md border text-black w-fit"
-                        data-target="#view2{{ $book->id }}">
-                        <div
-                            class="flex flex-col w-56  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 bg-[#818181]">
-                            <img class=" w-56 " src="{{ $book->book_front_page }}" alt="">
-                            <span class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
-                            <span class=" font-light text-[15px] text-[#111111]"> {{ $book->author }}</span>
-                        </div>
-                    </button>
-                    @include('students.libros.viewBooks')
-                @endforeach
-            </div>
+
+
+            @include('students.libros.addBookStudent')
+
         </div>
-
-
-        @include('students.libros.addBookStudent')
-
-
 
         <script>
             const modal_libro = document.querySelector('.modal2');
             const modal_view = document.querySelector('.modalView');
             const modal_viewBook = document.querySelector('.modalView2');
-            
+
 
 
             //Funcionamiento de modal
