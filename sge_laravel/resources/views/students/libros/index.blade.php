@@ -31,6 +31,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                @role('Estudiante')
                 @if ($userBooks->isEmpty())
                     <div class="">
                         <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
@@ -38,6 +39,7 @@
                             <span class="show-modal2 buttons_card_green">Agregar libro</span></button>
                     </div>
                 @endif
+                @endrole
             </div>
             <div class="flex flex-col ">
 
