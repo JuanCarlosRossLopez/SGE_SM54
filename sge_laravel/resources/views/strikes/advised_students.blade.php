@@ -85,7 +85,6 @@
                     <div class="flex flex-col gap-2 justify-center w-full items-center">
                         <h1>Recordatorios</h1>
                         <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>
-                        <label>Aun no amonesta, lo estoy trabajando con dano</label>
                     </div>
                 </div>
             </div>
@@ -111,7 +110,7 @@
                 </div>
             </div>
             <div class="bg-white rounded p-2 flex flex-col items-center">
-                <h5 class="text-black text-lg mb-2 font-thin">Marco Antonio Hau Pech</h5>
+                <h5 class="text-black text-lg mb-2 font-thin"> {{ $advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}</h5>
                 <div class="modal-body mb-0 overflow-y-auto h-[auto]">
                     <button class="bg-[#0064d7] hover:bg-[#1f695a] p-2 py-1 rounded text-white mr-2">Confirmar</button>
                 </div>

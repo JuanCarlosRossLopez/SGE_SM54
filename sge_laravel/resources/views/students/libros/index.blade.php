@@ -49,8 +49,8 @@
                         <h1 class="">Mis libros</h1>
                         <button class="showView  rounded-md border text-black w-fit" data-target="#view{{ $book->id }}">
                             <div
-                                class="flex flex-col w-56  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
-                                <img class=" w-56" src="{{ $book->book_front_page }}" alt="">
+                                class="flex flex-col w-56 transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
+                                <img class=" w-56" src="{{ $book->book_front_page }}" alt="img_book">
                                 <span class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
                                 <span class=" font-light text-[15px] text-[#111111]"> {{ $book->author }}</span>
                                 @if ($book->status == 0)

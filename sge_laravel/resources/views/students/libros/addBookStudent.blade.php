@@ -102,7 +102,7 @@
                         </div>
                         @php
                             $otherStudents = array_filter($students, function ($student) {
-                                return $student->id != Auth::user()->student->id;
+                                return Auth::user()->student ? $student->id != Auth::user()->student->id : true;
                             });
                         @endphp
 
@@ -126,8 +126,7 @@
     </div>
 </div>
 
-<script >
-    
+<script>
     const count = 0;
 
     document.getElementById('addStudentButton').addEventListener('click', function() {

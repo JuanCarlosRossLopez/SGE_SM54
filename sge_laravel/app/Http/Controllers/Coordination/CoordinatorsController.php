@@ -60,7 +60,7 @@ class CoordinatorsController extends Controller
         $coordinator->user_id = $user_id;
         $coordinator->save();
 
-        return redirect()->route('coordinacion.index')->with('notificacion','Coordinador creado correctamente');
+        return back()->with('notificacion','Coordinador creado correctamente');
     }
 
     /**
