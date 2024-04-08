@@ -532,7 +532,7 @@
                                                 <div class="button_delete_red">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </div>
-                                            </button>
+                                            </button> {{--cambia a form--}}
                                         </td>
                                     </tr>
 
