@@ -119,7 +119,7 @@ class Projects_managementController extends Controller
         $projects_management->activities = $request->input('activities');
         $projects_management->likes = $request->input('likes');
         $projects_management->status_id = $status_project->id;
-        
+
         
         $projects_management->start_date = $request->input('start_date');
         $projects_management->end_date = $request->input('end_date');
@@ -161,14 +161,7 @@ class Projects_managementController extends Controller
     }
 
 
-    public function updateAprobation(Request $request, string $id): RedirectResponse
-    {
-        //
-        $projects_management = Project_management::find($id);
-
-
-        return back()->with('status', 'Anteproyecto registrado correctamente');
-    }
+ 
 
     /**
      * Remove the specified resource from storage.

@@ -85,7 +85,7 @@ class AnteprotecMapDashController extends Controller
         $project_management = Project_management::find($id);
         $project_management->status_id = $request->input('status_project_id');
         $project_management->save();
-        return redirect()->route('teacher_dashboard.index');
+        return back();
         
     }
 
