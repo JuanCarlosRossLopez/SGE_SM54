@@ -284,7 +284,6 @@ Route::get('/registro_libros', function () {
 
 Route::resource('usuarios', UsersController::class);
 Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
-
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
@@ -320,6 +319,7 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
     })->name('dashboard');
