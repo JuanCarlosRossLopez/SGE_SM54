@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Http\Controllers\Careers;
 use App\Http\Controllers\Careers;
 use Illuminate\Http\Request;
 use App\Models\Career;

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comments;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
+use App\Models\Project_management;
 class CommentsController extends Controller
 {
     /**
@@ -25,23 +25,29 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view("teacher_dates.create_comment");
+        return view("informacion_anteproyecto.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        $request->validate([
-            'general_comment'=>'required|string'
-        ]);
+        // $request->validate([
+        //     'general_comment'=>'required|string',
+        //     'teacher_id'=>'required|string',
+        //     'anteproject_id'=>'required|string'
+        // ]);
 
         $comments = new Comments();
         $comments->general_comment = $request->input('general_comment');
+        $comments->teacher_id = $request->input('teacher_id');
+        $comments->project_management_id = $request->input('project_management_id');
         $comments->save();
 
-        return redirect('information_project')->with('Notification', 'Comentario creado');
+        $proyectoid = $comments -> project_management_id;
+
+        return back()->with('notificacion', '¡Comentario realizado correctamente!');
     }
 
     /**
@@ -49,8 +55,9 @@ class CommentsController extends Controller
      */
     public function show(string $id)
     {
+        // $projects = Project_management::find($id);
         $comment = Comments::find($id);
-        return view('information_project', compact('comments'));
+        
     }
 
     /**
