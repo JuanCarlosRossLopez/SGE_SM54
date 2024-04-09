@@ -15,8 +15,8 @@
                     @csrf
                     <div class="modal-body max-h-full h-auto flex  gap-7">
                 <div class="w-full  flex flex-row space-x-4">
-                    <img src="{{ $book->book_front_page }}" alt="" class=" w-56  h-[22rem]">
-                    <img src="{{ $book->voucher }}" alt="" class=" w-56 h-[22rem]">
+                    <img src="{{asset ('books/'.$book->book_front_page) }}" alt="" class=" w-56  h-[22rem]">
+                    <img src="{{asset ('books/'.$book->voucher) }}" alt="" class=" w-56 h-[22rem]">
                 </div>
                 <div class=" w-[42rem]    items-end justify-end">
 

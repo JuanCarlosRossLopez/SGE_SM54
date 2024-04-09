@@ -25,6 +25,8 @@ class TeachersController extends Controller
     
         return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
     }
+
+    
     
     /**
      * Show the form for creating a new resource.

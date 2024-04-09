@@ -27,8 +27,6 @@
                                 <h1>Gestión de usuarios</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="/usuarios" class="buttons_card_blue">Gestionar usuarios</a>
-                                    <a href="#" class="buttons_card_red">Botón sin acción</a>
-                                    <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
                             </div>
                         </div>
@@ -45,8 +43,6 @@
                                 <h1>Gestión de roles</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="/roles" class="buttons_card_blue">Gestionar roles y permisos</a>
-                                    <a href="#" class="buttons_card_red">Botón sin acción</a>
-                                    <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +59,6 @@
                                 <h1>Aginación de asesores</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="/asignar_alumnos" class="buttons_card_blue">Asinar asesor a estudiante</a>
-                                    <a href="#" class="buttons_card_red">Botón sin acción</a>
-                                    <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +74,7 @@
                             <div>
                                 <h1>Academias</h1>
                                 <div class="flex flex-col gap-1">
-                                    <a href="#" class="buttons_card_blue">Gestionar divisiones</a>
+                                    <a href="/division" class="buttons_card_blue">Gestionar divisiones</a>
                                     <a href="#" class="buttons_card_red">Botón sin acción</a>
                                     <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
@@ -99,15 +93,14 @@
                                 <h1>Anteproyectos</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="/gestion_asesor_anteproyecto" class="buttons_card_blue">Todos los anteproyectos</a>
-                                    <a href="#" class="buttons_card_red">Botón sin acción</a>
-                                    <a href="#" class="buttons_card_green">Botón sin acción</a>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- FINAL CARD DISEÑADA -->
 
-                    <!-- INICIO CARD DISEÑADA -->
+                    <!-- INICIO CARD DISEÑADA
                     <div class="item-1">
                         <div class="card">
                             <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
@@ -117,19 +110,21 @@
                                 <h1>Empresas vinculadas</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="#" class="buttons_card_blue">Gestionar empresas</a>
+                                    
+                                    <a href="empresas" class="buttons_card_blue">Gestionar empresas</a>
                                     <a href="#" class="buttons_card_red">Botón sin acción</a>
                                     <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- FINAL CARD DISEÑADA -->
+                    FINAL CARD DISEÑADA -->
                 </div>
 
 
 
 
-                <!-- Mapeo de anteproyectos -->
+                <!-- Mapeo de anteproyectos 
                 <div class="content_conteiner w-full h-fit p-4">
                     <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Añadir algo si lo crees necesario:</label>
                     <div class="w-full ">
@@ -138,7 +133,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>-->
             </div>
 
 

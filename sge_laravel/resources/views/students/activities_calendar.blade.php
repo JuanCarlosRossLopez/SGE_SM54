@@ -27,8 +27,8 @@
                                 <div
                                     class="bg-[#F7FAFC] w-1/3 p-3 border-2 border-[#d0d0d0] flex flex-col items-center rounded">
                                     <!--
-                                                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
-                                                                    -->
+                                                                                    <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+                                                                                -->
                                     @if (optional(optional(Auth::user()->student)->projects)->id)
                                         <div class="flex flex-col w-full h-fit px-4 pt-2 mt-0">
                                             <div
@@ -65,7 +65,7 @@
                                                         empresarial:</label>
                                                     <h1
                                                         class="font-semibold text-lg bg-[#a6a61831] px-2 rounded text-[#a68a18] md:text-base">
-                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor asociado' }}
+                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor empresarial asociado' }}
                                                     </h1>
                                                 </div>
 
@@ -73,8 +73,36 @@
                                                     <label
                                                         class="font-sans font-semibold text-lg text-[#545454]">Estado:</label>
                                                     <h1
-                                                        class="font-semibold text-lg bg-[#a6181831] px-2 rounded text-[#a61818] md:text-base">
-                                                        Quintana Roo
+                                                        class="font-semibold text-lg  px-2 rounded  md:text-base">
+                                                        <?php
+                                                        $coloresPorPalabra = [
+                                                            'Aprobado' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
+                                                            'Pendiente' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
+                                                            'Rechazado' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
+                                                        ];
+                                                        
+                                                        $status_id = optional(optional(Auth::user()->student)->projects)->status_id ?? null;
+                                                        
+                                                        $status = '';
+                                                        
+                                                        if ($status_id === 1) {
+                                                            $status = 'Aprobado';
+                                                        } elseif ($status_id === 2) {
+                                                            $status = 'Rechazado';
+                                                        } elseif ($status_id === 3) {
+                                                            $status = 'Pendiente';
+                                                        } else {
+                                                            echo 'No se encontró un estado asociado';
+                                                        }
+                                                        
+                                                        $bgColor = $coloresPorPalabra[$status]['bg'];
+                                                        $textColor = $coloresPorPalabra[$status]['text'];
+                                                        
+                                                        echo "<span style='background-color: $bgColor; color: $textColor; padding: 2px; border-radius: 5px;'>$status</span>";
+                                                        ?>
+
+
+
                                                     </h1>
                                                 </div>
                                                 <div class="flex flex-row items-center gap-2">
@@ -93,19 +121,25 @@
                                             </div>
 
                                         </div>
-                                        <div class=" w-full flex justify-center mt-3 ">
+                                        <div class=" w-full flex justify-center items-center mt-3 flex-col gap-2">
                                             <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
-                                                class="buttons_card_anteproyect m-0">Visualizar mi anteproyecto<i
+                                                class="buttons_card_anteproyect m-0">Visualizar anteproyecto<i
+                                                    class="fa-solid fa-file-lines"></i>
+                                            </a>
+                                            <a href="{{ route('anteproyecto.edit', optional(optional(Auth::user()->student)->projects)->id) }}"
+                                                class="buttons_card_anteproyect m-0">Actualizar anteproyecto<i
                                                     class="fa-solid fa-file-lines"></i>
                                             </a>
                                         </div>
                                     @else
-                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto</p>
+                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto
+                                        </p>
                                         <a href="/anteproyecto" class="buttons_card_anteproyect"><label
                                                 class="cursor-pointer">Crear mi
                                                 anteproyecto</label></a>
                                     @endif
-                                </div>
+
+                                </div>
                                 <div
                                     class="w-full h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
                                     <div class="w-full h-[20rem] px-2">
@@ -156,33 +190,30 @@
 
                                     <div class="bg-[#f2f2f2] overflow-auto rounded px-4 my-2 h-[90%]">
                                         <div class="flex flex-col gap-0 text-sm">
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
-                                                <p>05 Febrero | 8:30 AM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>20 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>20 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>29 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>05 Marzo | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
+                                            @php
+                                                // Consulta para obtener todos los eventos de la tabla event
+                                                $events = \App\Models\Event::all();
+                                            @endphp
+                                    
+                                            @forelse($events as $event)
+                                                @php
+                                                    // Verificar si la fecha del evento ya pasó
+                                                    $bgColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                    $borderColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                @endphp
+                                    
+                                                <div class="flex flex-row gap-4 border-1 border-[{{ $borderColor }}] rounded-[7px_7px_7px_7px] p-3 bg-[{{ $bgColor }}] text-white mt-4 mb-2 font-medium">
+                                                    <p>{{ $event->date }}</p>
+                                                    <p class="text-[#ebebeb]">{{ $event->title }}</p>
+                                                </div>
+                                            @empty
+                                                <p class="text-[#9f9f9f] font-base italic text-xl ">No hay recordatorios
+                                                    pendientes.</p>
+                                            @endforelse
                                         </div>
                                     </div>
+                                    
+                                    
                                 </div>
                                 <div
                                     class="border-2 border-[#d0d0d0] bg-[#F7FAFC] md:p-3 p-4 justify-center flex flex-col h-[400px] w-[220px] md:w-[715px] lg:w-full rounded-[7px_7px_7px_7px]">
@@ -218,19 +249,27 @@
                                             @foreach ($data['calendar'] as $weekData)
                                                 <tr>
                                                     @foreach ($weekData['datos'] as $dayweek)
-                                                        @if ($dayweek['mes'] == $mes)
-                                                            <td
-                                                                class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer">
-                                                                {{ $dayweek['dia'] }}</td>
-                                                        @else
-                                                            <td
-                                                                class="text-center p-3 text-gray-700 transition-transform hover:scale-110 cursor-pointer">
-                                                            </td>
-                                                        @endif
+                                                        @php
+                                                            // Verificar si hay un evento/recordatorio para este día
+                                                            $event = $events->firstWhere('date', $dayweek['fecha']);
+                                                            // Validar si el día ya ha pasado o no
+                                                            if ($event && $event->date < now()) {
+                                                                $bgColor = '#18A689'; // Si el evento ya pasó
+                                                            } elseif ($event) {
+                                                                $bgColor = '#2F4050'; // Si hay un evento, pero no ha pasado
+                                                            } else {
+                                                                $bgColor = ''; // Si no hay evento asociado
+                                                            }
+                                                        @endphp
+                                                        <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer rounded-[7px_7px_7px_7px]" style="background-color: {{ $bgColor }}">
+                                                            {{ $dayweek['dia'] }}
+                                                        </td>
                                                     @endforeach
                                                 </tr>
                                             @endforeach
                                         </tbody>
+                                        
+                                        
                                     </table>
                                 </div>
                             </div>

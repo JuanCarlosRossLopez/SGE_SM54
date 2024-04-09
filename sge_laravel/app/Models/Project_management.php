@@ -25,6 +25,7 @@ class Project_management extends Model
         'problem_statement',
         'justification',
         'activities',
+        'career',
         'likes',
         'start_date',
         'end_date',
@@ -58,5 +59,4 @@ class Project_management extends Model
         return $this->belongsTo(Status_project::class, 'status_id');
     }
     
-
 }
