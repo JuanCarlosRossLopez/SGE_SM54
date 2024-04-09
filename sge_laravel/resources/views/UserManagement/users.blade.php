@@ -22,7 +22,7 @@
                     <div class="w-full ">
                         <div class="">
                             <label class=" w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión
-                                de todos los usuarios:</label>
+                                de todos los usuarios</label>
                             <div class="flex flex-row items-center justify-start gap-2 ">
 
                                 <form action="{{ route('users.filterByRole') }}" method="GET"
@@ -31,7 +31,7 @@
                                         <div class=" flex items-center gap-2">
                                             <label for="role"
                                                 class="w-full text-start font-sans font-semibold text-[#545454] text-lg">Filtrar
-                                                por rol:</label>
+                                                por rol</label>
                                             <select name="role" id="role"
                                                 class=" text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
                                                 <option disabled selected class="">Selecciona el rol</option>
@@ -153,7 +153,7 @@
                                                         <input type="password" name="password" placeholder="Contraseña"
                                                             class="rounded input-field">
 
-                                                    </div>
+                                                </div>
 
                                                     <div class="mb-4">
                                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
@@ -626,14 +626,34 @@
                                                         </div>
                                                     </button>
 
-                                                    <button class="show-modal px-1"
-                                                        data-target="#delete{{ $user->id }}">
-                                                        <div class="button_delete_red">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </div>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            <button class="show-modal px-1" data-target="#delete{{ $user->id }}">
+                                                <div class="button_delete_red">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                            </button> {{--cambia a form--}}
+                                        </td>
+                                    </tr>
+                                    @if($user->teachers)
+                                    <p>
+                                        @include('UserManagement.edit_modal_teacher')
+
+                                    </p>
+                                    @elseif($user->student)
+                                    <p>
+
+                                    </p>
+                                    @elseif($user->presidencies)
+                                    <p>
+
+                                    </p>
+                                    @elseif($user->coordinators)
+                                    <p>
+
+                                    </p>
+                                    @else
+                                    <p>
+                                    </p>
+                                    @endif
 
                                             @include('UserManagement.modal-users')
                                         @endforeach
@@ -661,12 +681,23 @@
             })
 
 
+        const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
+        const show_modal_edit_asesor = document.querySelectorAll('.show-modal-edit-asesor')
+        show_modal_edit_asesor.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+
             const modal_create_cordination = document.querySelector('.modal-create-cordination');
 
-            const show_create_cordination = document.querySelector('.show-create-cordination');
-            show_create_cordination.addEventListener('click', function() {
-                modal_create_cordination.classList.remove('hidden');
-            });
+        const show_create_cordination = document.querySelector('.show-create-cordination');
+        show_create_cordination.addEventListener('click', function() {
+            modal_create_cordination.classList.remove('hidden');
+        });
 
             show_modal_add.addEventListener('click', function() {
                 modal_add.classList.remove('hidden')
@@ -787,6 +818,24 @@
                 modal5.classList.remove('hidden')
             })
         </script>
+        <script>
+            const modalu = document.querySelector('.modal-user');
+
+            const showModalu = document.querySelector('.show-modal-u');
+            const closeModalu = document.querySelectorAll('.close-modal-u');
+
+
+            showModalu.addEventListener('click', function() {
+                modalu.classList.remove('hidden')
+
+
+            })
+            closeModalu.forEach(close => {
+                close.addEventListener('click', function() {
+                    modalu.classList.add('hidden')
+                });
+            });
+        </script>
 
         <script>
             const modal6 = document.querySelector('.modal6');
@@ -797,23 +846,9 @@
             showModal6.addEventListener('click', function() {
                 modal6.classList.remove('hidden')
             })
+            
         </script>
-        <script>
-            const modal_u = document.querySelector('.modal-user');
-
-            const showModal_u = document.querySelector('.show-modal-u');
-            const closeModal_u = document.querySelectorAll('.close-modal-u');
-
-            showModal_u.addEventListener('click', function() {
-                modal_u.classList.remove('hidden')
-            })
-
-            closeModal_u.forEach(close => {
-                close.addEventListener('click', function() {
-                    modal_u.classList.add('hidden')
-                });
-            });
-        </script>
+       
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");

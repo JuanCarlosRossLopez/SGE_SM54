@@ -34,7 +34,6 @@
                 <form method="POST" action="{{ route('anteproyecto.store') }}">
                     <!-- En este apartado podemos cambiar el color del fondo del container -->
                     @csrf
-                    
                     <div class="w-full border-1 border-[#a2a2a2]"></div>
                     <h1 class="text-lg text-center w-full bg-[#dedede] font-medium uppercase py-1 text-[#505050]">
                         Información del Estudiante</h1>
@@ -66,7 +65,7 @@
                                         Estudiante:</label>
                                     <input type="text" name="student_id" id="student_id"
                                         class="w-full text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900] cursor-not-allowed"
-                                        placeholder="Matrícula" value="22393130" readonly />
+                                        placeholder="Matrícula" value="{{Auth::user()->student->id_student}}" readonly />
                                     @error('student_id')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />

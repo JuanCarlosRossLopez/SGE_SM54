@@ -25,6 +25,8 @@ class TeachersController extends Controller
     
         return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
     }
+
+    
     
     /**
      * Show the form for creating a new resource.
@@ -60,7 +62,7 @@ class TeachersController extends Controller
         $teacher->division_id = $request->input('division_id');
         $teacher->save();
 
-        return redirect('maestros')->with('notification', 'Teacher created successfully');
+        return back()->with('notification', 'Teacher created successfully');
     }
 
     /**
@@ -86,8 +88,16 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-        ]);
+       
+        $user_id = $request->id_user;
+
+        $user = User::find($user_id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+
 
         $teacher = Teachers::find($id);
         $teacher->name_teacher = $request->name_teacher;

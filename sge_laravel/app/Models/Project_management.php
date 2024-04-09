@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
+
 class Project_management extends Model
 {
     use HasFactory;
@@ -27,6 +29,7 @@ class Project_management extends Model
         'start_date',
         'end_date',
         'user_id',
+        'status_id',
     ];
 
     protected $table = 'project_management';
@@ -49,4 +52,10 @@ class Project_management extends Model
     {
         return $this->HasMany(Project_Likes::class,'project_management_id');
     }
+
+    public function project_status(): BelongsTo
+    {
+        return $this->belongsTo(Status_project::class, 'status_id');
+    }
+    
 }

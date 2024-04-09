@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use App\Models\Division;
 use App\Models\Anteproject;
-use App\Models\Teacher;
+use App\Models\Teachers;
 use App\Models\Students;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
@@ -34,7 +34,7 @@ class StudentsFactory extends Factory
                 return Anteproject::inRandomOrder()->first()->id;
             },
             'adviser_id' => function () {
-                return Teacher::inRandomOrder()->first()->id;
+                return Teachers::inRandomOrder()->first()->id;
             },
             'created_at' => $this->faker->dateTimeBetween('-2 years', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-2 years', 'now'),

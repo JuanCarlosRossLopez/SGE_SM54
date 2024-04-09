@@ -37,7 +37,7 @@ body {
   }
   
   /* animacion de progreso*/
-  .progress-front {
+  .progress-front1 {
     stroke: var(--primary);
     stroke-width: 10;
     stroke-linecap: round;
@@ -55,14 +55,6 @@ body {
     animation: fill 2s forwards;
   }
 
-  .progress-front3 {
-    stroke: var(--primary);
-    stroke-width: 10;
-    stroke-linecap: round;
-    transform: rotate(-90deg);
-    transform-origin: center;
-    animation: fill 2s forwards;
-  }
   
 
   .progress-text {
