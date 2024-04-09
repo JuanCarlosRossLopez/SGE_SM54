@@ -15,7 +15,7 @@ class DivisionController extends Controller
     public function index()
     {
         $divisions = Division::paginate(10);
-        return view('division_forms.division_view',["division"=>$divisions]);
+        return view('division_forms.division', compact('divisions'));
     }
 
     /**
@@ -69,7 +69,7 @@ class DivisionController extends Controller
         
         $division->update($request->all());
         
-        //falta return
+        return back();
     }
 
     /**
@@ -80,7 +80,8 @@ class DivisionController extends Controller
         //
         $division=Division::find($id);
         
+        
         $division->delete();
-        //falta return
+        return back();
     }
 }

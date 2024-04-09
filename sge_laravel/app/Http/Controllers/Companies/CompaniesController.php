@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Companies;
 use Illuminate\Http\Request;
 
+
+
 class CompaniesController extends Controller
 {
     /**
@@ -22,6 +24,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
+        $companies = Companies::all();
         return view('companies.companies', compact('Companies'));
     }
 
@@ -30,7 +33,16 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'company_name' => 'required|string',
+            'addres' => 'required|string',
+            'asesor_name' => 'required|string',
+            'job' => 'required|string',
+            'company_phone_number' => 'required|string',
+            'company_email' => 'required|string',
+            'work_area' => 'required|string',
+            'company_description' => 'required|string',
+        ]);
 
         $company = new Companies();
         $company->company_name = $request->input('company_name');
@@ -43,7 +55,7 @@ class CompaniesController extends Controller
         $company->company_description = $request->input('company_description');
         $company->save();
 
-        return redirect('empresas')->with('notification', 'Company created successfully');
+        return redirect('empresas')->with('notification', 'Empresa creada correctamente');
     }
 
     /**
@@ -61,7 +73,7 @@ class CompaniesController extends Controller
     public function edit(string $id)
     {
         $company = Companies::find($id);
-        return view('companies.edit', compact('company'));
+        return view('companies.edit_modal_company', compact('company'));
     }
 
     /**
@@ -69,11 +81,8 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-      
-        ]);
 
-        $company = new Companies();
+        $company = Companies::find($id);
         $company->company_name = $request->input('company_name');
         $company->addres = $request->input('addres');
         $company->asesor_name = $request->input('asesor_name');
@@ -84,7 +93,7 @@ class CompaniesController extends Controller
         $company->company_description = $request->input('company_description');
         $company->save();
 
-        return redirect('empresas')->with('notification', 'Company created successfully');
+        return redirect('empresas')->with('notification', 'Empresa editada correctamente!');
     }
 
     /**
@@ -95,10 +104,10 @@ class CompaniesController extends Controller
         $company = Companies::find($id);
     
         if (!$company) {
-            return redirect('empresas')->with('error', 'Company not found');
+            return redirect('empresas')->with('error', 'Empresa no encontrada');
         }
     
         $company->delete();
-        return redirect('empresas')->with('notification', 'Company deleted successfully');
+        return redirect('empresas')->with('notification', 'Empresa eliminada correctamente!');
     }
 }

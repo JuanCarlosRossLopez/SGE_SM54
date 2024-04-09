@@ -22,7 +22,7 @@
                     <div class="w-full ">
                         <div class="">
                             <label class=" w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión
-                                de todos los usuarios:</label>
+                                de todos los usuarios</label>
                             <div class="flex flex-row items-center justify-start gap-2 ">
 
                                 <form action="{{ route('users.filterByRole') }}" method="GET"
@@ -31,7 +31,7 @@
                                         <div class=" flex items-center gap-2">
                                             <label for="role"
                                                 class="w-full text-start font-sans font-semibold text-[#545454] text-lg">Filtrar
-                                                por rol:</label>
+                                                por rol</label>
                                             <select name="role" id="role"
                                                 class=" text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
                                                 <option disabled selected class="">Selecciona el rol</option>
@@ -47,21 +47,29 @@
                                     </div>
                                 </form>
 
-                            <div class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
-                                <label class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                    un usuario <i class="fa-solid fa-arrow-right flex"></i></label>
-                                <div class="relative dropdown-trigger gap-2">
-                                    <button class="dropdown-btn button_add_green">
-                                        <i class="fa-solid fa-circle-plus"></i>
-                                    </button>
-                                    <div class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                        <a class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
-                                        <a class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
-                                        <a class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
-                                        <a  class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
+                                <div
+                                    class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                    <label
+                                        class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
+                                        un usuario <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    <div class="relative dropdown-trigger gap-2">
+                                        <button class="dropdown-btn button_add_green">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button>
+                                        <div
+                                            class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                            <a
+                                                class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                            <a
+                                                class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
+                                            <a
+                                                class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
+                                            <a
+                                                class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
                                             </a>
-                                        <a class=" show-create-cordination block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
-                                                </a>
+                                            <a
+                                                class=" show-create-cordination block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
+                                            </a>
 
                                         </div>
                                     </div>
@@ -802,6 +810,8 @@
 
         <script>
             const modal5 = document.querySelector('.modal5');
+        <script>
+            const modal5 = document.querySelector('.modal5');
 
             const showModal5 = document.querySelector('.show-modal5');
             const closeModal5 = document.querySelectorAll('.close-modal5');
@@ -838,9 +848,23 @@
             showModal6.addEventListener('click', function() {
                 modal6.classList.remove('hidden')
             })
-            
         </script>
-       
+        <script>
+            const modal_u = document.querySelector('.modal-user');
+
+            const showModal_u = document.querySelector('.show-modal-u');
+            const closeModal_u = document.querySelectorAll('.close-modal-u');
+
+            showModal_u.addEventListener('click', function() {
+                modal_u.classList.remove('hidden')
+            })
+
+            closeModal_u.forEach(close => {
+                close.addEventListener('click', function() {
+                    modal_u.classList.add('hidden')
+                });
+            });
+        </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");
