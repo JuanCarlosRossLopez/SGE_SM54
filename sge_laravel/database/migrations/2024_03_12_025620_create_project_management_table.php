@@ -40,6 +40,9 @@ return new class extends Migration
             $table->foreignId('id_student')->nullable()->constrained('students')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+                $table->foreignId('status_id')->nullable()->constrained('status_projects')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
             $table->timestamps();
             //Aqui en adelante mover
 

@@ -180,6 +180,7 @@ Asesores
     show_modal_add.addEventListener('click', function() {
         modal_add.classList.remove('hidden')
     })
+    
     const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
     const show_modal_edit = document.querySelectorAll('.show-modal-edit')
     show_modal_edit.forEach(button => {

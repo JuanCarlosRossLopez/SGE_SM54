@@ -11,7 +11,7 @@ class BookCordinacionController extends Controller
 {
     public function index()
     {
-        $books = Books::where('status', 0)->get();
+        $books = Books::all();
         $students = Students::all();
 
         return view('super_admin.book', compact("books", "students"));
@@ -99,7 +99,7 @@ class BookCordinacionController extends Controller
         $books->status = '0'; // or whatever status you want to set
         $books->save();;
         //$books->students_id = $request->input('students_id');
-        return back();
+        return redirect('gestion_libros')->with('notificacion', 'El libro fue aceptado correctamente');
     }
 
 

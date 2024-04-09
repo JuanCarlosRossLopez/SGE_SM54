@@ -1,4 +1,4 @@
-{{--<div id="add"
+<div id="add"
     class="modal2 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
         <div class="border-b px-4 py-2 flex justify-between items-center text-center">
@@ -102,17 +102,14 @@
                         </div>
                         @php
                             $otherStudents = array_filter($students, function ($student) {
-                                return $student->id != Auth::user()->student->id;
+                                return Auth::user()->student ? $student->id != Auth::user()->student->id : true;
                             });
                         @endphp
 
                         @if (count($otherStudents) > 0)
-                            <button type="button" id="addStudentButton">Añadir otro estudiante</button>
+                            <button type="button" id="addStudentButton" class="">Añadir otro estudiante</button>
 
-
-                            @foreach ($otherStudents as $student)
-                                <option value="{{ $student->id }}">{{ $student->student_name }}</option>
-                            @endforeach
+                           
                         @endif
                     </div>
                     <br>
@@ -125,11 +122,10 @@
         </div>
     </div>
 </div>
---}}
-<script >
-    /*
-    const count = 0;
 
+
+<script>
+    let count = 0;
     document.getElementById('addStudentButton').addEventListener('click', function() {
         if (count < 2) {
             var studentContainer = document.getElementById('studentContainer');
@@ -141,6 +137,7 @@
             // Crear un nuevo elemento select
             var select = document.createElement('select');
             select.name = 'student_ids[]';
+            select.style.display = 'none'; // Ocultar el select inicialmente
 
             // Opción predeterminada
             var defaultOption = document.createElement('option');
@@ -149,24 +146,32 @@
             select.appendChild(defaultOption);
 
             // Opciones de estudiantes
+            @foreach ($otherStudents as $student)
+                var option = document.createElement('option');
+                option.value = '{{ $student->id }}';
+                option.textContent = '{{ $student->student_name }}';
+                select.appendChild(option);
+            @endforeach
 
-            // Crear un botón de eliminación
-            var removeButton = document.createElement('button');
-            removeButton.textContent = 'Eliminar estudiante';
-            removeButton.type = 'button';
-            removeButton.addEventListener('click', function() {
-                document.getElementById(div.id).remove();
+            // Crear un nuevo botón de eliminación
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.addEventListener('click', function() {
+                div.remove();
             });
 
-            // Agregar el select y el botón de eliminación al div
+            // Añadir el select y el botón de eliminación al div
             div.appendChild(select);
-            div.appendChild(removeButton);
+            div.appendChild(deleteButton);
 
-
-            // Agregar el div al contenedor
+            // Añadir el div al contenedor de estudiantes
             studentContainer.appendChild(div);
+
+            // Mostrar el select
+            select.style.display = 'block';
 
             count++;
         }
-    });*/
+    });
 </script>
+

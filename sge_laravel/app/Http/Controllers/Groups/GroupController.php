@@ -41,9 +41,10 @@ class GroupController extends Controller
         $group = new Group();
         $group-> group_name = $request-> input('group_name');
         $group->career_id = $request->input('career_id');
+        
         $group->save();
 
-        return redirect()->route('groups');
+        return redirect('grupos')->with('notificacion', 'El grupo se creo correctamente')   ;
 
 }
 
@@ -62,7 +63,7 @@ class GroupController extends Controller
     public function edit(string $id)
     {
         $group = Group::find($id);
-        return view('groups.edit', compact('group'));
+        return view('groups.groups_edit', compact('group'));
     }
 
     /**
@@ -80,7 +81,7 @@ class GroupController extends Controller
         $group->career_id = $request->career_id;
         $group->save();
 
-        return redirect()->route('groups')->with('notificacion', 'si cambio');
+        return redirect('grupos')->with('notificacion', 'El grupo se actualizo correctamente');
     }
 
     /**
@@ -90,6 +91,6 @@ class GroupController extends Controller
     {
         $group = Group::find($id);
         $group->delete();
-        return redirect()->route('groups')->with('notificacion', 'si borro');
+        return redirect('grupos')->with('notificacion', 'El grupo se elimino correctamente');
     }
 }
