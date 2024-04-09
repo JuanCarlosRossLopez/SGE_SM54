@@ -1,156 +1,79 @@
-@extends('test.test_template')
+@extends('test.final_template')
 @section('title')
     Panel de control coordinación
 @endsection
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>Dashboard Coordinación</label>
-            <label>
-                <!-- Este svg es el icono -->
-                <i class="fa-solid fa-user-tie"></i>
-            </label>
-        </div>
-        <div class=" conteiner_cards">
-            <div class="conteiner_cards1 flex flex-col w-[50rem]">
-                <div class="content_conteiner w-fit h-fit">
-                    <label class="conteiner_word_title flex flex-col items-center">Actividades diarias</label>
-                    <div class="conteiner_cards2 ">
-                        <!-- Panel 1 -->
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Subir excel</label>
-                                <button class="w-[2rem] h-[2rem] ver-Agregar hover:bg-slate-300 rounded-full ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Enviar
-                                    reporte/informe</label>
-                            </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+        <div class="conteiner_cards justify-center flex flex-row">
+            <div class="conteiner_cards1 flex flex-col w-3/4">
 
+                <!-- Contenedor para cards de acciones -->
+                <div class="conteiner_card">
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
+                            </div>
+                            <div class="">
+                                <h1>Redirigir</h1>
+                                <div class="flex flex-col gap-1">
+                                    <a href="/informes" class="buttons_card_blue">Ir a Generación de Informes</a>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Panel 1 -->
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Subir pdf</label>
-                                <button class="w-[2rem] h-[2rem] ver-Agregar2 hover:bg-slate-300 rounded-full ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Enviar
-                                    reporte/informe</label>
-                            </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
-                            </div>
-                        </div>
-                        <!-- Panel 1 -->
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Subir word</label>
-                                <button class="w-[2rem] h-[2rem] ver-Agregar3 hover:bg-slate-300 rounded-full ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Enviar documento</label>
-                            </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-
-            </div>
-            <div class="content_conteiner h-fit p-1 w-fit ml-[1.5rem]">
-                <div class="flex flex-col gap-1">
-                    <label class="conteiner_word_title  h-fit flex flex-col items-center">Otras opciones</label>
-                    <div class="bg-white p-6 rounded shadow-md">
-                        <div class="w-[16rem] text-center flex flex-row items-center mb-4">
-                            <label class="font-semibold font-poppins text-lg">Visualizar Libros</label>
+                    <!-- FINAL CARD DISEÑADA -->
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
+                            </div>
+                            <div class="">
+                                <h1>Excel</h1>
+                                <div class="flex flex-col gap-1">
+                                    <a class="buttons_card_blue ver-Agregar2">Enviar
+                                        reporte/informe</a>
+                                </div>
+                            </div>
                         </div>
-
-                        <ul>
-                            <li class="py-4 border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 1
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Daniel</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="py-4 border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 2
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Salmerón</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="py-4 border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 3
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Boris</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="py-4">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 4
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Alejandro</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
-                    <button type="button"
-                        class="bg-[#01A080] verLibro items-center text-[#F6F6F6] cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[1px] px-[4px]"
-                        onclick="window.location.href='/libros'">
-                        Ver más
-                    </button>
+                    <!-- FINAL CARD DISEÑADA -->
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
+                            </div>
+                            <div class="">
+                                <h1>PDF</h1>
+                                <div class="flex flex-col gap-1">
+                                    <a class="buttons_card_blue ver-Agregar3">Enviar
+                                        reporte/informe</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FINAL CARD DISEÑADA -->
                 </div>
             </div>
+
+            <div class="w-1/5 h-fit gap-0 flex flex-col">
+                <div class="content_conteiner h-fit p-2 card flex justify-center">
+                    <div class="flex flex-col gap-2 items-center">
+                        <h1>¿Qué más hacer?</h1>
+                        <a href="/libros" class=" buttons_card_green w-full">
+                            <i class="fi fi-sr-books flex"></i><button class="w-full text-start">Ver libros</button>
+                        </a>
+                        <a href="/historial_de_memorias" class="buttons_card_green">
+                            <i class="fi fi-sr-memo-circle-check flex"></i><button> Ver memorias
+                                finalizadas</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="agregar h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
@@ -207,7 +130,8 @@
             </div>
             <div class="bg-white p-2 rounded-b-2xl">
                 <div class="modal-body mb-0 overflow-y-auto h-[190px]">
-                    <h4 class="text-black text-center mt-3 text-2xl font-bold">¡El archivo ha sido enviado correctamente!
+                    <h4 class="text-black text-center mt-3 text-2xl font-bold">¡El archivo ha sido enviado
+                        correctamente!
                     </h4>
                     <div class=" flex justify-center">
                         <img src="{!! asset('img/check.png') !!}" class="w-[50px] h-[50px] items-center mt-[20px]">
