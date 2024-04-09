@@ -28,9 +28,6 @@
                                         class="fa-solid fa-ellipsis-vertical"></i></button>
                             </div>
                             <div>
-                                <label class="font-normal font-poppins text-base text-center w-full">Informacion de los asesores</label>
-                            </div>
-                            <div>
                                 <button class="action-button items-center">VISUALIZAR</button>
                             </div>
                         </div>
@@ -40,9 +37,6 @@
                         <div class="bg-white p-3 rounded ml-2">
                             <div class="w-[15rem] text-center flex flex-row items-center">
                                 <label class="font-semibold font-poppins text-lg text-center w-full">PROYECTOS FINALIZADOS</label>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-center w-full">Proyectos Terminados</label>
                             </div>
                             <div>
                             <button class="action-button items-center">VISUALIZAR</button>

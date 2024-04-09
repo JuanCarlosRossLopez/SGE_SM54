@@ -184,6 +184,7 @@ Route::get('/get-finished-project-percentage', [ProgressController::class, 'getF
 
 
 
+
 // Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
 Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
