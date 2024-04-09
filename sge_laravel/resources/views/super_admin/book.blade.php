@@ -35,7 +35,7 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button data-target="#hola" class="showmodal2 standar_button  "><span
+                    <button data-target="#hola" class="showmodal2 standar_button  hidden "><span
                             class="show-modal2  ">Agregar</span></button>
                 </div>
             </div>

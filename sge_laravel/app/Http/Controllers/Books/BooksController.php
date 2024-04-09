@@ -18,16 +18,16 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $userId =  Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado';
+        $userId = Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado';
         $userBooks = Books::whereHas('students', function ($query) use ($userId) {
             $query->where('students.id', $userId);
         })->get();
         $books = Books::where('status', 0)->get();
-        $students =DB::select("
+        $students = DB::select("
         SELECT id,student_name FROM students WHERE NOT EXISTS 
         ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
 
-        return view('students.libros.index', compact("books", "students","userBooks"));
+        return view('students.libros.index', compact("books", "students", "userBooks"));
     }
 
 
@@ -52,15 +52,29 @@ class BooksController extends Controller
         $request->validate([
             'student_ids.*' => 'required|exists:students,id',
             /* 'book_name' => 'required|max:255|min:3',
+                'voucher'=> 'required|mimes:jpeg,png,jpg',
             'book_description' => 'required|max:255|min:3',
             'author' => 'required|max:255|min:3',
             'students_id' => 'required'*/
         ]);
 
         $libro = new Books();
+
+        if ($request->hasFile('voucher') && $request->hasFile('book_front_page')) {
+            $file = $request->file('voucher');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/books/', $name);
+            $libro->voucher = $name;
+
+            $file = $request->file('book_front_page');
+            $name = time() ."_front_page_". $file->getClientOriginalName();
+            $file->move(public_path() . '/books/', $name);
+            $libro->book_front_page = $name;
+        }
+
         $libro->book_name = $request->input('book_name');
-        $libro->voucher = $request->input('voucher');
-        $libro->book_front_page = $request->input('book_front_page');
+
+
         $libro->book_description = $request->input('book_description');
         $libro->author = $request->input('author');
         $libro->price = $request->input('price');
@@ -92,7 +106,8 @@ class BooksController extends Controller
 
 
 
-        return back()->with('notificacion', 'Su libro se agrego correctamente esta en revision');;
+        return back()->with('notificacion', 'Su libro se agrego correctamente esta en revision');
+        ;
         // return redirect()->route('super_admin.book');
     }
 

@@ -23,19 +23,19 @@ Plantilla base
                 <div class="flex flex-row items-center justify-between">
                     <label class="font-poppins font-semibold text-2xl text-[#333333] text-start"><label class="italic">"{{ $project_management->project_title }}"</label> - Información
                         Integral:</label>
-                    @if ($project_management->project_status->status_project == 'Aprobado')
+                    @if ($project_management->project_status && $project_management->project_status->status_project == 'Aprobado')
                     <div class="w-[120px] flex">
                         <div class="buttons_card_green">
                             Aprobado
                         </div>
                     </div>
-                    @elseif ($project_management->project_status->status_project == 'Rechazado')
+                    @elseif ($project_management->project_status && $project_management->project_status->status_project == 'Rechazado')
                     <div class="w-[120px] flex">
                         <div class="buttons_card_red">
                             Rechazado
                         </div>
                     </div>
-                    @elseif ($project_management->project_status->status_project == 'Pendiente')
+                    @elseif ($project_management->project_status && $project_management->project_status->status_project == 'Pendiente')
                     <div class="w-[120px] flex">
                         <div class="buttons_card_yellow">
                             Pendiente
@@ -50,7 +50,7 @@ Plantilla base
 
                     <div class="flex flex-row w-[40%] gap-2 m-2">
 
-                    @if ($project_management->project_status->status_project == 'Aprobado')
+                    @if ($project_management->project_status && $project_management->project_status->status_project == 'Aprobado')
 
 
                         @else
