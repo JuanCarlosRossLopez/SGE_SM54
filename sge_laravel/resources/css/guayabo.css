@@ -969,6 +969,11 @@ span {
     color: #a8a8a8; /* Color de texto */
 }
 
+.nav3 {
+    font-size: 1.25rem; /* Equivalente a text-xl */
+    color: #bdbdbd; /* Color de texto */
+}
+
 /* Media query para pantallas más pequeñas */
 @media screen and (max-width: 768px) {
     .nav1 {
@@ -977,6 +982,16 @@ span {
 
     .nav2 {
         font-size: 1rem; /* Tamaño de fuente reducido para pantallas más pequeñas */
+    }
+
+    .nav3 {
+        font-size: 1.25rem; /* Equivalente a text-xl */
+        color: #bdbdbd; /* Color de texto */
+    }
+    .text_nav {
+        padding-left: 10px;
+        font-size: 2rem; /* Equivalente a text-xl */
+        color: #bdbdbd; /* Color de texto */
     }
 
     .logout-forms {
