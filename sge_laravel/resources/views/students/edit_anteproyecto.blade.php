@@ -42,8 +42,9 @@
                 </div>
             @endif
             <div class="px-4">
-                <form method="POST" action="{{ route('anteproyecto.store') }}">
-                    <!-- En este apartado podemos cambiar el color del fondo del container -->
+                <form method="POST" action="{{ route('anteproyecto.update', $projects_management->id) }}">
+                    // <!-- En este apartado podemos cambiar el color del fondo del container -->
+                    @method('PUT')
                     @csrf
                     <div class="w-full border-1 border-[#a2a2a2]"></div>
                     <h1 class="text-lg text-center w-full bg-[#dedede] font-medium uppercase py-1 text-[#505050]">
@@ -102,14 +103,11 @@
                             </div>
                             <div class="col-span-1">
                                 <div class="w-full flex flex-col">
-                                    <label for="student_group" class="font-sans font-semibold text-[#545454]">Grupo del
-                                        Estudiante:</label>
-                                        <select name="student_group" id="student_group" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
-                                            <option value="" disabled selected class="text-transparent">Grupo</option>
-                                            @foreach ($groups as $group)
-                                                <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
-                                            @endforeach
-                                        </select>
+                                    <label for="student_group"
+                                        class=" font-sans font-semibold text-[#545454]">Grupo del Estudiante:</label>
+                                        <input name="student_group" id="student_group" value="{{ $projects_management->student_group}}" readonly
+                                        class="w-full  text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900] cursor-not-allowed">
+                                    </input>
                                     @error('student_group')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -123,7 +121,7 @@
                                         Estudiante:</label>
                                     <input type="text" name="student_phone" id="student_phone"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Teléfono (123-456-7890)" value="{{ old('student_phone') }}" />
+                                        placeholder="Teléfono (123-456-7890)" value="{{ $projects_management->student_phone }}" />
                                     @error('student_phone')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -134,9 +132,9 @@
                             <div class="col-span-1">
                                 <div class="w-full flex flex-col">
                                     <label for="educational_program"
-                                        class=" font-sans font-semibold text-[#545454]">División al
+                                        class=" font-sans font-semibold text-[#545454]">Programa Educativo al
                                         que pertenece:</label>
-                                    <input name="educational_program" id="educational_program" value="{{ Auth::user()->student->division->division_name }}" readonly
+                                        <input name="educational_program" id="educational_program" value="{{ Auth::user()->student->division->division_name }}" readonly
                                         class="w-full  text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900] cursor-not-allowed">
                                     </input>
                                     @error('educational_program')
@@ -145,18 +143,18 @@
                                     @enderror
                                 </div>
                             </div>
-                            
+                            <div class="col-span-3">
+
+                            </div>
+
                             <div class="col-span-1">
                                 <div class="w-full flex flex-col">
                                     <label for="career"
                                         class=" font-sans font-semibold text-[#545454]">Carrera al
                                         que pertenece:</label>
-                                        <select name="career" id="career" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
-                                            <option value="" disabled selected class="text-transparent">Carrera</option>
-                                            @foreach ($careers as $career)
-                                                <option value="{{ $career->career_name }}">{{ $career->career_name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input name="career" id="career" value="{{ $projects_management->career}}" readonly
+                                        class="w-full  text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900] cursor-not-allowed">
+                                    </input>
                                     @error('career')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -169,7 +167,7 @@
                                     <label class="font-sans font-semibold text-[#545454]">Fecha Inicio:</label>
                                     <input type="date" name="start_date" id="start_date"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Fecha de Inicio" value="{{ old('start_date') }}" />
+                                        placeholder="Fecha de Inicio" value="{{ $projects_management->start_date }}" />
                                     @error('start_date')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -181,7 +179,7 @@
                                     <label class="font-sans font-semibold text-[#545454]">Fecha Finalización:</label>
                                     <input type="date" name="end_date" id="end_date"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Fecha de Término" value="{{ old('end_date') }}" />
+                                        placeholder="Fecha de Término" value="{{ $projects_management->end_date }}" />
                                     @error('end_date')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -203,10 +201,7 @@
                                     <label for="project_company" class="font-sans font-semibold text-[#545454]">Nombre de
                                         la empresa:</label>
                                         <select name="project_company" id="project_company" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
-                                            <option value="" disabled selected class="text-transparent">Empresa</option>
-                                            @foreach ($regionNames as $region)
-                                                <option value="{{ $region }}">{{ $region }}</option>
-                                            @endforeach
+                                            <option value="{{ $projects_management->project_company }}" class="text-transparent">{{ $projects_management->project_company }}</option>
                                         </select>
                                     @error('project_company')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
@@ -220,7 +215,7 @@
                                         empresa:</label>
                                     <input type="text" name="direction" id="direction"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Dirección de la Empresa" value="{{ old('direction') }}" />
+                                        placeholder="Dirección de la Empresa" value="{{ $projects_management->direction }}" />
                                     @error('direction')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -234,7 +229,7 @@
                                         asesor empresarial:</label>
                                     <input type="text" name="project_advisor" id="project_advisor"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Asesor Empresarial" value="{{ old('project_advisor') }}" />
+                                        placeholder="Asesor Empresarial" value="{{ $projects_management->project_advisor }}" />
                                     @error('project_advisor')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -247,7 +242,7 @@
                                         asesor:</label>
                                     <input type="text" name="position" id="position"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Cargo" value="{{ old('position') }}" />
+                                        placeholder="Cargo" value="{{ $projects_management->position }}" />
                                     @error('position')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -262,7 +257,7 @@
                                     <input type="text" name="project_advisor_phone" id="project_advisor_phone"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
                                         placeholder="Teléfono (123-456-7890)"
-                                        value="{{ old('project_advisor_phone') }}" />
+                                        value="{{ $projects_management->project_advisor_phone }}" />
                                     @error('project_advisor_phone')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -275,7 +270,7 @@
                                         asesor empresarial:</label>
                                     <input type="email" name="email_asesor" id="email_asesor"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Correo del Asesor" value="{{ old('email_asesor') }}" />
+                                        placeholder="Correo del Asesor" value="{{ $projects_management->email_asesor }}" />
                                     @error('email_asesor')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -295,7 +290,7 @@
                                     <input type="text" name="project_title" id="project_title"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
                                         placeholder="Ingresa título de anteproyecto"
-                                        value="{{ old('project_title') }}" />
+                                        value="{{ $projects_management->project_title }}" />
                                     @error('project_title')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -309,7 +304,7 @@
                                     </label>
                                     <textarea name="general_objective" id="general_objective"
                                         class="w-full h-[5rem] text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Objetivo General">{{ old('general_objective') }}</textarea>
+                                        placeholder="Objetivo General">{{ $projects_management->general_objective }}</textarea>
                                     @error('general_objective')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -324,7 +319,7 @@
                                         problema.</label>
                                     <textarea name="problem_statement" id="problem_statement"
                                         class="w-full h-[10rem] text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white "
-                                        placeholder="Planteamiento del Problema">{{ old('problem_statement') }}</textarea>
+                                        placeholder="Planteamiento del Problema">{{ $projects_management->problem_statement }}</textarea>
                                     @error('problem_statement')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -342,7 +337,7 @@
                                         ¿Quiénes serán los beneficiados? ¿Cuál es su utilidad?</label>
                                     <textarea name="justification" id="justification"
                                         class="w-full h-[10rem] text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Justificación">{{ old('justification') }}</textarea>
+                                        placeholder="Justificación">{{ $projects_management->justification }}</textarea>
                                     @error('justification')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -358,7 +353,7 @@
                                     <label class="italic px-2">Listar las actividades a llevar a cabo en orden.</label>
                                     <textarea name="activities" id="activities"
                                         class="w-full h-[10rem] text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
-                                        placeholder="Actividades para realizar">{{ old('activities') }}</textarea>
+                                        placeholder="Actividades para realizar">{{ $projects_management->activities }}</textarea>
                                     @error('activities')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />

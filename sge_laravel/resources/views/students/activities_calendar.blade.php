@@ -93,9 +93,13 @@
                                             </div>
 
                                         </div>
-                                        <div class=" w-full flex justify-center mt-3 ">
+                                        <div class=" w-full flex justify-center items-center mt-3 flex-col gap-2">
                                             <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
-                                                class="buttons_card_anteproyect m-0">Visualizar mi anteproyecto<i
+                                                class="buttons_card_anteproyect m-0">Visualizar anteproyecto<i
+                                                    class="fa-solid fa-file-lines"></i>
+                                            </a>
+                                            <a href="{{ route('anteproyecto.edit', optional(optional(Auth::user()->student)->projects)->id) }}"
+                                                class="buttons_card_anteproyect m-0">Actualizar anteproyecto<i
                                                     class="fa-solid fa-file-lines"></i>
                                             </a>
                                         </div>

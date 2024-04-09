@@ -56,7 +56,7 @@
                         <div class="w-full conteiner_card">
                             @foreach ($Project_management as $advising)
                                 @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
-                                    <div class="card_anteproyect w-fit bg-[#F7FAFC]">
+                                    <div class="card_anteproyect w-fit h-auto bg-[#F7FAFC]">
                                         @foreach ($advising->student->projectManagement as $project)
                                         
                                             <div class="w-full text-center flex flex-col items-center">
@@ -64,7 +64,7 @@
                                                 <div class="flex flex-col text-lg items-start">
                                                     <label>Creador: {{$advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}</label>
                                                     <label>Estado: <label class="italic text-black">Aun en desarrollo el estado</label></label>
-                                                    <label>Colaborativo: <label class="italic text-black">Igual en desarrollo xd</label></label>
+                                                    <label>Colaborativo: <label class="italic text-black">En desarrollo</label></label>
                                                     <label>Likes: {{$project->project__likes()->count()}}</label>
                                                 </div>
                                                 <a href="{{ route('informacion_anteproyecto.show', $project->id) }}" class="buttons_card_anteproyect ">Visualizar detalles <i class="fa-solid fa-file-lines"></i></a>
