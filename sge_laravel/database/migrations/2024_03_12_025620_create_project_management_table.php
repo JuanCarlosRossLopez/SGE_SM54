@@ -30,6 +30,7 @@ return new class extends Migration
             $table->text('problem_statement');
             $table->text('justification');
             $table->text('activities');
+            $table->string('career');
             //Se le agrego like
             $table->integer('likes')->default(0);
             $table->date('start_date'); // Fecha de inicio
@@ -38,6 +39,9 @@ return new class extends Migration
             // ->onUpdate('restrict')
             // ->onDelete('restrict');
             $table->foreignId('id_student')->nullable()->constrained('students')
+                ->onUpdate('restrict')
+                ->onDelete('restrict');
+                $table->foreignId('status_id')->nullable()->constrained('status_projects')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
             $table->timestamps();

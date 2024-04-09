@@ -19,6 +19,34 @@ class AnteprojectsController extends Controller
         return view('anteprojects.index', compact('anteprojects'));
     }
 
+    public function accept ($id)
+    {
+        $anteprojects = Anteproject::find($id);
+
+        if (!$anteprojects) {
+            return back()->with('notificacion', 'No se encontró el anteproyecto');
+        }
+
+        $anteprojects->status = 'aceptado';
+        $anteprojects->save();
+
+        return back()->with('notificacion', 'Anteproyecto aceptado');
+    }
+
+    public function reject ($id)
+    {
+        $anteprojects = Anteproject::find($id);
+
+        if (!$anteprojects) {
+            return back()->with('notificacion', 'No se encontró el anteproyecto');
+        }
+
+        $anteprojects->status = 'rechazado';
+        $anteprojects->save();
+
+        return back()->with('notificacion', 'Anteproyecto rechazado');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -51,6 +79,7 @@ class AnteprojectsController extends Controller
      */
     public function show(Anteproject $anteproject)
     {
+        
         return view('anteprojects.show', compact('anteproject'));
     }
 

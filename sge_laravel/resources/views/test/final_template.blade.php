@@ -23,13 +23,20 @@
 
 <body class="w-screen overflow-x-hidden background">
     <div class="w-screen flex">
-        <div class="sidebar_background flex">
+        <div class="sidebar_background" id="sidebar">
             <div>
-                <a>
-                    <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
-                        class="cursor-pointer p-[0.75rem] " onclick="location.href='#'">
-                </a>
-                <ul class="flex flex-col justify-between">
+                <div class="">
+
+                </div>
+                <div class="w-full flex items-center justify-center">
+                    <a>
+                        <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
+                            class="cursor-pointer p-[0.75rem] w-fit" onclick="location.href='#'">
+                    </a>
+                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i class="fa-solid fa-bars"></i></button>
+                </div>
+
+                <ul class="flex flex-col px-4 justify-between">
 
                     <div>
                         <!--Linea de separación atte: guayabo -->
@@ -106,10 +113,10 @@
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
     <li>
-                                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                                    <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
-                                                </button>
-                                            </li>
+                                                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                                <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                                            </button>
+                                                        </li>
 @endrole
                             -->
                         <!-- End todo lo que navega el estudiante -->
@@ -119,7 +126,7 @@
                             <li>
                                 <a href="/dashboard" class="buttons_sidebar">
                                     <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio
+                                    <label class="nav3 cursor-pointer">Inicio</label>
                                 </a>
                             </li>
                         @endrole
@@ -127,11 +134,66 @@
                             <li>
                                 <a href="/usuarios" class="buttons_sidebar ">
                                     <i class="fa-solid fa-users-gear"></i>
-                                    Usuarios
+                                    Gestión de usuarios
                                 </a>
                             </li>
                         @endrole
-                        
+                        @role('Administrador')
+                            <li>
+                                <a href="/roles" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de roles
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/asignar_alumnos" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Asignación de alumnos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/gestion_asesor_anteproyecto" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Ver anteproyectos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/libros" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Ver libros
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/historial_de_memorias" class="buttons_sidebar">
+                                    <i class="fa-solid fa-landmark"></i>
+                                    Historial de memorias
+                                </a>
+                            </li>
+                        @endrole
+
+                        @role('Administrador')
+                            <li>
+                                <a href="/informes" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-file"></i> Generacion de informes
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
+
                         <!--END Todo lo que el administrador puede navegar-->
 
 
@@ -167,7 +229,14 @@
                                 </a>
                             </li>
                         @endrole
-
+                        <!-- Aqui quiero que aparezca el formulario cuando la vista sea pequeña -->
+                        <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                            @csrf
+                            <button type="submit" class="logout_sidebar buttons_sidebar_logout bg-[#2C4454] p-2">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Cerrar sesión
+                            </button>
+                        </form>
                     </div>
                 </ul>
             </div>
@@ -178,9 +247,9 @@
                 <div class="w-full flex justify-between items-center">
                     <div class="text-white text-2xl flex flex-col">
                         @if (Auth::user()->teachers)
-                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                            <label class="nav1">Buen día,
                                 {{ Auth::user()->teachers->name_teacher }}</label>
-                            <label class="text-xl text-[#a8a8a8]">Gestión asesor</label>
+                            <label class="nav2">Gestión asesor</label>
                         @elseif (Auth::user()->student)
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->student->student_name }}</label>
@@ -193,14 +262,19 @@
                             No se encontró información del asesor para este usuario.
                         @endif
                     </div>
-
-                    <form method="POST" action="{{ route('logout') }}">
+                    <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
+                    <div>
+                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                    <!-- Quiero que desaparezca de aqui si la vista se vuelve pequeña pero que este si la vista es grande -->
+                    <form method="POST" action="{{ route('logout') }}" id="logoutForm" class="logout-forms">
                         @csrf
                         <button type="submit" class="logout_sidebar buttons_sidebar_logout bg-[#2C4454] p-2">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Cerrar sesión
                         </button>
                     </form>
+
                 </div>
             </div>
             <div class="content_main_footer h-screen">
@@ -217,6 +291,72 @@
 
 
 </body>
+<script>
+    // Función para ajustar el sidebar y el contenido según el tamaño de la pantalla
+    function adjustSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        if (window.innerWidth >= 768) {
+            sidebar.style.transform = "translateX(0)";
+            content.style.marginLeft = "20rem";
+        } else {
+            closeSidebar(); // Asegurarse de que el sidebar esté cerrado en pantallas pequeñas
+        }
+    }
+
+    // Función para abrir el sidebar
+    function openSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        sidebar.style.transform = "translateX(0)";
+        content.style.marginLeft = "20rem";
+    }
+
+    // Función para cerrar el sidebar
+    function closeSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.querySelector('.content_main_footer');
+        sidebar.style.transform = "translateX(-100%)";
+        content.style.marginLeft = "0";
+    }
+
+    // Llamada inicial a la función para ajustar el sidebar al cargar la página
+    adjustSidebar();
+
+    // Función para alternar el sidebar cuando se hace clic en el botón de abrir
+    document.getElementById('openSidebarButton').addEventListener('click', function() {
+        openSidebar();
+    });
+
+    // Función para cerrar el sidebar cuando se hace clic en el botón de cerrar
+    document.getElementById('closeSidebarButton').addEventListener('click', function() {
+        closeSidebar();
+    });
+
+    // Función para ajustar el sidebar cuando cambia el tamaño de la pantalla
+    window.addEventListener('resize', function() {
+        adjustSidebar();
+    });
+
+    function adjustLogoutForm() {
+        var logoutForm = document.getElementById('logoutForm');
+
+        if (window.innerWidth < 768) {
+            logoutForm.style.display = "block"; // Mostrar el formulario en pantallas pequeñas
+        } else {
+            logoutForm.style.display = "none"; // Ocultar el formulario en pantallas grandes
+        }
+    }
+
+    // Llamada inicial a la función para ajustar el formulario al cargar la página
+    adjustLogoutForm();
+
+    // Función para ajustar el formulario cuando cambia el tamaño de la pantalla
+    window.addEventListener('resize', function() {
+        adjustLogoutForm();
+    });
+</script>
+
 
 <!--Icons - realmente estos fueron que mas me convencieron atte: guayabo -->
 <script src="https://kit.fontawesome.com/61439499b0.js" crossorigin="anonymous"></script>

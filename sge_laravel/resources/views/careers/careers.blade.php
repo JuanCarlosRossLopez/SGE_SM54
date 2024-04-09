@@ -1,6 +1,6 @@
 @extends('test.final_template')
 
-@section('title', 'Gestión de las empresas')
+@section('title', 'Gestión de las carreras')
 @section('contenido')
 
     <div class="back_conteiner">
@@ -20,7 +20,7 @@
                 <div class="content_conteiner w-full h-fit p-4">
                     <div class="w-full ">
                         <label class="w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Tabla de
-                            Empresas:</label>
+                            Carreras:</label>
                     </div>
 
                     <div class="inside_content_conteiner">
@@ -29,7 +29,7 @@
                                 class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                 <label
                                     class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                    empresa <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    carrera <i class="fa-solid fa-arrow-right flex"></i></label>
                                 <div class="relative dropdown-trigger gap-2">
                                     <button class="dropdown-btn button_add_green show-modal-add">
                                         <i class="fa-solid fa-circle-plus"></i>
@@ -46,17 +46,11 @@
                     <div class="table_conteiner">
                         <table class="standar_table">
                             <thead class="standar_thead">
-
                                 <tr>
                                     <th class="theader">#</th>
-                                    <th class="theader">Nombre de la empresa</th>
-                                    <th class="theader">Dirección</th>
-                                    <th class="theader">Nombre asesor</th>
-                                    <th class="theader">Trabajo</th>
-                                    <th class="theader">Número telefónico</th>
-                                    <th class="theader">Correo electrónico</th>
-                                    <th class="theader">Área de Trabajo</th>
-                                    <th class="theader">Descripción</th>
+                                    <th class="theader">Nombre de la carrera</th>
+                                    <th class="theader">Descripción de la carrera</th>
+                                    <th class="theader">División</th>
                                     <th class="theader">Acciones</th>
                                 </tr>
                             </thead>
@@ -64,24 +58,20 @@
                                 @php
                                     $contador = 1;
                                 @endphp
-                                @foreach ($companies as $company)
+                                @foreach ($careers as $career)
                                     <tr class="trow">
                                         <td class="trowc">{{ $contador }}</td>
-                                        <td class="trowc">{{ $company->company_name }}</td>
-                                        <td class="trowc">{{ $company->addres }}</td>
-                                        <td class="trowc">{{ $company->asesor_name }}</td>
-                                        <td class="trowc">{{ $company->job }}</td>
-                                        <td class="trowc">{{ $company->company_phone_number }}</td>
-                                        <td class="trowc">{{ $company->company_email }}</td>
-                                        <td class="trowc">{{ $company->work_area }}</td>
-                                        <td class="trowc">{{ $company->company_description }}</td>
+                                        <td class="trowc">{{ $career->career_name }}</td>
+                                        <td class="trowc">{{ $career->career_description }}</td>
                                         <td class="trowc">
-                                            <button class="show-modal-edit" data-target="#edit{{ $company->id }}">
+                                            {{ $career->division ? $career->division->division_name : 'Sin división' }}</td>
+                                        <td class="trowc">
+                                            <button class="show-modal-edit" data-target="#edit{{ $career->id }}">
                                                 <div class="button_edit_yellow">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </div>
                                             </button>
-                                            <button class="show-delete" data-target="#delete{{ $company->id }}">
+                                            <button class="show-delete" data-target="#delete{{ $career->id }}">
                                                 <div class="button_delete_red">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </div>
@@ -98,15 +88,15 @@
                 </div>
             </div>
         </div>
-        @foreach ($companies as $company)
-            @include('companies.edit_modal_company')
-            @include('companies.delete_modal_company')
-        @endforeach
+
+        @include('careers.delete_modal_careers')
+        @include('careers.edit_modal_careers')
+
         <div
-            class="modal-add-empresa h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+            class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
             <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
                 <div class="border-b px-4 py-2 flex justify-between items-center">
-                    <h3 class="font-semibold text-lg ml-60 text-white">Agregar Empresa</h3>
+                    <h3 class="font-semibold text-lg ml-60 text-white">Agregar carrera</h3>
                     <button class="close-modal bg-white rounded-full">
                         <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                     </button>
@@ -114,41 +104,28 @@
                 <div class="bg-white p-2">
                     <div class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
                         <div class="flex flex-col items-center justify-center">
-                            <h1 class="text-xl font-bold mb-4">Crear Empresa</h1>
-                            <form action="{{ route('empresas.store') }}" method="POST" class="flex flex-col gap-4">
+                            <h1 class="text-xl font-bold mb-4">Crear Carrera</h1>
+                            <form action="{{ route('carreras.store') }}" method="POST" class="flex flex-col gap-4">
                                 @csrf
                                 <div class="flex gap-4">
-                                    <input type="text" name="company_name" id="company_name"
-                                        placeholder="Nombre de la empresa"
+                                    <input type="text" name="career_name" id="career_name"
+                                        placeholder="Nombre de la carrera"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="addres" id="addres" placeholder="Dirección"
-                                        class="flex-1 rounded-md border border-gray-300 p-2">
-                                </div>
-
-                                <div class="flex gap-4">
-                                    <input type="text" name="asesor_name" id="asesor_name"
-                                        placeholder="Nombre del asesor"
-                                        class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="job" id="job" placeholder="Trabajo"
+                                    <input type="text" name="career_description" id="career_description"
+                                        placeholder="Descripción de la carrera"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
                                 </div>
 
                                 <div class="flex gap-4">
-                                    <input type="text" name="company_phone_number" id="company_phone_number"
-                                        placeholder="Numero telefónico de la empresa"
+                                    <select id="division_id" name="division_id"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="company_email" id="company_email"
-                                        placeholder="Correo Electronico "
-                                        class="flex-1 rounded-md border border-gray-300 p-2">
+                                        <option value="">Selecciona una división</option>
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
-                                <div class="flex gap-4">
-                                    <input type="text" name="work_area" id="work_area" placeholder="Area de trabajo"
-                                        class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <input type="text" name="company_description" id="company_description"
-                                        placeholder="Descripción" class="flex-1 rounded-md border border-gray-300 p-2">
-                                </div>
-                                <!-- Puedes agregar más campos aquí según sea necesario -->
                                 <div class="flex justify-center">
                                     <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                                 </div>
@@ -160,7 +137,7 @@
         </div>
 
         <script>
-            const modal_add = document.querySelector('.modal-add-empresa');
+            const modal_add = document.querySelector('.modal-add-asesor');
             const show_modal_add = document.querySelector('.show-modal-add');
 
             show_modal_add.addEventListener('click', function() {
@@ -172,8 +149,8 @@
             close_modal.forEach(close_modal => {
                 close_modal.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const modal_edit = close_modal.closest('.modal-edit-empresa');
-                    const modal_add = close_modal.closest('.modal-add-empresa');
+                    const modal_edit = close_modal.closest('.modal-edit-asesor');
+                    const modal_add = close_modal.closest('.modal-add-asesor');
                     const modal_delete = close_modal.closest('.delete-modal');
                     if (modal_add) {
                         modal_add.classList.add('hidden');

@@ -18,17 +18,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->date('date');
-            // $table->foreignId('teacher_id')
-            // ->nullable()
-            // ->constrained('teachers')
-            // ->onUpdate('restrict')
-            // ->onDelete('restrict');
-
-            // $table->foreignId('anteprojects_id')
-            // ->nullable()
-            // ->constrained('anteprojects')
-            // ->onUpdate('restrict')
-            // ->onDelete('restrict');
             $table->timestamps();
         });
     }

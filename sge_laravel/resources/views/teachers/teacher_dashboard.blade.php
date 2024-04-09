@@ -56,7 +56,7 @@
                         <div class="w-full conteiner_card">
                             @foreach ($Project_management as $advising)
                                 @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
-                                    <div class="card_anteproyect w-fit bg-[#F7FAFC]">
+                                    <div class="card_anteproyect w-fit h-auto bg-[#F7FAFC]">
                                         @foreach ($advising->student->projectManagement as $project)
                                         
                                             <div class="w-full text-center flex flex-col items-center">
@@ -64,7 +64,7 @@
                                                 <div class="flex flex-col text-lg items-start">
                                                     <label>Creador: {{$advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}</label>
                                                     <label>Estado: <label class="italic text-black">Aun en desarrollo el estado</label></label>
-                                                    <label>Colaborativo: <label class="italic text-black">Igual en desarrollo xd</label></label>
+                                                    <label>Colaborativo: <label class="italic text-black">En desarrollo</label></label>
                                                     <label>Likes: {{$project->project__likes()->count()}}</label>
                                                 </div>
                                                 <a href="{{ route('informacion_anteproyecto.show', $project->id) }}" class="buttons_card_anteproyect ">Visualizar detalles <i class="fa-solid fa-file-lines"></i></a>
@@ -81,8 +81,8 @@
             </div>
 
 
-            <div class="w-1/5 h-fit gap-0 flex flex-col">
-                <div class="content_conteiner h-fit p-2 card flex justify-center">
+            <div class="content_conteiners h-fit flex flex-col w-fit">
+                <div class=" h-fit  p-2 card flex justify-center">
                     <div class="flex flex-col gap-2 items-center">
                         <h1>¿Qué más hacer?</h1>
                         <a href="/libros" class=" buttons_card_green w-full">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="content_conteiner h-fit p-4 card">
+                <div class="content_conteiners h-fit p-4 card">
                     <div class="flex flex-col gap-2 justify-center w-full items-center">
                         <h1>Recordatorios</h1>
                         <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>

@@ -21,7 +21,7 @@ class Books extends Model
 
     public function students(): BelongsToMany
     {
-        return $this->belongsToMany(Students::class);
+        return $this->belongsToMany(Students::class,'books_students');
     }
     
 }

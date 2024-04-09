@@ -9,6 +9,7 @@ use App\Models\Students;
 use App\Models\Teaching_advice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Status_project;
 
 class AnteprotecMapDashController extends Controller
 {
@@ -60,9 +61,11 @@ class AnteprotecMapDashController extends Controller
      */
     public function show(string $id)
     {
+
         $project_management = Project_management::find($id);
+        $status = Status_project::all();
         $comments = Comments::where('project_management_id', $id)->get();
-        return view('teacher_dates.information_project',["project_management"=>$project_management, "comments"=>$comments]);
+        return view('teacher_dates.information_project',["project_management"=>$project_management, "comments"=>$comments, "status"=>$status]);
     }
 
     /**
@@ -78,7 +81,12 @@ class AnteprotecMapDashController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $project_management = Project_management::find($id);
+        $project_management->status_id = $request->input('status_project_id');
+        $project_management->save();
+        return back();
+        
     }
 
     /**
