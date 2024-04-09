@@ -156,33 +156,27 @@
 
                                     <div class="bg-[#f2f2f2] overflow-auto rounded px-4 my-2 h-[90%]">
                                         <div class="flex flex-col gap-0 text-sm">
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
-                                                <p>05 Febrero | 8:30 AM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>20 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>20 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>29 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>05 Marzo | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
+                                            @php
+                                                // Consulta para obtener todos los eventos de la tabla event
+                                                $events = \App\Models\Event::all();
+                                            @endphp
+                                    
+                                            @foreach ($events as $event)
+                                                @php
+                                                    // Verificar si la fecha del evento ya pasó
+                                                    $bgColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                    $borderColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                @endphp
+                                    
+                                                <div class="flex flex-row gap-4 border-1 border-[{{ $borderColor }}] rounded-[7px_7px_7px_7px] p-3 bg-[{{ $bgColor }}] text-white mt-4 mb-2 font-medium">
+                                                    <p>{{ $event->date }}</p>
+                                                    <p class="text-[#ebebeb]">{{ $event->title }}</p>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
+                                    
+                                    
                                 </div>
                                 <div
                                     class="border-2 border-[#d0d0d0] bg-[#F7FAFC] md:p-3 p-4 justify-center flex flex-col h-[400px] w-[220px] md:w-[715px] lg:w-full rounded-[7px_7px_7px_7px]">
