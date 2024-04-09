@@ -122,7 +122,7 @@
 
 
 
-                <!-- Mapeo de anteproyectos -->
+                <!-- Mapeo de anteproyectos 
                 <div class="content_conteiner w-full h-fit p-4">
                     <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Añadir algo si lo crees necesario:</label>
                     <div class="w-full ">
@@ -131,7 +131,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>-->
             </div>
 
 
