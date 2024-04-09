@@ -22,7 +22,7 @@
                     <div class="w-full ">
                         <div class="">
                             <label class=" w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión
-                                de todos los usuarios:</label>
+                                de todos los usuarios</label>
                             <div class="flex flex-row items-center justify-start gap-2 ">
 
                                 <form action="{{ route('users.filterByRole') }}" method="GET"
@@ -31,7 +31,7 @@
                                         <div class=" flex items-center gap-2">
                                             <label for="role"
                                                 class="w-full text-start font-sans font-semibold text-[#545454] text-lg">Filtrar
-                                                por rol:</label>
+                                                por rol</label>
                                             <select name="role" id="role"
                                                 class=" text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
                                                 <option disabled selected class="">Selecciona el rol</option>

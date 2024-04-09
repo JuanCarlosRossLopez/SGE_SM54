@@ -75,6 +75,8 @@
                                 <h1>Academias</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="/division" class="buttons_card_blue">Gestionar divisiones</a>
+                                    <a href="#" class="buttons_card_red">Botón sin acción</a>
+                                    <a href="#" class="buttons_card_green">Botón sin acción</a>
                                 </div>
                             </div>
                         </div>
