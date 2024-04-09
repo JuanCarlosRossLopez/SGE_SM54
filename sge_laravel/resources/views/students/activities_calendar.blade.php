@@ -93,9 +93,13 @@
                                             </div>
 
                                         </div>
-                                        <div class=" w-full flex justify-center mt-3 ">
+                                        <div class=" w-full flex justify-center items-center mt-3 flex-col gap-2">
                                             <a href="{{ route('informacion_anteproyecto.show', optional(optional(Auth::user()->student)->projects)->id) }}"
-                                                class="buttons_card_anteproyect m-0">Visualizar mi anteproyecto<i
+                                                class="buttons_card_anteproyect m-0">Visualizar anteproyecto<i
+                                                    class="fa-solid fa-file-lines"></i>
+                                            </a>
+                                            <a href="{{ route('anteproyecto.edit', optional(optional(Auth::user()->student)->projects)->id) }}"
+                                                class="buttons_card_anteproyect m-0">Actualizar anteproyecto<i
                                                     class="fa-solid fa-file-lines"></i>
                                             </a>
                                         </div>
@@ -156,33 +160,30 @@
 
                                     <div class="bg-[#f2f2f2] overflow-auto rounded px-4 my-2 h-[90%]">
                                         <div class="flex flex-col gap-0 text-sm">
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#2F4050] rounded-[7px_7px_7px_7px] p-3 bg-[#2F4050] text-white mt-4 mb-2 font-medium">
-                                                <p>05 Febrero | 8:30 AM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>20 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>20 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>29 Febrero | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
-                                            <div
-                                                class="flex flex-row gap-4 border-1 border-[#18A689] rounded-[7px_7px_7px_7px] p-3 bg-[#18A689] text-white my-2 font-medium">
-                                                <p>05 Marzo | 1:15 PM</p>
-                                                <p class="text-[#ebebeb]">Revisión de Memoria</p>
-                                            </div>
+                                            @php
+                                                // Consulta para obtener todos los eventos de la tabla event
+                                                $events = \App\Models\Event::all();
+                                            @endphp
+                                    
+                                            @forelse($events as $event)
+                                                @php
+                                                    // Verificar si la fecha del evento ya pasó
+                                                    $bgColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                    $borderColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                @endphp
+                                    
+                                                <div class="flex flex-row gap-4 border-1 border-[{{ $borderColor }}] rounded-[7px_7px_7px_7px] p-3 bg-[{{ $bgColor }}] text-white mt-4 mb-2 font-medium">
+                                                    <p>{{ $event->date }}</p>
+                                                    <p class="text-[#ebebeb]">{{ $event->title }}</p>
+                                                </div>
+                                            @empty
+                                                <p class="text-[#9f9f9f] font-base italic text-xl ">No hay recordatorios
+                                                    pendientes.</p>
+                                            @endforelse
                                         </div>
                                     </div>
+                                    
+                                    
                                 </div>
                                 <div
                                     class="border-2 border-[#d0d0d0] bg-[#F7FAFC] md:p-3 p-4 justify-center flex flex-col h-[400px] w-[220px] md:w-[715px] lg:w-full rounded-[7px_7px_7px_7px]">
@@ -218,19 +219,27 @@
                                             @foreach ($data['calendar'] as $weekData)
                                                 <tr>
                                                     @foreach ($weekData['datos'] as $dayweek)
-                                                        @if ($dayweek['mes'] == $mes)
-                                                            <td
-                                                                class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer">
-                                                                {{ $dayweek['dia'] }}</td>
-                                                        @else
-                                                            <td
-                                                                class="text-center p-3 text-gray-700 transition-transform hover:scale-110 cursor-pointer">
-                                                            </td>
-                                                        @endif
+                                                        @php
+                                                            // Verificar si hay un evento/recordatorio para este día
+                                                            $event = $events->firstWhere('date', $dayweek['fecha']);
+                                                            // Validar si el día ya ha pasado o no
+                                                            if ($event && $event->date < now()) {
+                                                                $bgColor = '#18A689'; // Si el evento ya pasó
+                                                            } elseif ($event) {
+                                                                $bgColor = '#2F4050'; // Si hay un evento, pero no ha pasado
+                                                            } else {
+                                                                $bgColor = ''; // Si no hay evento asociado
+                                                            }
+                                                        @endphp
+                                                        <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer rounded-[7px_7px_7px_7px]" style="background-color: {{ $bgColor }}">
+                                                            {{ $dayweek['dia'] }}
+                                                        </td>
                                                     @endforeach
                                                 </tr>
                                             @endforeach
                                         </tbody>
+                                        
+                                        
                                     </table>
                                 </div>
                             </div>

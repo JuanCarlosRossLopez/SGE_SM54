@@ -14,7 +14,7 @@ class Career extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'career_nanme',
+        'career_name',
         'career_description',
         'division_id',
         'division_name'
