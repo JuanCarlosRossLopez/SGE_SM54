@@ -11,7 +11,7 @@
         <div class="bg-white p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class=" max-h-full h-auto">
-                <form action={{ route('libros.store') }} method="POST" class="w-full max-w-lg">
+                <form action={{ route('libros.store') }} method="POST" enctype="multipart/form-data" class="w-full max-w-lg">
                     @csrf
                     <div class="flex flex-col flex-wrap -mx-3 mb-6 w-full">
                         <div class="w-full  px-3 mb-6 md:mb-0">
@@ -34,7 +34,7 @@
                             </label>
                             <input
                                 class="block w-full text-sm text-gray-900 border border-gray-200 rounded-lg cursor-pointer bg-gray-50  py-3 px-4 focus:outline-none focus:border-gray-500 "
-                                name="voucher" type="text">
+                                name="voucher" type="file">
                             @error('book_front_page')
                                 <span style="color:red">{{ $message }}</span>
                             @enderror
@@ -46,7 +46,7 @@
                             </label>
                             <input
                                 class="block w-full text-sm bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  cursor-pointer focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" name="book_front_page" type="text">
+                                id="grid-last-name" name="book_front_page" type="file">
                             @error('book_front_page')
                                 <span style="color:red">{{ $message }}</span>
                             @enderror
@@ -107,9 +107,31 @@
                         @endphp
 
                         @if (count($otherStudents) > 0)
-                            <button type="button" id="addStudentButton" class="">Añadir otro estudiante</button>
-
-                           
+                        <div class=" flex">
+                            <div
+                                class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                <label
+                                    class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Añadir
+                                    otro estudiante
+                                    <i class="fa-solid fa-arrow-right flex"></i></label>
+                                <div class="relative dropdown-trigger gap-2">
+                                    <button type='button' id="addStudentButton"
+                                        class="dropdown-btn button_add_green show-modal2 showmodal2">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </button>
+                                    <div
+                                        class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                        <a
+                                            class="show-modal-add block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            @php
+                            $otherStudents = array_filter($students, function ($student) {
+                                return Auth::user()->student ? $student->id != Auth::user()->student->id : true;
+                            });
+                        @endphp
                         @endif
                     </div>
                     <br>
