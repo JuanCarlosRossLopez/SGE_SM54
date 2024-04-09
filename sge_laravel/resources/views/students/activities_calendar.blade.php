@@ -212,19 +212,27 @@
                                             @foreach ($data['calendar'] as $weekData)
                                                 <tr>
                                                     @foreach ($weekData['datos'] as $dayweek)
-                                                        @if ($dayweek['mes'] == $mes)
-                                                            <td
-                                                                class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer">
-                                                                {{ $dayweek['dia'] }}</td>
-                                                        @else
-                                                            <td
-                                                                class="text-center p-3 text-gray-700 transition-transform hover:scale-110 cursor-pointer">
-                                                            </td>
-                                                        @endif
+                                                        @php
+                                                            // Verificar si hay un evento/recordatorio para este día
+                                                            $event = $events->firstWhere('date', $dayweek['fecha']);
+                                                            // Validar si el día ya ha pasado o no
+                                                            if ($event && $event->date < now()) {
+                                                                $bgColor = '#18A689'; // Si el evento ya pasó
+                                                            } elseif ($event) {
+                                                                $bgColor = '#2F4050'; // Si hay un evento, pero no ha pasado
+                                                            } else {
+                                                                $bgColor = ''; // Si no hay evento asociado
+                                                            }
+                                                        @endphp
+                                                        <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer rounded-[7px_7px_7px_7px]" style="background-color: {{ $bgColor }}">
+                                                            {{ $dayweek['dia'] }}
+                                                        </td>
                                                     @endforeach
                                                 </tr>
                                             @endforeach
                                         </tbody>
+                                        
+                                        
                                     </table>
                                 </div>
                             </div>
