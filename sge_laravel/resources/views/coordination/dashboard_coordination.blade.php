@@ -31,10 +31,9 @@
                                 <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
                             </div>
                             <div class="">
-                                <h1>Excel</h1>
+                                <h1>Ejemplo</h1>
                                 <div class="flex flex-col gap-1">
-                                    <a class="buttons_card_blue ver-Agregar2">Enviar
-                                        reporte/informe</a>
+                                    <a class="buttons_card_blue"></a>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +48,7 @@
                             <div class="">
                                 <h1>PDF</h1>
                                 <div class="flex flex-col gap-1">
-                                    <a class="buttons_card_blue ver-Agregar3">Enviar
-                                        reporte/informe</a>
+                                    <a class="buttons_card_blue">Ejemplo </a>
                                 </div>
                             </div>
                         </div>
@@ -158,77 +156,6 @@
             close.addEventListener('click', function() {
                 libro.classList.add('hidden')
             });
-        });
-    </script>
-
-    <script>
-        const agregar = document.querySelector('.agregar');
-        const verAgregar = document.querySelector('.ver-Agregar');
-        const closeAgregar = document.querySelectorAll('.close-agregar');
-
-        verAgregar.addEventListener('click', function() {
-            agregar.classList.remove('hidden')
-        });
-        closeAgregar.forEach(close => {
-            close.addEventListener('click', function() {
-                agregar.classList.add('hidden')
-            });
-        });
-    </script>
-    <script>
-        const check = document.querySelector('.check');
-        const verCheck = document.querySelector('.ver-Check');
-        const closeCheck = document.querySelectorAll('.close-Check');
-        const verAgregar2 = document.querySelector('.ver-Agregar2');
-        const verAgregar3 = document.querySelector('.ver-Agregar3');
-
-        verAgregar2.addEventListener('click', function() {
-            agregar.classList.remove('hidden')
-        });
-        verAgregar3.addEventListener('click', function() {
-            agregar.classList.remove('hidden')
-        });
-        verCheck.addEventListener('click', function() {
-            check.classList.remove('hidden')
-        });
-
-        closeCheck.forEach(close => {
-            close.addEventListener('click', function() {
-                check.classList.add('hidden')
-            });
-        });
-    </script>
-    {{-- <script>
-        const modal3 = document.querySelector('.modal3');
-        const showModal3 = document.querySelector('.show-modal3');
-        const closeModal3 = document.querySelectorAll('.close-modal3');
-
-        showModal3.addEventListener('click', function() {
-            modal2.classList.remove('hidden')
-        });
-        closeModal3.forEach(close => {
-            close.addEventListener('click', function() {
-                modal1.classList.add('hidden')
-            });
-        });
-    </script> --}}
-
-    <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {}
         });
     </script>
 
