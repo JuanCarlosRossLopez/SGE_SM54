@@ -46,6 +46,7 @@ use App\Http\Controllers\ChartController;
 |
 */
 
+Route::post('/carreras/storeMasivo', [CareerController::class, 'storeMasivo'])->name('carreras.storeMasivo');
 
 Route::get('/Perfil_Maestro', function () {
     return view('teachers.userTeacher');

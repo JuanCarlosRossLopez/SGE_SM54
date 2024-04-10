@@ -7,9 +7,34 @@
 @section('contenido')
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <div class="back_conteiner">
+
         <div class="conteiner_cards justify-center flex flex-row">
 
+
             <div class="conteiner_cards1 flex flex-col w-3/4">
+                @if (session()->has('notificacion'))
+                    <div id="notification"
+                        class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mt-4 mb-0 w-full rounded relative">
+                        {{ session('notificacion') }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('notification').style.display = 'none';
+                        }, 8000);
+                    </script>
+                @endif
+
+                @if (session()->has('error'))
+                    <div id="notification"
+                        class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-4 mb-0 w-full rounded relative">
+                        {{ session('error') }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('notification').style.display = 'none';
+                        }, 8000);
+                    </script>
+                @endif
                 <!-- Mapeo de anteproyectos -->
                 <div class="content_conteiner w-full h-fit p-4 mt-4">
 

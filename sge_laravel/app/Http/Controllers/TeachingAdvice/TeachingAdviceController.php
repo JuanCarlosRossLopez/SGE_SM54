@@ -19,7 +19,7 @@ class TeachingAdviceController extends Controller
         $Students = Students::all();
 
         $Teaching_advice = Teaching_advice::paginate(10);
-        return view('teaching_advice.teaching_advice', compact('Students','Teachers','Teaching_advice'));
+        return view('teaching_advice.teaching_advice', compact('Students', 'Teachers', 'Teaching_advice'));
     }
 
     /**
@@ -64,6 +64,9 @@ class TeachingAdviceController extends Controller
 
     }
 
+
+
+
     /**
      * Display the specified resource.
      */
@@ -80,7 +83,7 @@ class TeachingAdviceController extends Controller
     public function edit(string $id)
     {
         //
-        $teaching_advice=Teaching_advice::find($id);
+        $teaching_advice = Teaching_advice::find($id);
         return view('teaching_advice');
 
     }
@@ -117,7 +120,7 @@ class TeachingAdviceController extends Controller
     public function destroy(string $id)
     {
         //
-        $teaching_advice=Teaching_advice::find($id);
+        $teaching_advice = Teaching_advice::find($id);
         $teaching_advice->delete();
         return redirect('asignar_alumnos')->with('notificacion','Docente-Alumno eliminado correctamente');
 

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Careers;
 
-
-use App\Http\Controllers\Careers;
 use Illuminate\Http\Request;
-use App\Models\Career;
 use App\Http\Controllers\Controller;
+use App\Models\Career;
 use App\Models\Division;
-
 
 class CareerController extends Controller
 {
@@ -19,7 +16,7 @@ class CareerController extends Controller
     {
         $careers = Career::all();
         $divisions = Division::all();
-        return view ('careers.careers', compact ('careers','divisions'));
+        return view('careers.careers', compact('careers', 'divisions'));
     }
 
     /**
@@ -27,8 +24,8 @@ class CareerController extends Controller
      */
     public function create()
     {
-        $careers = Career::all();
-        return view ('careers', compact ('divisions'));
+        $divisions = Division::all();
+        return view('careers.create', compact('divisions'));
     }
 
     /**
@@ -42,19 +39,43 @@ class CareerController extends Controller
             'division_id' => 'required|exists:divisions,id',
         ]);
 
-
-
         $career = new Career();
         $career->career_name = $request->input('career_name');
         $career->career_description = $request->input('career_description');
         $career->division_id = $request->input('division_id');
         $career->save();
-        return redirect("carreras")->with('notificacion', 'Carrera creada correctamente');
+
+        return redirect()->route('carreras.index')->with('notificacion', 'Carrera creada correctamente');
     }
 
-
-
-
+    /**
+     * Store multiple careers in storage.
+     */
+    public function storeMasivo(Request $request)
+    {
+        // Validación de datos
+        $request->validate([
+            'division_id' => 'required|exists:divisions,id',
+            'career_names.*' => 'nullable|string|max:255',
+            'career_descriptions.*' => 'nullable|string|max:255',
+        ]);
+    
+        // Recorrer y crear las carreras
+        foreach ($request->career_names as $index => $career_name) {
+            // Verificar si el nombre y la descripción de la carrera no están vacíos antes de crearla
+            if (!empty($career_name) || !empty($request->career_descriptions[$index])) {
+                Career::create([
+                    'division_id' => $request->division_id,
+                    'career_name' => $career_name,
+                    'career_description' => $request->career_descriptions[$index],
+                ]);
+            }
+        }
+    
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('carreras.index')->with('notificacion', 'Carreras creadas exitosamente.');
+    }
+    
 
     /**
      * Display the specified resource.
@@ -72,7 +93,7 @@ class CareerController extends Controller
     {
         $career = Career::find($id);
         $divisions = Division::all();
-        return view('careers.edit_modal_careers', compact('career','divisions')); 
+        return view('careers.edit_modal_careers', compact('career', 'divisions'));
     }
 
     /**
@@ -86,7 +107,7 @@ class CareerController extends Controller
         $career->division_id = $request->division_id;
         $career->save();
 
-        return redirect("carreras")->with('notificacion', 'carrera editada correctamente!');
+        return redirect()->route('carreras.index')->with('notificacion', 'Carrera editada correctamente');
     }
 
     /**
@@ -96,6 +117,6 @@ class CareerController extends Controller
     {
         $career = Career::find($id);
         $career->delete();
-        return redirect("carreras")->with('notificacion', 'carrera eliminada correctamente!');
+        return redirect()->route('carreras.index')->with('notificacion', 'Carrera eliminada correctamente');
     }
 }
