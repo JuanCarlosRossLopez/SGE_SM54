@@ -106,7 +106,7 @@ class TeachersController extends Controller
         $teacher->division_id = $request->division_id;
         $teacher->save();
 
-        return redirect('maestros')->with('notification', 'Teacher updated successfully');
+        return redirect('usuarios')->with('notification', 'Teacher updated successfully');
     }
 
     /**

@@ -108,7 +108,6 @@
                                 </a>
                             </li>
                         @endrole
-
                         <!--
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
@@ -162,7 +161,7 @@
                                 </a>
                             </li>
                         @endrole
-                        @role('Administrador')
+                        @role('Presidente|Estudiante|Cordinacion|Administrador|Asesor')
                             <li>
                                 <a href="/libros" class="buttons_sidebar ">
                                     <i class="fa-solid fa-address-book"></i>

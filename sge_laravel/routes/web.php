@@ -32,6 +32,7 @@ use App\Http\Controllers\Pdf\PdfController;
 use App\Http\Controllers\Careers\CareerController;
 use App\Http\Controllers\Groups\GroupController;
 use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +91,7 @@ Route::group(['middleware' => ['auth', 'role:Asesor']], function () {
 
     Route::resource('alumnos_asesorados', TeacherDashboardController::class);
     Route::resource('test_dash_ante', AnteprotecMapDashController::class);
-    
+
     //Route::resource('information_project', CommentsController::class);
 });
 
@@ -129,21 +130,29 @@ Route::get('/gestion_roles', function () {
     return view('admin.manage_rol');
 });
 
-Route::get('dashboard_maestro', function() {
+Route::get('dashboard_maestro', function () {
     return view('teachers.teacher_dashboard');
 });
 
-Route::resource('/gestion_libros',BookCordinacionController::class);   
-    
-Route::resource('libros',BooksController::class);
+Route::resource('/gestion_libros', BookCordinacionController::class);
+
+
+
+Route::group(['middleware' => ['auth', 'role:Presidente|Estudiante|Cordinacion|Administrador|Asesor']], function () {
+    // Coloca aquí las rutas que deseas proteger con el middleware 'role'
+    Route::resource('libros', BooksController::class);
+});
+
+
+
+
 // Route::post('/libros',[BooksController::class, 'store'])->name('libros.store');
 
 
 
 Route::resource('maestros', TeachersController::class);
 Route::resource('empresas', CompaniesController::class);
-Route::resource('carreras', CareerController::class);
-Route::resource('grupos',GroupController::class);
+
 
 
 
@@ -178,6 +187,8 @@ Route::get('/agregar', function () {
 
 Route::get('/get-project-percentage', [ProgressController::class, 'getPercentage']);
 Route::get('/get-finished-project-percentage', [ProgressController::class, 'getFinishedPercentage']);
+Route::get('/project_approval_data', [ChartController::class, 'projectApprovalData']);
+
 
 
 
@@ -207,22 +218,22 @@ Route::get('/edit_memory', function () {
     return view('Test_memory.edit_memory');
 });
 
-    //Crud division
-    Route::resource('division',DivisionController::class);
-    Route::get('/crear_division', function(){
-        return view('division_forms.create_division');
-    });
-    Route::get('/editar_division', function(){
-        return view('division_forms.edit_division');
-    });
-    //End crud division
+//Crud division
+Route::resource('division', DivisionController::class);
+Route::get('/crear_division', function () {
+    return view('division_forms.create_division');
+});
+Route::get('/editar_division', function () {
+    return view('division_forms.edit_division');
+});
+//End crud division
 
-    //Comentarios gestion Valier
-    
+//Comentarios gestion Valier
 
-    Route::get('/editar_cita', function () {
-        return view('teacher_dates.edit_meet_date');
-    });
+
+Route::get('/editar_cita', function () {
+    return view('teacher_dates.edit_meet_date');
+});
 
 
 //Ignorar de mientras
@@ -298,9 +309,9 @@ Route::resource('presidentes', PresidenciesController::class);
 
 Route::group(['middleware' => ['auth', 'role:Presidente']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
-Route::get('/dashboard-presidencial', function(){
-    return view('super_admin.dashboard_presidencia');
-})->name('dashboard-presidencial');
+    Route::get('/dashboard-presidencial', function () {
+        return view('super_admin.dashboard_presidencia');
+    })->name('dashboard-presidencial');
 });
 
 Route::get('/ejemplo', function () {
@@ -328,14 +339,18 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
     })->name('dashboard');
+
+    Route::resource('carreras', CareerController::class);
+    Route::resource('grupos', GroupController::class);
+
 });
 
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
-    
+
     Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
-}); 
+});
 //esto si
-Route::resource('roles',RoleController::class);
+Route::resource('roles', RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
 Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');

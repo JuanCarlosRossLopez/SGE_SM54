@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     <div class="back_conteiner">
         <div class="conteiner_cards justify-center flex flex-row">
-            <div class="conteiner_cards1 flex flex-col w-3/4">x
+            <div class="conteiner_cards1 flex flex-col w-3/4">
                 <!-- Mapeo de anteproyectos -->
                 <div class="content_conteiner w-full h-fit p-4 mt-4">
                     <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión de todos los

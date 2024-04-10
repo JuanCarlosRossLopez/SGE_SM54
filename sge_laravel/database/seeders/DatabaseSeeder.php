@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use \App\Models\Students;
+use \App\Models\Companies;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
+//si hay error al obtener los seeders de empresas comenten el de user y role
         $user = User::factory(1)->create()->first(); // Obtener el primer usuario de la colección
 
         $role = Role::where('name', 'Administrador')->first(); // Reemplaza 'nombre_del_rol' con el nombre real del rol
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
         // Students::factory(1)->create(); {
 
 
-        //     \App\Models\User::factory()->create([
+             \App\Models\Companies::factory(20)->create();
         //         'name' => 'Test User',
         //         'email' => 'test@example.com',
         //     ]);
