@@ -71,7 +71,7 @@
                             <div class="bg-black rounded">
                                 <div class="line-chart-container text-center items-center">
                                     <h1>AVANCE DE LOS ALUMNOS</h1>
-                                    <canvas id="line-chart" width="1200" height="590"></canvas>
+                                    <canvas id="myChart" width="1200" height="590"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -121,8 +121,10 @@
 
     </div>
     <script src="{{ asset('js/progress.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ asset('js/line-chart.js') }}"></script>
+    
 
     <script>
         // Desplaza automáticamente hacia abajo al cargar la página

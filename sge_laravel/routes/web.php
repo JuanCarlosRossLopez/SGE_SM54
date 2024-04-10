@@ -33,6 +33,7 @@ use App\Http\Controllers\Pdf\PdfController;
 use App\Http\Controllers\Careers\CareerController;
 use App\Http\Controllers\Groups\GroupController;
 use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -189,6 +190,7 @@ Route::get('/agregar', function () {
 
 Route::get('/get-project-percentage', [ProgressController::class, 'getPercentage']);
 Route::get('/get-finished-project-percentage', [ProgressController::class, 'getFinishedPercentage']);
+Route::get('/project_approval_data', [ChartController::class, 'projectApprovalData']);
 
 
 
