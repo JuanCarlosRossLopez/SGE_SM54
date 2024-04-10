@@ -19,7 +19,7 @@ class TeachingAdviceController extends Controller
         $Students = Students::all();
 
         $Teaching_advice = Teaching_advice::paginate(10);
-        return view('teaching_advice.teaching_advice', compact('Students','Teachers','Teaching_advice'));
+        return view('teaching_advice.teaching_advice', compact('Students', 'Teachers', 'Teaching_advice'));
     }
 
     /**
@@ -36,23 +36,41 @@ class TeachingAdviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $request->validate([
-        //     'teacher_id'=>'required',
-        //     'student_id'=>'required'
-        // ]);
+        $adviserIds = $request->input('adviser_id');
+        $studentIds = $request->input('student_id');
+        $error = false;
 
-        $teaching_advice = new Teaching_advice();
+        // Iterar sobre los IDs de asesores seleccionados
+        foreach ($adviserIds as $adviserId) {
+            // Iterar sobre los IDs de estudiantes seleccionados
+            foreach ($studentIds as $studentId) {
+                // Verificar si ya existe una asignación para este asesor y estudiante
+                $existingAssignment = Teaching_advice::where('teacher_id', $adviserId)
+                    ->where('student_id', $studentId)
+                    ->exists();
 
-        
-        $teaching_advice->teacher_id=$request->input('adviser_id');
-        $teaching_advice->student_id=$request->input('student_id');
-        $teaching_advice-> save();
+                // Si no existe la asignación, crear un nuevo registro
+                if (!$existingAssignment) {
+                    $teachingAdvice = new Teaching_advice();
+                    $teachingAdvice->teacher_id = $adviserId;
+                    $teachingAdvice->student_id = $studentId;
+                    $teachingAdvice->save();
+                } else {
+                    // Si ya existe la asignación, marcar error
+                    $error = true;
+                }
+            }
+        }
 
-        
-        return redirect('asignar_alumnos')->with('notificacion','Docente asignado al Alumno correctamente');
-
+        if ($error) {
+            return redirect()->back()->with('error', 'No se puede asignar dos veces el mismo alumno al mismo asesor.');
+        } else {
+            return redirect('asignar_alumnos')->with('notificacion', 'Docente asignado al Alumno correctamente');
+        }
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -60,7 +78,7 @@ class TeachingAdviceController extends Controller
     public function show(string $id)
     {
         //
-        $teaching_advice=Teaching_advice::find($id);
+        $teaching_advice = Teaching_advice::find($id);
         return view('teaching_advice');
     }
 
@@ -70,7 +88,7 @@ class TeachingAdviceController extends Controller
     public function edit(string $id)
     {
         //
-        $teaching_advice=Teaching_advice::find($id);
+        $teaching_advice = Teaching_advice::find($id);
         return view('teaching_advice');
 
     }
@@ -81,11 +99,11 @@ class TeachingAdviceController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $teaching_advice=Teaching_advice::find($id);
+        $teaching_advice = Teaching_advice::find($id);
 
         $teaching_advice->update($request->all());
 
-        return redirect('teaching_advice')->with('success','Docente-Alumno actualizado correctamente');
+        return redirect('teaching_advice')->with('success', 'Docente-Alumno actualizado correctamente');
     }
 
     /**
@@ -94,9 +112,9 @@ class TeachingAdviceController extends Controller
     public function destroy(string $id)
     {
         //
-        $teaching_advice=Teaching_advice::find($id);
+        $teaching_advice = Teaching_advice::find($id);
         $teaching_advice->delete();
-        return redirect('teaching_advice')->with('success','Docente-Alumno eliminado correctamente');
+        return redirect('teaching_advice')->with('success', 'Docente-Alumno eliminado correctamente');
 
     }
 }

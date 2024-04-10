@@ -16,7 +16,7 @@
                 document.getElementById('notification').style.display = 'none';
             }, 8000);
         </script>
-    @endif
+        @endif
 
         <div class="border-2 rounded bg-white m-4">
             <div class="flex flex-row items-center w-full justify-center my-4 gap-2">
