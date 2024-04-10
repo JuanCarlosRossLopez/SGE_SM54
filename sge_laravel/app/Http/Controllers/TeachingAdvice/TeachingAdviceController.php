@@ -40,23 +40,18 @@ class TeachingAdviceController extends Controller
         $studentIds = $request->input('student_id');
         $error = false;
 
-        // Iterar sobre los IDs de asesores seleccionados
         foreach ($adviserIds as $adviserId) {
-            // Iterar sobre los IDs de estudiantes seleccionados
             foreach ($studentIds as $studentId) {
-                // Verificar si ya existe una asignación para este asesor y estudiante
                 $existingAssignment = Teaching_advice::where('teacher_id', $adviserId)
                     ->where('student_id', $studentId)
                     ->exists();
 
-                // Si no existe la asignación, crear un nuevo registro
                 if (!$existingAssignment) {
                     $teachingAdvice = new Teaching_advice();
                     $teachingAdvice->teacher_id = $adviserId;
                     $teachingAdvice->student_id = $studentId;
                     $teachingAdvice->save();
                 } else {
-                    // Si ya existe la asignación, marcar error
                     $error = true;
                 }
             }
