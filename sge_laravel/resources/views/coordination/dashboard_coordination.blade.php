@@ -16,8 +16,8 @@
                                 <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
                             </div>
                             <div class="">
-                                <h1>Redirigir</h1>
-                                <div class="flex flex-col gap-1">
+                                <h1></h1>
+                                <div class="flex flex-col gap-1 mt-[20px]">
                                     <a href="/informes" class="buttons_card_blue">Ir a Generación de Informes</a>
                                 </div>
                             </div>
@@ -31,9 +31,9 @@
                                 <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
                             </div>
                             <div class="">
-                                <h1>Ejemplo</h1>
-                                <div class="flex flex-col gap-1">
-                                    <a class="buttons_card_blue"></a>
+                                <h1></h1>
+                                <div class="flex flex-col gap-1 mt-[20px]">
+                                    <a href="/gestion_libros" class="buttons_card_blue">Ir a Gestion de libros</a>
                                 </div>
                             </div>
                         </div>
@@ -46,9 +46,9 @@
                                 <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
                             </div>
                             <div class="">
-                                <h1>PDF</h1>
-                                <div class="flex flex-col gap-1">
-                                    <a class="buttons_card_blue">Ejemplo </a>
+                                <h1></h1>
+                                <div class="flex flex-col gap-1 mt-[20px]">
+                                    <a href="/libros" class="buttons_card_blue">Ir a Libros</a>
                                 </div>
                             </div>
                         </div>
@@ -60,10 +60,6 @@
             <div class="w-1/5 h-fit gap-0 flex flex-col">
                 <div class="content_conteiner h-fit p-2 card flex justify-center">
                     <div class="flex flex-col gap-2 items-center">
-                        <h1>¿Qué más hacer?</h1>
-                        <a href="/libros" class=" buttons_card_green w-full">
-                            <i class="fi fi-sr-books flex"></i><button class="w-full text-start">Ver libros</button>
-                        </a>
                         <a href="/historial_de_memorias" class="buttons_card_green">
                             <i class="fi fi-sr-memo-circle-check flex"></i><button> Ver memorias
                                 finalizadas</button>
@@ -73,8 +69,113 @@
             </div>
 
         </div>
-    </div>
-    <div class="agregar h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class=" ml-[30px]">
+            <div class="flex flex-wrap"> <!-- Contenedor principal con flexbox y wrap para alinear los elementos -->
+                <!-- Grafica 1 -->
+                <div class="content_container  h-fit p-1 w-fit md:ml-0 sm:ml-0 mb-4 mt-10">
+                    <!-- Aquí ajusté el margen izquierdo y añadí margen inferior -->
+                    <label class="container_word_title w-full flex flex-col items-center"></label>
+                    <div class="container_cards w-full items-center">
+                        <!-- Panel 1 -->
+                        <div class="bg-black rounded">
+                            <div class="line-chart-container text-center items-center">
+                                <h1>AVANCE DE LOS ALUMNOS</h1>
+                                <canvas id="myChart" width="1200" height="590"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Grafica 2 -->
+                <div class="p-4 ml-[70px]">
+                    <div class="content_container h-fit p-1 w-fit md:ml-0 sm:ml-0 mb-4">
+                        <!-- Aquí ajusté el margen izquierdo y añadí margen inferior -->
+                        <div class="flex flex-col gap-1">
+                            <label class="container_word_title h-fit flex flex-col items-center">Progresos</label>
+        
+                            <div class="bg-white p-3 rounded">
+                                <div class="flex flex-col items-center">
+                                    <div class="progress-item ml-[20px]">
+                                        <label class="font-semibold font-poppins text-base">PROGRESO ANTEPROYECTOS</label>
+                                        <svg width="190" height="190" class="progress-chart">
+                                            <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                            </circle>
+                                            <circle cx="85" cy="85" r="80" class="progress-front1" fill="none"
+                                                stroke-dasharray="0 1000000"></circle>
+                                            <g class="progress-text">
+                                                <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                    id="percentage1">0%</text>
+                                            </g>
+                                        </svg>
+                                        <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="bg-white p-3 rounded mt-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="progress-item">
+                                        <label class="font-semibold font-poppins text-base">ESTADÍAS FINALIZADAS</label>
+                                        <svg width="190" height="190" class="progress-chart">
+                                            <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                            </circle>
+                                            <circle cx="85" cy="85" r="80" class="progress-front2" fill="none"
+                                                stroke-dasharray="0 1000000"></circle>
+                                            <g class="progress-text">
+                                                <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                    id="percentage2">0%</text>
+                                            </g>
+                                        </svg>
+                                        <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+        
+        
+        
+        
+                        </div>
+                </div>
+    
+                </div>
+        </div>
+        </div>
+        <script src="{{ asset('js/progress.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{{ asset('js/line-chart.js') }}"></script>
+
+
+        <script src="{{ asset('js/progress.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{{ asset('js/line-chart.js') }}"></script>
+
+        <script>
+            const libro = document.querySelector('.libro');
+            const verLibro = document.querySelector('.verLibro');
+            const closeLibro = document.querySelectorAll('.close-Libro');
+
+            verLibro.addEventListener('click', function() {
+                libro.classList.remove('hidden')
+            });
+
+            closeLibro.forEach(close => {
+                close.addEventListener('click', function() {
+                    libro.classList.add('hidden')
+                });
+            });
+        </script>
+
+        <script>
+            // Desplaza automáticamente hacia abajo al cargar la página
+            window.onload = function() {
+                var container = document.querySelector('.content_conteiner');
+                container.scrollTop = container.scrollHeight;
+            };
+        </script>
+        {{-- <div class="agregar h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-[550px] rounded-xl shadow-lg max-w-4xl">
             <div class="border-b px-4 py-2 flex justify-content-end">
                 <button class="close-agregar">
@@ -137,33 +238,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <script src="{{ asset('js/progress.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ asset('js/line-chart.js') }}"></script>
-
-    <script>
-        const libro = document.querySelector('.libro');
-        const verLibro = document.querySelector('.verLibro');
-        const closeLibro = document.querySelectorAll('.close-Libro');
-
-        verLibro.addEventListener('click', function() {
-            libro.classList.remove('hidden')
-        });
-
-        closeLibro.forEach(close => {
-            close.addEventListener('click', function() {
-                libro.classList.add('hidden')
-            });
-        });
-    </script>
-
-    <script>
-        // Desplaza automáticamente hacia abajo al cargar la página
-        window.onload = function() {
-            var container = document.querySelector('.content_conteiner');
-            container.scrollTop = container.scrollHeight;
-        };
-    </script>
-@endsection
+    </div> --}}
+    @endsection

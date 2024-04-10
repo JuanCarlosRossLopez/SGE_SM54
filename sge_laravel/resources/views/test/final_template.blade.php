@@ -169,6 +169,14 @@
                                 </a>
                             </li>
                         @endrole
+                        @role('Cordinacion')
+                            <li>
+                                <a href="/gestion_libros" class="buttons_sidebar">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Gestión libros
+                                </a>
+                            </li>
+                        @endrole
                         @role('Administrador')
                             <li>
                                 <a href="/historial_de_memorias" class="buttons_sidebar">
@@ -257,8 +265,12 @@
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
+                        @elseif (Auth::user()->hasRole('Cordinacion'))
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->name }}</label>
+                            <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
                         @else
-                            No se encontró información del asesor para este usuario.
+                            No se encontró información del usuario para este usuario.
                         @endif
                     </div>
                     <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
