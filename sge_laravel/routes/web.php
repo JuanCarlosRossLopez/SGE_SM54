@@ -296,7 +296,7 @@ Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
-
+Route::resource('libros',BooksController::class);
 
 Route::group(['middleware' => ['auth', 'role:Presidente']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
@@ -338,6 +338,7 @@ Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
     Route::get('/dashboard_alumno', [ControllerCalendar::class, 'index'])->name('students.activities_calendar');
 }); 
 //esto si
+
 Route::resource('roles',RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');

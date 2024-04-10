@@ -12,10 +12,10 @@
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class="modal-body max-h-full h-auto flex  gap-7">
                 <div class="w-full  flex flex-row space-x-4">
-                    <img src="{{asset ('books/'.$book->book_front_page) }}" alt="" class=" w-56  h-[22rem]">
-                    <img src="{{asset('books/'. $book->voucher) }}" alt="" class=" w-56 h-[22rem]">
+                    <img src="{{asset ('books/'.$book->book_front_page) }}" alt="" class=" w-fit  h-[22rem]">
+                    <img src="{{asset('books/'. $book->voucher) }}" alt="" class=" w-fit h-[22rem]">
                 </div>
-                <div class=" w-[42rem]    items-end justify-end">
+                <div class="">
 
                     <label class=" font-semibold" for="">Nombre del libro</label>
                     <h1 class="poppins-light text-[20px]">
