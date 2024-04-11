@@ -61,6 +61,13 @@
 
 
 <body>
+
+
+    <div style="text-align: right;">
+        <h5>Cancún, Quintana Roo; a 27 de Noviembre de 2023</h5>
+        <h5>Of.:UTC/DDIT/M-39/2023</h5>
+        <h5>Asunto: Autorización de Digitalización</h5>
+    </div>
     <div class="container">
         <img src="{{ $imagen_path }}" alt="logo UT" style="align-self: center">
         <div>
@@ -134,5 +141,6 @@
 
     </div>
 </body>
+
 
 </html>
