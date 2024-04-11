@@ -3,54 +3,64 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
+use App\Models\Teachers;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Students\StudentsRequest;
 use App\Models\Students;
+use App\Models\Division;
+use Spatie\Permission\Models\Role;
 
-class StudentsController extends Controller
+class StudentsController extends Controller 
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $students = Students::paginate(10);
-        return view('students.manager_student', compact('students'));
+        $Users = User::all();
+        $Divisions = Division::all();
+        $Teachers = Teachers::all();
+        $Students = Students::paginate(10);
+        // $teachers = Teachers::with('user')->get();
+    
+        return view('students.students', compact('Students','Teachers', 'Divisions', 'Users'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $students = Students::all();
-        return view('estudiantes', ['students' => $students]);
+        return view('students.students', compact('Students'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
+
     {
-        $request->validate([
-            'student_name' => 'required|string|max:255',
-            'id_student' => 'required|integer',
-            'project_creator' => 'required|boolean',
-            'strike' => 'required|integer',
-        ]);
-        //crear un nuevo estudiante
+
+        $user = new User();
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+
+        $role = Role::where('name', 'Estudiante')->first();
+        $user->assignRole($role);
+
+        $user_id = $user->id;
+
 
         $student = new Students();
-        $student->student_name = $request->student_name;
-        $student->id_student = $request->id_student;
-        $student->project_creator = $request->project_creator;
-        $student->strike = $request->strike;
-
+        $student->student_name = $request->input('student_name');
+        $student->id_student = $request->input('id_student');
+        $student->project_creator = $request->input('project_creator');
+        $student->user_id = $user_id; // Asignar el ID del usuario
+                $student->division_id = $request->input('division_id');
+        $student->anteproject_id = $request->input('anteproject_id');
+        $student->adviser_id = $request->input('adviser_id');        
         $student->save();
- 
-        //lo manda a su respectivo apartado
-        return redirect('estudiantes')->with('notificacion','Estudiante creado correctamente');
+        return redirect('usuarios')->with('notification', 'Estudiante creado correctamente');
     }
 
     /**
@@ -58,18 +68,17 @@ class StudentsController extends Controller
      */
     public function show(string $id)
     {
-        $student=Students::find($id);
-        return view('students.show_student', compact('student'));
-
+        $student = Students::find($id);
+        return view('students.show', compact ('student'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         $student = Students::find($id);
-        return view('students.manager_student', ['student' => $student]);
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -77,16 +86,21 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Busca el estudiante
-        $student = Students::find($id);
-        //actualiza
-        $student->student_name = $request->input('student');
-        $student->id_student = $request->input('id_student');
-        $student->project_creator = $request->input('project_creator');
-        //guarda
-        $student->update($request->all());
-        //lo manda a la vista de estudiante
-        return redirect('students.manager_student')->route('students.manager_student', ['id' => $student->id])->with('notificacion', 'Estudiante editado correctamente');
+        $request->validate([
+        ]);
+
+        $students = Students::find($id);
+        $students->student_name = $request->student_name;
+        $students->id_student = $request->id_user;
+        $students->project_creator= $request->project_creator;
+        $students->user_id = $request->user_id;
+        $students->strike = $request->strike;
+        $students->anteproject_id = $request->anteproject_id;
+        $students->adviser_id = $request->adviser_id;
+        $students->division_id = $request->division_id;
+        $students->save();
+
+        return redirect('estudiantes')->with('notification', 'Estudiante actualizado correctamente');
     }
 
     /**
@@ -94,11 +108,13 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //Encuentra el estudiante por ID
-        $student = Students::find($id);
-        //Elimina el estudiante
-        $student->delete();
-        //lo manda a la vista del estudiante
-        return back()->with('notificacion','Estudiante eliminado correctamente');
+        $students = Students::find($id);
+    
+        if (!$students) {
+            return back()->with('error', 'No se encontro al alumno');
+        }
+    
+        $students->delete();
+        return back()->with('notification', 'Estudiante elimindao correctamente');
     }
 }

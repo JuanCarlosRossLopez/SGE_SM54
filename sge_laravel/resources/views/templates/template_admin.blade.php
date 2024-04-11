@@ -55,13 +55,14 @@
                                 Inicio
                             </button>
                         </li>
+                       
                         <li>
                             <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
                                 <i class="fa-solid fa-school"></i></i>
                                 Gestión de Anteproyectos
                             </button>
                         </li>
-
+                        
                         <li>
                             <a href="/usuarios" class="buttons_sidebar ">
                                 <i class="fa-solid fa-school"></i>

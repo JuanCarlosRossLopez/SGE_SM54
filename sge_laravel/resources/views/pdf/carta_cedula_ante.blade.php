@@ -80,68 +80,68 @@
             <table>
                 <tr>
                     <th>División:</th>
-                    <td colspan="5">Ingeniería y Tecnología.</td>
+                    <td colspan="5">Ingeniería</td>
                 </tr>
 
                 <tr>
                     <th>Programa educativo:</th>
-                    <td colspan="5">Técnico Superior Universitario</td>
+                    <td colspan="5">{{Auth::user()->student->projects->educational_program}}</td>
                 </tr>
 
                 <tr>
                     <th>Título del anteproyecto:</th>
-                    <td colspan="5">markdget</td>
+                    <td colspan="5">{{Auth::user()->student->projects->project_title}}</td>
                 </tr>
 
                 <tr>
                     <th>Nombre del alumno:</th>
-                    <td colspan="5">Jose Coronado</td>
+                    <td colspan="5">{{ Auth::user()->student ? Auth::user()->student->student_name : 'No se encontró un estudiante asociado' }}</td>
                 </tr>
 
                 <tr>
                     <th>Matrícula:</th>
-                    <td colspan="2">22393130</td>
+                    <td colspan="2">{{ Auth::user()->student ? Auth::user()->student->id_student : 'No se encontró un estudiante asociado' }}</td>
                     <th style="width: 120px;">Grupo:</th>
-                    <td colspan="2">SM64</td>
+                    <td colspan="2">{{Auth::user()->student->projects->student_group}}</td>
                 </tr>
 
                 <tr>
                     <th>Teléfono:</th>
-                    <td colspan="2">9987373174</td>
+                    <td colspan="2">{{Auth::user()->student->projects->student_phone}}</td>
                     <th>Correo electrónico:</th>
-                    <td colspan="2">cjosecoronado@gmail.com</td>
+                    <td colspan="2">{{Auth::user()->student->projects->student_email}}</td>
                 </tr>
 
                 <tr>
                     <th style="width: 140px;">Fecha de inicio del Proyecto:</th>
-                    <td colspan="2">2024-03-14</td>
+                    <td colspan="2">{{Auth::user()->student->projects->start_date}}</td>
                     <th style="width: 150px">Fecha de término del proyecto:</th>
-                    <td colspan="2">2024-5-24</td>
+                    <td colspan="2">{{Auth::user()->student->projects->end_date}}</td>
                 </tr>
             </table>
             </br></br>
             <table>
                 <tr>
                     <th style="width: 150px;">Empresa:</th>
-                    <td colspan="4">Bachoco</td>
+                    <td colspan="4">{{Auth::user()->student->projects->project_company}}</td>
                 </tr>
                 <tr>
                     <th>Dirección:</th>
-                    <td colspan="4">Carretera Merida Cancun Lt 1</td>
+                    <td colspan="4">{{Auth::user()->student->projects->direction}}</td>
                 </tr>
                 <tr>
                     <th>Nombre del asesor empresarial:</th>
-                    <td colspan="4">Juan Ross</td>
+                    <td colspan="4">{{Auth::user()->student->projects->project_advisor}}</td>
                 </tr>
                 <tr>
                     <th>Cargo:</th>
-                    <td colspan="4">Director de T.I</td>
+                    <td colspan="4">{{Auth::user()->student->projects->position}}</td>
                 </tr>
                 <tr>
                     <th>Teléfono:</th>
-                    <td>9987373174</td>
+                    <td>{{Auth::user()->student->projects->project_advisor_phone}}</td>
                     <th style="width: 50px;">Correo:</th>
-                    <td colspan="2">jrosslopez@gmail.com</td>
+                    <td colspan="2">{{Auth::user()->student->projects->email_asesor}}</td>
                 </tr>
                 <tr>
                     <th>Área donde se realizará el proyecto:</th>
@@ -162,29 +162,22 @@
             <ol>
                 <li>
                     <h4>Objetivo general.</h4>
-                    <textarea rows="10">Realizar una aplicación web para la venta de gadgets, desarrollada a través de 
-                        un lenguaje de programación cuyos productos serán registrados en una base de datos, 
-                        para que las tiendas mexicanas de gadgets ofrezcan sus productos a nivel nacional.</textarea>
+                    <textarea rows="10">{{Auth::user()->student->projects->general_objective}}</textarea>
                 </li>
                 <li>
                     <h4>Planteamiento del Problema: exponer los aspectos, elementos y relaciones del problema.</h4>
-                    <textarea rows="10">Realizar una aplicación web para la venta de gadgets, desarrollada a través de 
-                        un lenguaje de programación cuyos productos serán registrados en una base de datos, 
-                        para que las tiendas mexicanas de gadgets ofrezcan sus productos a nivel nacional.</textarea>
+                    <textarea rows="10">{{Auth::user()->student->projects->problem_statement}}</textarea>
                 </li>
                 <li>
                     <h4>Justificación: debe manifestarse de manera clara y precisa del por qué y para qué se va llevar a
                         cabo el estudio. Causas y propósitos que motivan la investigación. Contesta las preguntas:
                         ¿Cuáles son los beneficios que este trabajo proporcionará? ¿Quiénes serán los beneficiados?
                         ¿Cuál es su utilidad?</h4>
-                    <textarea rows="10">La aplicación web “Markdget” ayudará a las tiendas a incrementar sus ventas y por lo tanto sus ingresos serán mayores. 
-                        Al igual que les ayudará a obtener un reconocimiento a nivel nacional. Se tendrán diferentes tiendas y por ende una variedad de productos. 
-                        Por lo tanto, a los clientes los ayudará a adquirir sus productos de una manera simple, ya que puede suceder que no encuentren sus productos 
-                        de manera física.</textarea>
+                    <textarea rows="10">{{Auth::user()->student->projects->justification}}</textarea>
                 </li>
                 <li>
                     <h4>Actividades para realizar: listar las actividades a llevar a cabo en orden.</h4>
-                    <textarea rows="10">Ejemplo</textarea>
+                    <textarea rows="10">{{Auth::user()->student->projects->activities}}</textarea>
                 </li>
             </ol>
             <table class="footer-table">

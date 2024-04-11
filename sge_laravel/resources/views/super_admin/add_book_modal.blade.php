@@ -10,7 +10,7 @@
         <div class="bg-white p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class=" max-h-full h-auto">
-                <form action="{{route('libros.store')}}" method="POST" class="w-full max-w-lg">
+                <form action={{route('gestion_libros.store')}}  method="POST" class="w-full max-w-lg">
                     @csrf
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -34,6 +34,18 @@
                             <input
                                 class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-last-name" name="book_front_page" type="text" placeholder="Doe">
+                                @error('book_front_page')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="grid-last-name">
+                                Voucher
+                            </label>
+                            <input
+                                class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="grid-last-name" name="voucher" type="text" placeholder="Doe">
                                 @error('book_front_page')
                                 <span style="color:red">{{$message}}</span>
                                 @enderror

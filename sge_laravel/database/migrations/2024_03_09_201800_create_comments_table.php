@@ -7,24 +7,24 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. 
      */
     public function up(): void
     {
         Schema::disableForeignKeyConstraints();
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('general_comment');
-            $table->foreignId('teacher_id')->nullable()->constrained()
+            $table->text('general_comment');
+            $table->foreignId('teacher_id')->nullable()->constrained('teachers')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            $table->foreignId('anteproject_id')->nullable()->constrained()
+            $table->foreignId('project_management_id')->nullable()->constrained('project_management')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

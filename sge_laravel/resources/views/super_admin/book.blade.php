@@ -6,8 +6,7 @@
 
 @section('contenido')
     <div class="lg:w-[98rem] sm:w-[12rem] ml-[3rem] items-center flex-col">
-        <div
-            class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
+        <div class="bg-[#e6e6e6] mt-[0.5rem] p-[0.5rem] pl-2 rounded-md  flex flex-row items-center text-[#3a3a3a] text-[1.8rem]">
             <div class="">
                 <label>Historial de libros</label>
                 <label>
@@ -34,8 +33,8 @@
                 </div>
                 <div class="">
                     <!-- En caso que necesites el boton dejalo, sino aplica hidden en el class -->
-                    <button data-target="#hola" class="showmodal2 standar_button"><span
-                            class="show-modal2 ">Agregar</span></button>
+                    <button data-target="#hola" class="showmodal2 standar_button "><span
+                            class="show-modal2  ">Agregar</span></button>
                 </div>
             </div>
 
@@ -50,7 +49,6 @@
                             <th class="theader md:table-cell">Descripción</th>
                             <th class="theader md:table-cell">Autor</th>
                             <th class="theader md:table-cell">Precio</th>
-                            <th class="theader md:table-cell">Estudiante</th>
                             <th class="theader md:table-cell">Acciones</th>
                         </tr>
                     </thead>
@@ -68,7 +66,6 @@
                                 <td class="trowc md:table-cell">{{ $book->book_description }}</td>
                                 <td class="trowc md:table-cell">{{ $book->author }}</td>
                                 <td class="trowc md:table-cell">{{ $book->price }}</td>
-                                <td class="trowc md:table-cell">{{ $book->students_id }}</td>
                                 <td class="trowc">
                                     <button class="showView" data-target="#view{{ $book->id }}">
                                         <img src="{{ asset('icons/show.svg') }}" alt="Delete buttto" class="w-7 h-7  m-auto   ">

@@ -4,49 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="resources/css/app.css" rel="stylesheet">
     <title>Carta de Autorización</title>
-    @vite('resources/css/app.css')
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 6px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .border {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .contenido {
+            margin-top: 20px;
+            display: flex;
+            text-align: center;
+        }
+
+        .columna {
+            display: inline-block;
+        }
+
+        .texto {
+            text-align: right;
+        }
+
+        .footer-table {
+            position: absolute;
+            padding: 2.5rem;
+            bottom: 100px;
+            left: 0;
+            right: 0;
+        }
+        img {
+            width: 720px;
+            height: 140px;
+            margin-left: -60px;
+        }
+    </style>
 </head>
-<style>
-    .firma {
-        display: flex;
-        justify-content: space-around;
-        /* Distribuir el espacio horizontalmente */
-        align-items: center;
-        /* Alineación vertical */
-        margin-top: 20px;
-        width: 100%;
-        /* Ancho del contenedor */
-    }
 
-    .persona {
-        text-align: center;
-        width: 200px;
-        /* Ancho de cada persona */
-    }
-
-    hr {
-        margin: 0;
-        /* Eliminar el margen para que esté en línea con los textos */
-        border: none;
-        border-top: 1px solid black;
-    }
-
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    th,
-    td {
-        border: 1px solid black;
-        padding: 6px;
-        text-align: left;
-        font-size: 15px;
-    }
-</style>
 
 <body>
 
@@ -56,75 +68,78 @@
         <h5>Of.:UTC/DDIT/M-39/2023</h5>
         <h5>Asunto: Autorización de Digitalización</h5>
     </div>
-
-    <br>
-    <div style="text-align: justify;">
-        <h4>Se autoriza al estudiante <span>Paola Alejandra Galan Zacarias</span> del grupo <span>MI62BIS</span> con
-        </h4>
-        <h4>número de matrícula: <span>20333105</span> la digitalización de la MEMORIA en modalidad:</h4>
-    </div>
-
-    <table border="1">
-        <tr>
-            <th>X</th>
-            <td colspan="3">Tradicional</td>
-            <td colspan="2">Título de Memoria</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td colspan="3">Excelencia Académica</td>
-            <td colspan="2"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td colspan="3">Experiencia Laboral</td>
-            <td colspan="2">Plan de Mantenimiento para servicios técnicos</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td colspan="3">Movilidad Internacional</td>
-            <td colspan="2"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td colspan="3">Proyecto de Investigación</td>
-            <td colspan="2"></td>
-        </tr>
-    </table>
-
-
-    <h5>Lo anterior para los trámites correspondientes a su titulación</h5>
-    <br>
-    <h5 style="text-align: center; ">Vo. Bo.</h5>
-    <br>
-    <div>
-        <div class="firma">
-            <div class="persona">
-                <p>ASESOR ACADÉMICO</p>
-                <hr>
-                <p>Mtra. Karla Vanessa Cabrera Castillo</p>
-            </div>
-        </div>
+    <div class="container">
+        <img src="{{ $imagen_path }}" alt="logo UT" style="align-self: center">
         <div>
-            <div class="persona">
-                <p>COMISIÓN ACADÉMICA</p>
-                <hr>
-                <p>Mtra. Mayra Guadalupe Fuentes Sosa</p>
-                <p>Presidente de la Comisión Académica de T.I</p>
-            </div>
+            <h5 class="texto">Cancún, Quintana Roo; <span>a 27 de Noviembre de 2023</span></h5>
+            <h5 class="texto">Of.:UTC/DDIT/M-39/2023</h5>
+            <h5 class="texto">Asunto: Autorización de Digitalización</h5>
         </div>
-    </div>
+        <br />
+        <h4>Se autoriza al estudiante <span>{{ Auth::user()->student->student_name }}</span> del grupo
+            <span>{{ Auth::user()->student->projects->student_group }}</span> con número de matrícula:
+            <span>{{ Auth::user()->student->id_student }}</span> la digitalización de la MEMORIA en
+            modalidad:
+        </h4>
+        <br>
 
-    <br>
-    <footer>
-        <table style="width:100%">
+        <table>
             <tr>
-                <td style="border: 1px solid black; padding: 8px;">Fecha de Revisión: 03 de Mayo</td>
-                <td style="border: 1px solid black; padding: 8px;">Revisión No.5</td>
-                <td style="border: 1px solid; padding: 8px;">AEP-P03-F05</td>
+                <th style="width: 20px;">X</th>
+                <th>Tradicional</th>
+                <th style="width: 120px;">Titulo de Memoria</th>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th>Excelencia académica</th>
+                <th class="border"></th>
+            </tr>
+            <tr>
+                <th style=""></th>
+                <th style="width: 150px">Movilidad Internacional</th>
+                <th class="border" style="text-align: center">{{ Auth::user()->student->projects->project_title }}</th>
+            </tr>   
+            <tr>
+                <th style=""></th>
+                <th style="width: 150px">Proyecto de Investigación</th>
+                <th style="border-top: none;"></th>
             </tr>
         </table>
-    </footer>
+        <br/>
+        <br/>
+        <h5>Lo anterior para los trámites correspondientes a su titulación</h5>
+        <br>
+        <h5 style="text-align: center;">Vo. Bo.</h5>
+        <div class="contenido">
+            <div class="columna" style="margin-right: 20px; margin-bottom:22px;">
+                <p>ASESOR ACADÉMICO</p>
+                <br />
+                <hr style="width: 250px;" />
+                <p>[asesor académico]</p>
+                {{-- <p style="font-size: 10px"><span style="color: white">.</span></p> --}}
+            </div>
+            <div class="columna" style="margin-bottom:0.5px;">
+                <p style="margin-top: 20px;">COMISIÓN ACADÉMICA</p>
+                <br />
+                <hr style="width: 250px" />
+                <p>Mtra. Mayra Guadalupe Fuentes Sosa</p>
+                <p style="font-size: 10px">Presidente de la Comisión Académica de T.I</p>
+            </div>
+        </div>
+
+        <table class="footer-table" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="border: 1px solid black; padding: 8px;">Fecha de Revisión: 03 de Mayo</td>
+                    <td style="border: 1px solid black; padding: 8px;">Revisión No.5</td>
+                    <td style="border: 1px solid      ; padding: 8px;">AEP-P03-F05</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
 </body>
 
 
