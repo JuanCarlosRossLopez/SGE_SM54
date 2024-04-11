@@ -75,30 +75,30 @@
                                                     <h1
                                                         class="font-semibold text-lg  px-2 rounded  md:text-base">
                                                         <?php
-                                                        // $coloresPorPalabra = [
-                                                        //     'Aprobado' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
-                                                        //     'Pendiente' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
-                                                        //     'Rechazado' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
-                                                        // ];
+                                                        $coloresPorPalabra = [
+                                                            'Aprobado' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
+                                                            'Pendiente' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
+                                                            'Rechazado' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
+                                                        ];
                                                         
-                                                        // $status_id = optional(optional(Auth::user()->student)->projects)->status_id ?? null;
+                                                        $status_id = optional(optional(Auth::user()->student)->projects)->status_id ?? null;
                                                         
-                                                        // $status = '';
+                                                        $status = '';
                                                         
-                                                        // if ($status_id === 1) {
-                                                        //     $status = 'Aprobado';
-                                                        // } elseif ($status_id === 2) {
-                                                        //     $status = 'Rechazado';
-                                                        // } elseif ($status_id === 3) {
-                                                        //     $status = 'Pendiente';
-                                                        // } else {
-                                                        //     echo 'No se encontró un estado asociado';
-                                                        // }
+                                                        if ($status_id === 1) {
+                                                            $status = 'Aprobado';
+                                                        } elseif ($status_id === 2) {
+                                                            $status = 'Rechazado';
+                                                        } elseif ($status_id === 3) {
+                                                            $status = 'Pendiente';
+                                                        } else {
+                                                            echo 'No se encontró un estado asociado';
+                                                        }
                                                         
-                                                        // $bgColor = $coloresPorPalabra[$status]['bg'];
-                                                        // $textColor = $coloresPorPalabra[$status]['text'];
+                                                        $bgColor = $coloresPorPalabra[$status]['bg'];
+                                                        $textColor = $coloresPorPalabra[$status]['text'];
                                                         
-                                                        // echo "<span style='background-color: $bgColor; color: $textColor; padding: 2px; border-radius: 5px;'>$status</span>";
+                                                        echo "<span style='background-color: $bgColor; color: $textColor; padding: 2px; border-radius: 5px;'>$status</span>";
                                                         ?>
 
 

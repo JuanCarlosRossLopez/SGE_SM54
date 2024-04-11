@@ -16,7 +16,6 @@ use App\Models\Status_project;
 use App\Models\Division;
 use App\Models\Group;
 use App\Models\Career;
-use App\Models\Companies;
 
 
 class Projects_managementController extends Controller
@@ -26,25 +25,25 @@ class Projects_managementController extends Controller
      */
     public function index()
 {
-
-     // Hacer la solicitud a la API
+    // Hacer la solicitud a la API
     $response = Http::get('http://api.worldbank.org/v2/region');
 
-     // Convertir la respuesta XML a un objeto SimpleXMLElement
+    // Convertir la respuesta XML a un objeto SimpleXMLElement
     $xmlData = $response->body();
     $xml = simplexml_load_string($xmlData);
 
-     // Definir el espacio de nombres
+    // Definir el espacio de nombres
     $xml->registerXPathNamespace('wb', 'http://www.worldbank.org');
 
-     // Obtener las regiones usando XPath con el espacio de nombres
+    // Obtener las regiones usando XPath con el espacio de nombres
     $regions = $xml->xpath('//wb:region');
 
-     // Extraer los nombres de las regiones
+    // Extraer los nombres de las regiones
     $regionNames = [];
     foreach ($regions as $region) {
         $regionNames[] = (string) $region->children('wb', true)->name;
     }
+
     // Agregar dd() para verificar los nombres de las regiones
 
     // Obtener los datos existentes
@@ -53,10 +52,9 @@ class Projects_managementController extends Controller
     $divisions = Division::all();
     $groups = Group::all();
     $careers = Career::all();
-    $companies = Companies::all();
 
     // Pasar los datos a la vista
-    return view('students.anteproyecto', compact('project_management', 'comments', 'regionNames', 'divisions', 'groups', 'careers', 'companies'));
+    return view('students.anteproyecto', compact('project_management', 'comments', 'regionNames', 'divisions', 'groups', 'careers'));
 }
 
 
@@ -99,7 +97,6 @@ class Projects_managementController extends Controller
             'justification' => 'required', // Justificación
             'activities' => 'required', // Actividades a realizar
             'career' => 'required', // Carrera
-            'work_area' => 'required', // Área de trabajo
 
             'likes' => 'required',
             //Mover de aqui en adelante
@@ -128,7 +125,6 @@ class Projects_managementController extends Controller
         $projects_management->justification = $request->input('justification');
         $projects_management->activities = $request->input('activities');
         $projects_management->career = $request->input('career');
-        $projects_management->work_area = $request->input('work_area');
         $projects_management->likes = $request->input('likes');
         if($status_project != null) {
             $projects_management->status_id = $status_project->id;
@@ -165,8 +161,7 @@ class Projects_managementController extends Controller
         $divisions = Division::all();
         $groups = Group::all();
         $careers = Career::all();
-        $companies = Companies::all();
-        return view('students.edit_anteproyecto', compact('projects_management', 'divisions', 'groups', 'careers', 'companies'));
+        return view('students.edit_anteproyecto', compact('projects_management', 'divisions', 'groups', 'careers'));
     }
 
     /**
@@ -195,7 +190,7 @@ class Projects_managementController extends Controller
             'justification' => 'required', // Justificación
             'activities' => 'required', // Actividades a realizar
             'career' => 'required', // Carrera
-            'work_area' => 'required', // Área de trabajo
+
             'likes' => 'required',
             //Mover de aqui en adelante
         ]);
@@ -223,7 +218,6 @@ class Projects_managementController extends Controller
         $projects_management->justification = $request->input('justification');
         $projects_management->activities = $request->input('activities');
         $projects_management->career = $request->input('career');
-        $projects_management->work_area = $request->input('work_area');
         $projects_management->likes = $request->input('likes');
         if($status_project != null) {
             $projects_management->status_id = $status_project->id;
