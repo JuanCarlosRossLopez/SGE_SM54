@@ -7,6 +7,39 @@
 @section('contenido')
 
     <div class="back_conteiner">
+
+        <div class="conteiner_cards justify-center flex flex-row">
+            @if (session()->has('notificacion'))
+                <div id="notification"
+                    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 w-full rounded relative">
+                    {{ session('notificacion') }}
+                </div>
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('notification').style.display = 'none';
+                    }, 8000);
+                </script>
+            @endif
+
+
+
+            @if ($errors->any())
+                <div id="error"
+                    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 w-full rounded relative">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('error').style.display = 'none';
+                    }, 9000);
+                </script>
+            @endif
+        </div>
+
         <div class="conteiner_cards justify-center  flex-row">
             <div class="conteiner_cards1 flex flex-col w-3/4 mt-4">
 
@@ -19,23 +52,18 @@
                                 <div class="inside_content_conteiner ">
 
 
-                                    @if (session('status'))
-                                        <div class="alert alert-success">
-                                            {{ session('status') }}
-                                        </div>
-                                    @endif
+
 
                                     @role('Estudiante')
                                         @if ($userBooks->isEmpty())
                                             <div class="-400 w-full">
                                                 <div class="inside_content_conteiner">
                                                     <div class="">
-                                                        <div
-                                                            class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                                        <div    class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2 cursor-pointer">
                                                             <label
-                                                                class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Añadir
+                                                                class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center ">Añadir
                                                                 libro
-                                                                <i class="fa-solid fa-arrow-right flex"></i></label>
+                                                                
                                                             <div class="relative dropdown-trigger gap-2">
                                                                 <button data-target='#add'
                                                                     class="dropdown-btn button_add_green show-modal2 showmodal2">
@@ -63,7 +91,8 @@
                                                 data-target="#view{{ $book->id }}">
                                                 <div
                                                     class="flex flex-col w-36 transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
-                                                    <img class=" w-56" src="{{asset('books/'.$book->book_front_page) }}" alt="img_book">
+                                                    <img class=" w-56" src="{{ asset('books/' . $book->book_front_page) }}"
+                                                        alt="img_book">
                                                     <span
                                                         class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
                                                     <span class=" font-light text-[15px] text-[#111111]">
@@ -93,7 +122,8 @@
                                             data-target="#view2{{ $book->id }}">
                                             <div
                                                 class="flex flex-col w-36  transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110">
-                                                <img class="w-36" src="{{asset('books/'.$book->book_front_page) }}" alt="img_book">
+                                                <img class="w-36" src="{{ asset('books/' . $book->book_front_page) }}"
+                                                    alt="img_book">
                                                 <span
                                                     class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
                                                 <span class=" font-light text-[15px] text-[#111111]">
@@ -115,7 +145,7 @@
                 <div class=" h-fit  p-2 card flex justify-center">
                     <div class="flex flex-col gap-2 items-center">
                         <h1>¿Qué más hacer?</h1>
-                        
+
                         <a href="/historial_de_memorias" class="buttons_card_green">
                             <i class="fi fi-sr-memo-circle-check flex"></i><button> Ver memorias finalizadas</button>
                         </a>
