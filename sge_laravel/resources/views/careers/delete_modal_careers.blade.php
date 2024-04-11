@@ -1,5 +1,5 @@
 @foreach ($careers as $career)
-    <div id="delete{{ $career->id }}" class="delete-modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div id="delete{{ $career->id }}" class="delete-modal hidden h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <input type="hidden" name="career_id" value="{{ $career->id }}">
         <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
             <div class="border-b px-4 py-2 flex justify-between items-center">

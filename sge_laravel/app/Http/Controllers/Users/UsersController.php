@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Division;
 use App\Models\Career;
-
+use App\Models\Teachers;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -23,8 +23,9 @@ class UsersController extends Controller
         $Divisions = Division::all();
         $users = User::paginate(10);
         $careers = Career::all();
+        $Teachers = Teachers::all();
 
-        return view('UserManagement.users', compact('users', 'roles','Divisions','careers'));
+        return view('UserManagement.users', compact('users', 'roles','Divisions','careers','Teachers'));
     }
 
 
@@ -75,16 +76,17 @@ class UsersController extends Controller
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
-        $roleName = $request->input('role');
+
+        $role = Role::where('name', 'Administrador')->first();
+
+
+        $users->assignRole($role);
 
 
 
 
-        $role = Role::where('name', $roleName)->first();
-        if ($role) {
-            $users->assignRole($role);
-        }
 
+        
 
         return redirect('usuarios')->with('notificacion', "Usuario creado correctamente");
 

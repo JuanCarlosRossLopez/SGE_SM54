@@ -199,6 +199,8 @@
             const modal_add_masivo = document.querySelector('.modal-add-masivo');
             const show_modal_add = document.querySelector('.show-modal-add');
             const show_modal_add_masivo = document.querySelector('.show-modal-add-masivo');
+            const showEditModalButtons = document.querySelectorAll('.show-modal-edit');
+            const showDeleteModalButtons = document.querySelectorAll('.show-delete');
 
             show_modal_add.addEventListener('click', function() {
                 modal_add.classList.remove('hidden');
@@ -207,6 +209,31 @@
             show_modal_add_masivo.addEventListener('click', function() {
                 modal_add_masivo.classList.remove('hidden');
             });
+
+            showEditModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetModalId = button.getAttribute('data-target');
+            const modal = document.querySelector(targetModalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+            } else {
+                console.error("No se pudo encontrar el modal:", targetModalId);
+            }
+        });
+    });
+
+    // Event listeners for showing delete modals
+    showDeleteModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetModalId = button.getAttribute('data-target');
+            const modal = document.querySelector(targetModalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+            } else {
+                console.error("No se pudo encontrar el modal:", targetModalId);
+            }
+        });
+    });
 
             const close_modal = document.querySelectorAll('.close-modal');
 

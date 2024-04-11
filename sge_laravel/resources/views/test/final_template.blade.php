@@ -147,9 +147,33 @@
                         @endrole
                         @role('Administrador')
                             <li>
-                                <a href="/asignar_alumnos" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-book"></i>
-                                    Asignación de alumnos
+                                <a href="/divison" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestiónar divisiones
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/carreras" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de carreras
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/carreras" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de carreras
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/grupos" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Grupos
                                 </a>
                             </li>
                         @endrole
@@ -166,6 +190,14 @@
                                 <a href="/libros" class="buttons_sidebar ">
                                     <i class="fa-solid fa-address-book"></i>
                                     Ver libros
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Cordinacion|Administrador')
+                            <li>
+                                <a href="/gestion_libros" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Gestionar libros
                                 </a>
                             </li>
                         @endrole
