@@ -499,21 +499,58 @@
                                             </button>
                                             @elseif($user->student)
                                             <p>
-                                                <button class="show-modal-edit-student" data-target="#edit{{ $user->id }}">
+                                                <button class="show-modal-asesor-view" data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
+                                                <button class="show-modal-edit-teacher" data-target="#edit{{$user->id}}">
                                                     <div class="button_edit_yellow">
                                                         <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                                <button class="show-modal-delete-teacher" data-modal="#delete{{ $user->id }}">
+                                                    <div class="button_delete_red">
+                                                        <i class="fa-solid fa-trash"></i>
                                                     </div>
                                                 </button>
                                             </p>
                                             @elseif($user->presidencies)
                                             <p>
-                                                Editar Estudiante
-
+                                                    <button class="show-modal-asesor-view" data-modal="#view{{ $user->id }}">
+                                                        <div class="button_see_blue">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                        </div>
+                                                    </button>
+                                                    <button class="show-modal-edit-teacher" data-target="#edit{{$user->id}}">
+                                                        <div class="button_edit_yellow">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </div>
+                                                    </button>
+                                                    <button class="show-modal-delete-teacher" data-modal="#delete{{ $user->id }}">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
                                             </p>
                                             @elseif($user->coordinators)
                                             <p>
-                                                Editar Cordinador
-                                            </p>
+                                                <button class="show-modal-asesor-view" data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
+                                                <button class="show-modal-edit-teacher" data-target="#edit{{$user->id}}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                                <button class="show-modal-delete-teacher" data-modal="#delete{{ $user->id }}">
+                                                    <div class="button_delete_red">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </div>
+                                                </button>
+                                        </p>
                                             @else
                                             <button class="show-modal" data-modal="Show_User_{{ $user->id }}">
                                                 <div class="button_see_blue">
