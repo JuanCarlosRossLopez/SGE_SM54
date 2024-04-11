@@ -36,32 +36,32 @@ class TeachingAdviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $request->validate([
-        //     'teacher_id'=>'required',
-        //     'student_id'=>'required'
-        // ]);
-        
-        $request->validate([
-            'adviser_id' => 'required|exists:teachers,id',
-            'student_id' => 'required|exists:students,id',
-        ]);
+        $adviserIds = $request->input('adviser_id');
+        $studentIds = $request->input('student_id');
+        $error = false;
 
-        // Verificar si el estudiante ya está asignado a un docente
-        $existingAssignment = Teaching_advice::where('student_id', $request->input('student_id'))->exists();
-        if ($existingAssignment) {
-            return redirect('asignar_alumnos')->with('error', 'El estudiante ya está asignado a un docente.');
+        foreach ($adviserIds as $adviserId) {
+            foreach ($studentIds as $studentId) {
+                $existingAssignment = Teaching_advice::where('teacher_id', $adviserId)
+                    ->where('student_id', $studentId)
+                    ->exists();
+
+                if (!$existingAssignment) {
+                    $teachingAdvice = new Teaching_advice();
+                    $teachingAdvice->teacher_id = $adviserId;
+                    $teachingAdvice->student_id = $studentId;
+                    $teachingAdvice->save();
+                } else {
+                    $error = true;
+                }
+            }
         }
 
-        $teaching_advice = new Teaching_advice();
-        
-        $teaching_advice->teacher_id=$request->input('adviser_id');
-        $teaching_advice->student_id=$request->input('student_id');
-        $teaching_advice-> save();
-
-        
-        return redirect('asignar_alumnos')->with('notificacion','Docente asignado al Alumno correctamente');
-
+        if ($error) {
+            return redirect()->back()->with('error', 'No se puede asignar dos veces el mismo alumno al mismo asesor.');
+        } else {
+            return redirect('asignar_alumnos')->with('notificacion', 'Docente asignado al Alumno correctamente');
+        }
     }
 
 
