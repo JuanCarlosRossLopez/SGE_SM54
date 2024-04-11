@@ -25,7 +25,7 @@
 
                     </div>
                     <div>
-                    <span class="font-semibold">Email:</span> {{$user->teachers->email}}
+                    <span class="font-semibold">Email:</span> {{$user->email}}
 
                     </div>
                     <div>
