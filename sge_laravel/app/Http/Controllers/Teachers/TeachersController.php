@@ -25,6 +25,8 @@ class TeachersController extends Controller
     
         return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
     }
+
+    
     
     /**
      * Show the form for creating a new resource.
@@ -104,7 +106,7 @@ class TeachersController extends Controller
         $teacher->division_id = $request->division_id;
         $teacher->save();
 
-        return redirect('maestros')->with('notification', 'Teacher updated successfully');
+        return redirect('usuarios')->with('notification', 'Teacher updated successfully');
     }
 
     /**

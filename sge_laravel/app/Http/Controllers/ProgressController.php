@@ -16,8 +16,9 @@ class ProgressController extends Controller
 
             // Contar los proyectos finalizados (estado = "Aprobado")
             $completedProjects = Project_management::whereHas('project_status', function ($query) {
-                $query->where('status_project', 'Aprobado');
+                $query->whereIn('status_project', ['Aprobado', 'Finalizado']);
             })->count();
+            
 
             // Calcular el porcentaje de proyectos finalizados
             if ($totalProjects > 0) {

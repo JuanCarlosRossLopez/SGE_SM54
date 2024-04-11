@@ -27,8 +27,8 @@
                                 <div
                                     class="bg-[#F7FAFC] w-1/3 p-3 border-2 border-[#d0d0d0] flex flex-col items-center rounded">
                                     <!--
-                                                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
-                                                                    -->
+                                                                                    <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+                                                                                -->
                                     @if (optional(optional(Auth::user()->student)->projects)->id)
                                         <div class="flex flex-col w-full h-fit px-4 pt-2 mt-0">
                                             <div
@@ -65,7 +65,7 @@
                                                         empresarial:</label>
                                                     <h1
                                                         class="font-semibold text-lg bg-[#a6a61831] px-2 rounded text-[#a68a18] md:text-base">
-                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor asociado' }}
+                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor empresarial asociado' }}
                                                     </h1>
                                                 </div>
 
@@ -73,8 +73,36 @@
                                                     <label
                                                         class="font-sans font-semibold text-lg text-[#545454]">Estado:</label>
                                                     <h1
-                                                        class="font-semibold text-lg bg-[#a6181831] px-2 rounded text-[#a61818] md:text-base">
-                                                        Quintana Roo
+                                                        class="font-semibold text-lg  px-2 rounded  md:text-base">
+                                                        <?php
+                                                        // $coloresPorPalabra = [
+                                                        //     'Aprobado' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
+                                                        //     'Pendiente' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
+                                                        //     'Rechazado' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
+                                                        // ];
+                                                        
+                                                        // $status_id = optional(optional(Auth::user()->student)->projects)->status_id ?? null;
+                                                        
+                                                        // $status = '';
+                                                        
+                                                        // if ($status_id === 1) {
+                                                        //     $status = 'Aprobado';
+                                                        // } elseif ($status_id === 2) {
+                                                        //     $status = 'Rechazado';
+                                                        // } elseif ($status_id === 3) {
+                                                        //     $status = 'Pendiente';
+                                                        // } else {
+                                                        //     echo 'No se encontró un estado asociado';
+                                                        // }
+                                                        
+                                                        // $bgColor = $coloresPorPalabra[$status]['bg'];
+                                                        // $textColor = $coloresPorPalabra[$status]['text'];
+                                                        
+                                                        // echo "<span style='background-color: $bgColor; color: $textColor; padding: 2px; border-radius: 5px;'>$status</span>";
+                                                        ?>
+
+
+
                                                     </h1>
                                                 </div>
                                                 <div class="flex flex-row items-center gap-2">
@@ -104,12 +132,14 @@
                                             </a>
                                         </div>
                                     @else
-                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto</p>
+                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto
+                                        </p>
                                         <a href="/anteproyecto" class="buttons_card_anteproyect"><label
                                                 class="cursor-pointer">Crear mi
                                                 anteproyecto</label></a>
                                     @endif
-                                </div>
+
+                                </div>
                                 <div
                                     class="w-full h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
                                     <div class="w-full h-[20rem] px-2">
