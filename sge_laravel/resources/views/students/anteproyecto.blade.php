@@ -204,8 +204,8 @@
                                         la empresa:</label>
                                         <select name="project_company" id="project_company" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
                                             <option value="" disabled selected class="text-transparent">Empresa</option>
-                                            @foreach ($regionNames as $region)
-                                                <option value="{{ $region }}">{{ $region }}</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
                                             @endforeach
                                         </select>
                                     @error('project_company')
@@ -277,6 +277,21 @@
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
                                         placeholder="Correo del Asesor" value="{{ old('email_asesor') }}" />
                                     @error('email_asesor')
+                                        <span class="text-red-500 w-full">{{ $message }}</span>
+                                        <hr class="border-2 w-full h-0 border-[#00000059]" />
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <div class="w-full flex flex-col">
+                                    <label for="work_area" class="font-sans font-semibold text-[#545454]">Área de Trabajo:</label>
+                                        <select name="work_area" id="work_area" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
+                                            <option value="" disabled selected class="text-transparent">Área de Trabajo</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->work_area }}">{{ $company->work_area }}</option>
+                                            @endforeach
+                                        </select>
+                                    @error('work_area')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
                                     @enderror
