@@ -43,6 +43,17 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
 
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'name_teacher' => 'required',
+            'payroll' => 'required',
+            'id_user' => 'required', 
+            'division_id' => 'required',
+        ]);
+
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -96,8 +107,8 @@ class TeachersController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'nombre asesor' => 'required',
-            'nomina' => 'required',
+            'name_teacher' => 'required',
+            'payroll' => 'required',
             'division' => 'required',
         ]);
        

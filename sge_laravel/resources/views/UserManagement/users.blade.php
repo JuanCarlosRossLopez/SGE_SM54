@@ -53,7 +53,7 @@
                                         <i class="fa-solid fa-circle-plus"></i>
                                     </button>
                                     <div class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                        <a data-modal="UserAdd" class=" show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                        <a data-modal="UserAdd" class=" show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Administrador</a>
                                         <a data-modal="studentAdd" class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
                                         <a data-modal="teacherAdd" class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
                                         <a data-modal="presidentAdd" class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
@@ -323,7 +323,7 @@
                                 <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                     <div class="border-b px-4 py-2 flex justify-between items-center">
                                         <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
-                                            Usuario
+                                            Admin
                                         </h3>
                                         <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                                             <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i>
@@ -366,13 +366,7 @@
                                                     <input type="password" name="password" class="rounded input-field">
                                                 </div>
 
-                                                <select name="role" id="role_name" class="rounded input-field block text-gray-700 text-sm font-bold mb-2" required>
-                                                    <option value="">Selecciona un rol</option>
-                                                    @foreach ($roles as $role)
-                                                    <option value="{{ $role->name }}">{{ $role->name }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
+                       
 
                                                 <div class="flex justify-center">
                                                     <button type="submit">
@@ -402,9 +396,19 @@
                                                 <form action="{{ route('maestros.store') }}" method="POST" class="flex flex-col gap-4">
                                                     @csrf
                                                     <div class="flex flex-col gap-4">
-                                                        <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field">
+                                                        
+                                                        <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field" >
+                                                        @error('name')
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                         <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
+                                                        @error('email')
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                         <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
+                                                        @error('password')
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                         <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                                                         <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
                                                         <script>

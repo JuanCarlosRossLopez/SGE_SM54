@@ -79,6 +79,7 @@
                                                     'Leer' => ['bg' => '#1839a6cb', 'text' => '#e1e7fc'],
                                                     'Actualizar' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
                                                     'Eliminar' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
+
                                                 ];
                                                 ?>
 
