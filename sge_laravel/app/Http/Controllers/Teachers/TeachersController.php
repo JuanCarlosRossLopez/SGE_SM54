@@ -125,13 +125,21 @@ class TeachersController extends Controller
      */
     public function destroy(string $id)
     {
-        $teacher = Teachers::find($id);
+
+
+
+        $user = User::find($id);
+
+        $teacher_id = $user->teachers->id;
+
+
+
+        $teacher = Teachers::find($teacher_id);
     
-        if (!$teacher) {
-            return redirect('maestros')->with('error', 'Teacher not found');
-        }
-    
+   
         $teacher->delete();
-        return redirect('maestros')->with('notification', 'Teacher deleted successfully');
+
+        $user->delete();
+        return redirect('usuarios')->with('notification', 'Teacher deleted successfully');
     }
 }    

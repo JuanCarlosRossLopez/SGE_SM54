@@ -480,30 +480,23 @@
                                         </td>
 
                                         <td class="trowc">
-                                            <!-- <button class="show-modal" data-modal="Show_User_{{ $user->id }}">
-                                                <div class="button_see_blue">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </div>
-                                            </button>
-                                            <button class="show-modal" data-modal="edit_{{ $user->id }}">
+
+                                            @if($user->teachers)
+                                            <button class="show-modal-edit-teacher" data-target="#edit{{$user->id}}">
                                                 <div class="button_edit_yellow">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </div>
                                             </button>
-
-                                            <button class="show-modal" data-modal="delete_{{ $user->id }}">
+                                            <button class="show-modal-delete-teacher" data-modal="#delete{{ $user->id }}">
                                                 <div class="button_delete_red">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </div>
-                                            </button>  -->
-                                            @if($user->teachers)
-                                            <p>
-                                                <button class="show-modal-edit-teacher" data-target="#edit{{$user->id}}">
-                                                    <div class="button_edit_yellow">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </div>
-                                                </button>
-                                            </p>
+                                            </button>
+                                            <button class="show-modal-asesor-view" data-modal="#view{{ $user->id }}">
+                                                <div class="button_see_blue">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </div>
+                                            </button>
                                             @elseif($user->student)
                                             <p>
                                                 <button class="show-modal-edit-student" data-target="#edit{{ $user->id }}">
@@ -522,18 +515,35 @@
                                                 Editar Cordinador
                                             </p>
                                             @else
-                                            <p>
-                                            </p>
+                                            <button class="show-modal" data-modal="Show_User_{{ $user->id }}">
+                                                <div class="button_see_blue">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </div>
+                                            </button>
+                                            <button class="show-modal" data-modal="edit_{{ $user->id }}">
+                                                <div class="button_edit_yellow">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </div>
+                                            </button>
+
+                                            <button class="show-modal" data-modal="delete_{{ $user->id }}">
+                                                <div class="button_delete_red">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                            </button>
                                             @endif
                                         </td>
                                     </tr>
                                     @if($user->teachers)
                                     <p>
                                         @include('UserManagement.edit_modal_teacher')
+                                        @include('UserManagement.delete_modal_teacher')
+                                        @include('UserManagement.view_modal_teachers')
                                     </p>
                                     @elseif($user->student)
                                     <p>
                                         @include('UserManagement.edit_modal_student')
+
                                     </p>
                                     @elseif($user->presidencies)
                                     <p>
@@ -611,6 +621,18 @@
                 modal.classList.remove('hidden')
             })
         })
+
+
+        const modal_delete_asesor = document.querySelectorAll('.modal-delete-asesor')
+        const show_modal_delete_teacher = document.querySelectorAll('.show-modal-delete-teacher')
+        show_modal_delete_teacher.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
     </script>
 
     <script>
@@ -627,6 +649,55 @@
             })
         })
     </script>
+
+
+        <script>
+            const modal_view_asesor = document.querySelectorAll('.modal-view-asesor')
+            const show_modal_asesor_view = document.querySelectorAll('.show-modal-asesor-view')
+            show_modal_asesor_view.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const modalId = button.dataset.modal
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                })
+            })
+        </script>
+
+
+<script>
+    const close_modals = document.querySelectorAll('.close-modal')
+
+    close_modals.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            const modalAsesor = button.closest('.view-modal-asesor')
+            const modalEditAsesor = button.closest('.modal-edit-asesor')
+            const modalDeleteAsesor = button.closest('.modal-delete-asesor')
+
+
+            if (modalAsesor) {
+                modalAsesor.classList.add('hidden')
+            }
+
+
+            if (modalEditAsesor) {
+                modalEditAsesor.classList.add('hidden')
+            }
+
+
+            if (modalDeleteAsesor) {
+                modalDeleteAsesor.classList.add('hidden')
+            }
+
+
+            
+        })
+    })
+</script>
+
+
 
 
 
