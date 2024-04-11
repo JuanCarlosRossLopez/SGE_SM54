@@ -1,4 +1,4 @@
-<div id="edit{{ $user->id }}" class="modal-edit-student  h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div id="edit{{ $user->id }}" class="modal-edit-student h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <form method="POST" action="{{ url('estudiantes', $user->id) }}">
         @method('PUT')
         @csrf
@@ -19,52 +19,24 @@
                         <form action="{{ route('estudiantes.update', $user->id) }}" method="POST" class="flex flex-col gap-4">
                             @csrf
                             <div class="flex gap-4">
-                                <input type="text" name="student_name" id="student_name " value="{{$user->student->student_name}}" 
-                                    placeholder=" Nombre del estudiante" class="flex-1 rounded-md border border-gray-300 p-2">
-                                <input type="text" name="id_student" id="id_student" value="{{$user->student->id_student}}" placeholder="Matrìcula" class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="text" name="student_name" id="student_name" value="{{$user->student->student_name}}" placeholder="Nombre del estudiante" class="flex-1 rounded-md border border-gray-300 p-2">
+                                <input type="text" name="id_student" id="id_student" value="{{$user->student->id_student}}" placeholder="Matrícula" class="flex-1 rounded-md border border-gray-300 p-2">
                             </div>
-
                             <div class="flex gap-4">
-                                <label class="">Creador de anteproyecto</label>
-                                <select name="project_creator" id="project_creator" class="rounded-md border">
-                                    <option value="0">No</option>
-                                    <option value="1">Sí</option>
-                                </select>
-                            </div>
-
-                            <div class="flex gap-4">
-
-
-                                <input type="text" name="anteproject_id" id="anteproject_id" placeholder="Nombre del anteproyecto" class="flex-1 rounded-md border border-gray-300 p-2">
-                            </div>
-
-                            <div class="flex gap-4">
-
-                                <select type="text" name="adviser_id" id="adviser_id" class="flex-1 rounded-md border text-black border-gray-300 p-2">
-                                    <option selected>Elige un asesor</option>
-                                    @foreach ($Teachers as $teacher)
-                                    <option value="{{ $teacher->teacher_name }}">{{ $teacher->name_teacher }}</option>
+                                <select name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
+                                    <option selected>Elige una división</option>
+                                    @foreach ($Divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->division_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="flex gap-4"></div>
-                            <select name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
-                                <option selected>Elige una división</option>
-                                @foreach ($Divisions as $division)
-                                <option value="{{ $division->id }}">{{ $division->division_name }}</option>
-                                @endforeach
-
-                            </select>
+                            <div class="flex justify-center">
+                                <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                            </div>
+                        </form>
                     </div>
-                    <!-- Puedes agregar más campos aquí según sea necesario -->
-                    <div class="flex justify-center">
-                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                    </div>
+                </div>
+            </div>
+        </div>
     </form>
-</div>
-</div>
-</div>
-</div>
-</form>
 </div>
