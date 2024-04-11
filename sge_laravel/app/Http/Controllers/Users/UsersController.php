@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Division;
 use App\Models\Career;
-
+use App\Models\Teachers;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -23,8 +23,9 @@ class UsersController extends Controller
         $Divisions = Division::all();
         $users = User::paginate(10);
         $careers = Career::all();
+        $Teachers = Teachers::all();
 
-        return view('UserManagement.users', compact('users', 'roles','Divisions','careers'));
+        return view('UserManagement.users', compact('users', 'roles','Divisions','careers','Teachers'));
     }
 
 

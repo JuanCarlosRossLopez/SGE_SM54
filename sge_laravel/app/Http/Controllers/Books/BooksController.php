@@ -50,12 +50,15 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+
             'student_ids.*' => 'required|exists:students,id',
-            /* 'book_name' => 'required|max:255|min:3',
-                'voucher'=> 'required|mimes:jpeg,png,jpg',
-            'book_description' => 'required|max:255|min:3',
-            'author' => 'required|max:255|min:3',
-            'students_id' => 'required'*/
+            'book_name' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'voucher' => 'required|mimes:jpeg,png,jpg',
+            'book_front_page' => 'required|mimes:jpeg,png,jpg',
+            'book_description' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'author' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'price' => 'required|numeric|',
+
         ]);
 
         $libro = new Books();
@@ -67,7 +70,7 @@ class BooksController extends Controller
             $libro->voucher = $name;
 
             $file = $request->file('book_front_page');
-            $name = time() ."_front_page_". $file->getClientOriginalName();
+            $name = time() . "_front_page_" . $file->getClientOriginalName();
             $file->move(public_path() . '/books/', $name);
             $libro->book_front_page = $name;
         }
@@ -106,8 +109,7 @@ class BooksController extends Controller
 
 
 
-        return back()->with('notificacion', 'Su libro se agrego correctamente esta en revision');
-        ;
+        return back()->with('notificacion', 'Su libro se agrego y correctamente esta en revisión');;
         // return redirect()->route('super_admin.book');
     }
 

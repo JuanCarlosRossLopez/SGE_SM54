@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Teachers;
 use App\Models\Division;
 use App\Models\User;
+use PhpOffice\PhpWord\Shared\Validate;
 use Spatie\Permission\Models\Role;
 
 class TeachersController extends Controller
@@ -87,26 +88,36 @@ class TeachersController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-       
-        $user_id = $request->id_user;
 
-        $user = User::find($user_id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+
+    {
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'nombre asesor' => 'required',
+            'nomina' => 'required',
+            'division' => 'required',
+        ]);
+       
+
+        $user = User::find($id);
+        $user-> name = $request->input('name');
+        $user-> email = $request->input('email');
+        $user-> password = bcrypt($request->input('password'));
         $user->save();
 
-
-
-        $teacher = Teachers::find($id);
-        $teacher->name_teacher = $request->name_teacher;
-        $teacher->payroll = $request->payroll;
-        $teacher->id_user = $request->id_user;
-        $teacher->division_id = $request->division_id;
+        $teacher_id = $user->teachers->id;
+        
+        $teacher = Teachers::find($teacher_id);
+        $teacher->name_teacher = $request->input('name_teacher');
+        $teacher->payroll = $request->input('payroll');
+        $teacher->id_user = $id;
+        $teacher->division_id = $request->input('division_id');
         $teacher->save();
 
-        return redirect('usuarios')->with('notification', 'Teacher updated successfully');
+        return redirect('usuarios')->with('notification', 'Asesor actualizado correctamente');
     }
 
     /**
@@ -114,13 +125,21 @@ class TeachersController extends Controller
      */
     public function destroy(string $id)
     {
-        $teacher = Teachers::find($id);
+
+
+
+        $user = User::find($id);
+
+        $teacher_id = $user->teachers->id;
+
+
+
+        $teacher = Teachers::find($teacher_id);
     
-        if (!$teacher) {
-            return redirect('maestros')->with('error', 'Teacher not found');
-        }
-    
+   
         $teacher->delete();
-        return redirect('maestros')->with('notification', 'Teacher deleted successfully');
+
+        $user->delete();
+        return redirect('usuarios')->with('notification', 'Teacher deleted successfully');
     }
 }    

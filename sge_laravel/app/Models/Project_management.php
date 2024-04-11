@@ -31,6 +31,7 @@ class Project_management extends Model
         'end_date',
         'user_id',
         'status_id',
+        'work_area',
     ];
 
     protected $table = 'project_management';

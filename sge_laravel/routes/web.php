@@ -45,6 +45,7 @@ use App\Http\Controllers\ChartController;
 |
 */
 
+Route::post('/carreras/storeMasivo', [CareerController::class, 'storeMasivo'])->name('carreras.storeMasivo');
 
 Route::get('/Perfil_Maestro', function () {
     return view('teachers.userTeacher');
@@ -196,7 +197,8 @@ Route::get('/project_approval_data', [ChartController::class, 'projectApprovalDa
 Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
 Route::resource('asignar_alumnos', TeachingAdviceController::class);
-
+Route::get('asignar_alumnos/{teachingAdvice}/edit', [TeachingAdviceController::class, 'edit'])->name('teaching_advices.edit');
+Route::put('asignar_alumnos/{teachingAdvice}', [TeachingAdviceController::class, 'update'])->name('teaching_advices.update');
 Route::resource('mis_asesorados', TeacherDashboardController::class);
 
 

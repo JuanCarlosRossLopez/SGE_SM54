@@ -1,5 +1,5 @@
 <div id="edit{{ $user->id }}" class="modal-edit-asesor  h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-    <form method="POST" action="{{ url('maestros', $user->teachers->id) }}">
+    <form method="POST" action="{{ url('maestros', $user->id) }}">
         @method('PUT')
         @csrf
 
@@ -21,18 +21,28 @@
                             @method('PUT')
                             <div class="flex gap-4">
                                 <div class="flex flex-col gap-4">
-                                    <input type="hidden"  value="{{$user->id}}" name="id_user" >
                                     <input type="text" value="{{$user->name}}" name="name" id="name" placeholder="Nombre del usuario" class="rounded-md border border-gray-300 p-2">
+                                    @error('name')
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                                    @enderror
                                     <input type="email" value="{{$user->email}}" name="email" id="email" placeholder="Correo electrónico" class="rounded-md border border-gray-300 p-2">
+                                    @error('email')
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                                    @enderror
                                     <input type="password" name="password" id="password" placeholder="Contraseña" class="rounded-md border border-gray-300 p-2" value="{{$user->password}}">
+                                    @error('password')
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                                    @enderror
                                     <input type="text" value="{{$user->teachers->name_teacher}}" name="name_teacher" id="name_teacher" placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
-
-                                 
-
+                                    @error('name_teacher')
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="flex flex-col gap-4">
                                     <input type="number" value="{{$user->teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
-
+                                    @error('nomina')
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                                    @enderror
                                     <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
                                         <option value="{{$user->teachers->division_id}}" selected>{{$user->teachers->division ? $user->teachers->division->division_name : 'Sin división'}}</option>
 
@@ -40,6 +50,10 @@
                                         <option value="{{$divisions->id}}">{{$divisions->division_name}}</option>
                                         @endforeach
                                     </select>
+                                    @error('division_id')
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                                    @enderror
+
 
                                 </div>
                             </div>

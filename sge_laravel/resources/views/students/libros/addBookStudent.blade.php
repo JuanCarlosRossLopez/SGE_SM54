@@ -7,7 +7,9 @@
                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
             </button>
         </div>
-
+@php
+$id = Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado';
+@endphp
         <div class="bg-white p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class=" max-h-full h-auto">
@@ -21,10 +23,8 @@
                             </label>
                             <input
                                 class="appearance-none block w-full h-2 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                id="grid-first-name" type="text" name="book_name" placeholder="Nombre del libro">
-                            @error('book_name')
-                                <span style="color:red">{{ $message }}</span>
-                            @enderror
+                                id="grid-first-name" type="text" name="book_name" value="{{old('book_name')}}" placeholder="Nombre del libro">
+                           
 
                         </div>
                         <div class="w-full  px-3">
@@ -34,10 +34,8 @@
                             </label>
                             <input
                                 class="block w-full text-sm text-gray-900 border border-gray-200 rounded-lg cursor-pointer bg-gray-50  py-3 px-4 focus:outline-none focus:border-gray-500 "
-                                name="voucher" type="file">
-                            @error('book_front_page')
-                                <span style="color:red">{{ $message }}</span>
-                            @enderror
+                                name="voucher"  value="{{old('voucher')}}" type="file">
+                            
                         </div>
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -46,10 +44,8 @@
                             </label>
                             <input
                                 class="block w-full text-sm bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  cursor-pointer focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-last-name" name="book_front_page" type="file">
-                            @error('book_front_page')
-                                <span style="color:red">{{ $message }}</span>
-                            @enderror
+                                id="grid-last-name" name="book_front_page"  value="{{old('book_front_page')}}" type="file">
+                            
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -60,10 +56,8 @@
                             </label>
                             <textarea
                                 class="appearance-none w-full h-40  bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 text-start  focus:outline-none focus:bg-white focus:border-gray-500"
-                                name="book_description"></textarea>
-                            @error('book_description')
-                                <span style="color:red">{{ $message }}</span>
-                            @enderror
+                                name="book_description"  value="{{old('book_description')}}"></textarea>
+                            
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-2">
@@ -74,10 +68,8 @@
                             </label>
                             <input
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-city" name="author" type="text" placeholder="Autor">
-                            @error('author')
-                                <span style="color:red">{{ $message }}</span>
-                            @enderror
+                                id="grid-city" name="author" type="text"  value="{{old('author')}}" placeholder="Autor">
+                            
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -86,15 +78,13 @@
                             </label>
                             <input
                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-city" name="price" type="text" placeholder="$$$$">
-                            @error('price')
-                                <span style="color:red">{{ $message }}</span>
-                            @enderror
+                                id="grid-city" name="price"  value="{{old('price')}}" type="text" placeholder="$$$$">
+                            
                         </div>
                         <div class="">
 
                             <input hidden class=" " name="student_id" type="text"
-                                value="{{ Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado' }}">
+                                value="{{ $id}}">
 
                         </div>
                         <div id="studentContainer">
@@ -107,13 +97,13 @@
                         @endphp
 
                         @if (count($otherStudents) > 0)
-                        <div class=" flex">
+                        <div class=" ">
                             <div
-                                class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                class="">
                                 <label
                                     class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Añadir
                                     otro estudiante
-                                    <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    
                                 <div class="relative dropdown-trigger gap-2">
                                     <button type='button' id="addStudentButton"
                                         class="dropdown-btn button_add_green show-modal2 showmodal2">
