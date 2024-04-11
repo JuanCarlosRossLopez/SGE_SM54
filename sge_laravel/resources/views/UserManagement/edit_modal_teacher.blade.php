@@ -21,7 +21,7 @@
                             @method('PUT')
                             <div class="flex gap-4">
                                 <div class="flex flex-col gap-4">
-                                    <input type="text" value="{{$user->name}}" name="name" id="name" placeholder="Nombre del usuario" class="rounded-md border border-gray-300 p-2">
+                                    <input type="text" value="{{$user->name}}" name="name" id="name" placeholder="Nombre del usuario" class="rounded-md border border-gray-300 p-2" readonly>
                                     @error('name')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                     @enderror

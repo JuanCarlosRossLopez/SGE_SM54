@@ -46,11 +46,8 @@
                     
                     <div class="flex flex-row gap-4 ">
                         <input type="hidden" name="id" value="{{ $book->id }}">
-                        <button class="bg-green-400 rounded w-20 h-12 text-white" type="submit">
+                        <button class="bg-green-300 rounded w-20 h-12 text-white" type="submit">
                             Aceptar
-                        </button>
-                        <button class="bg-red-500 rounded w-20 h-12 text-white">
-                            rechazar
                         </button>
                     </div>
                 </div>

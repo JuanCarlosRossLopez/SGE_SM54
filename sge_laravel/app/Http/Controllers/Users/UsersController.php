@@ -76,16 +76,17 @@ class UsersController extends Controller
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
-        $roleName = $request->input('role');
+
+        $role = Role::where('name', 'Administrador')->first();
+
+
+        $users->assignRole($role);
 
 
 
 
-        $role = Role::where('name', $roleName)->first();
-        if ($role) {
-            $users->assignRole($role);
-        }
 
+        
 
         return redirect('usuarios')->with('notificacion', "Usuario creado correctamente");
 

@@ -72,28 +72,17 @@
 
                                             </td>
                                             <td class="trowc ">
-                                                <?php
-                                                //Jwjdskjds esto lo enseño villa XDDD
-                                                $coloresPorPalabra = [
-                                                    'Crear' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
-                                                    'Leer' => ['bg' => '#1839a6cb', 'text' => '#e1e7fc'],
-                                                    'Actualizar' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
-                                                    'Eliminar' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
-                                                ];
-                                                ?>
+                                              
 
                                                 @foreach ($role->permissions as $permission)
-                                                    @if (array_key_exists($permission->name, $coloresPorPalabra))
-                                                        @php
-                                                            $color = $coloresPorPalabra[$permission->name];
-                                                        @endphp
+                                                
                                                         <label class="text-base font-semibold px-2 rounded"
-                                                            style="background-color: {{ $color['bg'] }}; color: {{ $color['text'] }}">
+                                                            >
                                                             {{ $permission->name }}
                                                         </label>
-                                                    @endif
                                                 @endforeach
                                             </td>
+
                                             <td class="trowc">
 
 
