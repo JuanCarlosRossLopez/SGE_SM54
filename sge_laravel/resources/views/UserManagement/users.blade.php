@@ -584,6 +584,7 @@
                                     @elseif($user->student)
                                     <p>
                                         @include('UserManagement.edit_modal_student')
+                                        @include('UserManagement.view_modal_student')
 
                                     </p>
                                     @elseif($user->presidencies)
