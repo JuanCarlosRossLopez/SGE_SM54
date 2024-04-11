@@ -29,7 +29,25 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+
+        if ($user->hasRole('Estudiante')) {
+            return redirect()->route('students.activities_calendar'); // Cambiar 'student.dashboard' al nombre de tu ruta para el panel de estudiante
+        } elseif ($user->hasRole('Administrador')) {
+            return redirect()->route('dashboard');
+         }elseif($user->hasRole('Presidente')){
+             return redirect()->route('dashboard-presidencial');
+            }elseif($user->hasRole('Asesor')){
+                return redirect('/dashboard_asesor');
+            }elseif($user->hasRole('Aspirante')){
+                return redirect()->route('students.activities_calendar'); // Cambiar 'student.dashboard' al nombre de tu ruta para el panel de estudiante
+
+            }elseif($user->hasRole('Cordinacion')){
+                return redirect('/dashboard_coordinacion');
+        } else {
+            // Ruta Aca deberia mandar de usuario sin rol o no autorizado 
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 
     /**
