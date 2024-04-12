@@ -49,17 +49,41 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
+
+       $messages=  [
+            'book_name.required' => 'El nombre del libro es requerido',
+            'book_name.max' => 'El nombre del libro no puede tener más de 255 caracteres',
+            'book_name.min' => 'El nombre del libro no puede tener menos de 3 caracteres',
+            'book_name.regex' => 'El nombre del libro solo puede contener letras y números',
+            'voucher.required' => 'La imagen del comprobante es requerido',
+            'voucher.mimes' => 'La imagen del comprobante debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_front_page.required' => 'La imagen de la portada del libro es requerido',
+            'book_front_page.mimes' => 'La imagen de la portada del libro debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_description.required' => 'La descripción del libro es requerido',
+            'book_description.max' => 'La descripción del libro no puede tener más de 255 caracteres',
+            'book_description.min' => 'La descripción del libro no puede tener menos de 3 caracteres',
+            'book_description.regex' => 'La descripción del libro solo puede contener letras y números',
+            'author.required' => 'El autor del libro es requerido',
+            'author.max' => 'El autor del libro no puede tener más de 255 caracteres',
+            'author.min' => 'El autor del libro no puede tener menos de 3 caracteres',
+            'author.regex' => 'El autor del libro solo puede contener letras y números',
+            'price.required' => 'El precio del libro es requerido',
+            'price.numeric' => 'El precio del libro debe ser un número',
+            'student_ids.*.required' => 'El nombre del estudiante es requerido',
+
+        ];
+
         $request->validate([
 
             'student_ids.*' => 'required|exists:students,id',
-            'book_name' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'book_name' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s:áéíóúÁÉÍÓÚ]+$/',
             'voucher' => 'required|mimes:jpeg,png,jpg',
             'book_front_page' => 'required|mimes:jpeg,png,jpg',
-            'book_description' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
-            'author' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'book_description' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s:áéíóúÁÉÍÓÚ]+$/',
+            'author' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s:áéíóúÁÉÍÓÚ]+$/',
             'price' => 'required|numeric|',
 
-        ]);
+        ],$messages);
 
         $libro = new Books();
 

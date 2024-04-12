@@ -87,12 +87,13 @@
                                     @if ($userBooks)
                                         @foreach ($userBooks as $book)
                                             <h1 class="text-[18px] mb-6">Mis libros</h1>
-                                            <button class="showView  rounded-md border text-black w-fit"
+                                            <div class="showView relative  rounded-md border text-black w-fit"
                                                 data-target="#view{{ $book->id }}">
                                                 <div
                                                     class="flex flex-col w-36 transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
                                                     <img class=" w-56" src="{{ asset('books/' . $book->book_front_page) }}"
                                                         alt="img_book">
+                                                        
                                                     <span
                                                         class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
                                                     <span class=" font-light text-[15px] text-[#111111]">
@@ -103,10 +104,16 @@
                                                         <span class="font-light text-[15px] text-[#111111]">En
                                                             Revision</span>
                                                     @endif
-
+                                                                <div>
+                                                                    <button class="showEdit absolute-child" data-target="#edit{{ $book->id }}">
+                                                                        <div class="button_edit_yellow">
+                                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                                        </div>
+                                                                    </button>
+                                                                </div>
 
                                                 </div>
-                                            </button>
+                                            </div>
                                             @include('students.libros.viewBookStudent')
                                         @endforeach
                                     @else
