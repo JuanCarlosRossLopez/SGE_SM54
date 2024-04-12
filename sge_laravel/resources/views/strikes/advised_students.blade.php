@@ -23,24 +23,28 @@
                         <table class="standar_table">
                             <thead class="standar_thead">
                                 <tr>
-                                    <th class="theader">Asesor</th>
                                     <th class="theader">Alumno</th>
+                                    <th class="theader">Matrícula</th>
+                                    <th class="theader">Correo electrónico</th>
                                     <th class="theader">Anteproyecto</th>
-                                    <th class="theader">Amonestaciones</th>
+                                    <th class="theader">División</th>
                                 </tr>
                             </thead>
                             <tbody class="tbody">
 
                                 @if ($Advising->isEmpty())
-                                    <label class="w-full font-sans font-semibold text-red-600 bg-red-100 p-2 flex justify-center items-center">Usted no tiene alumnos asesorados</lab>
+                                    <label class="w-fit font-sans font-semibold text-red-600 bg-red-100 p-2 flex justify-center items-center">Usted no tiene alumnos asesorados</lab>
                                 @else
                                     @foreach ($Advising as $advising)
                                         <tr class="trow">
                                             <td class="trowc">
-                                                {{ $advising->teacher ? $advising->teacher->name_teacher : 'Wtf porque hay error?' }}
+                                                {{ $advising->teacher ? $advising->student->student_name : 'Wtf porque hay error?' }}
                                             </td>
                                             <td class="trowc">
-                                                {{ $advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}
+                                                {{ $advising->student ? $advising->student->id_student : 'No se encontro el alumno' }}
+                                            </td>
+                                            <td class="trowc">
+                                                {{$advising->student->user->email}}
                                             </td>
                                             <td class="trowc">
                                                 @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
@@ -51,6 +55,11 @@
                                                     Sin anteproyecto
                                                 @endif
                                             </td>
+                                            <td >
+                                                {{$advising->student->division->division_name}}
+                                            </td>
+                                            
+                                            
                                         </tr>
                                     @endforeach
                                 @endif
