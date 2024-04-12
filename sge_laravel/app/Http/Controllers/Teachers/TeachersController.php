@@ -45,13 +45,6 @@ class TeachersController extends Controller
 
 
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'name_teacher' => 'required',
-            'payroll' => 'required',
-            'id_user' => 'required', 
-            'division_id' => 'required',
         ]);
 
         $user = new User();

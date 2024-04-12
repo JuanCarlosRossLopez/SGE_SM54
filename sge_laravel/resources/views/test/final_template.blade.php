@@ -227,15 +227,6 @@
 
                         <!--END Todo lo que el administrador puede navegar-->
 
-
-                        @role('Cordinacion')
-                            <li>
-                                <a href="/Dashboard_Direccion" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio Dirección
-                                </a>
-                            </li>
-                        @endrole
                         @role('Cordinacion')
                             <li>
                                 <a href="/dashboard_coordinacion" class="buttons_sidebar">
