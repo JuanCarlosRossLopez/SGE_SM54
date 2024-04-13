@@ -147,7 +147,7 @@
                         @endrole
                         @role('Administrador')
                             <li>
-                                <a href="/divison" class="buttons_sidebar ">
+                                <a href="/division" class="buttons_sidebar ">
                                     <i class="fa-solid fa-gear"></i>
                                     Gestiónar divisiones
                                 </a>
@@ -163,9 +163,9 @@
                         @endrole
                         @role('Administrador')
                             <li>
-                                <a href="/carreras" class="buttons_sidebar ">
+                                <a href="/grupos" class="buttons_sidebar ">
                                     <i class="fa-solid fa-gear"></i>
-                                    Gestión de carreras
+                                    Gestión de grupos
                                 </a>
                             </li>
                         @endrole
