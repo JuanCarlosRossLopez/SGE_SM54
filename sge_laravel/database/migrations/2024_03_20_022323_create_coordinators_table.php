@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('coordinators', function (Blueprint $table) {
             $table->id();
             $table->string('coordinator_name');
-            $table->integer('payroll')->unique();
+            $table->integer('payroll',11)->unique();
             $table->foreignId('division_id')
                 ->nullable()
                 ->constrained()

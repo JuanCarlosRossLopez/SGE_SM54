@@ -411,6 +411,9 @@
                                                         @enderror
                                                         <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                                                         <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
+                                                        @error('payroll')
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                         <script>
                                                             function maxLengthCheck(object) {
                                                                 if (object.value.length > 11)

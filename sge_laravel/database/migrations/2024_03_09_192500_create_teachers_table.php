@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,15 +14,14 @@ return new class extends Migration {
         Schema::create('Teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name_teacher')->unique();
-            $table->integer('payroll')->unique();
+            $table->string('payroll', 11)->unique();
             $table->foreignId('id_user')->nullable()->constrained('users')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
             $table->foreignId('division_id')->nullable()->constrained('divisions')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-                $table->timestamps();
-
+            $table->timestamps();
         });
     }
 
