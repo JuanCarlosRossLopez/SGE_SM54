@@ -45,7 +45,7 @@ use App\Http\Controllers\ChartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::post('/grupos/storeMasivo', [GroupController::class, 'storeMasivo'])->name('grupos.storeMasivo');
 Route::post('/carreras/storeMasivo', [CareerController::class, 'storeMasivo'])->name('carreras.storeMasivo');
 
 Route::get('/Perfil_Maestro', function () {
