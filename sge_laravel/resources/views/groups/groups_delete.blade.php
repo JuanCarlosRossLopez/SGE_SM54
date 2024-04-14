@@ -16,10 +16,10 @@
                     <form action="{{ route('grupos.destroy', $grupo->id) }}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="bg-red-500 p-2 rounded-md">
+                        <button type="submit" class="bg-red-500 p-2 rounded-md text-white">
                             Sí
                         </button>
-                        <button type="button" class="bg-blue-500 p-2 rounded-md close-modal">
+                        <button type="button" class="bg-blue-500 p-2 rounded-md close-modal text-white">
                             No
                         </button>
                     </form>
