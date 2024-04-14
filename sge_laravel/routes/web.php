@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\DocumentSend\DocumentsController;
 use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
@@ -344,7 +345,6 @@ Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
 
     Route::resource('carreras', CareerController::class);
     Route::resource('grupos', GroupController::class);
-
 });
 
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
@@ -356,6 +356,7 @@ Route::resource('roles', RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
 Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');
+Route::put('usuarios/{id}/permissions', [UsersController::class, 'roles_permissions_store'])->name('user.edit_permission');
 
 
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');
