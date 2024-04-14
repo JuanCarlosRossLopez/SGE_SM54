@@ -24,40 +24,37 @@
                         </div>
 
                         <div class="inside_content_conteiner">
-                            <div class="">
-                                <div
-                                    class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
-                                    <label
-                                        class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                        grupos <i class="fa-solid fa-arrow-right flex"></i></label>
+                            <div class="flex justify-center"> <!-- Ajusta el contenedor flex para centrar los botones -->
+                                <div class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                    <label class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear grupos <i class="fa-solid fa-arrow-right flex"></i></label>
                                     <div class="relative dropdown-trigger gap-2">
                                         <button class="dropdown-btn button_add_green show-modal-add">
                                             <i class="fa-solid fa-circle-plus"></i>
                                         </button>
-                                        <div
-                                            class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                            <a
-                                                class="show-modal-add block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                        <div class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                            <a class="show-modal-add block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <!-- Aquí colocamos el botón de agregar grupos masivamente -->
+                                <div class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                    <label class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear grupos masivo <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    <div class="relative dropdown-trigger gap-2">
+                                        <button class="dropdown-btn button_add_green show-modal-add-masivo">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button>
+                                        <div class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                            <a class="show-modal-add-masivo block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
-                            <label
-                                class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                grupos masivo <i class="fa-solid fa-arrow-right flex"></i></label>
-                            <div class="relative dropdown-trigger gap-2">
-                                <button class="dropdown-btn button_add_green show-modal-add-masivo">
-                                    <i class="fa-solid fa-circle-plus"></i>
-                                </button>
-                                <div
-                                    class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                    <a
-                                        class="show-modal-add-masivo block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        
+
+
                         <div class="table_conteiner">
                             <table class="standar_table">
                                 <thead class="standar_thead">
@@ -258,4 +255,5 @@
                     }
                 });
             </script>
+        </div>
         @endsection
