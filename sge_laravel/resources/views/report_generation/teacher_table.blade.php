@@ -67,7 +67,7 @@
                                                             <input type="hidden" name="type"
                                                                 value="{{ $type }}">
                                                             <input type="hidden" name="student_id"
-                                                                value="{{ $student->id }}">
+                                                                value="{{ $student->student_id }}">
                                                             <button type="submit" class="bg-blue-500 p-2 rounded-md">
                                                                 Aceptar
                                                             </button>

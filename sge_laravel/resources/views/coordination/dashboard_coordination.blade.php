@@ -1,159 +1,181 @@
-@extends('test.test_template')
+@extends('test.final_template')
 @section('title')
     Panel de control coordinación
 @endsection
 @section('contenido')
     <div class="back_conteiner">
-        <div class="top_conteiner">
-            <label>Dashboard Coordinación</label>
-            <label>
-                <!-- Este svg es el icono -->
-                <i class="fa-solid fa-user-tie"></i>
-            </label>
-        </div>
-        <div class=" conteiner_cards">
-            <div class="conteiner_cards1 flex flex-col w-[50rem]">
-                <div class="content_conteiner w-fit h-fit">
-                    <label class="conteiner_word_title flex flex-col items-center">Actividades diarias</label>
-                    <div class="conteiner_cards2 ">
-                        <!-- Panel 1 -->
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Subir excel</label>
-                                <button class="w-[2rem] h-[2rem] ver-Agregar hover:bg-slate-300 rounded-full ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Enviar
-                                    reporte/informe</label>
-                            </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
+        <div class="conteiner_cards justify-center flex flex-row">
+            <div class="conteiner_cards1 flex flex-col w-3/4">
 
+                <!-- Contenedor para cards de acciones -->
+                <div class="conteiner_card">
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
+                            </div>
+                            <div class="">
+                                <h1></h1>
+                                <div class="flex flex-col gap-1 mt-[20px]">
+                                    <a href="/informes" class="buttons_card_blue">Ir a Generación de Informes</a>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Panel 1 -->
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Subir pdf</label>
-                                <button class="w-[2rem] h-[2rem] ver-Agregar2 hover:bg-slate-300 rounded-full ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Enviar
-                                    reporte/informe</label>
-                            </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
-                            </div>
-                        </div>
-                        <!-- Panel 1 -->
-                        <div class="bg-white p-3 rounded">
-                            <div class="w-[15rem] text-center flex flex-row items-center">
-                                <label class="font-semibold font-poppins text-lg text-start w-full">Subir word</label>
-                                <button class="w-[2rem] h-[2rem] ver-Agregar3 hover:bg-slate-300 rounded-full ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <label class="font-normal font-poppins text-base text-start w-full">Enviar documento</label>
-                            </div>
-                            <div class="flex flex-row items-center justify-start font-bold text-gray-400 text-[13px] gap-2">
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-
-            </div>
-            <div class="content_conteiner h-fit p-1 w-fit ml-[1.5rem]">
-                <div class="flex flex-col gap-1">
-                    <label class="conteiner_word_title  h-fit flex flex-col items-center">Otras opciones</label>
-                    <div class="bg-white p-6 rounded shadow-md">
-                        <div class="w-[16rem] text-center flex flex-row items-center mb-4">
-                            <label class="font-semibold font-poppins text-lg">Visualizar Libros</label>
+                    <!-- FINAL CARD DISEÑADA -->
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
+                            </div>
+                            <div class="">
+                                <h1></h1>
+                                <div class="flex flex-col gap-1 mt-[20px]">
+                                    <a href="/gestion_libros" class="buttons_card_blue">Ir a Gestion de libros</a>
+                                </div>
+                            </div>
                         </div>
-
-                        <ul>
-                            <li class="py-4 border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 1
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Daniel</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="py-4 border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 2
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Salmerón</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="py-4 border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 3
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Boris</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="py-4">
-                                <div class="flex items-center">
-                                    <div class="mr-4">
-                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">
-                                            Libro 4
-                                        </p>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Autor: <span class="font-bold">Alejandro</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
-                    <button type="button"
-                        class="bg-[#01A080] verLibro items-center text-[#F6F6F6] cursor-pointer text-center rounded-[5px] border-none hover:bg-[#DFDFDF] p-[1px] px-[4px]"
-                        onclick="window.location.href='/libros'">
-                        Ver más
-                    </button>
+                    <!-- FINAL CARD DISEÑADA -->
+                    <!-- INICIO CARD DISEÑADA -->
+                    <div class="item-1">
+                        <div class="card">
+                            <div class="flex p-2 bg-[#F1F0F0] rounded-lg h-full items-center">
+                                <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-file-pen"></i></label>
+                            </div>
+                            <div class="">
+                                <h1></h1>
+                                <div class="flex flex-col gap-1 mt-[20px]">
+                                    <a href="/libros" class="buttons_card_blue">Ir a Libros</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FINAL CARD DISEÑADA -->
                 </div>
             </div>
+
+            <div class="w-1/5 h-fit gap-0 flex flex-col">
+                <div class="content_conteiner h-fit p-2 card flex justify-center">
+                    <div class="flex flex-col gap-2 items-center">
+                        <a href="/historial_de_memorias" class="buttons_card_green">
+                            <i class="fi fi-sr-memo-circle-check flex"></i><button> Ver memorias
+                                finalizadas</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-    <div class="agregar h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+        <div class=" ml-[30px]">
+            <div class="flex flex-wrap"> <!-- Contenedor principal con flexbox y wrap para alinear los elementos -->
+                <!-- Grafica 1 -->
+                <div class="content_container  h-fit p-1 w-fit md:ml-0 sm:ml-0 mb-4 mt-10">
+                    <!-- Aquí ajusté el margen izquierdo y añadí margen inferior -->
+                    <label class="container_word_title w-full flex flex-col items-center"></label>
+                    <div class="container_cards w-full items-center">
+                        <!-- Panel 1 -->
+                        <div class="bg-black rounded">
+                            <div class="line-chart-container text-center items-center">
+                                <h1>AVANCE DE LOS ALUMNOS</h1>
+                                <canvas id="myChart" width="1200" height="590"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Grafica 2 -->
+                <div class="p-4 ml-[70px]">
+                    <div class="content_container h-fit p-1 w-fit md:ml-0 sm:ml-0 mb-4">
+                        <!-- Aquí ajusté el margen izquierdo y añadí margen inferior -->
+                        <div class="flex flex-col gap-1">
+                            <label class="container_word_title h-fit flex flex-col items-center">Progresos</label>
+        
+                            <div class="bg-white p-3 rounded">
+                                <div class="flex flex-col items-center">
+                                    <div class="progress-item ml-[20px]">
+                                        <label class="font-semibold font-poppins text-base">PROGRESO ANTEPROYECTOS</label>
+                                        <svg width="190" height="190" class="progress-chart">
+                                            <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                            </circle>
+                                            <circle cx="85" cy="85" r="80" class="progress-front1" fill="none"
+                                                stroke-dasharray="0 1000000"></circle>
+                                            <g class="progress-text">
+                                                <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                    id="percentage1">0%</text>
+                                            </g>
+                                        </svg>
+                                        <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="bg-white p-3 rounded mt-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="progress-item">
+                                        <label class="font-semibold font-poppins text-base">ESTADÍAS FINALIZADAS</label>
+                                        <svg width="190" height="190" class="progress-chart">
+                                            <circle cx="85" cy="85" r="80" class="progress-back" fill="none">
+                                            </circle>
+                                            <circle cx="85" cy="85" r="80" class="progress-front2" fill="none"
+                                                stroke-dasharray="0 1000000"></circle>
+                                            <g class="progress-text">
+                                                <text x="92" y="88" alignment-baseline="middle" text-anchor="middle"
+                                                    id="percentage2">0%</text>
+                                            </g>
+                                        </svg>
+                                        <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+        
+        
+        
+        
+                        </div>
+                </div>
+    
+                </div>
+        </div>
+        </div>
+        <script src="{{ asset('js/progress.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{{ asset('js/line-chart.js') }}"></script>
+
+
+        <script src="{{ asset('js/progress.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{{ asset('js/line-chart.js') }}"></script>
+
+        <script>
+            const libro = document.querySelector('.libro');
+            const verLibro = document.querySelector('.verLibro');
+            const closeLibro = document.querySelectorAll('.close-Libro');
+
+            verLibro.addEventListener('click', function() {
+                libro.classList.remove('hidden')
+            });
+
+            closeLibro.forEach(close => {
+                close.addEventListener('click', function() {
+                    libro.classList.add('hidden')
+                });
+            });
+        </script>
+
+        <script>
+            // Desplaza automáticamente hacia abajo al cargar la página
+            window.onload = function() {
+                var container = document.querySelector('.content_conteiner');
+                container.scrollTop = container.scrollHeight;
+            };
+        </script>
+        {{-- <div class="agregar h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#01A080] w-[550px] rounded-xl shadow-lg max-w-4xl">
             <div class="border-b px-4 py-2 flex justify-content-end">
                 <button class="close-agregar">
@@ -207,7 +229,8 @@
             </div>
             <div class="bg-white p-2 rounded-b-2xl">
                 <div class="modal-body mb-0 overflow-y-auto h-[190px]">
-                    <h4 class="text-black text-center mt-3 text-2xl font-bold">¡El archivo ha sido enviado correctamente!
+                    <h4 class="text-black text-center mt-3 text-2xl font-bold">¡El archivo ha sido enviado
+                        correctamente!
                     </h4>
                     <div class=" flex justify-center">
                         <img src="{!! asset('img/check.png') !!}" class="w-[50px] h-[50px] items-center mt-[20px]">
@@ -215,104 +238,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <script src="{{ asset('js/progress.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ asset('js/line-chart.js') }}"></script>
-
-    <script>
-        const libro = document.querySelector('.libro');
-        const verLibro = document.querySelector('.verLibro');
-        const closeLibro = document.querySelectorAll('.close-Libro');
-
-        verLibro.addEventListener('click', function() {
-            libro.classList.remove('hidden')
-        });
-
-        closeLibro.forEach(close => {
-            close.addEventListener('click', function() {
-                libro.classList.add('hidden')
-            });
-        });
-    </script>
-
-    <script>
-        const agregar = document.querySelector('.agregar');
-        const verAgregar = document.querySelector('.ver-Agregar');
-        const closeAgregar = document.querySelectorAll('.close-agregar');
-
-        verAgregar.addEventListener('click', function() {
-            agregar.classList.remove('hidden')
-        });
-        closeAgregar.forEach(close => {
-            close.addEventListener('click', function() {
-                agregar.classList.add('hidden')
-            });
-        });
-    </script>
-    <script>
-        const check = document.querySelector('.check');
-        const verCheck = document.querySelector('.ver-Check');
-        const closeCheck = document.querySelectorAll('.close-Check');
-        const verAgregar2 = document.querySelector('.ver-Agregar2');
-        const verAgregar3 = document.querySelector('.ver-Agregar3');
-
-        verAgregar2.addEventListener('click', function() {
-            agregar.classList.remove('hidden')
-        });
-        verAgregar3.addEventListener('click', function() {
-            agregar.classList.remove('hidden')
-        });
-        verCheck.addEventListener('click', function() {
-            check.classList.remove('hidden')
-        });
-
-        closeCheck.forEach(close => {
-            close.addEventListener('click', function() {
-                check.classList.add('hidden')
-            });
-        });
-    </script>
-    {{-- <script>
-        const modal3 = document.querySelector('.modal3');
-        const showModal3 = document.querySelector('.show-modal3');
-        const closeModal3 = document.querySelectorAll('.close-modal3');
-
-        showModal3.addEventListener('click', function() {
-            modal2.classList.remove('hidden')
-        });
-        closeModal3.forEach(close => {
-            close.addEventListener('click', function() {
-                modal1.classList.add('hidden')
-            });
-        });
-    </script> --}}
-
-    <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {}
-        });
-    </script>
-
-    <script>
-        // Desplaza automáticamente hacia abajo al cargar la página
-        window.onload = function() {
-            var container = document.querySelector('.content_conteiner');
-            container.scrollTop = container.scrollHeight;
-        };
-    </script>
-@endsection
+    </div> --}}
+    @endsection
