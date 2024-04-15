@@ -46,6 +46,10 @@
                         </p>
                     @endif
                   
+                    <label for="">Colaboradores</label>
+                    @foreach ($book->students as $student)
+        <p>{{ $student->student_name }}</p>
+    @endforeach
                 </div>
 
 
