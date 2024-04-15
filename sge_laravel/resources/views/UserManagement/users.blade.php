@@ -323,7 +323,7 @@
                                             <form action="{{ route('estudiantes.store') }}" method="POST" class="w-full">
                                                 @csrf
                                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                    <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field">
+                                                    
                                                     <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
 
