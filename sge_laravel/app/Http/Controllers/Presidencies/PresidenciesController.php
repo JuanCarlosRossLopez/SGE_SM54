@@ -71,7 +71,7 @@ class PresidenciesController extends Controller
 
 
 
-        return redirect('presidentes')->with('notificacion', "Presidente creado correctamente");
+        return redirect('usuarios')->with('notificacion', "Presidente creado correctamente");
     }
 
 
@@ -108,14 +108,9 @@ class PresidenciesController extends Controller
             'payroll_president' => 'required'
         ]);
 
-        $user = user::find($id);
+        $user = User::find($id);
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-        $user->save();
-
-        $user_id = $user->id;
-        $role = Role::where('name', 'Presidente')->first();
-        $user->assignRole($role);
         $user->update();
 
         $president_id = $user->presidencies->id;
@@ -124,7 +119,7 @@ class PresidenciesController extends Controller
         $presidencies->president_name = $request->input('president_name');
         $presidencies->president_lastname = $request->input('president_lastname');
         $presidencies->payroll_president = $request->input('payroll_president');
-        $presidencies->user_id = $user_id;
+        $presidencies->user_id = $id;
         $presidencies->career_id = $request->career_id;
         $presidencies->division_id = $request->division_id;
         $presidencies->update();
