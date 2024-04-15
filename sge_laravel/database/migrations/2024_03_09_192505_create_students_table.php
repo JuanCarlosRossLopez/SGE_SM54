@@ -15,8 +15,8 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreCompleto'); // Cambiado el nombre del campo
-            $table->string('+')->unique(); // Manteniendo la matrícula como única
+            $table->string('student_name'); // Cambiado el nombre del campo
+            $table->string('matricula')->unique(); // Manteniendo la matrícula como única
             $table->string('carrera')->nullable(); // Agregando carrera, permitiendo valores nulos
             $table->string('curp')->nullable(); // Agregando CURP, permitiendo valores nulos
             $table->string('grupo')->nullable(); // Agregando grupo, permitiendo valores nulos

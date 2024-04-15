@@ -382,7 +382,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
                         <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
-                        <input type="text" name="nombreCompleto" id="student" placeholder="Nombre del estudiante" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="student_name" id="student" placeholder="Nombre del estudiante" class="rounded-md border border-gray-300 p-2">
                         <div class="relative">
                             <input type="text" name="matricula" id="id_student" placeholder="Matrícula" class="rounded-md border border-gray-300 p-2">
                             <button type="button" id="searchStudentBtn" class="absolute right-0 top-0 bottom-0 px-3">Buscar</button>
@@ -395,7 +395,11 @@
                         <input type="text" name="sexo" id="sexo" placeholder="Sexo" class="rounded-md border border-gray-300 p-2">
                         <input type="text" name="division" id="division" placeholder="División" class="rounded-md border border-gray-300 p-2">
                         <input type="text" name="seguro" id="seguro" placeholder="Seguro" class="rounded-md border border-gray-300 p-2">
-                        <input type="text" name="reingreso" id="reingreso" placeholder="Reingreso" class="rounded-md border border-gray-300 p-2">
+                        <select type="boolean" name="reingreso" id="reingreso" class="rounded-md border border-gray-300 p-2">
+                                                <option disabled selected class="">¿Eres Reingreso?</option>
+                                                <option value="Si">SI</option>
+                                                <option value="No">NO</option>
+                                            </select>
                     </div>
                     <div class="flex justify-center mt-4">
                         <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
@@ -760,7 +764,7 @@
                         document.getElementById('sexo').value = data.sexo;
                         document.getElementById('division').value = data.division;
                         document.getElementById('seguro').value = data.seguro;
-                        document.getElementById('reingreso').value = data.reingreso ? 'Sí' : 'No';
+                        document.getElementById('reingreso').value = data.reingreso ? 'Si' : 'No';
                     })
                     .catch(error => {
                         console.error(error.message);

@@ -65,7 +65,7 @@ class StudentsController extends Controller
 
         // Crear un nuevo estudiante y asignar los valores recibidos de la API
         $student = new Students();
-        $student->nombreCompleto = $request->input('nombreCompleto');
+        $student->student_name = $request->input('student_name');
         $student->matricula = $request->input('matricula');
         $student->carrera = $request->input('carrera');
         $student->curp = $request->input('curp');
