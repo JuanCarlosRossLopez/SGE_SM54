@@ -43,12 +43,11 @@ class PresidenciesController extends Controller
         $request->validate([
             'president_name' => 'required|max:250',
             'president_lastname' => 'required|max:250',
-            'payroll_president' => 'required'
+            'payroll' => 'required'
         ]);
 
         $user = new User();
 
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
@@ -61,7 +60,7 @@ class PresidenciesController extends Controller
         $presidencies = new presidencies();
         $presidencies->president_name = $request->input('president_name');
         $presidencies->president_lastname = $request->input('president_lastname');
-        $presidencies->payroll_president = $request->input('payroll_president');
+        $presidencies->payroll_president = $request->input('payroll');
         $presidencies->user_id = $user_id;
         $presidencies->division_id = $request->division_id;
         $presidencies->career_id = $request->career_id;

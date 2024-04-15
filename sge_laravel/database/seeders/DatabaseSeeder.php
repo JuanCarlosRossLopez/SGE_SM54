@@ -14,6 +14,7 @@ use \App\Models\Status_project;
 use \App\Models\Career;
 use \App\Models\Division;
 use \App\Models\Group;
+use App\Models\Teachers;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,13 +24,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //si hay error al obtener los seeders de empresas comenten el de user y role
-        $user = User::factory(1)->create()->first(); // Obtener el primer usuario de la colección
 
-        $role = Role::where('name', 'Administrador')->first(); // Reemplaza 'nombre_del_rol' con el nombre real del rol
 
-        if ($role) {
-            $user->assignRole($role);
-        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -95,8 +100,23 @@ class DatabaseSeeder extends Seeder
             'career_id' => 1
         ]);
 
-      
 
+        $user = User::factory(1)->create()->first(); // Obtener el primer usuario de la colección
 
+        $role = Role::where('name', 'Administrador')->first(); // Reemplaza 'nombre_del_rol' con el nombre real del rol
+        $role2 = Role::where('name', 'Asesor')->first(); // Reemplaza 'nombre_del_rol' con el nombre real del rol
+        if ($role && $role2) {
+            $user->assignRole($role);
+            $user->assignRole($role2);
+        }
+
+        Teachers::factory(1)->create([
+            'name_teacher' => 'Juan Carlos Perez Perez',
+            'payroll' => '12345678901',
+            'id_user' => $user->id,
+            'division_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ])->first();
     }
 }

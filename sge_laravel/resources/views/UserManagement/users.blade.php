@@ -6,17 +6,48 @@
     <div class="back_conteiner">
         <div class="conteiner_cards justify-center flex flex-row ">
             <div class="conteiner_cards1 flex flex-col w-full m-4">
-                @if (session()->has('notificacion'))
+                @if (session()->has('notification'))
                     <div id="notification"
                         class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 w-full rounded relative">
-                        {{ session('notificacion') }}
+                        {{ session('notification') }}
                     </div>
-                    <script>
-                        setTimeout(function() {
-                            document.getElementById('notification').style.display = 'none';
-                        }, 8000);
-                    </script>
+                @elseif (session()->has('error'))
+                    <div id="errorNotification"
+                        class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 w-full rounded relative">
+                        {{ session('error') }}
+
+                    </div>
+                @else
+                    @if ($errors->any())
+                        <div id="formErrors"
+                            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 w-full rounded relative">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 @endif
+
+                <script>
+                    setTimeout(function() {
+                        const notification = document.getElementById('notification')
+
+                        if (notification) {
+                            notification.style.display = 'none';
+                        }
+
+                        const error_notification = document.getElementById('errorNotification')
+                        if (error_notification) {
+                            error_notification.style.display = 'none';
+                        }
+                        const form_error = document.getElementById('formErrors')
+                        if (form_error) {
+                            form_error.style.display = 'none';
+                        }
+                    }, 5000);
+                </script>
 
                 <!-- Mapeo de anteproyectos -->
                 <div class="content_conteiner w-full h-fit p-4">
@@ -78,7 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                    Usuario</span></button> -->
+                                                                                        Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -127,11 +158,7 @@
                                                     class="flex flex-col items-center">
                                                     @csrf
 
-                                                    <div class="mb-4">
-                                                        <input type="text" name="name" placeholder="Nombre de usuario"
-                                                            class="rounded input-field">
 
-                                                    </div>
                                                     <div class="mb-4">
                                                         <input type="email" name="email"
                                                             placeholder="Correo electronico" class="rounded input-field">
@@ -160,8 +187,7 @@
                                                     <div class="mb-4">
                                                         <label
                                                             class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
-                                                        <input type="number" name="payroll_president"
-                                                            class="rounded input-field">
+                                                        <input type="number" name="payroll" class="rounded input-field">
                                                     </div>
 
 
@@ -357,8 +383,6 @@
                                                     class="w-full">
                                                     @csrf
                                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                        <input type="text" name="name"
-                                                            placeholder="Nombre de usuario" class="rounded input-field">
                                                         <input type="email" name="email"
                                                             placeholder="Correo electronico" class="rounded input-field">
                                                         <input type="password" name="password" placeholder="Contraseña"
@@ -489,27 +513,31 @@
                                                         class="flex flex-col gap-4">
                                                         @csrf
                                                         <div class="flex flex-col gap-4">
-                                                            <input type="text" name="name"
-                                                                placeholder="Nombre de usuario"
-                                                                class="rounded input-field">
                                                             <input type="email" name="email"
                                                                 placeholder="Correo electronico"
                                                                 class="rounded input-field">
+                                                            @error('email')
+                                                                <span class="text-red-500">{{ $message }}</span>
+                                                            @enderror
                                                             <input type="password" name="password"
                                                                 placeholder="Contraseña" class="rounded input-field">
+                                                            @error('password')
+                                                                <span class="text-red-500">{{ $message }}</span>
+                                                            @enderror
                                                             <input type="text" name="teacher_name" id="teacher_name"
                                                                 placeholder="Nombre del asesor"
                                                                 class="flex-1 rounded-md border border-gray-300 p-2">
+                                                            @error('teacher_name')
+                                                                <span class="text-red-500">{{ $message }}</span>
+                                                            @enderror
                                                             <input type="number" name="payroll" id="payroll"
                                                                 placeholder="Número de nómina del asesor"
                                                                 class="flex-1 rounded-md border border-gray-300 p-2"
                                                                 oninput="maxLengthCheck(this)">
-                                                            <script>
-                                                                function maxLengthCheck(object) {
-                                                                    if (object.value.length > 11)
-                                                                        object.value = object.value.slice(0, 11);
-                                                                }
-                                                            </script>
+                                                            @error('payroll')
+                                                                <span class="text-red-500">{{ $message }}</span>
+                                                            @enderror
+
                                                         </div>
 
                                                         <div class="flex gap-4">
@@ -524,6 +552,9 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                        @error('division_id')
+                                                            <span class="text-red-500">{{ $message }}</span>
+                                                        @enderror
 
                                                         <!-- Puedes agregar más campos aquí según sea necesario -->
                                                         <div class="flex justify-center">
@@ -564,7 +595,6 @@
                                                 <td class="trowc"> {{ $user->name }} </td>
                                                 <td class="trowc"> {{ $user->email }} </td>
                                                 <td>
-
                                                     @if ($user->roles->isEmpty())
                                                         <p>No se han asignado roles</p>
                                                     @else
@@ -573,15 +603,14 @@
                                                                 class="italic font-semibold bg-[#18a68a31] px-2 rounded text-[#18A689] md:text-base">{{ $role->name }}</label>
                                                         @endforeach
                                                     @endif
-
-
-
                                                 </td>
 
                                                 <td class="trowc">
                                                     <button class="show-permission"
                                                         data-target="#permissions{{ $user->id }}">
-                                                        permisos
+                                                        <div class="button_permission_green">
+                                                            <i class="fa-solid fa-gear"></i>
+                                                        </div>
                                                     </button>
                                                     @if ($user->teachers)
                                                         <button class="show-modal-edit-teacher"
@@ -590,12 +619,24 @@
                                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                             </div>
                                                         </button>
-                                                        <button class="show-modal-delete-teacher"
-                                                            data-modal="#delete{{ $user->id }}">
-                                                            <div class="button_delete_red">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </div>
-                                                        </button>
+                                                        <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                        @if ($user->id == Auth::user()->id)
+                                                            <button onclick="alert('No puedes borrar tu usuario')">
+                                                                <div class="button_delete_red">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </div>
+                                                            </button>
+                                                        @else
+                                                            <button class="show-modal-delete-teacher"
+                                                                data-modal="#delete{{ $user->id }}">
+                                                                <div class="button_delete_red">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </div>
+                                                            </button>
+                                                        @endif
+                                                        <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+
+
                                                         <button class="show-modal-asesor-view"
                                                             data-modal="#view{{ $user->id }}">
                                                             <div class="button_see_blue">
@@ -613,24 +654,8 @@
                                                         </p>
                                                     @elseif($user->presidencies)
                                                         <p>
-                                                            <button class="show-modal"
-                                                                data-modal="edit_president{{ $user->id }}">
-                                                                <div class="button_edit_yellow">
-                                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                                </div>
-                                                            </button>
+                                                            Editar Estudiante
 
-                                                            <!--<button class="show-modal"
-                                                                data-modal="delete_president_{{ $user->id }}">
-                                                                <div class="button_delete_red">
-                                                                    <i class="fa-solid fa-trash"></i>
-                                                                </div>
-                                                            </button>
-                                                        Modal de eliminar, (En proceso ...);
-                                                        -->
-
-
-                                                            
                                                         </p>
                                                     @elseif($user->coordinators)
                                                         <p>
@@ -693,6 +718,24 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            // Seleccionar todos los campos de entrada con el nombre "payroll"
+            var payrollInputs = document.querySelectorAll('input[name="payroll"]');
+
+            // Iterar sobre cada campo de entrada y asignarle el evento oninput con la función maxLengthCheck
+            payrollInputs.forEach(function(input) {
+                input.oninput = function() {
+                    maxLengthCheck(this);
+                };
+            });
+
+            // Función maxLengthCheck
+            function maxLengthCheck(object) {
+                if (object.value.length > 11)
+                    object.value = object.value.slice(0, 11);
+            }
+        </script>
 
         <script src="{!! asset('js/modals.js') !!}"></script>
 

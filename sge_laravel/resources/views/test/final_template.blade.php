@@ -33,7 +33,8 @@
                         <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
                             class="cursor-pointer p-[0.75rem] w-fit" onclick="location.href='#'">
                     </a>
-                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i class="fa-solid fa-bars"></i></button>
+                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i
+                            class="fa-solid fa-bars"></i></button>
                 </div>
 
                 <ul class="flex flex-col px-4 justify-between">
@@ -112,10 +113,10 @@
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
     <li>
-                                                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                                                <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
-                                                            </button>
-                                                        </li>
+                                                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                                    <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                                                </button>
+                                                            </li>
 @endrole
                             -->
                         <!-- End todo lo que navega el estudiante -->
@@ -185,7 +186,7 @@
                                 </a>
                             </li>
                         @endrole
-                        @role('Presidente|Estudiante|Cordinacion|Administrador|Asesor')
+                        @role('|Estudiante|Cordinacion|Administrador|Asesor')
                             <li>
                                 <a href="/libros" class="buttons_sidebar ">
                                     <i class="fa-solid fa-address-book"></i>
@@ -243,6 +244,21 @@
                                 </a>
                             </li>
                         @endrole
+                        @role('Presidente')
+                            <li>
+                                <a href="/asignar_alumnos" class="buttons_sidebar ">
+                                    <i class="fi fi-ss-assign h-7 w-7"></i>
+                                    Asignar Estudiantes
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Presidente')
+                            <li>
+                                <a href="/profile" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-card"></i> Mi perfil
+                                </a>
+                            </li>
+                        @endrole
 
                         @role('Cordinacion')
                             <li>
@@ -284,13 +300,17 @@
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
+                        @elseif (Auth::user()->presidencies)
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->presidencies->president_name }}</label>
                         @else
                             No se encontró información del usuario para este usuario.
                         @endif
                     </div>
                     <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
                     <div>
-                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i class="fa-solid fa-bars"></i></button>
+                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i
+                                class="fa-solid fa-bars"></i></button>
                     </div>
                     <!-- Quiero que desaparezca de aqui si la vista se vuelve pequeña pero que este si la vista es grande -->
                     <form method="POST" action="{{ route('logout') }}" id="logoutForm" class="logout-forms">
