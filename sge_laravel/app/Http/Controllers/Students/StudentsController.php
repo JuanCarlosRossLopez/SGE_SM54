@@ -3,24 +3,38 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
-use App\Models\Teachers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Students;
 use App\Models\Division;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Http;
 
 class StudentsController extends Controller 
 {
     public function index()
     {
-        $Users = User::all();
         $Divisions = Division::all();
-        $Teachers = Teachers::all();
         $Students = Students::paginate(10);
-        // $teachers = Teachers::with('user')->get();
     
-        return view('students.students', compact('Students','Teachers', 'Divisions', 'Users'));
+        return view('students.students', compact('Students', 'Divisions'));
+    }
+    
+    public function getStudentData($matricula)
+    {
+        $response = Http::get('http://localhost:3000/api/estudiantes/matricula/' . $matricula);
+    
+        if ($response->ok()) {
+            return $response->json();
+        } else {
+            return response()->json(['error' => 'No se encontró ningún estudiante con esa matrícula'], 404);
+        }
+    }
+    
+
+    public function showStudentForm()
+    {
+        return view('students.form');
     }
     
     /**
@@ -28,37 +42,43 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.students', compact('Students'));
+        return view('students.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-
     {
-
+        // Crear un nuevo usuario sin el campo name
         $user = new User();
-
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->save();
 
+        // Asignar el rol de Estudiante al usuario
         $role = Role::where('name', 'Estudiante')->first();
         $user->assignRole($role);
 
+        // Obtener el ID del usuario recién creado
         $user_id = $user->id;
 
-
+        // Crear un nuevo estudiante y asignar los valores recibidos de la API
         $student = new Students();
         $student->student_name = $request->input('student_name');
-        $student->id_student = $request->input('id_student');
-        $student->project_creator = $request->input('project_creator');
-        $student->user_id = $user_id; // Asignar el ID del usuario
-        $student->division_id = $request->input('division_id');
-        $student->anteproject_id = $request->input('anteproject_id');
-        $student->adviser_id = $request->input('adviser_id');        
+        $student->matricula = $request->input('matricula');
+        $student->carrera = $request->input('carrera');
+        $student->curp = $request->input('curp');
+        $student->grupo = $request->input('grupo');
+        $student->cuatrimestre = $request->input('cuatrimestre');
+        $student->fechaNacimiento = $request->input('fechaNacimiento');
+        $student->sexo = $request->input('sexo');
+        $student->division = $request->input('division');
+        $student->seguro = $request->input('seguro');
+        $student->reingreso = $request->input('reingreso');
+        $student->user_id = $user_id;
         $student->save();
+
         return redirect('usuarios')->with('notification', 'Estudiante creado correctamente');
     }
 
@@ -68,7 +88,7 @@ class StudentsController extends Controller
     public function show(string $id)
     {
         $student = Students::find($id);
-        return view('students.show', compact ('student'));
+        return view('students.show', compact('student'));
     }
 
     /**
@@ -86,19 +106,17 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'student_name' => 'required|string|max:255',
-            'id_student' => 'required|string|max:255',
-            'division_id' => 'required|integer',
+
         ]);
 
-            $student = Students::find($id);
-            $student->student_name = $request->input('student_name');
-            $student->id_student = $request->input('id_student');
-            $student->division_id = $request->input('division_id');
+        $student = Students::find($id);
+        $student->student_name = $request->input('student_name');
+        $student->id_student = $request->input('id_student');
+        $student->division_id = $request->input('division_id');
 
-            $student->save();
+        $student->save();
 
-            return redirect('estudiantes')->with('notification', 'Estudiante actualizado correctamente');
+        return redirect('estudiantes')->with('notification', 'Estudiante actualizado correctamente');
     }
 
     /**
@@ -113,6 +131,6 @@ class StudentsController extends Controller
         }
     
         $students->delete();
-        return back()->with('notification', 'Estudiante elimindao correctamente');
+        return back()->with('notification', 'Estudiante eliminado correctamente');
     }
 }

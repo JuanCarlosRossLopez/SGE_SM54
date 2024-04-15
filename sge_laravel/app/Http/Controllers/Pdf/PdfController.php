@@ -13,7 +13,6 @@ use App\Models\User;
 
 class PdfController extends Controller
 {
-    //
     public function anteproyecto(){
         $student = Students::where('user_id', Auth::user()->id)->get(); //asi no se guardará toda la tabla de estudiantes, solo el que esta loggeado
         $adviserID = Teaching_advice::where('student_id', $student->first()->id)->get()->first()->teacher_id; //obtener el id del asesor

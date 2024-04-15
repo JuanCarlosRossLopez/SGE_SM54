@@ -15,7 +15,7 @@
         <img src="{{ asset('image/fondo.svg') }}" alt="fondo" class="">
     </div>
     <div class="w-fit absolute bg-white p-2 px-4 rounded-md flex flex-row items-center justify-center">
-        <div class="w-fit h-fit flex flex-col px-4 my-[1rem] rounded-tl-xl rounded-bl-xl ">
+        <div class="w-[30rem] h-[40rem] flex flex-col px-4 my-[1rem] rounded-tl-xl rounded-bl-xl ">
             <img src="{{ asset('image/LOGO.svg') }}" alt="Logo Image" class="">
 
 
@@ -72,7 +72,7 @@
                 </div>
             </form>
         </div>
-        <div class="h-full bg-white flex p-[0.3rem] rounded-tr-xl rounded-br-xl">
+        <div class="w-[30rem] h-[40rem] flex  px-4 my-[1rem] rounded-tl-xl rounded-bl-xl ">
             <video autoplay muted loop class="object-cover rounded-tr-xl rounded-br-xl">
                 <source src="{{ asset('video/VideoUT4.mp4') }}" type="video/mp4">
                 Your browser does not support the video tag.

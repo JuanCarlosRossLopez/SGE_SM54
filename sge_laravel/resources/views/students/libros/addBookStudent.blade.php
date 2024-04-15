@@ -161,7 +161,7 @@ $id = Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asocia
             @foreach ($otherStudents as $student)
                 var option = document.createElement('option');
                 option.value = '{{ $student->id }}';
-                option.textContent = '{{ $student->student_name }}';
+                option.textContent = '{{ $student->nombreCompleto }}';
                 select.appendChild(option);
             @endforeach
 
