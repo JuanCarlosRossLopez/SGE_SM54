@@ -1,7 +1,7 @@
 
 <div idModal="edit_president{{ $user->id }}"
     class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-    <form method="POST" action="{{ url('presidentes', $user->presidencies->id) }}">
+    <form method="POST" action="{{ url('presidentes', $user->id) }}">
         @method('PUT')
         @csrf
 
@@ -18,7 +18,7 @@
                         <div class="flex items-center justify-between w-full mb-4">
                             <h1 class="text-xl font-bold">Editando al presidente</h1>
                         </div>
-                        <form action="{{ route('presidentes.update', $user->presidencies->id) }}" method="POST"
+                        <form action="{{ route('presidentes.update', $user->id) }}" method="POST"
                             class="flex flex-col gap-4">
                             @csrf
                             @method('PUT')

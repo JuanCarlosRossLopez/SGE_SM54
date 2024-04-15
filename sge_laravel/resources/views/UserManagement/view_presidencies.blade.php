@@ -1,8 +1,8 @@
-<div id="view{{$user->id}}" class="view-modal-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div id="view_presidencies {{$user->id}}" class="view-modal-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <input type="hidden" name="teacher_id" value="{{$user->id}}"> <!-- Incluimos el ID del maestro en un campo oculto -->
-    <div class="bg-[#75928c] w-full rounded shadow-lg max-w-2xl">
+    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
         <div class="border-b px-4 py-2 flex justify-between items-center">
-            <h3 class="font-semibold text-lg ml-60 text-white">Información del asesor</h3>
+            <h3 class="font-semibold text-lg ml-60 text-white">Información del Presidente</h3>
             <button class="close-modal bg-white rounded-full">
                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
             </button>
@@ -17,11 +17,11 @@
 
                     </div>
                     <div>
-                    <span class="font-semibold">Nombre:</span> {{$user->teachers->name_teacher}}
+                    <span class="font-semibold">Nombre:</span> {{$user->presidencies->name_teacher}}
 
                     </div>
                     <div>
-                    <span class="font-semibold">Nomina:</span> {{$user->teachers->payroll}}
+                    <span class="font-semibold">Nomina:</span> {{$user->presidencies->payroll_president}}
 
                     </div>
                     <div>
@@ -29,7 +29,7 @@
 
                     </div>
                     <div>
-                    <span class="font-semibold">División:</span> {{$user->teachers->division->division_name}}
+                    <span class="font-semibold">División:</span> {{$user->presidencies->division->division_name}}
 
                     </div>
                 </div>
