@@ -25,17 +25,14 @@
     <div class="w-screen flex">
         <div class="sidebar_background" id="sidebar">
             <div>
-                <div class="">
-
-                </div>
                 <div class="w-full flex items-center justify-center">
                     <a>
                         <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
                             class="cursor-pointer p-[0.75rem] w-fit" onclick="location.href='#'">
                     </a>
-                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i class="fa-solid fa-bars"></i></button>
+                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i
+                            class="fa-solid fa-bars"></i></button>
                 </div>
-
                 <ul class="flex flex-col px-4 justify-between">
 
                     <div>
@@ -112,10 +109,10 @@
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
     <li>
-                                                            <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                                                <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
-                                                            </button>
-                                                        </li>
+                                                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
+                                                                    <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
+                                                                </button>
+                                                            </li>
 @endrole
                             -->
                         <!-- End todo lo que navega el estudiante -->
@@ -267,7 +264,7 @@
         <div class="content_main_footer h-screen overflow-y-auto overflow-x-hidden">
             <div class="w-full p-3 bg-[#1f2e39]">
                 <div class="w-full flex justify-between items-center">
-                    <div class="text-white text-2xl flex flex-col">
+                    <div class="text-white text-2xl flex flex-col pl-10">
                         @if (Auth::user()->teachers)
                             <label class="nav1">Buen día,
                                 {{ Auth::user()->teachers->name_teacher }}</label>
@@ -284,13 +281,16 @@
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
+                        @elseif (Auth::user()->presidencies)
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->presidencies->president_name }}</label>
                         @else
-                            No se encontró información del usuario para este usuario.
                         @endif
                     </div>
                     <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
                     <div>
-                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i class="fa-solid fa-bars"></i></button>
+                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i
+                                class="fa-solid fa-bars"></i></button>
                     </div>
                     <!-- Quiero que desaparezca de aqui si la vista se vuelve pequeña pero que este si la vista es grande -->
                     <form method="POST" action="{{ route('logout') }}" id="logoutForm" class="logout-forms">

@@ -135,11 +135,6 @@
                                         <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
                                             <form action="{{ route('presidentes.store') }}" method="POST" class="flex flex-col items-center">
                                                 @csrf
-
-                                                <div class="mb-4">
-                                                    <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field">
-
-                                                </div>
                                                 <div class="mb-4">
                                                     <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
                                                 </div>
