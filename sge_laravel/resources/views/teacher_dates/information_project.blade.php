@@ -405,6 +405,7 @@ Plantilla base
                             <label class="w-full text-end px-2 italic font-normal text-[#838383]">Obsevación
                                 realizada {{ $comment->created_at }} <i class="fa-regular fa-clock"></i>
                             </label>
+                            <a href="{{ route('comments.update', ['id' => $comment->id]) }}" class="bg-green-200 rounded-md w-24 p-1 m-2" {{ $comment->status ? 'success' : 'danger' }}>{{ $comment->status ? ' Corregido' : 'Sin corregido'}}</a>
                         </div>
                         @endforeach
                     </div>
