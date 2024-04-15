@@ -13,7 +13,7 @@ class BookCordinacionController extends Controller
     {
         $books = Books::all();
         $students = DB::select("
-        SELECT id,student_name FROM students WHERE NOT EXISTS 
+        SELECT id,nombreCompleto FROM students WHERE NOT EXISTS 
         ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
 
         return view('super_admin.book', compact("books", "students"));

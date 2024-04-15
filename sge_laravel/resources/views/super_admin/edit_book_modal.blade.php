@@ -78,11 +78,11 @@
                                         id=""
                                     >
                                         
-                                    <option value="{{ $student->id }}" {{ $book->student_name == $student->student_name ? 'selected' : '' }}>
-                                        {{ $student->student_name }}
+                                    <option value="{{ $student->id }}" {{ $book->nombreCompleto == $student->nombreCompleto ? 'selected' : '' }}>
+                                        {{ $student->nombreCompleto }}
                                     </option>
                                     @foreach ($students as $student)
-                                    <option value="{{$student->id}}">{{ $student->student_name }}</option>
+                                    <option value="{{$student->id}}">{{ $student->nombreCompleto }}</option>
                                     @endforeach
                                         
                                     </select>

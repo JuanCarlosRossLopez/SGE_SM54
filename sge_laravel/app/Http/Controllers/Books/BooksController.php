@@ -24,7 +24,7 @@ class BooksController extends Controller
         })->get();
         $books = Books::where('status', 0)->get();
         $students = DB::select("
-        SELECT id,student_name FROM students WHERE NOT EXISTS 
+        SELECT id,nombreCompleto FROM students WHERE NOT EXISTS 
         ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
 
         return view('students.libros.index', compact("books", "students", "userBooks"));
