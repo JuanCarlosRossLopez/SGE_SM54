@@ -17,18 +17,19 @@
                         }, 8000);
                     </script>
                 @endif
+
                 <!-- Mapeo de anteproyectos -->
                 <div class="content_conteiner w-full h-fit p-4">
                     <div class="w-full ">
                         <div class="">
-                            <label class=" w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión
+                            <label class="w-full font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Gestión
                                 de todos los usuarios</label>
                             <div class="flex flex-row items-center justify-start gap-2 ">
 
                                 <form action="{{ route('users.filterByRole') }}" method="GET"
                                     class="bg-[#F1F0F0] border-2 rounded m-2 justify-center flex flex-row items-center gap-2">
                                     <div class="flex flex-row w-fit  justify-start p-1 items-center">
-                                        <div class=" flex items-center gap-2">
+                                        <div class="flex items-center gap-2">
                                             <label for="role"
                                                 class="w-full text-start font-sans font-semibold text-[#545454] text-lg">Filtrar
                                                 por rol</label>
@@ -42,6 +43,7 @@
                                                 <option value="Presidente">Presidente</option>
                                                 <option value="Cordinacion">Cordinacion</option>
                                             </select>
+
                                         </div>
 
                                     </div>
@@ -58,17 +60,17 @@
                                         </button>
                                         <div
                                             class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                            <a
-                                                class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
-                                            <a
-                                                class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
-                                            <a
-                                                class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
-                                            <a
-                                                class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
+                                            <a data-modal="UserAdd"
+                                                class=" show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                            <a data-modal="studentAdd"
+                                                class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
+                                            <a data-modal="teacherAdd"
+                                                class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
+                                            <a data-modal="presidentAdd"
+                                                class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
                                             </a>
-                                            <a
-                                                class=" show-create-cordination block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
+                                            <a data-modal="coordinatorAdd"
+                                                class="show-modal block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
                                             </a>
 
                                         </div>
@@ -76,44 +78,29 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                Usuario</span></button> -->
+                                                                                    Usuario</span></button> -->
                                 <div
-                                    class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                    class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
                                         class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
                                         usuarios forma masiva <i class="fa-solid fa-arrow-right flex"></i></label>
                                     <div class="relative dropdown-trigger gap-2">
-                                        <button class="show-modal-u buttons_card_green w-fit  button_add_green">
+                                        <button data-modal="UsersAdd"
+                                            class="show-modal buttons_card_green w-fit  button_add_green">
                                             <i class="fa-solid fa-circle-plus"></i>
                                         </button>
-                                        <div
-                                            class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                            <a
-                                                class="show-modal3  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
-                                            <a
-                                                class="show-modal-add  block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Estudiante</a>
-                                            <a
-                                                class="show-modal-add-teacher block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Asesor</a>
-                                            <a
-                                                class="show_modal_president block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Presidente
-                                                (Sin acción)</a>
-                                            <a href="#"
-                                                class="block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Cordinador
-                                                (Sin acción)</a>
-
-                                        </div>
                                     </div>
                                 </div>
 
 
-                                <div
-                                    class="modal-add-president h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+                                <div idModal="presidentAdd"
+                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
                                     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
                                             <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
                                                 Presidente
                                             </h3>
-                                            <button class="close-modal3 bg-white rounded-full h-[1rem] flex items-center">
+                                            <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                                                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
                                                         style="color: #d50101;"></i>
                                                 </p>
@@ -153,7 +140,7 @@
                                                         <input type="password" name="password" placeholder="Contraseña"
                                                             class="rounded input-field">
 
-                                                </div>
+                                                    </div>
 
                                                     <div class="mb-4">
                                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
@@ -185,7 +172,8 @@
                                                             <option value="">Selecciona una carrera</option>
                                                             @foreach ($careers as $career)
                                                                 <option value="{{ $career->id }}">
-                                                                    {{ $career->career_name }}</option>
+                                                                    {{ $career->career_name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -197,7 +185,8 @@
                                                             <option value="">Selecciona una división</option>
                                                             @foreach ($Divisions as $division)
                                                                 <option value="{{ $division->id }}">
-                                                                    {{ $division->division_name }}</option>
+                                                                    {{ $division->division_name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -219,15 +208,15 @@
                                 </div>
 
 
-                                <div
-                                    class="modal-create-cordination fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-50">
+                                <div idModal="coordinatorAdd"
+                                    class="modal fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-50">
                                     <div class="bg-[#01A080] w-[600px] rounded shadow-lg max-w-4xl ">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
                                             <h3
                                                 class="font-semibold text-lg justify-center items-center text-[#FFFF] text-center">
                                                 Registrar
                                                 Coordinador</h3>
-                                            <button class="close-create ">
+                                            <button class="close-modal ">
                                                 <p class="text-2xl"><i
                                                         class="fa-solid fa-circle-xmark bg-white rounded-full"
                                                         style="color: #d50101;"></i></p>
@@ -306,14 +295,14 @@
 
 
 
-                                <div
-                                    class="modal-user h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                                <div idModal="UsersAdd"
+                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
                                     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
                                             <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
                                                 usuarios de forma masiva
                                             </h3>
-                                            <button class="close-modal-u bg-white rounded-full h-[1rem] flex items-center">
+                                            <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                                                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
                                                         style="color: #d50101;"></i>
                                                 </p>
@@ -348,8 +337,8 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div
-                                    class="modal-add-student hidden h-screen w-full fixed left-0 top-0     flex justify-center items-center bg-black bg-opacity-50">
+                                <div idModal="studentAdd"
+                                    class="modal hidden h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
                                     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-3xl">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
                                             <h3 class="text-center items-center font-semibold text-lg text-white">
@@ -402,19 +391,14 @@
                                     </div>
                                 </div>
 
-
-
-
-
-
-                                <div
-                                    class="modal3 h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+                                <div idModal="UserAdd"
+                                    class=" modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
                                     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
                                             <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
                                                 Usuario
                                             </h3>
-                                            <button class="close-modal3 bg-white rounded-full h-[1rem] flex items-center">
+                                            <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
                                                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
                                                         style="color: #d50101;"></i>
                                                 </p>
@@ -486,8 +470,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="modal-add-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                                <div idModal="teacherAdd"
+                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
                                     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
                                             <h3 class="font-semibold text-lg ml-60 text-white">Agregar Asesor</h3>
@@ -530,7 +514,7 @@
 
                                                         <div class="flex gap-4">
                                                             <!-- <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor"
-                                                                            class="flex-1 rounded-md border border-gray-300 p-2"> -->
+                                                                                class="flex-1 rounded-md border border-gray-300 p-2"> -->
                                                             <select name="division_id" id="">
                                                                 <option value="">Selecciona una división</option>
                                                                 @foreach ($Divisions as $divisions)
@@ -566,9 +550,6 @@
                                                 Email
                                             </th>
                                             <th class="theader">
-                                                Nombre usuario
-                                            </th>
-                                            <th class="theader">
                                                 Roles
                                             </th>
                                             <th class="theader">
@@ -582,22 +563,6 @@
                                                 <td class="trowc"> {{ $loop->iteration }} </td>
                                                 <td class="trowc"> {{ $user->name }} </td>
                                                 <td class="trowc"> {{ $user->email }} </td>
-                                                <td class="trowc">
-                                                    @if ($user->student)
-                                                        {{ $user->student->student_name }}
-                                                    @elseif($user->teachers)
-                                                        {{ $user->teachers->name_teacher }}
-                                                    @elseif($user->presidencies)
-                                                        {{ $user->presidencies->president_name }}
-                                                        {{ $user->presidencies->president_lastname }}
-                                                    @elseif($user->coordinators)
-                                                        {{ $user->coordinators->coordinator_name }}
-                                                    @else
-                                                        No tiene nombre
-                                                    @endif
-
-
-                                                </td>
                                                 <td>
 
                                                     @if ($user->roles->isEmpty())
@@ -612,49 +577,111 @@
 
 
                                                 </td>
+
                                                 <td class="trowc">
-                                                    <button class="show-modal-view px-1"
-                                                        data-target="#show{{ $user->id }}">
-                                                        <div class="button_see_blue">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </div>
+                                                    <button class="show-permission"
+                                                        data-target="#permissions{{ $user->id }}">
+                                                        permisos
                                                     </button>
-                                                    <button class="show-modal4 px-1"
-                                                        data-target="#edit{{ $user->id }}">
-                                                        <div class="button_edit_yellow">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </div>
-                                                    </button>
+                                                    @if ($user->teachers)
+                                                        <button class="show-modal-edit-teacher"
+                                                            data-target="#edit{{ $user->id }}">
+                                                            <div class="button_edit_yellow">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </div>
+                                                        </button>
+                                                        <button class="show-modal-delete-teacher"
+                                                            data-modal="#delete{{ $user->id }}">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                        <button class="show-modal-asesor-view"
+                                                            data-modal="#view{{ $user->id }}">
+                                                            <div class="button_see_blue">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </div>
+                                                        </button>
+                                                    @elseif($user->student)
+                                                        <p>
+                                                            <button class="show-modal-edit-student"
+                                                                data-target="#edit{{ $user->id }}">
+                                                                <div class="button_edit_yellow">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </div>
+                                                            </button>
+                                                        </p>
+                                                    @elseif($user->presidencies)
+                                                        <p>
+                                                            <button class="show-modal"
+                                                                data-modal="edit_president{{ $user->id }}">
+                                                                <div class="button_edit_yellow">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </div>
+                                                            </button>
 
-                                            <button class="show-modal px-1" data-target="#delete{{ $user->id }}">
-                                                <div class="button_delete_red">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </div>
-                                            </button> {{--cambia a form--}}
-                                        </td>
-                                    </tr>
-                                    @if($user->teachers)
-                                    <p>
-                                        @include('UserManagement.edit_modal_teacher')
+                                                            <!--<button class="show-modal"
+                                                                data-modal="delete_president_{{ $user->id }}">
+                                                                <div class="button_delete_red">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </div>
+                                                            </button>
+                                                        Modal de eliminar, (En proceso ...);
+                                                        -->
 
-                                    </p>
-                                    @elseif($user->student)
-                                    <p>
 
-                                    </p>
-                                    @elseif($user->presidencies)
-                                    <p>
+                                                            
+                                                        </p>
+                                                    @elseif($user->coordinators)
+                                                        <p>
+                                                            Editar Cordinador
+                                                        </p>
+                                                    @else
+                                                        <button class="show-modal"
+                                                            data-modal="Show_User_{{ $user->id }}">
+                                                            <div class="button_see_blue">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </div>
+                                                        </button>
+                                                        <button class="show-modal" data-modal="edit_{{ $user->id }}">
+                                                            <div class="button_edit_yellow">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </div>
+                                                        </button>
 
-                                    </p>
-                                    @elseif($user->coordinators)
-                                    <p>
+                                                        <button class="show-modal"
+                                                            data-modal="delete_{{ $user->id }}">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @if ($user->teachers)
+                                                <p>
+                                                    @include('UserManagement.edit_modal_teacher')
+                                                    @include('UserManagement.delete_modal_teacher')
+                                                    @include('UserManagement.view_modal_teachers')
+                                                </p>
+                                            @elseif($user->student)
+                                                <p>
+                                                    @include('UserManagement.edit_modal_student')
 
-                                    </p>
-                                    @else
-                                    <p>
-                                    </p>
-                                    @endif
+                                                </p>
+                                            @elseif($user->presidencies)
+                                                <p>
+                                                    @include('UserManagement.edit_presidencies')
+                                                    </p>
+                                            @elseif($user->coordinators)
+                                                <p>
 
+                                                </p>
+                                            @else
+                                                <p>
+                                                </p>
+                                            @endif
+                                            @include('UserManagement.UserPermission')
                                             @include('UserManagement.modal-users')
                                         @endforeach
                                     </tbody>
@@ -666,194 +693,15 @@
                 </div>
             </div>
         </div>
-        <script>
-            const modalview = document.querySelectorAll('.modal-view');
-            const showModalview = document.querySelectorAll('.show-modal-view');
-            const closeModalview = document.querySelectorAll('.close-modal-view');
-            const modal_add = document.querySelector('.modal-add-student');
-            const show_modal_add = document.querySelector('.show-modal-add');
 
-            const modal_add_president = document.querySelector('.modal-add-president');
-            const show_modal_president = document.querySelector('.show_modal_president');
+        <script src="{!! asset('js/modals.js') !!}"></script>
 
-            show_modal_president.addEventListener('click', function() {
-                modal_add_president.classList.remove('hidden')
-            })
-
-
-        const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
-        const show_modal_edit_asesor = document.querySelectorAll('.show-modal-edit-asesor')
-        show_modal_edit_asesor.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault()
-                const modalId = button.dataset.target
-                const modal = document.querySelector(modalId)
-                modal.classList.remove('hidden')
-            })
-        })
-
-            const modal_create_cordination = document.querySelector('.modal-create-cordination');
-
-        const show_create_cordination = document.querySelector('.show-create-cordination');
-        show_create_cordination.addEventListener('click', function() {
-            modal_create_cordination.classList.remove('hidden');
-        });
-
-            show_modal_add.addEventListener('click', function() {
-                modal_add.classList.remove('hidden')
-            })
-
-            const modal_add_teacher = document.querySelector('.modal-add-asesor');
-            const show_modal_add_teacher = document.querySelector('.show-modal-add-teacher');
-            show_modal_add_teacher.addEventListener('click', function() {
-                modal_add_teacher.classList.remove('hidden')
-            })
-
-            showModalview.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.target
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                    console.log(modal)
-                })
-            })
-
-            closeModalview.forEach(close => {
-                close.addEventListener('click', function() {
-                    modalview.classList.add('hidden')
-                });
-            });
-            const modalDelete = document.querySelector('.modal');
-            const showModalDelete = document.querySelectorAll('.show-modal');
-            const closeModalDelete = document.querySelectorAll('.close-modal');
-            const closeModal = document.querySelectorAll('.close-m');
-
-            showModalDelete.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.target
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                    console.log(modal)
-                })
-            })
-
-            closeModalDelete.forEach(close => {
-                close.addEventListener('click', function() {
-                    modalDelete.classList.add('hidden')
-                });
-            });
-
-            closeModal.forEach(closeModal => {
-                closeModal.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modal = closeModal.closest('show-modal-view')
-                    modal.classList.add('hidden')
-                })
-            })
-        </script>
-        <script>
-            const modal9 = document.querySelector('.modal9');
-
-            const showModal9 = document.querySelector('.show-modal9');
-            const closeModal9 = document.querySelectorAll('.close-modal9');
-
-            showModal9.addEventListener('click', function() {
-                modal9.classList.remove('hidden')
-            })
-
-            closeModal9.forEach(close => {
-                close.addEventListener('click', function() {
-                    modal3.classList.add('hidden')
-                });
-            });
-        </script>
-        <script>
-            const modal3 = document.querySelector('.modal3');
-
-            const showModal3 = document.querySelector('.show-modal3');
-            const closeModal3 = document.querySelectorAll('.close-modal3');
-
-            showModal3.addEventListener('click', function() {
-                modal3.classList.remove('hidden')
-            })
-
-            closeModal3.forEach(close => {
-                close.addEventListener('click', function() {
-                    modal3.classList.add('hidden')
-                });
-            });
-        </script>
-
-        <script>
-            const modal4 = document.querySelector('.modal4');
-            const showModal4 = document.querySelectorAll('.show-modal4');
-            const closeModal4 = document.querySelectorAll('.close-modal4');
-
-            showModal4.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.target
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                    console.log(modal)
-                })
-            })
-
-            closeModal4.forEach(close => {
-                close.addEventListener('click', function() {
-                    modal4.classList.add('hidden')
-                });
-            });
-        </script>
-
-        <script>
-            const modal5 = document.querySelector('.modal5');
-
-            const showModal5 = document.querySelector('.show-modal5');
-            const closeModal5 = document.querySelectorAll('.close-modal5');
-
-            showModal5.addEventListener('click', function() {
-                modal5.classList.remove('hidden')
-            })
-        </script>
-        <script>
-            const modalu = document.querySelector('.modal-user');
-
-            const showModalu = document.querySelector('.show-modal-u');
-            const closeModalu = document.querySelectorAll('.close-modal-u');
-
-
-            showModalu.addEventListener('click', function() {
-                modalu.classList.remove('hidden')
-
-
-            })
-            closeModalu.forEach(close => {
-                close.addEventListener('click', function() {
-                    modalu.classList.add('hidden')
-                });
-            });
-        </script>
-
-        <script>
-            const modal6 = document.querySelector('.modal6');
-
-            const showModal6 = document.querySelector('.show-modal6');
-            const closeModal6 = document.querySelectorAll('.close-modal6');
-
-            showModal6.addEventListener('click', function() {
-                modal6.classList.remove('hidden')
-            })
-            
-        </script>
-       
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");
 
                 dropdownTriggers.forEach(function(dropdownTrigger) {
+
                     var dropdownBtn = dropdownTrigger.querySelector(".dropdown-btn");
                     var dropdownContent = dropdownTrigger.querySelector(".dropdown-content");
 
@@ -873,6 +721,7 @@
                 });
             });
 
+
             document.getElementById('role').addEventListener('change', function() {
                 if (this.value === '') {
                     this.form.reset();
@@ -881,4 +730,124 @@
                 }
             });
         </script>
+
+
+        <script>
+            // teacher modal
+
+            const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
+            const show_modal_edit_teacher = document.querySelectorAll('.show-modal-edit-teacher')
+            show_modal_edit_teacher.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const modalId = button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                })
+            })
+
+
+            const modal_delete_asesor = document.querySelectorAll('.modal-delete-asesor')
+            const show_modal_delete_teacher = document.querySelectorAll('.show-modal-delete-teacher')
+            show_modal_delete_teacher.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const modalId = button.dataset.modal
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                })
+            })
+        </script>
+
+        <script>
+            // student modal
+
+            const modal_edit_student = document.querySelectorAll('.modal-edit-student')
+            const show_modal_edit_student = document.querySelectorAll('.show-modal-edit-student')
+            show_modal_edit_student.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const modalId = button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                })
+            })
+        </script>
+
+
+        <script>
+            const modal_view_asesor = document.querySelectorAll('.modal-view-asesor')
+            const show_modal_asesor_view = document.querySelectorAll('.show-modal-asesor-view')
+            show_modal_asesor_view.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const modalId = button.dataset.modal
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                })
+            })
+        </script>
+
+        <script>
+            const modal_view_permission = document.querySelectorAll('.modal-view-permission')
+            const show_permission = document.querySelectorAll('.show-permission')
+
+            show_permission.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const modalId = button.dataset.target
+                    const modal = document.querySelector(modalId)
+                    modal.classList.remove('hidden')
+                })
+            })
+        </script>
+
+
+
+
+
+        <script>
+            const close_modals = document.querySelectorAll('.close-modal')
+
+            close_modals.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+
+                    const modalAsesor = button.closest('.view-modal-asesor')
+                    const modalEditAsesor = button.closest('.modal-edit-asesor')
+                    const modalDeleteAsesor = button.closest('.-modal-delete-asesor')
+                    const modalViewPermission = button.closest('.modal-permission')
+
+
+                    if (modalAsesor) {
+                        modalAsesor.classList.add('hidden')
+                    }
+
+
+                    if (modalEditAsesor) {
+                        modalEditAsesor.classList.add('hidden')
+                    }
+
+
+                    if (modalDeleteAsesor) {
+                        modalDeleteAsesor.classList.add('hidden')
+                    }
+
+                    if (modalViewPermission) {
+                        modalViewPermission.classList.add('hidden')
+                    }
+
+
+
+
+
+                })
+            })
+        </script>
+
+
+
+
+
+
     @endsection

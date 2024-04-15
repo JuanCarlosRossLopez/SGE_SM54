@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Division;
 use App\Models\Career;
-
+use App\Models\Teachers;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 
 class UsersController extends Controller
@@ -23,9 +25,13 @@ class UsersController extends Controller
         $Divisions = Division::all();
         $users = User::paginate(10);
         $careers = Career::all();
+        $Teachers = Teachers::all();
+        $permissions = Permission::all();
 
-        return view('UserManagement.users', compact('users', 'roles','Divisions','careers'));
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers', 'Teachers', 'permissions'));
     }
+
+
 
 
     public function filterByRole(Request $request)
@@ -42,7 +48,7 @@ class UsersController extends Controller
         $Divisions = Division::all();
         $careers = Career::all();
 
-        return view('UserManagement.users', compact('users', 'roles', 'Divisions','careers'));
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers'));
     }
 
 
@@ -75,20 +81,49 @@ class UsersController extends Controller
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
-        $roleName = $request->input('role');
+
+        $role = Role::where('name', 'Administrador')->first();
 
 
-
-
-        $role = Role::where('name', $roleName)->first();
-        if ($role) {
-            $users->assignRole($role);
-        }
-
+        $users->assignRole($role);
 
         return redirect('usuarios')->with('notificacion', "Usuario creado correctamente");
-
     }
+
+
+    public function roles_permissions_store($id, Request $request)
+    {
+        $user = User::find($id);
+
+        // Desvincular todos los roles y permisos existentes del usuario
+        $user->roles()->detach();
+        $user->permissions()->detach();
+
+        // Asignar roles seleccionados
+        if ($request->has('roles')) {
+            foreach ($request->roles as $roleId) {
+                $role = Role::find($roleId);
+                if ($role) {
+                    $user->assignRole($role);
+                }
+            }
+        }
+
+        // Asignar permisos seleccionados
+        if ($request->has('permissions')) {
+            foreach ($request->permissions as $permissionId) {
+                $permission = Permission::find($permissionId);
+                if ($permission) {
+                    $user->givePermissionTo($permission);
+                }
+            }
+        }
+
+        return redirect('usuarios')->with('notificacion', "Roles y permisos asignados correctamente");
+    }
+
+
+
 
     /**
      * Display the specified resource.

@@ -16,7 +16,7 @@
                 document.getElementById('notification').style.display = 'none';
             }, 8000);
         </script>
-    @endif
+        @endif
 
         <div class="border-2 rounded bg-white m-4">
             <div class="flex flex-row items-center w-full justify-center my-4 gap-2">
@@ -204,8 +204,8 @@
                                         la empresa:</label>
                                         <select name="project_company" id="project_company" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
                                             <option value="" disabled selected class="text-transparent">Empresa</option>
-                                            @foreach ($regionNames as $region)
-                                                <option value="{{ $region }}">{{ $region }}</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
                                             @endforeach
                                         </select>
                                     @error('project_company')
@@ -282,6 +282,21 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-span-1">
+                                <div class="w-full flex flex-col">
+                                    <label for="work_area" class="font-sans font-semibold text-[#545454]">Área de Trabajo:</label>
+                                        <select name="work_area" id="work_area" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
+                                            <option value="" disabled selected class="text-transparent">Área de Trabajo</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->work_area }}">{{ $company->work_area }}</option>
+                                            @endforeach
+                                        </select>
+                                    @error('work_area')
+                                        <span class="text-red-500 w-full">{{ $message }}</span>
+                                        <hr class="border-2 w-full h-0 border-[#00000059]" />
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="w-full border-1 border-[#a2a2a2] mt-4"></div>
                         <h1 class="text-lg text-center w-full bg-[#dedede] font-medium uppercase py-2 text-[#505050]">Datos
@@ -307,6 +322,8 @@
                                     <label for="general_objective"
                                         class="font-sans font-semibold px-2 text-[#545454]">Objetivo General:
                                     </label>
+                                    <label class="italic px-2">Definir claramente el propósito principal del proyecto, identificando el resultado 
+                                        deseado y los beneficios esperados al lograrlo.</label>
                                     <textarea name="general_objective" id="general_objective"
                                         class="w-full h-[5rem] text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
                                         placeholder="Objetivo General">{{ old('general_objective') }}</textarea>

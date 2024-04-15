@@ -31,6 +31,7 @@ return new class extends Migration
             $table->text('justification');
             $table->text('activities');
             $table->string('career');
+            $table->string('work_area');
             //Se le agrego like
             $table->integer('likes')->default(0);
             $table->date('start_date'); // Fecha de inicio

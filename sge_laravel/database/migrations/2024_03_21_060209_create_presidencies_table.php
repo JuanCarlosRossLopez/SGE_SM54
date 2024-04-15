@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('president_name');
             $table->string('president_lastname');
-            $table->float('payroll_president');
+            $table->float('payroll_president',11)->unique();
             $table->foreignid('user_id')
             //->nullable()
             ->constrained()

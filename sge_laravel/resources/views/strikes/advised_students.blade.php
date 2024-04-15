@@ -15,51 +15,56 @@
             <div class="conteiner_cards1 flex flex-col w-3/4">
 
                 <!-- Mapeo de anteproyectos -->
-                <div class="content_conteiner w-full h-fit p-4 mt-4">
-                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Tabla de mis alumnos
+                <div class="content_conteiner w-full h-full p-4 mt-4">
+                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start">Tabla de mis alumnos
                         como asesor</label>
                     <!-- Panel 1 -->
                     <div class="table_conteiner">
                         <table class="standar_table">
                             <thead class="standar_thead">
                                 <tr>
-                                    <th class="theader">Asesor</th>
                                     <th class="theader">Alumno</th>
+                                    <th class="theader">Matrícula</th>
+                                    <th class="theader">Correo electrónico</th>
                                     <th class="theader">Anteproyecto</th>
-                                    <th class="theader">Amonestaciones</th>
-                                    <th class="theader">Realizar amonestación</th>
+                                    <th class="theader">División</th>
                                 </tr>
                             </thead>
                             <tbody class="tbody">
 
-                                @foreach ($Advising as $advising)
-                                    <tr class="trow">
-                                        <td class="trowc">
-                                            {{ $advising->teacher ? $advising->teacher->name_teacher : 'Wtf porque hay error?' }}
-                                        </td>
-                                        <td class="trowc">
-                                            {{ $advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}
-                                        </td>
+                                @if ($Advising->isEmpty())
+                                    <label class="w-fit font-sans font-semibold text-red-600 bg-red-100 p-2 flex justify-center items-center">Usted no tiene alumnos asesorados</lab>
+                                @else
+                                    @foreach ($Advising as $advising)
+                                        <tr class="trow">
+                                            <td class="trowc">
+                                                {{ $advising->teacher ? $advising->student->student_name : 'Wtf porque hay error?' }}
+                                            </td>
+                                            <td class="trowc">
+                                                {{ $advising->student ? $advising->student->id_student : 'No se encontro el alumno' }}
+                                            </td>
+                                            <td class="trowc">
+                                                {{$advising->student->user->email}}
+                                            </td>
+                                            <td class="trowc">
+                                                @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
+                                                    @foreach ($advising->student->projectManagement as $project)
+                                                        {{ $project->project_title }}
+                                                    @endforeach
+                                                @else
+                                                    Sin anteproyecto
+                                                @endif
+                                            </td>
+                                            <td >
+                                                {{$advising->student->division->division_name}}
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    @endforeach
+                                @endif
 
-                                        <td class="trowc">
-                                            @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
-                                                @foreach ($advising->student->projectManagement as $project)
-                                                    {{ $project->project_title }}
-                                                @endforeach
-                                            @else
-                                                Sin anteproyecto
-                                            @endif
 
-                                        </td>
-                                        <td class="trowc">
-                                            {{ $advising->student ? $advising->student->strike : 'No se encontro el alumno' }}
-                                        </td>
-                                        <td class="trowc flex items-center justify-center">
-                                            <button class="show-modal button_strike justify-center"><i
-                                                    class="fa-solid fa-bowling-ball"></i>Amonestar</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -96,27 +101,7 @@
 
 
 
-    <!-- Modal -->
-    <div
-        class="modal h-screen/2 w-full fixed flex-col left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-        <div class="bg-[#01A080] w-full rounded shadow-lg max-w-md">
-            <div class="border-b px-2 py-2 flex justify-between items-center">
-                <label class="font-semibold text-lg text-white text-center">¿Está seguro de que desea amonestar al
-                    estudiante?</label>
-                <div class="max-w-md flex flex-col items-end justify-end p-2">
-                    <button class="close-modal bg-white rounded-full ">
-                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                    </button>
-                </div>
-            </div>
-            <div class="bg-white rounded p-2 flex flex-col items-center">
-                <h5 class="text-black text-lg mb-2 font-thin"> {{ $advising->student ? $advising->student->student_name : 'No se encontro el alumno' }}</h5>
-                <div class="modal-body mb-0 overflow-y-auto h-[auto]">
-                    <button class="bg-[#0064d7] hover:bg-[#1f695a] p-2 py-1 rounded text-white mr-2">Confirmar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
         const modal = document.querySelector('.modal');

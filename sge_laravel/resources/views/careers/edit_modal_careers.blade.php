@@ -1,5 +1,5 @@
 @foreach ($careers as $career)
-    <div id="edit{{ $career->id }}" class="modal-edit-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <div id="edit{{ $career->id }}" class="modal-edit-asesor hidden h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
         <form method="POST" action="{{ route('carreras.update', $career->id) }}">
             @method('PUT')
             @csrf

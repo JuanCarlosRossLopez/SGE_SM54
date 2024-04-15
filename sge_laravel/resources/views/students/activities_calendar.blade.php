@@ -27,8 +27,8 @@
                                 <div
                                     class="bg-[#F7FAFC] w-1/3 p-3 border-2 border-[#d0d0d0] flex flex-col items-center rounded">
                                     <!--
-                                                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
-                                                                    -->
+                                                                                        <img src="{{ asset('image/progreso_estudiante.png') }}" alt="" class="">
+                                                                                    -->
                                     @if (optional(optional(Auth::user()->student)->projects)->id)
                                         <div class="flex flex-col w-full h-fit px-4 pt-2 mt-0">
                                             <div
@@ -65,16 +65,28 @@
                                                         empresarial:</label>
                                                     <h1
                                                         class="font-semibold text-lg bg-[#a6a61831] px-2 rounded text-[#a68a18] md:text-base">
-                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor asociado' }}
+                                                        {{ optional(optional(Auth::user()->student)->projects)->project_advisor ?? 'No se encontró un asesor empresarial asociado' }}
                                                     </h1>
                                                 </div>
 
                                                 <div class="flex flex-row items-center gap-2">
                                                     <label
                                                         class="font-sans font-semibold text-lg text-[#545454]">Estado:</label>
-                                                    <h1
-                                                        class="font-semibold text-lg bg-[#a6181831] px-2 rounded text-[#a61818] md:text-base">
-                                                        Quintana Roo
+                                                    <?php
+                                                    $status = optional(optional(Auth::user()->student)->projects->project_status)->status_project;
+                                                    $coloresPorPalabra = [
+                                                        'Aprobado' => ['bg' => '#45a291cb', 'text' => '#e1fcf2'],
+                                                        'Pendiente' => ['bg' => '#a68e18cb', 'text' => '#fcf6e1'],
+                                                        'Rechazado' => ['bg' => '#a61818cb', 'text' => '#fce1e1'],
+                                                    ];
+                                                    
+                                                    $bgColor = $coloresPorPalabra[$status]['bg'] ?? '';
+                                                    $textColor = $coloresPorPalabra[$status]['text'] ?? '';
+                                                    ?>
+
+                                                    <h1 class="font-semibold text-lg px-2 rounded md:text-base"
+                                                        style="background-color: <?php echo $bgColor; ?>; color: <?php echo $textColor; ?>">
+                                                        <?php echo $status ?? 'No se encontró un asesor empresarial asociado'; ?>
                                                     </h1>
                                                 </div>
                                                 <div class="flex flex-row items-center gap-2">
@@ -104,12 +116,14 @@
                                             </a>
                                         </div>
                                     @else
-                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto</p>
+                                        <p class="text-[#9f9f9f] font-base italic text-xl ">No has creado un anteproyecto
+                                        </p>
                                         <a href="/anteproyecto" class="buttons_card_anteproyect"><label
                                                 class="cursor-pointer">Crear mi
                                                 anteproyecto</label></a>
                                     @endif
-                                </div>
+
+                                </div>
                                 <div
                                     class="w-full h-fit bg-[#F7FAFC] border-2 border-[#d0d0d0] flex flex-col p-4 rounded items-center">
                                     <div class="w-full h-[20rem] px-2">
@@ -164,15 +178,16 @@
                                                 // Consulta para obtener todos los eventos de la tabla event
                                                 $events = \App\Models\Event::all();
                                             @endphp
-                                    
+
                                             @forelse($events as $event)
                                                 @php
                                                     // Verificar si la fecha del evento ya pasó
-                                                    $bgColor = ($event->date < now()) ? '#18A689' : '#2F4050';
-                                                    $borderColor = ($event->date < now()) ? '#18A689' : '#2F4050';
+                                                    $bgColor = $event->date < now() ? '#18A689' : '#2F4050';
+                                                    $borderColor = $event->date < now() ? '#18A689' : '#2F4050';
                                                 @endphp
-                                    
-                                                <div class="flex flex-row gap-4 border-1 border-[{{ $borderColor }}] rounded-[7px_7px_7px_7px] p-3 bg-[{{ $bgColor }}] text-white mt-4 mb-2 font-medium">
+
+                                                <div
+                                                    class="flex flex-row gap-4 border-1 border-[{{ $borderColor }}] rounded-[7px_7px_7px_7px] p-3 bg-[{{ $bgColor }}] text-white mt-4 mb-2 font-medium">
                                                     <p>{{ $event->date }}</p>
                                                     <p class="text-[#ebebeb]">{{ $event->title }}</p>
                                                 </div>
@@ -182,8 +197,8 @@
                                             @endforelse
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
                                 <div
                                     class="border-2 border-[#d0d0d0] bg-[#F7FAFC] md:p-3 p-4 justify-center flex flex-col h-[400px] w-[220px] md:w-[715px] lg:w-full rounded-[7px_7px_7px_7px]">
@@ -231,15 +246,16 @@
                                                                 $bgColor = ''; // Si no hay evento asociado
                                                             }
                                                         @endphp
-                                                        <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer rounded-[7px_7px_7px_7px]" style="background-color: {{ $bgColor }}">
+                                                        <td class="text-center p-3 mb-1 text-black transition-transform hover:scale-110 cursor-pointer rounded-[7px_7px_7px_7px]"
+                                                            style="background-color: {{ $bgColor }}">
                                                             {{ $dayweek['dia'] }}
                                                         </td>
                                                     @endforeach
                                                 </tr>
                                             @endforeach
                                         </tbody>
-                                        
-                                        
+
+
                                     </table>
                                 </div>
                             </div>

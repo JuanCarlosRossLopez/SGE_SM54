@@ -96,8 +96,8 @@
             close_modal.addEventListener('click', (e) => {
                 e.preventDefault();
                 const modal_edit = close_modal.closest('.modal-edit-division');
-                const modal_add = close_modal.closest('.modal-add-division');
-                const modal_delete = close_modal.closest('.delete-modal');
+                const modal_add = close_modal.closest('.modalf');
+                const modal_delete = close_modal.closest('.show-delete');
                 if (modal_add) {
                     modal_add.classList.add('hidden');
                 }
@@ -109,6 +109,8 @@
                 }
             });
         });
+        
+
         const show_delete_buttons = document.querySelectorAll('.show-delete');
         show_delete_buttons.forEach(button => {
             button.addEventListener('click', function() {

@@ -108,7 +108,6 @@
                                 </a>
                             </li>
                         @endrole
-
                         <!--
                             No lo vi necesario, porque regresariamos a crearlo?
                             @role('Estudiante')
@@ -148,9 +147,33 @@
                         @endrole
                         @role('Administrador')
                             <li>
-                                <a href="/asignar_alumnos" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-book"></i>
-                                    Asignación de alumnos
+                                <a href="/division" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestiónar divisiones
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/carreras" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de carreras
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/grupos" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Gestión de grupos
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Administrador')
+                            <li>
+                                <a href="/grupos" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Grupos
                                 </a>
                             </li>
                         @endrole
@@ -162,11 +185,19 @@
                                 </a>
                             </li>
                         @endrole
-                        @role('Administrador')
+                        @role('Presidente|Estudiante|Cordinacion|Administrador|Asesor')
                             <li>
                                 <a href="/libros" class="buttons_sidebar ">
                                     <i class="fa-solid fa-address-book"></i>
                                     Ver libros
+                                </a>
+                            </li>
+                        @endrole
+                        @role('Cordinacion|Administrador')
+                            <li>
+                                <a href="/gestion_libros" class="buttons_sidebar ">
+                                    <i class="fa-solid fa-address-book"></i>
+                                    Gestionar libros
                                 </a>
                             </li>
                         @endrole
@@ -196,15 +227,6 @@
 
                         <!--END Todo lo que el administrador puede navegar-->
 
-
-                        @role('Cordinacion')
-                            <li>
-                                <a href="/Dashboard_Direccion" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio Dirección
-                                </a>
-                            </li>
-                        @endrole
                         @role('Cordinacion')
                             <li>
                                 <a href="/dashboard_coordinacion" class="buttons_sidebar">
@@ -258,8 +280,12 @@
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
                                 {{ Auth::user()->name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
+                        @elseif (Auth::user()->hasRole('Cordinacion'))
+                            <label class="text-3xl text-[#d7d7d7]">Buen día,
+                                {{ Auth::user()->name }}</label>
+                            <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
                         @else
-                            No se encontró información del asesor para este usuario.
+                            No se encontró información del usuario para este usuario.
                         @endif
                     </div>
                     <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->

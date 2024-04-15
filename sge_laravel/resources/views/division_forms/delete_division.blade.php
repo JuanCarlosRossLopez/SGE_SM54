@@ -1,3 +1,4 @@
+@foreach ($divisions as $division)
 <div id="delete{{$division->id}}" class="show-delete h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <form action="{{route('division.destroy', $division->id)}}" method="POST">
     @method('DELETE')
@@ -31,4 +32,4 @@
     </div>
 </div>
 </div>
-
+@endforeach
