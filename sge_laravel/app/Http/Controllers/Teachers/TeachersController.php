@@ -51,7 +51,6 @@ class TeachersController extends Controller
         ];
 
         $request->validate([
-            'name' => 'required',
             'email' => 'required',
             'password' => 'required|min:8',
             'teacher_name' => 'required',
@@ -59,12 +58,11 @@ class TeachersController extends Controller
             'division_id' => 'required',
         ], $messages);
 
-        
 
-        
+
+
 
         $user = new User();
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
@@ -81,7 +79,21 @@ class TeachersController extends Controller
         $teacher->payroll = $request->input('payroll');
         $teacher->id_user = $user_id;
         $teacher->division_id = $request->input('division_id');
+
+
+
+
         $teacher->save();
+
+
+        if ($teacher->save()) {
+            return redirect('usuarios')->with('notification', 'Teacher created successfully');
+        }else{
+            $user->delete();
+            return redirect('usuarios')->with('notification', 'Error al crear el asesor');
+        }
+
+
 
         return back()->with('notification', 'Teacher created successfully');
     }
@@ -113,20 +125,18 @@ class TeachersController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
             'email' => 'required',
             'password' => 'required',
             'name_teacher' => 'required',
             'payroll' => 'required',
-            'division' => 'required',
+            'division_id' => 'required',
         ]);
 
 
         $user = User::find($id);
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-        $user->save();
+        $user->update();
 
         $teacher_id = $user->teachers->id;
 
@@ -135,9 +145,19 @@ class TeachersController extends Controller
         $teacher->payroll = $request->input('payroll');
         $teacher->id_user = $id;
         $teacher->division_id = $request->input('division_id');
-        $teacher->save();
+        $teacher->update();
 
-        return redirect('usuarios')->with('notification', 'Asesor actualizado correctamente');
+
+        if ($teacher->update()) {
+            return redirect('usuarios')->with('notification', 'Asesor actualizado correctamente');
+        }else{
+            return redirect('usuarios')->with('notification', 'Error al actualizar el asesor');
+        }
+
+
+
+
+
     }
 
     /**
