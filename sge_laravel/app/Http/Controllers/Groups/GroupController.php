@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Groups;
+
 use App\Http\Controllers\Controller;
 use App\Models\Career;
 use Illuminate\Http\Request;
@@ -13,9 +14,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $carreras=Career::all();
+        $carreras = Career::all();
         $grupos = Group::all();
-        return view('groups.groups', compact('grupos','carreras'));
+        return view('groups.groups', compact('grupos', 'carreras'));
 
     }
 
@@ -24,7 +25,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        $groups = new Group();
+        $groups = Group::all();
         return view('groups.create', compact('groups'));
     }
 
@@ -34,19 +35,56 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'group_name' => 'required|max:255',
-        'career_id' => 'required',
-    ]); 
+            'group_name' => 'required|max:255',
+            'career_id' => 'required',
+        ]);
 
         $group = new Group();
-        $group-> group_name = $request-> input('group_name');
+        $group->group_name = $request->input('group_name');
         $group->career_id = $request->input('career_id');
-        
         $group->save();
 
-        return redirect('grupos')->with('notificacion', 'El grupo se creo correctamente')   ;
+        return redirect('grupos')->with('notificacion', 'El grupo se creo correctamente');
 
-}
+    }
+    public function storeMasivo(Request $request)
+    {
+        // Validación de datos del grupo
+        $request->validate([
+            'career_id' => 'required|exists:careers,id',
+            'group_names.*' => 'nullable|max:255', // Permitir que los campos estén vacíos
+        ]);
+
+        // Obtener los nombres de grupo del formulario
+        $group_names = $request->input('group_names');
+
+        // Verificar si hay al menos un nombre de grupo no vacío
+        $hasNonEmptyGroupName = false;
+        foreach ($group_names as $group_name) {
+            if (!empty($group_name)) {
+                $hasNonEmptyGroupName = true;
+                break;
+            }
+        }
+
+        // Crear grupos solo si hay al menos un nombre de grupo no vacío
+        if ($hasNonEmptyGroupName) {
+            foreach ($group_names as $group_name) {
+                // Crear un nuevo grupo si el nombre no está vacío
+                if (!empty($group_name)) {
+                    Group::create([
+                        'career_id' => $request->career_id,
+                        'group_name' => $group_name,
+                    ]);
+                }
+            }
+        }
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('grupos.index')->with('notificacion', 'Grupos creados exitosamente');
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -72,9 +110,9 @@ class GroupController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-        'group_name' => 'required|max:255',
-        'career_id' => 'required',
-    ]); 
+            'group_name' => 'required|max:255',
+            'career_id' => 'required',
+        ]);
 
         $group = Group::find($id);
         $group->group_name = $request->group_name;
