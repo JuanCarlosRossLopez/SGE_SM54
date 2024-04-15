@@ -34,12 +34,12 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'company_name' => 'required|string',
+            'company_name' => 'required|unique:companies|max:250',
             'addres' => 'required|string',
             'asesor_name' => 'required|string',
             'job' => 'required|string',
-            'company_phone_number' => 'required|string',
-            'company_email' => 'required|string',
+            'company_phone_number' => ['required', 'string', 'regex:/^\+?\d{0,3}(\s?|\-?|\(?\)?\s?|\d+)$/'],
+            'company_email' => 'required|email',
             'work_area' => 'required|string',
             'company_description' => 'required|string',
         ]);
