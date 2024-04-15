@@ -55,7 +55,7 @@ class CompaniesController extends Controller
         $company->company_description = $request->input('company_description');
         $company->save();
 
-        return redirect('empresas')->with('notification', 'Empresa creada correctamente');
+        return back()->with('notification', 'Empresa creada correctamente');
     }
 
     /**

@@ -16,7 +16,7 @@ class Comments extends Model // Nombre de clase en singular
     // He notado que incluiste 'id_comment' que parece un ID autoincremental, usualmente no necesitas incluirlo en fillable.
     protected $primaryKey = 'id';
 
-    protected $fillable = ['general_comment', 'teacher_id', 'project_management_id'];
+    protected $fillable = ['general_comment', 'teacher_id', 'project_management_id','status'];
 
     // Método anteproject() ajustado para seguir la convención de nombres de modelo en singular
     public function project_management(): BelongsTo

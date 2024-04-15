@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('project_management_id')->nullable()->constrained('project_management')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->integer('status')->default(0); //0: Sin corregir, 1: Corregido
             $table->timestamps();
         });
     }

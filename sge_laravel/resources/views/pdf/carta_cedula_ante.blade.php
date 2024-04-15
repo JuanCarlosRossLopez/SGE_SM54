@@ -232,7 +232,8 @@
             <table>
                 <tr>
                     <th style="width: 120px;">Asesor académico</th>
-                    <td>{{ $adviser_name }}</td>
+                    <td>{{ Auth::user()->student->projects-> }}</td>
+                    {{-- $adviser_name --}}
                 </tr>
                 <tr>
                     <th>Correo electrónico</th>
