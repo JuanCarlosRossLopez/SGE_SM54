@@ -109,7 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                        Usuario</span></button> -->
+                                                                                                Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -542,7 +542,7 @@
 
                                                         <div class="flex gap-4">
                                                             <!-- <input type="text" name="id_user" id="id_user" placeholder="ID de usuario del asesor"
-                                                                                class="flex-1 rounded-md border border-gray-300 p-2"> -->
+                                                                                        class="flex-1 rounded-md border border-gray-300 p-2"> -->
                                                             <select name="division_id" id="">
                                                                 <option value="">Selecciona una división</option>
                                                                 @foreach ($Divisions as $divisions)
@@ -652,9 +652,29 @@
                                                                 </div>
                                                             </button>
                                                         </p>
-                                                    @elseif($user->presidencies)
+                                                    
+                                                        @elseif($user->presidencies)
                                                         <p>
-                                                            Editar Estudiante
+
+                                                            <button class="show-modal"
+                                                                data-modal="edit_president{{ $user->id }}">
+                                                                <div class="button_edit_yellow">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </div>
+                                                            </button>
+
+                                                            <!--<button class="show-modal"
+                                                                    data-modal="delete_president_{{ $user->id }}">
+                                                                    <div class="button_delete_red">
+                                                                        <i class="fa-solid fa-trash"></i>
+                                                                    </div>
+                                                                </button>
+                                                            Modal de eliminar, (En proceso ...);
+                                                            -->
+
+
+
+                                                    
 
                                                         </p>
                                                     @elseif($user->coordinators)

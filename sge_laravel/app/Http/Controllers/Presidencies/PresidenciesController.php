@@ -109,7 +109,6 @@ class PresidenciesController extends Controller
         ]);
 
         $user = user::find($id);
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
@@ -117,7 +116,7 @@ class PresidenciesController extends Controller
         $user_id = $user->id;
         $role = Role::where('name', 'Presidente')->first();
         $user->assignRole($role);
-        $user->save();
+        $user->update();
 
         $president_id = $user->presidencies->id;
         
@@ -128,11 +127,14 @@ class PresidenciesController extends Controller
         $presidencies->user_id = $user_id;
         $presidencies->career_id = $request->career_id;
         $presidencies->division_id = $request->division_id;
-        $presidencies->save();
+        $presidencies->update();
 
 
-
-        return redirect('presidentes')->with('notificacion', "Actualizado creado correctamente");
+        if ($presidencies->update()){
+            return redirect('usuarios')->with('notificacion', "Actualizado creado correctamente");
+        }else{
+            return redirect('usuarios')->with('notification', 'Error al actualizar el presidente');
+        }
     }
 
     /**

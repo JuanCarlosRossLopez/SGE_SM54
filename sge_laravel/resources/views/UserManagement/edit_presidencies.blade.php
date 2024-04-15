@@ -24,10 +24,6 @@
                             @method('PUT')
                             <div class="flex gap-4">
                                 <div class="flex flex-col gap-4">
-                                    <input type="text" value="{{$user->name}}" name="name" id="name" placeholder="Nombre del usuario" class="rounded-md border border-gray-300 p-2" readonly>
-                                    @error('name')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
                                     <input type="email" value="{{$user->email}}" name="email" id="email" placeholder="Correo electrónico" class="rounded-md border border-gray-300 p-2">
                                     @error('email')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
@@ -43,7 +39,7 @@
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                     @enderror
                                     <input type="text" value="{{ $user->presidencies->president_lastname }}"
-                                        name="name_teacher" id="name_teacher" placeholder="Apellido del presidente"
+                                        name="president_lastname" id="president_lastname" placeholder="Apellido del presidente"
                                         class="rounded-md border border-gray-300 p-2">
                                         @error('president_lastname')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
