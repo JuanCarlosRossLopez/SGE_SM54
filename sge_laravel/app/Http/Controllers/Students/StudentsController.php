@@ -56,7 +56,7 @@ class StudentsController extends Controller
         $student->id_student = $request->input('id_student');
         $student->project_creator = $request->input('project_creator');
         $student->user_id = $user_id; // Asignar el ID del usuario
-                $student->division_id = $request->input('division_id');
+        $student->division_id = $request->input('division_id');
         $student->anteproject_id = $request->input('anteproject_id');
         $student->adviser_id = $request->input('adviser_id');        
         $student->save();
@@ -87,20 +87,19 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'student_name' => 'required|string|max:255',
+            'id_student' => 'required|string|max:255',
+            'division_id' => 'required|integer',
         ]);
 
-        $students = Students::find($id);
-        $students->student_name = $request->student_name;
-        $students->id_student = $request->id_user;
-        $students->project_creator= $request->project_creator;
-        $students->user_id = $request->user_id;
-        $students->strike = $request->strike;
-        $students->anteproject_id = $request->anteproject_id;
-        $students->adviser_id = $request->adviser_id;
-        $students->division_id = $request->division_id;
-        $students->save();
+            $student = Students::find($id);
+            $student->student_name = $request->input('student_name');
+            $student->id_student = $request->input('id_student');
+            $student->division_id = $request->input('division_id');
 
-        return redirect('estudiantes')->with('notification', 'Estudiante actualizado correctamente');
+            $student->save();
+
+            return redirect('estudiantes')->with('notification', 'Estudiante actualizado correctamente');
     }
 
     /**

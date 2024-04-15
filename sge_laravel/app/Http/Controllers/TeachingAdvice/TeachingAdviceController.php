@@ -73,8 +73,8 @@ class TeachingAdviceController extends Controller
     public function show(string $id)
     {
         //
-        $teaching_advice = Teaching_advice::find($id);
-        return view('teaching_advice');
+        $teaching_advice=Teaching_advice::find($id);
+        return redirect('asignar_alumnos');
     }
 
     /**
@@ -91,15 +91,28 @@ class TeachingAdviceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-        $teaching_advice = Teaching_advice::find($id);
+        // Validar los datos enviados desde el formulario
+        $validatedData = $request->validate([
+            'adviser_id' => 'required|exists:teachers,id',
+            'student_id' => 'required|exists:students,id',
+        ]);
+        $existingAssignment = Teaching_advice::where('student_id', $request->input('student_id'))->exists();
+        if ($existingAssignment) {
+            return redirect('asignar_alumnos')->with('error', 'El estudiante ya está asignado a un docente.');
+        }
+        // Actualizar la asignación en la base de datos
+        $teaching_advice=Teaching_advice::find($id);
+        // Actualizar la asignación con los datos validados
+        $teaching_advice->teacher_id = $validatedData['adviser_id'];
+        $teaching_advice->student_id = $validatedData['student_id'];
+        $teaching_advice->save();
 
-        $teaching_advice->update($request->all());
-
-        return redirect('teaching_advice')->with('success', 'Docente-Alumno actualizado correctamente');
+        // Redirigir o mostrar un mensaje de éxito
+        return redirect('asignar_alumnos')->with('notificacion', 'La asignación se actualizó correctamente.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -109,7 +122,7 @@ class TeachingAdviceController extends Controller
         //
         $teaching_advice = Teaching_advice::find($id);
         $teaching_advice->delete();
-        return redirect('teaching_advice')->with('success', 'Docente-Alumno eliminado correctamente');
+        return redirect('asignar_alumnos')->with('notificacion','Docente-Alumno eliminado correctamente');
 
     }
 }
