@@ -15,14 +15,19 @@ class Students extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'student_name',
-        'id_student',
-        'project_creator',
-        'strike',
+        'nombreCompleto',
+        'matricula',
+        'carrera',
+        'curp',
+        'grupo',
+        'cuatrimestre',
+        'fechaNacimiento',
+        'sexo',
+        'division',
+        'seguro',
+        'reingreso',
         'user_id',
-        'division_id',
         'anteproject_id',
-        'adviser_id',
         'evaluation_date_id',
     ];
 

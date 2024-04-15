@@ -274,50 +274,50 @@
                                         <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Crear
                                             Usuarios</button>
 
-                                    </form>
-                                </div>
-                            </div>
-                            <div idModal="studentAdd" class="modal hidden h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
-                                <div class="bg-[#01A080] w-full rounded shadow-lg max-w-3xl">
-                                    <div class="border-b px-4 py-2 flex justify-between items-center">
-                                        <h3 class="text-center items-center font-semibold text-lg text-white">
-                                            Agregar
-                                            Estudiante</h3>
-                                        <button class="close-modal bg-white rounded-full">
-                                            <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
-                                        </button>
-                                    </div>
-
-                                    <div class="bg-white w-full p-4">
-                                        <div class="modal-body flex flex-col gap-4 items-center justify-center p-4">
-                                            <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>
-                                            <form action="{{ route('estudiantes.store') }}" method="POST" class="w-full">
-                                                @csrf
-                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                    <input type="text" name="name" placeholder="Nombre de usuario" class="rounded input-field">
-                                                    <input type="email" name="email" placeholder="Correo electronico" class="rounded input-field">
-                                                    <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
-
-                                                    <input type="text" name="student_name" id="student" placeholder="Nombre del estudiante" class="rounded-md border border-gray-300 p-2">
-                                                    <input type="text" name="id_student" id="id_student" placeholder="Matrícula" class="rounded-md border border-gray-300 p-2">
-
-                                                    <select name="division_id" class="rounded-md border border-gray-300 p-2">
-                                                        <option selected disabled>Elige una división</option>
-                                                        @foreach ($Divisions as $division)
-                                                        <option value="{{ $division->id }}">
-                                                            {{ $division->division_name }}
-                                                        </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="flex justify-center mt-4">
-                                                    <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
+
+
+                                <div idModal="studentAdd" class="modal hidden h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-3xl">
+        <div class="border-b px-4 py-2 flex justify-between items-center">
+            <h3 class="text-center items-center font-semibold text-lg text-white">Agregar Estudiante</h3>
+            <button class="close-modal bg-white rounded-full">
+                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+            </button>
+        </div>
+        <div class="bg-white w-full p-4">
+            <div class="modal-body flex flex-col gap-4 items-center justify-center p-4">
+                <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>
+                <form action="{{ route('estudiantes.store') }}" method="POST" class="w-full" id="studentForm">
+                    @csrf
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
+                        <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
+                        <input type="text" name="student_name" id="student" placeholder="Nombre del estudiante" class="rounded-md border border-gray-300 p-2">
+                        <div class="relative">
+                            <input type="text" name="id_student" id="id_student" placeholder="Matrícula" class="rounded-md border border-gray-300 p-2">
+                            <button type="button" id="searchStudentBtn" class="absolute right-0 top-0 bottom-0 px-3">Buscar</button>
+                        </div>
+                        <input type="text" name="carrera" id="carrera" placeholder="Carrera" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="curp" id="curp" placeholder="CURP" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="grupo" id="grupo" placeholder="Grupo" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="cuatrimestre" id="cuatrimestre" placeholder="Cuatrimestre" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="fechaNacimiento" id="fechaNacimiento" placeholder="Fecha de Nacimiento" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="sexo" id="sexo" placeholder="Sexo" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="division" id="division" placeholder="División" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="seguro" id="seguro" placeholder="Seguro" class="rounded-md border border-gray-300 p-2">
+                        <input type="text" name="reingreso" id="reingreso" placeholder="Reingreso" class="rounded-md border border-gray-300 p-2">
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
                             <div idModal="UserAdd" class=" modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
                                 <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
@@ -573,6 +573,44 @@
     </div>
 
     <script src="{!! asset('js/modals.js') !!}"></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchStudentBtn = document.getElementById('searchStudentBtn');
+        searchStudentBtn.addEventListener('click', function() {
+            const matricula = document.getElementById('id_student').value;
+            if (matricula.trim() !== '') {
+                // Realizar una solicitud a la API para obtener los datos del estudiante
+                fetch(`http://localhost:3000/api/estudiantes/matricula/${matricula}`)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('No se encontró ningún estudiante con esa matrícula');
+                    })
+                    .then(data => {
+                        // Rellenar los datos del estudiante en el formulario
+                        document.getElementById('student').value = data.nombreCompleto;
+                        document.getElementById('carrera').value = data.carrera;
+                        document.getElementById('curp').value = data.curp;
+                        document.getElementById('grupo').value = data.grupo;
+                        document.getElementById('cuatrimestre').value = data.cuatrimestre;
+                        document.getElementById('fechaNacimiento').value = data.fechaNacimiento;
+                        document.getElementById('sexo').value = data.sexo;
+                        document.getElementById('division').value = data.division;
+                        document.getElementById('seguro').value = data.seguro;
+                        document.getElementById('reingreso').value = data.reingreso ? 'Sí' : 'No';
+                    })
+                    .catch(error => {
+                        console.error(error.message);
+                        // Puedes manejar el caso en el que no se encuentre ningún estudiante con la matrícula proporcionada
+                    });
+            } else {
+                console.error('La matrícula no puede estar vacía');
+            }
+        });
+    });
+</script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -608,6 +646,19 @@
             }
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const openAddStudentModalBtn = document.getElementById('openAddStudentModal');
+            const addStudentModal = document.getElementById('studentAdd');
+
+            openAddStudentModalBtn.addEventListener('click', function() {
+                addStudentModal.classList.remove('hidden');
+            });
+        });
+    </script>
+
+    
 
 
     <script>
