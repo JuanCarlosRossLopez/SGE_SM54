@@ -102,17 +102,26 @@
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </div>
                                     </button>
+                                    <button class="checkBook" data-target="#check{{ $book->id }}">
+                                        <div class="button_check_green">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                        </div>
+                                    </button>
                                     @endif
                                     <button class="deleteBook" data-target="#delete{{ $book->id }}">
                                         <div class="button_delete_red">
+                                
                                             <i class="fa-solid fa-trash"></i>
                                         </div>
                                     </button>
+                                    
+                                    
                                 </td>
                             </tr>
                             @include('super_admin.view_book_modal')
                             @include('super_admin.edit_book_modal')
                             @include('super_admin.delete_book_modal')
+                            @include('super_admin.check_book')
                         @endforEach
 
                     </tbody>
@@ -164,12 +173,14 @@
         const modal_view = document.querySelector('.modalView')
         const modal_edit = document.querySelector('.modalEdit')
         const modal_delete = document.querySelector('.modalDelete')
+        const modal_check = document.querySelector('.modalCheck')
 
         //Funcionamiento de modal
         const showModalView = document.querySelectorAll('.showView');
         const showModalRoles = document.querySelectorAll('.showmodal2');
         const showModalEdit = document.querySelectorAll('.showEdit');
         const showModalDelete = document.querySelectorAll('.deleteBook');
+        const showModalCheck = document.querySelectorAll('.checkBook');
 
         const closeModal = document.querySelectorAll('.close-modal');
         const closeModalView = document.querySelectorAll('.modalView');
@@ -196,7 +207,16 @@
         })
 
 
-
+        showModalCheck.forEach(button => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                const modalId = button.dataset.target;
+                const modal = document.querySelector(modalId);
+                console.log(modalId);
+                modal.classList.remove('hidden');
+                console.log(modal);
+            });
+        })
 
 
         showModalView.forEach(button => {
@@ -248,6 +268,7 @@
                 const modal3 = closeModal.closest('.modalEdit');
                 const modal4 = closeModal.closest('.modalDelete');
                 const modal5 = closeModal.closest('.delete-modal-permissions');
+                const modal6 = closeModal.closest('.modalCheck');
 
                 if (modal) {
                     modal.classList.add('hidden');
@@ -266,6 +287,9 @@
                 }
                 if (modal5) {
                     modal5.classList.add('hidden');
+                }
+                if (modal6) {
+                    modal6.classList.add('hidden');
                 }
 
 

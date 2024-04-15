@@ -16,7 +16,7 @@
         <div class="bg-white w-[55rem] p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class="  max-h-full h-[65vh]">
-                <form action={{ route('gestion_libros.updateBook',$book->id) }} method="POST" enctype="multipart/form-data"
+                <form action={{ route('libros.update',$book->id) }} method="POST" enctype="multipart/form-data"
                     class="w-full max-w-lg">
                     
                     
@@ -69,26 +69,8 @@
                                 type="text" name="price" value="{{ $book->price }}" name="" id="">
 
                                 @foreach ($book->students as $student)
-                                
-                                    <label for="" class="form-label">Colaboradores</label>
-                                    <select
-                                        
-                                        class="appearance-none block resize-none h-fit  w-fit  bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                        name="students_id[]"
-                                        id=""
-                                    >
-                                        
-                                    <option value="{{ $student->id }}" {{ $book->student_name == $student->student_name ? 'selected' : '' }}>
-                                        {{ $student->student_name }}
-                                    </option>
-                                    @foreach ($students as $student)
-                                    <option value="{{$student->id}}">{{ $student->student_name }}</option>
-                                    @endforeach
-                                        
-                                    </select>
-                               
-                                
-                            @endforeach
+        <p>{{ $student->student_name }}</p>
+    @endforeach
 
 
                             <div class="flex flex-row gap-4 ">
