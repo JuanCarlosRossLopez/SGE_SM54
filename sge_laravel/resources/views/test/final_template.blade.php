@@ -282,7 +282,7 @@
                             <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
                         @elseif (Auth::user()->hasRole('Cordinacion'))
                             <label class="text-3xl text-[#d7d7d7]">Buen día,
-                                {{ Auth::user()->name }}</label>
+                                {{ Auth::user()->coordinators->coordinator_name }}</label>
                             <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
                         @else
                             No se encontró información del usuario para este usuario.

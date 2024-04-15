@@ -1,6 +1,6 @@
 @extends('test.final_template')
 
-@section('title', 'Gestión de las carreras')
+@section('title', 'Gestión de los grupos')
 @section('contenido')
 
     <div class="back_conteiner">
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="inside_content_conteiner">
-                        <div class="">
+                        <div class="flex justify-center">
                             <div
                                 class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                 <label
@@ -41,15 +41,37 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Aquí colocamos el botón de agregar grupos masivamente -->
+                            <div
+                                class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
+                                <label
+                                    class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
+                                    grupos masivo <i class="fa-solid fa-arrow-right flex"></i></label>
+                                <div class="relative dropdown-trigger gap-2">
+                                    <button class="dropdown-btn button_add_green show-modal-add-masivo">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </button>
+                                    <div
+                                        class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
+                                        <a
+                                            class="show-modal-add-masivo block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+
+
                     <div class="table_conteiner">
                         <table class="standar_table">
                             <thead class="standar_thead">
                                 <tr>
                                     <th class="theader">#</th>
                                     <th class="theader">Nombre del grupo</th>
-                                    <th class="theader">Descripción de la carrera</th>
+                                    <th class="theader">Nombre de la carrera</th>
                                     <th class="theader">Acciones</th>
                                 </tr>
                             </thead>
@@ -61,7 +83,8 @@
                                     <tr class="trow">
                                         <td class="trowc">{{ $contador }}</td>
                                         <td class="trowc">{{ $grupo->group_name }}</td>
-                                        <td class="trowc">{{ $grupo->career ? $grupo->career->career_name : 'Sin división' }}</td>
+                                        <td class="trowc">
+                                            {{ $grupo->career ? $grupo->career->career_name : 'Sin división' }}</td>
                                         <td class="trowc">
                                             <button class="show-modal-edit" data-target="#edit{{ $grupo->id }}">
                                                 <div class="button_edit_yellow">
@@ -117,13 +140,53 @@
                                     <input type="text" name="group_name" id="group_name"
                                         placeholder="Nombre del grupo"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
-                                    
+
                                 </div>
 
-                                
+                                <div class="flex justify-center">
+                                    <button type="submit"
+                                        class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="modal-add-masivo h-screen w-full fixed left-0 top-0  hidden flex justify-center items-center bg-black bg-opacity-50">
+            <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+                <div class="border-b px-4 py-2 flex justify-between items-center">
+                    <h3 class="font-semibold text-lg ml-60 text-white">Agregar grupos masivamente</h3>
+                    <button class="close-modal bg-white rounded-full">
+                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
+                    </button>
+                </div>
+                <div class="bg-white p-2">
+                    <div class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
+                        <div class="flex flex-col items-center justify-center">
+                            <h1 class="text-xl font-bold mb-4">Crear grupos Masivamente</h1>
+                            <form action="{{ route('grupos.storeMasivo') }}" method="POST" class="flex flex-col gap-4">
+                                @csrf
+                                <div class="flex gap-4">
+                                    <select id="carrera_id_masivo" name="career_id"
+                                        class="flex-1 rounded-md border border-gray-300 p-2">
+                                        <option value="">Selecciona una carrera</option>
+                                        @foreach ($carreras as $carrera)
+                                            <option value="{{ $carrera->id }}">{{ $carrera->career_name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+
+                                <div class="flex flex-col gap-4" id="grupos_container">
+                                    <!-- Aquí se agregarán dinámicamente los campos de nombre y descripción de carrera -->
+                                </div>
 
                                 <div class="flex justify-center">
-                                    <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                                    <button type="submit"
+                                        class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -135,9 +198,16 @@
         <script>
             const modal_add = document.querySelector('.modal-add-asesor');
             const show_modal_add = document.querySelector('.show-modal-add');
+            const modal_add_masivo = document.querySelector('.modal-add-masivo');
+            const show_modal_add_masivo = document.querySelector('.show-modal-add-masivo');
+
 
             show_modal_add.addEventListener('click', function() {
                 modal_add.classList.remove('hidden');
+            });
+
+            show_modal_add_masivo.addEventListener('click', function() {
+                modal_add_masivo.classList.remove('hidden');
             });
 
             const close_modal = document.querySelectorAll('.close-modal');
@@ -156,6 +226,9 @@
                     }
                     if (modal_delete) {
                         modal_delete.classList.add('hidden');
+                    }
+                    if (modal_add_masivo) {
+                        modal_add_masivo.classList.add('hidden');
                     }
                 });
             });
@@ -177,5 +250,71 @@
                     modal.classList.remove('hidden');
                 });
             });
+            // JavaScript para manejar la adición dinámica de campos de grupo en el formulario de creación masiva
+            const divisionSelectMasivo = document.getElementById('carrera_id_masivo');
+            const carrerasContainer = document.getElementById('grupos_container');
+
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const divisionSelectMasivo = document.getElementById('carrera_id_masivo');
+                const carrerasContainer = document.getElementById('grupos_container');
+
+                divisionSelectMasivo.addEventListener('change', function() {
+                    carrerasContainer.innerHTML = ""; // Limpiar los campos de grupo anteriores
+                    const divisionId = this.value;
+                    const numberOfCarreras = 1; // Cambia este número según cuántos grupos desees agregar
+
+                    for (let i = 0; i < numberOfCarreras; i++) {
+                        const nuevoCampo = document.createElement('div');
+                        nuevoCampo.classList.add('flex', 'gap-4');
+                        nuevoCampo.innerHTML = `
+                <input type="text" name="group_names[]" placeholder="Nombre del grupo" class="flex-1 rounded-md border border-gray-300 p-2">
+                <button type="button" class="remove-campo bg-[#01A080] text-white rounded p-2">
+                    Eliminar campo
+                </button>
+            `;
+                        carrerasContainer.appendChild(nuevoCampo);
+
+                        // Agregar evento de clic para eliminar campo
+                        const removeCampo = nuevoCampo.querySelector('.remove-campo');
+                        removeCampo.addEventListener('click', function() {
+                            nuevoCampo.remove();
+                        });
+                    }
+
+
+                    
+
+                    // Agregar evento de clic para agregar campo
+                    const addCampo = document.createElement('button');
+                    addCampo.type = 'button';
+                    addCampo.classList.add('add-campo', 'bg-[#01A080]', 'text-white', 'rounded', 'p-2');
+                    addCampo.textContent = 'Agregar campo';
+                    carrerasContainer.appendChild(addCampo);
+
+
+
+
+                    addCampo.addEventListener('click', function() {
+                        const nuevoCampo = document.createElement('div');
+                        nuevoCampo.classList.add('flex', 'gap-4');
+                        nuevoCampo.innerHTML = `
+                <input type="text" name="group_names[]" placeholder="Nombre del grupo" class="flex-1 rounded-md border border-gray-300 p-2">
+                <button type="button" class="remove-campo bg-[#01A080] text-white rounded p-2">
+                    Eliminar campo
+                </button>
+            `;
+                        carrerasContainer.insertBefore(nuevoCampo, addCampo);
+
+                        // Agregar evento de clic para eliminar campo
+                        const removeCampo = nuevoCampo.querySelector('.remove-campo');
+                        removeCampo.addEventListener('click', function() {
+                            nuevoCampo.remove();
+                        });
+                    });
+                });
+            });
         </script>
-    @endsection
+    </div>
+@endsection
