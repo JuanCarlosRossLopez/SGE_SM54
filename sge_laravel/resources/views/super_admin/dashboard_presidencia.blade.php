@@ -1,4 +1,4 @@
-@extends('test.test_template')
+@extends('test.final_template')
 @section('title', 'Presidencia')
 ''
 @section('contenido')
