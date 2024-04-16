@@ -12,7 +12,7 @@
                 <div class="conteiner_card my-4">
                         <!-- Card 1 -->
                         <div class="content_conteiner w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
-                            <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Cédula de Anteproyecto</h3>
+                            <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center">Cédula de <br> Anteproyecto</h3>
                             <form class="flex" action="{{ route('documents.index') }}" method="GET">
                                 @csrf
                                 <input type="hidden" name="type" value="1">
@@ -49,6 +49,16 @@
                                 <input type="hidden" name="type" value="4">
                                 <button class="buttons_card_green"
                                     type="submit"><label class="text-center w-full cursor-pointer"> <i class="fa-solid fa-gift"></i> Generar</label></button>
+                            </form>
+                        </div>
+
+                        <div class="content_conteiner w-full bg-[#F6F6F6] rounded-lg shadow-md p-6">
+                            <h3 class="text-[#01A080] font-bold text-2xl mb-4 text-center mt-4">Control de Estadias</h3>
+                            <form class="flex" method="GET">
+                                @csrf
+                                <input type="hidden" name="type" value="4">
+                                <a class="buttons_card_green" href="{{ route('exportar-excel')}}"
+                                    type="submit"><label class="text-center w-full cursor-pointer"> <i class="fa-solid fa-gift"></i> Generar</label></a>
                             </form>
                         </div>
 

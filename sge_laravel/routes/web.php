@@ -35,6 +35,11 @@ use App\Http\Controllers\Groups\GroupController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\ChartController;
 
+
+use App\Http\Controllers\ExportController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +50,10 @@ use App\Http\Controllers\ChartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/exportar-excel', [ExportController::class, 'exportToExcel'])->name('exportar-excel');
+
 
 Route::post('/carreras/storeMasivo', [CareerController::class, 'storeMasivo'])->name('carreras.storeMasivo');
 
