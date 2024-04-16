@@ -475,6 +475,7 @@
                                 @include('UserManagement.delete_modal_student')
                             </p>
                             @endif
+                            @include('UserManagement.UserPermission')
                             @endforeach
                         </tbody>
                     </table>
