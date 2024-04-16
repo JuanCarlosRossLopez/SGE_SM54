@@ -74,8 +74,17 @@ class CommentsController extends Controller
     {
         $comment = Comments::find($id);
 
-        $comment->general_comment = $request->all();
-        return redirect('teacher_dates.information_project')->with('success', '¡El comentario se realizó correctamente!');
+        if($comment) {
+            if($comment->status == 1){
+                $comment->status = 0;
+            } else {
+                $comment->status = 1;
+            }
+            $comment->save();
+        }
+        return back();
+        //$comment->general_comment = $request->all();
+        //return redirect('teacher_dates.information_project')->with('success', '¡El comentario se realizó correctamente!');
     }
 
     /**

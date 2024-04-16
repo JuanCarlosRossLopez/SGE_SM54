@@ -52,6 +52,8 @@ class StudentsController extends Controller
     {
         // Crear un nuevo usuario sin el campo name
         $user = new User();
+
+       // $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
