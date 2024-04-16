@@ -405,6 +405,14 @@ Plantilla base
                             <label class="w-full text-end px-2 italic font-normal text-[#838383]">Obsevación
                                 realizada {{ $comment->created_at }} <i class="fa-regular fa-clock"></i>
                             </label>
+                                @if($comment->status == 0)
+                                @role('Estudiante')
+                                    <a href="{{ route('comments.update', ['id' => $comment->id]) }}" class="bg-red-200 rounded-md w-24 p-1 m-2" onclick="return confirm('¿Estás seguro de que quieres cambiar el estado del comentario?')">Corregir</a>
+                                @endrole
+                                    @else
+                                    <span class="bg-green-200 rounded-md w-24 p-1 m-2">Corregido</span>
+                                @endif
+
                         </div>
                         @endforeach
                     </div>

@@ -262,6 +262,7 @@ Route::get('/calendario/{month}', [Calendar2Controller::class, 'indexMonth'])->w
 
 
 
+Route::get('/comments/{id}/update', [CommentsController::class, 'update'])->name('comments.update');
 //End equipo valier
 
 //Equipo dano
