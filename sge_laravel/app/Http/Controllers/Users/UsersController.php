@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Division;
 use App\Models\Career;
 use App\Models\Teachers;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -26,9 +27,10 @@ class UsersController extends Controller
         $users = User::paginate(10);
         $careers = Career::all();
         $Teachers = Teachers::all();
+        $Gruop = Group::all();
         $permissions = Permission::all();
 
-        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers', 'Teachers', 'permissions'));
+        return view('UserManagement.users', compact('users', 'roles', 'Divisions', 'careers', 'Teachers', 'permissions','Gruop'));
     }
 
 
