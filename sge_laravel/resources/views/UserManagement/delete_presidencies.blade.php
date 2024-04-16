@@ -1,5 +1,5 @@
-<div id="delete_president{{ $user->id }}"
-    class="modal-delete-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+<div idModal="delete_president{{ $user->id }}"
+    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
     <input type="hidden" name="teacher_id" value="{{ $user->id }}">
     <!-- Incluimos el ID del maestro en un campo oculto -->
     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
