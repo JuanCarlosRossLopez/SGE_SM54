@@ -21,6 +21,7 @@ class TeachersController extends Controller
         $Students = Students::all();
         $teachers = Teachers::paginate(10);
         $division = Division::all();
+
         $users = User::all();
 
 
@@ -78,6 +79,8 @@ class TeachersController extends Controller
         $teacher->name_teacher = $request->input('teacher_name');
         $teacher->payroll = $request->input('payroll');
         $teacher->id_user = $user_id;
+        $teacher->division_id = $request->input('division_id');
+        $teacher->careers_id = $request->input('careers_id');
         $teacher->division_id = $request->input('division_id');
 
 
