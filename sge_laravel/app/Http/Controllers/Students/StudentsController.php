@@ -106,7 +106,7 @@ class StudentsController extends Controller
      
 
 
-
+        $student_id = $user->students->id;
 
 
         $student = Students::find($id);
@@ -114,6 +114,8 @@ class StudentsController extends Controller
         $student->id_student = $request->input('id_student');
         $student->group_id = $request->input('group_id');
         $student->division_id = $request->input('division_id');
+
+
 
         $student->save();
 
@@ -125,13 +127,15 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        $students = Students::find($id);
-    
-        if (!$students) {
-            return back()->with('error', 'No se encontro al alumno');
-        }
-    
+        $user = User::find($id);
+
+        $student_id = $user->student->id;
+
+        $students = Students::find($student_id);
+
         $students->delete();
-        return back()->with('notification', 'Estudiante eliminado correctamente');
+        $user->delete();
+        return redirect('usuarios')->with('notification', 'Student deleted successfully');
+        
     }
 }

@@ -109,7 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                                Usuario</span></button> -->
+                                                                                                    Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -603,7 +603,7 @@
                                         #</th>
                                     <th class="theader">
 
-                                        Usuario</th>
+                                        Nombre</th>
                                     <th class="theader">
                                         Email
                                     </th>
@@ -669,14 +669,36 @@
                                                 @endif
                                                 <!-- Validar si el usuario es el mismo que el usuario autenticado -->
                                             @elseif($user->student)
-                                                <p>
-                                                    <button class="show-modal-edit-student"
-                                                        data-target="#edit{{ $user->id }}">
-                                                        <div class="button_edit_yellow">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                
+
+                                                <button class="show-modal-student-view"
+                                                    data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+
+                                                <button class="show-modal-edit-student"
+                                                    data-target="#edit{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+
+                                                @if ($user->id == Auth::user()->id)
+                                                    <button onclick="alert('No puedes borrar tu usuario')">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
                                                         </div>
                                                     </button>
-                                                </p>
+                                                @else
+                                                    <button class="show-modal-delete-student"
+                                                        data-modal="#delete{{ $user->id }}">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @endif
+                                                
                                             @elseif($user->presidencies)
                                                 <button class="show-modal"
                                                     data-modal="view_presidencies{{ $user->id }}">
@@ -739,8 +761,9 @@
                                         </p>
                                     @elseif($user->student)
                                         <p>
+                                            @include('UserManagement.view_modal_student')
                                             @include('UserManagement.edit_modal_student')
-
+                                            @include('UserManagement.delete_modal_student')
                                         </p>
                                     @elseif($user->presidencies)
                                         <p>
@@ -894,6 +917,20 @@
     </script>
 
     <script>
+
+        const modal_view_student = document.querySelectorAll('.modal-view-student')
+        const show_modal_student_view = document.querySelectorAll('.show-modal-student-view')
+        show_modal_student_view.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
+
+    <script>
         // student modal
 
         const modal_edit_student = document.querySelectorAll('.modal-edit-student')
@@ -902,6 +939,19 @@
             button.addEventListener('click', (e) => {
                 e.preventDefault()
                 const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
+
+    <script>
+        const modal_delete_student = document.querySelectorAll('.modal-delete-student')
+        const show_modal_delete_student = document.querySelectorAll('.show-modal-delete-student')
+        show_modal_delete_student.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
                 const modal = document.querySelector(modalId)
                 modal.classList.remove('hidden')
             })
@@ -949,8 +999,12 @@
 
                 const modalAsesor = button.closest('.view-modal-asesor')
                 const modalEditAsesor = button.closest('.modal-edit-asesor')
-                const modalDeleteAsesor = button.closest('.-modal-delete-asesor')
+                const modalDeleteAsesor = button.closest('.modal-delete-asesor')
                 const modalViewPermission = button.closest('.modal-permission')
+                const modalViewStudent = button.closest('.view-modal-student')
+                const modalEditStudent = button.closest('.modal-edit-student')
+                const modalDeleteStudent = button.closest('.modal-delete-student')
+
 
 
                 if (modalAsesor) {
@@ -969,6 +1023,18 @@
 
                 if (modalViewPermission) {
                     modalViewPermission.classList.add('hidden')
+                }
+
+                if (modalViewStudent) {
+                    modalViewStudent.classList.add('hidden')
+                }
+
+                if (modalEditStudent) {
+                    modalEditStudent.classList.add('hidden')
+                }
+
+                if (modalDeleteStudent) {
+                    modalDeleteStudent.classList.add('hidden')
                 }
 
 
