@@ -109,7 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                            Usuario</span></button> -->
+                                                                                                Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -137,64 +137,53 @@
                                                 </p>
                                             </button>
                                         </div>
-
-
                                         <div class="modal-container">
-                                            @if ($errors->any())
-                                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
-                                                    role="alert">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>
-                                                                {{ $error }}
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
                                             <div
                                                 class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
                                                 <form action="{{ route('presidentes.store') }}" method="POST"
                                                     class="flex flex-col items-center">
                                                     @csrf
-
-                                                    <div class="mb-4">
-                                                        <input type="text" name="name" placeholder="Nombre de usuario"
-                                                            class="rounded input-field">
-
-                                                    </div>
                                                     <div class="mb-4">
                                                         <input type="email" name="email"
                                                             placeholder="Correo electronico" class="rounded input-field">
+                                                        @error('email')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
                                                     <div class="mb-4">
                                                         <input type="password" name="password" placeholder="Contraseña"
                                                             class="rounded input-field">
-
+                                                        @error('password')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div class="mb-4">
                                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                                                             del Presidente</label>
                                                         <input type="text" name="president_name"
                                                             class="rounded input-field">
+                                                        @error('president_name')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div class="mb-4">
                                                         <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos
                                                             del
                                                             Presidente</label>
                                                         <input type="text" name="president_lastname"
                                                             class="rounded input-field">
+                                                        @error('president_lastname')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div class="mb-4">
                                                         <label
                                                             class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
                                                         <input type="number" name="payroll" class="rounded input-field">
+                                                        @error('payroll_president')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
-
                                                     <div>
                                                         <select name="career_id" id="career_id"
                                                             class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
@@ -206,8 +195,10 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
+                                                        @error('career_id')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div>
                                                         <select name="division_id" id="division_id"
                                                             class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
@@ -219,9 +210,10 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
+                                                        @error('division_id')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
-
                                                     <div class="flex justify-center">
                                                         <button type="submit">
                                                             <div
@@ -648,6 +640,12 @@
                                                 </div>
                                             </button>
                                             @if ($user->teachers)
+                                                <button class="show-modal-asesor-view"
+                                                    data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
                                                 <button class="show-modal-edit-teacher"
                                                     data-target="#edit{{ $user->id }}">
                                                     <div class="button_edit_yellow">
@@ -670,14 +668,6 @@
                                                     </button>
                                                 @endif
                                                 <!-- Validar si el usuario es el mismo que el usuario autenticado -->
-
-
-                                                <button class="show-modal-asesor-view"
-                                                    data-modal="#view{{ $user->id }}">
-                                                    <div class="button_see_blue">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </div>
-                                                </button>
                                             @elseif($user->student)
                                                 <p>
                                                     <button class="show-modal-edit-student"
@@ -688,10 +678,35 @@
                                                     </button>
                                                 </p>
                                             @elseif($user->presidencies)
-                                                <p>
-                                                    Editar Estudiante
+                                                <button class="show-modal"
+                                                    data-modal="view_presidencies{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
 
-                                                </p>
+                                                <button class="show-modal"
+                                                    data-modal="edit_president{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                @if ($user->id == Auth::user()->id)
+                                                    <button onclick="alert('No puedes borrar tu usuario')">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @else
+                                                    <button class="show-modal"
+                                                        data-modal="delete_president{{ $user->id }}">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @endif
+                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
                                             @elseif($user->coordinators)
                                                 <p>
                                                     Editar Cordinador
@@ -729,7 +744,9 @@
                                         </p>
                                     @elseif($user->presidencies)
                                         <p>
-
+                                            @include('UserManagement.edit_presidencies')
+                                            @include('UserManagement.delete_presidencies')
+                                            @include('UserManagement.view_presidencies')
                                         </p>
                                     @elseif($user->coordinators)
                                         <p>

@@ -41,11 +41,14 @@ class PresidenciesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'email' => 'required',
+            'password' => 'required',
             'president_name' => 'required|max:250',
             'president_lastname' => 'required|max:250',
-            'payroll' => 'required'
+            'payroll' => 'required',
+            'career_id' => 'required',
+            'division_id' => 'required'
         ]);
-
         $user = new User();
 
         $user->email = $request->input('email');
@@ -71,7 +74,7 @@ class PresidenciesController extends Controller
 
 
 
-        return redirect('usuarios')->with('notificacion', "Presidente creado correctamente");
+        return redirect('usuarios')->with('notification', "Presidente creado correctamente");
     }
 
 
@@ -100,12 +103,16 @@ class PresidenciesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
+            'email' => 'required',
+            'password' => 'required',
             'president_name' => 'required|max:250',
             'president_lastname' => 'required|max:250',
-            'payroll_president' => 'required'
+            'payroll_president' => 'required',
+            'career_id' => 'required',
+            'division_id' => 'required'
         ]);
 
         $user = User::find($id);
@@ -126,7 +133,7 @@ class PresidenciesController extends Controller
 
 
         if ($presidencies->update()){
-            return redirect('usuarios')->with('notificacion', "Actualizado creado correctamente");
+            return redirect('usuarios')->with('notification', "Presidente actualizado correctamente");
         }else{
             return redirect('usuarios')->with('notification', 'Error al actualizar el presidente');
         }
@@ -146,6 +153,6 @@ class PresidenciesController extends Controller
         $president->delete();
 
         $user->delete();
-        return redirect('usuarios')->with('notificacion', 'Presidente eliminado correctamente');
+        return redirect('usuarios')->with('notification', 'Presidente eliminado correctamente');
     }
 }
