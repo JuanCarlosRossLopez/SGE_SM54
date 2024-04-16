@@ -67,7 +67,7 @@
                             <input
                                 class="appearance-none block resize-none h-fit  w-fit  bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 type="text" name="price" value="{{ $book->price }}" name="" id="">
-
+                `<label class=" font-semibold" for="">Estudiantes</label>
                                 @foreach ($book->students as $student)
         <p>{{ $student->student_name }}</p>
     @endforeach
