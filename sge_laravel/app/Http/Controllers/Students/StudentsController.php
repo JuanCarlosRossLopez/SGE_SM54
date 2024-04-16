@@ -40,7 +40,7 @@ class StudentsController extends Controller
 
         $user = new User();
 
-        $user->name = $request->input('name');
+       // $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->save();
