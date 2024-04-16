@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener los datos iniciales para la gráfica
     $.ajax({
-        url: '/project_approval_data_2',
+        url: '/project_approval_data_3',
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 var counts = response.counts;
 
                 // Crear la gráfica inicial
-                var ctx = document.getElementById('MyChart').getContext('2d');
-                var MyChart = new Chart(ctx, {
+                var ctx = document.getElementById('MYChart').getContext('2d');
+                var MYChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Proyectos Aprobados por grupo',
+                            label: 'Estudiantes de cada grupo',
                             data: counts,
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgba(54, 162, 235, 1)',
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         success: function (response) {
                             if (response.success) {
                                 // Actualizar el gráfico con los nuevos datos
-                                MyChart.data.labels = [response.group_name];
-                                MyChart.data.datasets[0].data = [response.approved_count];
-                                MyChart.update();
+                                MYChart.data.labels = [response.group_name];
+                                MYChart.data.datasets[0].data = [response.approved_count];
+                                MYChart.update();
                             } else {
                                 console.error('Error al obtener los datos del servidor:', response.message);
                             }

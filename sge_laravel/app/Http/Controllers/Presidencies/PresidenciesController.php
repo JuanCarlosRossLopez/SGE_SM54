@@ -41,11 +41,14 @@ class PresidenciesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'email' => 'required',
+            'password' => 'required',
             'president_name' => 'required|max:250',
             'president_lastname' => 'required|max:250',
-            'payroll' => 'required'
+            'payroll_president' => 'required',
+            'career_id' => 'required',
+            'division_id' => 'required'
         ]);
-
         $user = new User();
 
         $user->email = $request->input('email');

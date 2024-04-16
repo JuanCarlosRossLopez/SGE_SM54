@@ -35,6 +35,7 @@ use App\Http\Controllers\Groups\GroupController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ChartController2;
+use App\Http\Controllers\ChartController3;
 
 /*
 |--------------------------------------------------------------------------
@@ -193,6 +194,7 @@ Route::get('/get-project-percentage', [ProgressController::class, 'getPercentage
 Route::get('/get-finished-project-percentage', [ProgressController::class, 'getFinishedPercentage']);
 Route::get('/project_approval_data', [ChartController::class, 'projectApprovalData']);
 Route::get('/project_approval_data_2', [ChartController2::class, 'projectApprovalData2']);
+Route::get('/project_approval_data_3', [ChartController3::class, 'projectApprovalData3']);
 
 
 

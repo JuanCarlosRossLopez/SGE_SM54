@@ -10,6 +10,8 @@ class ChartController extends Controller
 {
     public function projectApprovalData()
 {
+
+   
     try {
         // Obtener la cantidad de proyectos aprobados por carrera
         $approvedProjectsByCareer = Project_management::selectRaw('career, COUNT(*) AS approved_count')

@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
 use Illuminate\Http\Request;
 use App\Models\Project_management;
+use App\Models\Students;
 use Illuminate\Support\Facades\Log;
 
-class ChartController2 extends Controller
+class ChartController3 extends Controller
 {
-    public function projectApprovalData2()
+    public function projectApprovalData3()
 {
     try {
         // Obtener la cantidad de proyectos aprobados por carrera
-        $approvedProjectsByGroup = Project_management::selectRaw('student_group, COUNT(*) AS approved_count')
-            ->whereHas('project_status', function ($query) {
-                $query->whereIn('status_project', ['Aprobado', 'Finalizado']);
-            })
-            ->groupBy('student_group')
+        $approvedStudentsByGroup = Students::selectRaw('group_id, COUNT(*) AS approved_count')
+            ->groupBy('group_id')
             ->get();
             // $groups = Group::all(); // Ajusta esto según el modelo y la relación real
             // return view('super_admin.dashboard_presidencia', compact('groups'));
@@ -26,9 +23,9 @@ class ChartController2 extends Controller
         $labels = [];
         $counts = [];
 
-        foreach ($approvedProjectsByGroup as $project) {
-            $labels[] = $project->student_group;
-            $counts[] = $project->approved_count;
+        foreach ($approvedStudentsByGroup as $student) {
+            $labels[] = $student->group_id;
+            $counts[] = $student->approved_count;
         }
 
         // Preparar la respuesta en formato JSON
