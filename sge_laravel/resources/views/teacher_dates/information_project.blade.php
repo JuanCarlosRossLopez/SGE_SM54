@@ -409,6 +409,11 @@ Plantilla base
                                 @role('Estudiante')
                                     <a href="{{ route('comments.update', ['id' => $comment->id]) }}" class="bg-red-200 rounded-md w-24 p-1 m-2" onclick="return confirm('¿Estás seguro de que quieres cambiar el estado del comentario?')">Corregir</a>
                                 @endrole
+                                @role('Asesor')
+                                    <a  class="bg-red-200
+                                    rounded-md w-24 p-1 m-2" onclick="return confirm('¿Estás seguro de que quieres cambiar el estado del comentario?')">Corregir</a>
+                                @endrole
+                                
                                     @else
                                     <span class="bg-green-200 rounded-md w-24 p-1 m-2">Corregido</span>
                                 @endif
