@@ -58,7 +58,7 @@
     <div class="container" style="">
         <img src="{{ $imagen_path }}" alt="logo UT" style="align-self: center">
         <h4 style="text-align: center;">CARTA DE APROBACIÓN DE MEMORIA</h4>
-        <p style="text-align: right;">Cancún, Quintana Roo; a 20 de Julio de 2024</p>
+        <p style="text-align: right;">Cancún, Quintana Roo; a 16 de Abril de 2024</p>
         <h4>DRA.ROCÍO ARCEO DÍAZ</h4>
         <h4>DIRECTORA DE LA CARRERA DE TSU EN TI, ÁREA<br /> DESAROLLO DE SOFTWARE MULTIPLATAFORMA <br /> DIVISIÓN DE
             INGENIERÍA Y TECNOLOGÍA </h4>
@@ -87,13 +87,13 @@
                 <p>ASESOR ACADÉMICO</p>
                 <br/>
                 <hr style="width: 250px"/>
-                <p>Mtro. [nombre_asesor]</p>
+                <p>Mtro/a. {{$adviser_name}}</p>
             </div>
         </div>
         <table class="footer-table">
             <tbody>
                 <tr>
-                    <td>Fecha de revisión: 03 de mayo de 2019</td>
+                    <td>Fecha de revisión: 03 de mayo de 2024</td>
                     <td>Revisión No. 5</td>
                     <td>AEP-P03-F04</td>
                 </tr>

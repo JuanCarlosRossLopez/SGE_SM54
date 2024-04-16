@@ -232,7 +232,7 @@
             <table>
                 <tr>
                     <th style="width: 120px;">Asesor académico</th>
-                    <td>{{ Auth::user()->student->projects-> }}</td>
+                    <td>{{ $adviser_name }}</td>
                     {{-- $adviser_name --}}
                 </tr>
                 <tr>
