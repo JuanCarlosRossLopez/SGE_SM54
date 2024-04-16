@@ -35,7 +35,7 @@
                     <x-input-error :messages="$errors->get('code')" class="mt-2" />
                 </div>
                 <div class="p-2">
-                    <button type="submit" class="buttons_card_green">
+                    <button type="submit" class="buttons_card_login">
                         <label class="w-full cursor-pointer">Ingresar Código</label>
                     </button>
                 </div>
