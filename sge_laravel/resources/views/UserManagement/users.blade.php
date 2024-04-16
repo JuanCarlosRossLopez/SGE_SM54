@@ -109,7 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                                Usuario</span></button> -->
+                                                                                                            Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -209,11 +209,10 @@
 
 
                                 <div idModal="coordinatorAdd"
-                                    class="modal fixed h-screen w-full left-0 top-0 hidden flex overflow-hidden justify-center items-center bg-black bg-opacity-50">
-                                    <div class="bg-[#01A080] w-[600px] rounded shadow-lg max-w-4xl ">
+                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
-                                            <h3
-                                                class="font-semibold text-lg justify-center items-center text-[#FFFF] text-center">
+                                            <h3 class="font-semibold text-lg ml-60 text-white">
                                                 Registrar
                                                 Coordinador</h3>
                                             <button class="close-modal ">
@@ -223,66 +222,70 @@
                                             </button>
                                         </div>
                                         <div class="bg-white p-2">
-                                            <div class="modal-body mb-0 overflow-y-auto h-[38vh]">
-                                                <div class="container mx-auto px-4 py-8">
-                                                    <h1 class="text-center font-semibold text-2xl">Registrar Coordinador
+                                            <div
+                                                class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
+                                                <div class="flex flex-col items-center justify-center">
+                                                    <h1 class="text-xl font-bold mb-4">Registrar Coordinador
                                                     </h1>
-                                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                                        <div
-                                                            class="bg-white rounded-lg p-8 mx-auto flex justify-center items-center flex-col">
-                                                            <form action="{{ route('coordinacion.store') }}"
-                                                                method="POST" class="flex flex-col gap-4">
-                                                                @csrf
-                                                                @method('POST')
-                                                                <div class="flex flex-col gap-4">
-
-                                                                    <input type="email" name="email" id="email"
-                                                                        placeholder="Correo electronico"
+                                                    <form action="{{ route('coordinacion.store') }}" method="POST"
+                                                        class="flex flex-col gap-4">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <div class="flex flex-col md:flex-row md:gap-4">
+                                                            <div class="flex flex-col gap-4 md:w-1/2">
+                                                                <input type="email" name="email" id="email"
+                                                                    placeholder="Correo electronico"
+                                                                    class="rounded-md border border-gray-300 p-2">
+                                                                @error('email')
+                                                                    <span class="text-red-500">{{ $message }}</span>
+                                                                @enderror
+                                                                <div class="flex flex-col ga-4">
+                                                                    <input type="password" name="password" id="password"
+                                                                        placeholder="Contraseña"
                                                                         class="rounded-md border border-gray-300 p-2">
-
-                                                                    <div class="flex flex-col ga-4">
-                                                                        <input type="password" name="password"
-                                                                            id="password" placeholder="Contraseña"
-                                                                            class="rounded-md border border-gray-300 p-2">
-
-                                                                    </div>
-
-                                                                    <div class="flex flex-col gap-4">
-                                                                        <input type="text" name="coordinator_name"
-                                                                            id="coordinator_name"
-                                                                            placeholder="Nombre del coordinador"
-                                                                            class="rounded-md border border-gray-300 p-2">
-                                                                    </div>
-
-
-                                                                    <div class="flex flex-col gap-4">
-                                                                        <input type="number" name="payroll"
-                                                                            id="payroll"
-                                                                            placeholder="Número de nómina del coordinador"
-                                                                            class="rounded-md border border-gray-300 p-2">
-
-                                                                        <select name="division_id" id="division_id"
-                                                                            class="rounded-md border border-gray-300 p-2">
-                                                                            <option selected disabled>Elige una división
-                                                                            </option>
-                                                                            @foreach ($Divisions as $division)
-                                                                                <option value="{{ $division->id }}">
-                                                                                    {{ $division->division_name }}
-                                                                                </option>
-                                                                            @endforeach
-                                                                        </select>
-
-
-                                                                    </div>
+                                                                    @error('password')
+                                                                        <span class="text-red-500">{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
-                                                                <!-- Puedes agregar más campos aquí según sea necesario -->
-                                                                <div class="flex justify-end mt-4">
-                                                                    <button type="submit"
-                                                                        class="bg-[#01A080] text-white rounded font-bold p-2">Agregar</button>
-                                                                </div>
-                                                            </form>
+                                                            </div>
+
+                                                            <div class="flex flex-col gap-4 md:w-1/2">
+                                                                <input type="text" name="coordinator_name"
+                                                                    id="coordinator_name"
+                                                                    placeholder="Nombre del coordinador"
+                                                                    class="rounded-md border border-gray-300 p-2">
+                                                                @error('coordinator_name')
+                                                                    <span class="text-red-500">{{ $message }}</span>
+                                                                @enderror
+                                                                <input type="number" name="payroll" id="payroll"
+                                                                    placeholder="Número de nómina del coordinador"
+                                                                    class="rounded-md border border-gray-300 p-2">
+                                                                @error('payroll')
+                                                                    <span class="text-red-500">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
                                                         </div>
-                                                    </div>
+
+
+                                                        <div class="flex flex-col gap-4">
+                                                            <select name="division_id" id=""
+                                                                class="rounded-md border border-gray-300 p-2">
+                                                                <option value="">Selecciona una división</option>
+                                                                @foreach ($Divisions as $division)
+                                                                    <option value="{{ $division->id }}">
+                                                                        {{ $division->division_name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('division_id')
+                                                                <span class="text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                        <!-- Puedes agregar más campos aquí según sea necesario -->
+                                                        <div class="flex justify-end">
+                                                            <button type="submit"
+                                                                class="bg-[#01A080] text-white rounded font-bold p-2">Agregar</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -581,7 +584,7 @@
                                         #</th>
                                     <th class="theader">
 
-                                        Usuario</th>
+                                        Nombre</th>
                                     <th class="theader">
                                         Email
                                     </th>
@@ -647,65 +650,109 @@
                                                 @endif
                                                 <!-- Validar si el usuario es el mismo que el usuario autenticado -->
                                             @elseif($user->student)
-                                                <p>
+                                                <button class="show-modal-student-view"
+                                                    data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+
                                                     <button class="show-modal-edit-student"
                                                         data-target="#edit{{ $user->id }}">
                                                         <div class="button_edit_yellow">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </div>
                                                     </button>
-                                                </p>
-                                            @elseif($user->presidencies)
-                                                <button class="show-modal"
-                                                    data-modal="view_presidencies{{ $user->id }}">
-                                                    <div class="button_see_blue">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </div>
-                                                </button>
 
-                                                <button class="show-modal"
-                                                    data-modal="edit_president{{ $user->id }}">
-                                                    <div class="button_edit_yellow">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </div>
-                                                </button>
-                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
-                                                @if ($user->id == Auth::user()->id)
-                                                    <button onclick="alert('No puedes borrar tu usuario')">
-                                                        <div class="button_delete_red">
-                                                            <i class="fa-solid fa-trash"></i>
+                                                    @if ($user->id == Auth::user()->id)
+                                                        <button onclick="alert('No puedes borrar tu usuario')">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @else
+                                                        <button class="show-modal-delete-student"
+                                                            data-modal="#delete{{ $user->id }}">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @endif
+                                                @elseif($user->presidencies)
+                                                    <button class="show-modal"
+                                                        data-modal="view_presidencies{{ $user->id }}">
+                                                        <div class="button_see_blue">
+                                                            <i class="fa-solid fa-eye"></i>
                                                         </div>
                                                     </button>
+
+                                                    <button class="show-modal"
+                                                        data-modal="edit_president{{ $user->id }}">
+                                                        <div class="button_edit_yellow">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </div>
+                                                    </button>
+                                                    <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                    @if ($user->id == Auth::user()->id)
+                                                        <button onclick="alert('No puedes borrar tu usuario')">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @else
+                                                        <button class="show-modal"
+                                                            data-modal="delete_president{{ $user->id }}">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @endif
+                                                    <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                @elseif($user->coordinators)
+                                                    <button class="show-modal-edit-coordination"
+                                                        data-target="#edit{{ $user->id }}">
+                                                        <div class="button_edit_yellow">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </div>
+                                                    </button>
+                                                    @if ($user->id == Auth::user()->id)
+                                                        <button onclick="alert('No puedes borrar tu usuario')">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @else
+                                                        <button class="show-modal-delete-coordination"
+                                                            data-modal="#delete{{ $user->id }}">
+                                                            <div class="button_delete_red">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </button>
+                                                    @endif
+                                                    <button class="show-modal-coordination-view"
+                                                        data-modal="#view{{ $user->id }}">
+                                                        <div class="button_see_blue">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                        </div>
+                                                    </button>
+                                                    </p>
                                                 @else
                                                     <button class="show-modal"
-                                                        data-modal="delete_president{{ $user->id }}">
+                                                        data-modal="Show_User_{{ $user->id }}">
+                                                        <div class="button_see_blue">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                        </div>
+                                                    </button>
+                                                    <button class="show-modal" data-modal="edit_{{ $user->id }}">
+                                                        <div class="button_edit_yellow">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </div>
+                                                    </button>
+
+                                                    <button class="show-modal" data-modal="delete_{{ $user->id }}">
                                                         <div class="button_delete_red">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </div>
                                                     </button>
-                                                @endif
-                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
-                                            @elseif($user->coordinators)
-                                                <p>
-                                                    Editar Cordinador
-                                                </p>
-                                            @else
-                                                <button class="show-modal" data-modal="Show_User_{{ $user->id }}">
-                                                    <div class="button_see_blue">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </div>
-                                                </button>
-                                                <button class="show-modal" data-modal="edit_{{ $user->id }}">
-                                                    <div class="button_edit_yellow">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </div>
-                                                </button>
-
-                                                <button class="show-modal" data-modal="delete_{{ $user->id }}">
-                                                    <div class="button_delete_red">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </div>
-                                                </button>
                                             @endif
                                         </td>
                                     </tr>
@@ -717,8 +764,9 @@
                                         </p>
                                     @elseif($user->student)
                                         <p>
+                                            @include('UserManagement.view_modal_student')
                                             @include('UserManagement.edit_modal_student')
-
+                                            @include('UserManagement.delete_modal_student')
                                         </p>
                                     @elseif($user->presidencies)
                                         <p>
@@ -728,7 +776,9 @@
                                         </p>
                                     @elseif($user->coordinators)
                                         <p>
-
+                                            @include('UserManagement.edit_modal_cordinator')
+                                            @include('UserManagement.delete_modal_cordinator')
+                                            @include('UserManagement.view_modal_cordinator')
                                         </p>
                                     @else
                                         <p>
@@ -872,6 +922,56 @@
     </script>
 
     <script>
+        const modal_view_student = document.querySelectorAll('.modal-view-student')
+        const show_modal_student_view = document.querySelectorAll('.show-modal-student-view')
+        show_modal_student_view.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
+
+    <script>
+        // Coordination modal
+
+        const modal_edit_coordination = document.querySelectorAll('.modal-edit-coordination')
+        const show_modal_edit_coordination = document.querySelectorAll('.show-modal-edit-coordination')
+        show_modal_edit_coordination.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+
+        const modal_delete_coordination = document.querySelectorAll('.modal-delete-coordination')
+        const show_modal_delete_coordination = document.querySelectorAll('.show-modal-delete-coordination')
+        show_modal_delete_coordination.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+
+        const modal_view_coordination = document.querySelectorAll('.modal-view-coordination')
+        const show_modal_coordination_view = document.querySelectorAll('.show-modal-coordination-view')
+        show_modal_coordination_view.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
+
+    <script>
         // student modal
 
         const modal_edit_student = document.querySelectorAll('.modal-edit-student')
@@ -880,6 +980,19 @@
             button.addEventListener('click', (e) => {
                 e.preventDefault()
                 const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
+
+    <script>
+        const modal_delete_student = document.querySelectorAll('.modal-delete-student')
+        const show_modal_delete_student = document.querySelectorAll('.show-modal-delete-student')
+        show_modal_delete_student.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
                 const modal = document.querySelector(modalId)
                 modal.classList.remove('hidden')
             })
@@ -927,9 +1040,14 @@
 
                 const modalAsesor = button.closest('.view-modal-asesor')
                 const modalEditAsesor = button.closest('.modal-edit-asesor')
-                const modalDeleteAsesor = button.closest('.-modal-delete-asesor')
+                const modalDeleteAsesor = button.closest('.modal-delete-asesor')
                 const modalViewPermission = button.closest('.modal-permission')
-
+                const modalViewStudent = button.closest('.view-modal-student')
+                const modalEditStudent = button.closest('.modal-edit-student')
+                const modalDeleteStudent = button.closest('.modal-delete-student')
+                const modalViewCoordination = button.closest('.modal-view-coordination')
+                const modalDeleteCoordination = button.closest('.modal-delete-coordination')
+                const modalEditCoordination = button.closest('.modal-edit-coordination')
 
                 if (modalAsesor) {
                     modalAsesor.classList.add('hidden')
@@ -949,6 +1067,26 @@
                     modalViewPermission.classList.add('hidden')
                 }
 
+                if (modalViewStudent) {
+                    modalViewStudent.classList.add('hidden')
+                }
+
+                if (modalEditStudent) {
+                    modalEditStudent.classList.add('hidden')
+                }
+
+                if (modalDeleteStudent) {
+                    modalDeleteStudent.classList.add('hidden')
+                }
+                if (modalViewCoordination) {
+                    modalViewCoordination.classList.add('hidden')
+                }
+                if (modalDeleteCoordination) {
+                    modalDeleteCoordination.classList.add('hidden')
+                }
+                if (modalEditCoordination) {
+                    modalEditCoordination.classList.add('hidden')
+                }
 
 
 

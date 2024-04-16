@@ -92,15 +92,25 @@ class CoordinatorsController extends Controller
             'division_id' => 'required',
             'user_id' => 'required'
         ]);*/
+        $user = User::find($id);
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->update();
 
-        $coordinator = Coordinators::find($id);
+        $coordinator_id = $user->coordinators->id;
+
+        $coordinator = Coordinators::find($coordinator_id);
         $coordinator->coordinator_name = $request->coordinator_name;
         $coordinator->payroll = $request->payroll;
         $coordinator->division_id = $request->division_id;
-        $coordinator->user_id = $request->user_id;
-        $coordinator->save();
+        $coordinator->user_id = $id;
+        $coordinator->update();
 
-        return redirect('coordination.coordinators_table')->with('notification', 'Coordinador actualizado exitosamente');
+        if ($coordinator->update()){
+            return redirect('usuarios')->with('notification', "Coordinador actualizado correctamente");
+        }else{
+            return redirect('usuarios')->with('notification', 'Error al actualizar el coordinador');
+        }
     }
 
     /**
@@ -108,13 +118,18 @@ class CoordinatorsController extends Controller
      */
     public function destroy(string $id)
     {
-        $coordinator = Coordinators::find($id);
+        $user = User::find($id);
+
+        $coordinator_id = $user->coordinators->id;
+
+        $coordinator = Coordinators::find($coordinator_id);
 
         if (!$coordinator) {
-            return redirect('coordinacion')->with('error', 'Coordinador no encontrado');
+            return back()->with('error', 'Coordinador no encontrado');
         }
 
         $coordinator->delete();
-        return redirect('coordinacion')->with('notification', 'Coordinador eliminado exitosamente');
+        $user->delete();
+        return back()->with('notification', 'Coordinador eliminado exitosamente');
     }
 }

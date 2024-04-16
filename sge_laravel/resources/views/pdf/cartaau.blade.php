@@ -64,7 +64,7 @@
     <div class="container">
         <img src="{{ $imagen_path }}" alt="logo UT" style="align-self: center">
         <div>
-            <h5 class="texto">Cancún, Quintana Roo; <span>a 27 de Noviembre de 2023</span></h5>
+            <h5 class="texto">Cancún, Quintana Roo; <span>a 16 de Abril de 2024</span></h5>
             <h5 class="texto">Of.:UTC/DDIT/M-39/2023</h5>
             <h5 class="texto">Asunto: Autorización de Digitalización</h5>
         </div>
@@ -109,7 +109,7 @@
                 <p>ASESOR ACADÉMICO</p>
                 <br />
                 <hr style="width: 250px;" />
-                <p>[asesor académico]</p>
+                <p>{{$adviser_name}}</p>
                 {{-- <p style="font-size: 10px"><span style="color: white">.</span></p> --}}
             </div>
             <div class="columna" style="margin-bottom:0.5px;">
