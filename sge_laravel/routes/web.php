@@ -37,6 +37,11 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ChartController2;
 use App\Http\Controllers\ChartController3;
 
+
+use App\Http\Controllers\ExportController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +53,10 @@ use App\Http\Controllers\ChartController3;
 |
 */
 Route::post('/grupos/storeMasivo', [GroupController::class, 'storeMasivo'])->name('grupos.storeMasivo');
+
+Route::get('/exportar-excel', [ExportController::class, 'exportToExcel'])->name('exportar-excel');
+
+
 Route::post('/carreras/storeMasivo', [CareerController::class, 'storeMasivo'])->name('carreras.storeMasivo');
 
 Route::get('/Perfil_Maestro', function () {
