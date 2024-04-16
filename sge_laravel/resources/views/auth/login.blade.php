@@ -29,7 +29,7 @@
 
             <form method="POST" action="{{ route('login') }}" class="">
                 @csrf
-                <div class="">
+                <div class="p-2">
                     <label for="email" class="block text-gray-700 font-semibold ">Ingrese su correo
                         electrónico:</label>
                     <x-text-input id="email" class="w-full px-2 py-2 border rounded-md focus:border-gray-500"
@@ -60,13 +60,11 @@
                         </script>
 
                     </div>
-                    <a href="{{ route('password.request') }}"
-                        class="block px-4 py-2 font-normal underline text-[#257d6c] mb-2 text-center">¿Haz
-                        Olvidado la contraseña? Recupérala aquí</a>
+                  
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
                 <div class="p-2">
-                    <button type="submit" class="buttons_card_green">
+                    <button type="submit" class="buttons_card_login">
                         <label class="w-full cursor-pointer">Iniciar sesión</label>
                     </button>
                 </div>

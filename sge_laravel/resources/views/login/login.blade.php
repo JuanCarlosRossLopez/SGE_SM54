@@ -39,8 +39,7 @@
                     </button>
                 </div>
                 <label for="email" class="block text-gray-700 font-semibold mb-2 text-center">¿Haz Olvidado la
-                    contraseña? Recuperala aqui</label>
-            </div>
+                
             <div class="mb-4 items-center flex justify-center">
                 <button type="submit"
                     class="w-1/3 bg-green-500 text-white font-semibold py-2 px-4 rounded-md  hover:bg-green-600 focus:outline-none focus:bg-green-600">Iniciar
