@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Students;
 use App\Models\Division;
+use App\Models\Career;
+
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Http;
 
@@ -51,7 +53,9 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         // Crear un nuevo usuario sin el campo name
+
         $user = new User();
+
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
@@ -66,16 +70,10 @@ class StudentsController extends Controller
         // Crear un nuevo estudiante y asignar los valores recibidos de la API
         $student = new Students();
         $student->student_name = $request->input('student_name');
-        $student->matricula = $request->input('matricula');
-        $student->carrera = $request->input('carrera');
-        $student->curp = $request->input('curp');
-        $student->grupo = $request->input('grupo');
-        $student->cuatrimestre = $request->input('cuatrimestre');
-        $student->fechaNacimiento = $request->input('fechaNacimiento');
-        $student->sexo = $request->input('sexo');
-        $student->division = $request->input('division');
-        $student->seguro = $request->input('seguro');
-        $student->reingreso = $request->input('reingreso');
+        $student->id_student = $request->input('id_student');
+        $student->careers_id = $request->input('carrer_id');
+        $student->group_id= $request->input('group_id');
+        $student->division_id = $request->input('division_id');
         $student->user_id = $user_id;
         $student->save();
 
@@ -105,14 +103,19 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+     
 
-        ]);
+
+        $student_id = $user->students->id;
+
 
         $student = Students::find($id);
         $student->student_name = $request->input('student_name');
         $student->id_student = $request->input('id_student');
+        $student->group_id = $request->input('group_id');
         $student->division_id = $request->input('division_id');
+
+
 
         $student->save();
 
@@ -124,13 +127,15 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        $students = Students::find($id);
-    
-        if (!$students) {
-            return back()->with('error', 'No se encontro al alumno');
-        }
-    
+        $user = User::find($id);
+
+        $student_id = $user->student->id;
+
+        $students = Students::find($student_id);
+
         $students->delete();
-        return back()->with('notification', 'Estudiante eliminado correctamente');
+        $user->delete();
+        return redirect('usuarios')->with('notification', 'Student deleted successfully');
+        
     }
 }

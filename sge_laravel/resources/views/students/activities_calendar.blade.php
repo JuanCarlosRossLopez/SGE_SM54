@@ -151,6 +151,14 @@
                                                                 a el {{ $comment->created_at->format('d F Y') }} a las
                                                                 {{ $comment->created_at->format('H:i:s') }} <i
                                                                     class="fa-regular fa-clock"></i></p>
+
+                                                            <p>
+                                                                @if ($comment->status === 1)
+                                                                    <span class="bg-green-200 rounded-md w-24 p-1 m-2">Corregido</span>
+                                                                @else
+                                                                <span class="bg-red-200  rounded-md w-24 p-1 m-2">Corregir</span>
+                                                                @endif
+                                                            </p>
                                                         </div>
                                                     @endforeach
                                                 @else

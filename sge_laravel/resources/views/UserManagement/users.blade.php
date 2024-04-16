@@ -109,6 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
+                                                                                                    Usuario</span></button> -->
                                                                                                                         Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
@@ -137,64 +138,53 @@
                                                 </p>
                                             </button>
                                         </div>
-
-
                                         <div class="modal-container">
-                                            @if ($errors->any())
-                                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
-                                                    role="alert">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>
-                                                                {{ $error }}
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
                                             <div
                                                 class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
                                                 <form action="{{ route('presidentes.store') }}" method="POST"
                                                     class="flex flex-col items-center">
                                                     @csrf
-
-                                                    <div class="mb-4">
-                                                        <input type="text" name="name" placeholder="Nombre de usuario"
-                                                            class="rounded input-field">
-
-                                                    </div>
                                                     <div class="mb-4">
                                                         <input type="email" name="email"
                                                             placeholder="Correo electronico" class="rounded input-field">
+                                                        @error('email')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
                                                     <div class="mb-4">
                                                         <input type="password" name="password" placeholder="Contraseña"
                                                             class="rounded input-field">
-
+                                                        @error('password')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div class="mb-4">
                                                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
                                                             del Presidente</label>
                                                         <input type="text" name="president_name"
                                                             class="rounded input-field">
+                                                        @error('president_name')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div class="mb-4">
                                                         <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos
                                                             del
                                                             Presidente</label>
                                                         <input type="text" name="president_lastname"
                                                             class="rounded input-field">
+                                                        @error('president_lastname')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div class="mb-4">
                                                         <label
                                                             class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
                                                         <input type="number" name="payroll" class="rounded input-field">
+                                                        @error('payroll_president')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
-
                                                     <div>
                                                         <select name="career_id" id="career_id"
                                                             class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
@@ -206,8 +196,10 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
+                                                        @error('career_id')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
                                                     <div>
                                                         <select name="division_id" id="division_id"
                                                             class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
@@ -219,9 +211,10 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
+                                                        @error('division_id')
+                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
-
-
                                                     <div class="flex justify-center">
                                                         <button type="submit">
                                                             <div
@@ -401,6 +394,88 @@
                                                             <button type="button" id="searchStudentBtn"
                                                                 class="absolute right-0 top-0 bottom-0 px-3">Buscar</button>
                                                         </div>
+                                                        <div class="flex flex-col gap-4">
+                                                            <select name="group_id" id=""
+                                                                class="rounded-md border border-gray-300 p-2">
+                                                                <option value="">Selecciona un grupo</option>
+                                                                @foreach ($Gruop as $gruop)
+                                                                    <option value="{{ $gruop->id }}">
+                                                                        {{ $gruop->group_name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('division_id')
+                                                                <span class="text-red-500">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex flex-col gap-4">
+                                                        <select name="division_id" id=""
+                                                            class="rounded-md border border-gray-300 p-2">
+                                                            <option value="">Selecciona una división</option>
+                                                            @foreach ($Divisions as $division)
+                                                                <option value="{{ $division->id }}">
+                                                                    {{ $division->division_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('division_id')
+                                                            <span class="text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="flex flex-col gap-4">
+                                                        <select name="carrer_id" id=""
+                                                            class="rounded-md border border-gray-300 p-2">
+                                                            <option value="">Selecciona una carrera</option>
+                                                            @foreach ($careers as $career)
+                                                                <option value="{{ $career->id }}">
+                                                                    {{ $career->career_name }}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="flex justify-center mt-4">
+                                            <button type="submit"
+                                                class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                <div idModal="studentAdd"
+                                    class="modal hidden h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+                                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-3xl">
+                                        <div class="border-b px-4 py-2 flex justify-between items-center">
+                                            <h3 class="text-center items-center font-semibold text-lg text-white">Agregar
+                                                Estudiante</h3>
+                                            <button class="close-modal bg-white rounded-full">
+                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
+                                                        style="color: #d50101;"></i></p>
+                                            </button>
+                                        </div>
+                                        <div class="bg-white w-full p-4">
+                                            <div class="modal-body flex flex-col gap-4 items-center justify-center p-4">
+                                                <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>
+                                                <form action="{{ route('estudiantes.store') }}" method="POST"
+                                                    class="w-full" id="studentForm">
+                                                    @csrf
+                                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                        <input type="email" name="email"
+                                                            placeholder="Correo electrónico" class="rounded input-field">
+                                                        <input type="password" name="password" placeholder="Contraseña"
+                                                            class="rounded input-field">
+                                                        <input type="text" name="student_name" id="student"
+                                                            placeholder="Nombre del estudiante"
+                                                            class="rounded-md border border-gray-300 p-2">
+                                                        <div class="relative">
+                                                            <input type="text" name="id_student" id="id_student"
+                                                                placeholder="Matrícula"
+                                                                class="rounded-md border border-gray-300 p-2">
+                                                            <button type="button" id="searchStudentBtn"
+                                                                class="absolute right-0 top-0 bottom-0 px-3">Buscar</button>
+                                                        </div>
                                                         <input type="text" name="carrera" id="carrera"
                                                             placeholder="Carrera"
                                                             class="rounded-md border border-gray-300 p-2">
@@ -439,158 +514,196 @@
                                     </div>
                                 </div>
 
-                                <div idModal="UserAdd"
-                                    class=" modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
-                                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
-                                        <div class="border-b px-4 py-2 flex justify-between items-center">
-                                            <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
-                                                Usuario
-                                            </h3>
-                                            <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
-                                                        style="color: #d50101;"></i>
-                                                </p>
-                                            </button>
+                        <div idModal="UserAdd"
+                            class=" modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
+                            <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
+                                <div class="border-b px-4 py-2 flex justify-between items-center">
+                                    <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
+                                        Usuario
+                                    </h3>
+                                    <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
+                                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
+                                                style="color: #d50101;"></i>
+                                        </p>
+                                    </button>
+                                </div>
+
+
+                                <div class="modal-container">
+                                    @if ($errors->any())
+                                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
+                                            role="alert">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>
+                                                        {{ $error }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
+                                    @endif
+                                    <div class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
+                                        <form action="{{ route('usuarios.store') }}" method="POST"
+                                            class="flex flex-col items-center">
+                                            @csrf
 
 
-                                        <div class="modal-container">
-                                            @if ($errors->any())
-                                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert"
-                                                    role="alert">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>
-                                                                {{ $error }}
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-                                            <div
-                                                class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                                                <form action="{{ route('usuarios.store') }}" method="POST"
-                                                    class="flex flex-col items-center">
-                                                    @csrf
+                                            <div class="mb-4">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
+                                                    de
+                                                    usuario</label>
+                                                <input type="text" name="name" class="rounded input-field">
+                                            </div>
 
+                                            <div class="mb-4">
+                                                <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                                <input type="email" name="email" class="rounded input-field">
+                                            </div>
 
-                                                    <div class="mb-4">
-                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
-                                                            de
-                                                            usuario</label>
-                                                        <input type="text" name="name" class="rounded input-field">
+                                            <div class="mb-4">
+                                                <label
+                                                    class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                                                <input type="password" name="password" class="rounded input-field">
+                                            </div>
+
+                                            <select name="role" id="role_name"
+                                                class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
+                                                required>
+                                                <option value="">Selecciona un rol</option>
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->name }}">{{ $role->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
+                                            <div class="flex justify-center">
+                                                <button type="submit">
+                                                    <div
+                                                        class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                                        Agregar usuario
                                                     </div>
+                                                </button>
 
-                                                    <div class="mb-4">
-                                                        <label
-                                                            class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                                                        <input type="email" name="email" class="rounded input-field">
-                                                    </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div idModal="teacherAdd"
+                            class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                            <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
+                                <div class="border-b px-4 py-2 flex justify-between items-center">
+                                    <h3 class="font-semibold text-lg ml-60 text-white">Agregar Asesor</h3>
+                                    <button class="close-modal bg-white rounded-full">
+                                        <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
+                                                style="color: #d50101;"></i></p>
+                                    </button>
+                                </div>
+                                <div class="bg-white p-2">
+                                    <div
+                                        class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <h1 class="text-xl font-bold mb-4">Crear Asesor</h1>
+                                            <form action="{{ route('maestros.store') }}" method="POST"
+                                                class="flex flex-col gap-4">
+                                                @csrf
 
-                                                    <div class="mb-4">
-                                                        <label
-                                                            class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                                                        <input type="password" name="password"
+                                                <div class="flex flex-col md:flex-row md:gap-4">
+                                                    <div class="flex flex-col gap-4 md:w-1/2">
+                                                        <input type="email" name="email"
+                                                            placeholder="Correo electrónico" class="rounded input-field">
+                                                        @error('email')
+                                                            <span class="text-red-500">{{ $message }}</span>
+                                                        @enderror
+
+                                                        <input type="password" name="password" placeholder="Contraseña"
                                                             class="rounded input-field">
+                                                        @error('password')
+                                                            <span class="text-red-500">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
 
-                                                    <select name="role" id="role_name"
-                                                        class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
-                                                        required>
-                                                        <option value="">Selecciona un rol</option>
-                                                        @foreach ($roles as $role)
-                                                            <option value="{{ $role->name }}">{{ $role->name }}
-                                                            </option>
+                                                    <div class="flex flex-col gap-4 md:w-1/2">
+                                                        <input type="text" name="teacher_name" id="teacher_name"
+                                                            placeholder="Nombre del asesor"
+                                                            class="flex-1 rounded-md border border-gray-300 p-2">
+                                                        @error('teacher_name')
+                                                            <span class="text-red-500">{{ $message }}</span>
+                                                        @enderror
+
+                                                        <input type="number" name="payroll" id="payroll"
+                                                            placeholder="Número de nómina del asesor"
+                                                            class="flex-1 rounded-md border border-gray-300 p-2"
+                                                            oninput="maxLengthCheck(this)">
+                                                        @error('payroll')
+                                                            <span class="text-red-500">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="flex flex-col gap-4">
+                                                    <select name="division_id" id=""
+                                                        class="rounded-md border border-gray-300 p-2">
+                                                        <option value="">Selecciona una división</option>
+                                                        @foreach ($Divisions as $division)
+                                                            <option value="{{ $division->id }}">
+                                                                {{ $division->division_name }}</option>
                                                         @endforeach
                                                     </select>
+                                                    @error('division_id')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
 
-                                                    <div class="flex justify-center">
-                                                        <button type="submit">
-                                                            <div
-                                                                class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                                                Agregar usuario
-                                                            </div>
-                                                        </button>
+                                                <div class="flex justify-center">
+                                                    <button type="submit"
+                                                        class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                                                </div>
+                                            </form>
 
-                                                    </div>
-                                                </form>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div idModal="teacherAdd"
-                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-                                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
-                                        <div class="border-b px-4 py-2 flex justify-between items-center">
-                                            <h3 class="font-semibold text-lg ml-60 text-white">Agregar Asesor</h3>
-                                            <button class="close-modal bg-white rounded-full">
-                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
-                                                        style="color: #d50101;"></i></p>
-                                            </button>
-                                        </div>
-                                        <div class="bg-white p-2">
-                                            <div
-                                                class="modal-body flex-row gap-4 mb-0 overflow-y-auto flex items-center justify-center p-10">
-                                                <div class="flex flex-col items-center justify-center">
-                                                    <h1 class="text-xl font-bold mb-4">Crear Asesor</h1>
-                                                    <form action="{{ route('maestros.store') }}" method="POST"
-                                                        class="flex flex-col gap-4">
-                                                        @csrf
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table_conteiner">
+                        <table class="standar_table">
+                            <thead class="standar_thead">
+                                <tr>
+                                    <th class="theader">
+                                        #</th>
+                                    <th class="theader">
 
-                                                        <div class="flex flex-col md:flex-row md:gap-4">
-                                                            <div class="flex flex-col gap-4 md:w-1/2">
-                                                                <input type="email" name="email"
-                                                                    placeholder="Correo electrónico"
-                                                                    class="rounded input-field">
-                                                                @error('email')
-                                                                    <span class="text-red-500">{{ $message }}</span>
-                                                                @enderror
-
-                                                                <input type="password" name="password"
-                                                                    placeholder="Contraseña" class="rounded input-field">
-                                                                @error('password')
-                                                                    <span class="text-red-500">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-
-                                                            <div class="flex flex-col gap-4 md:w-1/2">
-                                                                <input type="text" name="teacher_name"
-                                                                    id="teacher_name" placeholder="Nombre del asesor"
-                                                                    class="flex-1 rounded-md border border-gray-300 p-2">
-                                                                @error('teacher_name')
-                                                                    <span class="text-red-500">{{ $message }}</span>
-                                                                @enderror
-
-                                                                <input type="number" name="payroll" id="payroll"
-                                                                    placeholder="Número de nómina del asesor"
-                                                                    class="flex-1 rounded-md border border-gray-300 p-2"
-                                                                    oninput="maxLengthCheck(this)">
-                                                                @error('payroll')
-                                                                    <span class="text-red-500">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex flex-col gap-4">
-                                                            <select name="division_id" id=""
-                                                                class="rounded-md border border-gray-300 p-2">
-                                                                <option value="">Selecciona una división</option>
-                                                                @foreach ($Divisions as $division)
-                                                                    <option value="{{ $division->id }}">
-                                                                        {{ $division->division_name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            @error('division_id')
-                                                                <span class="text-red-500">{{ $message }}</span>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="flex justify-center">
-                                                            <button type="submit"
-                                                                class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                                                        </div>
-                                                    </form>
-
+                                        Nombre</th>
+                                    <th class="theader">
+                                        Email
+                                    </th>
+                                    <th class="theader">
+                                        Roles
+                                    </th>
+                                    <th class="theader">
+                                        Acciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+                                @foreach ($users as $user)
+                                    <tr class="trow">
+                                        <td class="trowc"> {{ $loop->iteration }} </td>
+                                        <td class="trowc"> {{ $user->name }} </td>
+                                        <td class="trowc"> {{ $user->email }} </td>
+                                        <td>
+                                            @if ($user->roles->isEmpty())
+                                                <p>No se han asignado roles</p>
+                                            @else
+                                                @foreach ($user->roles as $role)
+                                                    <label
+                                                        class="italic font-semibold bg-[#18a68a31] px-2 rounded text-[#18A689] md:text-base">{{ $role->name }}</label>
+                                                @endforeach
+                                            @endif
+                                        </td>
                                                 </div>
                                             </div>
                                         </div>
@@ -630,38 +743,118 @@
                                                     @endif
                                                 </td>
 
-                                                <td class="trowc">
-                                                    <button class="show-permission"
-                                                        data-target="#permissions{{ $user->id }}">
-                                                        <div class="button_permission_green">
-                                                            <i class="fa-solid fa-gear"></i>
+                                        <td class="trowc">
+                                            <button class="show-permission"
+                                                data-target="#permissions{{ $user->id }}">
+                                                <div class="button_permission_green">
+                                                    <i class="fa-solid fa-gear"></i>
+                                                </div>
+                                            </button>
+                                            @if ($user->teachers)
+                                                <button class="show-modal-asesor-view"
+                                                    data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
+                                                <button class="show-modal-edit-teacher"
+                                                    data-target="#edit{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                @if ($user->id == Auth::user()->id)
+                                                    <button onclick="alert('No puedes borrar tu usuario')">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
                                                         </div>
                                                     </button>
-                                                    @if ($user->teachers)
-                                                        <button class="show-modal-edit-teacher"
-                                                            data-target="#edit{{ $user->id }}">
-                                                            <div class="button_edit_yellow">
-                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                            </div>
-                                                        </button>
-                                                        <!-- Validar si el usuario es el mismo que el usuario autenticado -->
-                                                        @if ($user->id == Auth::user()->id)
-                                                            <button onclick="alert('No puedes borrar tu usuario')">
-                                                                <div class="button_delete_red">
-                                                                    <i class="fa-solid fa-trash"></i>
-                                                                </div>
-                                                            </button>
-                                                        @else
-                                                            <button class="show-modal-delete-teacher"
-                                                                data-modal="#delete{{ $user->id }}">
-                                                                <div class="button_delete_red">
-                                                                    <i class="fa-solid fa-trash"></i>
-                                                                </div>
-                                                            </button>
-                                                        @endif
-                                                        <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                @else
+                                                    <button class="show-modal-delete-teacher"
+                                                        data-modal="#delete{{ $user->id }}">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @endif
+                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                            @elseif($user->student)
+                                                
 
+                                                <button class="show-modal-student-view"
+                                                    data-modal="#view{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
 
+                                                <button class="show-modal-edit-student"
+                                                    data-target="#edit{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+
+                                                @if ($user->id == Auth::user()->id)
+                                                    <button onclick="alert('No puedes borrar tu usuario')">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @else
+                                                    <button class="show-modal-delete-student"
+                                                        data-modal="#delete{{ $user->id }}">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @endif
+                                                
+                                            @elseif($user->presidencies)
+                                                <button class="show-modal"
+                                                    data-modal="view_presidencies{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
+
+                                                <button class="show-modal"
+                                                    data-modal="edit_president{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                                @if ($user->id == Auth::user()->id)
+                                                    <button onclick="alert('No puedes borrar tu usuario')">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @else
+                                                    <button class="show-modal"
+                                                        data-modal="delete_president{{ $user->id }}">
+                                                        <div class="button_delete_red">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </button>
+                                                @endif
+                                                <!-- Validar si el usuario es el mismo que el usuario autenticado -->
+                                            @elseif($user->coordinators)
+                                                <p>
+                                                    Editar Cordinador
+                                                </p>
+                                            @else
+                                                <button class="show-modal" data-modal="Show_User_{{ $user->id }}">
+                                                    <div class="button_see_blue">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </div>
+                                                </button>
+                                                <button class="show-modal" data-modal="edit_{{ $user->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
                                                         <button class="show-modal-asesor-view"
                                                             data-modal="#view{{ $user->id }}">
                                                             <div class="button_see_blue">
@@ -723,6 +916,52 @@
                                                             </div>
                                                         </button>
 
+                                                <button class="show-modal" data-modal="delete_{{ $user->id }}">
+                                                    <div class="button_delete_red">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </div>
+                                                </button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @if ($user->teachers)
+                                        <p>
+                                            @include('UserManagement.edit_modal_teacher')
+                                            @include('UserManagement.delete_modal_teacher')
+                                            @include('UserManagement.view_modal_teachers')
+                                        </p>
+                                    @elseif($user->student)
+                                        <p>
+                                            @include('UserManagement.view_modal_student')
+                                            @include('UserManagement.edit_modal_student')
+                                            @include('UserManagement.delete_modal_student')
+                                        </p>
+                                    @elseif($user->presidencies)
+                                        <p>
+                                            @include('UserManagement.edit_presidencies')
+                                            @include('UserManagement.delete_presidencies')
+                                            @include('UserManagement.view_presidencies')
+                                        </p>
+                                    @elseif($user->coordinators)
+                                        <p>
+
+                                        </p>
+                                    @else
+                                        <p>
+                                        </p>
+                                    @endif
+                                    @include('UserManagement.UserPermission')
+                                    @include('UserManagement.modal-users')
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="mt-1">{{ $users->links() }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
                                                         <button class="show-modal"
                                                             data-modal="delete_{{ $user->id }}">
                                                             <div class="button_delete_red">
@@ -770,24 +1009,53 @@
             </div>
         </div>
 
-        <script>
-            // Seleccionar todos los campos de entrada con el nombre "payroll"
-            var payrollInputs = document.querySelectorAll('input[name="payroll"]');
+    <script>
+        // Seleccionar todos los campos de entrada con el nombre "payroll"
+        var payrollInputs = document.querySelectorAll('input[name="payroll"]');
 
-            // Iterar sobre cada campo de entrada y asignarle el evento oninput con la función maxLengthCheck
-            payrollInputs.forEach(function(input) {
-                input.oninput = function() {
-                    maxLengthCheck(this);
-                };
+        // Iterar sobre cada campo de entrada y asignarle el evento oninput con la función maxLengthCheck
+        payrollInputs.forEach(function(input) {
+            input.oninput = function() {
+                maxLengthCheck(this);
+            };
+        });
+
+        // Función maxLengthCheck
+        function maxLengthCheck(object) {
+            if (object.value.length > 11)
+                object.value = object.value.slice(0, 11);
+        }
+    </script>
+
+    <script src="{!! asset('js/modals.js') !!}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchStudentBtn = document.getElementById('searchStudentBtn');
+            searchStudentBtn.addEventListener('click', function() {
+                const matricula = document.getElementById('id_student').value;
+                if (matricula.trim() !== '') {
+                    fetch(`http://localhost:3000/api/estudiantes/matricula/${matricula}`)
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            }
+                            throw new Error('No se encontró ningún estudiante con esa matrícula');
+                        })
+                        .then(data => {
+                            document.getElementById('student').value = data.student_name;
+                            document.getElementById('grupo').value = data.gruop_id;
+                            document.getElementById('division').value = data.division_id;
+                        })
+                        .catch(error => {
+                            console.error(error.message);
+                        });
+                } else {
+                    console.error('La matrícula no puede estar vacía');
+                }
             });
-
-            // Función maxLengthCheck
-            function maxLengthCheck(object) {
-                if (object.value.length > 11)
-                    object.value = object.value.slice(0, 11);
-            }
-        </script>
-
+        });
+    </script>
         <script src="{!! asset('js/modals.js') !!}"></script>
 
         <script>
@@ -828,40 +1096,40 @@
             });
         </script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdownTriggers = document.querySelectorAll(".dropdown-trigger");
 
-                dropdownTriggers.forEach(function(dropdownTrigger) {
+            dropdownTriggers.forEach(function(dropdownTrigger) {
 
-                    var dropdownBtn = dropdownTrigger.querySelector(".dropdown-btn");
-                    var dropdownContent = dropdownTrigger.querySelector(".dropdown-content");
+                var dropdownBtn = dropdownTrigger.querySelector(".dropdown-btn");
+                var dropdownContent = dropdownTrigger.querySelector(".dropdown-content");
 
-                    dropdownBtn.addEventListener("click", function(event) {
-                        event
-                            .stopPropagation(); // Evita que el evento de clic se propague al contenedor externo
-                        dropdownContent.classList.toggle("hidden");
-                    });
+                dropdownBtn.addEventListener("click", function(event) {
+                    event
+                        .stopPropagation(); // Evita que el evento de clic se propague al contenedor externo
+                    dropdownContent.classList.toggle("hidden");
+                });
 
-                    // Para cerrar el dropdown si se hace clic fuera de él
-                    window.addEventListener("click", function(event) {
-                        if (!dropdownContent.contains(event.target) && !dropdownBtn.contains(event
-                                .target)) {
-                            dropdownContent.classList.add("hidden");
-                        }
-                    });
+                // Para cerrar el dropdown si se hace clic fuera de él
+                window.addEventListener("click", function(event) {
+                    if (!dropdownContent.contains(event.target) && !dropdownBtn.contains(event
+                            .target)) {
+                        dropdownContent.classList.add("hidden");
+                    }
                 });
             });
+        });
 
 
-            document.getElementById('role').addEventListener('change', function() {
-                if (this.value === '') {
-                    this.form.reset();
-                } else {
-                    this.form.submit();
-                }
-            });
-        </script>
+        document.getElementById('role').addEventListener('change', function() {
+            if (this.value === '') {
+                this.form.reset();
+            } else {
+                this.form.submit();
+            }
+        });
+    </script>
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -877,35 +1145,50 @@
 
 
 
-        <script>
-            // teacher modal
 
-            const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
-            const show_modal_edit_teacher = document.querySelectorAll('.show-modal-edit-teacher')
-            show_modal_edit_teacher.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.target
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                })
+    <script>
+        // teacher modal
+
+        const modal_edit_asesor = document.querySelectorAll('.modal-edit-asesor')
+        const show_modal_edit_teacher = document.querySelectorAll('.show-modal-edit-teacher')
+        show_modal_edit_teacher.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
             })
+        })
 
 
-            const modal_delete_asesor = document.querySelectorAll('.modal-delete-asesor')
-            const show_modal_delete_teacher = document.querySelectorAll('.show-modal-delete-teacher')
-            show_modal_delete_teacher.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.modal
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                })
+        const modal_delete_asesor = document.querySelectorAll('.modal-delete-asesor')
+        const show_modal_delete_teacher = document.querySelectorAll('.show-modal-delete-teacher')
+        show_modal_delete_teacher.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
             })
-        </script>
+        })
+    </script>
 
-        <script>
-            // student modal
+    <script>
+
+        const modal_view_student = document.querySelectorAll('.modal-view-student')
+        const show_modal_student_view = document.querySelectorAll('.show-modal-student-view')
+        show_modal_student_view.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
+
+    <script>
+        // student modal
 
             const modal_edit_student = document.querySelectorAll('.modal-edit-student')
             const show_modal_edit_student = document.querySelectorAll('.show-modal-edit-student')
@@ -955,70 +1238,87 @@
             })
         </script>
 
-
-        <script>
-            const modal_view_asesor = document.querySelectorAll('.modal-view-asesor')
-            const show_modal_asesor_view = document.querySelectorAll('.show-modal-asesor-view')
-            show_modal_asesor_view.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.modal
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                })
+    <script>
+        const modal_delete_student = document.querySelectorAll('.modal-delete-student')
+        const show_modal_delete_student = document.querySelectorAll('.show-modal-delete-student')
+        show_modal_delete_student.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
             })
-        </script>
+        })
+    </script>
 
-        <script>
-            const modal_view_permission = document.querySelectorAll('.modal-view-permission')
-            const show_permission = document.querySelectorAll('.show-permission')
 
-            show_permission.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const modalId = button.dataset.target
-                    const modal = document.querySelector(modalId)
-                    modal.classList.remove('hidden')
-                })
+    <script>
+        const modal_view_asesor = document.querySelectorAll('.modal-view-asesor')
+        const show_modal_asesor_view = document.querySelectorAll('.show-modal-asesor-view')
+        show_modal_asesor_view.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.modal
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
             })
-        </script>
+        })
+    </script>
+
+    <script>
+        const modal_view_permission = document.querySelectorAll('.modal-view-permission')
+        const show_permission = document.querySelectorAll('.show-permission')
+
+        show_permission.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+            })
+        })
+    </script>
 
 
 
 
 
-        <script>
-            const close_modals = document.querySelectorAll('.close-modal')
+    <script>
+        const close_modals = document.querySelectorAll('.close-modal')
 
-            close_modals.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
+        close_modals.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
 
-                    const modalAsesor = button.closest('.view-modal-asesor')
-                    const modalEditAsesor = button.closest('.modal-edit-asesor')
-                    const modalDeleteAsesor = button.closest('.-modal-delete-asesor')
-                    const modalViewPermission = button.closest('.modal-permission')
+                const modalAsesor = button.closest('.view-modal-asesor')
+                const modalEditAsesor = button.closest('.modal-edit-asesor')
+                const modalDeleteAsesor = button.closest('.modal-delete-asesor')
+                const modalViewPermission = button.closest('.modal-permission')
+                const modalViewStudent = button.closest('.view-modal-student')
+                const modalEditStudent = button.closest('.modal-edit-student')
+                const modalDeleteStudent = button.closest('.modal-delete-student')
+
                     const modalViewCoordination = button.closest('.modal-view-coordination')
                     const modalDeleteCoordination = button.closest('.modal-delete-coordination')
                     const modalEditCoordination = button.closest('.modal-edit-coordination')
 
-                    if (modalAsesor) {
-                        modalAsesor.classList.add('hidden')
-                    }
+                if (modalAsesor) {
+                    modalAsesor.classList.add('hidden')
+                }
 
 
-                    if (modalEditAsesor) {
-                        modalEditAsesor.classList.add('hidden')
-                    }
+                if (modalEditAsesor) {
+                    modalEditAsesor.classList.add('hidden')
+                }
 
 
-                    if (modalDeleteAsesor) {
-                        modalDeleteAsesor.classList.add('hidden')
-                    }
+                if (modalDeleteAsesor) {
+                    modalDeleteAsesor.classList.add('hidden')
+                }
 
-                    if (modalViewPermission) {
-                        modalViewPermission.classList.add('hidden')
-                    }
+                if (modalViewPermission) {
+                    modalViewPermission.classList.add('hidden')
+                }
                     if (modalViewCoordination) {
                         modalViewCoordination.classList.add('hidden')
                     }
@@ -1029,17 +1329,28 @@
                         modalEditCoordination.classList.add('hidden')
                     }
 
+                if (modalViewStudent) {
+                    modalViewStudent.classList.add('hidden')
+                }
+
+                if (modalEditStudent) {
+                    modalEditStudent.classList.add('hidden')
+                }
+
+                if (modalDeleteStudent) {
+                    modalDeleteStudent.classList.add('hidden')
+                }
 
 
 
 
-                })
+
             })
-        </script>
+        })
+    </script>
 
 
 
 
 
-
-    @endsection
+@endsection
