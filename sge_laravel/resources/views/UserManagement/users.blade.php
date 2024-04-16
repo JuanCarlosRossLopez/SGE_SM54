@@ -109,7 +109,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                        Usuario</span></button> -->
+                                                                                                Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -637,6 +637,12 @@
                                                         </div>
                                                     </button>
                                                     @if ($user->teachers)
+                                                        <button class="show-modal-asesor-view"
+                                                            data-modal="#view{{ $user->id }}">
+                                                            <div class="button_see_blue">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </div>
+                                                        </button>
                                                         <button class="show-modal-edit-teacher"
                                                             data-target="#edit{{ $user->id }}">
                                                             <div class="button_edit_yellow">
@@ -659,14 +665,6 @@
                                                             </button>
                                                         @endif
                                                         <!-- Validar si el usuario es el mismo que el usuario autenticado -->
-
-
-                                                        <button class="show-modal-asesor-view"
-                                                            data-modal="#view{{ $user->id }}">
-                                                            <div class="button_see_blue">
-                                                                <i class="fa-solid fa-eye"></i>
-                                                            </div>
-                                                        </button>
                                                     @elseif($user->student)
                                                         <p>
                                                             <button class="show-modal-edit-student"
@@ -677,6 +675,13 @@
                                                             </button>
                                                         </p>
                                                     @elseif($user->presidencies)
+                                                        <button class="show-modal"
+                                                            data-modal="view_presidencies{{ $user->id }}">
+                                                            <div class="button_see_blue">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </div>
+                                                        </button>
+
                                                         <button class="show-modal"
                                                             data-modal="edit_president{{ $user->id }}">
                                                             <div class="button_edit_yellow">
@@ -692,21 +697,13 @@
                                                             </button>
                                                         @else
                                                             <button class="show-modal"
-                                                                data-modal="#delete_president{{ $user->id }}">
+                                                                data-modal="delete_president{{ $user->id }}">
                                                                 <div class="button_delete_red">
                                                                     <i class="fa-solid fa-trash"></i>
                                                                 </div>
                                                             </button>
                                                         @endif
                                                         <!-- Validar si el usuario es el mismo que el usuario autenticado -->
-
-
-                                                        <button class="show-modal"
-                                                            data-modal="#view_presidencies{{ $user->id }}">
-                                                            <div class="button_see_blue">
-                                                                <i class="fa-solid fa-eye"></i>
-                                                            </div>
-                                                        </button>
                                                     @elseif($user->coordinators)
                                                         <p>
                                                             Editar Cordinador
@@ -749,7 +746,7 @@
                                                     @include('UserManagement.edit_presidencies')
                                                     @include('UserManagement.delete_presidencies')
                                                     @include('UserManagement.view_presidencies')
-                                                    </p>
+                                                </p>
                                             @elseif($user->coordinators)
                                                 <p>
 
