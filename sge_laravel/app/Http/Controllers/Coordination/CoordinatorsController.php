@@ -100,7 +100,7 @@ class CoordinatorsController extends Controller
         $coordinator->user_id = $request->user_id;
         $coordinator->save();
 
-        return redirect('coordination.coordinators_table')->with('notification', 'Coordinador actualizado exitosamente');
+        return back()->with('notification', 'Coordinador actualizado exitosamente');
     }
 
     /**
@@ -108,13 +108,18 @@ class CoordinatorsController extends Controller
      */
     public function destroy(string $id)
     {
-        $coordinator = Coordinators::find($id);
+        $user = User::find($id);
+
+        $coordinator_id = $user->coordinators->id;
+
+        $coordinator = Coordinators::find($coordinator_id);
 
         if (!$coordinator) {
-            return redirect('coordinacion')->with('error', 'Coordinador no encontrado');
+            return back()->with('error', 'Coordinador no encontrado');
         }
 
         $coordinator->delete();
-        return redirect('coordinacion')->with('notification', 'Coordinador eliminado exitosamente');
+        $user->delete();
+        return back()->with('notification', 'Coordinador eliminado exitosamente');
     }
 }
