@@ -59,14 +59,6 @@ class User extends Authenticatable
         return $this->hasOne(Teachers::class, 'id_user');
     }
 
-    public function coordinators()
-    {
-        return $this->hasOne(Coordinators::class, 'user_id');
-    }
-    public function presidencies()
-    {
-        return $this->hasOne(presidencies::class, 'user_id');
-    }
     
     
 }
