@@ -124,110 +124,88 @@
                                 </div>
 
 
-                                <div idModal="presidentAdd"
-                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 ">
-                                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
+                                <div idModal="presidentAdd" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                                    <div class="bg-[#01A080] w-full rounded shadow-lg max-w-md">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
-                                            <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
-                                                Presidente
-                                            </h3>
+                                            <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar Presidente</h3>
                                             <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
-                                                        style="color: #d50101;"></i>
-                                                </p>
+                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                                             </button>
                                         </div>
                                         <div class="modal-container">
-                                            <div
-                                                class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center">
-                                                <form action="{{ route('presidentes.store') }}" method="POST"
-                                                    class="flex flex-col items-center">
+                                            <div class="bg-white rounded shadow-xl px-8 py-6">
+                                                <form action="{{ route('presidentes.store') }}" method="POST" class="grid grid-cols-2 gap-6">
                                                     @csrf
                                                     <div class="mb-4">
-                                                        <input type="email" name="email"
-                                                            placeholder="Correo electronico" class="rounded input-field">
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
+                                                        <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
                                                         @error('email')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4">
-                                                        <input type="password" name="password" placeholder="Contraseña"
-                                                            class="rounded input-field">
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                                                        <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
                                                         @error('password')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre
-                                                            del Presidente</label>
-                                                        <input type="text" name="president_name"
-                                                            class="rounded input-field">
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre del Presidente</label>
+                                                        <input type="text" name="president_name" class="rounded input-field">
                                                         @error('president_name')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos
-                                                            del
-                                                            Presidente</label>
-                                                        <input type="text" name="president_lastname"
-                                                            class="rounded input-field">
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Apellidos del Presidente</label>
+                                                        <input type="text" name="president_lastname" class="rounded input-field">
                                                         @error('president_lastname')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4">
-                                                        <label
-                                                            class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Nómina</label>
                                                         <input type="number" name="payroll" class="rounded input-field">
                                                         @error('payroll_president')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
-                                                    <div>
-                                                        <select name="career_id" id="career_id"
-                                                            class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
-                                                            required>
+                                                    <div class="mb-4 max-w-sm"> <!-- Añadimos la clase max-w-sm para limitar el ancho máximo -->
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">Carrera</label>
+                                                        <select name="career_id" id="career_id" class="rounded input-field text-gray-700 text-sm font-bold mb-2 w-full" required>
                                                             <option value="">Selecciona una carrera</option>
                                                             @foreach ($careers as $career)
-                                                                <option value="{{ $career->id }}">
-                                                                    {{ $career->career_name }}
-                                                                </option>
+                                                            <option value="{{ $career->id }}">{{ $career->career_name }}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('career_id')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
-                                                    <div>
-                                                        <select name="division_id" id="division_id"
-                                                            class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
-                                                            required>
+                                                    
+                                                    <div class="mb-4">
+                                                        <label class="block text-gray-700 text-sm font-bold mb-2">División</label>
+                                                        <select name="division_id" id="division_id" class="rounded input-field text-gray-700 text-sm font-bold mb-2" required>
                                                             <option value="">Selecciona una división</option>
                                                             @foreach ($Divisions as $division)
-                                                                <option value="{{ $division->id }}">
-                                                                    {{ $division->division_name }}
-                                                                </option>
+                                                            <option value="{{ $division->id }}">{{ $division->division_name }}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('division_id')
-                                                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                                                        <p class="text-red-500 text-xs">{{ $message }}</p>
                                                         @enderror
                                                     </div>
-                                                    <div class="flex justify-center">
-                                                        <button type="submit">
-                                                            <div
-                                                                class=" bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                                                Agregar presidente
-                                                            </div>
+                                                    <div class="col-span-2 flex justify-center">
+                                                        <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                                            Agregar presidente
                                                         </button>
-
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>
 
 
                                 <div idModal="coordinatorAdd"
