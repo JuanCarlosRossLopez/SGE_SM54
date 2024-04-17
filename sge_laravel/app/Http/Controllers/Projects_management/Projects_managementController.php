@@ -54,6 +54,7 @@ class Projects_managementController extends Controller
     $groups = Group::all();
     $careers = Career::all();
     $companies = Companies::all();
+    
 
     // Pasar los datos a la vista
     return view('students.anteproyecto', compact('project_management', 'comments', 'regionNames', 'divisions', 'groups', 'careers', 'companies'));
@@ -182,14 +183,14 @@ class Projects_managementController extends Controller
             'student_email' => 'required', // Correo electrónico
             'start_date' => 'required|date', // Fecha de inicio
             'end_date' => 'required|date', // Fecha de finalización
-            'student_phone' => 'required|string|max:10', // Teléfono
+            'student_phone' => 'required|string', // Teléfono
             'student_id' => 'required|max:8', // Matrícula
             'project_company' => 'required', // Empresa 
             'direction' => 'required|string', // Dirección
             'position' => 'required|string', // Puesto
             'email_asesor' => 'required', // Correo del Asesor
             'project_advisor' => 'required', // Asesor Empresarial
-            'project_advisor_phone' => 'required', // Teléfono del Asesor
+            'project_advisor_phone' => 'required|string', // Teléfono del Asesor
             'general_objective' => 'required', // Objetivo General
             'problem_statement' => 'required', // Planteamiento del Problema
             'justification' => 'required', // Justificación
