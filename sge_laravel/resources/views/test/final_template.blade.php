@@ -182,7 +182,7 @@
                                 </a>
                             </li>
                         @endrole
-                        @role('Presidente|Estudiante|Cordinacion|Administrador|Asesor')
+                        @role('|Estudiante|Cordinacion|Administrador|Asesor')
                             <li>
                                 <a href="/libros" class="buttons_sidebar ">
                                     <i class="fa-solid fa-address-book"></i>
