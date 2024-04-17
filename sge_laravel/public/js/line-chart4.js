@@ -68,5 +68,4 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error al obtener los datos del servidor:', error);
         }
     });
-
 });

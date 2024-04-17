@@ -11,17 +11,9 @@
                 <!--termina acciones varias-->
 
                 <!--grafica de cedulas de anteproyecto-->
-                <label class="conteiner_word_title w-full flex flex-col items-center pt-3">Graficas</label>
+                <label class="conteiner_word_title w-full flex flex-col items-center pt-3">Gráficas</label>
 
                 <!-- Panel 1 -->
-                <div class=" flex flex-col gap-3">
-                    <div class="bg-white w-[34rem] rounded">
-                        <div class="line-chart-container">
-                            <h1 class="uppercase">Gráfica de alumnos por grupo</h1>
-                            <canvas id="line-chart2"></canvas>
-                        </div>
-                    </div>
-
                     <div class="bg-white w-[34rem] rounded p-3">
                         <h1 class="text-center">Filtrar por Grupo</h1>
                         <select id="groupSelect" class="w-full mt-2 p-1 border border-gray-300 rounded">
@@ -43,6 +35,12 @@
                             <canvas id="MYChart" width="1200" height="590"></canvas>
                         </div>
                     </div>
+                    <div class="bg-white w-[34rem] rounded">
+                        <div class="line-chart-container text-center items-center">
+                            <h1>Proyectos por estado</h1>
+                            <canvas id="mychart" width="1200" height="590"></canvas>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -61,10 +59,9 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="{{ asset('js/line-chart2.js') }}"></script>
         <script src="{{ asset('js/line-chart3.js') }}"></script>
         <script src="{{ asset('js/line-chart4.js') }}"></script>
-
+        <script src="{{ asset('js/line-chart5.js') }}"></script>
 
 
         <script>
