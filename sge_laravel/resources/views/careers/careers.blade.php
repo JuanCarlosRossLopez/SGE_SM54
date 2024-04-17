@@ -30,7 +30,7 @@
                                 class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                 <label
                                     class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                    carrera <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    carrera </label>
                                     
                                 <div class="relative dropdown-trigger gap-2">
                                     <button class="dropdown-btn button_add_green show-modal-add">
@@ -48,7 +48,7 @@
                             class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                             <label
                                 class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                carrera masivo <i class="fa-solid fa-arrow-right flex"></i></label>
+                                carrera masivo </label>
                             <div class="relative dropdown-trigger gap-2">
                                 <button class="dropdown-btn button_add_green show-modal-add-masivo">
                                     <i class="fa-solid fa-circle-plus"></i>

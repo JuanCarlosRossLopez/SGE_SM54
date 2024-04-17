@@ -53,7 +53,7 @@
 
                                         <label
                                             class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Asignación
-                                            asesor<i class="fa-solid fa-arrow-right flex"></i></label>
+                                            asesor</label>
                                         <div class=" gap-2">
                                             <button data-modal="asignar" class="show-modal button_add_green"><i
                                                     class="fi fi-ss-assign h-7 w-7"></i></button>
@@ -63,7 +63,7 @@
                                         class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                         <label
                                             class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Asignación
-                                            masiva de alumnos a asesor<i class="fa-solid fa-arrow-right flex"></i></label>
+                                            masiva de alumnos a asesor</label>
                                         <div class=" gap-2">
                                             <button class="show-modal-add-masive button_add_green"><i
                                                     class="fi fi-ss-assign h-7 w-7"></i></button>
