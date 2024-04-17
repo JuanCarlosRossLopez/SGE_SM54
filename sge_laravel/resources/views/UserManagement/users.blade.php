@@ -287,66 +287,51 @@
                                             @csrf
                                             <div class="flex flex-col md:flex-row md:gap-4">
                                                 <div class="flex flex-col gap-4 md:w-1/2">
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Correo Electrónico</label>
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Correo Electrónico</label>
                                                     <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
                                                     @error('email')
-                                                    <span class="text-red-500">{{ $message }}</span>
+                                                        <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Contraseña</label>
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Contraseña</label>
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
                                                     @error('password')
-                                                    <span class="text-red-500">{{ $message }}</span>
+                                                        <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="flex flex-col gap-4 md:w-1/2">
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Nombre del asesor</label>
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Nombre del asesor</label>
                                                     <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                                                     @error('teacher_name')
-                                                    <span class="text-red-500">{{ $message }}</span>
+                                                        <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Número de nómina</label>
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Número de nómina</label>
                                                     <input type="number" name="payroll" id="payroll" placeholder="Número de nómina" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
                                                     @error('payroll')
-                                                    <span class="text-red-500">{{ $message }}</span>
+                                                        <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
-                    
                                             <div class="flex flex-col gap-4">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">División</label>
-                                                <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
+                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="division_id">División</label>
+                                                <select name="division_id" id="division_id_teacher" class="rounded-md border border-gray-300 p-2">
                                                     <option value="">Selecciona una división</option>
                                                     @foreach ($Divisions as $division)
-                                                        <option value="{{ $division->id }}">
-                                                            {{ $division->division_name }}
-                                                        </option>
+                                                        <option value="{{ $division->id }}">{{ $division->division_name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('division_id')
-                                                <span class="text-red-500">{{ $message }}</span>
+                                                    <span class="text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                    
-                                            <div class="flex flex-col gap-4" id="careerContainer">
-                                                <label id="careerLabel" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Carrera</label>
+                                            <div class="flex flex-col gap-4" id="careerContainerTeacher" style="display: none;">
+                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="career">Carrera</label>
                                                 <select name="careers_id" id="career" class="rounded-md border border-gray-300 p-2">
                                                     <option value="">Selecciona una carrera</option>
-                                                    @foreach ($careers as $career)
-                                                        <option value="{{ $career->id }}">
-                                                            {{ $career->career_name }}
-                                                        </option>
-                                                    @endforeach
                                                 </select>
-                                                @error('division_id')
-                                                <span class="text-red-500">{{ $message }}</span>
+                                                @error('careers_id')
+                                                    <span class="text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            
-                    
                                             <div class="flex justify-center">
                                                 <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                                             </div>
@@ -357,46 +342,55 @@
                         </div>
                     </div>
                     
-                    <!-- JavaScript para controlar la visibilidad de los elementos -->
-                    <script>
-                      document.addEventListener("DOMContentLoaded", function () {
-    // Ocultar select de carreras y label al cargar la página
-    var careerContainer = document.getElementById("careerContainer");
-    careerContainer.style.display = "none";
+               <script>
+                document.addEventListener("DOMContentLoaded",function(){
+                    var careerContainerTeacher = document.getElementById("careerContainerTeacher");
+                    var divisionSelect = document.getElementById("division_id_teacher");
 
-    // Agregar evento change al select de división
-    document.getElementById("division_id").addEventListener("change", function () {
-        var divisionId = this.value;
+                    careerContainerTeacher.style.display = "none";
 
-        // Mostrar select de carreras y label si se selecciona una división
-        if (divisionId) {
-            // Realizar solicitud AJAX al servidor
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        // Actualizar el select de carreras con las opciones devueltas por el servidor
-                        var careers = JSON.parse(xhr.responseText);
-                        var careerSelect = document.getElementById("career");
-                        careerSelect.innerHTML = "<option value=''>Selecciona una carrera</option>";
-                        careers.forEach(function (career) {
-                            careerSelect.innerHTML += "<option value='" + career.id + "'>" + career.career_name + "</option>";
-                        });
-                        // Mostrar select de carreras y label
-                        careerContainer.style.display = "block";
-                    }
-                }
-            };
-            xhr.open("GET", "/divisiones/" + divisionId + "/carreras", true);
-            xhr.send();
-        } else {
-            // Ocultar select de carreras y label si no se ha seleccionado ninguna división
-            careerContainer.style.display = "none";
-        }
-    });
-});
+                    document.getElementById("division_id_teacher").addEventListener("change", function(){
+                        var divisionId = this.value;
 
-                    </script>
+                        if(divisionId){
+                            careerContainerTeacher.style.display = "block";
+                        }else{
+                            careerContainerTeacher.style.display = "none";
+                        }
+                    });
+
+                    document.getElementById("division_id_teacher").addEventListener("change", function(){
+                        var divisionId = this.value;
+
+                        if(divisionId){
+                            var xhr = new XMLHttpRequest();
+                            xhr.onreadystatechange = function(){
+                                if(xhr.readyState === XMLHttpRequest.DONE){
+                                    if(xhr.status === 200){
+                                        var careers = JSON.parse(xhr.responseText);
+                                        var careerSelect = document.getElementById("career");
+                                        careerSelect.innerHTML = "<option value=''>Selecciona una carrera</option>";
+                                        careers.forEach(function(career){
+                                            careerSelect.innerHTML += "<option value='" + career.id + "'>" + career.career_name + "</option>";
+                                        });
+                                    }
+                                }
+                            };
+                            xhr.open("GET", "/divisiones/" + divisionId + "/carreras", true);
+                            xhr.send();
+                        }else{
+                            careerContainerTeacher.style.display = "none";
+                        }
+                    });
+
+                    
+
+
+                })
+               </script>
+                    
+
+
 
                 <div class="table_conteiner">
                     <table class="standar_table">
