@@ -76,7 +76,7 @@
 
                             <div class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                 <label class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                    un usuario <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    un usuario </label>
                                 <div class="relative dropdown-trigger gap-2">
                                     <button class="dropdown-btn button_add_green">
                                         <i class="fa-solid fa-circle-plus"></i>
@@ -94,7 +94,7 @@
                                                                                                             Usuario</span></button> -->
                             <div class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                 <label class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                    usuarios forma masiva <i class="fa-solid fa-arrow-right flex"></i></label>
+                                    usuarios forma masiva </label>
                                 <div class="relative dropdown-trigger gap-2">
                                     <button data-modal="UsersAdd" class="show-modal buttons_card_green w-fit  button_add_green">
                                         <i class="fa-solid fa-circle-plus"></i>
@@ -143,22 +143,20 @@
                                 </div>
                             </div>
 
-
                             <div idModal="studentAdd" class="modal hidden h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
                                 <div class="bg-[#01A080] w-full rounded shadow-lg max-w-3xl">
                                     <div class="border-b px-4 py-2 flex justify-between items-center">
-                                        <h3 class="text-center items-center font-semibold text-lg text-white">Agregar
-                                            Estudiante</h3>
+                                        <h3 class="text-center items-center font-semibold text-lg text-white">Agregar Estudiante</h3>
                                         <button class="close-modal bg-white rounded-full">
                                             <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                                         </button>
                                     </div>
                                     <div class="bg-white w-full p-4">
-                                        <div class="modal-body flex flex-col gap-4 items-center justify-center p-4">
+                                        <div class="modal-body flex flex-col gap-4 items-center justify-center p-4 ">
                                             <h1 class="text-xl font-bold mb-4">Crear Estudiante</h1>
                                             <form action="{{ route('estudiantes.store') }}" method="POST" class="w-full" id="studentForm">
                                                 @csrf
-                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">                                                 
                                                     <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
                                                     <input type="text" name="student_name" id="student" placeholder="Nombre del estudiante" class="rounded-md border border-gray-300 p-2">
@@ -166,22 +164,11 @@
                                                         <input type="text" name="id_student" id="id_student" placeholder="Matrícula" class="rounded-md border border-gray-300 p-2">
                                                         <button type="button" id="searchStudentBtn" class="absolute right-0 top-0 bottom-0 px-3">Buscar</button>
                                                     </div>
-                                                    <div class="flex flex-col gap-4">
-                                                        <select name="group_id" id="" class="rounded-md border border-gray-300 p-2">
-                                                            <option value="">Selecciona un grupo</option>
-                                                            @foreach ($Gruop as $gruop)
-                                                            <option value="{{ $gruop->id }}">
-                                                                {{ $gruop->group_name }}
-                                                            </option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('division_id')
-                                                        <span class="text-red-500">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
                                                 </div>
+                                                
                                                 <div class="flex flex-col gap-4">
-                                                    <select name="division_id" id="" class="rounded-md border border-gray-300 p-2">
+                                                    <label for="division_id" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">División</label>
+                                                    <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
                                                         <option value="">Selecciona una división</option>
                                                         @foreach ($Divisions as $division)
                                                         <option value="{{ $division->id }}">
@@ -193,8 +180,9 @@
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-                                                <div class="flex flex-col gap-4">
-                                                    <select name="carrer_id" id="" class="rounded-md border border-gray-300 p-2">
+                                                <div class="flex flex-col gap-4" id="careerContainer" style="display: none;"> <!-- Contenedor de carrera -->
+                                                    <label id="careerLabel" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="career_id">Carrera</label>
+                                                    <select name="carrer_id" id="career_id" class="rounded-md border border-gray-300 p-2">
                                                         <option value="">Selecciona una carrera</option>
                                                         @foreach ($careers as $career)
                                                         <option value="{{ $career->id }}">
@@ -202,17 +190,84 @@
                                                         </option>
                                                         @endforeach
                                                     </select>
-
                                                 </div>
+                                                <div class="flex flex-col gap-4" id="groupContainer" style="display: none;"> <!-- Contenedor de grupo -->
+                                                    <label id="groupLabel" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="group_id">Grupo</label>
+                                                    <select name="group_id" id="group_id" class="rounded-md border border-gray-300 p-2">
+                                                        <option value="">Selecciona un grupo</option>
+                                                        <!-- Corregí la variable $Gruop a $groups -->
+                                                    </select>
+                                                    @error('group_id')
+                                                    <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
-
-                                    </div>
-                                    <div class="flex justify-center mt-4">
-                                        <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                                    </div>
+                                        <div class="flex justify-center mt-4">
+                                            <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
+                            
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    var careerContainer = document.getElementById("careerContainer");
+                                    var groupContainer = document.getElementById("groupContainer");
+                            
+                                    // Ocultar campos de carrera y grupo al cargar la página
+                                    careerContainer.style.display = "none";
+                                    groupContainer.style.display = "none";
+                            
+                                    // Agregar evento change al select de división
+                                    document.getElementById("division_id").addEventListener("change", function () {
+                                        var divisionId = this.value;
+                            
+                                        // Mostrar campo de carrera si se selecciona una división
+                                        if (divisionId) {
+                                            careerContainer.style.display = "block";
+                                        } else {
+                                            careerContainer.style.display = "none";
+                                            groupContainer.style.display = "none";
+                                        }
+                                    });
+                            
+                                    // Agregar evento change al select de carrera
+                                    document.getElementById("career_id").addEventListener("change", function () {
+                                        var careerId = this.value;
+                            
+                                        // Mostrar campo de grupo si se selecciona una carrera
+                                        if (careerId) {
+                                            // Realizar solicitud AJAX al servidor para obtener los grupos relacionados con la carrera seleccionada
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.onreadystatechange = function () {
+                                                if (xhr.readyState === XMLHttpRequest.DONE) {
+                                                    if (xhr.status === 200) {
+                                                        // Actualizar el select de grupos con las opciones devueltas por el servidor
+                                                        var groups = JSON.parse(xhr.responseText);
+                                                        var groupSelect = document.getElementById("group_id");
+                                                        groupSelect.innerHTML = "<option value=''>Selecciona un grupo</option>";
+                                                        groups.forEach(function (group) {
+                                                            groupSelect.innerHTML += "<option value='" + group.id + "'>" + group.group_name + "</option>";
+                                                        });
+                                                        // Mostrar campo de grupo
+                                                        groupContainer.style.display = "block";
+                                                    }
+                                                }
+                                            };
+                                            // Agregar el ID de la carrera a la URL de la solicitud AJAX
+                                            xhr.open("GET", "/carreras/" + careerId + "/grupos", true);
+                                            xhr.send();
+                                        } else {
+                                            groupContainer.style.display = "none";
+                                        }
+                                    });
+                                });
+                            </script>
+                            
+                            
+                            
+                            
                         </div>
                     </div>
 
@@ -230,73 +285,119 @@
                                         <h1 class="text-xl font-bold mb-4">Crear Asesor</h1>
                                         <form action="{{ route('maestros.store') }}" method="POST" class="flex flex-col gap-4">
                                             @csrf
-
                                             <div class="flex flex-col md:flex-row md:gap-4">
                                                 <div class="flex flex-col gap-4 md:w-1/2">
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                                        Correo Electrónico</label>
                                                     <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
                                                     @error('email')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
-
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                                        Contraseña</label>
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
                                                     @error('password')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-
                                                 <div class="flex flex-col gap-4 md:w-1/2">
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                                        Nombre del asesor</label>
                                                     <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                                                     @error('teacher_name')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
-
-                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
+                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                                        Número de nómina</label>
+                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
                                                     @error('payroll')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                             </div>
-
+                    
                                             <div class="flex flex-col gap-4">
-                                                <select name="division_id" id="" class="rounded-md border border-gray-300 p-2">
+                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">División</label>
+                                                <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
                                                     <option value="">Selecciona una división</option>
                                                     @foreach ($Divisions as $division)
-                                                    <option value="{{ $division->id }}">
-                                                        {{ $division->division_name }}
-                                                    </option>
+                                                        <option value="{{ $division->id }}">
+                                                            {{ $division->division_name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 @error('division_id')
                                                 <span class="text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="flex flex-col gap-4">
-                                                <select name="division_id" id="" class="rounded-md border border-gray-300 p-2">
+                    
+                                            <div class="flex flex-col gap-4" id="careerContainer">
+                                                <label id="careerLabel" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Carrera</label>
+                                                <select name="careers_id" id="career" class="rounded-md border border-gray-300 p-2">
                                                     <option value="">Selecciona una carrera</option>
                                                     @foreach ($careers as $career)
-                                                    <option value="{{ $career->id }}">
-                                                        {{ $career->career_name }}
-                                                    </option>
+                                                        <option value="{{ $career->id }}">
+                                                            {{ $career->career_name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 @error('division_id')
                                                 <span class="text-red-500">{{ $message }}</span>
                                                 @enderror
                                             </div>
-
-
-
+                                            
+                    
                                             <div class="flex justify-center">
                                                 <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+                    <!-- JavaScript para controlar la visibilidad de los elementos -->
+                    <script>
+                      document.addEventListener("DOMContentLoaded", function () {
+    // Ocultar select de carreras y label al cargar la página
+    var careerContainer = document.getElementById("careerContainer");
+    careerContainer.style.display = "none";
+
+    // Agregar evento change al select de división
+    document.getElementById("division_id").addEventListener("change", function () {
+        var divisionId = this.value;
+
+        // Mostrar select de carreras y label si se selecciona una división
+        if (divisionId) {
+            // Realizar solicitud AJAX al servidor
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Actualizar el select de carreras con las opciones devueltas por el servidor
+                        var careers = JSON.parse(xhr.responseText);
+                        var careerSelect = document.getElementById("career");
+                        careerSelect.innerHTML = "<option value=''>Selecciona una carrera</option>";
+                        careers.forEach(function (career) {
+                            careerSelect.innerHTML += "<option value='" + career.id + "'>" + career.career_name + "</option>";
+                        });
+                        // Mostrar select de carreras y label
+                        careerContainer.style.display = "block";
+                    }
+                }
+            };
+            xhr.open("GET", "/divisiones/" + divisionId + "/carreras", true);
+            xhr.send();
+        } else {
+            // Ocultar select de carreras y label si no se ha seleccionado ninguna división
+            careerContainer.style.display = "none";
+        }
+    });
+});
+
+                    </script>
+
                 <div class="table_conteiner">
                     <table class="standar_table">
                         <thead class="standar_thead">

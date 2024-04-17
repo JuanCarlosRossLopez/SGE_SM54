@@ -117,34 +117,43 @@
                             <h1 class="text-xl font-bold mb-4">Crear Empresa</h1>
                             <form action="{{ route('empresas.store') }}" method="POST" class="flex flex-col gap-4">
                                 @csrf
-                                <div class="flex gap-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="mt-4">
+                                    <label for="company_name" class="block text-gray-700">Nombre de la empresa</label>
                                     <input type="text" name="company_name" id="company_name"
                                         placeholder="Nombre de la empresa"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
+                                        <label for="addres" class="block text-gray-700">Dirección</label>
                                     <input type="text" name="addres" id="addres" placeholder="Dirección"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
                                 </div>
 
-                                <div class="flex gap-4">
+                                <div class="mt-4">
+                                    <label for="asesor_name" class="block text-gray-700">Nombre del asesor</label>
                                     <input type="text" name="asesor_name" id="asesor_name"
                                         placeholder="Nombre del asesor"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
+                                        <label for="job" class="block text-gray-700">Trabajo</label> 
                                     <input type="text" name="job" id="job" placeholder="Trabajo"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
                                 </div>
 
-                                <div class="flex gap-4">
+                                <div class="mt-4">
+                                    <label for="company_phone_number" class="block text-gray-700">Número telefónico de la empresa</label>
                                     <input type="text" name="company_phone_number" id="company_phone_number"
-                                        placeholder="Numero telefónico de la empresa"
+                                        placeholder="Número telefónico de la empresa"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
+                                    <label for="company_email" class="block text-gray-700">Correo Electrónico</label>
                                     <input type="text" name="company_email" id="company_email"
                                         placeholder="Correo Electronico "
                                         class="flex-1 rounded-md border border-gray-300 p-2">
                                 </div>
 
-                                <div class="flex gap-4">
-                                    <input type="text" name="work_area" id="work_area" placeholder="Area de trabajo"
+                                <div class="mt-4">
+                                    <label for="work_area" class="block text-gray-700">Área de trabajo</label>
+                                    <input type="text" name="work_area" id="work_area" placeholder="Área de trabajo"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
+                                        <label for="company_description" class="block text-gray-700">Descripción</label>
                                     <input type="text" name="company_description" id="company_description"
                                         placeholder="Descripción" class="flex-1 rounded-md border border-gray-300 p-2">
                                 </div>
@@ -152,6 +161,7 @@
                                 <div class="flex justify-center">
                                     <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                                 </div>
+                            </div>
                             </form>
                         </div>
                     </div>

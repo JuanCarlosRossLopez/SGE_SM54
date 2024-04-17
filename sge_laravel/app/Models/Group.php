@@ -23,7 +23,7 @@ class Group extends Model
     {
         return $this->belongsTo(Career::class, 'career_id');
     }
-    public function division(): HasMany
+    public function Group(): HasMany
     {
         return $this->hasMany(Group::class);
     }

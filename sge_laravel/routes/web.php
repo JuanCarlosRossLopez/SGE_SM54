@@ -282,7 +282,6 @@ Route::resource('documents', DocumentsController::class);
 Route::resource('descarga', DocumentsDownloadController::class);
 Route::post('/documents', [DocumentsController::class, 'enviar'])->name('documents.enviar');
 
-Route::resource('/coordinacion', CoordinatorsController::class);
 
 Route::get('/envio_informes', function () {
     return view('report_generation.teacher_table');
@@ -312,7 +311,6 @@ Route::resource('usuarios', UsersController::class);
 Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
 
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
-Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
 
 
@@ -371,5 +369,10 @@ Route::get('/dashboard_alumno/events', [ControllerEvent::class, 'indexView'])->n
 
 Route::middleware('auth')->group(function () {
 });
+
+
+Route::get('/divisiones/{division}/carreras', [DivisionController::class, 'careers']);
+// Ruta para obtener los grupos relacionados con una carrera
+Route::get('/carreras/{career}/grupos', [CareerController::class, 'groups']);
 
 require __DIR__ . '/auth.php';

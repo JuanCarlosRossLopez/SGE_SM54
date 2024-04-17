@@ -18,6 +18,12 @@ class CareerController extends Controller
         $divisions = Division::all();
         return view('careers.careers', compact('careers', 'divisions'));
     }
+    
+    public function groups(Career $career)
+    {
+        $groups = $career->groups()->get(['id', 'group_name']);
+        return response()->json($groups);
+    }
 
     /**
      * Show the form for creating a new resource.

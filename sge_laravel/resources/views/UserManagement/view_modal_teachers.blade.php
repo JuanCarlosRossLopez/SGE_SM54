@@ -13,10 +13,6 @@
 
                 <div class="flex flex-col gap-2">
                     <div>
-                    <span class="font-semibold">Usuario:</span> {{$user->name}}
-
-                    </div>
-                    <div>
                     <span class="font-semibold">Nombre:</span> {{$user->teachers->name_teacher}}
 
                     </div>
@@ -30,7 +26,9 @@
                     </div>
                     <div>
                     <span class="font-semibold">División:</span> {{$user->teachers->division->division_name}}
-
+                    </div>
+                    <div>
+                    <span class="font-semibold">Carrera:</span> {{$user->teachers->career ? $user->teachers->career->career_name : 'Sin carrera'}}
                     </div>
                 </div>
 

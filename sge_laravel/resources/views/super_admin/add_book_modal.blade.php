@@ -40,7 +40,7 @@ $id = Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asocia
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-last-name">
-                                Portada del ibro
+                                Portada del libro
                             </label>
                             <input
                                 class="block w-full text-sm bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  cursor-pointer focus:outline-none focus:bg-white focus:border-gray-500"
