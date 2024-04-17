@@ -259,7 +259,7 @@ Plantilla base
                                                 <div class="flex">
                                                     <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
                                                         Teléfono:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">9988233459
+                                                    <p class="text-left font-light text-lg  mr-20 py-2">{{ $project_management->project_advisor_phone}}
                                                     </p>
                                                 </div>
                                                 <div class="flex">

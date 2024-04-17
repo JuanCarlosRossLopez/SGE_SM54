@@ -118,7 +118,7 @@
                                     <label for="student_phone" class="font-sans font-semibold text-[#545454]">Teléfono
                                         celular del
                                         Estudiante:</label>
-                                    <input type="text" name="student_phone" id="student_phone"
+                                    <input type="text" name="student_phone" id="student_phone" oninput="maxLengthCheck(this)"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
                                         placeholder="Teléfono (123-456-7890)" value="{{ old('student_phone') }}" />
                                     @error('student_phone')
@@ -260,7 +260,7 @@
                                     <label for="project_advisor_phone"
                                         class="font-sans font-semibold text-[#545454]">Teléfono celular del asesor
                                         empresarial:</label>
-                                    <input type="text" name="project_advisor_phone" id="project_advisor_phone"
+                                    <input type="text" name="project_advisor_phone" id="project_advisor_phone" oninput="maxLengthCheck(this)"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
                                         placeholder="Teléfono (123-456-7890)"
                                         value="{{ old('project_advisor_phone') }}" />
@@ -501,6 +501,28 @@
             document.getElementById('work_area').value = selectedOption.getAttribute('data-work_area') || '';
         });
     });
+
+    var advisorPhoneInputs = document.querySelectorAll('input[name="project_advisor_phone"]');
+    var studentsPhoneInputs = document.querySelectorAll('input[name="student_phone"]');
+
+// Iterar sobre cada campo de entrada y asignarle el evento oninput con la función maxLengthCheck
+advisorPhoneInputs.forEach(function(input) {
+    input.oninput = function() {
+        maxLengthCheck(this);
+    };
+});
+
+studentsPhoneInputs.forEach(function(input) {
+    input.oninput = function() {
+        maxLengthCheck(this);
+    };
+});
+
+// Función maxLengthCheck
+function maxLengthCheck(object) {
+    if (object.value.length > 15)
+        object.value = object.value.slice(0, 15);
+}
     </script>
     
     
