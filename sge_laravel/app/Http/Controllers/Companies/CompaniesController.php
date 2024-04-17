@@ -38,7 +38,7 @@ class CompaniesController extends Controller
             'addres' => 'required|string',
             'asesor_name' => 'required|string',
             'job' => 'required|string',
-            'company_phone_number' => ['required', 'string', 'regex:/^\+?\d{0,3}(\s?|\-?|\(?\)?\s?|\d+)$/'],
+            'company_phone_number' => 'required|string',
             'company_email' => 'required|email',
             'work_area' => 'required|string',
             'company_description' => 'required|string',

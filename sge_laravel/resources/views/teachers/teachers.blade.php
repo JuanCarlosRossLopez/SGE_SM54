@@ -126,6 +126,10 @@ Asesores
                     <form action="{{ route('maestros.store') }}" method="POST" class="flex flex-col gap-4">
                         @csrf
                         <div class="flex gap-4">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="grid-first-name">
+                                Nombre del libro
+                            </label>
                             <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                             <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                         </div>
