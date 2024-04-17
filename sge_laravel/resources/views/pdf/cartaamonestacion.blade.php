@@ -227,8 +227,8 @@
             las amonestaciones.
         </p>
         <div style="">
-            <h6 style="">C.c.p Dirección de División</h6>
-            <h6 style="margin-top: -25px;">C.c.p Expediente del(a) Estudiante</h6>
+            <h6 style="font-weight: normal;">C.c.p Dirección de División</h6>
+            <h6 style="font-weight: normal; margin-top: -25px;">C.c.p Expediente del(a) Estudiante</h6>
         </div>
 
         <table class="footer-table">
