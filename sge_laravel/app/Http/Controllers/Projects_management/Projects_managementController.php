@@ -54,6 +54,7 @@ class Projects_managementController extends Controller
     $groups = Group::all();
     $careers = Career::all();
     $companies = Companies::all();
+    
 
     // Pasar los datos a la vista
     return view('students.anteproyecto', compact('project_management', 'comments', 'regionNames', 'divisions', 'groups', 'careers', 'companies'));

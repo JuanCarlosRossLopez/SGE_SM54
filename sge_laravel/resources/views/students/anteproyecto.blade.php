@@ -22,7 +22,7 @@
             <div class="flex flex-row items-center w-full justify-center my-4 gap-2">
                 <img src="{{ asset('image/line.svg') }}" alt="Logo Image" class="">
                 <label class="font-sans text-2xl w-fit text-[#393939] p-3 rounded-t  text-center font-semibold">Llenado de
-                    información integral para cedula de anteproyecto.</label>
+                    información integral para cédula de anteproyecto.</label>
                 <img src="{{ asset('image/line.svg') }}" alt="Logo Image" class="">
             </div>
             @if (session()->has('status'))
@@ -104,12 +104,9 @@
                                 <div class="w-full flex flex-col">
                                     <label for="student_group" class="font-sans font-semibold text-[#545454]">Grupo del
                                         Estudiante:</label>
-                                        <select name="student_group" id="student_group" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
-                                            <option value="" disabled selected class="text-transparent">Grupo</option>
-                                            @foreach ($groups as $group)
-                                                <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" name="student_group" id="student_group"
+                                        class="w-full text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900] cursor-not-allowed"
+                                        placeholder="Grupo" value="{{ Auth::user()->student->group->group_name }}" readonly />
                                     @error('student_group')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -118,7 +115,7 @@
                             </div>
                             <div class="col-span-1">
                                 <div class="w-full flex flex-col">
-                                    <label for="student_phone" class="font-sans font-semibold text-[#545454]">Teléfono de
+                                    <label for="student_phone" class="font-sans font-semibold text-[#545454]">Teléfono
                                         celular del
                                         Estudiante:</label>
                                     <input type="text" name="student_phone" id="student_phone"
@@ -151,12 +148,9 @@
                                     <label for="career"
                                         class=" font-sans font-semibold text-[#545454]">Carrera al
                                         que pertenece:</label>
-                                        <select name="career" id="career" class="w-full text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
-                                            <option value="" disabled selected class="text-transparent">Carrera</option>
-                                            @foreach ($careers as $career)
-                                                <option value="{{ $career->career_name }}">{{ $career->career_name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" name="career" id="career"
+                                        class="w-full text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900] cursor-not-allowed"
+                                        placeholder="Carrera" value="{{ Auth::user()->student->career->career_name }}" readonly />
                                     @error('career')
                                         <span class="text-red-500 w-full">{{ $message }}</span>
                                         <hr class="border-2 w-full h-0 border-[#00000059]" />
@@ -206,7 +200,13 @@
                                             <option value="" disabled selected class="text-transparent">Empresa</option>
                                             <option value="mostrarFormulario">Agregar Empresa</option>
                                             @foreach ($companies as $company)
-                                            <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
+                                            <option value="{{ $company->company_name }}"
+                                                data-address="{{ $company->addres ?? '' }}"
+                                                data-email_asesor="{{ $company->company_email ?? '' }}"
+                                                data-advisor="{{ $company->asesor_name ?? '' }}"
+                                                data-position="{{ $company->job ?? '' }}"
+                                                data-advisor_phone="{{ $company->company_phone_number ?? '' }}"
+                                                data-work_area="{{ $company->work_area ?? '' }}">{{ $company->company_name }}</option>
                                             @endforeach
                                         </select>
                                     @error('project_company')
@@ -258,7 +258,7 @@
                             <div class="col-span-1">
                                 <div class="w-full flex flex-col">
                                     <label for="project_advisor_phone"
-                                        class="font-sans font-semibold text-[#545454]">Teléfono de celular del asesor
+                                        class="font-sans font-semibold text-[#545454]">Teléfono celular del asesor
                                         empresarial:</label>
                                     <input type="text" name="project_advisor_phone" id="project_advisor_phone"
                                         class="w-full  text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white"
@@ -396,7 +396,7 @@
                 <div class="bg-[#01A080] w-full rounded shadow-lg max-w-2xl">
                     <div class="border-b px-4 py-2 flex justify-between items-center">
                         <h3 class="font-semibold text-lg ml-60 text-white">Agregar Empresa</h3>
-                        <button class="close-modal bg-white rounded-full">
+                        <button class="close-modal bg-white rounded-full" type="button">
                             <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                         </button>
                     </div>
@@ -481,6 +481,24 @@
     
         document.querySelector('.close-modal').addEventListener('click', function() {
             document.querySelector('.modal-add-empresa').style.display = 'none';
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const select = document.getElementById('project_company');
+
+        select.addEventListener('change', function() {
+            // Encuentra la opción seleccionada
+            const selectedOption = select.options[select.selectedIndex];
+
+            // Actualiza los inputs con los datos de la opción seleccionada
+            document.getElementById('direction').value = selectedOption.getAttribute('data-address') || '';
+            document.getElementById('project_advisor').value = selectedOption.getAttribute('data-advisor') || '';
+            document.getElementById('position').value = selectedOption.getAttribute('data-position') || '';
+            document.getElementById('project_advisor_phone').value = selectedOption.getAttribute('data-advisor_phone') || '';
+            document.getElementById('email_asesor').value = selectedOption.getAttribute('data-email_asesor') || '';
+            document.getElementById('work_area').value = selectedOption.getAttribute('data-work_area') || '';
         });
     });
     </script>
