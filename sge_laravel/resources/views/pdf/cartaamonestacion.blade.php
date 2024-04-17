@@ -59,8 +59,11 @@
         }
 
         .footer-table td {
-            font-size: 12px;
-            padding-top: 10px;
+            border: 1px solid black;
+            padding: 6px;
+            text-align: left;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
         }
 
         .firma {

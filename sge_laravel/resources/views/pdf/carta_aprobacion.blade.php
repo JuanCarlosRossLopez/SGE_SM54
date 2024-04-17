@@ -56,6 +56,13 @@
             left: 0;
             right: 0;
         }
+        .footer-table td {
+            border: 1px solid black;
+            padding: 6px;
+            text-align: left;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
 
         a {
             font-weight: bold;
