@@ -7,8 +7,7 @@
 
     <title>@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     @vite('resources/css/guayabo.css')
     <!-- Fonts -->
@@ -30,11 +29,9 @@
                 </div>
                 <div class="w-full flex items-center justify-center">
                     <a>
-                        <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image"
-                            class="cursor-pointer p-[0.75rem] w-fit" onclick="location.href='#'">
+                        <img src="{{ asset('image/SGE_BLANCO_150px.svg') }}" alt="Login Image" class="cursor-pointer p-[0.75rem] w-fit" onclick="location.href='#'">
                     </a>
-                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i
-                            class="fa-solid fa-bars"></i></button>
+                    <button id="closeSidebarButton" class="small-screen w-fit text-end text_nav"><i class="fa-solid fa-bars"></i></button>
                 </div>
 
                 <ul class="flex flex-col px-4 justify-between">
@@ -44,229 +41,179 @@
                         <p class="border-top opacity-60"></p>
 
                         <!-- Todo en lo que navega el asesor -->
-                        @role('Asesor')
-                            <li>
-                                <a href="/dashboard_asesor" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio
-                                </a>
-                            </li>
+                        @role('Administrador')
+                        <li>
+                            <a href="/dashboard" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Administrador
+                            </a>
+                        </li>
                         @endrole
-                        @role('Asesor')
-                            <li>
-                                <a href="/mis_asesorados" class="buttons_sidebar">
-                                    <i class="fa-solid fa-users-line"></i>
-                                    Alumnos asesorados
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Asesor')
-                            <li>
-                                <a href="/historial_de_memorias" class="buttons_sidebar">
-                                    <i class="fa-solid fa-landmark"></i>
-                                    Historial de memorias
-                                </a>
-                            </li>
-                        @endrole
+                        @role('Presidente')
+                        <li>
+                            <a href="/dashboard-presidencial" class="buttons_sidebar ">
+                            <i class="fa-solid fa-chalkboard-user"></i>
 
-                        @role('Asesor')
-                            <li>
-                                <a href="/informes" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-file"></i> Generacion de informes
-                                </a>
-                            </li>
+                                Inicio Presidente
+                            </a>
+                        </li>
                         @endrole
-
-                        @role('Asesor')
-                            <li>
-                                <a href="/profile" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-card"></i> Mi perfil
-                                </a>
-                            </li>
+                        @role('Asistente')
+                        <li>
+                            <a href="/dashboard_coordinacion" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Asistente
+                            </a>
+                        </li>
                         @endrole
-                        <!-- End todo en lo que navega el asesor -->
-
-                        <!-- Todo lo que navega el estudiante -->
-                        @role('Estudiante')
-                            <li>
-                                <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
-                                    <i class="fa-solid fa-school"></i></i>
-                                    Inicio
-                                </button>
-                            </li>
+                        @role('Asesor')
+                        <li>
+                            <a href="/dashboard_asesor" class="buttons_sidebar">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio Asesor
+                            </a>
+                        </li>
                         @endrole
                         @role('Estudiante')
-                            <li>
-                                <a href="/descarga" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-file"></i> Descargar mis informes
-                                </a>
-                            </li>
+                        <li>
+                            <button class="buttons_sidebar " onclick="location.href='/dashboard_alumno'">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                                Inicio 
+                            </button>
+                        </li>
                         @endrole
+                        @role('Asesor')
+                        <li>
+                            <a href="/mis_asesorados" class="buttons_sidebar">
+                                <i class="fa-solid fa-users-line"></i>
+                                Alumnos asesorados
+                            </a>
+                        </li>
+                        @endrole
+
+                    
                         @role('Estudiante')
-                            <li>
-                                <a href="/profile" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-card"></i> Mi perfil
-                                </a>
-                            </li>
+                        <li>
+                            <a href="/descarga" class="buttons_sidebar ">
+                                <i class="fa-solid fa-file"></i> Descargar mis informes
+                            </a>
+                        </li>
                         @endrole
-                        <!--
-                            No lo vi necesario, porque regresariamos a crearlo?
-                            @role('Estudiante')
-    <li>
-                                                                <button class="buttons_sidebar " onclick="location.href='/anteproyecto'">
-                                                                    <i class="fa-solid fa-school"></i></i>Gestión de Anteproyectos
-                                                                </button>
-                                                            </li>
-@endrole
-                            -->
+
+           
                         <!-- End todo lo que navega el estudiante -->
 
                         <!-- Todo lo que el administrador puede navegar-->
+
                         @role('Administrador')
-                            <li>
-                                <a href="/dashboard" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    <label class="nav3 cursor-pointer">Inicio</label>
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/usuarios" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-users-gear"></i>
-                                    Gestión de usuarios
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/roles" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-gear"></i>
-                                    Gestión de roles
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/division" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-gear"></i>
-                                    Gestiónar divisiones
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/carreras" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-gear"></i>
-                                    Gestión de carreras
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/grupos" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-gear"></i>
-                                    Gestión de grupos
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/grupos" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-gear"></i>
-                                    Grupos
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/gestion_asesor_anteproyecto" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-book"></i>
-                                    Ver anteproyectos
-                                </a>
-                            </li>
-                        @endrole
-                        @role('|Estudiante|Cordinacion|Administrador|Asesor')
-                            <li>
-                                <a href="/libros" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-book"></i>
-                                    Ver libros
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Cordinacion|Administrador')
-                            <li>
-                                <a href="/gestion_libros" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-book"></i>
-                                    Gestionar libros
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Administrador')
-                            <li>
-                                <a href="/historial_de_memorias" class="buttons_sidebar">
-                                    <i class="fa-solid fa-landmark"></i>
-                                    Historial de memorias
-                                </a>
-                            </li>
+                        <li>
+                            <a href="/usuarios" class="buttons_sidebar ">
+                            <i class="fa-solid fa-user-plus"></i>
+                                Gestión de usuarios
+                            </a>
+                        </li>
                         @endrole
 
                         @role('Administrador')
-                            <li>
-                                <a href="/informes" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-file"></i> Generacion de informes
-                                </a>
-                            </li>
+                        <li>
+                            <a href="/roles" class="buttons_sidebar ">
+                            <i class="fa-solid fa-users-gear"></i>
+                                Gestión de roles
+                            </a>
+                        </li>
                         @endrole
+
                         @role('Administrador')
-                            <li>
-                                <a href="/profile" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-card"></i> Mi perfil
-                                </a>
-                            </li>
+                        <li>
+                            <a href="/division" class="buttons_sidebar ">
+                            <i class="fa-solid fa-school"></i>
+                                Gestiónar divisiones
+                            </a>
+                        </li>
                         @endrole
+
+                        @role('Administrador')
+                        <li>
+                            <a href="/carreras" class="buttons_sidebar ">
+                            <i class="fa-solid fa-graduation-cap"></i>                                Gestión de carreras
+                            </a>
+                        </li>
+                        @endrole
+
+                        @role('Administrador')
+                        <li>
+                            <a href="/grupos" class="buttons_sidebar ">
+                            <i class="fa-solid fa-people-line"></i>                                Gestión de grupos
+                            </a>
+                        </li>
+                        @endrole
+
+                   
+                        @role('Administrador')
+                        <li>
+                            <a href="/gestion_asesor_anteproyecto" class="buttons_sidebar ">
+                                <i class="fa-solid fa-address-book"></i>
+                                Ver anteproyectos
+                            </a>
+                        </li>
+                        @endrole
+
+                        @role('|Estudiante|Asistente|Administrador|Asesor')
+                        <li>
+                            <a href="/libros" class="buttons_sidebar ">
+                            <i class="fa-solid fa-book"></i>
+                                Ver libros
+                            </a>
+                        </li>
+                        @endrole
+
+                        @role('Asistente|Administrador')
+                        <li>
+                            <a href="/gestion_libros" class="buttons_sidebar ">
+                            <i class="fa-solid fa-book-open-reader"></i>                                Gestionar libros
+                            </a>
+                        </li>
+                        @endrole
+                        @if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Asistente') || Auth::user()->hasRole('Asesor') || Auth::user()->hasRole('Presidente'))
+                        <li>
+                            <a href="/historial_de_memorias" class="buttons_sidebar">
+                                <i class="fa-solid fa-landmark"></i>
+                                Historial de memorias
+                            </a>
+                        </li>
+                        @endif
+
+
 
                         <!--END Todo lo que el administrador puede navegar-->
 
-                        @role('Cordinacion')
-                            <li>
-                                <a href="/dashboard_coordinacion" class="buttons_sidebar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                    Inicio coordinación
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Presidente')
-                            <li>
-                                <a href="/dashboard-presidencial" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-school"></i>
-                                    Inicio Presidente
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Presidente')
-                            <li>
-                                <a href="/asignar_alumnos" class="buttons_sidebar ">
-                                    <i class="fi fi-ss-assign h-7 w-7"></i>
-                                    Asignar Estudiantes
-                                </a>
-                            </li>
-                        @endrole
-                        @role('Presidente')
-                            <li>
-                                <a href="/profile" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-address-card"></i> Mi perfil
-                                </a>
-                            </li>
-                        @endrole
 
-                        @role('Cordinacion')
-                            <li>
-                                <a href="/informes" class="buttons_sidebar ">
-                                    <i class="fa-solid fa-file"></i> Generacion de informes
-                                </a>
-                            </li>
-                        @endrole
+
+                        @if(auth()->user()->hasRole('Asistente') || auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Presidente'))
+                        <li>
+                            <a href="/asignar_alumnos" class="buttons_sidebar ">
+                                <i class="fa-solid fa-people-arrows"></i> Asignar Estudiantes
+                            </a>
+                        </li>
+                        @endif
+
+
+                        @if(auth()->user()->hasRole('Asesor') || auth()->user()->hasRole('Asistente') || auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Presidente'))
+                        <li>
+                            <a href="/informes" class="buttons_sidebar ">
+                                <i class="fa-solid fa-file"></i> Generacion de informes
+                            </a>
+                        </li>
+                        @endif
+
+
+                        @if(Auth::user())
+                        <li>
+                            <a href="/profile" class="buttons_sidebar ">
+                                <i class="fa-solid fa-address-card"></i> Mi perfil
+                            </a>
+                        </li>
+                        @endif
                         <!-- Aqui quiero que aparezca el formulario cuando la vista sea pequeña -->
                         <form method="POST" action="{{ route('logout') }}" id="logoutForm">
                             @csrf
@@ -285,32 +232,31 @@
                 <div class="w-full flex justify-between items-center">
                     <div class="text-white text-2xl flex flex-col">
                         @if (Auth::user()->teachers)
-                            <label class="nav1">Buen día,
-                                {{ Auth::user()->teachers->name_teacher }}</label>
-                            <label class="nav2">Gestión asesor</label>
+                        <label class="nav1">Buen día,
+                            {{ Auth::user()->teachers->name_teacher }}</label>
+                        <label class="nav2">Gestión asesor</label>
                         @elseif (Auth::user()->student)
-                            <label class="text-3xl text-[#d7d7d7]">Buen día,
-                                {{ Auth::user()->student->student_name }}</label>
-                            <label class="text-xl text-[#a8a8a8]">Gestión estudiante</label>
+                        <label class="text-3xl text-[#d7d7d7]">Buen día,
+                            {{ Auth::user()->student->student_name }}</label>
+                        <label class="text-xl text-[#a8a8a8]">Gestión estudiante</label>
                         @elseif (Auth::user()->hasRole('Administrador'))
-                            <label class="text-3xl text-[#d7d7d7]">Buen día,
-                                {{ Auth::user()->name }}</label>
-                            <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
-                        @elseif (Auth::user()->hasRole('Cordinacion'))
-                            <label class="text-3xl text-[#d7d7d7]">Buen día,
-                                {{ Auth::user()->coordinators->coordinator_name }}</label>
-                            <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
+                        <label class="text-3xl text-[#d7d7d7]">Buen día,
+                            {{ Auth::user()->name }}</label>
+                        <label class="text-xl text-[#a8a8a8]">Gestión super administrador</label>
+                        @elseif (Auth::user()->hasRole('Asistente'))
+                        <label class="text-3xl text-[#d7d7d7]">Buen día,
+                            {{ Auth::user()->coordinators->coordinator_name }}</label>
+                        <label class="text-xl text-[#a8a8a8]">Gestión Coordinador</label>
                         @elseif (Auth::user()->presidencies)
-                            <label class="text-3xl text-[#d7d7d7]">Buen día,
-                                {{ Auth::user()->presidencies->president_name }}</label>
+                        <label class="text-3xl text-[#d7d7d7]">Buen día,
+                            {{ Auth::user()->presidencies->president_name }}</label>
                         @else
-                            No se encontró información del usuario para este usuario.
+                        No se encontró información del usuario para este usuario.
                         @endif
                     </div>
                     <!-- Aqui quiero que aparezca este div cuando la vista sea pequeña -->
                     <div>
-                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i
-                                class="fa-solid fa-bars"></i></button>
+                        <button id="openSidebarButton" class="small-screen w-fit text-start nav1"><i class="fa-solid fa-bars"></i></button>
                     </div>
                     <!-- Quiero que desaparezca de aqui si la vista se vuelve pequeña pero que este si la vista es grande -->
                     <form method="POST" action="{{ route('logout') }}" id="logoutForm" class="logout-forms">
