@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (response.success) {
                                 // Actualizar el gráfico con los nuevos datos
                                 mychart.data.labels = [response.group_name];
-                                mychart.data.datasets[0].data = [response.approved_count];
+                                mychart.data.datasets[0].data = [response.status_count];
                                 mychart.update();
                             } else {
                                 console.error('Error al obtener los datos del servidor:', response.message);
