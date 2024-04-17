@@ -8,14 +8,17 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         .contenido {
             margin-top: 70px;
             display: flex;
             text-align: center;
         }
+
         .columna {
             display: inline-block;
         }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -37,6 +40,7 @@
         ,
         .ptext {
             line-height: 1.6;
+            text-align: justify;
         }
 
         img {
@@ -52,6 +56,10 @@
             left: 0;
             right: 0;
         }
+
+        a {
+            font-weight: bold;
+        }
     </style>
 
 <body>
@@ -64,30 +72,31 @@
             INGENIERÍA Y TECNOLOGÍA </h4>
         <h4>P R E S E N T E</h4>
         <p class="ptext">
-            Sirva la presente para informarle que el estudiante 
-            ha concluido satisfactoriamente la elaboración de su memoria titulada {{ Auth::user()->student->projects->project_title }} que
+            Sirva la presente para informarle que el estudiante <a>{{ Auth::user()->student->student_name }}</a>
+            ha concluido satisfactoriamente la elaboración de su memoria titulada
+            <a>{{ Auth::user()->student->projects->project_title }}</a> que
             como requisito para la conclusión de su estadía y proceso de titulación
             establece la normatividad de la Universidad Tecnológica de Cancún.
         </p>
         <p class="ptext">
-            Así mismo, hago de su conocimiento que la memoria en mención<br />
-            cuenta con la correspondiente revisión y por consiguiente aprobación<br />
-            por quienes fungimos como asesores en el ámbito empresarial y<br />
+            Así mismo, hago de su conocimiento que la memoria en mención
+            cuenta con la correspondiente revisión y por consiguiente aprobación
+            por quienes fungimos como asesores en el ámbito empresarial y
             académico.
         </p>
         <p class="ptext">Sin otro particular al respecto, quedamos de usted.</p>
         <div class="contenido">
             <div class="columna" style="margin-right: 20px;">
                 <p>ASESOR EMPRESARIAL</p>
-                <br/>
-                <hr style="width: 250px;"/>
-                <p>{{ Auth::user()->student->projects->project_advisor}}</p>
+                <br />
+                <hr style="width: 250px;" />
+                <p>{{ Auth::user()->student->projects->project_advisor }}</p>
             </div>
             <div class="columna">
                 <p>ASESOR ACADÉMICO</p>
-                <br/>
-                <hr style="width: 250px"/>
-                <p>Mtro/a. {{$adviser_name}}</p>
+                <br />
+                <hr style="width: 250px" />
+                <p>Mtro/a. {{ $adviser_name }}</p>
             </div>
         </div>
         <table class="footer-table">
