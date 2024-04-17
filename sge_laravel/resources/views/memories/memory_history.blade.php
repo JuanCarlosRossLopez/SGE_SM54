@@ -10,8 +10,13 @@
 
                 <!-- Mapeo de anteproyectos -->
                 <div class="content_conteiner w-full h-fit p-4 mt-4">
-                    <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Tabla de mis alumnos
+                    <div class="flex flex-row items-center w-full">
+                        <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3 w-full">Tabla de mis alumnos
                         como asesor</label>
+                        
+                        <a href="/crear_memoria" class="buttons_card_memorie"><label class="w-fit cursor-pointer">Subir memoria de mis asesorados <i class="fa-solid fa-plus"></i></label></a>
+                    </div>
+                    
                     <!-- Panel 1 -->
                     <div class="table_conteiner">
                         <table class="standar_table">
