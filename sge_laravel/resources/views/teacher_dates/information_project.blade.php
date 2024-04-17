@@ -259,7 +259,7 @@ Plantilla base
                                                 <div class="flex">
                                                     <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
                                                         Teléfono:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">9988233459
+                                                    <p class="text-left font-light text-lg  mr-20 py-2">{{ $project_management->project_advisor_phone}}
                                                     </p>
                                                 </div>
                                                 <div class="flex">
@@ -406,11 +406,11 @@ Plantilla base
                                 realizada {{ $comment->created_at }} <i class="fa-regular fa-clock"></i>
                             </label>
                                 @if($comment->status == 0)
-                                @role('Estudiante')
-                                    <a href="{{ route('comments.update', ['id' => $comment->id]) }}" class="bg-red-200 rounded-md w-24 p-1 m-2" onclick="return confirm('¿Estás seguro de que quieres cambiar el estado del comentario?')">Corregir</a>
-                                @endrole
+                                     @role('Estudiante')
+                                    <a href="{{ route('comments.update', ['id' => $comment->id]) }}" class="bg-[#a68e18cb] text-[#fcf6e1] rounded-md w-24 p-1 m-2" >Corregir</a>
+                                    @endrole
                                     @else
-                                    <span class="bg-green-200 rounded-md w-24 p-1 m-2">Corregido</span>
+                                    <span class="bg-green-100 border border-green-400 text-green-700 rounded-md w-24 p-1 m-2">Corregido</span>
                                 @endif
 
                         </div>

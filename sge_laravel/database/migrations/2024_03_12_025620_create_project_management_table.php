@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('student_name');
             $table->string('student_group');
             $table->string('student_email');
-            $table->string('student_phone', 10);
+            $table->string('student_phone', 15);
             $table->integer('student_id');
             $table->string('project_title');
             $table->string('project_company');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('email_asesor');
             $table->string('project_advisor');
-            $table->string('project_advisor_phone', 10);
+            $table->string('project_advisor_phone', 15);
             $table->text('general_objective');
             $table->text('problem_statement');
             $table->text('justification');
