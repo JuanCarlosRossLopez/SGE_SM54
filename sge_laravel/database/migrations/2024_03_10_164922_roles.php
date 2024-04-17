@@ -17,7 +17,7 @@ return new class extends Migration
         $role1 = Role::create(['name' => 'Administrador']);
         $role2 = Role::create(['name' => 'Asesor']);
         $role3 = Role::create(['name' => 'Estudiante']);
-        $role4 = Role::create(['name' => 'Cordinacion']);
+        $role4 = Role::create(['name' => 'Asistente']);
         $role5 = Role::create(['name' => 'Presidente']);
         $role6 = Role::create(['name'=> 'Aspirante ']);
       
