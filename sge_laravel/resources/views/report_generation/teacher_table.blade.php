@@ -36,13 +36,17 @@
                                         <td class="trowc">{{ $student->student_id }}</td>
                                         <td class="trowc">{{ $student->student_name }}</td>
                                         <td class="trowc">
-                                            {{ !$student->anteproject_id ? 'N/A' : $student->anteproject_id }}</td>
+                                            {{ !$student->project_title ? 'N/A' : $student->project_title }}</td>
                                         <td class="trowc">
                                             <div>
-                                                <button data-modal="Envio_{{ $student->id }}"
-                                                    class="show-modal standar_button my-1">
-                                                    Enviar
-                                                </button>
+                                                @if($student->Recibido == $type)
+                                                    Ya se envió a este estudiante
+                                                @else
+                                                    <button data-modal="Envio_{{ $student->id }}"
+                                                        class="show-modal standar_button my-1">
+                                                        Enviar
+                                                    </button>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
