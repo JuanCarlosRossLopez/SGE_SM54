@@ -42,7 +42,11 @@
 
         .texto {
             text-align: right;
+            font-family: Arial, Helvetica, sans-serif;
         }
+        .texto2 {
+        }
+        
 
         .footer-table {
             position: absolute;
@@ -69,7 +73,7 @@
             <h5 class="texto">Asunto: Autorización de Digitalización</h5>
         </div>
         <br />
-        <h4>Se autoriza al estudiante <span>{{ Auth::user()->student->student_name }}</span> del grupo
+        <h4 class="texto2">Se autoriza al estudiante <span>{{ Auth::user()->student->student_name }}</span> del grupo
             <span>{{ Auth::user()->student->projects->student_group }}</span> con número de matrícula:
             <span>{{ Auth::user()->student->id_student }}</span> la digitalización de la MEMORIA en
             modalidad:
@@ -116,7 +120,7 @@
                 <p style="margin-top: 20px;">COMISIÓN ACADÉMICA</p>
                 <br />
                 <hr style="width: 250px" />
-                <p>Mtra. Mayra Guadalupe Fuentes Sosa</p>
+                <p>Mayra</p>
                 <p style="font-size: 10px">Presidente de la Comisión Académica de T.I</p>
             </div>
         </div>

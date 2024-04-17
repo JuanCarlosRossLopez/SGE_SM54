@@ -233,14 +233,11 @@
 
                                             <div class="flex flex-col md:flex-row md:gap-4">
                                                 <div class="flex flex-col gap-4 md:w-1/2">
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Correo Electrónico</label>
                                                     <input type="email" name="email" placeholder="Correo electrónico" class="rounded input-field">
                                                     @error('email')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Contraseña</label>
+
                                                     <input type="password" name="password" placeholder="Contraseña" class="rounded input-field">
                                                     @error('password')
                                                     <span class="text-red-500">{{ $message }}</span>
@@ -248,15 +245,12 @@
                                                 </div>
 
                                                 <div class="flex flex-col gap-4 md:w-1/2">
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Nombre del asesor</label>
                                                     <input type="text" name="teacher_name" id="teacher_name" placeholder="Nombre del asesor" class="flex-1 rounded-md border border-gray-300 p-2">
                                                     @error('teacher_name')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
-                                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                        Número de nómina</label>
-                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
+
+                                                    <input type="number" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="flex-1 rounded-md border border-gray-300 p-2" oninput="maxLengthCheck(this)">
                                                     @error('payroll')
                                                     <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
@@ -264,8 +258,6 @@
                                             </div>
 
                                             <div class="flex flex-col gap-4">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                División</label>
                                                 <select name="division_id" id="" class="rounded-md border border-gray-300 p-2">
                                                     <option value="">Selecciona una división</option>
                                                     @foreach ($Divisions as $division)
@@ -279,8 +271,6 @@
                                                 @enderror
                                             </div>
                                             <div class="flex flex-col gap-4">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                    Carrera</label>
                                                 <select name="division_id" id="" class="rounded-md border border-gray-300 p-2">
                                                     <option value="">Selecciona una carrera</option>
                                                     @foreach ($careers as $career)
