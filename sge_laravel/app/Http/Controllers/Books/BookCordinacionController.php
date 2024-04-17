@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Books;
 use App\Models\Students;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class BookCordinacionController extends Controller
 {
     public function index()
     {
         $books = Books::all();
-        $students = Students::all();
+        $students = DB::select("
+        SELECT id,nombreCompleto FROM students WHERE NOT EXISTS 
+        ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
 
         return view('super_admin.book', compact("books", "students"));
         
@@ -93,9 +95,15 @@ class BookCordinacionController extends Controller
      */
     public function show($id)
     {
-        $students = Students::all();
-        $libro = books::find($id);
-        return view('super_admin.show_book', compact("books", "students"));
+       
+    $book = Books::find($id);
+
+    if ($book) {
+        $students = $book->students;
+        return view('super_admin.show_book', compact('book', 'students'));
+    } else {
+        // Manejar el caso en el que el libro no se encuentra...
+    }
     }
 
     /**
@@ -129,11 +137,80 @@ class BookCordinacionController extends Controller
     }
 
 
-    public function updateStatus(Request $request, string $id)
+
+
+    public function updateBook(Request $request, string $id)
     {
-        $book = Books::findOrFail($id);
-        $book->status = '0'; // or whatever status you want to set
-        $book->save();
+        $messages = [
+            'book_name.required' => 'El nombre del libro es requerido',
+            'book_name.max' => 'El nombre del libro no puede tener más de 255 caracteres',
+            'book_name.min' => 'El nombre del libro no puede tener menos de 3 caracteres',
+            'voucher.required' => 'La imagen del comprobante es requerido',
+            'voucher.mimes' => 'La imagen del comprobante debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_front_page.required' => 'La imagen de la portada del libro es requerido',
+            'book_front_page.mimes' => 'La imagen de la portada del libro debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_description.required' => 'La descripción del libro es requerido',
+            'book_description.max' => 'La descripción del libro no puede tener más de 255 caracteres',
+            'book_description.min' => 'La descripción del libro no puede tener menos de 3 caracteres',
+            'author.required' => 'El autor del libro es requerido',
+            'author.max' => 'El autor del libro no puede tener más de 255 caracteres',
+            'author.min' => 'El autor del libro no puede tener menos de 3 caracteres',
+            'price.required' => 'El precio del libro es requerido',
+            'price.numeric' => 'El precio del libro debe ser un número',
+            
+        ];
+    
+        $request->validate([
+            'book_name' => 'required|max:255|min:3',
+            'voucher' => 'nullable|mimes:jpeg,png,jpg', // 'voucher' => 'required|mimes:jpeg,png,jpg
+            'book_front_page' => 'nullable|mimes:jpeg,png,jpg',
+            'book_description' => 'required|max:255|min:3',
+            'author' => 'required|max:255|min:3',
+            'price' => 'required|numeric',
+        ], $messages);
+    
+        $books = Books::findOrFail($id);
+        // Obtén los IDs de los estudiantes del formulario
+        
+        $new_student_ids = (array) $request->input('students_id');
+    
+
+    // Obtén los IDs de los estudiantes actualmente asociados al libro
+    $current_student_ids = $books->students->pluck('id')->toArray();
+
+    // Encuentra los estudiantes que necesitan ser agregados y los que necesitan ser eliminados
+    $students_to_add = array_diff($new_student_ids, $current_student_ids);
+    $students_to_remove = array_diff($current_student_ids, $new_student_ids);
+
+    // Agrega los nuevos estudiantes al libro
+    foreach ($students_to_add as $student_id) {
+        $books->students()->attach($student_id);
+    }
+
+    // Elimina los estudiantes que ya no están asociados al libro
+    foreach ($students_to_remove as $student_id) {
+        $books->students()->detach($student_id);
+    }
+    
+        if ($request->hasFile('book_front_page')) {
+            $file = $request->file('book_front_page');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/books/', $name);
+            $books->book_front_page = $name;
+        }
+        if ($request->hasFile('voucher')) {
+            $file = $request->file('voucher');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/books/', $name);
+            $books->voucher = $name;
+        }
+    
+        $books->book_name = $request->input('book_name');
+        $books->book_description = $request->input('book_description');
+        $books->author = $request->input('author');
+        $books->price = $request->input('price');
+        
+        $books->save();
     
         return back();
     }

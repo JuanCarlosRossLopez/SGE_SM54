@@ -24,7 +24,7 @@ class BooksController extends Controller
         })->get();
         $books = Books::where('status', 0)->get();
         $students = DB::select("
-        SELECT id,student_name FROM students WHERE NOT EXISTS 
+        SELECT id,nombreCompleto FROM students WHERE NOT EXISTS 
         ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
 
         return view('students.libros.index', compact("books", "students", "userBooks"));
@@ -49,17 +49,41 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
+
+       $messages=  [
+            'book_name.required' => 'El nombre del libro es requerido',
+            'book_name.max' => 'El nombre del libro no puede tener más de 255 caracteres',
+            'book_name.min' => 'El nombre del libro no puede tener menos de 1 caracteres',
+            'book_name.regex' => 'El nombre del libro solo puede contener letras y números',
+            'voucher.required' => 'La imagen del comprobante es requerido',
+            'voucher.mimes' => 'La imagen del comprobante debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_front_page.required' => 'La imagen de la portada del libro es requerido',
+            'book_front_page.mimes' => 'La imagen de la portada del libro debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_description.required' => 'La descripción del libro es requerido',
+            'book_description.max' => 'La descripción del libro no puede tener más de 255 caracteres',
+            'book_description.min' => 'La descripción del libro no puede tener menos de 3 caracteres',
+            'book_description.regex' => 'La descripción del libro solo puede contener letras y números',
+            'author.required' => 'El autor del libro es requerido',
+            'author.max' => 'El autor del libro no puede tener más de 255 caracteres',
+            'author.min' => 'El autor del libro no puede tener menos de 3 caracteres',
+            'author.regex' => 'El autor del libro solo puede contener letras y números',
+            'price.required' => 'El precio del libro es requerido',
+            'price.numeric' => 'El precio del libro debe ser un número',
+            'student_ids.*.required' => 'El nombre del estudiante es requerido',
+
+        ];
+
         $request->validate([
 
             'student_ids.*' => 'required|exists:students,id',
-            'book_name' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'book_name' => 'required|max:255|min:1|regex:/^[a-zA-Z0-9\s:áéíóúÁÉÍÓÚ]+$/',
             'voucher' => 'required|mimes:jpeg,png,jpg',
             'book_front_page' => 'required|mimes:jpeg,png,jpg',
-            'book_description' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
-            'author' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s]+$/',
+            'book_description' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s:áéíóúÁÉÍÓÚ]+$/',
+            'author' => 'required|max:255|min:3|regex:/^[a-zA-Z0-9\s:áéíóúÁÉÍÓÚ]+$/',
             'price' => 'required|numeric|',
 
-        ]);
+        ],$messages);
 
         $libro = new Books();
 
@@ -137,23 +161,57 @@ class BooksController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $messages = [
+            'book_name.required' => 'El nombre del libro es requerido',
+            'book_name.max' => 'El nombre del libro no puede tener más de 255 caracteres',
+            'book_name.min' => 'El nombre del libro no puede tener menos de 3 caracteres',
+            'voucher.required' => 'La imagen del comprobante es requerido',
+            'voucher.mimes' => 'La imagen del comprobante debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_front_page.required' => 'La imagen de la portada del libro es requerido',
+            'book_front_page.mimes' => 'La imagen de la portada del libro debe ser un archivo de tipo: jpeg, png, jpg',
+            'book_description.required' => 'La descripción del libro es requerido',
+            'book_description.max' => 'La descripción del libro no puede tener más de 255 caracteres',
+            'book_description.min' => 'La descripción del libro no puede tener menos de 3 caracteres',
+            'author.required' => 'El autor del libro es requerido',
+            'author.max' => 'El autor del libro no puede tener más de 255 caracteres',
+            'author.min' => 'El autor del libro no puede tener menos de 3 caracteres',
+            'price.required' => 'El precio del libro es requerido',
+            'price.numeric' => 'El precio del libro debe ser un número',
+            
+        ];
+    
         $request->validate([
             'book_name' => 'required|max:255|min:3',
-            'book_front_page' => 'required',
+            'voucher' => 'nullable|mimes:jpeg,png,jpg', // 'voucher' => 'required|mimes:jpeg,png,jpg
+            'book_front_page' => 'nullable|mimes:jpeg,png,jpg',
             'book_description' => 'required|max:255|min:3',
             'author' => 'required|max:255|min:3',
-            'price' => 'required|numeric|min:13',
-        ]);
-
-
+            'price' => 'required|numeric',
+        ], $messages);
+    
         $books = Books::findOrFail($id);
+    
+        if ($request->hasFile('book_front_page')) {
+            $file = $request->file('book_front_page');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/books/', $name);
+            $books->book_front_page = $name;
+        }
+        if ($request->hasFile('voucher')) {
+            $file = $request->file('voucher');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/books/', $name);
+            $books->voucher = $name;
+        }
+
+
         $books->book_name = $request->input('book_name');
-        $books->book_front_page = $request->input('book_front_page');
         $books->book_description = $request->input('book_description');
         $books->author = $request->input('author');
         $books->price = $request->input('price');
-        $books->students_id = $request->input('students_id');
+        
         $books->save();
+    
         return back();
     }
 

@@ -68,12 +68,11 @@ class DocumentsController extends Controller
     }
     public function index(Request $request)
     {
-        $userId = Auth::user()->id;
+        $user = Auth::user();
         $type = $request->input('type');
-        
 
-            $studentList = Teaching_advice::where('teacher_id', $userId)->get();
-    
+            $studentList = Teaching_advice::where('teacher_id', $user->Teachers->id)->get();
+
             $filteredStudents = $studentList->filter(function ($student) use ( $type) {
                 $studentId = Students::where('id', $student->student_id)->first()->user_id;
                 $studentNotifications = Notifications::where('user_id', $studentId)->pluck('type_notification')->toArray();

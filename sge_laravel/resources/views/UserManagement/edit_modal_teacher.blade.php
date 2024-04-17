@@ -21,10 +21,7 @@
                             @method('PUT')
                             <div class="flex gap-4">
                                 <div class="flex flex-col gap-4">
-                                    <input type="text" value="{{$user->name}}" name="name" id="name" placeholder="Nombre del usuario" class="rounded-md border border-gray-300 p-2" readonly>
-                                    @error('name')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
+
                                     <input type="email" value="{{$user->email}}" name="email" id="email" placeholder="Correo electrónico" class="rounded-md border border-gray-300 p-2">
                                     @error('email')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
@@ -40,9 +37,15 @@
                                 </div>
                                 <div class="flex flex-col gap-4">
                                     <input type="number" value="{{$user->teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
-                                    @error('nomina')
+                                    @error('payroll')
                                     <p class="text-red-500 text-xs">{{ $message }}</p>
                                     @enderror
+                                    <script>
+                                        function maxLengthCheck(object) {
+                                            if (object.value.length > 11)
+                                                object.value = object.value.slice(0, 11);
+                                        }
+                                    </script>
                                     <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
                                         <option value="{{$user->teachers->division_id}}" selected>{{$user->teachers->division ? $user->teachers->division->division_name : 'Sin división'}}</option>
 

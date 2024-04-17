@@ -87,12 +87,20 @@
                                     @if ($userBooks)
                                         @foreach ($userBooks as $book)
                                             <h1 class="text-[18px] mb-6">Mis libros</h1>
-                                            <button class="showView  rounded-md border text-black w-fit"
+                                            <div >
+                                                <button class="showEdit absolute-child" data-target="#edit{{ $book->id }}">
+                                                    <div class="button_edit_yellow">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            <button class="showView relative  rounded-md border text-black w-fit"
                                                 data-target="#view{{ $book->id }}">
                                                 <div
                                                     class="flex flex-col w-36 transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 ">
                                                     <img class=" w-56" src="{{ asset('books/' . $book->book_front_page) }}"
                                                         alt="img_book">
+                                                        
                                                     <span
                                                         class=" font-semibold text-[15px] text-[#111111]">{{ $book->book_name }}</span>
                                                     <span class=" font-light text-[15px] text-[#111111]">
@@ -103,11 +111,12 @@
                                                         <span class="font-light text-[15px] text-[#111111]">En
                                                             Revision</span>
                                                     @endif
-
+                                                               
 
                                                 </div>
                                             </button>
                                             @include('students.libros.viewBookStudent')
+                                            @include('students.libros.editBookStudent')
                                         @endforeach
                                     @else
                                         <h1 class="">No tienes libros</h1>
@@ -167,6 +176,7 @@
         const modal_libro = document.querySelector('.modal2');
         const modal_view = document.querySelector('.modalView');
         const modal_viewBook = document.querySelector('.modalView2');
+        const modal_edit = document.querySelector('.modalEdit');
 
 
 
@@ -175,10 +185,11 @@
         const showModalRoles = document.querySelectorAll('.showmodal2');
         const showModalView = document.querySelectorAll('.showView');
         const showModalViewBook = document.querySelectorAll('.showView2');
+        const showModalEdit = document.querySelectorAll('.showEdit');
 
         const closeModal = document.querySelectorAll('.close-modal');
         const closeModalView = document.querySelectorAll('.modalView');
-        const closeModalEdit = document.querySelectorAll('.modalEdit');
+        
         const closeModalViewBook = document.querySelectorAll('.modalView2');
 
 
@@ -205,6 +216,17 @@
             })
         })
 
+        showModalEdit.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                console.log("quee")
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+                console.log(modalId)
+
+            })
+        })
 
         showModalView.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -238,6 +260,7 @@
                 const modal1 = closeModal.closest('.modalEdit');
                 const modal2 = closeModal.closest('.modalView');
                 const modal3 = closeModal.closest('.modalView2');
+                
 
                 if (modal) {
                     modal.classList.add('hidden');

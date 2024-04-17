@@ -23,12 +23,12 @@ class TeachersController extends Controller
         $division = Division::all();
         $users = User::all();
 
-    
-        return view('teachers.teachers', compact('teachers', 'Students', 'division','users'));
+
+        return view('teachers.teachers', compact('teachers', 'Students', 'division', 'users'));
     }
 
-    
-    
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -43,19 +43,26 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
 
+        $messages = [
+            'payroll.required' => 'La nomina es requerida',
+            'payroll.digits' => 'La nomina debe tener 11 digitos',
+            'teacher_name.required' => 'El nombre del asesor es requerido',
+            'division_id.required' => 'La division es requerida',
+        ];
 
         $request->validate([
-            'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'name_teacher' => 'required',
-            'payroll' => 'required',
-            'id_user' => 'required', 
+            'password' => 'required|min:8',
+            'teacher_name' => 'required',
+            'payroll' => 'required|digits:11',
             'division_id' => 'required',
-        ]);
+        ], $messages);
+
+
+
+
 
         $user = new User();
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
@@ -72,7 +79,21 @@ class TeachersController extends Controller
         $teacher->payroll = $request->input('payroll');
         $teacher->id_user = $user_id;
         $teacher->division_id = $request->input('division_id');
+
+
+
+
         $teacher->save();
+
+
+        if ($teacher->save()) {
+            return redirect('usuarios')->with('notification', 'Teacher created successfully');
+        }else{
+            $user->delete();
+            return redirect('usuarios')->with('notification', 'Error al crear el asesor');
+        }
+
+
 
         return back()->with('notification', 'Teacher created successfully');
     }
@@ -104,31 +125,39 @@ class TeachersController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
             'email' => 'required',
             'password' => 'required',
             'name_teacher' => 'required',
             'payroll' => 'required',
-            'division' => 'required',
+            'division_id' => 'required',
         ]);
-       
+
 
         $user = User::find($id);
-        $user-> name = $request->input('name');
-        $user-> email = $request->input('email');
-        $user-> password = bcrypt($request->input('password'));
-        $user->save();
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->update();
 
         $teacher_id = $user->teachers->id;
-        
+
         $teacher = Teachers::find($teacher_id);
         $teacher->name_teacher = $request->input('name_teacher');
         $teacher->payroll = $request->input('payroll');
         $teacher->id_user = $id;
         $teacher->division_id = $request->input('division_id');
-        $teacher->save();
+        $teacher->update();
 
-        return redirect('usuarios')->with('notification', 'Asesor actualizado correctamente');
+
+        if ($teacher->update()) {
+            return redirect('usuarios')->with('notification', 'Asesor actualizado correctamente');
+        }else{
+            return redirect('usuarios')->with('notification', 'Error al actualizar el asesor');
+        }
+
+
+
+
+
     }
 
     /**
@@ -146,11 +175,11 @@ class TeachersController extends Controller
 
 
         $teacher = Teachers::find($teacher_id);
-    
-   
+
+
         $teacher->delete();
 
         $user->delete();
         return redirect('usuarios')->with('notification', 'Teacher deleted successfully');
     }
-}    
+}

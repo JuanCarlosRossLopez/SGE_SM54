@@ -1,8 +1,8 @@
 <?php
+
 use App\Http\Controllers\DocumentSend\DocumentsController;
 use App\Http\Controllers\DocumentSend\DocumentsDownloadController;
 use App\Http\Controllers\Anteprojects\Anteprojects2Controller;
-use App\Http\Controllers\Anteprojects\AnteprojectsController;
 use App\Http\Controllers\Comments\CommentsController;
 use App\Http\Controllers\Divisions\DivisionController;
 use App\Http\Controllers\ProfileController;
@@ -45,7 +45,7 @@ use App\Http\Controllers\ChartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::post('/grupos/storeMasivo', [GroupController::class, 'storeMasivo'])->name('grupos.storeMasivo');
 Route::post('/carreras/storeMasivo', [CareerController::class, 'storeMasivo'])->name('carreras.storeMasivo');
 
 Route::get('/Perfil_Maestro', function () {
@@ -136,6 +136,7 @@ Route::get('dashboard_maestro', function () {
     return view('teachers.teacher_dashboard');
 });
 
+Route::put('/gestion_libros/{id}/updateBook', [BookCordinacionController::class,'updateBook'])->name('gestion_libros.updateBook');
 Route::resource('/gestion_libros', BookCordinacionController::class);
 
 
@@ -157,8 +158,6 @@ Route::resource('empresas', CompaniesController::class);
 
 
 
-Route::post('/projects/{id}/accept', [AnteprojectsController::class, 'accept'])->name('anteprojects.accept');
-Route::post('/projects/{id}/reject', [AnteprojectsController::class, 'reject'])->name('anteprojects.reject');
 
 
 
@@ -305,6 +304,7 @@ Route::get('/registro_libros', function () {
 
 Route::resource('usuarios', UsersController::class);
 Route::get('/users/filterByRole', [UsersController::class, 'filterByRole'])->name('users.filterByRole');
+
 Route::resource('muchos-usuarios', UsersCreateManyController::class);
 Route::resource('presidentes', PresidenciesController::class);
 //Route::put('usuarios/{id}', 'UserController@update')->name('usuarios.update');
@@ -340,14 +340,12 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     // Coloca aquí las rutas que deseas proteger con el middleware 'role'
-
     Route::get('/dashboard', function () {
         return view('super_admin.dashboard.dashboard');
     })->name('dashboard');
 
     Route::resource('carreras', CareerController::class);
     Route::resource('grupos', GroupController::class);
-
 });
 
 Route::group(['middleware' => ['auth', 'role:Estudiante']], function () {
@@ -359,6 +357,7 @@ Route::resource('roles', RoleController::class);
 Route::post('roles/store_permision', [RoleController::class, 'store_permision'])->name('roles.store_permision');
 Route::delete('roles/{id}/permissions', [RoleController::class, 'delete_permission'])->name('roles.delete_permission');
 Route::put('roles/{id}/permissions', [RoleController::class, 'update_permission'])->name('roles.update_permission');
+Route::put('usuarios/{id}/permissions', [UsersController::class, 'roles_permissions_store'])->name('user.edit_permission');
 
 
 Route::get('/calendario/{month}', [ControllerCalendar::class, 'indexMonth'])->where('month', '[0-9]{4}-[0-9]{2}')->name('calendar.month');

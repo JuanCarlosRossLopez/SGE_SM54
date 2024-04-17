@@ -932,6 +932,31 @@ span {
     transform: scale(1.1);
     width: 100%;
 }
+.button_permission_green {
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 100%;
+    border-width: 4px;
+    border-color: #489F8F;
+    background-color: #DEF7EC;
+    color: #489F8F;
+    width: 100%;
+    font-weight: 400;
+    padding: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.button_permission_green:hover {
+    font-weight: 600;
+    background-color: #45a291;
+    color: #ffffff;
+    transform: scale(1.1);
+    width: 100%;
+}
 
 .button_delete_red {
     cursor: pointer;
@@ -1004,4 +1029,30 @@ span {
     .logout-form {
         display: none;
     }
+}
+
+.button_check_green {
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 100%;
+    border-width: 4px;
+    border-color: #18a647c3;
+    background-color: #a69a1800;
+    color: #40a618;
+    width: 100%;
+    font-weight: 400;
+    padding: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.button_check_green:hover {
+    font-weight: 600;
+    background-color: #18a647c3;
+    color: #ffffff;
+    transform: scale(1.1);
+    width: 100%;
 }
