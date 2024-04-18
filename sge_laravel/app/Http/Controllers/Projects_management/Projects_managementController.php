@@ -28,23 +28,23 @@ class Projects_managementController extends Controller
 {
 
      // Hacer la solicitud a la API
-    $response = Http::get('http://api.worldbank.org/v2/region');
+    // $response = Http::get('http://api.worldbank.org/v2/region');
 
-     // Convertir la respuesta XML a un objeto SimpleXMLElement
-    $xmlData = $response->body();
-    $xml = simplexml_load_string($xmlData);
+    //  // Convertir la respuesta XML a un objeto SimpleXMLElement
+    // $xmlData = $response->body();
+    // $xml = simplexml_load_string($xmlData);
 
-     // Definir el espacio de nombres
-    $xml->registerXPathNamespace('wb', 'http://www.worldbank.org');
+    //  // Definir el espacio de nombres
+    // $xml->registerXPathNamespace('wb', 'http://www.worldbank.org');
 
-     // Obtener las regiones usando XPath con el espacio de nombres
-    $regions = $xml->xpath('//wb:region');
+    //  // Obtener las regiones usando XPath con el espacio de nombres
+    // $regions = $xml->xpath('//wb:region');
 
-     // Extraer los nombres de las regiones
-    $regionNames = [];
-    foreach ($regions as $region) {
-        $regionNames[] = (string) $region->children('wb', true)->name;
-    }
+    //  // Extraer los nombres de las regiones
+    // $regionNames = [];
+    // foreach ($regions as $region) {
+    //     $regionNames[] = (string) $region->children('wb', true)->name;
+    // }
     // Agregar dd() para verificar los nombres de las regiones
 
     // Obtener los datos existentes
@@ -54,9 +54,11 @@ class Projects_managementController extends Controller
     $groups = Group::all();
     $careers = Career::all();
     $companies = Companies::all();
+    $students = Students::all();
+    
 
     // Pasar los datos a la vista
-    return view('students.anteproyecto', compact('project_management', 'comments', 'regionNames', 'divisions', 'groups', 'careers', 'companies'));
+    return view('students.anteproyecto', compact('project_management', 'comments', 'divisions', 'groups', 'careers', 'companies', 'students'));
 }
 
 
@@ -103,12 +105,14 @@ class Projects_managementController extends Controller
 
             'likes' => 'required',
             //Mover de aqui en adelante
+            
         ]);
         
 
         $status_project = Status_project::where('status_project', 'Pendiente')->first();
 
         $projects_management = new Project_management();
+        
         $projects_management->educational_program = $request->input('educational_program');
         $projects_management->project_title = $request->input('project_title');
         $projects_management->student_name = $request->input('student_name');
@@ -140,6 +144,7 @@ class Projects_managementController extends Controller
         $projects_management->start_date = $request->input('start_date');
         $projects_management->end_date = $request->input('end_date');
         $projects_management->save();
+        
 
         return redirect('dashboard_alumno')->with('notificacion', 'Anteproyecto registrado correctamente');
     }
@@ -182,14 +187,14 @@ class Projects_managementController extends Controller
             'student_email' => 'required', // Correo electrónico
             'start_date' => 'required|date', // Fecha de inicio
             'end_date' => 'required|date', // Fecha de finalización
-            'student_phone' => 'required|string|max:10', // Teléfono
+            'student_phone' => 'required|string', // Teléfono
             'student_id' => 'required|max:8', // Matrícula
             'project_company' => 'required', // Empresa 
             'direction' => 'required|string', // Dirección
             'position' => 'required|string', // Puesto
             'email_asesor' => 'required', // Correo del Asesor
             'project_advisor' => 'required', // Asesor Empresarial
-            'project_advisor_phone' => 'required', // Teléfono del Asesor
+            'project_advisor_phone' => 'required|string', // Teléfono del Asesor
             'general_objective' => 'required', // Objetivo General
             'problem_statement' => 'required', // Planteamiento del Problema
             'justification' => 'required', // Justificación

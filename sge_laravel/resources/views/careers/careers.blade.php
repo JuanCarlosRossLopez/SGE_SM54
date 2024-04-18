@@ -127,6 +127,7 @@
                             <form action="{{ route('carreras.store') }}" method="POST" class="flex flex-col gap-4">
                                 @csrf
                                 <div class="flex gap-4">
+                                    
                                     <input type="text" name="career_name" id="career_name"
                                         placeholder="Nombre de la carrera"
                                         class="flex-1 rounded-md border border-gray-300 p-2">
@@ -174,107 +175,129 @@
                                     <select id="division_id_masivo" name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
                                         <option value="">Selecciona una división</option>
                                         @foreach ($divisions as $division)
-                                            <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                        <option value="{{ $division->id }}">{{ $division->division_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-
+                            
                                 <div class="flex flex-col gap-4" id="carreras_container">
                                     <!-- Aquí se agregarán dinámicamente los campos de nombre y descripción de carrera -->
                                 </div>
-
+                            
                                 <div class="flex justify-center">
                                     <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            
+                            <script>
+                                const modal_add = document.querySelector('.modal-add-asesor');
+                                const show_modal_add = document.querySelector('.show-modal-add');
+                                const modal_add_masivo = document.querySelector('.modal-add-masivo');
+                                const show_modal_add_masivo = document.querySelector('.show-modal-add-masivo');
+                            
+                                show_modal_add.addEventListener('click', function() {
+                                    modal_add.classList.remove('hidden');
+                                });
+                            
+                                show_modal_add_masivo.addEventListener('click', function() {
+                                    modal_add_masivo.classList.remove('hidden');
+                                });
+                            
+                                const close_modal = document.querySelectorAll('.close-modal');
+                            
+                                close_modal.forEach(close_modal => {
+                                    close_modal.addEventListener('click', (e) => {
+                                        e.preventDefault();
+                                        const modal_edit = close_modal.closest('.modal-edit-asesor');
+                                        const modal_add = close_modal.closest('.modal-add-asesor');
+                                        const modal_delete = close_modal.closest('.delete-modal');
+                                        const modal_add_masivo = close_modal.closest('.modal-add-masivo');
+                                        if (modal_add) {
+                                            modal_add.classList.add('hidden');
+                                        }
+                                        if (modal_edit) {
+                                            modal_edit.classList.add('hidden');
+                                        }
+                                        if (modal_delete) {
+                                            modal_delete.classList.add('hidden');
+                                        }
+                                        if (modal_add_masivo) {
+                                            modal_add_masivo.classList.add('hidden');
+                                        }
+                                    });
+                                });
+                            
+                                const show_delete_buttons = document.querySelectorAll('.show-delete');
+                                show_delete_buttons.forEach(button => {
+                                    button.addEventListener('click', function() {
+                                        const target = button.getAttribute('data-target');
+                                        const modal = document.querySelector(target);
+                                        modal.classList.remove('hidden');
+                                    });
+                                });
+                            
+                                const show_edit_buttons = document.querySelectorAll('.show-modal-edit');
+                                show_edit_buttons.forEach(button => {
+                                    button.addEventListener('click', function() {
+                                        const target = button.getAttribute('data-target');
+                                        const modal = document.querySelector(target);
+                                        modal.classList.remove('hidden');
+                                    });
+                                });
+                            
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const divisionSelectMasivo = document.getElementById('division_id_masivo');
+                                    const carrerasContainer = document.getElementById('carreras_container');
+                            
+                                    divisionSelectMasivo.addEventListener('change', function() {
+                                        carrerasContainer.innerHTML = ""; // Limpiar los campos de carrera anteriores
+                                        const divisionId = this.value;
+                                        const numberOfCarreras = 1; // Cambia este número según cuántas carreras desees agregar
+                            
+                                        for (let i = 0; i < numberOfCarreras; i++) {
+                                            const nuevoCampo = document.createElement('div');
+                                            nuevoCampo.classList.add('flex', 'gap-4');
+                                            nuevoCampo.innerHTML = `
+                                                <input type="text" name="career_names[]" placeholder="Nombre de la carrera ${i + 1}" class="flex-1 rounded-md border border-gray-300 p-2">
+                                                <textarea name="career_descriptions[]" placeholder="Descripción de la carrera ${i + 1}" class="flex-1 rounded-md border border-gray-300 p-2"></textarea>
+                                                <button type="button" class="remove-campo bg-[#01A080] text-white rounded p-2">Eliminar campo</button>
+                                            `;
+                                            carrerasContainer.appendChild(nuevoCampo);
+                            
+                                            // Agregar evento de clic para eliminar campo
+                                            const removeCampo = nuevoCampo.querySelector('.remove-campo');
+                                            removeCampo.addEventListener('click', function() {
+                                                nuevoCampo.remove();
+                                            });
+                                        }
+                            
+                                        // Agregar evento de clic para agregar campo
+                                        const addCampo = document.createElement('button');
+                                        addCampo.type = 'button';
+                                        addCampo.classList.add('add-campo', 'bg-[#01A080]', 'text-white', 'rounded', 'p-2');
+                                        addCampo.textContent = 'Agregar campo';
+                                        carrerasContainer.appendChild(addCampo);
+                            
+                                        addCampo.addEventListener('click', function() {
+                                            const nuevoCampo = document.createElement('div');
+                                            nuevoCampo.classList.add('flex', 'gap-4');
+                                            nuevoCampo.innerHTML = `
+                                                <input type="text" name="career_names[]" placeholder="Nombre de la carrera" class="flex-1 rounded-md border border-gray-300 p-2">
+                                                <textarea name="career_descriptions[]" placeholder="Descripción de la carrera" class="flex-1 rounded-md border border-gray-300 p-2"></textarea>
+                                                <button type="button" class="remove-campo bg-[#01A080] text-white rounded p-2">Eliminar campo</button>
+                                            `;
+                                            carrerasContainer.insertBefore(nuevoCampo, addCampo);
+                            
+                                            // Agregar evento de clic para eliminar campo
+                                            const removeCampo = nuevoCampo.querySelector('.remove-campo');
+                                            removeCampo.addEventListener('click', function() {
+                                                nuevoCampo.remove();
+                                            });
+                                        });
+                                    });
+                                });
+                            </script>
+                            
 
-        <script>
-            // JavaScript para abrir y cerrar los modales
-            const modal_add = document.querySelector('.modal-add-asesor');
-            const modal_add_masivo = document.querySelector('.modal-add-masivo');
-            const show_modal_add = document.querySelector('.show-modal-add');
-            const show_modal_add_masivo = document.querySelector('.show-modal-add-masivo');
-            const showEditModalButtons = document.querySelectorAll('.show-modal-edit');
-            const showDeleteModalButtons = document.querySelectorAll('.show-delete');
-
-            show_modal_add.addEventListener('click', function() {
-                modal_add.classList.remove('hidden');
-            });
-
-            show_modal_add_masivo.addEventListener('click', function() {
-                modal_add_masivo.classList.remove('hidden');
-            });
-
-            showEditModalButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetModalId = button.getAttribute('data-target');
-            const modal = document.querySelector(targetModalId);
-            if (modal) {
-                modal.classList.remove('hidden');
-            } else {
-                console.error("No se pudo encontrar el modal:", targetModalId);
-            }
-        });
-    });
-
-    // Event listeners for showing delete modals
-    showDeleteModalButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetModalId = button.getAttribute('data-target');
-            const modal = document.querySelector(targetModalId);
-            if (modal) {
-                modal.classList.remove('hidden');
-            } else {
-                console.error("No se pudo encontrar el modal:", targetModalId);
-            }
-        });
-    });
-
-            const close_modal = document.querySelectorAll('.close-modal');
-
-            close_modal.forEach(close_modal => {
-                close_modal.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const modal_edit = close_modal.closest('.modal-edit-asesor');
-                    const modal_add = close_modal.closest('.modal-add-asesor');
-                    const modal_add_masivo = close_modal.closest('.modal-add-masivo');
-                    const modal_delete = close_modal.closest('.delete-modal');
-                    if (modal_add) {
-                        modal_add.classList.add('hidden');
-                    }
-                    if (modal_edit) {
-                        modal_edit.classList.add('hidden');
-                    }
-                    if (modal_add_masivo) {
-                        modal_add_masivo.classList.add('hidden');
-                    }
-                    if (modal_delete) {
-                        modal_delete.classList.add('hidden');
-                    }
-                });
-            });
-
-            // JavaScript para manejar la adición dinámica de campos de carrera en el formulario de creación masiva
-            const divisionSelectMasivo = document.getElementById('division_id_masivo');
-            const carrerasContainer = document.getElementById('carreras_container');
-
-            divisionSelectMasivo.addEventListener('change', function() {
-                carrerasContainer.innerHTML = ""; // Limpiar los campos de carrera anteriores
-                const divisionId = this.value;
-                const numberOfCarreras = 5; // Cambia este número según cuántas carreras desees agregar
-                for (let i = 0; i < numberOfCarreras; i++) {
-                    carrerasContainer.innerHTML += `
-                        <div class="flex gap-4">
-                            <input type="text" name="career_names[]" placeholder="Nombre de la carrera ${i + 1}" class="flex-1 rounded-md border border-gray-300 p-2">
-                            <input type="text" name="career_descriptions[]" placeholder="Descripción de la carrera ${i + 1}" class="flex-1 rounded-md border border-gray-300 p-2">
-                        </div>
-                    `;
-                }
-            });
-        </script>
+                            
     @endsection

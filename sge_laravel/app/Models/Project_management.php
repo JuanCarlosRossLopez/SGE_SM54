@@ -59,5 +59,10 @@ class Project_management extends Model
     {
         return $this->belongsTo(Status_project::class, 'status_id');
     }
+
+    // public function project()
+    // {
+    //     return $this->belongsToMany(Students::class, 'anteproject_student');
+    // }
     
 }
