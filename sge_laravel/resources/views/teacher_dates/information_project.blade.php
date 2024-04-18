@@ -458,7 +458,7 @@ Plantilla base
                                 <label class="font-semibold font-poppins text-lg text-start w-full px-2">{{ $comment->teacher->name_teacher }}:</label>
                                 <label class="font-normal font-poppins text-lg text-start w-full px-2">{{ $comment->general_comment }}</label>
                             </div>
-                            <label class="w-full text-end px-2 italic font-normal text-[#838383]">Obsevación
+                            <label class="w-full text-end px-2 italic font-normal text-[#838383]">Observación
                                 realizada {{ $comment->created_at }} <i class="fa-regular fa-clock"></i>
                             </label>
                                 @if($comment->status == 0)
