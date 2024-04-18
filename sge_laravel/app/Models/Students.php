@@ -61,10 +61,11 @@ class Students extends Model
     {
         return $this->belongsTo(Career::class, 'careers_id');
     }
-    // public function project()
-    // {
-    //     return $this->belongsToMany(Project_management::class);
-    // }
+
+    public function project()
+    {
+        return $this->belongsToMany(Project_management::class, 'anteproject_student');
+    }
 
     
 

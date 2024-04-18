@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('anteproject_student', function (Blueprint $table) {
             $table->foreignId('project_management_id')->constrained('project_management');
+            $table->foreignId('students_id')->constrained('students');
             $table->timestamps();
         });
     }

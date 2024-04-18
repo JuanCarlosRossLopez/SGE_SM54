@@ -83,6 +83,32 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="w-full flex flex-col">
+                                <label class="font-sans font-semibold text-[#545454]">Colaborar</label>
+                                <button type="button" id="collaborate_button"
+                                    class="w-full h-11 text-base text-[#4f4f4f] rounded bg-[#f4f4f4] border-1 border-[#0000002b] focus:ring-[#0000002b] focus:border-[#69696900]">
+                                    Colaborar con otro(s) Estudiante(s)
+                                </button>
+                                <div class="col-span-1" hidden id="collaboration_options">
+                                    <div class="w-full flex flex-col">
+                                        <label for="additional_students" class="font-sans font-semibold text-[#545454]">Estudiantes Adicionales:</label>
+                                        <select name="additional_student_ids[]" id="additional_students" multiple class="form-multiselect block w-full mt-1">
+                                            @foreach($students as $student)
+                                                @if($student->id !== Auth::user()->student->id)
+                                                    <option value="{{ $student->id }}">{{ $student->student_name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @error('additional_student_ids')
+                                            <span class="text-red-500 w-full">{{ $message }}</span>
+                                            <hr class="border-2 w-full h-0 border-[#00000059]" />
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
                             <div class="col-span-1">
                                 <div class="w-full flex flex-col">
                                     <label for="student_email" class="font-sans font-semibold text-[#545454]">Correo del
@@ -548,7 +574,24 @@ function maxLengthCheck(object) {
 
     initializeModalEvents('.show-modal', '.modal');
     initializeModalEvents('.show-modal-edit', '.modal-edit');
+    
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('collaborate_button').addEventListener('click', function() {
+            // Ocultar el botón
+            this.style.display = 'none';
+
+            // Mostrar el select de estudiantes adicionales
+            var collabOptionsDiv = document.getElementById('collaboration_options');
+            collabOptionsDiv.removeAttribute('hidden');
+        });
+    });
+</script>
+
+
+
 <script>
     setTimeout(function() {
         var element = document.getElementById('timeMessage');
