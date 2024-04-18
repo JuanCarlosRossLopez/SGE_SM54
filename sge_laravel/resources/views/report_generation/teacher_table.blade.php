@@ -26,6 +26,7 @@
                                     <th class="theader">Matricula</th>
                                     <th class="theader">Alumno</th>
                                     <th class="theader">Proyecto</th>
+                                    <th class="theader">Estatus</th>
                                     <th class="theader">Opciones</th>
                                 </tr>
                             </thead>
@@ -36,13 +37,24 @@
                                         <td class="trowc">{{ $student->student_id }}</td>
                                         <td class="trowc">{{ $student->student_name }}</td>
                                         <td class="trowc">
-                                            {{ !$student->anteproject_id ? 'N/A' : $student->anteproject_id }}</td>
+                                            {{ !$student->project_title ? 'N/A' : $student->project_title }}</td>
+
+                                        @if ($student->Recibido == $type)
+                                            <td class="trowc">Enviado</td>
+                                        @else
+                                            <td class="trowc">Sin enviar</td>
+                                        @endif
+
                                         <td class="trowc">
                                             <div>
-                                                <button data-modal="Envio_{{ $student->id }}"
-                                                    class="show-modal standar_button my-1">
+
+
+                                                <button @if ($student->disabled) disabled @endif
+                                                    data-modal="Envio_{{ $student->id }}"
+                                                    class="show-modal standar_button my-1 @if ($student->disabled) grayscale @endif">
                                                     Enviar
                                                 </button>
+
                                             </div>
                                         </td>
                                     </tr>
