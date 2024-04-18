@@ -12,7 +12,8 @@
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class="modal-body max-h-full h-auto flex gap-7">
                 <div class="w-full md:w-auto">
-                    <img src="{{asset ('books/'.$book->book_front_page) }}" alt="" class=" w-fit md:w-[22rem] h-fit">
+                    <img src="{{ asset('books/' . $book->book_front_page) }}" alt=""
+                        class=" w-fit md:w-[22rem] h-fit">
                 </div>
                 <div class=" w-[32rem]  mb-0   items-center justify-center">
 
@@ -45,11 +46,13 @@
                             En Revision
                         </p>
                     @endif
-                  
-                    <label for="">Colaboradores</label>
-                    @foreach ($book->students as $student)
-        <p>{{ $student->student_name }}</p>
-    @endforeach
+
+                    <label class="font-semibold text-[15px]" for="">Matricula y nombre del estudiante</label>
+                    <p>
+                        @foreach ($book->students as $student)
+                            <p>{{ $student->id_student }} {{ $student->student_name }}</p>
+                        @endforeach
+                    </p>
                 </div>
 
 
