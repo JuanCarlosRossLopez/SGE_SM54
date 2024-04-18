@@ -95,7 +95,7 @@
                                                     </div>
                                                 </button>
                                             </div>
-                                            <div>
+                                            <div class="hidden">
                                                 <button class="deleteBook" data-target="#delete{{ $book->id }}">
                                                 <div class="button_delete_red">
                                                     <i class="fa-solid fa-trash"></i>
@@ -142,7 +142,7 @@
                                             
                                             @include('students.libros.viewBookStudent')
                                             @include('students.libros.editBookStudent')
-                                            @include('students.libros.delete_book')
+                                            
                                         @endforeach
                                     @else
                                         <h1 class="">No tienes libros</h1>
