@@ -12,7 +12,6 @@
                 <!-- gráficas de cedulas de anteproyecto -->
                 <label class="container_word_title w-full flex flex-col items-center pt-3 text-4xl">Gráficas</label>
 
-
                 <!-- Panel de gráficas -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
                     <!-- Gráfica 1 -->
@@ -41,6 +40,7 @@
 
             </div>
         </div>
+
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
