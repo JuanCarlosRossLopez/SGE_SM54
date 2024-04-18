@@ -42,13 +42,13 @@
                             </div>
                             <div class="flex gap-4 items-center mt-3 w-full">
                                 <select name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
-                                    <option selected>{{$user->student->career ? $user->student->career->career_name : 'Sin grupo'}}</option>
+                                    <option selected>{{$user->student->gruop ? $user->student->gruop->gruop_name : 'Sin grupo'}}</option>
                                     <option >Elige un grupo</option>
                                     @foreach ($Gruop as $gruop)
                                     <option value="{{ $gruop->id }}">{{ $gruop->group_name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>
                             <div class="flex justify-center mt-3">
                                 <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
                             </div>

@@ -120,8 +120,8 @@ class StudentsController extends Controller
         $student->student_name = $request->input('student_name');
         $student->id_student = $request->input('id_student');
         $student->group_id = $request->input('group_id');
-        $student->division_id = $request->input('division_id');
-
+        $student->careers_id = $request->input('division_id');
+         
 
 
         $student->save();
