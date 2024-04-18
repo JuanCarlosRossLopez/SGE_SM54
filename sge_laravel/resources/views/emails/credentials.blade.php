@@ -12,23 +12,21 @@
         </header>
         <main style="padding: 20px; height:100vh;">
             <div style="display: flex; flex-direction:column; justify-content:center;">
-            
-            <h1>Hola, {{ $name }}, espero que estés pasando un excelente día.</h1>
-            <p>Aquí tienes tus credenciales para acceder a la plataforma:</p>
-            <ul>
-                <li><strong>Usuario:</strong> {{ $email }}</li>
-                <li><strong>Contraseña:</strong> {{ $password }}</li>
-                @if ($role == 'Aspirante')
-                    <li><strong>Nombre:</strong> {{ $name }}</li>
-                    <li><strong>Matrícula:</strong> {{ $id }}</li>
-                @elseif ($role == 'Asesor')
-                    <li><strong>Nombre:</strong> {{ $name }}</li>
-                    <li><strong>Nómina:</strong> {{ $id }}</li>
-                @endif
-                <!-- Agrega más casos según sea necesario para otros roles -->
-            </ul>
-            <p>Recuerda cambiar tu contraseña en tu primer inicio de sesión. De otra forma, no podrás acceder a la plataforma.</p>
-        </div>
+                <h1>Hola, {{ $name }}, espero que estés pasando un excelente día.</h1>
+                <p>Aquí tienes tus credenciales para acceder a la plataforma:</p>
+                <ul>
+                    @if ($role == 'Aspirante')
+                        <li><strong>Nombre:</strong> {{ $name }}</li>
+                        <li><strong>Matrícula:</strong> {{ $id }}</li>
+                    @elseif ($role == 'Asesor')
+                        <li><strong>Nombre:</strong> {{ $name }}</li>
+                        <li><strong>Nómina:</strong> {{ $id }}</li>
+                    @endif
+                    <li><strong>Usuario:</strong> {{ $email }}</li>
+                    <li><strong>Contraseña:</strong> {{ $password }}</li>
+                </ul>
+                <p>Recuerda cambiar tu contraseña en tu primer inicio de sesión. De otra forma, no podrás acceder a la plataforma.</p>
+            </div>
         </main>
     </div>
 </body>
