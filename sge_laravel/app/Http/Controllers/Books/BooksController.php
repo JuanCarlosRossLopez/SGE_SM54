@@ -44,12 +44,12 @@ if ($teacherId) {
 
 
 
-        $books = Books::where('status', 0)->get();
+        $books = Books::where('status', 0)->paginate(8);
         $students = DB::select("
         SELECT id,student_name FROM students WHERE NOT EXISTS 
         ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
 
-        return view('students.libros.index', compact("books", "students", "userBooks", "advicesBooks"));
+        return view('students.libros.index', compact("books", "students", "userBooks", "advicesBooks", "teacherId"));
     }
 
 

@@ -84,17 +84,15 @@
 
                                 </div>
 
-
-
-
-                                @role('Asesor')
-                                    <h1 class="text-[18px] mb-6">Libros de mis alumnos asesorados</h1>
-                                    <div class=" grid  grid-cols-4">
-                                    @if ($advicesBooks)
+@role('Asesor')
+<h1 class="text-[18px] mb-6">Libros de mis alumnos asesorados</h1>
+@endrole
+<div class=" grid  grid-cols-4">
+                                
+                                    @if ($advicesBooks->isNotEmpty())
+                                    
+                                    
                                         @foreach ($advicesBooks as $book)
-                                            
-                                            
-                                            
                                                 <div class="main">
                                                     <ul id="bk-list" class="bk-list clearfix">
                                                         <li>
@@ -134,15 +132,15 @@
                                                     @include('students.libros.viewBookStudent')
                                                 </div>
                                         @endforeach
-                                    @else
-                                        <h1 class="">No tienes libros</h1>
                                     @endif
+                                        
+                                    
                             {{--<button class="showView2 "
                                             data-target="#view2{{ $book->id }}">
                                            
                                         </button>--}}
                                 </div>
-                                @endrole
+                               
 
 
 
@@ -151,6 +149,7 @@
                                         @foreach ($userBooks as $book)
                                             <h1 class="text-[18px] mb-6">Mis libros</h1>
                                             <div class="flex">
+                                                @if ($book->status == 1)
                                             <div >
                                                 <button class="showEdit absolute-child" data-target="#edit{{ $book->id }}">
                                                     <div class="button_edit_yellow">
@@ -158,6 +157,7 @@
                                                     </div>
                                                 </button>
                                             </div>
+                                            @endif
                                             <div class="hidden">
                                                 <button class="deleteBook" data-target="#delete{{ $book->id }}">
                                                 <div class="button_delete_red">
@@ -257,6 +257,7 @@
                                     @endforeach
                                     
                                 </div>
+                                {{ $books->links() }}
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ class BookCordinacionController extends Controller
 {
     public function index()
     {
-        $books = Books::all();
+        $books = Books::paginate(20);
         $students = DB::select("
         SELECT id,student_name FROM students WHERE NOT EXISTS 
         ( SELECT * FROM books JOIN books_students ON books.id = books_students.books_id WHERE students.id = books_students.students_id );");
