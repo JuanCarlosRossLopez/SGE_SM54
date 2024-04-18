@@ -52,7 +52,10 @@ class Students extends Model
         return $this->belongsTo(Division::class, 'division_id');
     }
 
-    
+    // public function project()
+    // {
+    //     return $this->belongsToMany(Project_management::class);
+    // }
 
     
 

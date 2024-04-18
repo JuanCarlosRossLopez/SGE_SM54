@@ -133,7 +133,7 @@ class BooksController extends Controller
 
 
 
-        return back()->with('notificacion', 'Su libro se agrego y correctamente esta en revisión');;
+        return back()->with('notificacion', 'Su libro se agrego y correctamente esta en revisión');
         // return redirect()->route('super_admin.book');
     }
 
@@ -190,6 +190,28 @@ class BooksController extends Controller
         ], $messages);
     
         $books = Books::findOrFail($id);
+
+        $new_student_ids = (array) $request->input('students_id');
+    
+
+        // Obtén los IDs de los estudiantes actualmente asociados al libro
+        $current_student_ids = $books->students->pluck('id')->toArray();
+    
+        // Encuentra los estudiantes que necesitan ser agregados y los que necesitan ser eliminados
+        $students_to_add = array_diff($new_student_ids, $current_student_ids);
+        $students_to_remove = array_diff($current_student_ids, $new_student_ids);
+    
+        // Agrega los nuevos estudiantes al libro
+        foreach ($students_to_add as $student_id) {
+            $books->students()->attach($student_id);
+        }
+    
+        // Elimina los estudiantes que ya no están asociados al libro
+        foreach ($students_to_remove as $student_id) {
+            $books->students()->detach($student_id);
+        }
+
+
     
         if ($request->hasFile('book_front_page')) {
             $file = $request->file('book_front_page');
@@ -211,6 +233,9 @@ class BooksController extends Controller
         $books->price = $request->input('price');
         
         $books->save();
+
+
+        
     
         return back();
     }
@@ -221,7 +246,11 @@ class BooksController extends Controller
     public function destroy(string $id)
     {
         $books = Books::find($id);
+        if ($books->students()->exists()) {
+            // Detach all related students from the pivot table
+            $books->students()->detach();
+        }
         $books->delete();
-        return back();
+        return back()->with('notificacion', 'Se elimino el libro correctamente');
     }
 }
