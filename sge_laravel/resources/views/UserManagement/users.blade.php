@@ -79,6 +79,14 @@
 
                                     </div>
                                 </form>
+                                <div class="bg-[#F1F0F0] border-2 rounded m-2 justify-center flex flex-row items-center gap-2">
+                                    <label class="w-full text-start font-sans font-semibold text-[#545454] text-lg">Acciones masivas</label>
+                                    <select id="action-select" class="text-base text-[#000000] border-1 border-[#0000002b] focus:ring-[#0000004e] focus:border-[#0000004e] rounded bg-white">
+                                        <option disabled selected class="">Seleccione una acción</option>
+                                        <option value="delete">Eliminar seleccionados</option>
+                                        <option value="send_emails">Enviar correos a los seleccionados</option>
+                                    </select>
+                                </div>
 
                                 <div
                                     class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
@@ -110,10 +118,11 @@
                                     <div class="relative dropdown-trigger gap-2">
                                         <button data-modal="UsersAdd"
                                             class="show-modal buttons_card_green w-fit  button_add_green">
-                                            <i class="fa-solid fa-circle-plus"></i>
+                                            <i class="fa-solid fa-file-import"></i>
                                         </button>
                                     </div>
                                 </div>
+                                
 
 
 
@@ -542,13 +551,7 @@
     });
 </script>
 
-<div class="">
-    <select id="action-select">
-        <option value="">Seleccione una acción</option>
-        <option value="delete">Eliminar seleccionados</option>
-        <option value="send_emails">Enviar correos a los seleccionados</option>
-    </select>
-</div>
+
 
 <div class="" id="delete-selected-form">
     <form action="{{ route('masive-actions-users.destroy') }}" method="POST">
