@@ -103,13 +103,20 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-     
+        $request->validate([
+            'student_name' => 'required',
+            'id_student' => 'required',
+            'division_id' => 'required',
+        ]);
+    
+        $user = User::find($id);
 
 
-        $student_id = $user->students->id;
+        $student_id = $user->student->id;
+        
 
 
-        $student = Students::find($id);
+        $student = Students::find($student_id);
         $student->student_name = $request->input('student_name');
         $student->id_student = $request->input('id_student');
         $student->group_id = $request->input('group_id');
@@ -119,7 +126,7 @@ class StudentsController extends Controller
 
         $student->save();
 
-        return redirect('estudiantes')->with('notification', 'Estudiante actualizado correctamente');
+        return redirect('usuarios')->with('notification', 'Estudiante actualizado correctamente');
     }
 
     /**

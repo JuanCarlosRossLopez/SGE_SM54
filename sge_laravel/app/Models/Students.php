@@ -60,6 +60,7 @@ class Students extends Model
     public function career(): BelongsTo
     {
         return $this->belongsTo(Career::class, 'careers_id');
+
     }
 
     public function project()

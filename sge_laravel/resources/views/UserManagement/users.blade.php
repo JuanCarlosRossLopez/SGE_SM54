@@ -102,12 +102,11 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                                                    Usuario</span></button> -->
+                                                                                                                                        Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
-                                        class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                        usuarios forma masiva </label>
+                                        class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Importar Excel </label>
                                     <div class="relative dropdown-trigger gap-2">
                                         <button data-modal="UsersAdd"
                                             class="show-modal buttons_card_green w-fit  button_add_green">
@@ -122,48 +121,54 @@
 
 
 
-                                <div idModal="UsersAdd"
-                                    class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+                                <div idModal="UsersAdd" class="modal h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
                                     <div class="bg-[#01A080] w-full rounded shadow-lg max-w-sm">
                                         <div class="border-b px-4 py-2 flex justify-between items-center">
-                                            <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar
-                                                usuarios de forma masiva
-                                            </h3>
+                                            <h3 class="font-semibold text-lg text-white text-center flex-grow">Agregar usuarios de forma masiva</h3>
                                             <button class="close-modal bg-white rounded-full h-[1rem] flex items-center">
-                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark"
-                                                        style="color: #d50101;"></i>
-                                                </p>
+                                                <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
                                             </button>
                                         </div>
-
-                                        <form class="bg-white rounded shadow-xl  px-20 py-14 items-center justify-center"
-                                            method="POST" action="{{ route('muchos-usuarios.store') }}">
-                                            @csrf
-                                            <div>
-                                                <label for="number_of_users"
-                                                    class="block text-gray-700 text-sm font-bold mb-2">Número de
-                                                    Usuarios:</label>
-                                                <input type="number" id="number_of_users" name="number_of_users"
-                                                    min="1" class="rounded input-field">
-                                            </div>
-                                            <div>
-                                                <label for="role_name">Rol:</label>
-                                                <select name="role_name" id="role_name"
-                                                    class="rounded input-field block text-gray-700 text-sm font-bold mb-2"
-                                                    required>
-                                                    <option value="">Selecciona un rol</option>
-                                                    @foreach ($roles as $role)
-                                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                                    @endforeach
+                                        <div class="p-10 bg-white">
+                                            <div class="mb-4">
+                                                <label for="user_type" class="block text-sm font-medium text-gray-700">Seleccione el tipo de usuario:</label>
+                                                <select name="user_type" id="user_type" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                                    <option value="Asesor">Asesor</option>
+                                                    <option value="Estudiante">Estudiante</option>
                                                 </select>
                                             </div>
-                                            <button type="submit"
-                                                class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Crear
-                                                Usuarios</button>
-
-                                        </form>
+                                            <form id="upload_form" action="{{ route('import.teachers') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="mb-4">
+                                                    <label for="excel_file" class="block text-sm font-medium text-gray-700">Seleccionar archivo:</label>
+                                                    <input type="file" name="excel_file" id="excel_file" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                                </div>
+                                                <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">Agregar archivo</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+                                
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const userTypeSelect = document.getElementById('user_type');
+                                        const uploadForm = document.getElementById('upload_form');
+                                
+                                        // Escuchar el cambio en el menú desplegable
+                                        userTypeSelect.addEventListener('change', function() {
+                                            // Obtener el valor seleccionado
+                                            const selectedOption = userTypeSelect.value;
+                                
+                                            // Ocultar o mostrar el formulario según la opción seleccionada
+                                            if (selectedOption === 'Asesor') {
+                                                uploadForm.setAttribute('action', '{{ route("import.teachers") }}');
+                                            } else if (selectedOption === 'Estudiante') {
+                                                uploadForm.setAttribute('action', '{{ route("import.users") }}');
+                                            }
+                                        });
+                                    });
+                                </script>
+                                
 
                                 <div idModal="studentAdd"
                                     class="modal hidden h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
@@ -464,17 +469,123 @@
                             })
                         </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('.select_user');
+        const actionSelect = document.getElementById('action-select');
+        const deleteForm = document.getElementById('delete-selected-form');
+        const sendEmailsForm = document.getElementById('send-emails-form');
+        const userIdsInputDelete = document.getElementById('user_ids_delete');
+        const userIdsInputEmail = document.getElementById('user_ids_email');
+        const selectAllCheckbox = document.getElementById('select-all');
 
+        // Ocultar ambos formularios al cargar la página
+        deleteForm.style.display = 'none';
+        sendEmailsForm.style.display = 'none';
 
+        actionSelect.addEventListener('change', function() {
+            const selectedAction = actionSelect.value;
+
+            if (selectedAction === 'delete') {
+                deleteForm.style.display = 'block';
+                sendEmailsForm.style.display = 'none';
+            } else if (selectedAction === 'send_emails') {
+                deleteForm.style.display = 'none';
+                sendEmailsForm.style.display = 'block';
+            }
+
+            // Actualizar los valores de los campos ocultos al cambiar la acción
+            updateSelectedUserIds(selectedAction);
+        });
+
+        selectAllCheckbox.addEventListener('change', function() {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+
+            // Actualizar los valores de los campos ocultos al seleccionar todos
+            updateSelectedUserIds(actionSelect.value);
+        });
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                // Actualizar los valores de los campos ocultos al cambiar la selección de los checkbox
+                updateSelectedUserIds(actionSelect.value);
+            });
+        });
+
+        function updateSelectedUserIds(selectedAction) {
+            const selectedUserIds = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            if (selectedAction === 'delete') {
+                userIdsInputDelete.value = selectedUserIds.join(',');
+            } else if (selectedAction === 'send_emails') {
+                userIdsInputEmail.value = selectedUserIds.join(',');
+            }
+        }
+
+        deleteForm.addEventListener('submit', function(event) {
+            if (userIdsInputDelete.value === '') {
+                event.preventDefault();
+                alert('Por favor, selecciona al menos un usuario para eliminar.');
+            }
+        });
+
+        sendEmailsForm.addEventListener('submit', function(event) {
+            if (userIdsInputEmail.value === '') {
+                event.preventDefault();
+                alert('Por favor, selecciona al menos un usuario para enviar correos.');
+            }
+        });
+    });
+</script>
+
+<div class="">
+    <select id="action-select">
+        <option value="">Seleccione una acción</option>
+        <option value="delete">Eliminar seleccionados</option>
+        <option value="send_emails">Enviar correos a los seleccionados</option>
+    </select>
+</div>
+
+<div class="" id="delete-selected-form">
+    <form action="{{ route('masive-actions-users.destroy') }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="hidden" name="user_ids" id="user_ids_delete">
+        <button class="bg-red-500 rounded ml-2 text-white">Eliminar seleccionados</button>
+    </form>
+</div>
+
+<div class="" id="send-emails-form">
+    <form action="{{ route('send-emails') }}" method="POST">
+        @csrf
+        <input type="hidden" name="user_ids_email" id="user_ids_email">
+        <!-- Agrega los campos adicionales necesarios para enviar correos electrónicos -->
+        <button class="bg-blue-500 rounded ml-2 text-white">Enviar correos a los seleccionados</button>
+    </form>
+</div>
+
+<div class="table_conteiner">
+    <table class="standar_table">
+        <!-- Tu tabla y contenido aquí -->
+    </table>
+</div>
 
                         <div class="table_conteiner">
                             <table class="standar_table">
                                 <thead class="standar_thead">
                                     <tr>
-                                        <th class="theader">
-                                            #</th>
-                                        <th class="theader">
 
+                                        <th class="theader">
+                                            <input type="checkbox" class="select_all"  id="select-all">
+                                        </th>
+                                        <th class="theader">
+                                            #
+                                        </th>
+                                        <th class="theader">
                                             Matrícula/Nómina</th>
                                         <th class="theader">
                                             Email
@@ -490,12 +601,19 @@
                                 <tbody class="tbody">
                                     @foreach ($users as $user)
                                         <tr class="trow">
+                                            <td class="trowc">
+                                                <input type="checkbox" class="select_user" name="users[]"
+                                                    value="{{ $user->id }}">
+                                            </td>
+
                                             <td class="trowc"> {{ $loop->iteration }} </td>
                                             <td class="trowc">
                                                 @if ($user->student)
-                                                {{ $user->student->id_student}}
+                                                    {{ $user->student->id_student }}
+                                                    
                                                 @elseif($user->teachers)
-                                                    {{$user->teachers->payroll}}
+                                            
+                                                    {{ $user->teachers->payroll }}
                                                 @endif
                                             </td>
                                             <td class="trowc"> {{ $user->email }} </td>

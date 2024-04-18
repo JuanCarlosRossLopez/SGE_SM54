@@ -28,6 +28,7 @@
                     <span class="font-semibold">División:</span> {{$user->student->division ? $user->student->division->division_name : "No tiene asignado division" }}
 
                     </div>
+
                 </div>
 
 
