@@ -44,20 +44,20 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
 
-        $messages = [
-            'payroll.required' => 'La nomina es requerida',
-            'payroll.digits' => 'La nomina debe tener 11 digitos',
-            'teacher_name.required' => 'El nombre del asesor es requerido',
-            'division_id.required' => 'La division es requerida',
-        ];
+        // $messages = [
+        //     'payroll.required' => 'La nomina es requerida',
+        //     'payroll.digits' => 'La nomina debe tener 11 digitos',
+        //     'teacher_name.required' => 'El nombre del asesor es requerido',
+        //     'division_id.required' => 'La division es requerida',
+        // ];
 
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required|min:8',
-            'teacher_name' => 'required',
-            'payroll' => 'required|digits:11',
-            'division_id' => 'required',
-        ], $messages);
+        // $request->validate([
+        //     'email' => 'required',
+        //     'password' => 'required|min:8',
+        //     'teacher_name' => 'required',
+        //     'payroll' => 'required|digits:11',
+        //     'division_id' => 'required',
+        // ], $messages);
 
 
 
@@ -148,6 +148,8 @@ class TeachersController extends Controller
         $teacher->payroll = $request->input('payroll');
         $teacher->id_user = $id;
         $teacher->division_id = $request->input('division_id');
+        $teacher->careers_id = $request->input('careers_id');
+        
         $teacher->update();
 
 

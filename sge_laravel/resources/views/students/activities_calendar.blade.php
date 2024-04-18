@@ -154,9 +154,9 @@
 
                                                             <p>
                                                                 @if ($comment->status === 1)
-                                                                    <span class="bg-green-200 rounded-md w-24 p-1 m-2">Corregido</span>
+                                                                    <span class="bg-green-100 border border-green-400 text-green-700  rounded-md w-24 p-1 m-2">Corregido</span>
                                                                 @else
-                                                                <span class="bg-red-200  rounded-md w-24 p-1 m-2">Corregir</span>
+                                                                <span class="bg-[#a68e18cb] text-[#fcf6e1] rounded-md w-24 p-1 m-2">Corregir</span>
                                                                 @endif
                                                             </p>
                                                         </div>

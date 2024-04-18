@@ -20,7 +20,7 @@
                                         class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                         <label
                                             class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Gestionar
-                                            permisos<i class="fa-solid fa-arrow-right flex"></i></label>
+                                            permisos</label>
                                         <div class=" gap-2">
                                             <button class="show-modal-permision-options button_edit_rol_yellow">
                                                 <i class="fa-solid fa-gear"></i>
@@ -32,7 +32,7 @@
                                         class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                         <label
                                             class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                            un rol<i class="fa-solid fa-arrow-right flex"></i></label>
+                                            un rol</label>
                                         <div class=" gap-2">
 
                                             <button class="show-modal button_add_green">
@@ -44,7 +44,7 @@
                                         class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                         <label
                                             class="text-start font-sans w-full font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center">Crear
-                                            un permiso<i class="fa-solid fa-arrow-right flex"></i></label>
+                                            un permiso</label>
                                         <div class=" gap-2">
                                             <button class="show-modal-permisions button_add_green">
                                                 <i class="fa-solid fa-circle-plus"></i>
