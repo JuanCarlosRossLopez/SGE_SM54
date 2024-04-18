@@ -16,8 +16,8 @@ class Career extends Model
     protected $fillable = [
         'career_name',
         'career_description',
-        'division_id',
-        'division_name'
+        'division_id'
+        
     ];
     public function division(): BelongsTo
     {
@@ -28,4 +28,6 @@ class Career extends Model
     {
         return $this->hasMany(Group::class);
     }
+
+   
 }

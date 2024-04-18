@@ -1,5 +1,5 @@
-<div id="edit{{ $user->id }}" class="modal-edit-asesor  h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
-    <form method="POST" action="{{ url('maestros', $user->id) }}">
+<div id="edit{{ $user->id }}" class="modal-edit-asesor h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50">
+    <form method="POST" action="{{ route('maestros.update', $user->id) }}">
         @method('PUT')
         @csrf
 
@@ -16,55 +16,47 @@
                         <div class="flex items-center justify-between w-full mb-4">
                             <h1 class="text-xl font-bold">Editando al asesor</h1>
                         </div>
-                        <form action="{{ route('maestros.update', $user->id) }}" method="POST" class="flex flex-col gap-4">
-                            @csrf
-                            @method('PUT')
-                            <div class="flex gap-4">
-                                <div class="flex flex-col gap-4">
-
-                                    <input type="email" value="{{$user->email}}" name="email" id="email" placeholder="Correo electrónico" class="rounded-md border border-gray-300 p-2">
-                                    @error('email')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
-                                    <input type="password" name="password" id="password" placeholder="Contraseña" class="rounded-md border border-gray-300 p-2" value="{{$user->password}}">
-                                    @error('password')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
-                                    <input type="text" value="{{$user->teachers->name_teacher}}" name="name_teacher" id="name_teacher" placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
-                                    @error('name_teacher')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="flex flex-col gap-4">
-                                    <input type="number" value="{{$user->teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
-                                    @error('payroll')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
-                                    <script>
-                                        function maxLengthCheck(object) {
-                                            if (object.value.length > 11)
-                                                object.value = object.value.slice(0, 11);
-                                        }
-                                    </script>
-                                    <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
-                                        <option value="{{$user->teachers->division_id}}" selected>{{$user->teachers->division ? $user->teachers->division->division_name : 'Sin división'}}</option>
-
-                                        @foreach ($Divisions as $divisions)
-                                        <option value="{{$divisions->id}}">{{$divisions->division_name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('division_id')
-                                    <p class="text-red-500 text-xs">{{ $message }}</p>
-                                    @enderror
-
-
-                                </div>
-                            </div>
-                            <!-- Puedes agregar más campos aquí según sea necesario -->
-                            <div class="flex justify-end mt-4">
-                                <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                            </div>
-                        </form>
+                        <div class="flex flex-col gap-4">
+                            <input type="email" value="{{$user->email}}" name="email" id="email" placeholder="Correo electrónico" class="rounded-md border border-gray-300 p-2">
+                            @error('email')
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                            <input type="password" name="password" id="password" placeholder="Contraseña" class="rounded-md border border-gray-300 p-2" value="{{$user->password}}">
+                            @error('password')
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                            <input type="text" value="{{$user->teachers->name_teacher}}" name="name_teacher" id="name_teacher" placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
+                            @error('name_teacher')
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                            <input type="number" value="{{$user->teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
+                            @error('payroll')
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                            <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
+                                <option value="{{$user->teachers->division->id}}" selected>{{$user->teachers->division ? $user->teachers->division->division_name : 'Sin división'}}</option>
+                                @foreach ($Divisions as $division)
+                                <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('division_id')
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                         
+                       
+                            <select name="careers_id" id="career_id" class="rounded-md border border-gray-300 p-2">
+                                <option value="{{$user->teachers->career ? $user->teachers->career->id : null}}">{{$user->teachers->career ? $user->teachers->career->career_name : 'Sin carrera'}}</option>
+                                @foreach ($careers as $career)
+                                <option value="{{ $career->id }}">{{ $career->career_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('career_id')
+                            <p class="text-red-500 text-xs">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                        </div>
                     </div>
                 </div>
             </div>

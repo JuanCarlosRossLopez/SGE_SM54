@@ -18,7 +18,8 @@ class Teachers extends Model
         'name_teachers',
         'payroll',
         'user_id',
-        'division_id'
+        'division_id',
+        'careers_id'
     ];
 
     protected $hidden = [
@@ -44,6 +45,12 @@ class Teachers extends Model
     {
         return $this->belongsTo(Division::class, 'division_id');
     }
+
+    public function career(): BelongsTo
+    {
+        return $this->belongsTo(Career::class, 'careers_id');
+    }
+
     
 }
 
