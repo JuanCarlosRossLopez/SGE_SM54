@@ -37,6 +37,8 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ChartController2;
 use App\Http\Controllers\ChartController3;
 use App\Http\Controllers\ChartController4;
+use App\Http\Controllers\MasiveActionsUsers;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -374,5 +376,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/divisiones/{division}/carreras', [DivisionController::class, 'careers']);
 // Ruta para obtener los grupos relacionados con una carrera
 Route::get('/carreras/{career}/grupos', [CareerController::class, 'groups']);
+Route::resource('masive-actions-users.destroy', MasiveActionsUsers::class);
+Route::delete('masive-actions-users', [MasiveActionsUsers::class, 'destroy'])->name('masive-actions-users.destroy');
+
 
 require __DIR__ . '/auth.php';

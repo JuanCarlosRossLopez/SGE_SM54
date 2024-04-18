@@ -102,7 +102,7 @@
 
                                 </div>
                                 <!-- <button class="show-modal3 standar_button"><span class="inside_button">Agregar un
-                                                                                                                    Usuario</span></button> -->
+                                                                                                                                        Usuario</span></button> -->
                                 <div
                                     class=" w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2">
                                     <label
@@ -464,6 +464,61 @@
                             })
                         </script>
 
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const checkboxes = document.querySelectorAll('.select_user');
+                                const deleteForm = document.getElementById('delete-selected-form');
+                                const userIdsInput = document.getElementById('user_ids');
+                                const selectAllCheckbox = document.getElementById('select-all');
+
+                                selectAllCheckbox.addEventListener('change', function() {
+                                    checkboxes.forEach(function(checkbox) {
+                                        checkbox.checked = selectAllCheckbox.checked;
+                                    });
+
+                                    const selectedUserIds = Array.from(checkboxes)
+                                        .filter(checkbox => checkbox.checked)
+                                        .map(checkbox => checkbox.value);
+
+                                    userIdsInput.value = selectedUserIds.join(',');
+                                });
+
+
+
+                                checkboxes.forEach(function(checkbox) {
+                                    checkbox.addEventListener('change', function() {
+                                        const selectedUserIds = Array.from(checkboxes)
+                                            .filter(checkbox => checkbox.checked)
+                                            .map(checkbox => checkbox.value);
+
+                                        // Actualizar el valor del campo oculto con los IDs seleccionados
+                                        userIdsInput.value = selectedUserIds.join(',');
+                                    });
+                                });
+
+                                deleteForm.addEventListener('submit', function(event) {
+                                    // Prevenir la acción predeterminada del formulario si no se han seleccionado usuarios
+                                    if (userIdsInput.value === '') {
+                                        event.preventDefault();
+                                        alert('Por favor, selecciona al menos un usuario para eliminar.');
+                                    }
+                                });
+                            });
+
+                        </script>
+                        <div class="">
+                            <form id="delete-selected-form" action="{{ route('masive-actions-users.destroy') }}"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <!-- Este input se agregará dinámicamente con JavaScript -->
+                                <!-- Contiene una lista de IDs de usuarios seleccionados -->
+                                <input type="hidden" name="user_ids" id="user_ids">
+                                <button id="delete-selected" class="bg-red-500 rounded ml-2 text-white">
+                                    Eliminar seleccionados
+                                </button>
+                            </form>
+                        </div>
 
 
 
@@ -471,10 +526,14 @@
                             <table class="standar_table">
                                 <thead class="standar_thead">
                                     <tr>
-                                        <th class="theader">
-                                            #</th>
-                                        <th class="theader">
 
+                                        <th class="theader">
+                                            <input type="checkbox" id="select-all">
+                                        </th>
+                                        <th class="theader">
+                                            #
+                                        </th>
+                                        <th class="theader">
                                             Matrícula/Nómina</th>
                                         <th class="theader">
                                             Email
@@ -490,12 +549,17 @@
                                 <tbody class="tbody">
                                     @foreach ($users as $user)
                                         <tr class="trow">
+                                            <td class="trowc">
+                                                <input type="checkbox" class="select_user" name="users[]"
+                                                    value="{{ $user->id }}">
+                                            </td>
+
                                             <td class="trowc"> {{ $loop->iteration }} </td>
                                             <td class="trowc">
                                                 @if ($user->student)
-                                                {{ $user->student->id_student}}
+                                                    {{ $user->student->id_student }}
                                                 @elseif($user->teachers)
-                                                    {{$user->teachers->payroll}}
+                                                    {{ $user->teachers->payroll }}
                                                 @endif
                                             </td>
                                             <td class="trowc"> {{ $user->email }} </td>
