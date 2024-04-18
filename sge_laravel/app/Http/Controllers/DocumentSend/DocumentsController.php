@@ -4,6 +4,7 @@ namespace App\Http\Controllers\DocumentSend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project_management;
+use App\Models\Status_project;
 use Illuminate\Http\Request;
 use App\Models\Students;
 use App\Models\Teachers;
@@ -107,6 +108,7 @@ class DocumentsController extends Controller
             $student->student_name = $studentDetails->student_name;
             $student->id_student = $studentDetails->id_student;
             $student->project_title = Project_management::where('student_id', $studentDetails->user->id)->first()->project_title;
+            $student->disabled = Project_management::where('student_id', $studentDetails->user->id)->first()->status_id != 3;
             return $student;
         });
 
