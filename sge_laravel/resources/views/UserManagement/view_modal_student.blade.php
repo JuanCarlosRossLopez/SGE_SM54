@@ -28,6 +28,7 @@
                     <span class="font-semibold">División:</span> {{$user->student->division->division_name}}
 
                     </div>
+
                 </div>
 
 
