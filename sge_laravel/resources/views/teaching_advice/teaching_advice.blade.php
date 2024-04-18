@@ -87,7 +87,9 @@
                                                                         -->
                                     <tr>
                                         <th class="theader">#</th>
+                                        <th class="theader">Nomina</th>
                                         <th class="theader">Asesor</th>
+                                        <th class="theader">Matricula</th>
                                         <th class="theader">Alumno</th>
                                         <th class="theader">Aciones</th>
                                     </tr>
@@ -97,7 +99,13 @@
                                         <tr class="trow">
                                             <td class="trowc">{{ $loop->iteration }}</td>
                                             <td class="trowc">
+                                                {{ $teaching_advice->teacher ? $teaching_advice->teacher->payroll : 'Sin Asesor asignado' }}
+                                            </td>
+                                            <td class="trowc">
                                                 {{ $teaching_advice->teacher ? $teaching_advice->teacher->name_teacher : 'Sin Asesor asignado' }}
+                                            </td>
+                                            <td class="trowc">
+                                                {{ $teaching_advice->student ? $teaching_advice->student->id_student : 'Sin Alumno asignado' }}
                                             </td>
                                             <td class="trowc">
                                                 {{ $teaching_advice->student ? $teaching_advice->student->student_name : 'Sin Alumno asignado' }}

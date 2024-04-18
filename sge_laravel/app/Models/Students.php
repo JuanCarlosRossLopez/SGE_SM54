@@ -63,6 +63,10 @@ class Students extends Model
 
     }
     
+    // public function project()
+    // {
+    //     return $this->belongsToMany(Project_management::class);
+    // }
 
     
 
