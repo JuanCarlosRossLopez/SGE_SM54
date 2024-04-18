@@ -336,11 +336,6 @@ Plantilla base
                                             <br />
                                             <br />
                                             <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Se
-                                                    aprueba:</h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">_Si
-                                                <p class="text-left font-light text-lg  mr-2 py-2">_No</p>
-                                                </p>
                                             </div>
 
                                             <style>
@@ -376,10 +371,7 @@ Plantilla base
                                                 <div class="project-table-container">
                                                     <table class="project-table">
                                                         <tr>
-                                                            <th>Observaciones y/o comentarios:</th>
-                                                            <td>
-                                                                Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raíces en una pieza clásica de la literatura del Latín, que data del año 45 antes de Cristo, haciendo que este adquiera más de 2000 años de antigüedad. Richard McClintock, un profesor de Latín de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín.
-                                                            </td>
+                                                            
                                                         </tr>
                                                     </table>
                                                 </div>
