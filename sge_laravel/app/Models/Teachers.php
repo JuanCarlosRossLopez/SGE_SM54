@@ -15,7 +15,7 @@ class Teachers extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name_teachers',
+        'name_teacher',
         'payroll',
         'user_id',
         'division_id',

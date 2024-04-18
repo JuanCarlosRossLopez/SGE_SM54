@@ -134,7 +134,10 @@
                                     @else
                                         <h1 class="">No tienes libros</h1>
                                     @endif
-
+                            {{--<button class="showView2 "
+                                            data-target="#view2{{ $book->id }}">
+                                           
+                                        </button>--}}
                                 </div>
                                 {{-- <button class="showView2 "
                                             data-target="#view2{{ $book->id }}">
@@ -218,6 +221,7 @@
         const modal_viewBook = document.querySelector('.modalView2');
         const modal_edit = document.querySelector('.modalEdit');
         const modal_delete = document.querySelector('.modalDelete')
+        const modal_delete = document.querySelector('.modalDelete')
 
 
         //Funcionamiento de modal
@@ -227,8 +231,10 @@
         const showModalViewBook = document.querySelectorAll('.showView2');
         const showModalEdit = document.querySelectorAll('.showEdit');
         const showModalDelete = document.querySelectorAll('.deleteBook');
+        const showModalDelete = document.querySelectorAll('.deleteBook');
         const closeModal = document.querySelectorAll('.close-modal');
         const closeModalView = document.querySelectorAll('.modalView');
+        const closeModalDelete = document.querySelectorAll('.modalDelete');
         const closeModalDelete = document.querySelectorAll('.modalDelete');
         const closeModalViewBook = document.querySelectorAll('.modalView2');
 
@@ -304,6 +310,18 @@
             })
         })
 
+        showModalDelete.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault()
+                console.log("quee")
+                const modalId = button.dataset.target
+                const modal = document.querySelector(modalId)
+                modal.classList.remove('hidden')
+                console.log(modalId)
+
+            })
+        })
+
         closeModal.forEach(closeModal => {
             closeModal.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -312,6 +330,7 @@
                 const modal1 = closeModal.closest('.modalEdit');
                 const modal2 = closeModal.closest('.modalView');
                 const modal3 = closeModal.closest('.modalView2');
+                const modal4 = closeModal.closest('.modalDelete');
                 const modal4 = closeModal.closest('.modalDelete');
 
                 if (modal) {
@@ -325,6 +344,9 @@
                 }
                 if (modal3) {
                     modal3.classList.add('hidden');
+                }
+                if (modal4) {
+                    modal4.classList.add('hidden');
                 }
                 if (modal4) {
                     modal4.classList.add('hidden');

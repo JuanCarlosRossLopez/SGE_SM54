@@ -46,15 +46,19 @@
                                             <td class="trowc">
                                                 {{$advising->student->user->email}}
                                             </td>
-                                            <td class="trowc">
+                                            <td class="trowcs">
                                                 @if ($advising->student && $advising->student->projectManagement->isNotEmpty())
                                                     @foreach ($advising->student->projectManagement as $project)
-                                                        {{ $project->project_title }}
+                                                    <div class="w-full flex items-center justify-center">
+                                                        <a href="{{ route('informacion_anteproyecto.show', $project->id) }}" class="buttons_card_anteproyect">Visualizar <p class="font-bold">{{ $project->project_title }}</p></a>
+                                                    </div>
+                                                        
                                                     @endforeach
                                                 @else
                                                     Sin anteproyecto
                                                 @endif
                                             </td>
+
                                             <td >
                                                 {{$advising->student->division->division_name}}
                                             </td>

@@ -37,6 +37,11 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ChartController2;
 use App\Http\Controllers\ChartController3;
 use App\Http\Controllers\ChartController4;
+use App\Http\Controllers\MasiveActionsUsers;
+use App\Http\Controllers\ImportUsers;
+use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -374,5 +379,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/divisiones/{division}/carreras', [DivisionController::class, 'careers']);
 // Ruta para obtener los grupos relacionados con una carrera
 Route::get('/carreras/{career}/grupos', [CareerController::class, 'groups']);
+Route::resource('masive-actions-users.destroy', MasiveActionsUsers::class);
+Route::delete('masive-actions-users', [MasiveActionsUsers::class, 'destroy'])->name('masive-actions-users.destroy');
+Route::post('/import-users', [ImportUsers::class, 'import'])->name('import.users');
+Route::post('/import-teachers', [ImportUsers::class, 'importTeacher'])->name('import.teachers');
+Route::post('/send-emails', [MasiveActionsUsers::class, 'sendEmails'])->name('send-emails');
+
+
+
 
 require __DIR__ . '/auth.php';

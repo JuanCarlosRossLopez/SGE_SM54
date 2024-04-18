@@ -2,8 +2,11 @@
     .image-container:hover .overlay {
         display: flex;
     }
+        display: flex;
+    }
 </style>
 <div id="edit{{ $book->id }}"
+    class="modalEdit h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 z-10 ">
     class="modalEdit h-screen w-full fixed left-0 top-0 hidden flex justify-center items-center bg-black bg-opacity-50 z-10 ">
     <div class="bg-[#01A080] w-max rounded shadow-lg max-w-4xl">
         <div class="border-b px-4 py-2 flex justify-between items-center text-center">
@@ -17,7 +20,11 @@
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class="  max-h-full h-[76vh]">
                 <form action={{ route('libros.update', $book->id) }} method="POST" enctype="multipart/form-data"
+            <div class="  max-h-full h-[76vh]">
+                <form action={{ route('libros.update', $book->id) }} method="POST" enctype="multipart/form-data"
                     class="w-full max-w-lg">
+
+
 
 
                     @csrf
@@ -30,7 +37,14 @@
                                     alt="Portada del libro" class="book-image w-56 h-[22rem]" />
                                 <div class="overlay hidden h-full absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
                                     onclick="document.getElementById('book-image-input').click();">
+                                <img id="book-image" src="{{ asset('books/' . $book->book_front_page) }}"
+                                    alt="Portada del libro" class="book-image w-56 h-[22rem]" />
+                                <div class="overlay hidden h-full absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                                    onclick="document.getElementById('book-image-input').click();">
                                     <p class="text-white text-lg">Editar imagen</p>
+                                </div>
+                                <input type="file" id="book-image-input" name="book_front_page"
+                                    style="display: none;" />
                                 </div>
                                 <input type="file" id="book-image-input" name="book_front_page"
                                     style="display: none;" />
@@ -41,12 +55,20 @@
                                     alt="Imagen del voucher" class="voucher-image w-56 h-[22rem]" />
                                 <div class="overlay hidden absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
                                     onclick="document.getElementById('voucher-image-input').click();">
+                                <img id="voucher-image" src="{{ asset('books/' . $book->voucher) }}"
+                                    alt="Imagen del voucher" class="voucher-image w-56 h-[22rem]" />
+                                <div class="overlay hidden absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                                    onclick="document.getElementById('voucher-image-input').click();">
                                     <p class="text-white text-lg">Editar imagen</p>
                                 </div>
                                 <input type="file" id="voucher-image-input" name="voucher" style="display: none;" />
+                                <input type="file" id="voucher-image-input" name="voucher" style="display: none;" />
                             </div>
                             
+                            
                         </div>
+                        
+                        
                         
                         
                         <div class="w-[55rem] flex flex-col">
@@ -72,6 +94,24 @@
                             <input
                                 class="appearance-none block resize-none h-fit  w-fit  bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                 type="text" name="price" value="{{ $book->price }}" name="" id="">
+                            `
+
+                            @foreach ($book->students as $student)
+                                <label for="" class="form-label">Colaboradores</label>
+                                <select
+                                    class="appearance-none block resize-none h-fit  w-fit  bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    name="students_id[]" id="">
+
+                                    <option value="{{ $student->id }}"
+                                        {{ $book->student_name == $student->student_name ? 'selected' : '' }}>
+                                        {{ $student->student_name }}
+                                    </option>
+                                    @foreach ($students as $student)
+                                        <option value="{{ $student->id }}">{{ $student->student_name }}</option>
+                                    @endforeach
+
+                                </select>
+                            @endforeach
                             `
 
                             @foreach ($book->students as $student)
@@ -120,7 +160,20 @@
         }
         reader.readAsDataURL(this.files[0]);
     });
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('book-image').src = e.target.result;
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
 
+    document.getElementById('voucher-image-input').addEventListener('change', function(e) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('voucher-image').src = e.target.result;
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
     document.getElementById('voucher-image-input').addEventListener('change', function(e) {
         var reader = new FileReader();
         reader.onload = function(e) {
