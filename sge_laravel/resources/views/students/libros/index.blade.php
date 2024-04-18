@@ -24,8 +24,7 @@
 
 
             @if ($errors->any())
-                <div id="error"
-                    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 w-full rounded relative">
+                <div id="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 w-full rounded relative">
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -48,33 +47,26 @@
                     <label class="font-poppins font-semibold text-2xl text-[#333333] text-start pb-3">Libros</label>
                     <div class="w-full ">
                         <div class="w-full ">
-                            <div class="content_conteiner flex-col  w-full h-fit p-4">
+                            <div class="content_conteiner flex-col  w-full h-auto p-4">
                                 <div class="inside_content_conteiner ">
-
-
-
-
                                     @role('Estudiante')
                                         @if ($userBooks->isEmpty())
                                             <div class="-400 w-full">
                                                 <div class="inside_content_conteiner">
                                                     <div class="">
-                                                        <div    class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2 cursor-pointer">
+                                                        <div
+                                                            class="w-fit p-1 border-2 bg-[#F1F0F0] text-center flex flex-row items-center rounded gap-2 cursor-pointer">
                                                             <label
                                                                 class="text-start font-sans w-fit font-semibold text-[#545454] text-lg flex flex-row gap-2 justify-center items-center ">Añadir
                                                                 libro
-                                                                
-                                                            <div class="relative dropdown-trigger gap-2">
-                                                                <button data-target='#add'
-                                                                    class="dropdown-btn button_add_green show-modal2 showmodal2">
-                                                                    <i class="fa-solid fa-circle-plus"></i>
-                                                                </button>
-                                                                <div
-                                                                    class="hidden absolute bg-white border border-gray-200 mt-2  py-2 rounded w-48 z-10 dropdown-content">
-                                                                    <a
-                                                                        class="show-modal-add block font-sans w-full text-center cursor-pointer p-2 hover:bg-gray-200 font-normal text-[#545454] text-base">Usuario</a>
+
+                                                                <div class="relative dropdown-trigger gap-2">
+                                                                    <button data-target='#add'
+                                                                        class="dropdown-btn button_add_green show-modal2 showmodal2">
+                                                                        <i class="fa-solid fa-circle-plus"></i>
+                                                                    </button>
+
                                                                 </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -83,11 +75,11 @@
                                     @endrole
 
                                 </div>
+
                                 <div class="flex flex-col ">
                                     @if ($userBooks)
                                         @foreach ($userBooks as $book)
-                                            <h1 class="text-[18px] mb-6">Mis libros</h1>
-                                            <div class="flex">
+                                        <div class="flex">
                                             <div >
                                                 <button class="showEdit absolute-child" data-target="#edit{{ $book->id }}">
                                                     <div class="button_edit_yellow">
@@ -103,96 +95,91 @@
                                             </button>
                                             </div>
                                             </div>
-                                            <button class="showView relative  rounded-md border text-black w-fit"
-                                                data-target="#view{{ $book->id }}"></button>
-                                                <div class="main">
-                                                    <ul id="bk-list" class="bk-list clearfix">
-                                                        <li>
-                                                            <div class="bk-book book-1 bk-bookdefault">
-                                                                <div class="bk-front " >
-                                                                    <div class="bk-cover-back"></div>
-                                                                    <div class="bk-cover" style="background-image:url('{{asset('books/'.$book->book_front_page)}}')">
-                                                                        <h2>
-                                                                            <span>{{$book->author}}</span>
-                                                                            <span>{{$book->book_name}}</span>
-                                                                        </h2>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="bk-back">
-                                                                    <p>{{$book->book_description}}</p>
-                                                                </div>
-                                                                <div class="bk-right"></div>
-                                                                <div class="bk-left">
-                                                                    <h2>
-                                                                        <span>{{$book->title}}</span>
-                                                                        <span>{{$book->author}}</span>
-                                                                    </h2>
-                                                                </div>
-                                                                <div class="bk-top"></div>
-                                                                <div class="bk-bottom"></div>
-                                                            </div>
-                                                            <div class="bk-info">
-                                                                <button class="bk-bookback">Voltear</button>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    
-                                                </div>
-                                            
-                                            @include('students.libros.viewBookStudent')
-                                            @include('students.libros.editBookStudent')
-                                            @include('students.libros.delete_book')
-                                        @endforeach
-                                    @else
-                                        <h1 class="">No tienes libros</h1>
-                                    @endif
-                            {{--<button class="showView2 "
-                                            data-target="#view2{{ $book->id }}">
-                                           
-                                        </button>--}}
-                                </div>
-                                <h1>Mas libros</h1>
-                                <div class="grid grid-cols-4 gap-1 py-2 ">
 
-                                    @foreach ($books as $book)
-                                    <div class="main">
                                         <ul id="bk-list" class="bk-list clearfix">
                                             <li>
                                                 <div class="bk-book book-1 bk-bookdefault">
-                                                    <div class="bk-front " >
+                                                    <div class="bk-front ">
                                                         <div class="bk-cover-back"></div>
-                                                        <div class="bk-cover" style="background-image:url('{{asset('books/'.$book->book_front_page)}}')">
+                                                        <div class="bk-cover"
+                                                            style="background-image:url('{{ asset('books/' . $book->book_front_page) }}')">
                                                             <h2>
-                                                                <span>{{$book->author}}</span>
-                                                                <span>{{$book->book_name}}</span>
+                                                                <span>{{ $book->author }}</span>
+                                                                <span>{{ $book->book_name }}</span>
                                                             </h2>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="bk-back">
-                                                        <p>{{$book->book_description}}</p>
+                                                        <p>{{ $book->book_description }}</p>
                                                     </div>
                                                     <div class="bk-right"></div>
                                                     <div class="bk-left">
                                                         <h2>
-                                                            <span>{{$book->title}}</span>
-                                                            <span>{{$book->author}}</span>
+                                                            <span>{{ $book->title }}</span>
+                                                            <span>{{ $book->author }}</span>
                                                         </h2>
                                                     </div>
-                                                    <div class="bk-top"></div>
-                                                    <div class="bk-bottom"></div>
+
                                                 </div>
                                                 <div class="bk-info">
                                                     <button class="bk-bookback">Voltear</button>
                                                 </div>
                                             </li>
                                         </ul>
-                                        
-                                    </div>
+                                            
+                                            @include('students.libros.editBookStudent')
+                                           
+                                        @endforeach
+                                    @else
+                                        <h1 class="">No tienes libros</h1>
+                                    @endif
+
+                                </div>
+                                {{-- <button class="showView2 "
+                                            data-target="#view2{{ $book->id }}">
+                                           
+                                        </button> --}}
+
+                                <h1>Mas libros</h1>
+                                <div class="grid grid-cols-4  ">
+                                    @foreach ($books as $book)
+                                    
+                                        <ul id="bk-list" class="bk-list clearfix">
+                                            <li>
+                                                <div class="bk-book book-1 bk-bookdefault">
+                                                    <div class="bk-front ">
+                                                        <div class="bk-cover-back"></div>
+                                                        <div class="bk-cover"
+                                                            style="background-image:url('{{ asset('books/' . $book->book_front_page) }}')">
+                                                            <h2>
+                                                                <span>{{ $book->author }}</span>
+                                                                <span>{{ $book->book_name }}</span>
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="bk-back">
+                                                        <p>{{ $book->book_description }}</p>
+                                                    </div>
+                                                    <div class="bk-right"></div>
+                                                    <div class="bk-left">
+                                                        <h2>
+                                                            <span>{{ $book->title }}</span>
+                                                            <span>{{ $book->author }}</span>
+                                                        </h2>
+                                                    </div>
+
+                                                </div>
+                                                <div class="bk-info">
+                                                    <button class="bk-bookback">Voltear</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+
                                         @include('students.libros.viewBooks')
                                     @endforeach
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -202,6 +189,7 @@
             </div>
 
             
+
 
             <div class="content_conteiners h-fit flex flex-col w-fit">
                 <div class=" h-fit  p-2 card flex justify-center">
@@ -348,20 +336,20 @@
             })
         })
     </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script>
-    $(function() {
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(function() {
 
-        Books.init();
+            Books.init();
 
-    });
-</script>
-<script src={{asset('js/books.js')}}></script>
+        });
+    </script>
+    <script src={{ asset('js/books.js') }}></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-    
+
 @endsection
