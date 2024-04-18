@@ -65,9 +65,6 @@
                     <div class="flex flex-col gap-2 justify-center w-full items-center">
                         <h1>Recordatorios</h1>
                         <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>
-                        <label>Vaya a <a href="/crear_memoria" class="underline text-blue-600">/crear_memoria</a> para subir un archivo, ya es funcional <i class="fa-solid fa-thumbs-up"></i> </label>
-
-                        <label>Lo estoy trabajando con coronado para cuando el estudiante haya terminado sus estadias aparezca el boton y suba su memoria, por eso es que de momento tiene que ir a la ruta (valor agregado)</label>
                     </div>
                 </div>
             </div>

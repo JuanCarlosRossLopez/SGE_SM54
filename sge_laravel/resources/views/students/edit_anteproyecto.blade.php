@@ -208,7 +208,13 @@
                                         <option value="{{ $projects_management->project_company }}"
                                             class="text-transparent">{{ $projects_management->project_company }}</option>
                                         @foreach ($companies as $company)
-                                            <option value="{{ $company->company_name }}">{{ $company->company_name }}
+                                            <option value="{{ $company->company_name }}"
+                                                data-address="{{ $company->addres ?? '' }}"
+                                                data-email_asesor="{{ $company->company_email ?? '' }}"
+                                                data-advisor="{{ $company->asesor_name ?? '' }}"
+                                                data-position="{{ $company->job ?? '' }}"
+                                                data-advisor_phone="{{ $company->company_phone_number ?? '' }}"
+                                                data-work_area="{{ $company->work_area ?? '' }}">{{ $company->company_name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -466,4 +472,21 @@
             });
         }
     }, 5000);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const select = document.getElementById('project_company');
+
+        select.addEventListener('change', function() {
+            // Encuentra la opción seleccionada
+            const selectedOption = select.options[select.selectedIndex];
+
+            // Actualiza los inputs con los datos de la opción seleccionada
+            document.getElementById('direction').value = selectedOption.getAttribute('data-address') || '';
+            document.getElementById('project_advisor').value = selectedOption.getAttribute('data-advisor') || '';
+            document.getElementById('position').value = selectedOption.getAttribute('data-position') || '';
+            document.getElementById('project_advisor_phone').value = selectedOption.getAttribute('data-advisor_phone') || '';
+            document.getElementById('email_asesor').value = selectedOption.getAttribute('data-email_asesor') || '';
+            document.getElementById('work_area').value = selectedOption.getAttribute('data-work_area') || '';
+        });
+    });
 </script>

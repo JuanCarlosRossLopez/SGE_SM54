@@ -76,15 +76,15 @@
                             <table class="standar_table">
                                 <thead class="standar_thead">
                                     <!--
-                                                                            student_name');
-                                                                            id_student')->unique(); // matricula
-                                                                            project_creator');
-                                                                            strike')->default(0); // amonestacion
-                                                                            user_id')->nullable()->constrained('users')
-                                                                            division_id')->nullable()->constrained('divisions')
-                                                                            anteproject_id')->nullable()->constrained('anteprojects')
-                                                                            adviser_id')->nullable()->constrained('teachers')
-                                                                        -->
+                                                                                    student_name');
+                                                                                    id_student')->unique(); // matricula
+                                                                                    project_creator');
+                                                                                    strike')->default(0); // amonestacion
+                                                                                    user_id')->nullable()->constrained('users')
+                                                                                    division_id')->nullable()->constrained('divisions')
+                                                                                    anteproject_id')->nullable()->constrained('anteprojects')
+                                                                                    adviser_id')->nullable()->constrained('teachers')
+                                                                                -->
                                     <tr>
                                         <th class="theader">#</th>
                                         <th class="theader">Nomina</th>
@@ -212,40 +212,78 @@
                         <form action="{{ route('asignar_alumnos.store') }}" method="POST"
                             class="flex flex-col gap-4 w-full">
                             @csrf
-
+                            <div class="search_conteiner">
+                                <button class="search_button" type="submit">
+                                    <i class="fas fa-search text-gray-500"></i>
+                                </button>
+                                <input type="text" name="searchForpayroll" class="search_input"
+                                    placeholder="Buscar asesor..." />
+                            </div>
                             <!-- Asesores -->
-                            <div>
-                                <h2>Asesores:</h2>
-                                @foreach ($Teachers as $teacher)
-                                    <label>
-                                        <input type="checkbox" name="adviser_id[]" value="{{ $teacher->id }}">
-                                        {{ $teacher->name_teacher }}
-                                    </label>
+                            <div class="items-center">
+                                <h2 class="text-lg font-semibold mb-2">Asesores:</h2>
+                                <div class="flex flex-col items-start">
+                                    @php $advisorCount = 0; @endphp
+                                    @foreach ($Teachers as $teacher)
+                                        @if ($advisorCount % 3 == 0)
+                                            <div class="flex justify-center items-center space-x-4">
+                                                <!-- Inicia nueva fila -->
+                                        @endif
+                                        <label class="flex items-center space-x-2">
+                                            <input type="checkbox" name="adviser_id[]" value="{{ $teacher->id }}"
+                                                class="form-checkbox h-5 w-5 text-indigo-600">
+                                            <span class="text-gray-800">{{ $teacher->name_teacher }}</span>
+                                        </label>
+                                        @php $advisorCount++; @endphp
+                                        @if ($advisorCount % 3 == 0 || $loop->last)
+                                </div> <!-- Cierra la fila -->
+                                @endif
                                 @endforeach
                             </div>
-
-                            <!-- Alumnos -->
-                            <div>
-                                <h2>Alumnos:</h2>
-                                @foreach ($Students as $student)
-                                    <label>
-                                        <input type="checkbox" name="student_id[]" value="{{ $student->id }}">
-                                        {{ $student->student_name }}
-                                    </label>
-                                @endforeach
-                            </div>
-
-                            <!-- Puedes agregar más campos aquí según sea necesario -->
-                            <div class="flex justify-center">
-                                <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
-                            </div>
-                        </form>
-
-
+                    </div>
+                    <div class="search_conteiner">
+                        <button class="search_button" type="submit">
+                            <i class="fas fa-search text-gray-500"></i>
+                        </button>
+                        <input type="text" name="searchForid_student" class="search_input"
+                            placeholder="Buscar estudiante..." />
+                    </div>
+                    <!-- Alumnos -->
+                    <div class="items-center mt-6">
+                        <h2 class="text-lg font-semibold mb-2">Alumnos:</h2>
+                        <div class="flex flex-col items-start">
+                            @php $studentCount = 0; @endphp
+                            @foreach ($Students as $student)
+                                @if ($studentCount % 3 == 0)
+                                    <div class="flex justify-center items-center space-x-4"> <!-- Inicia nueva fila -->
+                                @endif
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="student_id[]" value="{{ $student->id }}"
+                                        class="form-checkbox h-5 w-5 text-indigo-600">
+                                    <span class="text-gray-800">{{ $student->student_name }}</span>
+                                </label>
+                                @php $studentCount++; @endphp
+                                @if ($studentCount % 3 == 0 || $loop->last)
+                        </div> <!-- Cierra la fila -->
+                        @endif
+                        @endforeach
                     </div>
                 </div>
+
+
+
+
+                <!-- Puedes agregar más campos aquí según sea necesario -->
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-[#01A080] text-white rounded p-2">Guardar</button>
+                </div>
+                </form>
+
+
             </div>
         </div>
+    </div>
+    </div>
 
     </div>
     <script src="{!! asset('js/modals.js') !!}"></script>
@@ -312,4 +350,45 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Función para filtrar la tabla de asesores (teachers)
+            const filterAdvisors = () => {
+                const searchInputPayroll = document.querySelector('input[name="searchForpayroll"]');
+                const advisors = document.querySelectorAll('.modal-add-teaching-masive input[name="adviser_id[]"]');
+                const filterValue = searchInputPayroll.value.toLowerCase();
+    
+                advisors.forEach(advisor => {
+                    const advisorName = advisor.nextElementSibling.textContent.toLowerCase();
+                    const isVisible = advisorName.includes(filterValue);
+                    advisor.parentElement.style.display = isVisible ? 'block' : 'none';
+                });
+            };
+    
+            // Función para filtrar la tabla de estudiantes (students)
+            const filterStudents = () => {
+                const searchInputStudentId = document.querySelector('input[name="searchForid_student"]');
+                const students = document.querySelectorAll('.modal-add-teaching-masive input[name="student_id[]"]');
+                const filterValue = searchInputStudentId.value.toLowerCase();
+    
+                students.forEach(student => {
+                    const studentName = student.nextElementSibling.textContent.toLowerCase();
+                    const isVisible = studentName.includes(filterValue);
+                    student.parentElement.style.display = isVisible ? 'block' : 'none';
+                });
+            };
+    
+            // Asigna eventos a los campos de búsqueda para que se filtren en tiempo real
+            const searchInputPayroll = document.querySelector('input[name="searchForpayroll"]');
+            if (searchInputPayroll) {
+                searchInputPayroll.addEventListener('input', filterAdvisors);
+            }
+    
+            const searchInputStudentId = document.querySelector('input[name="searchForid_student"]');
+            if (searchInputStudentId) {
+                searchInputStudentId.addEventListener('input', filterStudents);
+            }
+        });
+    </script>
+    
 @endsection
