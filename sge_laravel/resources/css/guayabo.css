@@ -236,6 +236,13 @@
     padding-bottom: 0.5rem;
     border: 1px groove;
 }
+
+.trowcs {
+    font-size: 16px;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    border: 1px groove;
+}
 .theader {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
