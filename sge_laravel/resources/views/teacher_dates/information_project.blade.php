@@ -125,216 +125,214 @@ Plantilla base
                                             </h1>
                                             <br />
                                             <br />
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">División:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">Ingenieria y
-                                                    Tecnología</p>
-                                            </div>
+                                            <style>
+                                .table-container {
+                                    text-align: center;
+                                }
 
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Programa
-                                                    educativo:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->educational_program }}
-                                                </p>
-                                            </div>
+                                .table-wrapper {
+                                    margin: auto;
+                                    display: inline-block;
+                                }
 
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Título
-                                                    del
-                                                    anteproyecto:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->project_title }}
-                                                </p>
-                                            </div>
+                                .project-table {
+                                    border-collapse: collapse;
+                                    border: 2px solid black; /* Grosor aumentado */
+                                    width: 100%;
+                                }
 
+                                .project-table th,
+                                .project-table td {
+                                    padding: 8px;
+                                    border: 2px solid black; /* Grosor aumentado */
+                                    text-align: left;
+                                }
 
+                                .project-table th:first-child,
+                                .project-table td:first-child {
+                                    font-weight: bold;
+                                }
 
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Nombre
-                                                    del alumno:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->student_name }}
-                                                </p>
-                                            </div>
+                                .small-column {
+                                    width: 20%;
+                                }
 
-                                            <div class="flex">
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                        Matrícula:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->student_id }}
-                                                    </p>
-                                                </div>
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                        Grupo:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->student_group }}
-                                                    </p>
-                                                </div>
-                                            </div>
+                                .large-column {
+                                    width: 30%;
+                                }
+                            </style>
 
+                            <div class="table-container">
+                                <div class="table-wrapper">
+                                    <table class="project-table">
+                                        <tr>
+                                            <th class="small-column">División:</th>
+                                            <td colspan="3" class="large-column">Ingeniería y Tecnología</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="small-column">Programa educativo:</th>
+                                            <td colspan="3" class="large-column">{{ $project_management->educational_program }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="small-column">Título del anteproyecto:</th>
+                                            <td colspan="3" class="large-column">{{ $project_management->project_title }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="small-column">Nombre del alumno:</th>
+                                            <td colspan="3" class="large-column">{{ $project_management->student_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Matrícula:</th>
+                                            <td class="small-column">{{ $project_management->student_id }}</td>
+                                            <th>Grupo:</th>
+                                            <td class="large-column">{{ $project_management->student_group }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teléfono:</th>
+                                            <td class="small-column">{{ $project_management->student_phone }}</td>
+                                            <th>Correo electrónico:</th>
+                                            <td class="large-column">{{ $project_management->student_email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha de inicio del proyecto:</th>
+                                            <td class="small-column">{{ $project_management->start_date }}</td>
+                                            <th>Fecha de término del proyecto:</th>
+                                            <td class="large-column">{{ $project_management->end_date }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
 
-                                            <div class="flex">
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                        Teléfono:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->student_phone }}
-                                                    </p>
-                                                </div>
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                        Correo
-                                                        electrónico:
-                                                    </h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->student_email }}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="flex">
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Fecha
-                                                        de inicio
-                                                        del
-                                                        proyecto:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->start_date }}
-                                                    </p>
-                                                </div>
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Fecha
-                                                        de término
-                                                        del
-                                                        proyecto:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->end_date }}
-                                                    </p>
-                                                </div>
-                                            </div>
 
                                             <br />
                                             <br />
 
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Empresa:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->project_company }}
-                                                </p>
-                                            </div>
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                    Dirección:</h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->direction }}
-                                                </p>
-                                            </div>
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Nombre
-                                                    del asesor
-                                                    Empresarial:</h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->project_advisor }}
-                                                </p>
-                                            </div>
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Cargo:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->position }}
-                                                </p>
-                                            </div>
+                                            <style>
+                                            .table-container {
+                                                text-align: center;
+                                            }
 
+                                            .table-wrapper {
+                                                margin: auto;
+                                                display: inline-block;
+                                            }
 
-                                            <div class="flex">
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                        Teléfono:</h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">{{ $project_management->project_advisor_phone}}
-                                                    </p>
-                                                </div>
-                                                <div class="flex">
-                                                    <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                        Correo
-                                                        electrónico:
-                                                    </h2>
-                                                    <p class="text-left font-light text-lg  mr-20 py-2">
-                                                        {{ $project_management->email_asesor }}
-                                                    </p>
-                                                </div>
+                                            .project-table {
+                                                border-collapse: collapse;
+                                                border: 2px solid black; /* Grosor aumentado */
+                                                width: 100%;
+                                            }
+
+                                            .project-table th,
+                                            .project-table td {
+                                                padding: 8px;
+                                                border: 2px solid black; /* Grosor aumentado */
+                                                text-align: left;
+                                            }
+
+                                            .project-table th:first-child,
+                                            .project-table td:first-child {
+                                                font-weight: bold;
+                                            }
+                                        </style>
+
+                                        <div class="table-container">
+                                            <div class="table-wrapper">
+                                                <table class="project-table">
+                                                    <tr>
+                                                        <th class="small-column">Empresa:</th>
+                                                        <td colspan="3" class="large-column">{{ $project_management->project_company }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="small-column">Dirección:</th>
+                                                        <td colspan="3" class="large-column">{{ $project_management->direction }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="small-column">Nombre del asesor Empresarial:</th>
+                                                        <td colspan="3" class="large-column">{{ $project_management->project_advisor }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="small-column">Cargo:</th>
+                                                        <td colspan="3" class="large-column">{{ $project_management->position }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Teléfono:</th>
+                                                        <td class="small-column">9988233459</td>
+                                                        <th>Correo electrónico:</th>
+                                                        <td class="large-column">{{ $project_management->email_asesor }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Área donde se desarrollará el proyecto:</th>
+                                                        <td colspan="3" class="large-column">Marketing</td>
+                                                    </tr>
+                                                </table>
                                             </div>
+                                        </div>
 
-
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Área
-                                                    donde se
-                                                    desarrollará el proyecto:</h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">Marketing</p>
-                                            </div>
 
                                             <br />
                                             <br />
 
-                                            <div>
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">1.
-                                                    Objetivo general:
-                                                </h2>
-                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                                    {{ $project_management->general_objective }}
-                                                </p>
+                                            <style>
+                                            .section {
+                                                border: 2px solid #000; /* Color del borde */
+                                                border-radius: 5px; /* Borde redondeado */
+                                                padding: 10px; /* Espaciado interno */
+                                                margin-bottom: 20px; /* Margen inferior */
+                                                margin-left: auto; /* Centrar horizontalmente */
+                                                margin-right: auto; /* Centrar horizontalmente */
+                                                max-width: 600px; /* Ancho máximo del cuadro */
+                                            }
+
+                                            .section p {
+                                                margin-bottom: 5px; /* Espaciado inferior para el párrafo */
+                                            }
+                                        </style>
+
+                                        <div>
+                                            <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">1. Objetivo general:</h2>
+                                            <div class="section">
+                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">{{ $project_management->general_objective }}</p>
                                             </div>
-                                            <div>
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                    2.Planteamiento del
-                                                    Problema: exponer los aspectos, elementos y relaciones del
-                                                    problema:</h2>
-                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                                    {{ $project_management->problem_statement }}
-                                                </p>
+                                        </div>
+
+                                        <div>
+                                            <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">2. Planteamiento del Problema:</h2>
+                                            <div class="section">
+                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">{{ $project_management->problem_statement }}</p>
                                             </div>
+                                        </div>
+
+                                        <div>
+                                            <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">3. Justificación: debe manifestarse de manera clara y precisa del por qué y
+                                        para qué se va llevar a cabo el estudio. Causas y propósitos que motivan la
+                                        investigación. Contesta las preguntas: ¿Cuáles son los beneficios que este
+                                        trabajo proporcionará? ¿Quiénes serán los beneficiados? ¿Cuál es su
+                                        utilidad?</h2>
+                                            <div class="section">
+                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">{{ $project_management->justification }}</p>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">4. Actividades para realizar:</h2>
+                                            <div class="section">
+                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">{{ $project_management->activities }}</p>
+                                            </div>
+                                        </div>
 
 
-                                            <div>
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">3.
-                                                    Justificación:
-                                                    debe
-                                                    manifestarse de manera clara y precisa del por qué y para qué se
-                                                    va llevar a
-                                                    cabo el estudio. Causas y propósitos que motivan la
-                                                    investigación. Contesta
-                                                    las
-                                                    preguntas: ¿Cuáles son los beneficios que este trabajo
-                                                    proporcionará?
-                                                    ¿Quiénes
-                                                    serán los beneficiados? ¿Cuál es su utilidad?</h2>
-                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                                    {{ $project_management->justification }}
-                                                </p>
-                                            </div>
 
-                                            <div>
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">4.
-                                                    Actividades para
-                                                    realizar: listar las actividades a llevar a cabo en orden</h2>
-                                                <p class="text-left font-light text-lg ml-24 mr-10 py-2">
-                                                    {{ $project_management->activities }}
-                                                </p>
-                                            </div>
                                             <br />
                                             <br />
+
+
                                             <h2 class="text-center font-medium text-xl ml-24 mr-10 py-2">EVALUACIÓN
                                                 DEL
                                                 ANTEPROYECTO
                                             </h2>
+                                           
+                                        
                                             <br />
                                             <br />
                                             <div class="flex">
@@ -345,40 +343,106 @@ Plantilla base
                                                 </p>
                                             </div>
 
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">
-                                                    Observaciones y/o
-                                                    comentarios:</h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    Al contrario del pensamiento popular, el texto de Lorem
-                                                    Ipsum no es simplemente texto aleatorio. Tiene sus raices en una
-                                                    pieza cl´sica de la literatura del Latin, que d
-                                                    ata del año 45 antes de Cristo, haciendo que este a
-                                                    dquiera mas de 2000 años de antiguedad. Ric
-                                                    hard McClintock, un profesor de Latin de la Uni
-                                                    versidad de Hampden-Sydney en Virginia, encontró una d
-                                                    e las palabras más oscuras de la lengua del latín,
-                                                    "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo
-                                                    distintos textos del latín,
-                                                </p>
-                                            </div>
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Asesor
-                                                    académico:
-                                                </h2>
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->project_advisor }}
-                                                </p>
+                                            <style>
+                                                .table-container {
+                                                    text-align: center;
+                                                }
+
+                                                .project-table-container {
+                                                    margin: auto; /* Centra horizontalmente */
+                                                    width: 70%; /* Establece el ancho de la tabla */
+                                                }
+
+                                                .project-table {
+                                                    border-collapse: collapse;
+                                                    border: 2px solid black; /* Grosor aumentado */
+                                                    width: 100%;
+                                                }
+
+                                                .project-table th,
+                                                .project-table td {
+                                                    padding: 8px;
+                                                    border: 2px solid black; /* Grosor aumentado */
+                                                    text-align: left;
+                                                }
+
+                                                .project-table th:first-child,
+                                                .project-table td:first-child {
+                                                    font-weight: bold;
+                                                }
+                                            </style>
+
+                                            <div class="table-container">
+                                                <div class="project-table-container">
+                                                    <table class="project-table">
+                                                        <tr>
+                                                            <th>Observaciones y/o comentarios:</th>
+                                                            <td>
+                                                                Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raíces en una pieza clásica de la literatura del Latín, que data del año 45 antes de Cristo, haciendo que este adquiera más de 2000 años de antigüedad. Richard McClintock, un profesor de Latín de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín.
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
 
-                                            <div class="flex">
-                                                <h2 class="text-left font-medium text-lg ml-24 mr-10 py-2">Correo
-                                                    electrónico:
-                                                </h2>
 
-                                                <p class="text-left font-light text-lg  mr-20 py-2">
-                                                    {{ $project_management->email_asesor }}
-                                                </p>
+
+                                                <br />
+                                                <br />
+
+                                                <br> <!-- Añadido para separar la tabla del contenido superior -->
+
+                                        <style>
+                                            .table-container {
+                                                text-align: center;
+                                            }
+
+                                            .project-table-container {
+                                                margin: auto; /* Centra horizontalmente */
+                                                width: 70%; /* Establece el ancho de la tabla */
+                                            }
+
+                                            .project-table {
+                                                border-collapse: collapse;
+                                                border: 1px solid black;
+                                                width: 100%;
+                                            }
+
+                                            .project-table th,
+                                            .project-table td {
+                                                padding: 12px; /* Aumenta el espacio entre el contenido y el borde de la celda */
+                                                border: 1px solid black;
+                                                text-align: left;
+                                            }
+
+                                            .project-table th:first-child,
+                                            .project-table td:first-child {
+                                                font-weight: bold;
+                                                width: 30%; /* Ajusta el ancho de la primera columna */
+                                            }
+
+                                            .project-table td {
+                                                width: 70%; /* Ajusta el ancho de la segunda columna */
+                                            }
+                                        </style>
+
+                                        <div class="table-container">
+                                            <div class="project-table-container">
+                                                <table class="project-table">
+                                                    <tr>
+                                                        <th>Asesor académico:</th>
+                                                        <td>{{ $project_management->project_advisor }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Correo electrónico:</th>
+                                                        <td>{{ $project_management->email_asesor }}</td>
+                                                    </tr>
+                                                </table>
+                                            </div> 
+                                                
+                                                <br />
+                                                <br />
+
                                             </div>
                                         </div>
                                     </div>
@@ -444,9 +508,7 @@ Plantilla base
                 <div class="flex flex-col gap-2 justify-center w-full items-center">
                     <h1>Recordatorios</h1>
                     <p class="font-normal font-poppins text-center text-lg">Sin nada que hacer</p>
-                    <label>Soy yo de nuevo, ya realiza los comentarios <i class="fa-solid fa-thumbs-up"></i>
-                    </label>
-                    <label>Perooo, aun esta en desarrollo el aceptar anteproyecto<i class="fa-solid fa-thumbs-down"></i> </label>
+                    
                 </div>
             </div>
         </div>

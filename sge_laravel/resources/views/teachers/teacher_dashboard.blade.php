@@ -20,8 +20,6 @@
                                 <h1>Ver anteproyectos</h1>
                                 <div class="flex flex-col gap-1">
                                     <a href="/gestion_asesor_anteproyecto" class="buttons_card_blue">Todos los anteproyectos</a>
-                                    <button class="buttons_card_red">Solo anteproyectos en revisión</button>
-                                    <button class="buttons_card_green">Solo anteproyectos aprobados</button>
                                 </div>
                             </div>
                         </div>
