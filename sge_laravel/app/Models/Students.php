@@ -52,6 +52,15 @@ class Students extends Model
         return $this->belongsTo(Division::class, 'division_id');
     }
 
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(Group::class, 'group_id');
+    }
+
+    public function career(): BelongsTo
+    {
+        return $this->belongsTo(Career::class, 'careers_id');
+    }
     // public function project()
     // {
     //     return $this->belongsToMany(Project_management::class);
