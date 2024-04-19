@@ -56,9 +56,9 @@
                                 <label class="text-[#489F8F] p-1  text-5xl"><i class="fa-solid fa-person-chalkboard"></i></label>
                             </div>
                             <div>
-                                <h1>Aginación de asesores</h1>
+                                <h1>Asignación de asesores</h1>
                                 <div class="flex flex-col gap-1">
-                                    <a href="/asignar_alumnos" class="buttons_card_blue">Asinar asesor a estudiante</a>
+                                    <a href="/asignar_alumnos" class="buttons_card_blue">Asignar asesor a estudiante</a>
                                 </div>
                             </div>
                         </div>

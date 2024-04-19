@@ -246,7 +246,7 @@
                                                         <div class ="button_delete_red">
                                                             <i class ="fa-solid fa-trash"></i>
                                                         </div>
-                                                    </button>
+                                                    </button>asi
                                                 </button>
                                                 <button class="show-permission-edit"
                                                     data-target="#edit_permission{{ $permission->id }}">
