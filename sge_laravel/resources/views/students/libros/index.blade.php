@@ -83,11 +83,73 @@
                                     @endrole
 
                                 </div>
+
+@role('Asesor')
+<h1 class="text-[18px] mb-6">Libros de mis alumnos asesorados</h1>
+@endrole
+<div class=" grid  grid-cols-4">
+                                
+                                    @if ($advicesBooks->isNotEmpty())
+                                    
+                                    
+                                        @foreach ($advicesBooks as $book)
+                                                <div class="main">
+                                                    <ul id="bk-list" class="bk-list clearfix">
+                                                        <li>
+                                                            <div class="bk-book book-1 bk-bookdefault">
+                                                                <div class="bk-front " >
+                                                                    <div class="bk-cover-back"></div>
+                                                                    <div class="bk-cover" style="background-image:url('{{asset('books/'.$book->book_front_page)}}')">
+                                                                        <h2>
+                                                                            <span>{{$book->author}}</span>
+                                                                            <span>{{$book->book_name}}</span>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="bk-back">
+                                                                    <p>{{$book->book_description}}</p>
+                                                                </div>
+                                                                <div class="bk-right"></div>
+                                                                <div class="bk-left">
+                                                                    <h2>
+                                                                        <span>{{$book->title}}</span>
+                                                                        <span>{{$book->author}}</span>
+                                                                    </h2>
+                                                                </div>
+                                                                <div class="bk-top"></div>
+                                                                <div class="bk-bottom"></div>
+                                                            </div>
+                                                            <div class="bk-info">
+                                                                <button class="bk-bookback">Voltear</button>
+                                                                <button class="showView relative  rounded-md border text-black w-fit"
+                                                data-target="#view{{ $book->id }}"><div class="button_see_blue">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </div></button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    @include('students.libros.viewBookStudent')
+                                                </div>
+                                        @endforeach
+                                    @endif
+                                        
+                                    
+                            {{--<button class="showView2 "
+                                            data-target="#view2{{ $book->id }}">
+                                           
+                                        </button>--}}
+                                </div>
+                               
+
+
+
                                 <div class="flex flex-col ">
                                     @if ($userBooks)
                                         @foreach ($userBooks as $book)
                                             <h1 class="text-[18px] mb-6">Mis libros</h1>
                                             <div class="flex">
+                                                @if ($book->status == 1)
                                             <div >
                                                 <button class="showEdit absolute-child" data-target="#edit{{ $book->id }}">
                                                     <div class="button_edit_yellow">
@@ -95,6 +157,7 @@
                                                     </div>
                                                 </button>
                                             </div>
+                                            @endif
                                             <div class="hidden">
                                                 <button class="deleteBook" data-target="#delete{{ $book->id }}">
                                                 <div class="button_delete_red">
@@ -194,6 +257,7 @@
                                     @endforeach
                                     
                                 </div>
+                                {{ $books->links() }}
                             </div>
                         </div>
                     </div>

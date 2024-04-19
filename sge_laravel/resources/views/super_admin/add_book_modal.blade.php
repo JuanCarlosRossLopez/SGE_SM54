@@ -7,9 +7,7 @@
                 <p class="text-2xl"><i class="fa-solid fa-circle-xmark" style="color: #d50101;"></i></p>
             </button>
         </div>
-@php
-$id = Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asociado';
-@endphp
+
         <div class="bg-white p-10">
             <!-- Aqui en esta parte ajusta el valor de h segun tus necesidades, si es muy grande el contenido recomiendo dejar como h-[85vh]-->
             <div class=" max-h-full h-auto">

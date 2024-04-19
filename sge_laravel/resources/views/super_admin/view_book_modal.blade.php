@@ -36,10 +36,11 @@
                     <p class="poppins-light text-[15px]">
                         {{ $book->price }} MXN
                     </p>
-                    <label for="">Estudiante</label>
+                    <label class="font-semibold text-[15px]" for="">Matricula y nombre del estudiante</label>
                     <p>
                         @foreach ($book->students as $student)
-        <p>{{ $student->student_name }}</p>
+                
+        <p>{{$student->id_student}} {{ $student->student_name }}</p>
     @endforeach
                     </p>
 

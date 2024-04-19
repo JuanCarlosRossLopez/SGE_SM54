@@ -83,7 +83,7 @@ $id = Auth::user()->student ? Auth::user()->student->id : 'Sin estudiante asocia
                         </div>
                         <div class="">
 
-                            <input hidden class=" " name="student_id" type="text"
+                            <input hidden class=" hidden" name="student_id" type="text"
                                 value="{{ $id}}">
 
                         </div>

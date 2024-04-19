@@ -126,36 +126,10 @@
 
                     </tbody>
                 </table>
+                {{ $books->links() }}
             </div>
 
-            <!-- Esto solo es una paginación para entregar, en laravel ya hicimos una paginacion chida asi que ignoren esto-->
-            <div class="text-gray-700 w-full flex flex-row justify-between mt-1">
-                <div>
-                    <button
-                        class="border-1 border-gray-500 bg-gray-300 px-2 rounded-l-md focus:outline-none focus:ring focus:border-[#01A080]">
-                        < </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                1
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                2
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 focus:outline-none focus:ring focus:border-[#01A080]">
-                                3
-                            </button>
-                            <button
-                                class="border-1 border-gray-500 bg-gray-300 px-2 rounded-r-md focus:outline-none focus:ring focus:border-[#01A080]">
-                                >
-                            </button>
-                </div>
-                <div>
-                    <span>Cantidad de registros :</span>
-                    <span id="rowCount"></span>
-                </div>
-            </div>
+            
         </div>
     </div>
 
@@ -165,9 +139,7 @@
 
 
     <script>
-        const tableBody = document.querySelector('tbody');
-        const rowCount = tableBody.querySelectorAll('tr').length;
-        document.getElementById('rowCount').textContent = rowCount;
+       
 
         const modal_libro = document.querySelector('.modal2');
         const modal_view = document.querySelector('.modalView')
