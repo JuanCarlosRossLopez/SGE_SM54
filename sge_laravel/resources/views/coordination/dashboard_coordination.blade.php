@@ -83,6 +83,12 @@
                                 <canvas id="myChart" width="1200" height="590"></canvas>
                             </div>
                         </div>
+                        <div class="bg-black rounded">
+                            <div class="line-chart-container p-4">
+                                <h1 class="text-lg font-semibold text-center mb-4">Alumnos por grupos</h1>
+                                <canvas id="MYChart" class="w-full h-96 sm:h-auto"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
     
@@ -151,6 +157,7 @@
         <script src="{{ asset('js/progress.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="{{ asset('js/line-chart.js') }}"></script>
+        <script src="{{ asset('js/line-chart4.js') }}"></script>
 
         <script>
             const libro = document.querySelector('.libro');
