@@ -39,8 +39,11 @@ use App\Http\Controllers\ChartController3;
 use App\Http\Controllers\ChartController4;
 use App\Http\Controllers\MasiveActionsUsers;
 use App\Http\Controllers\ImportUsers;
+use App\Http\Controllers\Aspirante;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+
+
 
 
 /*
@@ -203,8 +206,6 @@ Route::get('/project_approval_data_2', [ChartController2::class, 'projectApprova
 Route::get('/project_approval_data_3', [ChartController3::class, 'projectApprovalData3']);
 Route::get('/project_approval_data_4', [ChartController4::class, 'projectApprovalData4']);
 
-
-
 // Route::get('/estudiantes/{id}', 'StudentController@show')->name('estudiantes.show');
 Route::resource('maestros', TeachersController::class);
 Route::resource('estudiantes', StudentsController::class);
@@ -213,6 +214,7 @@ Route::get('asignar_alumnos/{teachingAdvice}/edit', [TeachingAdviceController::c
 Route::put('asignar_alumnos/{teachingAdvice}', [TeachingAdviceController::class, 'update'])->name('teaching_advices.update');
 Route::resource('mis_asesorados', TeacherDashboardController::class);
 
+Route::resource('/aspirante', Aspirante::class);
 
 
 //Equipo valier

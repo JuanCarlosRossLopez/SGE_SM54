@@ -61,7 +61,6 @@ class AnteprotecMapDashController extends Controller
      */
     public function show(string $id)
     {
-
         $project_management = Project_management::find($id);
         $status = Status_project::all();
         $comments = Comments::where('project_management_id', $id)->get();
