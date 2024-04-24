@@ -19,13 +19,15 @@
                         <form action="{{ route('estudiantes.update', $user->id) }}" method="POST" class="flex flex-col gap-4">
                             @csrf
                             @method('PUT')
+                            <label for="student_name">Nombre del estudiante:</label>
                             <div class="flex gap-4">
                                 <input type="hidden" name="id_student" value="{{$user->student->id_student}}">
                                 <input type="text" name="student_name" id="student_name" value="{{$user->student->student_name}}" placeholder="Nombre del estudiante" class="flex-1 rounded-md border border-gray-300 p-2">
                             </div>
                           
+                            <label for="division_id">Elige una división:</label>
                             <div class="flex gap-4">
-                                <select name="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
+                                <select name="division_id" id="division_id" class="flex-1 rounded-md border border-gray-300 p-2">
                                     <option selected>Elige una división</option>
                                     @foreach ($Divisions as $division)
                                         <option value="{{ $division->id }}">{{ $division->division_name }}</option>

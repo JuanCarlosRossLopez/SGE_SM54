@@ -37,6 +37,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ChartController2;
 use App\Http\Controllers\ChartController3;
 use App\Http\Controllers\ChartController4;
+use App\Http\Controllers\ChartController5;
 use App\Http\Controllers\MasiveActionsUsers;
 use App\Http\Controllers\ImportUsers;
 use Illuminate\Support\Facades\Mail;
@@ -202,6 +203,7 @@ Route::get('/project_approval_data', [ChartController::class, 'projectApprovalDa
 Route::get('/project_approval_data_2', [ChartController2::class, 'projectApprovalData2']);
 Route::get('/project_approval_data_3', [ChartController3::class, 'projectApprovalData3']);
 Route::get('/project_approval_data_4', [ChartController4::class, 'projectApprovalData4']);
+Route::get('/project_approval_data_5', [ChartController5::class, 'projectApprovalData5']);
 
 
 

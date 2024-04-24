@@ -17,22 +17,27 @@
                             <h1 class="text-xl font-bold">Editando al asesor</h1>
                         </div>
                         <div class="flex flex-col gap-4">
+                            <label for="email">Correo electrónico:</label>
                             <input type="email" value="{{$user->email}}" name="email" id="email" placeholder="Correo electrónico" class="rounded-md border border-gray-300 p-2">
                             @error('email')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
+                            <label for="password">Contraseña:</label>
                             <input type="password" name="password" id="password" placeholder="Contraseña" class="rounded-md border border-gray-300 p-2" value="{{$user->password}}">
                             @error('password')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
+                            <label for="name_teacher">Nombre del asesor:</label>
                             <input type="text" value="{{$user->teachers->name_teacher}}" name="name_teacher" id="name_teacher" placeholder="Nombre del asesor" class="rounded-md border border-gray-300 p-2">
                             @error('name_teacher')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
+                            <label for="payroll">Número de nómina del asesor:</label>
                             <input type="number" value="{{$user->teachers->payroll}}" name="payroll" id="payroll" placeholder="Número de nómina del asesor" class="rounded-md border border-gray-300 p-2">
                             @error('payroll')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
+                            <label for="division_id">División:</label>
                             <select name="division_id" id="division_id" class="rounded-md border border-gray-300 p-2">
                                 <option value="{{$user->teachers->division->id}}" selected>{{$user->teachers->division ? $user->teachers->division->division_name : 'Sin división'}}</option>
                                 @foreach ($Divisions as $division)
@@ -42,8 +47,7 @@
                             @error('division_id')
                             <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
-                         
-                       
+                            <label for="career_id">Carrera:</label>
                             <select name="careers_id" id="career_id" class="rounded-md border border-gray-300 p-2">
                                 <option value="{{$user->teachers->career ? $user->teachers->career->id : null}}">{{$user->teachers->career ? $user->teachers->career->career_name : 'Sin carrera'}}</option>
                                 @foreach ($careers as $career)
