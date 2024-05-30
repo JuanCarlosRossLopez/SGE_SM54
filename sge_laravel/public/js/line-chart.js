@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   $.ajax({
-    url: '/project_approval_data4',
+    url: '/project_approval_data',
     type: 'GET',
     dataType: 'json',
     success: function(response) {

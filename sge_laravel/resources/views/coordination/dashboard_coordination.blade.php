@@ -83,6 +83,13 @@
                                 <canvas id="myChart" width="1200" height="590"></canvas>
                             </div>
                         </div>
+
+                        <div class="bg-black rounded">
+                            <div class="line-chart-container text-center items-center">
+                                <h1>Alumnos por Grupo</h1>
+                                <canvas id="MYChartA" width="1200" height="590"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
     
@@ -107,7 +114,6 @@
                                                     id="percentage1">0%</text>
                                             </g>
                                         </svg>
-                                        <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +132,6 @@
                                                     id="percentage2">0%</text>
                                             </g>
                                         </svg>
-                                        <button class="action-button" style="margin-left: 40px">VISUALIZAR</button>
                                     </div>
                                 </div>
                             </div>
@@ -146,11 +151,14 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="{{ asset('js/line-chart.js') }}"></script>
+        <script src="{{ asset('js/line-chart6.js') }}"></script>
 
 
         <script src="{{ asset('js/progress.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="{{ asset('js/line-chart.js') }}"></script>
+        <script src="{{ asset('js/line-chart6.js') }}"></script>
+
 
         <script>
             const libro = document.querySelector('.libro');

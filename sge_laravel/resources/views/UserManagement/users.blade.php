@@ -589,6 +589,9 @@
                                             #
                                         </th>
                                         <th class="theader">
+                                            Nombre
+                                        </th>
+                                        <th class="theader">
                                             Matrícula/Nómina</th>
                                         <th class="theader">
                                             Email
@@ -606,10 +609,20 @@
                                         <tr class="trow">
                                             <td class="trowc">
                                                 <input type="checkbox" class="select_user" name="users[]"
-                                                    value="{{ $user->id }}">
+                                                    value="{{ $user->teachers}}">
                                             </td>
 
                                             <td class="trowc"> {{ $loop->iteration }} </td>
+
+                                            <td class="trowc">
+                                                @if ($user->student)
+                                                    {{ $user->student->id_student }}
+                                                    
+                                                @elseif($user->teachers)
+                                            
+                                                    {{ $user->teachers->name_teacher }}
+                                                @endif
+                                            </td>
                                             <td class="trowc">
                                                 @if ($user->student)
                                                     {{ $user->student->id_student }}

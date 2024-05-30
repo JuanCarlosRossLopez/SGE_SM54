@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener los datos iniciales para la gráfica
     $.ajax({
-        url: '/project_approval_data_4', // Ruta actualizada según el controlador
+        url: '/project_approval_data_5', // Ruta actualizada según el controlador
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     var selectedGroup = $(this).val();
 
                     $.ajax({
-                        url: '/filter_by_group', // Ruta actualizada según el controlador
+                        url: '/filter_by_groups', // Ruta actualizada según el controlador
                         type: 'POST',
                         data: {
                             _token: '{{ csrf_token() }}',

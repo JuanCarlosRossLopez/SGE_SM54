@@ -159,7 +159,7 @@
                         </li>
                         @endrole
 
-                        @role('|Estudiante|Asistente|Administrador|Asesor')
+                        @role('|Estudiante|Administrador|Asesor')
                         <li>
                             <a href="/libros" class="buttons_sidebar ">
                             <i class="fa-solid fa-book"></i>
